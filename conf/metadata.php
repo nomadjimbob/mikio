@@ -8,6 +8,7 @@ $meta['includeFontAwesome'] = array('onoff');
 $meta['useFontAwesome']     = array('onoff');
 $meta['useTheme']           = array('string');
 $meta['navbarMenuStyle']    = array('multichoice', '_choices' => array('icon', 'icon and text', 'text'));
+$meta['useHeroTitle']       = array('onoff');
 
 $meta['discussionPage']   = array('string');
 $meta['userPage']         = array('string');

@@ -8,6 +8,7 @@ $conf['includeFontAwesome'] = 1;
 $conf['useFontAwesome'] = 1;
 $conf['useTheme'] = '';
 $conf['navbarMenuStyle'] = 'icon and text';
+$conf['useHeroTitle'] = 1;
 
 
 $conf['discussionPage']   = 'discussion:@ID@';

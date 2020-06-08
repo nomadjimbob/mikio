@@ -1,4 +1,7 @@
 <?php
+
+namespace dokuwiki\template\mikio;
+
 /**
  * DokuWiki Mikio Template
  *
@@ -11,7 +14,7 @@ if (!defined('DOKU_INC')) die();
 
 require_once('inc/simple_html_dom.php');
 
-class MikioTemplate {
+class Template {
   public $tplDir  = '';
   public $baseDir = '';
 
@@ -28,6 +31,24 @@ class MikioTemplate {
       $this->_registerHooks();
      }
 
+
+    /**
+     * Get the singleton instance
+     *
+     * @return Template
+     */
+    public static function getInstance()
+    {
+
+        static $instance = null;
+
+        if ($instance === null) {
+            $instance = new Template();
+        }
+
+        return $instance;
+
+    }
 
     /**
      * Register themes DokuWiki hooks
@@ -53,7 +74,7 @@ class MikioTemplate {
      *
      * @author  James Collins <james.collins@outlook.com.au>
      */
-    public function metaHeadersHandler(Doku_Event $event) {
+    public function metaHeadersHandler(\Doku_Event $event) {
         $stylesheets    = array();
         $scripts        = array();
 
@@ -93,7 +114,7 @@ class MikioTemplate {
      *
      * @author  James Collins <james.collins@outlook.com.au>
      */
-    public function contentHandler(Doku_Event $event)
+    public function contentHandler(\Doku_Event $event)
     {
         $event->data = $this->normalizeContent($event->data);
     }
@@ -234,6 +255,47 @@ class MikioTemplate {
     }
 
 
+    public function includeBreadcrumbs() {
+        global $conf;
+
+        if($conf['breadcrumbs']) {
+            print_r(breadcrumbs());
+            tpl_breadcrumbs('|');
+        }
+
+        if($conf['youarehere']) {
+            // print_r(youarehere());
+            tpl_youarehere('|');
+        }
+
+
+    
+        
+        // $crumbs = breadcrumbs();
+
+        // print '<ol class="breadcrumb">';
+        // print '<li>' . rtrim($lang['breadcrumb'], ':') . '</li>';
+
+        // $last = count($crumbs);
+        // $i    = 0;
+
+        // foreach ($crumbs as $id => $name) {
+
+        //     $i++;
+
+        //     print($i == $last) ? '<li class="active">' : '<li>';
+        //     tpl_link(wl($id), hsc($name), 'title="' . $id . '"');
+        //     print '</li>';
+
+        //     if ($i == $last) {
+        //         print '</ol>';
+        //     }
+
+        // }
+
+        // print_r($crumbs);
+    }
+
     /**
      * Parse HTML for bootstrap
      *
@@ -243,7 +305,7 @@ class MikioTemplate {
      * @return  string              Parsed HTML for bootstrap
      */
     public function normalizeContent($content) {
-        $html = new simple_html_dom();
+        $html = new \simple_html_dom;
         $html->load($content, true, false);
 
         # Return original content if Simple HTML DOM fail or exceeded page size (default MAX_FILE_SIZE => 600KB)
@@ -251,6 +313,17 @@ class MikioTemplate {
             return $content;
         }
 
+        # Hide page title if hero is enabled
+        if($this->getConf('useHeroTitle')) {
+            $pageTitle = tpl_pagetitle(null, true);
+            
+            foreach($html->find('h1,h2,h3,h4') as $elm) {
+                if($elm->innertext == $pageTitle) {
+                    $elm->innertext = '';
+                    break;
+                }
+            }
+        }
 
         # Buttons
         foreach ($html->find('.button') as $elm) {
@@ -264,7 +337,6 @@ class MikioTemplate {
             $elm->class .= ' btn btn-outline-secondary';
         }
 
-
         # Section Edit Button
         foreach ($html->find('.btn_secedit [type=submit]') as $elm) {
             $elm->class .= ' btn-sm';
@@ -275,10 +347,6 @@ class MikioTemplate {
             $elm->innertext = '<i class="fa fa-edit" aria-hidden="true"></i> ' . $elm->innertext;
         }
 
-        foreach ($html->find('.secedit.editbutton_table button') as $elm) {
-            // $elm->innertext = iconify('mdi:table') . ' ' . $elm->innertext;
-        }    
-
         $content = $html->save();
 
         $html->clear();
@@ -287,3 +355,7 @@ class MikioTemplate {
         return $content;
     }
 }
+
+global $TEMPLATE;
+
+$TEMPLATE = \dokuwiki\template\mikio\Template::getInstance();
