@@ -207,17 +207,17 @@ class Template {
     public function navbarMenuTitle($title, $icon) {
         global $lang;
 
-        $title = '';
+        $menu = '';
 
         if($this->getConf('navbarMenuStyle') != 'text') {
-            $title .= $this->icon($icon);
+            $menu .= $this->icon($icon);
         }
 
         if($this->getConf('navbarMenuStyle') != 'icon') {
-            $title .= $lang['user_tools'];
+            $menu .= $lang[$title];
         }
         
-        echo $title;
+        echo $menu;
     }
 
 

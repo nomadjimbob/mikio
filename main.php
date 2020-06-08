@@ -72,7 +72,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
               </li>
 
               <!-- Page Tools -->
-              <li id="dokuwiki__sitetools" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php $TEMPLATE->navbarMenuTitle('page_tools', 'page'); ?></a>
+              <li id="dokuwiki__pagetools" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php $TEMPLATE->navbarMenuTitle('page_tools', 'file-text-o'); ?></a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <?php tpl_toolsevent('pagetools', array(
                     'edit'      => $TEMPLATE->elementAddClass(tpl_action('edit', true, false, true), 'dropdown-item'),
