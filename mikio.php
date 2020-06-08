@@ -79,13 +79,13 @@ class Template {
         $scripts        = array();
 
         if($this->getConf('useTheme') != '') {
-            if(file_exists($this->tplDir . 'themes/' . $this->getConf('useTheme') . '/style.css')) {
-                $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('useTheme') . '/style.css';
+            if(file_exists($this->tplDir . 'themes/' . $this->getConf('useTheme') . '/style.less')) {
+                $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('useTheme') . '/style.less';
             }
         }
 
-        $stylesheets[] = $this->baseDir . 'css/mikio.css';
-        $stylesheets[] = $this->baseDir . 'css/bootstrap.min.css';
+        // $stylesheets[] = $this->baseDir . 'css/mikio.less';
+        // $stylesheets[] = $this->baseDir . 'css/bootstrap.min.css';
 
         if($this->getConf('includeFontAwesome') == true) $stylesheets[] = $this->baseDir . 'assets/fontawesome/css/all.min.css';
 
@@ -116,7 +116,7 @@ class Template {
      */
     public function contentHandler(\Doku_Event $event)
     {
-        $event->data = $this->normalizeContent($event->data);
+        $event->data = $this->parseContent($event->data);
     }
 
 
@@ -153,6 +153,26 @@ class Template {
                         return 'text';
                     }
                 }
+
+            break;
+
+            case 'navbarMenuPosition':
+                if($value == 'right') {
+                    return 'ml-md-auto';
+                }
+
+                return '';
+
+            case 'breadcrumbsLoc':
+                if(!$this->getConf('useHeroTitle') && $value == 'hero') {
+                    return 'top';
+                }
+
+                if($value != 'top' && $value != 'hero' && $value != 'page') {
+                    return 'page';
+                }
+
+                break;
         }
 
         return $value;
@@ -255,46 +275,80 @@ class Template {
     }
 
 
-    public function includeBreadcrumbs() {
-        global $conf;
+    /**
+     * Print out breadcrumbs
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     * 
+     * @param   string  $location   Location of breadcrumbs
+     */
+    public function includeBreadcrumbs($location) {
+        if($location == $this->getConf('breadcrumbsLoc')) {
+            global $conf;
 
-        if($conf['breadcrumbs']) {
-            print_r(breadcrumbs());
-            tpl_breadcrumbs('|');
-        }
+            print '<div class="mikio-breadcrumbs">';
 
-        if($conf['youarehere']) {
-            // print_r(youarehere());
-            tpl_youarehere('|');
-        }
-
-
+            if($conf['breadcrumbs']) {
+                tpl_breadcrumbs();
+            }
     
-        
-        // $crumbs = breadcrumbs();
+            if($conf['youarehere']) {
+                tpl_youarehere();
+            }    
 
-        // print '<ol class="breadcrumb">';
-        // print '<li>' . rtrim($lang['breadcrumb'], ':') . '</li>';
-
-        // $last = count($crumbs);
-        // $i    = 0;
-
-        // foreach ($crumbs as $id => $name) {
-
-        //     $i++;
-
-        //     print($i == $last) ? '<li class="active">' : '<li>';
-        //     tpl_link(wl($id), hsc($name), 'title="' . $id . '"');
-        //     print '</li>';
-
-        //     if ($i == $last) {
-        //         print '</ol>';
-        //     }
-
-        // }
-
-        // print_r($crumbs);
+            print '</div>';
+        }
     }
+
+
+    /**
+     * Print out hero
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     */
+    public function includeHero() {
+        global $ACT;
+
+        if($ACT === 'show') {
+            if($this->getConf('useHeroTitle')) {
+                print '<div class="mikio-hero d-flex flex-row">';
+                    print '<div class="mikio-hero-text flex-grow-1">';
+                        $this->includeBreadcrumbs('hero');
+                        print '<h1 id="mikio-hero-title">';
+                            tpl_pagetitle();
+                        print '</h1>';
+                        print '<h2 id="mikio-hero-subtext">';
+                            print '';   // TODO Find subtext in page?
+                        print '</h2>';
+                    print '</div>';
+
+                    $hero_image = tpl_getMediaFile(array(':hero.png', ':hero.jpg', ':wiki:hero.png', ':wiki:hero.jpg', 'images/hero.png', 'images/hero.jpg'), false);
+                    if($hero_image != '') $hero_image = ' style="background-image:url(\''.$hero_image.'\');"';
+
+                    print '<div class="mikio-hero-image"' . $hero_image . '></div>';
+                print '</div>';
+            }
+        }
+    }
+
+
+    /**
+     * Print out TOC
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     */
+    public function includeTOC($location) {
+        if($this->getConf('tocfullheight') && $location === 'full') {
+            print '<div class="mikio-toc mikio-toc-full">';
+            tpl_toc();
+            print '</div>';
+        } else if(!$this->getConf('tocfullheight') && $location === 'float') {
+            print '<div class="mikio-toc mikio-toc-float">';
+            tpl_toc();
+            print '</div>';
+        }
+    }
+    
 
     /**
      * Parse HTML for bootstrap
@@ -304,7 +358,7 @@ class Template {
      * @param   string  $content    HTML content to parse
      * @return  string              Parsed HTML for bootstrap
      */
-    public function normalizeContent($content) {
+    public function parseContent($content) {
         $html = new \simple_html_dom;
         $html->load($content, true, false);
 
@@ -312,6 +366,7 @@ class Template {
         if (!$html) {
             return $content;
         }
+
 
         # Hide page title if hero is enabled
         if($this->getConf('useHeroTitle')) {

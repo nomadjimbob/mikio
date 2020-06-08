@@ -28,7 +28,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <!-- <div class="dokuwiki"> -->
 
         <!-- Navbar -->
-        <nav class="navbar navbar-light navbar-expand-lg shadow">
+        <nav class="navbar <?php print $TEMPLATE->getConf('navbarClasses'); ?>">
           <div id="mikio-site-title" class="mr-0 p-0">
             <div class="row">
               <?php
@@ -44,8 +44,8 @@ header('X-UA-Compatible: IE=edge,chrome=1');
           </div>
           <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <!-- <div class="col-md-9"> -->
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-            <ul class="navbar-nav px-3">
+            <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+            <ul class="navbar-nav <?php print $TEMPLATE->getConf('navbarMenuClasses') . ' ' . $TEMPLATE->getConf('navbarMenuPosition') ?>">
 
               <!-- User Tools -->
               <li id="dokuwiki__usertools" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php $TEMPLATE->navbarMenuTitle('user_tools', 'user'); ?></a>
@@ -94,22 +94,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         </nav>
 
         <!-- Breadcrumbs -->
+        <?php $TEMPLATE->includeBreadcrumbs('top'); ?>
 
         <!-- Hero Title -->
-        <?php if($TEMPLATE->getConf('useHeroTitle')): ?>
-        <div class="mikio-hero d-flex flex-row">
-          <div class="mikio-hero-text flex-grow-1">
-            <div class="mikio-breadcrumbs"><?php $TEMPLATE->includeBreadcrumbs(); ?></div>
-            <h1 id="mikio-hero-title"><?php tpl_pagetitle() ?></h1>
-            <h2 id="mikio-her-subtext">Subtext</h2>
-          </div>
-          <?php
-            $hero_image = tpl_getMediaFile(array(':hero.png', ':hero.jpg', ':wiki:hero.png', ':wiki:hero.jpg', 'images/hero.png', 'images/hero.jpg'), false);
-            if($hero_image != '') $hero_image = ' style="background-image:url(\''.$hero_image.'\');"';
-          ?>
-          <div class="mikio-hero-image"<?php echo $hero_image; ?>></div>
-        </div>
-        <?php endif ?>
+        <?php $TEMPLATE->includeHero(); ?>
 
         <div class="d-flex flex-grow-1">
           <!-- Sidebar -->
@@ -117,8 +105,13 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
           <!-- Content -->
           <main>
+            <?php $TEMPLATE->includeBreadcrumbs('page'); ?>
+            <?php $TEMPLATE->includeTOC('float'); ?>
             <?php tpl_content(false) ?>
           </main>
+
+          <!-- TOC -->
+          <?php $TEMPLATE->includeTOC('full'); ?>
         </div>
 
         <!-- Footer -->

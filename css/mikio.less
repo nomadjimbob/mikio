@@ -11,6 +11,7 @@ body.mikio {
 /* Navbar */
 .mikio .navbar {
   z-index: 1020;
+  background-color: @ini_navbar_background;
 }
 
 .mikio #mikio-site-title {
@@ -35,7 +36,7 @@ body.mikio {
 /* Sidebar */
 .mikio aside {
   padding: 2rem 1.5rem;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  // box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
   background-color: #f8f9fa;
   font-size:0.9rem;
   flex:0 0 20rem;
@@ -64,16 +65,42 @@ body.mikio {
 }
 
 
+/* Breadcrumb */
+.mikio .mikio-breadcrumbs {
+  padding: 0.8rem 2rem;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  border-color: @ini_breadcrumb_background;
+  border-style: solid;
+  border-width: 1px 0 1px 0;
+}
+
+.mikio .mikio-hero .mikio-breadcrumbs {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  border-width: 0;
+}
+
+.mikio main .mikio-breadcrumbs {
+  background-color: @ini_breadcrumb_background;
+  border-width: 0;
+  padding: 0.8rem;
+  margin: 0;
+}
+
 /* Hero */
 .mikio .mikio-hero {
-  /* display: flex; */
-
-  height: 200px;
-  /* width: 100%; */
+  background-color: @ini_hero_background;
+  height: @ini_hero_height;
 }
 
 .mikio .mikio-hero .mikio-hero-text {
-  /* flex-grow: 1; */
+  padding: 2rem;
+}
+
+.mikio .mikio-hero .mikio-hero-text #mikio-hero-subtext {
+  color: @ini_hero_subtext_color;
+  font-size: @ini_hero_subtext_size;
 }
 
 .mikio .mikio-hero .mikio-hero-image {
@@ -89,7 +116,7 @@ body.mikio {
 .mikio main {
   flex-grow: 1;
   padding: 2rem 4rem;
-  background-color: #fff;
+  background-color: @ini_background;
 }
 
 .mikio main h1 {
@@ -120,39 +147,25 @@ body.mikio {
 
 
 /* TOC */
-.mikio #dw__toc {
-  display:none;
-  right:4rem;
-  top:4rem;
-  border: 1px solid #ddd;
-  background-color: #f8f9fa;
-  padding: 0;
-  font-size: 0.8rem;
-  max-width: 15rem;
-  /* margin: 1rem -2rem 1rem 2rem; */
-  box-shadow: 2px 2px 10px #eee;
-  /* z-index:1010; */
+.mikio .mikio-toc {
+  flex: 0 0 200px;
+  padding:2rem 0.5rem;
+  margin-right:2rem;
 }
 
-.mikio #dw__toc h3 {
-  margin-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.mikio .mikio-toc-float {
+  width: 200px;
+  float: right;
+}
+
+.mikio .mikio-toc #dw__toc h3 {
   font-size: 0.9rem;
-  text-align: center;
 }
 
-.mikio #dw__toc .toggle span {
-  margin-right: 0.4rem;
-}
-
-.mikio #dw__toc ul.toc {
-  padding: 0 1rem 0 1rem;
+.mikio .mikio-toc #dw__toc ul {
   list-style: none;
-  margin-top: 0.5rem;
-}
-
-.mikio #dw__toc ul.toc li {
-  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
 }
 
 
