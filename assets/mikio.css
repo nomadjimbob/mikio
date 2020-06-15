@@ -1,5 +1,5 @@
 html {
-  /* min-height: 100%; */
+    font-size:90%;
 }
 
 body.mikio {
@@ -11,7 +11,8 @@ body.mikio {
 /* Navbar */
 .mikio .navbar {
   z-index: 1020;
-  background-color: @ini_navbar_background;
+  background-color: "#7952b3";
+  height: "auto";
 }
 
 .mikio #mikio-site-title {
@@ -25,7 +26,7 @@ body.mikio {
 }
 
 .mikio .nav-link {
-  margin-right: 1rem;
+
 }
 
 .mikio .nav-link .fa {
@@ -36,7 +37,6 @@ body.mikio {
 /* Sidebar */
 .mikio aside {
   padding: 2rem 1.5rem;
-  // box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
   background-color: #f8f9fa;
   font-size:0.9rem;
   flex:0 0 20rem;
@@ -70,7 +70,7 @@ body.mikio {
   padding: 0.8rem 2rem;
   font-size: 0.9rem;
   margin: 1rem 0;
-  border-color: @ini_breadcrumb_background;
+  border-color: #e7e8e9;
   border-style: solid;
   border-width: 1px 0 1px 0;
 }
@@ -82,7 +82,7 @@ body.mikio {
 }
 
 .mikio main .mikio-breadcrumbs {
-  background-color: @ini_breadcrumb_background;
+  background-color: #e7e8e9;
   border-width: 0;
   padding: 0.8rem;
   margin: 0;
@@ -90,8 +90,8 @@ body.mikio {
 
 /* Hero */
 .mikio .mikio-hero {
-  background-color: @ini_hero_background;
-  height: @ini_hero_height;
+  background-color: #e7e8e9;
+  height: 250px;
 }
 
 .mikio .mikio-hero .mikio-hero-text {
@@ -99,8 +99,8 @@ body.mikio {
 }
 
 .mikio .mikio-hero .mikio-hero-text #mikio-hero-subtext {
-  color: @ini_hero_subtext_color;
-  font-size: @ini_hero_subtext_size;
+  color: "#666";
+  font-size: 1.5rem;
 }
 
 .mikio .mikio-hero .mikio-hero-image {
@@ -116,7 +116,7 @@ body.mikio {
 .mikio main {
   flex-grow: 1;
   padding: 2rem 4rem;
-  background-color: @ini_background;
+  background-color: "#fff";
 }
 
 .mikio main h1 {
@@ -190,9 +190,29 @@ body.mikio {
 }
 
 
-/* WRAP Fix */
-.mikio .dokuwiki .wrap_quarter {
-  width: 21%;
-  margin-left: 2%;
-  margin-right: 2%;
+/* Search */
+
+/* Page Tools */
+.mikio #dw__pagetools {
+    position: fixed;
+    right: 0;
+    top: 40%;
+    z-index: 9999;
+    text-align: center;
+}
+
+.mikio #dw__pagetools .btn {
+
+}
+
+
+/* Editor */
+.mikio textarea.edit {
+    width:100%;
+}
+
+.mikio button.toolbutton {
+    background-color: #fff;
+    border:1px solid #999;
+    padding:0.5rem 0.8rem;
 }
