@@ -2,7 +2,7 @@ base     mikio
 author   James Collins
 email    james.collins@outlook.com.au
 date     2020-06-02
-name     Mikio Theme
+name     Mikio theme
 desc     Mikio Bootstrap 4 based template for Dokuwiki
 url      https://www.dokuwiki.org/template:mikio
 

@@ -20,8 +20,8 @@ function _tpl_discussion($discussionPage, $title, $backTitle, $link=0, $wrapper=
     global $ID;
     $output = '';
 
-    $discussPage    = str_replace('@ID@', $ID, $discussionPage);
-    $discussPageRaw = str_replace('@ID@', '', $discussionPage);
+    $discussPage    = str_ireplace('@ID@', $ID, $discussionPage);
+    $discussPageRaw = str_ireplace('@ID@', '', $discussionPage);
     $isDiscussPage  = strpos($ID, $discussPageRaw) !== false;
     $backID         = ':'.str_replace($discussPageRaw, '', $ID);
 
@@ -62,7 +62,7 @@ function _tpl_userpage($userPage, $title, $link=0, $wrapper=0, $return=0) {
 
     global $conf;
     $output = '';
-    $userPage = str_replace('@USER@', $_SERVER['REMOTE_USER'], $userPage);
+    $userPage = str_ireplace('@USER@', $_SERVER['REMOTE_USER'], $userPage);
 
     if ($wrapper) $output .= "<$wrapper>";
 

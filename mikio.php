@@ -60,7 +60,7 @@ class Template {
 
          $events_dispatcher = array(
             'TPL_METAHEADER_OUTPUT'     => 'metaheadersHandler',
-            'TPL_CONTENT_DISPLAY'       => 'contentHandler',
+            // 'TPL_CONTENT_DISPLAY'       => 'contentHandler',
         );
 
         foreach ($events_dispatcher as $event => $method) {
@@ -79,17 +79,20 @@ class Template {
         $scripts        = array();
 
         if($this->getConf('useTheme') != '') {
-            if(file_exists($this->tplDir . 'themes/' . $this->getConf('useTheme') . '/style.less')) {
-                $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('useTheme') . '/style.less';
+            if(file_exists($this->tplDir . 'themes/' . $this->getConf('useTheme') . '/style.css')) {
+                $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('useTheme') . '/style.css';
+            }
+            if(file_exists($this->tplDir . 'themes/' . $this->getConf('useTheme') . '/script.js')) {
+                $scripts[] = $this->baseDir . 'themes/' . $this->getConf('useTheme') . '/script.js';
             }
         }
 
-        // $stylesheets[] = $this->baseDir . 'css/mikio.less';
-        // $stylesheets[] = $this->baseDir . 'css/bootstrap.min.css';
-
         if($this->getConf('includeFontAwesome') == true) $stylesheets[] = $this->baseDir . 'assets/fontawesome/css/all.min.css';
 
-        $scripts[] = $this->baseDir . 'js/bootstrap.min.js';
+        $scripts[] = $this->baseDir . 'assets/bootstrap/popper.min.js';
+        $scripts[] = $this->baseDir . 'assets/bootstrap/bootstrap.min.js';
+        $stylesheets[] = $this->baseDir . 'assets/bootstrap/bootstrap.min.css';
+        $stylesheets[] = $this->baseDir . 'assets/mikio.css';
       
         foreach ($stylesheets as $style) {
             array_unshift($event->data['link'], array(
@@ -246,6 +249,102 @@ class Template {
   
   
     /**
+     * Include Page
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     *
+     * @param   string  $location
+     * @param   boolean $return
+     * @return  string
+     */
+    public function includePage($location, $return = false)
+    {
+
+        $content = '';
+
+        if($content === '') $content = tpl_include_page($location, 0, 1, $this->getConf('useACL'));
+
+        if($content === '') return '';
+
+        $content = $this->parseContent($content);
+
+        if($return) return $content;
+
+        print $content;
+        return '';
+    }
+
+    public function includeLoggedIn() {
+        if (!empty($_SERVER['REMOTE_USER'])) {
+            echo '<li class="user navbar-text text-nowrap">';
+            tpl_userinfo(); /* 'Logged in as ...' */
+            echo '</li>';
+        }
+    }
+
+
+    /**
+     * Include Menus
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     *
+     * @param   string  $location
+     */
+    public function includeMenu($location) {
+        global $lang;
+        global $USERINFO;
+
+        $conf = $this->getConf('navbarIconsText');
+        $dropdown = $this->getConf('navbarUseDropdown');
+        $hideIcons = ($conf == 'text');
+        $hideText = ($conf == 'icons');
+        $guestMode = $this->getConf('navbarGuestHide') && ($USERINFO == false);
+
+        if(!$hideText && !$hideIcons) $hideText = false;        
+        
+        if(!$guestMode) {
+            // Page tools
+            $items = (new \dokuwiki\Menu\PageMenu())->getItems();
+            print '<li id="dokuwiki__pagetools" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . (!$hideIcons ? $this->icon('file') : '') . (!$hideText ? $lang['page_tools'] : '') . '</a><div class="dropdown-menu dropdown-menu-right">';
+            foreach($items as $item) {
+                if($item->getType() != 'top') {
+                    print '<a class="' . ($dropdown ? 'dropdown-item' : 'nav-item nav-link') . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
+                    if(!$hideIcons) print '<span class="icon">'.inlineSVG($item->getSvg()).'</span>';
+                    if(!$hideText || $dropdown) print '<span>' . $item->getLabel() . '</span>';
+                    print '</a>';
+                }
+            }
+            if($dropdown) print '</div></li>';
+
+            // Site tools
+            $items = (new \dokuwiki\Menu\SiteMenu())->getItems('action ');
+
+            print '<li id="dokuwiki__sitetools" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . (!$hideIcons ? $this->icon('gear') : '') . (!$hideText ? $lang['site_tools'] : '') . '</a><div class="dropdown-menu dropdown-menu-right">';
+            foreach($items as $item) {
+                print '<a class="' . ($dropdown ? 'dropdown-item' : 'nav-item nav-link') . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
+                if(!$hideIcons) print '<span class="icon">'.inlineSVG($item->getSvg()).'</span>';
+                if(!$hideText || $dropdown) print '<span>' . $item->getLabel() . '</span>';
+                print '</a>';
+            }
+            if($dropdown) print '</div></li>';
+        }
+
+        // User tools
+        $items = (new \dokuwiki\Menu\UserMenu())->getItems('action');
+        if(!$guestMode) print '<li id="dokuwiki__usertools" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . (!$hideIcons ? $this->icon('user') : '') . (!$hideText ? $lang['user_tools'] : '') . '</a><div class="dropdown-menu dropdown-menu-right">';
+        foreach($items as $item) {
+            if(!$guestMode || $item->getType() == 'login') {
+                print '<a class="' . (($dropdown && !$guestMode) ? 'dropdown-item' : 'nav-item nav-link') . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
+                if(!$hideIcons) print '<span class="icon">'.inlineSVG($item->getSvg()).'</span>';
+                if(!$hideText || ($dropdown && !$guestMode)) print '<span>' . $item->getLabel() . '</span>';
+                print '</a>';
+            }
+        }
+        if($dropdown && !$guestMode) print '</div></li>';
+        
+    }
+
+    /**
      * Include Sidebar
      *
      * @author  James Collins <james.collins@outlook.com.au>
@@ -255,25 +354,143 @@ class Template {
      */
     public function includeSidebar($type) {
         global $conf;
+        global $ID;
+
+        $useACL = true; // Add these as config options?
+        $propagate = true;
+        $checkPropagate = true; // Add these as config options?
 
         switch($type) {
             case 'left':
-                if($this->getConf('showSidebar')) {
-                    echo '<aside>';
-                    tpl_includeFile('sidebarheader.html');
-                    tpl_include_page($conf['sidebar'], 1, 1);
-                    tpl_includeFile('sidebarfooter.html');
-                    echo '</aside>';
-    
+                if($this->getConf('showSidebar') && page_findnearest($conf['sidebar'], $useACL) != false && p_get_metadata($ID, 'nosidebar', false) == false) {
+                    $sidebar = tpl_includeFile('sidebarheader.html', false);
+
+                    $sidebar .= $this->includeSearch('sidebar-top', false);
+
+                    $confSidebar = tpl_include_page($conf['sidebar'], false, $propagate, $useACL);
+                    if($checkPropagate && $confSidebar == '') {
+                        $confSidebar = tpl_include_page($conf['sidebar'], false, false, $useACL);
+                    }
+                    $sidebar .= $confSidebar;
+
+                    $sidebar .= $this->includeSearch('sidebar-bottom', false);
+                    $sidebar .= tpl_includeFile('sidebarfooter.html', false);
+
+                    if($sidebar != '') {
+                        print '<aside class="col-md-2">' . $sidebar . '</aside>';
+                    }
+
                     return true;
                 }
 
-                return false;
+                return false;       
         }
 
         return false;
     }
 
+    /**
+     * Include Page Tools
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     *
+     * @param   string  $location       Page tools location
+     * @return  boolean             If page tools was added
+     */
+    public function includePageTools($location) {
+        $id = '';
+        $group_class = 'btn-group';
+
+        if((!$this->getConf('hidePageTools') && $location == 'side') || (!$this->getConf('hidePageToolsFooter') && $location == 'footer')) {
+            if($location == 'side') {
+                $id = 'dw__pagetools';
+                $group_class = 'btn-group-vertical';
+            }
+
+            print '<nav id="' . $id . '" class="hidden-print dw__pagetools">';
+                print '<div class="' . $group_class . '">';
+
+                $items = (new \dokuwiki\Menu\PageMenu())->getItems();
+                foreach($items as $item) {
+                    print '<a class="btn btn-sm btn-light" href="'.$item->getLink().'" title="'.$item->getTitle().'">'
+                    .'<span class="icon">'.inlineSVG($item->getSvg()).'</span>'
+                    . '<span class="a11y">'.$item->getLabel().'</span>'
+                    . '</a>';
+                }
+                
+                print '</div>';
+            print '</nav>';
+        }
+    }
+
+    /**
+     * Include Search
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     *
+     * @param   string  $location   Search location
+     * @return  boolean             If search was added
+     */
+    public function includeSearch($location, $print=true) {
+        global $lang;
+
+        //<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        $out = '';
+
+        if($location == $this->getConf('navbarSearchPosition') || ($location == 'footer' && $this->getConf('showSearchInFooter')) || ($location == 'sidebar-top' && $this->getConf('showSearchInSidebar') == 'top') || ($location == 'sidebar-bottom' && $this->getConf('showSearchInSidebar') == 'bottom')) {
+            $out .= '<form action="' . wl($ID) . '" accept-charset="utf-8" class="form-inline search" id="dw__search" method="get" role="search">';
+                $out .= '<div class="input-group"><input id="sqsearch" autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' . (($ACT == 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" name="q" class="form-control" title="[F]" style="height:auto"/>';
+                    $out .= '<div class="input-group-append"><button class="btn btn-secondary" type="submit" title="' .  $lang['btn_search'] . '">';
+                        $out .= $this->icon('search'); //$lang['btn_search'];  // TODO show icon if conf says and font awesome installed
+                    $out .= '</button></div></div>';
+                    $out .= '<input type="hidden" name="do" value="search" />';
+            $out .= '</form>';
+        }
+
+        if($print) {
+            print $out;
+            return '';
+        }
+
+        return $out;
+    }
+
+
+    /**
+     * Include Custom menus
+     *
+     * @author  James Collins <james.collins@outlook.com.au>
+     *
+     * @param   string  $location   menu location
+     * @return  boolean             If menu was added
+     */
+    public function includeCustomMenu($location, $addOuter=true) {
+        if(($location == 'navbar' && $this->getConf('showCustomPagesInNavbar')) || ($location == 'footer' && $this->getConf('showCustomPagesInFooter'))) {
+            if($addOuter) {
+                print '<ul class="nav">';
+            }
+
+            $menuList = $this->getConf('navbarCustomPages');
+            
+            if($menuList != '') {
+                $menuList = explode(',', $menuList);
+                
+                foreach($menuList as $item) {
+                    $i = strpos($item, '|');
+                    if($i !== false) {
+                        $url = $this->getLink(trim(substr($item, 0, $i)));
+                        $title = trim(substr($item, $i + 1));
+
+                        print('<li class="nav-item"><a href="' . $url . '" class="nav-link">' . $title . '</a></li>');
+                    }
+                }
+            }        
+
+            if($addOuter) {
+                print '</ul>';
+            }
+        }
+    }
 
     /**
      * Print out breadcrumbs
@@ -308,21 +525,25 @@ class Template {
      */
     public function includeHero() {
         global $ACT;
+        global $INFO;
 
-        if($ACT === 'show') {
+        // file_put_contents('output.txt', print_r($INFO, true));
+
+        if($ACT == 'show') {
             if($this->getConf('useHeroTitle')) {
                 print '<div class="mikio-hero d-flex flex-row">';
                     print '<div class="mikio-hero-text flex-grow-1">';
                         $this->includeBreadcrumbs('hero');
                         print '<h1 id="mikio-hero-title">';
-                            tpl_pagetitle();
+                            print tpl_pagetitle(null, true).' ';    // No idea why this requires a blank space afterwards to work?
                         print '</h1>';
-                        print '<h2 id="mikio-hero-subtext">';
-                            print '';   // TODO Find subtext in page?
+                        print '<h2 class="mikio-hero-subtext">';
+                            // print $this->heroSubtitle;       // TODO scrape page for hero subtitle
                         print '</h2>';
                     print '</div>';
 
-                    $hero_image = tpl_getMediaFile(array(':hero.png', ':hero.jpg', ':wiki:hero.png', ':wiki:hero.jpg', 'images/hero.png', 'images/hero.jpg'), false);
+
+                    $hero_image = tpl_getMediaFile(array(':' . $INFO['namespace'] . ':hero.png', ':' . $INFO['namespace'] . ':hero.jpg', ':hero.png', ':hero.jpg', ':wiki:hero.png', ':wiki:hero.jpg', 'images/hero.png', 'images/hero.jpg'), false);
                     if($hero_image != '') $hero_image = ' style="background-image:url(\''.$hero_image.'\');"';
 
                     print '<div class="mikio-hero-image"' . $hero_image . '></div>';
@@ -339,13 +560,21 @@ class Template {
      */
     public function includeTOC($location) {
         if($this->getConf('tocfullheight') && $location === 'full') {
-            print '<div class="mikio-toc mikio-toc-full">';
-            tpl_toc();
-            print '</div>';
+            $toc = tpl_toc(true);
+            
+            if($toc != '') {
+                print '<div class="mikio-toc mikio-toc-full">';
+                print $toc;
+                print '</div>';
+            }
         } else if(!$this->getConf('tocfullheight') && $location === 'float') {
-            print '<div class="mikio-toc mikio-toc-float">';
-            tpl_toc();
-            print '</div>';
+            $toc = tpl_toc(true);
+            
+            if($toc != '') {
+                print '<div class="mikio-toc mikio-toc-float">';
+                print $toc;
+                print '</div>';
+            }
         }
     }
     
@@ -367,7 +596,6 @@ class Template {
             return $content;
         }
 
-
         # Hide page title if hero is enabled
         if($this->getConf('useHeroTitle')) {
             $pageTitle = tpl_pagetitle(null, true);
@@ -375,6 +603,25 @@ class Template {
             foreach($html->find('h1,h2,h3,h4') as $elm) {
                 if($elm->innertext == $pageTitle) {
                     $elm->innertext = '';
+                    break;
+                }
+            }
+        }
+
+        # Hero subtitle
+        foreach($html->find('p') as $elm) {
+            $i = stripos($elm->innertext, '~~hero-subtitle');
+            if($i !== false) {
+                $j = strpos($elm->innertext, '~~', $i + 2);
+                if($j !== false) {
+                    if($j > $i + 16) {
+                        $subtitle = substr($elm->innertext, $i + 16, $j - $i - 16);
+                        foreach($html->find('.mikio-hero-subtext') as $subtitleElm) {
+                           $subtitleElm->innertext = $subtitle;
+                        }
+                    }
+
+                    $elm->innertext = substr($elm->innertext, $j + 2);
                     break;
                 }
             }
@@ -389,7 +636,9 @@ class Template {
         }
 
         foreach ($html->find('[type=button], [type=submit], [type=reset]') as $elm) {
-            $elm->class .= ' btn btn-outline-secondary';
+            if(stripos($elm->class, 'btn') === false) {
+                $elm->class .= ' btn btn-outline-secondary';
+            }
         }
 
         # Section Edit Button
@@ -403,11 +652,20 @@ class Template {
         }
 
         $content = $html->save();
-
+        
         $html->clear();
         unset($html);
 
         return $content;
+    }
+
+
+    /*** GET LINK ***/
+    public function getLink($str) {
+        $i = strpos($str, '://');
+        if($i !== false) return $str;
+
+        return wl($str);
     }
 }
 
