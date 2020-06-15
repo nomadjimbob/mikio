@@ -4,26 +4,46 @@
  *
  */
 
-$conf['includeFontAwesome'] = 1;
-$conf['useFontAwesome']     = 1;
-$conf['useTheme']           = '';
-$conf['navbarIconsText']    = 'icons';
-$conf['navbarUseDropdown']  = 0;
-$conf['navbarClasses']      = 'navbar-dark navbar-expand-lg';
-$conf['navbarMenuPosition'] = 'right';
-$conf['navbarSearchPosition'] = 'left';
-$conf['navbarCustomPages']  = '';
-$conf['navbarGuestHide']    = 1;
-$conf['navbarHideImage']    = 0;
-$conf['useHeroTitle']       = 1;
-$conf['breadcrumbsLoc']     = 'page';
-$conf['tocfullheight']      = 0;
-$conf['hidePageTools']      = 0;
-$conf['hidePageToolsFooter'] = 0;
-$conf['showCustomPagesInNavbar'] = 1;
-$conf['showCustomPagesInFooter'] = 1;
-$conf['showSearchInFooter'] = 1;
-$conf['showSearchInSidebar'] = 'none';
+$conf['inclFontAwesome']        = 1;
+
+$conf['customTheme']            = '';
+
+$conf['navbarUseTitleIcon']     = 1;
+$conf['navbarUseTitleText']     = 1;
+$conf['navbarUseSubtitleText']  = 1;
+$conf['navbarCustomMenuText']   = '';
+
+$conf['navbarDWMenuType']       = 'icons';
+$conf['navbarDWMenuCombine']    = 'dropdown';
+$conf['navbarDWMenuLogout']     = 1;
+
+$conf['navbarPosLeftLeft']      = 'custom';
+$conf['navbarPosLeftMid']       = 'none';
+$conf['navbarPosLeftRight']     = 'none';
+$conf['navbarPosRightLeft']     = 'none';
+$conf['navbarPosRightMid']      = 'search';
+$conf['navbarPosRightRight']    = 'dokuwiki';
+$conf['navbarLowerMenu']        = 'none';
+$conf['navbarLowerMenuPos']     = 'center';
+
+$conf['heroTitle']              = 1;
+$conf['heroImagePropagation']   = 1;
+
+$conf['breadcrumbPos']          = 'hero';
+$conf['breadcrumbPrefix']       = 'You are here:';
+$conf['breadcrumbHome']         = 'page title';
+
+$conf['sidebarDismiss']         = 1;
+$conf['sidebarSearch']          = 'none';
+
+$conf['tocFull']                = 0;
+
+$conf['pageToolsHide']          = 0;
+$conf['pageToolsFooter']        = 0;
+
+$conf['footerCustomMenuText']   = '';
+$conf['footerSearch']           = 0;
+
 
 
 // $conf['discussionPage']   = 'discussion:@ID@';
