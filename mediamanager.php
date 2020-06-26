@@ -24,6 +24,16 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
     <?php tpl_includeFile('meta.html') ?>
+    
+    <?php
+        $baseDir = tpl_basedir();
+        echo '<link type="text/css" rel="stylesheet" href="' . $baseDir . 'assets/fontawesome/css/all.min.css">';
+        echo '<link type="text/css" rel="stylesheet" href="' . $baseDir . 'assets/bootstrap/bootstrap.min.css">';
+        echo '<link type="text/css" rel="stylesheet" href="' . $baseDir . 'assets/mikio.css">';
+        echo '<script type="text/javascript" src="' . $baseDir . 'assets/mikio-mediamanager.js"></script>';
+    ?>
+
+
 </head>
 
 <body>

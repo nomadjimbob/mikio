@@ -1,0 +1,83 @@
+/**
+ * CSS styling for mikio dokuwiki theme
+ *
+ * @link    http://dokuwiki.org/template:mikio
+ * @author  James Collins <james.collins@outlook.com.au>
+ * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
+ */
+
+@black-hello: yellow;
+ @black-o65: #595959;
+
+
+html {
+    overflow-x: auto;
+    overflow-y: scroll;
+    display: block;
+    padding: 0;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+body.mikio {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    padding: 0 1rem;
+}
+
+html, body.mikio {
+    background-color: #fff;
+    color: #212529;
+    margin: 0;
+}
+
+
+/* Navbar */
+.mikio-navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: .5rem 0 .5rem 0;
+}
+
+
+/* Sidebar */
+.mikio-sidebar {
+
+}
+
+.mikio-sidebar-toggle {
+    display: none;
+}
+
+.mikio-sidebar ul {
+    list-style: none;
+    padding-left: .25rem;
+}
+
+
+.mikio-sidebar ul li {
+    margin: .25rem 0 .25rem 0;
+    padding-left: 1.4rem;
+    background-size: 1.2rem;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    /* background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTguNjI5IDE1Ljk5N2wtNy4wODMtNy4wODFMMTMuNDYyIDdsOC45OTcgOC45OTdMMTMuNDU3IDI1bC0xLjkxNi0xLjkxNnoiLz48L3N2Zz4='); */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" style="color:@{black-o65}"><path style="fill:currentColor" d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"/></svg>');
+}
+
+
+.mikio div.li a.indexmenu_idx_head,
+.mikio-sidebar a {
+    color: @black-o65;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+/* DokuWiki Oveerrides */
+asdv {
+    font-weight: inherit;
+}

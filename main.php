@@ -8,128 +8,87 @@
  */
 
 if (!defined('DOKU_INC')) die();
-
-global $TEMPLATE;
 require_once('mikio.php');
 
+global $TEMPLATE, $ACT, $conf;
 
 header('X-UA-Compatible: IE=edge,chrome=1');
-?><!doctype html>
+?>
+<!doctype html>
 <html lang="<?php echo $conf['lang'] ?>">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php tpl_pagetitle() ?> [<?php echo strip_tags($conf['title']) ?>]</title>
+    <?php echo '<title>' . $TEMPLATE->includePageTitle('', FALSE) . '</title>' ?>
     <?php tpl_metaheaders() ?>
     <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
     <?php tpl_includeFile('meta.html') ?>
-  </head>
-  <body class="mikio d-flex flex-column dokuwiki">
-    <!-- <div class="dokuwiki"> -->
+</head>
 
+<body class="mikio dokuwiki mikio-act-<?php echo $ACT ?>">
+    <?php
+        $content = tpl_includeFile('topheader.html');
+        if($content != '') $content = $TEMPLATE->includePage('topheader');
+        if($content != '') echo '<div class="mikio-header-top">' . $content . '</div>';
+
+        // TODO is this still needed?
+        //if ($ACT == 'show')
+        //$TEMPLATE->includePage('topheader');
+    ?>
+
+    <?php $TEMPLATE->includeNavbar(); ?>
+
+    <?php
+    tpl_includeFile('header.html');
+    if ($ACT == 'show') $TEMPLATE->includePage('header');
+    ?>
+
+    <a name="dokuwiki__top" id="dokuwiki__top"></a>
+
+    <!-- Breadcrumbs -->
+    <?php if ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPos') == 'top' || $ACT == 'admin') $TEMPLATE->includeBreadcrumbs(); ?>
+
+    <!-- Hero Title -->
+    <?php $TEMPLATE->includeHero(); ?>
+
+    <main class="mikio-page">
+        <?php if ($ACT == 'show') $TEMPLATE->includeSidebar() ?>
+        
+        <div class="mikio-content">
         <?php
-            tpl_includeFile('topheader.html');
-            if ($ACT == 'show') $TEMPLATE->includePage('topheader');
-        ?>
+            if ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPos') == 'page') $TEMPLATE->includeBreadcrumbs();
 
+            tpl_includeFile('pageheader.html');
+            if ($ACT == 'show') $TEMPLATE->includePage('pageheader');
 
-        <!-- Navbar -->
-        <nav class="navbar <?php print $TEMPLATE->getConf('navbarClasses'); ?>">
-          <div id="mikio-site-title" class="mr-0 p-0">
-            <div class="row">
-              <?php
-                $logo     = tpl_getMediaFile(array(':wiki:logo.png', ':logo.png', 'images/logo.png'), false);
-                $title    = $conf['title'];
-                $tagline  = (($conf['tagline']) ? '<span class="navbar-text mikio-navbar-tagline col-12 p-0">'. $conf['tagline'] .'</span>' : '');
-                
-                if($logo != '' && $TEMPLATE->getConf('navbarHideImage') == false) {
-                    echo '<div class="col-2 mikio-navbar-image" style="background-image:url(\'' . $logo . '\')"></div><div class="col-10">';
-                } else {
-                    echo '<div class="col-12">';
-                }
-                echo '<a href="' . wl() . '" title="' . $title . '" class="navbar-brand col-12 p-0">' . $title . '</a>' . ($tagline != '' ? $tagline : '');
-                echo '</div>';
-              ?>
-            </div>
-          </div>
-          <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <!-- <div class="col-md-9"> -->
-            <?php $TEMPLATE->includeSearch('left'); ?>
-            <ul class="navbar-nav <?php print $TEMPLATE->getConf('navbarMenuClasses') . ' ' . $TEMPLATE->getConf('navbarMenuPosition') ?>">
+            echo '<article class="mikio-article">';
+            $TEMPLATE->includeTOC();
+            $TEMPLATE->includeContent(TRUE);
+            echo '</article>';
 
-                <!-- Custom Menus -->
-                <?php $TEMPLATE->includeCustomMenu('navbar', false); ?>
-                <?php $TEMPLATE->includeMenu('navbar'); ?>
-             
-            </ul>
-            <?php $TEMPLATE->includeSearch('right'); ?>
-          <!-- </div> -->
-        </nav>
-
-        <?php
-            tpl_includeFile('header.html');
-            if ($ACT == 'show') $TEMPLATE->includePage('header');
-        ?>
-
-        <!-- Breadcrumbs -->
-        <?php $TEMPLATE->includeBreadcrumbs('top'); ?>
-
-        <!-- Hero Title -->
-        <?php ob_start(); ?>
-        <?php $TEMPLATE->includeHero(); ?>
-
-        <div class="d-flex flex-grow-1">
-          <!-- Sidebar -->
-          <?php $TEMPLATE->includeSidebar('left'); ?>
-
-          <!-- Content -->
-          <main>
-            <?php
-                $TEMPLATE->includeBreadcrumbs('page');
-                $TEMPLATE->includeTOC('float');
-
-                tpl_includeFile('pageheader.html');
-                if ($ACT == 'show') $TEMPLATE->includePage('pageheader');
-
-                tpl_content(false);
-
-                tpl_includeFile('pagefooter.html');
-                if ($ACT == 'show') $TEMPLATE->includePage('pagefooter');
+            tpl_includeFile('pagefooter.html');
+            if ($ACT == 'show') $TEMPLATE->includePage('pagefooter');
             ?>
-          </main>
+        </div> 
+        <?php
+            global $USERINFO;
 
-          <!-- TOC -->
-          <?php $TEMPLATE->includeTOC('full'); ?>
-
-          <!-- Page Tools -->
-          <?php $TEMPLATE->includePageTools('side'); ?>
-
+            if ($ACT == 'show' && !$TEMPLATE->getConf('pageToolsHide') && (!$TEMPLATE->getConf('pageToolsHideNoEdit') || $TEMPLATE->userCanEdit()) && (!$TEMPLATE->getConf('pageToolsHideGuest') || ($USERINFO))) {
+                $TEMPLATE->includePageTools(TRUE, TRUE);
+            }
+        ?>
         </div>
 
-        <?php
-            $content = ob_get_contents();
-            ob_end_clean();
-            print $TEMPLATE->parseContent($content);
-        ?>
+        <?php if ($ACT == 'show') $TEMPLATE->includeSidebar('right') ?>
+    </main>
 
-        <!-- Footer -->
-        <footer class="bg-dark text-white p-3">
-          <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
-          <?php
-            tpl_includeFile('footer.html');
-            if ($ACT == 'show') $TEMPLATE->includePage('footer');
+    <div class="mikio-page-fill"></div>
 
-            $TEMPLATE->includeSearch('footer');
-            $TEMPLATE->includeCustomMenu('footer', true);
-            
-            $TEMPLATE->includePageTools('footer');
-            tpl_license('button')
-            ?>
-        </footer>
+    <!-- Footer -->
+    <?php $TEMPLATE->includeFooter(); ?>
 
-      </div>
-      
-      <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
-    <!-- </div> -->
-  </body>
+    </div>
+
+    <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
+</body>
 </html>

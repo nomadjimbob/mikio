@@ -1,0 +1,970 @@
+/**
+ * CSS styling for mikio dokuwiki theme
+ *
+ * @link    http://dokuwiki.org/template:mikio
+ * @author  James Collins <james.collins@outlook.com.au>
+ * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
+ */
+
+html {
+    overflow-x: auto;
+    overflow-y: scroll;
+    display: block;
+    padding: 0;
+    font-size: .8em;
+    line-height: 1.5;
+}
+
+body.mikio {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    padding: 0 1rem;
+}
+
+html, body.mikio {
+    background-color: #fbfaf9;
+    color: #333;
+    margin: 0;
+}
+
+/* Navbar */
+.mikio-navbar {
+    position: relative;
+    display: flex;
+    padding: 1rem 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.mikio-navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.mikio-navbar-brand-image {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+}
+
+.mikio-navbar-brand-title-text {
+    font-size: 1.75rem;
+    color: #333;
+}
+
+.mikio-navbar-brand-title-tagline {
+    font-size: 1rem;
+    color: #333;
+    margin-top: -.3rem;
+}
+
+.mikio-navbar-toggle {
+    display: none;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+    fill: #999;
+    overflow: hidden;
+    padding: 0rem .5rem;
+}
+
+.mikio-navbar-collapse {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+/* Nav */
+.mikio-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mikio-nav-item {
+    margin: 0 1rem;
+}
+
+.mikio-nav-item:first-of-type {
+    margin-left: 0;
+}
+
+.mikio-nav-item:last-of-type {
+    margin-right: 0;
+}
+
+.mikio-nav-dropdown {
+    padding-right: 1.5rem;
+    background-size: 1.2rem;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYuMDAzIDE4LjYyNmw3LjA4MS03LjA4MUwyNSAxMy40NmwtOC45OTcgOC45OTgtOS4wMDMtOSAxLjkxNy0xLjkxNnoiLz48L3N2Zz4=');
+}
+
+.mikio-nav-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.mikio-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    right: 0;
+    bottom: auto;
+
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: .5rem 0;
+    transition: all .15s ease-in-out;
+}
+
+.mikio-nav-dropdown:hover .mikio-dropdown {
+    display: block;
+}
+
+.mikio-dropdown-header {
+    margin: 0;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+.mikio-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: .25rem 2rem;
+    transition: all .15s ease-in-out;
+}
+
+.mikio-dropdown-item:hover {
+    background-color: #eee;
+}
+
+.mikio-dropdown-divider {
+    margin: .5rem 0 .5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+
+/* Breadcrumbs */
+.mikio-breadcrumbs {
+    padding: .5rem 2rem;
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    border-color: #ccc;
+    margin-bottom: 1rem;
+}
+
+
+/* Page */
+.mikio-page {
+    display: flex;
+}
+
+
+/* Sidebar */
+.mikio-sidebar {
+    margin: 0 1rem;
+    flex: 0 0 12rem;
+}
+
+.mikio-sidebar ul {
+    padding-left: 1rem;
+}
+
+.mikio-sidebar ul ul {
+    padding-left: .5rem;
+}
+
+.mikio-sidebar-toggle {
+    display: none;
+    background-size: 1rem;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYuMDAzIDE4LjYyNmw3LjA4MS03LjA4MUwyNSAxMy40NmwtOC45OTcgOC45OTgtOS4wMDMtOSAxLjkxNy0xLjkxNnoiLz48L3N2Zz4=');
+}
+
+.mikio-sidebar-toggle.closed {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTUuOTk3IDEzLjM3NGwtNy4wODEgNy4wODFMNyAxOC41NGw4Ljk5Ny04Ljk5OCA5LjAwMyA5LTEuOTE2IDEuOTE2eiIvPjwvc3ZnPg==');
+}
+
+
+/* Content */
+.mikio-content {
+    margin: 0 1rem;
+    flex: 1 1 auto;
+}
+
+.mikio-content > .mikio-breadcrumbs {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+/* Article */
+.mikio-article {
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 0 .5em #999;
+    padding: 2rem;
+}
+
+.mikio-article > *:nth-child(2) {
+    margin-top: 0;
+    word-break: normal;
+}
+
+
+/* TOC */
+.mikio-toc {
+    float: right;
+    border: 1px solid #ddd;
+    max-width: 20rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mikio-toc h3 {
+    margin: 0;
+    padding: .25rem .5rem;
+    font-size: 100%;
+    text-align: center;
+
+    background-color: #ddd;
+    background-size: 1rem;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYuMDAzIDE4LjYyNmw3LjA4MS03LjA4MUwyNSAxMy40NmwtOC45OTcgOC45OTgtOS4wMDMtOSAxLjkxNy0xLjkxNnoiLz48L3N2Zz4=');
+}
+
+.mikio-toc h3:before {
+    display: inline-block;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+    background-size: 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNNi4wMDEgNy4xMjhMNiAxMC40MzhsMTkuOTk4LS4wMDVMMjYgNy4xMjR6TTYuMDAxIDIxLjU2Nkw2IDI0Ljg3NmwxOS45OTgtLjAwNi4wMDItMy4zMDh6TTYuMDAxIDE0LjM0MUw2IDE3LjY1bDE5Ljk5OC0uMDA0LjAwMi0zLjMwOXoiLz48L3N2Zz4=');
+}
+
+.mikio-toc h3.closed {
+    margin-bottom: 0;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTUuOTk3IDEzLjM3NGwtNy4wODEgNy4wODFMNyAxOC41NGw4Ljk5Ny04Ljk5OCA5LjAwMyA5LTEuOTE2IDEuOTE2eiIvPjwvc3ZnPg==');
+    font-size: 0;
+}
+
+.mikio-toc h3.closed:before {
+    margin-right: 1rem;
+}
+
+.mikio-toc h3 span {
+    display: none;
+}
+
+
+.mikio-toc ul {
+    padding-right: 1.5rem;
+}
+
+.mikio-toc ul ul {
+    padding-left: 1rem;
+}
+
+
+/* Page Tools */
+#dw__pagetools {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    margin-right: 1rem;
+}
+
+#dw__pagetools a {
+    display: block;
+}
+
+#dw__pagetools a svg {
+    fill: #ccc;
+    transition: all .15s ease-in-out;
+}
+
+#dw__pagetools a:hover svg {
+    fill: #000;
+}
+
+
+/* Footer */
+.mikio-footer {
+    margin-top: 2rem;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+
+/* Search */
+.mikio-search {
+    display: flex;
+}
+
+.mikio-search input {
+    margin-right: 0;
+    border-right-width: 0;
+    border-radius: .25rem 0 0 .25rem;
+    width: 1%;
+    flex: 1 1 auto;
+}
+
+.mikio-search button[type=submit] {
+    margin-left: 0;
+    border-radius: 0 .25rem .25rem 0;
+    transition: all .15s ease-in-out;
+    color: #333;
+    border-color: #ced4da;
+    background-color: #eee;
+}
+
+.mikio-search button[type=submit]:hover {
+    background-color: #ced4da;
+    color: inherit;
+}
+
+
+/* Icon */
+.mikio-icon {
+    margin-right: .5rem;
+}
+
+.mikio-icon:nth-last-child(1) {
+    margin-left: .5rem;
+}
+
+
+/* Input */
+input[type=search] {
+    -webkit-appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+    background-size: 1rem;
+    background-position: 98% 50%;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMjQgMTEuMzA1bC03Ljk5NyAxMS4zOUw4IDExLjMwNXoiLz48L3N2Zz4=');
+}
+
+/* .mikio-control {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    line-height: 1.5;
+    height: calc(1.5em + .75rem + 2px);
+} */
+
+
+/* Page Editor */
+#wiki__text {
+    width: 100%;
+    font-size: 100%;
+}
+
+/* button, input[type=button], input[type=submit], input[type=reset] {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    font-size: 100%;
+    transition: all .15s ease-in-out;
+}
+
+button, input[type=button], input[type=reset] {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #6c757d;
+}
+
+button[type=submit], input[type=submit] {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+button:hover, input[type=button], input[type=reset] {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+button[type=submit]:hover, input[type=submit]:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+} */
+
+
+
+/* Admin */
+.mikio-act-admin .ui-admin .admin_tasks, .mikio-act-admin .ui-admin .admin_plugins {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 17rem);
+}
+
+.mikio-act-admin .ui-admin .admin_tasks li, .mikio-act-admin .ui-admin .admin_plugins li {
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    margin: 1rem;
+}
+
+.mikio-act-admin .ui-admin .admin_tasks li a, .mikio-act-admin .ui-admin .admin_plugins li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 6rem;
+    padding: 1rem 2rem;
+    color: #333;
+    text-decoration: none;
+    transition: all .15s ease-in-out;
+}
+
+.mikio-act-admin .ui-admin .admin_tasks li a:hover, .mikio-act-admin .ui-admin .admin_plugins li a:hover {
+    background-color: #ced4da;
+}
+
+
+/* Config Manager */
+.mikio-act-admin #config__manager fieldset {
+    margin: 0 0 2rem 0;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+.mikio-act-admin #config__manager fieldset legend {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: .5rem 1rem;
+    margin: 0;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    background-color: #454d55;
+    color: #fff;
+}
+
+.mikio-act-admin #config__manager fieldset table {
+    margin: 0;
+}
+
+.mikio-act-admin #config__manager fieldset .table td.label {
+    display: grid;
+    grid-template-columns: auto 32px;
+    grid-template-rows: auto auto;
+    align-items: center;
+}
+
+.mikio-act-admin #config__manager fieldset .table td.label .outkey {
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    font-size: 100%;
+    margin: 0;
+    background-color: transparent;
+    float: none;
+}
+
+.mikio-act-admin #config__manager fieldset .table td.label label {
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    grid-row-start: 2;
+    grid-row-end: span 1;
+}
+
+.mikio-act-admin #config__manager fieldset .table td.label img {
+    grid-column-start: 2;
+    grid-column-end: span 1;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+}
+
+.mikio-act-admin #config__manager fieldset .table td.value div.input {
+    background-color: transparent;
+}
+
+#edit__summary, .mikio-act-admin input[type=text], .mikio-act-admin input[type=password], .mikio-act-admin input[type=email], .mikio-act-admin select {
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    line-height: 1.5;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    margin: 0;
+}
+
+.mikio-act-admin td input[type=text], .mikio-act-admin td input[type=password], .mikio-act-admin td input[type=email], .mikio-act-admin #config__manager input[type=text], .mikio-act-admin #config__manager input[type=password], .mikio-act-admin #config__manager input[type=email], .mikio-act-admin #config__manager input[type=file], .mikio-act-admin #config__manager select {
+    width: 100%;
+}
+
+.mikio-act-admin input[type=file] {
+    width: auto;
+    position: relative;
+}
+
+
+.mikio-act-admin #config__manager tr.default .input, .mikio-act-admin #config__manager tr.default input, .mikio-act-admin #config__manager tr.default textarea, .mikio-act-admin #config__manager tr.default select, .mikio-act-admin #config__manager .selectiondefault {
+    background-color: rgba(204, 221, 255, .5);
+}
+
+.mikio-act-admin #config__manager tr.protected .input, .mikio-act-admin #config__manager tr.protected input, .mikio-act-admin #config__manager tr.protected textarea, .mikio-act-admin #config__manager tr.protected select, .mikio-act-admin #config__manager tr.protected .selection {
+    background-color: rgba(255, 204, 204, .5) !important;
+}
+
+.mikio-act-admin ul.tabs {
+    list-style: none;
+    padding-left: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.mikio-act-admin ul.tabs li {
+    display: inline-block;
+}
+
+.mikio-act-admin ul.tabs li a {
+    display: block;
+    padding: .5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem .25rem 0 0;
+    text-decoration: none;
+    color: #007bff;
+    transition: all .15s ease-in-out;
+}
+
+.mikio-act-admin ul.tabs li a:hover {
+    border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+.mikio-act-admin ul.tabs li.active a, .mikio-act-admin #extension__manager ul.tabs li.active a {
+    color: #333;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+
+/* Dokuwiki Theme Fixes */
+button {
+    /* margin-left: 0;
+    margin-right: 0; */
+}
+
+label {
+    /* position: relative; */
+    display: inline-block;
+}
+
+label.block {
+    display: block;
+}
+
+.tool__bar button {
+    margin: 0 0 1rem 0;
+    border-radius: 0;
+    border-right-width: 0;
+}
+
+.tool__bar button:first-of-type {
+    border-radius: .25rem 0 0 .25rem;
+}
+
+.tool__bar button:last-of-type {
+    border-radius: 0 .25rem .25rem 0;
+    border-right-width: 1px;
+}
+
+.tool__bar button:hover {
+    background-color: #ced4da;
+}
+
+.tool__bar button img {
+    vertical-align: middle;
+}
+
+.mikio-article .summary {
+    margin: 1rem 0;
+}
+
+/* Table */
+.mikio-article .table table {
+    width: 100%;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.mikio-article .table th, .table td {
+    padding: .5rem 1rem;
+}
+
+.mikio-article .table td {
+    border-top: 1px solid #dee2e6;
+}
+
+.mikio-article .table tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.mikio-article .table caption + thead tr:first-child th, .mikio-article .table caption + thead tr:first-child td, .mikio-article .table colgroup + thead tr:first-child th, .mikio-article .table colgroup + thead tr:first-child td, .mikio-article .table thead:first-child tr:first-child th, .mikio-article .table thead:first-child tr:first-child td {
+    border-top: 1px solid #dee2e6;
+}
+
+.mikio-article .table caption + thead tr:last-child th, .mikio-article .table caption + thead tr:last-child td, .mikio-article .table colgroup + thead tr:last-child th, .mikio-article .table colgroup + thead tr:last-child td, .mikio-article .table thead:last-of-type tr:last-child th, .mikio-article .table thead:last-of-type tr:last-child td {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.mikio-article .inclmeta {
+    color: #999;
+    text-align: right;
+}
+
+.mikio-article .secedit {
+    text-align: right;
+}
+
+.mikio #acl__tree {
+    padding: .5rem 0;
+    font-size: 100%;
+}
+
+
+/* Mikio Input File */
+.mikio-input-file {
+    position: absolute;
+    /* margin-top: -.5rem; */
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    padding: .25rem 1rem;
+    line-height: 1.5;
+    text-align: left;
+    color: #555;
+    background-color: #fff;
+    border: .1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;    
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.mikio-input-file:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 6;
+    display: block;
+    content: "Browse";
+    padding: .25rem 1rem;
+    line-height: 1.5;
+    color: #555;
+    background-color: #eee;
+    border: .075rem solid #ddd;
+    border-radius: 0 .25rem .25rem 0;
+    transition: all .15s ease-in-out;
+}
+
+.mikio-input-file:hover:before {
+    background-color: #ced4da;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mikio-navbar {
+        display: grid;
+        grid-template-columns: auto 3rem;
+        grid-template-rows: auto auto;
+        padding: 1rem 0;
+    }
+
+    .mikio-navbar-brand {
+        
+    }
+
+    .mikio-navbar-brand-title {
+        grid-column-start: 1;
+        grid-column-end: span 1;
+        grid-row-start: 1;
+        grid-row-end: span 1;
+        flex: 1;
+    }
+
+    .mikio-navbar-toggle {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        grid-row-start: 1;
+        grid-row-end: span 1;
+        display: block;
+        align-self: right;
+    }
+
+    .mikio-navbar-collapse {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 2;
+        grid-row-end: span 1;
+        flex-direction: column;
+    }
+
+    .mikio-navbar-toggle.closed + .mikio-navbar-collapse {
+        display: none;
+        margin: 0 -1rem 0 -1rem;
+    }
+
+    .mikio-nav-item {
+        width: 100%;
+    }
+
+    .mikio-nav-dropdown {
+        background: none;
+        padding-right: 0;
+    }
+
+    .mikio-nav-dropdown .mikio-dropdown {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .mikio-dropdown {
+        display: flex;
+        box-shadow: none;
+        /* max-width: none; */
+    }
+
+    .mikio-page {
+        display: grid;
+        grid-template-columns: auto 2rem;
+        grid-template-rows: auto auto auto;
+        /* flex-direction: column; */
+    }
+
+    .mikio-sidebar {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 1;
+        grid-row-end: span 1;
+    }
+
+    .mikio-article {
+        padding: .5rem;
+        margin: 0 -1rem;
+        box-shadow: none;
+    }
+
+    .mikio-toc {
+        float: none;
+        display: block;
+        max-width: none;
+        margin-left: 0;
+    }
+
+    .mikio-toc h3.closed {
+        font-size: 100%;
+    }
+    
+
+    .mikio-sidebar-toggle {
+        display: block;
+    }
+
+    .mikio-sidebar-toggle.closed + .mikio-sidebar-collapse {
+        display: none;
+    }    
+}
+
+
+
+
+
+/* Mikio Elements */
+.mikio-alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.mikio-button {
+    background-color: #fff;
+    border: 1px solid #6c757d;
+    border-radius: .25rem;
+    color: #6c757d;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all .15s ease-in-out;
+}
+
+.mikio-button:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+
+/* Mikio Styles */
+.mikio-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.mikio-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.mikio-alert.mikio-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.mikio-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.mikio-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.mikio-alert.mikio-secondary {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+
+.mikio-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.mikio-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+
+}
+
+.mikio-alert.mikio-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.mikio-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.mikio-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.mikio-alert.mikio-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.mikio-warning {
+    color: #333;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.mikio-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+.mikio-alert.mikio-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.mikio-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.mikio-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.mikio-alert.mikio-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.mikio-light {
+    color: #333;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.mikio-light:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+.mikio-alert.mikio-light {
+    color: #818182;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+
+.mikio-dark {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.mikio-dark:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
+}
+
+.mikio-alert.mikio-dark {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+}
