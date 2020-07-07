@@ -1,94 +1,77 @@
 <?php
 /**
- * DokuWiki Mikio Template
+ * DokuWiki Mikio Template Main
  *
- * @link     http://dokuwiki.org/template:mikio
- * @author   James Collins <james.collins@outlook.com.au>
- * @license  MIT License (https://raw.githubusercontent.com/nomadjimbob/Mikio/master/LICENSE)
+ * @link    http://dokuwiki.org/template:mikio
+ * @author  James Collins <james.collins@outlook.com.au>
+ * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
 if (!defined('DOKU_INC')) die();
 require_once('mikio.php');
 
-global $TEMPLATE, $ACT, $conf;
+global $TEMPLATE, $ACT, $conf, $USERINFO;
 
 header('X-UA-Compatible: IE=edge,chrome=1');
+
+$hasSidebar = $TEMPLATE->sidebarExists();
+$showSidebar = $hasSidebar && ($ACT=='show');
+
 ?>
 <!doctype html>
 <html lang="<?php echo $conf['lang'] ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php echo '<title>' . $TEMPLATE->includePageTitle('', FALSE) . '</title>' ?>
-    <?php tpl_metaheaders() ?>
-    <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
-    <?php tpl_includeFile('meta.html') ?>
+    <?php
+        echo '<title>' . $TEMPLATE->getPageTitle() . '</title>';
+        tpl_metaheaders();
+        echo tpl_favicon(array('favicon', 'mobile'));
+        tpl_includeFile('meta.html');
+    ?>
 </head>
 
-<body class="mikio dokuwiki mikio-act-<?php echo $ACT ?>">
-    <?php
-        $content = tpl_includeFile('topheader.html');
-        if($content != '') $content = $TEMPLATE->includePage('topheader');
-        if($content != '') echo '<div class="mikio-header-top">' . $content . '</div>';
+<body class="mikio dokuwiki">
+<div id="dokuwiki__site">
+<?php
+    echo '<div id="dokuwiki__top" class="site ' . tpl_classes() . (($showSidebar) ? ' showSidebar' : '') . (($hasSidebar) ? ' hasSidebar' : '') . '">';
+    $TEMPLATE->includePage('topheader', TRUE, TRUE, 'mikio-page-topheader');
+    $TEMPLATE->includeNavbar(TRUE, $TEMPLATE->getConf('navbarShowSub', FALSE) && $ACT == 'show');
+    if($ACT == 'show' || $ACT == 'admin') $TEMPLATE->includePage('header', TRUE, TRUE, 'mikio-page-header');
 
-        // TODO is this still needed?
-        //if ($ACT == 'show')
-        //$TEMPLATE->includePage('topheader');
-    ?>
+    echo '<a name="dokuwiki__top" id="dokuwiki__top"></a>';
 
-    <?php $TEMPLATE->includeNavbar(); ?>
+    if(($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'top') || ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'hero' && $TEMPLATE->getConf('heroTitle') == FALSE) || ($ACT != 'show')) $TEMPLATE->includeBreadcrumbs();
+    if($ACT == 'show' && $TEMPLATE->getConf('heroTitle')) $TEMPLATE->includeHero();
 
-    <?php
-    tpl_includeFile('header.html');
-    if ($ACT == 'show') $TEMPLATE->includePage('header');
-    ?>
-
-    <a name="dokuwiki__top" id="dokuwiki__top"></a>
-
-    <!-- Breadcrumbs -->
-    <?php if ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPos') == 'top' || $ACT == 'admin') $TEMPLATE->includeBreadcrumbs(); ?>
-
-    <!-- Hero Title -->
-    <?php $TEMPLATE->includeHero(); ?>
-
-    <main class="mikio-page">
-        <?php if ($ACT == 'show') $TEMPLATE->includeSidebar() ?>
-        
-        <div class="mikio-content">
-        <?php
-            if ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPos') == 'page') $TEMPLATE->includeBreadcrumbs();
-
-            tpl_includeFile('pageheader.html');
-            if ($ACT == 'show') $TEMPLATE->includePage('pageheader');
-
-            echo '<article class="mikio-article">';
-            $TEMPLATE->includeTOC();
-            $TEMPLATE->includeContent(TRUE);
+    echo '<main class="mikio-page">';
+        if($showSidebar) $TEMPLATE->includeSidebar();
+        echo '<div class="mikio-content">';
+            if($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'page') $TEMPLATE->includeBreadcrumbs();
+            
+            echo '<article class="mikio-article' . ($TEMPLATE->getConf('tocFull') ? ' toc-full' : '') . '">';
+                $TEMPLATE->includeTOC();
+                if($ACT == 'show') $TEMPLATE->includePage('contentheader', TRUE, TRUE, 'mikio-page-contentheader');
+                $TEMPLATE->includeContent();
+                if($ACT == 'show') $TEMPLATE->includePage('contentfooter', TRUE, TRUE, 'mikio-page-contentfooter');
             echo '</article>';
 
-            tpl_includeFile('pagefooter.html');
-            if ($ACT == 'show') $TEMPLATE->includePage('pagefooter');
-            ?>
-        </div> 
-        <?php
-            global $USERINFO;
+        echo '</div>';
 
-            if ($ACT == 'show' && !$TEMPLATE->getConf('pageToolsHide') && (!$TEMPLATE->getConf('pageToolsHideNoEdit') || $TEMPLATE->userCanEdit()) && (!$TEMPLATE->getConf('pageToolsHideGuest') || ($USERINFO))) {
-                $TEMPLATE->includePageTools(TRUE, TRUE);
-            }
-        ?>
-        </div>
 
-        <?php if ($ACT == 'show') $TEMPLATE->includeSidebar('right') ?>
-    </main>
+        $showPageTools = $TEMPLATE->getConf('pageToolsFloating');
+        if ($ACT == 'show' && ($showPageTools == 'always' || $TEMPLATE->userCanEdit() && $showPageTools == 'page editors')) $TEMPLATE->includePageTools(TRUE, TRUE);
 
-    <div class="mikio-page-fill"></div>
+        if($showSidebar) $TEMPLATE->includeSidebar('right');
+    echo '</main>';
+    echo '<div class="mikio-page-fill"></div>';
 
-    <!-- Footer -->
-    <?php $TEMPLATE->includeFooter(); ?>
-
-    </div>
-
+    $TEMPLATE->includeFooter();
+    $TEMPLATE->includePage('bottomfooter', TRUE, TRUE, 'mikio-page-bottomfooter');
+?>
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
+</div></div>
+<?php $TEMPLATE->includeFooterMeta(); ?>
 </body>
+<?php $TEMPLATE->finalize(); ?>
 </html>

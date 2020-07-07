@@ -1,6 +1,6 @@
 <?php
 /**
- * Mikio CSS Engine
+ * Mikio CSS/LESS Engine
  *
  * @link    http://dokuwiki.org/template:mikio
  * @author  James Collins <james.collins@outlook.com.au>
@@ -29,11 +29,36 @@ try {
                     header('HTTP/1.1 304 Not Modified');
                     exit;
                 }
-
+                
                 $css = file_get_contents($cssFile);
 
                 $less = new lessc();
                 $less->setPreserveComments(false);
+                
+                if(file_exists('style.ini')) {
+                    $overrideStyle = '../../../conf/tpl/mikio/style.ini';
+
+                    $vars = Array();
+                    $rawVars = parse_ini_file('style.ini', TRUE);
+                    
+                    if(file_exists($overrideStyle)) {
+                        $userVars = parse_ini_file($overrideStyle, TRUE);
+                        $rawVars = associativeMerge($rawVars, $userVars);
+                    }
+                  
+                  if(isset($rawVars['replacements'])) {
+                    foreach($rawVars['replacements'] as $key=>$val) {
+                      if(substr($key, 0, 2) == '__' && substr($key, -2) == '__') {
+                        $vars['ini_' . substr($key, 2, -2)] = $val;
+                      }
+                    }
+                  }
+                  
+                  if(count($vars) > 0) {
+                    $less->setVariables($vars);
+                  }
+                }
+                
                 $css = $less->compile($css);
 
                 $accept_encoding = @getallheaders()['Accept-Encoding'];
@@ -57,4 +82,22 @@ try {
 }
 catch(Exception $e) {    
     header('HTTP/1.500 Internal Server Error');
+    echo $e;
+}
+
+function associativeMerge($base, $addition)
+{
+    $result = $base;
+
+    // if(is_array($base) && is_array($addition)) {
+    //     foreach($addition as $key=>$value) {
+    //         if(is_array($value)) {
+    //             $result[$key] = associativeMerge($result[$key], $value);
+	// 		} else {
+	// 			$result[$key] = $value;
+	// 		}
+    //     }
+    // }
+
+    return $result;
 }

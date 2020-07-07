@@ -1,6 +1,6 @@
 <?php
 /**
- * Mikio icons
+ * DokuWiki Mikio Template Icons
  *
  * @link    http://dokuwiki.org/template:mikio
  * @author  James Collins <james.collins@outlook.com.au>

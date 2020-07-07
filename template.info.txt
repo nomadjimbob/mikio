@@ -1,8 +1,8 @@
 base     mikio
 author   James Collins
 email    james.collins@outlook.com.au
-date     2020-06-02
+date     2020-07-07
 name     Mikio theme
-desc     Mikio Bootstrap 4 based template for Dokuwiki
+desc     Mikio template based on Bootstrap 4 with hero element for Dokuwiki
 url      https://www.dokuwiki.org/template:mikio
 

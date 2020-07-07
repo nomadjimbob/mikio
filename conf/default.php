@@ -1,10 +1,11 @@
 <?php
-/*
- * default configuration settings
+/**
+ * DokuWiki Mikio Template Default Configuration
  *
+ * @link    http://dokuwiki.org/template:mikio
+ * @author  James Collins <james.collins@outlook.com.au>
+ * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
-
-
 $conf['iconTag']                = 'icon';
 
 $conf['customTheme']            = '';
@@ -13,45 +14,42 @@ $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarUseTitleText']     = 1;
 $conf['navbarUseTaglineText']   = 1;
 $conf['navbarCustomMenuText']   = '';
-$conf['navbarBackground']       = 'light';
 
 $conf['navbarDWMenuType']       = 'icons';
 $conf['navbarDWMenuCombine']    = 'dropdown';
 
-$conf['navbarPosLeftLeft']      = 'custom';
-$conf['navbarPosLeftMid']       = 'none';
-$conf['navbarPosLeftRight']     = 'none';
-$conf['navbarPosRightLeft']     = 'none';
-$conf['navbarPosRightMid']      = 'search';
-$conf['navbarPosRightRight']    = 'dokuwiki';
-$conf['navbarLowerMenu']        = 'none';
-$conf['navbarLowerMenuPos']     = 'center';
-$conf['navbarLowerBackground']  = 'light';
+$conf['navbarPosLeft']          = 'custom';
+$conf['navbarPosMiddle']        = 'search';
+$conf['navbarPosRight']         = 'dokuwiki';
+$conf['navbarShowSub']          = 0;
 
 $conf['searchButton']           = 'icon';
 
 $conf['heroTitle']              = 1;
 $conf['heroImagePropagation']   = 1;
 
-$conf['breadcrumbPos']          = 'hero';
+$conf['tagsConsolidate']        = 1;
+
+$conf['breadcrumbHideHome']     = 1;
+$conf['breadcrumbPosition']     = 'hero';
 $conf['breadcrumbPrefix']       = 0;
 $conf['breadcrumbPrefixText']   = 'You are here:';
 $conf['breadcrumbSep']          = 0;
 $conf['breadcrumbSepText']      = ' » ';
 $conf['breadcrumbHome']         = 'page title';
+$conf['breadcrumbShowLast']     = 0;
 
 $conf['sidebarShowLeft']        = 1;
-$conf['sidebarLeftDismiss']     = 1;
-$conf['sidebarLeftSearch']      = 'none';
-$conf['sidebarRightShow']       = 1;
-$conf['sidebarRightDismiss']    = 1;
+$conf['sidebarLeftRow1']        = 'logged in user';
+$conf['sidebarLeftRow2']        = 'search';
+$conf['sidebarLeftRow3']        = 'content';
+$conf['sidebarLeftRow4']        = 'none';
+$conf['sidebarShowRight']       = 1;
 
 $conf['tocFull']                = 0;
 
-$conf['pageToolsHide']          = 0;
-$conf['pageToolsHideGuest']     = 1;
-$conf['pageToolsHideNoEdit']    = 0;
-$conf['pageToolsFooter']        = 0;
+$conf['pageToolsFloating']      = 'always';
+$conf['pageToolsFooter']        = 'none';
 
 $conf['footerCustomMenuText']   = '';
 $conf['footerSearch']           = 0;
@@ -60,8 +58,6 @@ $conf['licenseType']            = 'badge';
 $conf['licenseImageOnly']       = 0;
 
 
-
-// $conf['discussionPage']   = 'discussion:@ID@';
-// $conf['userPage']         = 'user:@USER@:';
-// $conf['hideTools']        = 0;
-// $conf['navbar']           = '';
+$conf['includePageUseACL']      = 1;
+$conf['includePagePropagate']   = 1;
+?>
