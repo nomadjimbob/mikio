@@ -55,16 +55,16 @@ $showSidebar = $hasSidebar && ($ACT=='show');
                 $TEMPLATE->includeContent();
                 if($ACT == 'show') $TEMPLATE->includePage('contentfooter', TRUE, TRUE, 'mikio-page-contentfooter');
             echo '</article>';
-
         echo '</div>';
 
 
         $showPageTools = $TEMPLATE->getConf('pageToolsFloating');
         if ($ACT == 'show' && ($showPageTools == 'always' || $TEMPLATE->userCanEdit() && $showPageTools == 'page editors')) $TEMPLATE->includePageTools(TRUE, TRUE);
 
-        if($showSidebar) $TEMPLATE->includeSidebar('right');
+        $rightsidebar = '';
+        if($showSidebar) $rightsidebar = $TEMPLATE->includeSidebar('right');
     echo '</main>';
-    echo '<div class="mikio-page-fill"></div>';
+    echo '<div class="mikio-page-fill">' . ($showSidebar ? '<aside class="mikio-sidebar mikio-sidebar-left"></aside>' : '') . '<div class="mikio-content"></div>' . ($rightsidebar != '' ? '<aside class="mikio-sidebar mikio-sidebar-right"></aside>' : '' ) . '</div>';
 
     $TEMPLATE->includeFooter();
     $TEMPLATE->includePage('bottomfooter', TRUE, TRUE, 'mikio-page-bottomfooter');
