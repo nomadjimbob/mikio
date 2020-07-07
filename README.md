@@ -144,28 +144,3 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
   * If you think you have found a problem, or would like to see a feature, please [open an issue](https://github.com/nomadjimbob/mikio/issues)
   * If you are a coder, feel free to create a pull request, but please be detailed about your changes!
-
-
-## Dev
-
-For developers
-
-The function `tpl_strap_meta_header` found in the file [tpl_lib_strap](./tpl_lib_strap.php)
-
-  * control the headers and is call via the registration of the event `TPL_METAHEADER_OUTPUT`
-  * control the Jquery version. Not logged in, Bootstrap, logged in Dokuwiki (with ui,..)
-
-Ter info, the template file are:
-  * [main.php](./main.php): The main page. [Doc](https://www.dokuwiki.org/devel:templates:main.php)
-  * [detail.php](./detail.php): The template to show the detail of an image. [Doc](https://www.dokuwiki.org/devel:templates:detail.php)
-  * [mediamanager.php](./mediamanager.php): The template to show the media manager.
-
-
-## Note
-
-  * The site tool and the page tool are in the same menu called Tools.
-
-  * There is two entry points:
-
-     * the file [main.php](main.php) - that shows the page
-     * the file [detail.php](detail.php) - that shows the image
