@@ -140,6 +140,15 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   * `home` : Text for the breadcrumb home title
 
 
+## Releases
+
+# 2020-07-09
+  * Fixed cosmetic display issues when `input[type=file]` is hidden by plugins
+
+# 2020-07-07
+  * Initial release
+
+
 ## Support
 
   * If you think you have found a problem, or would like to see a feature, please [open an issue](https://github.com/nomadjimbob/mikio/issues)
