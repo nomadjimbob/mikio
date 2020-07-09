@@ -59,36 +59,40 @@ var mikio = {
 
         // Input File - Cleanup
         Array.from(document.querySelectorAll('input[type=file]')).forEach(function(elem) {
-            var parentElem = elem.parentElement;
-            var fileRect = elem.getBoundingClientRect();
-            var parentRect = parentElem.getBoundingClientRect();
-            var spanElem = document.createElement('span');
+            var style = window.getComputedStyle(elem);
 
-            elem.style.opacity = 0;
-            parentElem.style.position = 'relative';
-            spanElem.innerHTML = 'Choose file...';
-            spanElem.classList.add('mikio-input-file');
-            spanElem.style.left = Math.floor(fileRect.left - parentRect.left) + 'px';
-            spanElem.style.width = Math.floor(fileRect.right - fileRect.left) + 'px';
-            mikio.insertAfter(spanElem, elem);
-            
-            spanElem.addEventListener('click', function(event) {
-                if(event.target.parentElement.tagName.toLowerCase() != 'label') {
-                    let sibling = mikio.getPrevSibling(event.target, 'input');
-                    if(typeof sibling !== 'undefined') {
-                        sibling.click();
-                    }
-                }
-            });
+            if(style.display != 'none') {
+                var parentElem = elem.parentElement;
+                var fileRect = elem.getBoundingClientRect();
+                var parentRect = parentElem.getBoundingClientRect();
+                var spanElem = document.createElement('span');
 
-            elem.addEventListener('change', function() {
-                if(this.files.length > 0) {
-                    let mikioInput = mikio.getNextSibling(this, '.mikio-input-file');
-                    if(typeof mikioInput !== 'undefined') {
-                        mikioInput.innerHTML = this.files[0].name;
+                elem.style.opacity = 0;
+                parentElem.style.position = 'relative';
+                spanElem.innerHTML = 'Choose file...';
+                spanElem.classList.add('mikio-input-file');
+                spanElem.style.left = Math.floor(fileRect.left - parentRect.left) + 'px';
+                spanElem.style.width = Math.floor(fileRect.right - fileRect.left) + 'px';
+                mikio.insertAfter(spanElem, elem);
+                
+                spanElem.addEventListener('click', function(event) {
+                    if(event.target.parentElement.tagName.toLowerCase() != 'label') {
+                        let sibling = mikio.getPrevSibling(event.target, 'input');
+                        if(typeof sibling !== 'undefined') {
+                            sibling.click();
+                        }
                     }
-                }
-            });
+                });
+
+                elem.addEventListener('change', function() {
+                    if(this.files.length > 0) {
+                        let mikioInput = mikio.getNextSibling(this, '.mikio-input-file');
+                        if(typeof mikioInput !== 'undefined') {
+                            mikioInput.innerHTML = this.files[0].name;
+                        }
+                    }
+                });
+            }
         });
 
         // Input - Span (Placeholder) clear when typing
