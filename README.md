@@ -142,10 +142,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-# 2020-07-09
+### 2020-07-09
   * Fixed cosmetic display issues when `input[type=file]` is hidden by plugins [#2](https://github.com/nomadjimbob/mikio/issues/2)
 
-# 2020-07-07
+### 2020-07-07
   * Initial release
 
 
