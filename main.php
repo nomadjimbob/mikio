@@ -46,7 +46,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 
     echo '<main class="mikio-page">';
         if($showSidebar) $TEMPLATE->includeSidebar();
-        echo '<div class="mikio-content">';
+        echo '<div class="mikio-content" id="dokuwiki__content">';
             if($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'page') $TEMPLATE->includeBreadcrumbs();
             
             echo '<article class="mikio-article' . ($TEMPLATE->getConf('tocFull') ? ' toc-full' : '') . '">';
