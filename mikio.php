@@ -1029,57 +1029,88 @@ class Template {
         $iconTag = $this->getConf('iconTag', 'icon');
         if($iconTag == '') return $str;
 
-        if($ACT == 'show' || $ACT == 'admin' && count($MIKIO_ICONS) > 0 || $ACT == 'showtag' || $ACT == 'revisions' || $ACT == 'index') {
-            $str = preg_replace_callback('/&lt;' . $iconTag . ' ([\w\- #]*)&gt;(?=[^>]*(<|$))/', 
-                function ($matches) {
-                    global $MIKIO_ICONS;
+        if($ACT == 'show' || $ACT == 'admin' && count($MIKIO_ICONS) > 0 || $ACT == 'showtag' || $ACT == 'revisions' || $ACT == 'index' || $ACT == 'preview') {
+            $content = $str;
+            $preview = null;
 
-                    $s = $matches[0];
+            if($ACT == 'preview') {
+                $html = new \simple_html_dom;
+                $html->stripRNAttrValues = false;
+                $html->load($str, true, false);
 
-                    if(count($MIKIO_ICONS) > 0) {
-                        $icon = $MIKIO_ICONS[0];
-                        
-                        if(count($matches) > 1) {
-                            $e = explode(' ', $matches[1]);
+                $preview = $html->find('div.preview');
+                if(is_array($preview) && count($preview) > 0) {
+                    $content = $preview[0]->innertext;
+                }
+            }
+
+            $content = preg_replace_callback('/<(?!pre|\/).*?>(.*)[^<]*/', function($icons) {
+                $iconTag = $this->getConf('iconTag', 'icon');
+                
+                return preg_replace_callback('/&lt;' . $iconTag . ' ([\w\- #]*)&gt;(?=[^>]*(<|$))/', 
+                    function ($matches) {
+                        global $MIKIO_ICONS;
+
+                        $s = $matches[0];
+
+                        if(count($MIKIO_ICONS) > 0) {
+                            $icon = $MIKIO_ICONS[0];
                             
-                            if(count($e) > 1) {
-                                foreach($MIKIO_ICONS as $iconItem) {
-                                    if(strcasecmp($iconItem['name'], $e[0]) == 0) {
-                                        $icon = $iconItem;
-                                        
-                                        $s = $icon['insert'];
-                                        for($i = 1; $i < 9; $i++) {
-                                            if(count($e) < $i || $e[$i] == '') {
-                                                if(isset($icon['$'.$i])) {
-                                                    $s = str_replace('$' . $i, $icon['$'.$i], $s);
+                            if(count($matches) > 1) {
+                                $e = explode(' ', $matches[1]);
+                                
+                                if(count($e) > 1) {
+                                    foreach($MIKIO_ICONS as $iconItem) {
+                                        if(strcasecmp($iconItem['name'], $e[0]) == 0) {
+                                            $icon = $iconItem;
+                                            
+                                            $s = $icon['insert'];
+                                            for($i = 1; $i < 9; $i++) {
+                                                if(count($e) < $i || $e[$i] == '') {
+                                                    if(isset($icon['$'.$i])) {
+                                                        $s = str_replace('$' . $i, $icon['$'.$i], $s);
+                                                    }
+                                                } else {
+                                                    $s = str_replace('$' . $i, $e[$i], $s);
                                                 }
-                                            } else {
-                                                $s = str_replace('$' . $i, $e[$i], $s);
                                             }
+
+                                            $dir = '';
+                                            if(isset($icon['dir'])) $dir = $this->baseDir . 'icons/' . $icon['dir'] . '/';
+
+                                            $s = str_replace('$0', $dir, $s);
+                                            
+                                        break;
                                         }
-
-                                        $dir = '';
-                                        if(isset($icon['dir'])) $dir = $this->baseDir . 'icons/' . $icon['dir'] . '/';
-
-                                        $s = str_replace('$0', $dir, $s);
-                                        
-                                    break;
                                     }
+                                } else {
+                                    $s = str_replace('$1', $matches[1], $icon['insert']);
                                 }
-                            } else {
-                                $s = str_replace('$1', $matches[1], $icon['insert']);
                             }
                         }
-                    }
 
-                    $s = preg_replace('/(class=")(.*)"/', '$1mikio-icon $2"', $s, -1, $count);
-                    if($count == 0) {
-                        $s = preg_replace('/(<\w* )/', '$1class="mikio-icon" ', $s);
-                    }
+                        $s = preg_replace('/(class=")(.*)"/', '$1mikio-icon $2"', $s, -1, $count);
+                        if($count == 0) {
+                            $s = preg_replace('/(<\w* )/', '$1class="mikio-icon" ', $s);
+                        }
 
-                    return $s;
-                },
-                $str);
+                        return $s;
+                    },
+                    $icons[0]);
+            
+            }, $content);
+
+            if($ACT == 'preview') {
+                if(is_array($preview) && count($preview) > 0) {
+                    $preview[0]->innertext = $content;
+                }
+
+                $str = $html->save();
+                $html->clear();
+                unset($html);
+            } else {
+                $str = $content;
+            }
         }
 
         return $str;
