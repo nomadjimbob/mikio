@@ -61,14 +61,6 @@ html, body {
     margin: 0;
 }
 
-pre {
-    overflow-x: auto;
-    border: 1px solid @ini_sidebar_border_color;
-    padding: 1em;
-    background-color: @ini_sidebar_background_color;
-    line-height: 1.75;
-}
-
 #dokuwiki__site {
     min-height: 100vh;
 }
@@ -1022,12 +1014,16 @@ pre {
     }
 }
 
-code {
+code, pre {
+    overflow-x: auto;
     font-family: @ini_code_font_family;
     font-size: @ini_code_font_size;
     color: @ini_code_text_color;
     background-color: @ini_code_background_color;
-    word-wrap: break-word;
+    word-wrap: @ini_code_word_wrap;
+    border: 1px solid @ini_code_border_color;
+    padding: 1em;
+    line-height: @ini_code_line_height;
 }
 
 
