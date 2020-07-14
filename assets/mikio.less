@@ -61,6 +61,14 @@ html, body {
     margin: 0;
 }
 
+pre {
+    overflow-x: auto;
+    border: 1px solid @ini_sidebar_border_color;
+    padding: 1em;
+    background-color: @ini_sidebar_background_color;
+    line-height: 1.75;
+}
+
 #dokuwiki__site {
     min-height: 100vh;
 }
@@ -434,7 +442,10 @@ html, body {
 }
 
 .mikio-content {
+    box-sizing: border-box;
+    overflow-x: auto;
     width: 100%;
+    max-width: 100%;
     background-color: @ini_content_background;
     padding: .5rem 2rem;
 }
