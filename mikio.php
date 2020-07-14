@@ -1132,7 +1132,6 @@ class Template {
         $html = new \simple_html_dom;
         $html->load($content, true, false);
 
-
         if (!$html) return $content;
 
         /* Buttons */
@@ -1165,56 +1164,56 @@ class Template {
         }
 
         /* Hero subtitle */
-        foreach($html->find('p') as $elm) {
-            $i = stripos($elm->innertext, '~~hero-subtitle');
-            if($i !== false) {
-                $j = strpos($elm->innertext, '~~', $i + 2);
-                if($j !== false) {
-                    if($j > $i + 16) {
-                        $subtitle = substr($elm->innertext, $i + 16, $j - $i - 16);
-                        $this->footerScript['hero-subtitle'] = 'mikio.setHeroSubTitle(\'' . $subtitle .'\')';
+         foreach($html->find('p') as $elm) {
+             $i = stripos($elm->innertext, '~~hero-subtitle');
+             if($i !== false) {
+                 $j = strpos($elm->innertext, '~~', $i + 2);
+                 if($j !== false) {
+                     if($j > $i + 16) {
+                         $subtitle = substr($elm->innertext, $i + 16, $j - $i - 16);
+                         $this->footerScript['hero-subtitle'] = 'mikio.setHeroSubTitle(\'' . $subtitle .'\')';
 
-                        // $elm->innertext = substr($elm->innertext, 0, $i + 2) . substr($elm->innertext, $j + 2);
-                        $elm->innertext = preg_replace('/~~hero-subtitle (.+?)~~.*/ui', '', $elm->innertext);
-                    }
+                         // $elm->innertext = substr($elm->innertext, 0, $i + 2) . substr($elm->innertext, $j + 2);
+                         $elm->innertext = preg_replace('/~~hero-subtitle (.+?)~~.*/ui', '', $elm->innertext);
+                     }
 
-                    break;
-                }
-            }
-        }
+                     break;
+                 }
+             }
+         }
         
         /* Hero image */
-        foreach($html->find('p') as $elm) {
-            $image = '';
-            preg_match('/~~hero-image (.+?)~~(?!.?")/ui', $elm->innertext, $matches);
-            if(count($matches) > 0) {
-                preg_match('/<img.*src="(.+?)"/ui', $matches[1], $imageTagMatches);
-                if(count($imageTagMatches) > 0) {
-                    $image = $imageTagMatches[1];
-                } else {
-                    preg_match('/<a.+?>(.+?)[~<]/ui', $matches[1], $imageTagMatches);
-                    if(count($imageTagMatches) > 0) {
-                        $image = $imageTagMatches[1];
-                    } else {
-                        $image = strip_tags($matches[1]);
-                        if(stripos($image, '://') === FALSE) {
-                            $image = str_replace(array('{', '}'), '', $image);
-                            $i = stripos($image, '?');
-                            if($i !== FALSE) {
-                                $image = substr($image, 0, $i);
-                            }
+         foreach($html->find('p') as $elm) {
+             $image = '';
+             preg_match('/~~hero-image (.+?)~~(?!.?")/ui', $elm->innertext, $matches);
+             if(count($matches) > 0) {
+                 preg_match('/<img.*src="(.+?)"/ui', $matches[1], $imageTagMatches);
+                 if(count($imageTagMatches) > 0) {
+                     $image = $imageTagMatches[1];
+                 } else {
+                     preg_match('/<a.+?>(.+?)[~<]/ui', $matches[1], $imageTagMatches);
+                     if(count($imageTagMatches) > 0) {
+                         $image = $imageTagMatches[1];
+                     } else {
+                         $image = strip_tags($matches[1]);
+                         if(stripos($image, ':') === FALSE) {
+                             $image = str_replace(array('{', '}'), '', $image);
+                             $i = stripos($image, '?');
+                             if($i !== FALSE) {
+                                 $image = substr($image, 0, $i);
+                             }
 
-                            $image = ml($image, '', true, '', false);
-                        }
-                    }
-                }
+                             $image = ml($image, '', true, '', false);
+                         }
+                     }
+                 }
 
-                $this->footerScript['hero-image'] = 'mikio.setHeroImage(\'' . $image .'\')';
+                 $this->footerScript['hero-image'] = 'mikio.setHeroImage(\'' . $image .'\')';
 
-                $elm->innertext = preg_replace('/~~hero-image (.+?)~~.*/ui', '', $elm->innertext);
+                 $elm->innertext = preg_replace('/~~hero-image (.+?)~~.*/ui', '', $elm->innertext);
                 
-            }
-        }
+             }
+         }
         
         /* Hero colors - ~~hero-colors [background-color] [hero-title-color] [hero-subtitle-color] [breadcrumb-text-color] [breadcrumb-hover-color] (use 'initial' for original color) */
         foreach($html->find('p') as $elm) {

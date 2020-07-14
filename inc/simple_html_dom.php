@@ -19,6 +19,9 @@
  *   Antcs
  *
  * Version Rev. 1.9.1 (291)
+ * 
+ * THIS LIBRARY HAS BEEN MODIFIED BY NOMADJIMBOB - james.collins@outlook.com.au
+ * Lines 2116 - stripping of \r\n from attributes has been disabled
  */
 
 define('HDOM_TYPE_ELEMENT', 1);
@@ -2110,9 +2113,12 @@ class simple_html_dom
 		$value = $this->restore_noise($value);
 
 		// PaperG: Attributes should not have \r or \n in them, that counts as
-		// html whitespace.
-		$value = str_replace("\r", '', $value);
-		$value = str_replace("\n", '', $value);
+        // html whitespace.
+
+//      The following was commented out as it interferes with DokuWiki edit mode - nomadjimbob
+//        
+//		$value = str_replace("\r", '', $value);
+//		$value = str_replace("\n", '', $value);
 
 		// PaperG: If this is a "class" selector, lets get rid of the preceeding
 		// and trailing space since some people leave it in the multi class case.
