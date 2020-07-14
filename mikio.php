@@ -1130,6 +1130,7 @@ class Template {
         }
 
         $html = new \simple_html_dom;
+        $html->stripRNAttrValues = false;
         $html->load($content, true, false);
 
         if (!$html) return $content;
