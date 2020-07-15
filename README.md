@@ -142,7 +142,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-  * ***Next***
+  * ***2020-07-16***
     * Merged code block styling with pre
     * Fixed mediamanager failures on 2018-04-22a "Greebo" [#5](https://github.com/nomadjimbob/mikio/issues/5)
     * Icon tag is rendered correctly in preview
