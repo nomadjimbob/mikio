@@ -145,7 +145,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   * ***2020-07-16***
     * Merged code block styling with pre
     * Fixed mediamanager failures on 2018-04-22a "Greebo" [#5](https://github.com/nomadjimbob/mikio/issues/5)
-    * Icon tag is rendered correctly in preview
+    * Icon tag is rendered correctly in preview [#4](https://github.com/nomadjimbob/mikio/issues/4)
 
   * ***2020-07-15***
     * Fixed an issue with the simple_html_dom library when editing a section of a page caused page corruption [#3](https://github.com/nomadjimbob/mikio/issues/3)
