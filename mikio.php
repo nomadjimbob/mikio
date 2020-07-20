@@ -414,7 +414,7 @@ class Template {
         switch($this->getConf('navbarDWMenuCombine')) {
             case 'dropdown':
                 $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('file') : '') . ($showText ? $lang['page_tools'] : '') . '</a>';
+                $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('file') : '') . ($showText ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 foreach($pageToolsMenu as $item) {
@@ -425,7 +425,7 @@ class Template {
                 $html .= '</li>';
 
                 $html .= '<li id="dokuwiki__sitetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('gear') : '') . ($showText ? $lang['site_tools'] : '') . '</a>';
+                $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('gear') : '') . ($showText ? $lang['site_tools'] : '<span class="mikio-small-only">' . $lang['site_tools'] . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 foreach($siteToolsMenu as $item) {
@@ -436,7 +436,7 @@ class Template {
                 $html .= '</li>';
 
                 $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('user') : '') . ($showText ? $lang['user_tools'] : '') . '</a>';
+                $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('user') : '') . ($showText ? $lang['user_tools'] : '<span class="mikio-small-only">' . $lang['user_tools'] . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 foreach($userToolsMenu as $item) {
@@ -450,7 +450,7 @@ class Template {
 
             case 'combine':
                 $html .= '<li class="mikio-nav-dropdown">';
-                $html .= '<a class="mikio-nav-link" href="#">' . ($showIcons ? $this->mikioInlineIcon('wrench') : '') . ($showText ? tpl_getLang('tools-menu') : '') . '</a>';   // TODO change $lang
+                $html .= '<a class="mikio-nav-link" href="#">' . ($showIcons ? $this->mikioInlineIcon('wrench') : '') . ($showText ? tpl_getLang('tools-menu') : '<span class="mikio-small-only">' . tpl_getLang('tools-menu') . '</span>') . '</a>';   // TODO change $lang
                 $html .= '<div class="mikio-dropdown closed">';
 
                 $html .= '<h6 class="mikio-dropdown-header">' . $lang['page_tools'] . '</h6>';

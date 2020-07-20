@@ -115,6 +115,10 @@ html, body {
     background-color: @ini_admin_background_color;
 }
 
+.mikio-small-only {
+    display: none;
+}
+
 .mikio .mikio-breadcrumbs {
     padding: .75rem 2rem;
     background-color: @ini_breadcrumb_background_color;
@@ -1832,6 +1836,10 @@ code, pre {
 
 /* Mobile */
 @media (max-width: 768px) {
+    .mikio-small-only {
+        display: inline-block;
+    }    
+
     .mikio-navbar {
         display: grid;
         grid-template-columns: auto 3rem;
