@@ -41,6 +41,42 @@
     white-space: -o-pre-wrap;
 }
 
+.mikio-controls {
+    button, input, optgroup, select, textarea {
+        .mikio-control;
+        .mikio-input-text;
+    }
+
+    button {
+        .mikio-button;
+    }
+
+    button#edbtn__save, button[name="run[save]"] {
+        .mikio-button-submit;
+    }
+
+    input[type=text], input[type=search], input[type=password], input[type=email] {
+        .mikio-appearance();
+    }
+
+    textarea {
+        margin-bottom: 1rem;
+        width: 100%;
+        word-wrap: break-word;
+        overflow: auto;
+        resize: vertical;
+        white-space: pre-wrap;
+    }
+
+    select {
+        .mikio-select;
+    }
+
+    .toolbutton {
+        .mikio-toolbar-button;
+    }
+}
+
 
 /* Containers */
 html {
@@ -1048,39 +1084,7 @@ code, pre {
 .mikio .mode_preview,
 .mikio .mode_showtag,
 .mikio .mode_admin {
-    button, input, optgroup, select, textarea {
-        .mikio-control;
-        .mikio-input-text;
-    }
-
-    button {
-        .mikio-button;
-    }
-
-    button#edbtn__save, button[name="run[save]"] {
-        .mikio-button-submit;
-    }
-
-    input[type=text], input[type=search], input[type=password], input[type=email] {
-        .mikio-appearance();
-    }
-
-    textarea {
-        margin-bottom: 1rem;
-        width: 100%;
-        word-wrap: break-word;
-        overflow: auto;
-        resize: vertical;
-        white-space: pre-wrap;
-    }
-
-    select {
-        .mikio-select;
-    }
-
-    .toolbutton {
-        .mikio-toolbar-button;
-    }
+    .mikio-controls;
 }
 
 .mikio.dokuwiki .secedit {
@@ -1833,6 +1837,50 @@ code, pre {
         }
     }
 }
+
+/* Plugin Patches */
+/* FastWiki Plugin Patch - .mikio .content_partial */
+.mikio .content_partial {
+    .mikio-controls;
+}
+
+/* Discussion Plugin Patch - .mikio .content_partial */
+.mikio div.dokuwiki div.comment_wrapper {
+    .mikio-controls;
+    padding: 1em;
+
+    input[type=submit] {
+        .mikio-control;
+        .mikio-button;
+    }
+
+    h2 {
+        margin: 0;
+    }
+
+    .comment_form {
+        margin-top: 0;
+    }
+
+    .comment_subscribe {
+        input {
+            float: none;
+        }
+
+        label {
+            float: none;
+            display: inline-block;
+        }
+    }
+
+    .comment_buttons {
+        float: none;
+        text-align: right;
+        margin-top: 1em;
+    }
+}
+
+
 
 /* Mobile */
 @media (max-width: 768px) {
