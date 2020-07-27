@@ -53,6 +53,7 @@ $conf['pageToolsFooter']        = 'none';
 
 $conf['footerCustomMenuText']   = '';
 $conf['footerSearch']           = 0;
+$conf['footerInPage']           = 0;
 
 $conf['licenseType']            = 'badge';
 $conf['licenseImageOnly']       = 0;

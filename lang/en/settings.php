@@ -53,6 +53,7 @@ $lang['pageToolsFooter']        = 'When to show the footer page toolbar';
 
 $lang['footerCustomMenuText']   = 'Allows custom menus in the footer. The format is url|title seperated by ;';
 $lang['footerSearch']           = 'Show the search bar in the footer';
+$lang['footerInPage']           = 'Show the wiki footer in the article. Bottom footer remains on page';
 
 $lang['licenseType']            = 'Show the footer license as none, badges or buttons';
 $lang['licenseImageOnly']       = 'Show the footer license as images only';

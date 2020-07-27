@@ -142,6 +142,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+  * ***2020-07-27***
+    * Added option to show wiki footer in page content
+
   * ***2020-07-24***
     * Fixed image detail bug
 

@@ -64,9 +64,15 @@ $showSidebar = $hasSidebar && ($ACT=='show');
         $rightsidebar = '';
         if($showSidebar) $rightsidebar = $TEMPLATE->includeSidebar('right');
     echo '</main>';
-    echo '<div class="mikio-page-fill">' . ($showSidebar ? '<aside class="mikio-sidebar mikio-sidebar-left"></aside>' : '') . '<div class="mikio-content"></div>' . ($rightsidebar != '' ? '<aside class="mikio-sidebar mikio-sidebar-right"></aside>' : '' ) . '</div>';
+    echo '<div class="mikio-page-fill">';
+        if($showSidebar) echo '<aside class="mikio-sidebar mikio-sidebar-left"></aside>';
+        echo '<div class="mikio-content" style="padding:0">';
+        if($TEMPLATE->getConf('footerInPage') == TRUE) $TEMPLATE->includeFooter();
+        echo '</div>';
+        if($rightsidebar != '') echo '<aside class="mikio-sidebar mikio-sidebar-right"></aside>';
+    echo '</div>';
 
-    $TEMPLATE->includeFooter();
+    if($TEMPLATE->getConf('footerInPage') == FALSE) $TEMPLATE->includeFooter();
     $TEMPLATE->includePage('bottomfooter', TRUE, TRUE, 'mikio-page-bottomfooter');
 ?>
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>

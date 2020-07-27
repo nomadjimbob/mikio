@@ -249,6 +249,7 @@ class Template {
             case 'includePagePropagate':
             case 'breadcrumbHideHome':
             case 'tagsConsolidate':
+            case 'footerInPage':
                 $value = (bool)$value;
                 break;
             case 'breadcrumbShowLast':

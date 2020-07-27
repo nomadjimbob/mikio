@@ -53,6 +53,7 @@ $meta['pageToolsFooter']        = array('multichoice', '_choices' => array('none
 
 $meta['footerCustomMenuText']   = array('string');
 $meta['footerSearch']           = array('onoff');
+$meta['footerInPage']           = array('onoff');
 
 $meta['licenseType']            = array('multichoice', '_choices' => array('none', 'badge', 'button'));
 $meta['licenseImageOnly']       = array('onoff');
