@@ -142,6 +142,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+  * NEXT RELEASE
+    * Footer is no longer shown outside of page view
+
   * ***2020-07-27***
     * Added option to show wiki footer in page content
 
