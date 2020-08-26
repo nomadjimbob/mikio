@@ -8,6 +8,7 @@
  */
 $meta['iconTag']                = array('string');
 $meta['customTheme']            = array('string');
+$meta['showNotifications']      = array('multichoise', '__choices' => array('none', 'admin', 'always'));
 
 $meta['navbarUseTitleIcon']     = array('onoff');
 $meta['navbarUseTitleText']     = array('onoff');

@@ -7,8 +7,8 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 $conf['iconTag']                = 'icon';
-
 $conf['customTheme']            = '';
+$conf['showNotifications']      = 'admin';
 
 $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarUseTitleText']     = 1;

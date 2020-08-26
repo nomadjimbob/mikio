@@ -228,6 +228,10 @@ class Template {
                     if($key == 'pageToolsFooter') $value = 'always';
                 }
                 break;
+            case 'showNotifications':
+                $value = strtolower($value);
+                if($value != 'none' && $value != 'admin' && $value != 'always') $value = 'admin';
+                break;
             case 'licenseType':
                 $value = strtolower($value);
                 if($value != 'none' && $value != 'badge' && $value != 'buttom') $value = 'badge';
@@ -954,6 +958,16 @@ class Template {
         return $html;
     }
 
+    /**
+     * Get Page Title
+     */
+    public function parsePageTitle() {
+        $title = tpl_pagetitle(null, TRUE);
+        $title = $this->includeIcons($title);
+
+        return $title;
+    }
+
 
     /**
      * Print or return hero block
@@ -970,7 +984,7 @@ class Template {
                 if ($this->getConf('breadcrumbPosition') == 'hero') $html .= $this->includeBreadcrumbs(FALSE);
 
                 $html .= '<h1 class="mikio-hero-title">';
-                $html .= $this->includeIcons(tpl_pagetitle(null, TRUE)).' ';    // No idea why this requires a blank space afterwards to work?
+                $html .= $this->parsePageTitle();    // No idea why this requires a blank space afterwards to work?
                 $html .= '</h1>';
                 $html .= '<h2 class="mikio-hero-subtitle"></h2>';
             $html .= '</div>';
@@ -1044,10 +1058,15 @@ class Template {
                     $content = $preview[0]->innertext;
                 }
             }
+            
+            $page_regex = '/(.*)/';
+            if(stripos($str, '<pre')) {
+                $page_regex = '/<(?!pre|\/).*?>(.*)[^<]*/';
+            }
 
-            $content = preg_replace_callback('/<(?!pre|\/).*?>(.*)[^<]*/', function($icons) {
+            $content = preg_replace_callback($page_regex, function($icons) {
                 $iconTag = $this->getConf('iconTag', 'icon');
-                
+
                 return preg_replace_callback('/&lt;' . $iconTag . ' ([\w\- #]*)&gt;(?=[^>]*(<|$))/', 
                     function ($matches) {
                         global $MIKIO_ICONS;
@@ -1184,7 +1203,7 @@ class Template {
 
         /* Hide page title if hero is enabled */
         if($this->getConf('heroTitle') && $ACT != 'preview') {
-            $pageTitle = $this->includeIcons(tpl_pagetitle(null, true));
+            $pageTitle = $this->parsePageTitle();
             
             foreach($html->find('h1,h2,h3,h4') as $elm) {
                 if($elm->innertext == $pageTitle) {
@@ -1459,6 +1478,48 @@ class Template {
      */
     public function finalize() {
 
+    }
+
+    /**
+     * Show Messages
+     */
+    public function showMessages() {
+        global $ACT;
+
+        $show = $this->getConf('showNotifications');
+        if($show == 'always' || ($show == 'admin' && $ACT == 'admin')) {
+            global $MSG, $MSG_shown;
+
+            $MSG_shown = true;
+
+            if (!isset($MSG)) {
+                return;
+            }
+
+            $shown = array();
+
+            foreach ($MSG as $msg) {
+
+                $hash = md5($msg['msg']);
+                if (isset($shown[$hash])) {
+                    continue;
+                }
+                // skip double messages
+
+                if (info_msg_allowed($msg)) {
+
+                    print '<div class="' . $msg['lvl'] . '">';
+                    print $msg['msg'];
+                    print '</div>';
+
+                }
+
+                $shown[$hash] = 1;
+
+            }
+
+            unset($GLOBALS['MSG']);
+        }
     }
 }
 

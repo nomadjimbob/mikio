@@ -142,8 +142,11 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-  * NEXT RELEASE
+  * ***2020-08-26***
     * Footer is no longer shown outside of page view
+    * Public messages are now displayed on the page
+    * Fixed icon rendering in hero bar
+    * Fixed TOC rendering bug
 
   * ***2020-07-27***
     * Added option to show wiki footer in page content
