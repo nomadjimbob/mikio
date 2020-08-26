@@ -754,11 +754,15 @@ html, body {
     }
 }
 
-.mikio-toc {
+.mikio .mode_admin .mikio-toc #dw__toc {
+    background-color: @ini_content_background;    
+}
+
+.mikio .mikio-toc {
     float: right;
     padding-left: 1rem;
     padding-bottom: 1rem;
-    background-color: @ini_content_background;
+    // background-color: @ini_content_background;
     margin-top: 1rem;
 
     #dw__toc {
@@ -769,7 +773,7 @@ html, body {
         padding: .5rem;
         max-width: 12rem;
         float: none;
-        // width: auto;
+        width: auto;
         margin: 0;
         // background-color: transparent;
 
@@ -783,8 +787,9 @@ html, body {
         }
     }
 
-    h3 {
+    h3.toggle {
         margin: 0;
+        padding-right: 2rem;
         font-size: @ini_toc_font_size;
         background-size: 1rem;
         background-position: 95% 50%;
@@ -795,6 +800,7 @@ html, body {
             font-size: 0;
             height: 1rem;
             width: 2rem;
+            padding-right: 0;
 
             &:before {
                 display: inline-block;
