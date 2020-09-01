@@ -142,6 +142,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+  * ***2020-09-01***
+    * Fixed issues with supporting some pagemenu plugins
+  
   * ***2020-08-26***
     * Footer is no longer shown outside of page view
     * Public messages are now displayed on the page

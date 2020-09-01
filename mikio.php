@@ -382,7 +382,7 @@ class Template {
             if($item->getType() != 'top') {
                 $itemHtml = '';
 
-                $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
+                $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
                 if($showIcons) $itemHtml .= '<span class="mikio-icon">'.inlineSVG($item->getSvg()).'</span>';
                 if($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
                 $itemHtml .= '</a>';
@@ -395,7 +395,7 @@ class Template {
         foreach($items as $item) {
             $itemHtml = '';
 
-            $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
+            $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
             if($showIcons) $itemHtml .= '<span class="mikio-icon">'.inlineSVG($item->getSvg()).'</span>';
             if($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
             $itemHtml .= '</a>';
@@ -407,7 +407,7 @@ class Template {
         foreach($items as $item) {
             $itemHtml = '';
 
-            $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown ? ' mikio-dropdown-item' : '') . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
+            $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown ? ' mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="'.$item->getLink().'" title="'.$item->getTitle().'">';
             if($showIcons) $itemHtml .= '<span class="mikio-icon">'.inlineSVG($item->getSvg()).'</span>';
             if($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
             $itemHtml .= '</a>';
@@ -690,7 +690,7 @@ class Template {
 
         $items = (new \dokuwiki\Menu\PageMenu())->getItems();
         foreach($items as $item) {
-            $html .= '<a href="'.$item->getLink().'" title="'.$item->getTitle().'"><span class="icon">'.inlineSVG($item->getSvg()).'</span><span class="a11y">'.$item->getLabel().'</span></a>';
+            $html .= '<a href="'.$item->getLink().'" title="'.$item->getTitle().'" class="'.$item->getType().'"><span class="icon">'.inlineSVG($item->getSvg()).'</span><span class="a11y">'.$item->getLabel().'</span></a>';
         }
         
         $html .= '</nav>';
