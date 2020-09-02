@@ -632,7 +632,7 @@ class Template {
         if($confPrefix == '') $confPrefix = 'Left';
         if($prefix == 'Left') $prefix = '';
         
-        $sidebarPage = $conf[$prefix . 'sidebar'] == '' ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
+        $sidebarPage = (!array_key_exists($prefix . 'sidebar', $conf) || $conf[$prefix . 'sidebar'] == '') ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
 
         if($this->getConf('sidebarShow' . $confPrefix) && page_findnearest($sidebarPage) != FALSE && p_get_metadata($ID, 'nosidebar', FALSE) == FALSE) {
             $content = $this->includePage($sidebarPage . 'header', FALSE);

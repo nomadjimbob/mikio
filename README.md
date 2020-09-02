@@ -142,6 +142,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+  * Latest
+    * Fixed rightsidebar php warnings
+
   * ***2020-09-01***
     * Fixed issues with supporting some pagemenu plugins
   
