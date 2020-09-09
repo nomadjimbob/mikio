@@ -142,8 +142,11 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-  * Latest
+  * ***2020-09-10***
+    * Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
+    * Template.info.txt now shows correct release dates [#8](https://github.com/nomadjimbob/mikio/issues/8)
     * Fixed rightsidebar php warnings
+    * Code/Pre blocks no longer have padding applied on the admin pages
 
   * ***2020-09-01***
     * Fixed issues with supporting some pagemenu plugins
