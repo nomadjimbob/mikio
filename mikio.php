@@ -687,12 +687,26 @@ class Template {
         $html = '';
 
         $html .= '<nav' . ($includeId ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
+        $html .= '<ul>';
 
         $items = (new \dokuwiki\Menu\PageMenu())->getItems();
         foreach($items as $item) {
-            $html .= '<a href="'.$item->getLink().'" title="'.$item->getTitle().'" class="'.$item->getType().'"><span class="icon">'.inlineSVG($item->getSvg()).'</span><span class="a11y">'.$item->getLabel().'</span></a>';
+            $classes = array();
+            $classes[] = $item->getType();
+            $attr = $item->getLinkAttributes();
+
+            if(!empty($attr['class'])) {
+                $classes = array_merge($classes, explode(' ', $attr['class']));
+            }
+
+            $classes = array_unique($classes);
+
+            $html .= '<li class="'.implode(' ', $classes).'">';
+            $html .= '<a href="'.$item->getLink().'" title="'.$item->getTitle().'"><span class="icon">'.inlineSVG($item->getSvg()).'</span><span class="a11y">'.$item->getLabel().'</span></a>';
+            $html .= '</li>';
         }
         
+        $html .= '</ul>';
         $html .= '</nav>';
 
         if($print) echo $html;
