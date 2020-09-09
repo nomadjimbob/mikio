@@ -95,20 +95,20 @@ var mikio = {
             }
         });
 
-        // Input - Span (Placeholder) clear when typing
-        Array.from(document.querySelectorAll('label.block input.edit')).forEach(function(elem) {
-            elem.addEventListener('keyup', function(event) {
-                var sibling = mikio.getPrevSibling(event.target, 'span');
+        // Input - Span (Placeholder) clear when typing [Causing issue with some plugins - why is there here?]
+        // Array.from(document.querySelectorAll('label.block input.edit')).forEach(function(elem) {
+        //     elem.addEventListener('keyup', function(event) {
+        //         var sibling = mikio.getPrevSibling(event.target, 'span');
 
-                if(sibling) {
-                    if(event.target.value != '') {
-                        sibling.style.display = 'none';
-                    } else {
-                        sibling.style.display = 'block';
-                    }
-                }
-            });
-        });
+        //         if(sibling) {
+        //             if(event.target.value != '') {
+        //                 sibling.style.display = 'none';
+        //             } else {
+        //                 sibling.style.display = 'block';
+        //             }
+        //         }
+        //     });
+        // });
 
         // Admin - Exit button
         Array.from(document.querySelectorAll('a[rel="exit-admin"]')).forEach(function(elem) {
