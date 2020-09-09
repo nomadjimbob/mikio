@@ -731,6 +731,12 @@ html, body {
     align-self: flex-start;
     padding: 3rem .5rem 0 .5rem;
 
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
     a {
         display: block;
 
@@ -1022,7 +1028,7 @@ html, body {
 
 .mikio-input-file {
     position: absolute;
-    margin-top: -.5rem;
+    // margin-top: -.5rem;
     top: 0;
     right: 0;
     left: 0;
@@ -1032,7 +1038,8 @@ html, body {
     text-align: left;
     color: @ini_control_text_color;
     background-color: @ini_control_background_color;
-    border: .1px solid @ini_control_border_color;
+    // border: .1px solid @ini_control_border_color;
+    border: .1px solid @ini_input_border_color;
     border-radius: .25rem;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1074,9 +1081,14 @@ code, pre {
     background-color: @ini_code_background_color;
     word-wrap: @ini_code_word_wrap;
     .mikio-pre-wrap;
-    border: 1px solid @ini_code_border_color;
-    padding: 1em;
     line-height: @ini_code_line_height;
+}
+
+.mode_show {
+    code, pre {
+        border: 1px solid @ini_code_border_color;
+        padding: 1em;
+    }
 }
 
 
