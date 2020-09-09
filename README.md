@@ -148,9 +148,6 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
     * Fixed rightsidebar php warnings
     * Code/Pre blocks no longer have padding applied on the admin pages
 
-  * ***2020-09-01***
-    * Fixed issues with supporting some pagemenu plugins
-  
   * ***2020-08-26***
     * Footer is no longer shown outside of page view
     * Public messages are now displayed on the page
