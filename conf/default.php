@@ -9,6 +9,7 @@
 $conf['iconTag']                = 'icon';
 $conf['customTheme']            = '';
 $conf['showNotifications']      = 'admin';
+$conf['useLESS']                = 0;
 
 $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarUseTitleText']     = 1;
@@ -44,7 +45,7 @@ $conf['sidebarLeftRow1']        = 'logged in user';
 $conf['sidebarLeftRow2']        = 'search';
 $conf['sidebarLeftRow3']        = 'content';
 $conf['sidebarLeftRow4']        = 'none';
-$conf['sidebarMobileDefaultCollapse']	= 1;
+$conf['sidebarMobileDefaultHide']	= 1;
 $conf['sidebarShowRight']       = 1;
 
 $conf['tocFull']                = 0;

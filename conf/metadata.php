@@ -9,6 +9,7 @@
 $meta['iconTag']                = array('string');
 $meta['customTheme']            = array('string');
 $meta['showNotifications']      = array('multichoise', '__choices' => array('none', 'admin', 'always'));
+$meta['useLESS']                = array('onoff');
 
 $meta['navbarUseTitleIcon']     = array('onoff');
 $meta['navbarUseTitleText']     = array('onoff');
@@ -45,7 +46,7 @@ $meta['sidebarLeftRow1']        = array('multichoice', '_choices' => array('none
 $meta['sidebarLeftRow2']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow3']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow4']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
-$meta['sidebarMobileDefaultCollapse']	= array('onoff');
+$meta['sidebarMobileDefaultHide']	= array('onoff');
 $meta['sidebarShowRight']       = array('onoff');
 
 $meta['tocFull']                = array('onoff');
