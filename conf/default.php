@@ -44,7 +44,7 @@ $conf['sidebarLeftRow1']        = 'logged in user';
 $conf['sidebarLeftRow2']        = 'search';
 $conf['sidebarLeftRow3']        = 'content';
 $conf['sidebarLeftRow4']        = 'none';
-$conf['sidebarMobileDefaultHide']	= 1;
+$conf['sidebarMobileDefaultCollapse']	= 1;
 $conf['sidebarShowRight']       = 1;
 
 $conf['tocFull']                = 0;

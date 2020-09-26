@@ -254,7 +254,7 @@ class Template {
             case 'breadcrumbHideHome':
             case 'tagsConsolidate':
             case 'footerInPage':
-            case 'sidebarMobileDefaultHide':
+            case 'sidebarMobileDefaultCollapse':
                 $value = (bool)$value;
                 break;
             case 'breadcrumbShowLast':
@@ -668,7 +668,7 @@ class Template {
         }
 
         if($html != '') {
-            $html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix == '' ? 'left' : $prefix) . '"><a class="mikio-sidebar-toggle' . ($this->getConf('sidebarMobileDefaultHide') ? ' closed' : '') . '" href="#">' . tpl_getLang('sidebar-title') . '</a><div class="mikio-sidebar-collapse">'. $html . '</div></aside>';
+            $html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix == '' ? 'left' : $prefix) . '"><a class="mikio-sidebar-toggle' . ($this->getConf('sidebarMobileDefaultCollapse') ? ' closed' : '') . '" href="#">' . tpl_getLang('sidebar-title') . '</a><div class="mikio-sidebar-collapse">'. $html . '</div></aside>';
         }
 
         if($parse) $html = $this->includeIcons($html);
