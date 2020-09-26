@@ -150,6 +150,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   * ***2020-09-27***
     * Sidebars hidden by default in mobile view [#10](https://github.com/nomadjimbob/mikio/issues/10)
     * Fixed errors with the LESS compilier on some nginx configurations
+    * Fixed styling and image display thumb size in media manager popup
 
   * ***2020-09-10***
     * Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
