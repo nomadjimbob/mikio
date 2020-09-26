@@ -22,7 +22,9 @@
 
 ## Changes
 
-  * 2020-09-27 will now collapse sidebars on mobile by default. This can be overridden in the options
+  * 2020-09-27
+    * Sidebars now collapse by default on mobile. This can be overridden with the `sidebarMobileDefaultCollapse` option
+    * The mikio LESS stylesheet is now disabled by default, with a precompilied CSS used. This can be reverted using the `useLESS` option
 
 ## Configuration
 
@@ -30,6 +32,8 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 
   * `iconTag` : icon tag to use to engage the icon engine. Default to `icon`
   * `customTheme` : the mikio subtheme to use
+  * `showNotifications` : where to show site notifications for admin staff
+  * `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Some configurations have issues with the LESS compilier
   
   * `navbarUseTitleIcon` : show the site logo in the navbar
   * `navbarUseTitleText` : show the site title in the navbar
@@ -151,6 +155,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
     * Sidebars hidden by default in mobile view [#10](https://github.com/nomadjimbob/mikio/issues/10)
     * Fixed errors with the LESS compilier on some nginx configurations
     * Fixed styling and image display thumb size in media manager popup
+    * Fixed text field placeholders not disappearing with text entry
+    * Added support for Hogfather
+    * Added option to use LESS or direct CSS. Some configurations have issues with LESS
 
   * ***2020-09-10***
     * Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
