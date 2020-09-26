@@ -6,6 +6,20 @@
  * @author  James Collins <james.collins@outlook.com.au>
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
+
+if(!function_exists('getallheaders')) {
+	function getallheaders() {
+		$headers = [];
+		foreach($_SERVER as $name => $value) {
+			if(substr($name, 0, 5) == 'HTTP_') {
+				$headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+			}
+		}
+		return $headers;
+	}
+}
+
+
 try {
     $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
     if(file_exists($lesscLib)) {
@@ -61,12 +75,12 @@ try {
                 
                 $css = $less->compile($css);
 
-                $accept_encoding = @getallheaders()['Accept-Encoding'];
-                if($accept_encoding && preg_match('/ *gzip *,?/', $accept_encoding)) {
-                    header('Content-Encoding: gzip');
-                    echo gzencode($css);
-                } else {
-                    echo $css;
+				$accept_encoding = @getallheaders()['Accept-Encoding'];
+     	        if($accept_encoding && preg_match('/ *gzip *,?/', $accept_encoding)) {
+               	    header('Content-Encoding: gzip');
+                		echo gzencode($css);
+            	} else {
+                		echo $css;
                 }
             } else {
                 header('HTTP/1.1 404 Not Found'); 
@@ -101,3 +115,4 @@ function associativeMerge($base, $addition)
 
     return $result;
 }
+
