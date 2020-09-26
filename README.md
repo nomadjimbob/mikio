@@ -20,6 +20,10 @@
   * Mobile friendly
 
 
+## Changes
+
+  * 2020-09-27 will now collapse sidebars on mobile by default. This can be overridden in the options
+
 ## Configuration
 
 The configuration can be change with the [Configuration Manager Plugin](https://www.dokuwiki.org/plugin:config)
@@ -61,6 +65,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
   * `sidebarLeftRow2` : content to show in the second row of the left sidebar
   * `sidebarLeftRow3` : content to show in the third row of the left sidebar
   * `sidebarLeftRow4` : content to show in the forth row of the left sidebar
+  * `sidebarMobileDefaultCollapse` : collapse the sidebars by default when viewed on mobile
   * `sidebarShowRight` : show the right sidebar if content is found
 
   * `tocFull` : show the table of contents as a full height item
@@ -141,6 +146,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 
 ## Releases
+
+  * ***2020-09-27***
+    * Sidebars hidden by default in mobile view [#10](https://github.com/nomadjimbob/mikio/issues/10)
+    * Fixed errors with the LESS compilier on some nginx configurations
 
   * ***2020-09-10***
     * Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
