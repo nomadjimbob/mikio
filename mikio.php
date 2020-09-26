@@ -110,7 +110,13 @@ class Template {
         }
 
         $scripts[] = $this->baseDir . 'assets/mikio.js';
-        $stylesheets[] = $this->baseDir . 'assets/mikio.less';
+
+        if($this->getConf('useLESS')) {
+            $stylesheets[] = $this->baseDir . 'assets/mikio.less';
+        } else {
+            $stylesheets[] = $this->baseDir . 'assets/mikio.css';
+        }
+        
        
         $set = [];
         foreach ($stylesheets as $style) {
@@ -255,6 +261,7 @@ class Template {
             case 'tagsConsolidate':
             case 'footerInPage':
             case 'sidebarMobileDefaultCollapse':
+            case 'useLESS':
                 $value = (bool)$value;
                 break;
             case 'breadcrumbShowLast':
