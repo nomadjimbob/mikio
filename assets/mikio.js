@@ -214,6 +214,12 @@ var mikio = {
 
                 infoElem.innerHTML = detail[0] + '<br>' + detail[1] + ' ' + detail[2] + '<br>' + detail[3];
             }
+
+            console.log('there');
+            Array.from(elem.querySelectorAll('img')).forEach(function(elem) {
+                elem.removeAttribute('width');
+                elem.removeAttribute('height');
+            });
         }
 
         var mediaPopupObserver = new MutationObserver(function(mutationsList) {
