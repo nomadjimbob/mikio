@@ -1298,6 +1298,9 @@ pre {
 .mikio .mode_admin input[type=email] {
   width: 100%;
 }
+.mikio .mode_admin p button + button {
+  margin-left: .5rem;
+}
 .mikio .mode_admin div.ui-admin ul.admin_tasks,
 .mikio .mode_admin div.ui-admin ul.admin_plugins {
   float: none;
