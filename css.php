@@ -21,7 +21,26 @@ if(!function_exists('getallheaders')) {
 
 
 try {
+    if(!function_exists('cctype_digit')) {
+        if(isset($_GET['css'])) {
+            $baseDir = dirname(__FILE__) . '/';
+            $cssFile = realpath($baseDir . $_GET['css']);
+            if(strtolower(substr($cssFile, -5)) == '.less') {
+                $cssFile = substr($cssFile, 0, -5) . '.css';
+                if(file_exists($cssFile)) {
+                    echo file_get_contents($cssFile);
+                    exit;
+                }
+            }
+        }
+
+        throw new Exception('ctype extension not installed');
+    }
+
     $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
+    if(!file_exists($lesscLib))
+        $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+
     if(file_exists($lesscLib)) {
         require_once($lesscLib);
 

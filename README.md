@@ -33,7 +33,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
   * `iconTag` : icon tag to use to engage the icon engine. Default to `icon`
   * `customTheme` : the mikio subtheme to use
   * `showNotifications` : where to show site notifications for admin staff
-  * `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Some configurations have issues with the LESS compilier
+  * `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Requires the ctype PHP extension installed.
   
   * `navbarUseTitleIcon` : show the site logo in the navbar
   * `navbarUseTitleText` : show the site title in the navbar
@@ -157,7 +157,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
     * Fixed styling and image display thumb size in media manager popup
     * Fixed text field placeholders not disappearing with text entry
     * Added support for Hogfather
-    * Added option to use LESS or direct CSS. Some configurations have issues with LESS
+    * Added option to use LESS or direct CSS. Some configurations (docker linuxserver/dokuwiki) do not have the required PHP extensions installed
 
   * ***2020-09-10***
     * Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)

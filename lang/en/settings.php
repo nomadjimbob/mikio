@@ -9,7 +9,7 @@
 $lang['iconTag']                = 'Tag to use to for icon tags. The default is \'icon\' but this can be changed if it conflicts with any plugins. Set to blank to disable icon tags';
 $lang['customTheme']            = 'Use a Mikio subtheme installed into the themes directory. Leave blank for the detault styling';
 $lang['showNotifications']      = 'Where to show site notifications to admin staff';
-$lang['useLESS']                = 'Use the LESS compiler for the mikio stylesheet or direct CSS';
+$lang['useLESS']                = 'Use the LESS compiler for the mikio stylesheet or direct CSS. Requires PHP ctype extensions installed';
 
 $lang['navbarUseTitleIcon']     = 'Show the wiki image in the menubar title. Will search for an image named logo (png/jpg/gif/svg) in the root or :wiki: namespace or the template/subtheme images directory';
 $lang['navbarUseTitleText']     = 'Show the wiki name in the menubar title. Will also hide the tagline if disabled';

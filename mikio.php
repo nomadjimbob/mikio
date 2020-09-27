@@ -121,7 +121,7 @@ class Template {
         $set = [];
         foreach ($stylesheets as $style) {
             if(in_array($style, $set) == FALSE) {
-                if(strtolower(substr($style, -5)) == '.less') {
+                if(strtolower(substr($style, -5)) == '.less' && $this->getConf('useLESS')) {
                     $style = $this->baseDir . 'css.php?css=' . str_replace($this->baseDir, '', $style);
                 }
 
@@ -261,7 +261,6 @@ class Template {
             case 'tagsConsolidate':
             case 'footerInPage':
             case 'sidebarMobileDefaultCollapse':
-            case 'useLESS':
                 $value = (bool)$value;
                 break;
             case 'breadcrumbShowLast':
@@ -273,6 +272,12 @@ class Template {
             case 'breadcrumbPrefixText':
             case 'breadcrumbSepText':
             case 'footerCustomMenuText':
+                break;
+            case 'useLESS':
+                $value = (bool)$value;
+                if($value && !function_exists('ctype_digit')) {
+                    $value = false;
+                }
                 break;
         }
 
