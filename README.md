@@ -158,6 +158,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
     * Fixed text field placeholders not disappearing with text entry
     * Added support for Hogfather
     * Added option to use LESS or direct CSS. Some configurations (docker linuxserver/dokuwiki) do not have the required PHP extensions installed
+    * Supports Docker linuxserver/dokuwiki container file structures
 
   * ***2020-09-10***
     * Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
