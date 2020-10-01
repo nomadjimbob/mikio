@@ -151,6 +151,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+  * ***2020-10-01***
+    * Fix for `sidebarMobileDefaultCollapse` option being inconsistant in code and not working correctly [#11](https://github.com/nomadjimbob/mikio/issues/11). Thanks to GJRobert for catching that.
+
   * ***2020-09-27***
     * Sidebars hidden by default in mobile view [#10](https://github.com/nomadjimbob/mikio/issues/10)
     * Fixed errors with the LESS compilier on some nginx configurations
