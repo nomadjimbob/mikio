@@ -45,7 +45,7 @@ $lang['sidebarLeftRow1']        = 'Content to show in the first row on the left 
 $lang['sidebarLeftRow2']        = 'Content to show in the second row on the left sidebar';
 $lang['sidebarLeftRow3']        = 'Content to show in the third row on the left sidebar';
 $lang['sidebarLeftRow4']        = 'Content to show in the forth row on the left sidebar';
-$lang['sidebarMobileDefaultHide']	= 'Hide the sidebars by default when in mobile view';
+$lang['sidebarMobileDefaultCollapse']	= 'Hide the sidebars by default when in mobile view';
 $lang['sidebarShowRight']       = 'Show the right sidebar';
 
 $lang['tocFull']                = 'Show the TOC as a full height element';
