@@ -21,7 +21,7 @@ if(!function_exists('getallheaders')) {
 
 
 try {
-    if(!function_exists('cctype_digit')) {
+    if(!function_exists('ctype_digit')) {
         if(isset($_GET['css'])) {
             $baseDir = dirname(__FILE__) . '/';
             $cssFile = realpath($baseDir . $_GET['css']);
@@ -42,7 +42,7 @@ try {
         $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
 
     if(file_exists($lesscLib)) {
-        require_once($lesscLib);
+        @require_once($lesscLib);
 
         if(isset($_GET['css'])) {
             $baseDir = dirname(__FILE__) . '/';
