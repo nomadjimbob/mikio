@@ -9,7 +9,7 @@
 $conf['iconTag']                = 'icon';
 $conf['customTheme']            = '';
 $conf['showNotifications']      = 'admin';
-$conf['useLESS']                = 0;
+$conf['useLESS']                = 1;
 
 $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarUseTitleText']     = 1;
