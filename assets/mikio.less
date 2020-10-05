@@ -561,11 +561,15 @@ html, body {
     border-style: solid;
     border-color: transparent;
     border-radius: .25rem;
-    background-color: @ini_control_background_color;
     box-sizing: border-box;
     vertical-align: middle;
     padding: .375rem .75rem;
     color: @ini_control_text_color;
+    background-color: @ini_control_background_color;
+
+    &[type=color] {
+        padding: 0;
+    }
 }
 
 .mikio-button {
