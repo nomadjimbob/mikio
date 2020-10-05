@@ -9,8 +9,11 @@
 
 var mikio = {
     queueResize: false,
+    mikioCSS: false,
 
     ready: function() {
+        var self = this;
+
         this.addToggleClick('mikio-sidebar-toggle', 'mikio-sidebar-collapse');
         this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
         this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
@@ -249,6 +252,38 @@ var mikio = {
         }
 
         if(typeof mikioFooterRun === "function") mikioFooterRun();
+
+        // TESTING
+
+        var mediaChangedObserver = new MutationObserver(function(mutationsList) {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'attributes' && mutation.attributeName == 'href') {
+                    if(self.mikioCSS != false) {
+                        var elem = self.mikioCSS;
+                        var prev = elem.href;
+                        
+                        setTimeout(function() {
+                            var url = new URL(prev);
+                            var params = url.searchParams;
+                            params.set('seed', new Date().getTime());
+                            url.search = params.toString();
+                            elem.href = url.toString();
+                        }, 500);                        
+                    }
+                }
+            }
+        });
+
+        var linkElements = document.getElementsByTagName('link');
+        for(let element of linkElements) {
+            if(element.rel == 'stylesheet' && element.href) {
+                if(element.href.includes('/lib/exe/css.php')) {
+                    mediaChangedObserver.observe(element, {attributes: true, childList: true, subtree: true});
+                } else if(element.href.includes('/lib/tpl/mikio/css.php')) {
+                    this.mikioCSS = element;
+                }
+            }
+        }
     },
 
     insertAfter: function(newNode, existingNode) {
