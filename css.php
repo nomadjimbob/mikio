@@ -114,29 +114,20 @@ try {
             $cssFile = realpath($baseDir . $_GET['css']);
 
             if(strpos($cssFile, $baseDir) === 0 && file_exists($cssFile)) {
-                $lastModified = filemtime($cssFile);
-                $eTagFile = md5_file($cssFile);
-                $eTagHeader = (isset($_SERVER['HTTP_IF_NONE_MATCH']) ? trim($_SERVER['HTTP_IF_NONE_MATCH']) : FALSE);
+                $rawVars = Array();
+                $file = 'style.ini';
+                if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
+
+                $file = '../../../conf/tpl/mikio/style.ini';
+                if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
+
+                $css = file_get_contents($cssFile);
 
                 header('Content-Type: text/css; charset=utf-8');
-                header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastModified) . ' GMT');
-                header('Etag: ' . $eTagFile);
-                header('Cache-Control: public, max-age=604800, immutable');
-
-                if(@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $lastModified || $eTagHeader == $eTagFile) {
-                    header('HTTP/1.1 304 Not Modified');
-                    exit;
-                }
-                
-                $css = file_get_contents($cssFile);
 
                 $less = new lessc();
                 $less->setPreserveComments(false);
                 
-                $rawVars = Array();
-                if(file_exists('style.ini')) $rawVars = array_merge($rawVars, parse_ini_file('style.ini', TRUE));
-                if(file_exists('../../../conf/tpl/mikio/style.ini')) $rawVars = array_merge($rawVars, parse_ini_file('../../../conf/tpl/mikio/style.ini', TRUE));
-
                 $vars = Array();
                 if(isset($rawVars['replacements'])) {
                     foreach($rawVars['replacements'] as $key=>$val) {
@@ -151,14 +142,7 @@ try {
                 }
                 
                 $css = $less->compile($css);
-
-				$accept_encoding = @getallheaders()['Accept-Encoding'];
-     	        if($accept_encoding && preg_match('/ *gzip *,?/', $accept_encoding)) {
-               	    header('Content-Encoding: gzip');
-                		echo gzencode($css);
-            	} else {
-                		echo $css;
-                }
+                echo $css;
             } else {
                 header('HTTP/1.1 404 Not Found'); 
                 echo "The requested file could not be found";              
