@@ -876,9 +876,11 @@ html, body {
     margin-bottom: 1rem;
     font-size: @ini_table_font_size;
     
+    tr {
+        border-top: 1px solid @ini_table_row_border_color;        
+    }
 
     td, th {
-        border-top: 1px solid @ini_table_row_border_color;
         padding: .75rem;
         text-align: left;    
     }
