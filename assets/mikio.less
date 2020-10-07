@@ -881,13 +881,12 @@ html, body {
     }
 
     td, th {
+        // border-top: 1px solid @ini_table_row_border_color;
         padding: .75rem;
         text-align: left;    
     }
 
     tbody tr {
-        border: 0;
-
         &:nth-child(odd) {
             background-color: @ini_table_odd_row_color;
         }
@@ -2013,6 +2012,12 @@ code, pre {
         .mikio-page {
             grid-template-columns: auto;
         }
+    }
+    
+    .mikio #config__manager td .input,
+    .mikio #config__manager td input.edit,
+    .mikio #config__manager tr select {
+        width: auto;
     }
 
     .mikio-content {
