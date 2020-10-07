@@ -989,7 +989,10 @@ class Template {
      * Get Page Title
      */
     public function parsePageTitle() {
-        $title = tpl_pagetitle(null, TRUE);
+        global $ID;
+
+        $title = p_get_first_heading($ID);
+        if(strlen($title) <= 0) $title = tpl_pagetitle(null, TRUE);
         $title = $this->includeIcons($title);
 
         return $title;
