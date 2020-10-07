@@ -6,7 +6,7 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-.mikio-sticky {
+ .mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
 }
@@ -29,13 +29,20 @@
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   border-color: #ced4da;
   line-height: inherit;
+}
+.mikio-controls button[type=color],
+.mikio-controls input[type=color],
+.mikio-controls optgroup[type=color],
+.mikio-controls select[type=color],
+.mikio-controls textarea[type=color] {
+  padding: 0;
 }
 .mikio-controls button {
   display: inline-block;
@@ -499,11 +506,14 @@ body {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
+}
+.mikio-control[type=color] {
+  padding: 0;
 }
 .mikio-button {
   display: inline-block;
@@ -771,20 +781,19 @@ body {
   margin-bottom: 1rem;
   font-size: 90%;
 }
+.mikio .mode_show table tr,
+.mikio.dokuwiki .mode_showtag table.ul tr,
+.mikio .mode_admin table tr {
+  border-top: 1px solid #e5e5e5;
+}
 .mikio .mode_show table td,
 .mikio .mode_show table th,
 .mikio.dokuwiki .mode_showtag table.ul td,
 .mikio.dokuwiki .mode_showtag table.ul th,
 .mikio .mode_admin table td,
 .mikio .mode_admin table th {
-  border-top: 1px solid #e5e5e5;
   padding: .75rem;
   text-align: left;
-}
-.mikio .mode_show table tbody tr,
-.mikio.dokuwiki .mode_showtag table.ul tbody tr,
-.mikio .mode_admin table tbody tr {
-  border: 0;
 }
 .mikio .mode_show table tbody tr:nth-child(odd),
 .mikio.dokuwiki .mode_showtag table.ul tbody tr:nth-child(odd),
@@ -1026,13 +1035,60 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   border-color: #ced4da;
   line-height: inherit;
+}
+.mikio-search button[type=color],
+.mikio-search input[type=color],
+.mikio-search optgroup[type=color],
+.mikio-search select[type=color],
+.mikio-search textarea[type=color],
+.mikio .dokuwiki fieldset button[type=color],
+.mikio .dokuwiki fieldset input[type=color],
+.mikio .dokuwiki fieldset optgroup[type=color],
+.mikio .dokuwiki fieldset select[type=color],
+.mikio .dokuwiki fieldset textarea[type=color],
+.mikio.dokuwiki .secedit button[type=color],
+.mikio.dokuwiki .secedit input[type=color],
+.mikio.dokuwiki .secedit optgroup[type=color],
+.mikio.dokuwiki .secedit select[type=color],
+.mikio.dokuwiki .secedit textarea[type=color],
+.mikio .mode_revisions button[type=color],
+.mikio .mode_revisions input[type=color],
+.mikio .mode_revisions optgroup[type=color],
+.mikio .mode_revisions select[type=color],
+.mikio .mode_revisions textarea[type=color],
+.mikio .mode_edit button[type=color],
+.mikio .mode_edit input[type=color],
+.mikio .mode_edit optgroup[type=color],
+.mikio .mode_edit select[type=color],
+.mikio .mode_edit textarea[type=color],
+.mikio .mode_draft button[type=color],
+.mikio .mode_draft input[type=color],
+.mikio .mode_draft optgroup[type=color],
+.mikio .mode_draft select[type=color],
+.mikio .mode_draft textarea[type=color],
+.mikio .mode_preview button[type=color],
+.mikio .mode_preview input[type=color],
+.mikio .mode_preview optgroup[type=color],
+.mikio .mode_preview select[type=color],
+.mikio .mode_preview textarea[type=color],
+.mikio .mode_showtag button[type=color],
+.mikio .mode_showtag input[type=color],
+.mikio .mode_showtag optgroup[type=color],
+.mikio .mode_showtag select[type=color],
+.mikio .mode_showtag textarea[type=color],
+.mikio .mode_admin button[type=color],
+.mikio .mode_admin input[type=color],
+.mikio .mode_admin optgroup[type=color],
+.mikio .mode_admin select[type=color],
+.mikio .mode_admin textarea[type=color] {
+  padding: 0;
 }
 .mikio-search button,
 .mikio .dokuwiki fieldset button,
@@ -1560,15 +1616,18 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   height: 2.25rem;
+}
+.mode_recent .mikio-article select[type=color] {
+  padding: 0;
 }
 .mikio #mediamanager__page button,
 .mikio #mediamanager__page .qq-upload-button,
@@ -1584,11 +1643,11 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   display: inline-block;
   text-align: center;
   border-color: #6c757d;
@@ -1597,6 +1656,14 @@ pre {
   text-decoration: none;
   text-transform: capitalize;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.mikio #mediamanager__page button[type=color],
+.mikio #mediamanager__page .qq-upload-button[type=color],
+.mikio #mediamanager__page .qq-upload-list a[type=color],
+#media__manager button[type=color],
+#media__manager .qq-upload-button[type=color],
+#media__manager .qq-upload-list a[type=color] {
+  padding: 0;
 }
 .mikio #mediamanager__page button:hover:not(:disabled),
 .mikio #mediamanager__page .qq-upload-button:hover:not(:disabled),
@@ -1655,13 +1722,21 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   border-color: #ced4da;
   line-height: inherit;
+}
+.mikio #mediamanager__page input[type=text][type=color],
+.mikio #mediamanager__page input[type=search][type=color],
+.mikio #mediamanager__page textarea[type=color],
+#media__manager input[type=text][type=color],
+#media__manager input[type=search][type=color],
+#media__manager textarea[type=color] {
+  padding: 0;
 }
 .mikio #mediamanager__page .ui-resizable-e,
 #media__manager .ui-resizable-e {
@@ -2298,13 +2373,20 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   border-color: #ced4da;
   line-height: inherit;
+}
+.mikio .content_partial button[type=color],
+.mikio .content_partial input[type=color],
+.mikio .content_partial optgroup[type=color],
+.mikio .content_partial select[type=color],
+.mikio .content_partial textarea[type=color] {
+  padding: 0;
 }
 .mikio .content_partial button {
   display: inline-block;
@@ -2388,13 +2470,20 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   border-color: #ced4da;
   line-height: inherit;
+}
+.mikio div.dokuwiki div.comment_wrapper button[type=color],
+.mikio div.dokuwiki div.comment_wrapper input[type=color],
+.mikio div.dokuwiki div.comment_wrapper optgroup[type=color],
+.mikio div.dokuwiki div.comment_wrapper select[type=color],
+.mikio div.dokuwiki div.comment_wrapper textarea[type=color] {
+  padding: 0;
 }
 .mikio div.dokuwiki div.comment_wrapper button {
   display: inline-block;
@@ -2471,11 +2560,11 @@ pre {
   border-style: solid;
   border-color: transparent;
   border-radius: .25rem;
-  background-color: #fff;
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
+  background-color: #fff;
   display: inline-block;
   text-align: center;
   border-color: #6c757d;
@@ -2484,6 +2573,9 @@ pre {
   text-decoration: none;
   text-transform: capitalize;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.mikio div.dokuwiki div.comment_wrapper input[type=submit][type=color] {
+  padding: 0;
 }
 .mikio div.dokuwiki div.comment_wrapper input[type=submit]:hover:not(:disabled) {
   -webkit-text-decoration: none;
@@ -2590,6 +2682,11 @@ pre {
   .mode_showtag .mikio-page,
   .mode_admin .mikio-page {
     grid-template-columns: auto;
+  }
+  .mikio #config__manager td .input,
+  .mikio #config__manager td input.edit,
+  .mikio #config__manager tr select {
+    width: auto;
   }
   .mikio-content {
     grid-column: 1 / span 1;
