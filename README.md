@@ -1,5 +1,7 @@
 # Mikio DokuWiki Template
 
+![screenshot](https://github.com/nomadjimbob/mikio/blob/master/images/screenshot.png)
+
 ## About
 
 `Mikio` is a Bootstrap 4 style template for [DokuWiki](http://dokuwiki.org)
