@@ -154,7 +154,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   * ***2020-10-07***
     * Fixed hero header parsing on some servers
     * Fixed safari color picker issue [#14](https://github.com/nomadjimbob/mikio/issues/14)
-    * LESS now defaults to on with ctype functions built into mikio for docker apps [#13](https://github.com/nomadjimbob/mikio/issues/13)
+    * LESS now defaults to enabled with fallback to ctype functions built into mikio for docker apps [#13](https://github.com/nomadjimbob/mikio/issues/13)
     * Fix for Template Style Settings being ignored [#12](https://github.com/nomadjimbob/mikio/issues/12)
 
   * ***2020-10-01***
