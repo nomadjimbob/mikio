@@ -91,7 +91,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 
 ## Include Pages
 
-The following pages can be either html files in the root of the theme or a page in the namespace. Namespace pages take priority.
+The following pages can be either html files in the root of the template or a page in the namespace. Namespace pages take priority.
 
   * `topheader` : content to include above the navbar
   * `header` : content include below the navbar but above the page content
