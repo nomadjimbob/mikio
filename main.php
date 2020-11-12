@@ -67,7 +67,6 @@ $showSidebar = $hasSidebar && ($ACT=='show');
         if($showSidebar) $rightsidebar = $TEMPLATE->includeSidebar('right');
     echo '</main>';
     echo '<div class="mikio-page-fill">';
-        if($showSidebar) echo '<aside class="mikio-sidebar mikio-sidebar-left"></aside>';
         echo '<div class="mikio-content" style="padding:0">';
         if($TEMPLATE->getConf('footerInPage') == TRUE && $ACT=='show') $TEMPLATE->includeFooter();
         echo '</div>';
