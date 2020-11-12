@@ -17,7 +17,7 @@
   * Hero element
   * Icon support
   * Customizable breadcrumbs
-  * Subtheming support
+  * Theming support
   * Tags plugin support
   * Mobile friendly
 
@@ -33,9 +33,9 @@
 The configuration can be change with the [Configuration Manager Plugin](https://www.dokuwiki.org/plugin:config)
 
   * `iconTag` : icon tag to use to engage the icon engine. Default to `icon`
-  * `customTheme` : the mikio subtheme to use
+  * `customTheme` : the mikio theme to use, located in the `mikio/themes` directory
   * `showNotifications` : where to show site notifications for admin staff
-  * `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Requires the ctype PHP extension installed.
+  * `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Requires the ctype PHP extension installed
   
   * `navbarUseTitleIcon` : show the site logo in the navbar
   * `navbarUseTitleText` : show the site title in the navbar
@@ -107,7 +107,7 @@ The following pages can be either html files in the root of the theme or a page 
 
 ## Include Images
 
-The following images can be used to replace content in the theme. Images can be in the root of the theme or in the namespace. Images can be either png, jpg, gif or svg.
+The following images can be used to replace content in the template. Images can be in the root of the template or in the namespace. Images can be either png, jpg, gif or svg.
 
   * `logo` : site logo in the navbar
   * `breadcrumb-prefix` breadcrumb prefix
@@ -131,12 +131,12 @@ Namespaces can also apply the above hero settings in child pages by including th
   * If the icon tag conflicts with another plugin, you can change the tag from `icon` to a user set value in the settings
   * By default, Mikio enables FontAwesome 4 by also includes FontAwesome 5, Elusive 2 and Bootstrap Icons which can be enabled by uncommenting their inclusions in `/icons/icons.php`
 
-Users can also add their own icon sets into the theme. Supported icon sets can either be webfonts or indivial files (such as a SVG library). Instructions can be found in the `/icons/icons.php` file.
+Users can also add their own icon sets into the template. Supported icon sets can either be webfonts or indivial files (such as a SVG library). Instructions can be found in the `/icons/icons.php` file.
 
 
-## Subthemes
+## Themes
 
-Subthemes should be placed in the themes directory in its own directory. LESS files are supported.
+Themes should be placed in the themes directory, in its own directory. LESS files are supported.
 
 
 ## Mikio Plugin
@@ -214,7 +214,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Third Party Libraries
 
-This theme uses a [modified version](https://github.com/nomadjimbob/simple_html_dom) of [simple_html_dom](https://sourceforge.net/projects/simplehtmldom/)
+This template uses a [modified version](https://github.com/nomadjimbob/simple_html_dom) of [simple_html_dom](https://sourceforge.net/projects/simplehtmldom/)
 
 ## Support
 
