@@ -41,12 +41,14 @@ $lang['breadcrumbHome']         = 'Change the text or icon used for the Home pag
 $lang['breadcrumbShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
 
 $lang['sidebarShowLeft']        = 'Show the left sidebar';
+$lang['sidebarAlwaysShowLeft']  = 'Always show the left sidebar, even when there is no content';
 $lang['sidebarLeftRow1']        = 'Content to show in the first row on the left sidebar';
 $lang['sidebarLeftRow2']        = 'Content to show in the second row on the left sidebar';
 $lang['sidebarLeftRow3']        = 'Content to show in the third row on the left sidebar';
 $lang['sidebarLeftRow4']        = 'Content to show in the forth row on the left sidebar';
 $lang['sidebarMobileDefaultCollapse']	= 'Hide the sidebars by default when in mobile view';
 $lang['sidebarShowRight']       = 'Show the right sidebar';
+$lang['sidebarAlwaysShowRight'] = 'Always show the right sidebar, even when there is no content';
 
 $lang['tocFull']                = 'Show the TOC as a full height element';
 

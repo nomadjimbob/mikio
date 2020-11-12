@@ -42,12 +42,14 @@ $meta['breadcrumbHome']         = array('multichoice', '_choices' => array('none
 $meta['breadcrumbShowLast']     = array('numeric');
 
 $meta['sidebarShowLeft']        = array('onoff');
+$meta['sidebarAlwaysShowLeft']  = array('onoff');
 $meta['sidebarLeftRow1']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow2']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow3']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow4']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarMobileDefaultCollapse']	= array('onoff');
 $meta['sidebarShowRight']       = array('onoff');
+$meta['sidebarAlwaysShowRight'] = array('onoff');
 
 $meta['tocFull']                = array('onoff');
 

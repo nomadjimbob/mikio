@@ -153,6 +153,11 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+  * ***2020-11-12***
+    * Corrected terminology in readme to match Dokuwiki [#17](https://github.com/nomadjimbob/mikio/issues/17)
+    * Fix showing part of the sidebar when it should be hidden in certain conditions [#16](https://github.com/nomadjimbob/mikio/issues/16)
+    * Added option to always show the sidebar, even when there is no content [#16](https://github.com/nomadjimbob/mikio/issues/16)
+
   * ***2020-10-07***
     * Fixed hero header parsing on some servers
     * Fixed safari color picker issue [#14](https://github.com/nomadjimbob/mikio/issues/14)

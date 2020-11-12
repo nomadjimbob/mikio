@@ -41,12 +41,14 @@ $conf['breadcrumbHome']         = 'page title';
 $conf['breadcrumbShowLast']     = 0;
 
 $conf['sidebarShowLeft']        = 1;
+$conf['sidebarAlwaysShowLeft']  = 0;
 $conf['sidebarLeftRow1']        = 'logged in user';
 $conf['sidebarLeftRow2']        = 'search';
 $conf['sidebarLeftRow3']        = 'content';
 $conf['sidebarLeftRow4']        = 'none';
 $conf['sidebarMobileDefaultCollapse']	= 1;
 $conf['sidebarShowRight']       = 1;
+$conf['sidebarAlwaysShowright'] = 0;
 
 $conf['tocFull']                = 0;
 

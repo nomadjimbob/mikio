@@ -261,6 +261,8 @@ class Template {
             case 'tagsConsolidate':
             case 'footerInPage':
             case 'sidebarMobileDefaultCollapse':
+            case 'sidebarAlwaysShowLeft':
+            case 'sidebarAlwaysShowRight':
                 $value = (bool)$value;
                 break;
             case 'breadcrumbShowLast':
@@ -677,6 +679,11 @@ class Template {
 
             $content = $this->includePage($sidebarPage . 'footer', FALSE);
             if($content != '') $html .= '<div class="mikio-sidebar-footer">' . $content . '</div>';
+        }
+
+        if($html == '') {
+            if($prefix == '' && $this->getConf('sidebarAlwaysShowLeft')) $html = '&nbsp;';
+            if($this->getConf('sidebarAlwaysShow' . ucfirst($prefix))) $html = '&nbsp;';
         }
 
         if($html != '') {
