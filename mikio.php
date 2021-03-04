@@ -1326,6 +1326,36 @@ class Template {
             }
         }
 
+        /* Hide parts - ~~hide-parts [parts]~~  */
+        foreach($html->find('p') as $elm) {
+            $i = stripos($elm->innertext, '~~hide-parts');
+            if($i !== false) {
+                $j = strpos($elm->innertext, '~~', $i + 2);
+                if($j !== false) {
+                    if($j > $i + 13) {
+                        $parts = explode(' ', substr($elm->innertext, $i + 13, $j - $i - 13));
+                        $script = '';
+                        
+                        foreach($parts as $part) {
+                          // $part = trim($part);
+                          if(strlen($part) > 0) {
+                            $script .= 'mikio.hidePart(\'' . $part .'\');';
+                          }
+                        }
+                        
+                        if(strlen($script) > 0) {
+                          $this->footerScript['hide-parts'] = $script;
+                        }
+
+                        $elm->innertext = preg_replace('/~~hide-parts (.+?)~~.*/ui', '', $elm->innertext);
+                    }
+
+                    break;
+                }
+            }
+        }
+
+
         /* Page Tags (tag plugin) */
         if($this->getConf('tagsConsolidate')) {
             $tags = '';

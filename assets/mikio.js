@@ -466,6 +466,29 @@ var mikio = {
         Array.from(document.getElementsByClassName('mikio-tags')).forEach(function(elem) {
             elem.innerHTML = str;
         });
+    },
+    
+    hidePart: function (part) {
+      var selectorArray = {
+        topheader: '.mikio-page-topheader',
+        header: '.mikio-page-header',
+        contentheader: '.mikio-page-contentheader',
+        contentfooter: '.mikio-page-contentfooter',
+        sidebarheader: '.mikio-sidebar-left .mikio-sidebar-header',
+        sidebarfooter: '.mikio-sidebar-left .mikio-sidebar-footer',
+        rightsidebarheader: '.mikio-sidebar-right .mikio-sidebar-header',
+        rightsidebarfooter: '.mikio-sidebar-right .mikio-sidebar-footer',
+        footer: '.mikio-footer',
+        bottomfooter: '.mikio-page-bottomfooter',
+        navbar: '.mikio-navbar',
+        hero: '.mikio-hero'
+      };
+  
+      if(selectorArray.hasOwnProperty(part)) {
+        Array.from(document.querySelectorAll(selectorArray[part])).forEach(function (elem) {
+          elem.style.display = 'none';
+        });
+      }
     }
 };
 
