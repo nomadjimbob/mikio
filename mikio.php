@@ -980,9 +980,9 @@ class Template {
         } else {
             $html .= '&#8810; ';
             if(isset($_GET['page'])) {
-                $html .= '<a href="doku.php?id=' . $_GET['id'] . '&do=' . $_GET['do'] . '">Back</a>' . '&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
+                $html .= '<a href="' . wl($ID, array('do' => $ACT)) . '">Back</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
             }
-            $html .= '<a href="doku.php?id=' . $_GET['id'] . '">View Page</a>';
+            $html .= '<a href="' . wl($ID) . '">View Page</a>';
         }
 
         $html .= '</div>';
