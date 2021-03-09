@@ -161,6 +161,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+- **_2021-03-10_**
+
+  - Fixed bad breadcrumb URL formatting on sites using userewrite [#19](https://github.com/nomadjimbob/mikio/issues/19)
+
 - **_2021-03-04_**
 
   - Added support to hide page elements [#18](https://github.com/nomadjimbob/mikio/issues/18)
