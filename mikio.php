@@ -297,7 +297,6 @@ class Template {
                     $lessAvailable = false;
                 }
                 
-                $lessAvailable = false;
                 if($value && !$lessAvailable) {
                   $this->lessIgnored = true;
                   $value = false;
