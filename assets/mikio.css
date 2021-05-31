@@ -227,15 +227,39 @@ body {
 }
 .mikio-navbar .mikio-navbar-toggle {
   display: none;
-  width: 2.5rem;
-  height: 2rem;
-  border: 1px solid #6c757d;
-  border-radius: .25rem;
-  background-color: #fff;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="fill:#495057"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>');
-  background-size: 1.2rem;
-  background-position: center;
-  background-repeat: no-repeat;
+  font-size: 1rem;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  vertical-align: middle;
+  border: 0 none;
+  background: transparent;
+}
+.mikio-navbar .mikio-navbar-toggle:before, .mikio-navbar .mikio-navbar-toggle:after {
+  content: "";
+}
+.mikio-navbar .mikio-navbar-toggle:before, .mikio-navbar .mikio-navbar-toggle .icon, .mikio-navbar .mikio-navbar-toggle:after {
+  display: block;
+  width: 100%;
+  height: 0.2em;
+  margin: 0 0 0.2em;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 0.05em;
+  background: #333;  
+}
+.mikio-navbar .mikio-navbar-toggle.open .icon {
+  transform: scale(0);
+}
+.mikio-navbar .mikio-navbar-toggle.open:before {
+  transform: translateY(0.4em) rotate(135deg);
+}
+.mikio-navbar .mikio-navbar-toggle.open:after {
+  transform: translateY(-0.4em) rotate(-135deg);
 }
 .mikio-navbar .mikio-navbar-collapse {
   display: flex;
@@ -360,14 +384,46 @@ body {
   text-decoration: none;
   text-align: center;
   color: rgba(0,0,0,0.6);
-  background-size: 1rem;
-  background-position: 95% 50%;
-  background-repeat: no-repeat;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:#666666"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
 }
-.mikio-sidebar .mikio-sidebar-toggle.closed {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:#666666"><path d="M15.997 13.374l-7.081 7.081L7 18.54l8.997-8.998 9.003 9-1.916 1.916z"/></svg>');
+
+.mikio-sidebar .mikio-sidebar-toggle .icon:before {
+  content: "";
+  display: inline-block;
+
+  width: 0.5rem;
+  height: 0.1em;
+  margin: 0 0 0.2em;
+
+  transition: transform 0.2s ease-in-out;
+  transform: translateX(0.1rem) translateY(0) rotate(-135deg);
+
+  border-radius: 0.05em;
+  background: rgba(0,0,0,0.6);
 }
+
+.mikio-sidebar .mikio-sidebar-toggle .icon:after {
+  content: "";
+  display: inline-block;
+
+  width: 0.5rem;
+  height: 0.1em;
+  margin: 0 0 0.2em;
+
+  transition: transform 0.2s ease-in-out;
+  transform: translateX(-0.1rem) translateY(0) rotate(135deg);
+
+  border-radius: 0.05em;
+  background: rgba(0,0,0,0.6);
+}
+
+.mikio-sidebar .mikio-sidebar-toggle.open .icon:before {
+  transform: translateX(0.1rem) rotate(135deg);
+}
+
+.mikio-sidebar .mikio-sidebar-toggle.open .icon:after {
+  transform: translateX(-0.1rem) rotate(-135deg);
+}
+
 .mikio-sidebar .mikio-sidebar-toggle.closed + .mikio-sidebar-collapse {
   display: block;
 }

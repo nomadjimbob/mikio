@@ -341,6 +341,7 @@ var mikio = {
     toggleCollapse: function(objToggle, objCollapse) {
         if(objToggle.classList.contains('closed')) {
             objToggle.classList.remove('closed');
+            objToggle.classList.add('open');
             var height = objCollapse.offsetHeight;
             objCollapse.style.overflow = 'hidden';
             objCollapse.style.height = 0;
@@ -378,6 +379,7 @@ var mikio = {
             objCollapse.style.marginBottom = 0;
             window.setTimeout(function() {
                 objToggle.classList.add('closed');
+                objToggle.classList.remove('open');
                 objCollapse.style.removeProperty('height');
                 objCollapse.style.removeProperty('padding-top');
                 objCollapse.style.removeProperty('padding-bottom');

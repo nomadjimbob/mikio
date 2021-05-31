@@ -230,16 +230,53 @@ html, body {
     }
 
     .mikio-navbar-toggle {
-        display: none;
-        width: 2.5rem;
-        height: 2rem;
-        border: 1px solid @ini_control_border_color;
-        border-radius: .25rem;
-        background-color: @ini_control_background_color;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="fill:@{ini_control_text_color}"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>');
-        background-size: 1.2rem;
-        background-position: center;
-        background-repeat: no-repeat;
+      display: none;
+      font-size: 1rem;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+    
+      width: 1rem;
+      height: 1rem;
+      padding: 0;
+    
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      vertical-align: middle;
+    
+      border: 0 none;
+      background: transparent;
+      
+      &:before, &:after {
+        content: "";
+      }
+
+      &:before, .icon, &:after {
+        display: block;
+      
+        width: 100%;
+        height: 0.2em;
+        margin: 0 0 0.2em;
+      
+        transition: transform 0.2s ease-in-out;
+      
+        border-radius: 0.05em;
+        background: @ini_control_text_color;
+      }
+      
+      &.open {
+        .icon {
+          transform: scale(0);
+        }
+        
+        &:before {
+          transform: translateY(0.4em) rotate(135deg);
+        }
+        
+        &:after {
+          transform: translateY(-0.4em) rotate(-135deg);
+        }
+      }
     }
 
     .mikio-navbar-collapse {
@@ -382,13 +419,36 @@ html, body {
         .mikio-text-decoration(none);
         text-align: center;
         color: rgba(0, 0, 0, 0.6);
-        background-size: 1rem;
-        background-position: 95% 50%;
-        background-repeat: no-repeat;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:@{ini_sidebar_text_color}"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
-
-        &.closed {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:@{ini_sidebar_text_color}"><path d="M15.997 13.374l-7.081 7.081L7 18.54l8.997-8.998 9.003 9-1.916 1.916z"/></svg>');
+        
+        .icon {
+          &:before, &:after {
+            content: "";
+            display: inline-block;          
+            width: 0.5rem;
+            height: 0.1em;
+            margin: 0 0 0.2em;
+            transition: transform 0.2s ease-in-out;
+            border-radius: 0.05em;
+            background: rgba(0,0,0,0.6);
+          }
+          
+          &:before {
+            transform: translateX(0.1rem) translateY(0) rotate(-135deg);
+          }
+          
+          &:after {
+            transform: translateX(-0.1rem) translateY(0) rotate(135deg);
+          }
+        }
+        
+        .open .icon {
+          &:before {
+            transform: translateX(0.1rem) rotate(135deg);
+          }
+          
+          &:after {
+            transform: translateX(-0.1rem) rotate(-135deg);
+          }
         }
     }
 
