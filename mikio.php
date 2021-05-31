@@ -17,6 +17,7 @@ class Template {
     public $tplDir  = '';
     public $baseDir = '';
     public $footerScript = array();
+    public $lessIgnored = false;
 
 
     /**
@@ -277,8 +278,31 @@ class Template {
                 break;
             case 'useLESS':
                 $value = (bool)$value;
-                if($value && !function_exists('ctype_digit')) {
-                    $value = false;
+                $lessAvailable = true;
+                
+                // check for less library
+                $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                if(!file_exists($lesscLib))
+                    $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                if(!file_exists($lesscLib))
+                    $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                if(!file_exists($lesscLib))
+                    $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                if(!file_exists($lesscLib)) {
+                    $lessAvailable = false;
+                }
+
+                // check for ctype extensions
+                if(!function_exists('ctype_digit')) {
+                    $lessAvailable = false;
+                }
+                
+                $lessAvailable = false;
+                if($value && !$lessAvailable) {
+                  $this->lessIgnored = true;
+                  $value = false;
+                  
+                  
                 }
                 break;
         }
@@ -1557,22 +1581,26 @@ class Template {
     public function showMessages() {
         global $ACT;
 
+        if($this->lessIgnored) {
+          msg('useLESS is enabled on the Mikio template, however is not supported on this server', 2, '', '', MSG_ADMINS_ONLY);
+        }
+
         $show = $this->getConf('showNotifications');
         if($show == 'always' || ($show == 'admin' && $ACT == 'admin')) {
             global $MSG, $MSG_shown;
-
-            $MSG_shown = true;
-
+            
             if (!isset($MSG)) {
                 return;
             }
 
-            $shown = array();
+            if (!isset($MSG_shown)) {
+              $MSG_shown = array();
+            }
 
             foreach ($MSG as $msg) {
 
                 $hash = md5($msg['msg']);
-                if (isset($shown[$hash])) {
+                if (isset($MSG_shown[$hash])) {
                     continue;
                 }
                 // skip double messages
@@ -1585,10 +1613,10 @@ class Template {
 
                 }
 
-                $shown[$hash] = 1;
+                $MSG_shown[$hash] = true;
 
             }
-
+            
             unset($GLOBALS['MSG']);
         }
     }
