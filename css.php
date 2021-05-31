@@ -7,6 +7,8 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
+require(dirname(__FILE__) . '/inc/polyfill-ctype.php');
+
 if(!function_exists('getallheaders')) {
 	function getallheaders() {
 		$headers = [];
@@ -19,92 +21,14 @@ if(!function_exists('getallheaders')) {
 	}
 }
 
-if(!function_exists('ctype_alnum')) {
-    function ctype_alnum($var) {
-        return preg_match('/^[a-zA-Z0-9]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_alpha')) {
-    function ctype_alpha($var) {
-        return preg_match('/^[a-zA-Z]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_cntrl')) {
-    function ctype_cntrl($var) {
-        return preg_match('/^[\x00-\x1F\x7F]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_digit')) {
-    function ctype_digit($var) {
-        return preg_match('/^[0-9]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_graph')) {
-    function ctype_graph($var) {
-        return preg_match('/^[\x20-\x7E\x80-\xFF]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_lower')) {
-    function ctype_lower($var) {
-        return preg_match('/^[a-z]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_print')) {
-    function ctype_print($var) {
-        return preg_match('/^[\x20-\x7E\x80-\xFF]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_punct')) {
-    function ctype_punct($var) {
-        return preg_match('/^[^\w\s]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_space')) {
-    function ctype_space($var) {
-        return preg_match('/^[\r\t\n]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_upper')) {
-    function ctype_upper($var) {
-        return preg_match('/^[A-Z]+$/', $var);
-    }
-}
-
-if(!function_exists('ctype_xdigit')) {
-    function ctype_upper($var) {
-        return preg_match('/^[0-9A-Fa-f]+$/', $var);
-    }
-}
-
 try {
-    if(!function_exists('ctype_digit')) {
-        if(isset($_GET['css'])) {
-            $baseDir = dirname(__FILE__) . '/';
-            $cssFile = realpath($baseDir . $_GET['css']);
-            if(strtolower(substr($cssFile, -5)) == '.less') {
-                $cssFile = substr($cssFile, 0, -5) . '.css';
-                if(file_exists($cssFile)) {
-                    echo file_get_contents($cssFile);
-                    exit;
-                }
-            }
-        }
-
-        throw new Exception('ctype extension not installed');
-    }
-
     $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
     if(!file_exists($lesscLib))
+        $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+    if(!file_exists($lesscLib))
         $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+    if(!file_exists($lesscLib))
+        $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
 
     if(file_exists($lesscLib)) {
         @require_once($lesscLib);
@@ -119,6 +43,9 @@ try {
                 if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
 
                 $file = '../../../conf/tpl/mikio/style.ini';
+                if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
+
+                $file = $_SERVER['DOCUMENT_ROOT'] . '/conf/tpl/mikio/style.ini';
                 if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
 
                 $css = file_get_contents($cssFile);
@@ -152,10 +79,10 @@ try {
             echo "The requested file could not be found";              
         }
     } else {
-        throw new Exception('Lessc library not found');
+        throw new Exception('Mikio could not find the LESSC engine in DokuWiki');
     }
 }
-catch(Exception $e) {    
-    header('HTTP/1.1 500 Internal Server Error');
-    echo $e;
+catch(Exception $e) {
+  header('Content-Type: text/css; charset=utf-8');
+  include(dirname(__FILE__) . '/assets/mikio.css');
 }
