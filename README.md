@@ -159,7 +159,20 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - `tools-menu` : Text for the combined tools DokuWiki menu title
 - `home` : Text for the breadcrumb home title
 
+## Issues
+
+- There is currently an issue when using the BookCreator Plugin. A fix is being investigated [#26](https://github.com/nomadjimbob/mikio/issues/26)
+
 ## Releases
+
+- **_2021-06-01_**
+
+  - TOC is now full width on mobile [#25](https://github.com/nomadjimbob/mikio/issues/25)
+  - Hamburger and sidebar icons are now displayed correctly [#23](https://github.com/nomadjimbob/mikio/issues/23), [#24](https://github.com/nomadjimbob/mikio/issues/24)
+  - Site width is now available under Template Style Settings  [#22](https://github.com/nomadjimbob/mikio/issues/22)
+  - TOC is now sticky when set to full height [#21](https://github.com/nomadjimbob/mikio/issues/21)
+  - Added support to the theme being linked by a symbolic link [#20](https://github.com/nomadjimbob/mikio/issues/20)
+  - Mikio will now fallback to using CSS when there is the LESS engine is not detected [#20](https://github.com/nomadjimbob/mikio/issues/20)
 
 - **_2021-03-10_**
 
