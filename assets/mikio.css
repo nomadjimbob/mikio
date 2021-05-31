@@ -499,6 +499,12 @@ body {
 .mikio .mikio-content .mikio-article.toc-full .mikio-toc {
   margin-top: 1rem;
   order: 2;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 1rem;
+  align-self: flex-start;
+  overflow: scroll;
+  max-height: 100vh;
 }
 .mikio .mikio-content .mikio-article.toc-full .mikio-article-content {
   flex: 1;
