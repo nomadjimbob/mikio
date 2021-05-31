@@ -114,6 +114,11 @@ html, body {
     flex-direction: column;
 }
 
+.mikio-container {
+  max-width: @ini_site_width;
+  margin: 0 auto;
+}
+
 .mikio-page-topheader {
     padding: 0 2rem;
     border-bottom: 1px solid @ini_navbar_border_color;;
@@ -191,14 +196,18 @@ html, body {
 
 .mikio-navbar {
     position: relative;
-    display: flex;
-    align-items: center;
     padding: .5rem 1rem .5rem 2rem;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: @ini_navbar_border_color;
     background-color: @ini_navbar_background_color;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    .mikio-container {
+      display: flex;
+      flex: 1;
+      align-items: center;
+    }
 
     .mikio-navbar-brand {
         display: flex;
@@ -329,8 +338,12 @@ html, body {
 }
 
 .mikio-hero {
-    display: flex;
     background-color: @ini_hero_background_color;
+    
+    .mikio-container {
+      display: flex;
+      flex: 1;
+    }
     
     .mikio-hero-text {
         flex: 1;
@@ -406,11 +419,13 @@ html, body {
     color: @ini_sidebar_text_color;
 
     &.mikio-sidebar-left {
+        border-left: 1px solid @ini_sidebar_border_color;
         border-right: 1px solid @ini_sidebar_border_color;
     }
 
     &.mikio-sidebar-right {
         border-left: 1px solid @ini_sidebar_border_color;
+        border-right: 1px solid @ini_sidebar_border_color;
     }
 
     .mikio-sidebar-toggle {
@@ -508,9 +523,11 @@ html, body {
 }
 
 .mikio-page {
-    display: flex;
-    // flex: 1;
-    padding: 0;
+  .mikio-container {
+      display: flex;
+      // flex: 1;
+      padding: 0;
+    }
     
     a {
       color: @ini_link;
@@ -1992,8 +2009,10 @@ code, pre {
     }    
 
     .mikio-navbar {
-        display: grid;
-        grid-template-columns: auto 3rem;
+        .mikio-container {
+            display: grid;
+            grid-template-columns: auto 3rem;
+        }
 
         .mikio-navbar-brand {
             grid-column: 1 / span 1;
@@ -2053,7 +2072,9 @@ code, pre {
     }
 
     .mikio-hero {
-        flex-direction: column;
+        .mikio-container {
+          flex-direction: column;
+        }
 
         .mikio-hero-image-resize {
             height: auto;
@@ -2064,7 +2085,7 @@ code, pre {
         }
     }
 
-    .mikio-page {
+    .mikio-page .mikio-container {
         display: grid;
         grid-template-columns: auto 2.5rem;
         // grid-template-rows: min-content auto;

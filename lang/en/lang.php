@@ -28,6 +28,7 @@ $lang['config_acl']                         = 'Permissions';
 /* Style.ini */
 $lang['__link__']                           = 'The font color of links';
 $lang['__line_height__']                    = 'The base font line height';
+$lang['__site_width__']                     = 'Width of the body content';
 
 $lang['__font_size__']                      = 'The base font size';
 $lang['__font_family__']                    = 'The base font family (fonts containing spaces must be in quotes. Multiple fonts can be seperated with commas)';

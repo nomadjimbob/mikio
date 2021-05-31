@@ -6,6 +6,11 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
+.mikio-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 .mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -192,14 +197,17 @@ body {
 }
 .mikio-navbar {
   position: relative;
-  display: flex;
-  align-items: center;
   padding: .5rem 1rem .5rem 2rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #e5e5e5;
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.mikio-navbar .mikio-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 .mikio-navbar .mikio-navbar-brand {
   display: flex;
@@ -305,8 +313,11 @@ body {
   color: #000;
 }
 .mikio-hero {
-  display: flex;
   background-color: #ddf7fb;
+}
+.mikio-hero .mikio-container {
+  display: flex;
+  flex: 1;
 }
 .mikio-hero .mikio-hero-text {
   flex: 1;
@@ -372,10 +383,12 @@ body {
   color: #666;
 }
 .mikio-sidebar.mikio-sidebar-left {
+  border-left: 1px solid #e5e5e5;
   border-right: 1px solid #e5e5e5;
 }
 .mikio-sidebar.mikio-sidebar-right {
   border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
 }
 .mikio-sidebar .mikio-sidebar-toggle {
   display: none;
@@ -475,7 +488,7 @@ body {
   display: inline-block;
   margin: 0 .25rem .25rem .25rem;
 }
-.mikio-page {
+.mikio-page .mikio-container {
   display: flex;
   padding: 0;
 }
@@ -2674,7 +2687,7 @@ pre {
   .mikio-small-only {
     display: inline-block;
   }
-  .mikio-navbar {
+  .mikio-navbar .mikio-container {
     display: grid;
     grid-template-columns: auto 3rem;
   }
@@ -2725,7 +2738,7 @@ pre {
     border: 0;
     box-shadow: none;
   }
-  .mikio-hero {
+  .mikio-hero .mikio-container {
     flex-direction: column;
   }
   .mikio-hero .mikio-hero-image-resize {
@@ -2734,7 +2747,7 @@ pre {
   .mikio-hero .mikio-hero-image {
     background-image: none !important;
   }
-  .mikio-page {
+  .mikio-page .mikio-container {
     display: grid;
     grid-template-columns: auto 2.5rem;
   }

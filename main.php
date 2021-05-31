@@ -45,6 +45,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
     if($ACT == 'show' && $TEMPLATE->getConf('heroTitle')) $TEMPLATE->includeHero();
 
     echo '<main class="mikio-page">';
+      echo '<div class="mikio-container">';
         if($showSidebar) $TEMPLATE->includeSidebar();
         echo '<div class="mikio-content" id="dokuwiki__content">';
             if($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'page') $TEMPLATE->includeBreadcrumbs();
@@ -65,6 +66,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 
         $rightsidebar = '';
         if($showSidebar) $rightsidebar = $TEMPLATE->includeSidebar('right');
+      echo '</div>';
     echo '</main>';
     echo '<div class="mikio-page-fill">';
         echo '<div class="mikio-content" style="padding:0">';

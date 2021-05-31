@@ -578,6 +578,7 @@ class Template {
         $html = '';
 
         $html .= '<nav class="mikio-navbar">';
+        $html .= '<div class="mikio-container">';
         $html .= '<a class="mikio-navbar-brand" href="' . wl() . '">';
         if($this->getConf('navbarUseTitleIcon') || $this->getConf('navbarUseTitleText')) {
 
@@ -623,7 +624,7 @@ class Template {
             }
 
         $html .= '</div>';
-
+        $html .= '</div>';
         $html .= '</nav>';
 
         // Sub Navbar
@@ -866,6 +867,7 @@ class Template {
         if($this->getConf('breadcrumbHideHome') && $ID == 'start' && $ACT == 'show' || $ACT == 'showtag') return '';
 
         $html = '<div class="mikio-breadcrumbs">';
+        $html .= '<div class="mikio-container">';
         if($ACT == 'show') {
             if($conf['breadcrumbs']) {
                 if(!$this->getConf('breadcrumbPrefix') && !$this->getConf('breadcrumbSep')) {
@@ -1009,6 +1011,7 @@ class Template {
         }
 
         $html .= '</div>';
+        $html .= '</div>';
         
         if($parse) $html = $this->includeIcons($html);
         if($print) echo $html;
@@ -1040,6 +1043,7 @@ class Template {
 
         if($this->getConf('heroTitle')) {
             $html .= '<div class="mikio-hero">';
+            $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
                 if ($this->getConf('breadcrumbPosition') == 'hero') $html .= $this->includeBreadcrumbs(FALSE);
 
@@ -1058,6 +1062,7 @@ class Template {
 
                 $html .= '<div class="mikio-hero-image'. $hero_image_resize_class . '"' . $hero_image . '><div class="mikio-tags"></div></div>';
 
+                $html .= '</div>';
                 $html .= '</div>';
         }
 
