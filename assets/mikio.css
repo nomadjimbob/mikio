@@ -2759,6 +2759,26 @@ pre {
     padding-bottom: 1rem;
     width: auto;
   }
+  .mikio .mikio-content .mikio-article.toc-full {
+    display: block;
+  }
+  .mikio .mikio-content .mikio-article .mikio-toc {
+    float: none;
+  }
+  .mikio .mikio-content .mikio-article .mikio-toc #dw__toc {
+    max-width: none;
+  }
+  .mikio .mikio-content .mikio-article .mikio-toc h3.toggle {
+    background-position: 99% 50%;
+    text-align: center;
+  }
+  .mikio .mikio-content .mikio-article .mikio-toc h3.toggle.closed {
+    font-size: 80%;
+    width: auto;
+  }
+  .mikio .mikio-content .mikio-article .mikio-toc h3.toggle.closed:before {
+    display: none;
+  }
   .mikio-sidebar {
     grid-column: 1 / span 2;
     width: auto;

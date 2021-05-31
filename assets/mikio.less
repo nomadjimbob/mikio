@@ -2096,6 +2096,35 @@ code, pre {
         // padding-right: 0;
         width: auto;
     }
+    
+    /* TOC */
+    .mikio .mikio-content .mikio-article {
+      &.toc-full {
+        display: block;
+      }
+    
+      .mikio-toc {
+        float: none;
+        
+        #dw__toc {
+          max-width: none;
+        }
+        
+        h3.toggle {
+          background-position: 99% 50%;
+          text-align: center;
+          
+          &.closed {
+            font-size: @ini_toc_font_size;
+            width: auto;
+            
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
 
     /* Sidebar */
     .mikio-sidebar {
