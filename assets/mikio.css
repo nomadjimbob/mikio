@@ -479,6 +479,9 @@ body {
   display: flex;
   padding: 0;
 }
+.mikio-page a {
+  color: #2b73b7;
+}
 .mikio-page-fill {
   display: flex;
   flex: 1;
