@@ -165,7 +165,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-- **_2021-06-01_**
+- **_2021-06-09_**
 
   - TOC is now full width on mobile [#25](https://github.com/nomadjimbob/mikio/issues/25)
   - Hamburger and sidebar icons are now displayed correctly [#23](https://github.com/nomadjimbob/mikio/issues/23), [#24](https://github.com/nomadjimbob/mikio/issues/24)
