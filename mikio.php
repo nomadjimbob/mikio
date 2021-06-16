@@ -575,11 +575,26 @@ class Template {
      */
     public function includeNavbar($print = TRUE, $showSub = FALSE) {
         global $conf;
+        
+        $homeUrl = wl();
+
+        if(!plugin_isdisabled('showpageafterlogin')) {
+          $p =& plugin_load('action', 'showpageafterlogin');
+          if($p) {
+            global $USERINFO;
+    
+            if(is_array($USERINFO) && count($USERINFO) > 0) {
+              $homeUrl = wl($p->getConf('page_after_login'));
+            }
+          }
+        }
+
+        
         $html = '';
 
         $html .= '<nav class="mikio-navbar">';
         $html .= '<div class="mikio-container">';
-        $html .= '<a class="mikio-navbar-brand" href="' . wl() . '">';
+        $html .= '<a class="mikio-navbar-brand" href="' . $homeUrl . '">';
         if($this->getConf('navbarUseTitleIcon') || $this->getConf('navbarUseTitleText')) {
 
             // Brand image
