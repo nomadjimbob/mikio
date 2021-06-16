@@ -165,6 +165,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+- **_2021-06-17_**
+
+  - Added support for navbar title link to use showpageafterlogin setting if installed [#27](https://github.com/nomadjimbob/mikio/issues/27)
+
 - **_2021-06-09_**
 
   - TOC is now full width on mobile [#25](https://github.com/nomadjimbob/mikio/issues/25)
