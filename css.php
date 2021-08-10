@@ -21,31 +21,37 @@ if(!function_exists('getallheaders')) {
 	}
 }
 
+if(!function_exists('platformSlashes')) {
+	function platformSlashes($path) {
+		return str_replace('/', DIRECTORY_SEPARATOR, $path);
+	}
+}
+
 try {
-    $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
+    $lesscLib = platformSlashes('../../../vendor/marcusschwarz/lesserphp/lessc.inc.php');
     if(!file_exists($lesscLib))
-        $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+        $lesscLib = platformSlashes($_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php');
     if(!file_exists($lesscLib))
-        $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+        $lesscLib = platformSlashes('../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php');
     if(!file_exists($lesscLib))
-        $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+        $lesscLib = platformSlashes($_SERVER['DOCUMENT_ROOT'] . '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php');
 
     if(file_exists($lesscLib)) {
         @require_once($lesscLib);
 
         if(isset($_GET['css'])) {
-            $baseDir = dirname(__FILE__) . '/';
-            $cssFile = realpath($baseDir . $_GET['css']);
+            $baseDir = platformSlashes(dirname(__FILE__) . '/');
+            $cssFile = platformSlashes(realpath($baseDir . $_GET['css']));
 
             if(strpos($cssFile, $baseDir) === 0 && file_exists($cssFile)) {
                 $rawVars = Array();
                 $file = 'style.ini';
                 if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
 
-                $file = '../../../conf/tpl/mikio/style.ini';
+                $file = platformSlashes('../../../conf/tpl/mikio/style.ini');
                 if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
 
-                $file = $_SERVER['DOCUMENT_ROOT'] . '/conf/tpl/mikio/style.ini';
+                $file = ($_SERVER['DOCUMENT_ROOT'] . '/conf/tpl/mikio/style.ini');
                 if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
 
                 $css = file_get_contents($cssFile);
