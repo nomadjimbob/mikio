@@ -6,11 +6,6 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-.mikio-container {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 .mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -145,6 +140,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+.mikio-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
 .mikio-page-topheader {
   padding: 0 2rem;
   border-bottom: 1px solid #e5e5e5;
@@ -206,8 +205,8 @@ body {
 }
 .mikio-navbar .mikio-container {
   display: flex;
-  align-items: center;
   flex: 1;
+  align-items: center;
 }
 .mikio-navbar .mikio-navbar-brand {
   display: flex;
@@ -248,17 +247,20 @@ body {
   border: 0 none;
   background: transparent;
 }
-.mikio-navbar .mikio-navbar-toggle:before, .mikio-navbar .mikio-navbar-toggle:after {
+.mikio-navbar .mikio-navbar-toggle:before,
+.mikio-navbar .mikio-navbar-toggle:after {
   content: "";
 }
-.mikio-navbar .mikio-navbar-toggle:before, .mikio-navbar .mikio-navbar-toggle .icon, .mikio-navbar .mikio-navbar-toggle:after {
+.mikio-navbar .mikio-navbar-toggle:before,
+.mikio-navbar .mikio-navbar-toggle .icon,
+.mikio-navbar .mikio-navbar-toggle:after {
   display: block;
   width: 100%;
   height: 0.2em;
   margin: 0 0 0.2em;
   transition: transform 0.2s ease-in-out;
   border-radius: 0.05em;
-  background: #333;  
+  background: #495057;
 }
 .mikio-navbar .mikio-navbar-toggle.open .icon {
   transform: scale(0);
@@ -398,45 +400,29 @@ body {
   text-align: center;
   color: rgba(0,0,0,0.6);
 }
-
-.mikio-sidebar .mikio-sidebar-toggle .icon:before {
-  content: "";
-  display: inline-block;
-
-  width: 0.5rem;
-  height: 0.1em;
-  margin: 0 0 0.2em;
-
-  transition: transform 0.2s ease-in-out;
-  transform: translateX(0.1rem) translateY(0) rotate(-135deg);
-
-  border-radius: 0.05em;
-  background: rgba(0,0,0,0.6);
-}
-
+.mikio-sidebar .mikio-sidebar-toggle .icon:before,
 .mikio-sidebar .mikio-sidebar-toggle .icon:after {
   content: "";
   display: inline-block;
-
   width: 0.5rem;
   height: 0.1em;
   margin: 0 0 0.2em;
-
   transition: transform 0.2s ease-in-out;
-  transform: translateX(-0.1rem) translateY(0) rotate(135deg);
-
   border-radius: 0.05em;
   background: rgba(0,0,0,0.6);
 }
-
-.mikio-sidebar .mikio-sidebar-toggle.open .icon:before {
+.mikio-sidebar .mikio-sidebar-toggle .icon:before {
+  transform: translateX(0.1rem) translateY(0) rotate(-135deg);
+}
+.mikio-sidebar .mikio-sidebar-toggle .icon:after {
+  transform: translateX(-0.1rem) translateY(0) rotate(135deg);
+}
+.mikio-sidebar .mikio-sidebar-toggle .open .icon:before {
   transform: translateX(0.1rem) rotate(135deg);
 }
-
-.mikio-sidebar .mikio-sidebar-toggle.open .icon:after {
+.mikio-sidebar .mikio-sidebar-toggle .open .icon:after {
   transform: translateX(-0.1rem) rotate(-135deg);
 }
-
 .mikio-sidebar .mikio-sidebar-toggle.closed + .mikio-sidebar-collapse {
   display: block;
 }
