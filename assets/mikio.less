@@ -115,8 +115,8 @@ html, body {
 }
 
 .mikio-container {
-  max-width: @ini_site_width;
-  margin: 0 auto;
+    max-width: @ini_site_width;
+    margin: 0 auto;
 }
 
 .mikio-page-topheader {
@@ -204,9 +204,9 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
     .mikio-container {
-      display: flex;
-      flex: 1;
-      align-items: center;
+        display: flex;
+        flex: 1;
+        align-items: center;
     }
 
     .mikio-navbar-brand {
@@ -239,53 +239,53 @@ html, body {
     }
 
     .mikio-navbar-toggle {
-      display: none;
-      font-size: 1rem;
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
+        display: none;
+        font-size: 1rem;
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
     
-      width: 1rem;
-      height: 1rem;
-      padding: 0;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
     
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-      vertical-align: middle;
-    
-      border: 0 none;
-      background: transparent;
-      
-      &:before, &:after {
-        content: "";
-      }
-
-      &:before, .icon, &:after {
-        display: block;
-      
-        width: 100%;
-        height: 0.2em;
-        margin: 0 0 0.2em;
-      
+        cursor: pointer;
         transition: transform 0.2s ease-in-out;
-      
-        border-radius: 0.05em;
-        background: @ini_control_text_color;
-      }
-      
-      &.open {
-        .icon {
-          transform: scale(0);
+        vertical-align: middle;
+    
+        border: 0 none;
+        background: transparent;
+        
+        &:before, &:after {
+            content: "";
+        }
+
+        &:before, .icon, &:after {
+            display: block;
+        
+            width: 100%;
+            height: 0.2em;
+            margin: 0 0 0.2em;
+        
+            transition: transform 0.2s ease-in-out;
+        
+            border-radius: 0.05em;
+            background: @ini_control_text_color;
         }
         
-        &:before {
-          transform: translateY(0.4em) rotate(135deg);
-        }
+        &.open {
+            .icon {
+                transform: scale(0);
+            }
         
-        &:after {
-          transform: translateY(-0.4em) rotate(-135deg);
+            &:before {
+                transform: translateY(0.4em) rotate(135deg);
+            }
+            
+            &:after {
+                transform: translateY(-0.4em) rotate(-135deg);
+            }
         }
-      }
     }
 
     .mikio-navbar-collapse {
@@ -341,8 +341,8 @@ html, body {
     background-color: @ini_hero_background_color;
     
     .mikio-container {
-      display: flex;
-      flex: 1;
+        display: flex;
+        flex: 1;
     }
     
     .mikio-hero-text {
@@ -436,34 +436,34 @@ html, body {
         color: rgba(0, 0, 0, 0.6);
         
         .icon {
-          &:before, &:after {
-            content: "";
-            display: inline-block;          
-            width: 0.5rem;
-            height: 0.1em;
-            margin: 0 0 0.2em;
-            transition: transform 0.2s ease-in-out;
-            border-radius: 0.05em;
-            background: rgba(0,0,0,0.6);
-          }
-          
-          &:before {
-            transform: translateX(0.1rem) translateY(0) rotate(-135deg);
-          }
-          
-          &:after {
-            transform: translateX(-0.1rem) translateY(0) rotate(135deg);
-          }
+            &:before, &:after {
+                content: "";
+                display: inline-block;          
+                width: 0.5rem;
+                height: 0.1em;
+                margin: 0 0 0.2em;
+                transition: transform 0.2s ease-in-out;
+                border-radius: 0.05em;
+                background: rgba(0,0,0,0.6);
+            }
+
+            &:before {
+                transform: translateX(0.1rem) translateY(0) rotate(-135deg);
+            }
+
+            &:after {
+                transform: translateX(-0.1rem) translateY(0) rotate(135deg);
+            }
         }
         
         .open .icon {
-          &:before {
-            transform: translateX(0.1rem) rotate(135deg);
-          }
-          
-          &:after {
-            transform: translateX(-0.1rem) rotate(-135deg);
-          }
+            &:before {
+                transform: translateX(0.1rem) rotate(135deg);
+            }
+
+            &:after {
+                transform: translateX(-0.1rem) rotate(-135deg);
+            }
         }
     }
 
@@ -523,14 +523,14 @@ html, body {
 }
 
 .mikio-page {
-  .mikio-container {
-      display: flex;
-      // flex: 1;
-      padding: 0;
+    .mikio-container {
+        display: flex;
+        // flex: 1;
+        padding: 0;
     }
     
     a {
-      color: @ini_link;
+        color: @ini_link;
     }
 }
 
@@ -2073,7 +2073,7 @@ code, pre {
 
     .mikio-hero {
         .mikio-container {
-          flex-direction: column;
+            flex-direction: column;
         }
 
         .mikio-hero-image-resize {
@@ -2120,31 +2120,31 @@ code, pre {
     
     /* TOC */
     .mikio .mikio-content .mikio-article {
-      &.toc-full {
-        display: block;
-      }
+        &.toc-full {
+            display: block;
+        }
     
-      .mikio-toc {
-        float: none;
-        
-        #dw__toc {
-          max-width: none;
-        }
-        
-        h3.toggle {
-          background-position: 99% 50%;
-          text-align: center;
-          
-          &.closed {
-            font-size: @ini_toc_font_size;
-            width: auto;
+        .mikio-toc {
+            float: none;
             
-            &:before {
-              display: none;
+            #dw__toc {
+                max-width: none;
             }
-          }
+            
+            h3.toggle {
+                background-position: 99% 50%;
+                text-align: center;
+                
+                &.closed {
+                    font-size: @ini_toc_font_size;
+                    width: auto;
+                    
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
         }
-      }
     }
 
     /* Sidebar */
