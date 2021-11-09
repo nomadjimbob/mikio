@@ -101,8 +101,10 @@ $lang['__footer_background_color__']        = 'The background color for the foot
 
 $lang['__table_font_size__']                = 'The font size for tables';
 $lang['__table_row_border_color__']         = 'The border color for tables';
-$lang['__table_odd_row_color__']            = 'The background color for table odd rows';
-$lang['__table_even_row_color__']           = 'The background color for table even rows';
+$lang['__table_odd_row_color__']            = 'The font color for table odd rows';
+$lang['__table_odd_row_background_color__'] = 'The background color for table odd rows';
+$lang['__table_even_row_color__']           = 'The font color for table even rows';
+$lang['__table_eveb_row_background_color__']    = 'The background color for table odd rows';
 
 $lang['__dropdown_color__']                 = 'The font color for dropdown menus';
 $lang['__dropdown_hover_color__']           = 'The font color when the cursor hovers over dropdown menu items';
@@ -110,4 +112,3 @@ $lang['__dropdown_border_color__']          = 'The border color for dropdown men
 $lang['__dropdown_background_color__']      = 'The background color for dropdown menus';
 
 $lang['__section_edit_highlight__']         = 'The color when highlighting an edit area';
-?>
