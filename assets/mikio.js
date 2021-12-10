@@ -100,6 +100,13 @@ var mikio = {
 
         // Input - Span (Placeholder) clear when typing
         Array.from(document.querySelectorAll('.mikio.dokuwiki .mode_login fieldset label.block input.edit, .mikio.dokuwiki .mode_denied fieldset label.block input.edit')).forEach(function (elem) {
+            if (elem.value.length != 0) {
+                var sibling = mikio.getPrevSibling(elem, 'span');
+                if (sibling) {
+                    sibling.style.display = 'none';
+                }
+            }
+
             elem.addEventListener('keydown', function (event) {
                 var sibling = mikio.getPrevSibling(event.target, 'span');
 
