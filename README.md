@@ -165,6 +165,12 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+- **_2021-12-10_**
+
+  - Added table row background styling options
+  - Fixed styling issue when using the indexmenu plugin [#35](https://github.com/nomadjimbob/mikio/issues/35). Thanks 3ole.
+  - Fixed tab/spaces in mikio.less
+
 - **_2021-08-11_**
 
   - Fixed path check on Windows [#33](https://github.com/nomadjimbob/mikio/issues/33)

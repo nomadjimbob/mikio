@@ -6,7 +6,7 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-.mikio-sticky {
+ .mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
 }
@@ -2671,71 +2671,71 @@ pre {
 }
 @media (max-width: 768px) {
   .mikio-small-only {
-    display: inline-block;
+      display: inline-block;
   }
   .mikio-navbar .mikio-container {
-    display: grid;
-    grid-template-columns: auto 3rem;
+      display: grid;
+      grid-template-columns: auto 3rem;
   }
   .mikio-navbar .mikio-navbar-brand {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-    margin-bottom: .5rem;
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 1;
+      margin-bottom: .5rem;
   }
   .mikio-navbar .mikio-navbar-toggle {
-    display: block;
-    margin-bottom: .5rem;
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
+      display: block;
+      margin-bottom: .5rem;
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 1;
   }
   .mikio-navbar .mikio-navbar-toggle.closed + .mikio-navbar-collapse {
-    display: none;
+      display: none;
   }
   .mikio-navbar .mikio-navbar-collapse {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 1;
-    flex-direction: column;
-    margin: 0 -2rem;
-    padding-top: .5rem;
-    padding-right: 1rem;
-    border-top: 1px solid rgba(0,0,0,0.1);
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 1;
+      flex-direction: column;
+      margin: 0 -2rem;
+      padding-top: .5rem;
+      padding-right: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
   }
   .mikio-navbar .mikio-nav-item {
-    display: block;
-    width: 100%;
-    padding: .5rem 2rem;
-    box-sizing: border-box;
-    text-align: center;
+      display: block;
+      width: 100%;
+      padding: .5rem 2rem;
+      box-sizing: border-box;
+      text-align: center;
   }
   .mikio-navbar .mikio-dropdown-item {
-    justify-content: center;
+      justify-content: center;
   }
   .mikio-navbar .mikio-nav {
-    width: 100%;
+      width: 100%;
   }
   .mikio-navbar .mikio-nav-dropdown {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      box-sizing: border-box;
   }
   .mikio-navbar .mikio-nav-dropdown .mikio-dropdown {
-    position: relative;
-    border: 0;
-    box-shadow: none;
+      position: relative;
+      border: 0;
+      box-shadow: none;
   }
   .mikio-hero .mikio-container {
-    flex-direction: column;
+      flex-direction: column;
   }
   .mikio-hero .mikio-hero-image-resize {
-    height: auto;
+      height: auto;
   }
   .mikio-hero .mikio-hero-image {
-    background-image: none !important;
+      background-image: none !important;
   }
   .mikio-page .mikio-container {
-    display: grid;
-    grid-template-columns: auto 2.5rem;
+      display: grid;
+      grid-template-columns: auto 2.5rem;
   }
   .mode_revisions .mikio-page,
   .mode_edit .mikio-page,
@@ -2745,68 +2745,68 @@ pre {
   .mode_preview .mikio-page,
   .mode_showtag .mikio-page,
   .mode_admin .mikio-page {
-    grid-template-columns: auto;
+      grid-template-columns: auto;
   }
   .mikio #config__manager td .input,
   .mikio #config__manager td input.edit,
   .mikio #config__manager tr select {
-    width: auto;
+      width: auto;
   }
   .mikio-content {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
-    padding-bottom: 1rem;
-    width: auto;
+      grid-column: 1 / span 1;
+      grid-row: 2 / span 1;
+      padding-bottom: 1rem;
+      width: auto;
   }
   .mikio .mikio-content .mikio-article.toc-full {
-    display: block;
+      display: block;
   }
   .mikio .mikio-content .mikio-article .mikio-toc {
-    float: none;
+      float: none;
   }
   .mikio .mikio-content .mikio-article .mikio-toc #dw__toc {
-    max-width: none;
+      max-width: none;
   }
   .mikio .mikio-content .mikio-article .mikio-toc h3.toggle {
-    background-position: 99% 50%;
-    text-align: center;
+      background-position: 99% 50%;
+      text-align: center;
   }
   .mikio .mikio-content .mikio-article .mikio-toc h3.toggle.closed {
-    font-size: 80%;
-    width: auto;
+      font-size: 80%;
+      width: auto;
   }
   .mikio .mikio-content .mikio-article .mikio-toc h3.toggle.closed:before {
-    display: none;
+      display: none;
   }
   .mikio-sidebar {
-    grid-column: 1 / span 2;
-    width: auto;
+      grid-column: 1 / span 2;
+      width: auto;
   }
   .mikio-sidebar .mikio-sidebar-toggle.closed + .mikio-sidebar-collapse {
-    display: none;
+      display: none;
   }
   .mikio-sidebar.mikio-sidebar-left {
-    grid-row: 1 / span 1;
-    border-right: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+      grid-row: 1 / span 1;
+      border-right: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
   }
   .mikio-sidebar.mikio-sidebar-right {
-    grid-row: 3 / span 1;
-    border-left: 0;
-    border-top: 1px solid rgba(0,0,0,0.2);
+      grid-row: 3 / span 1;
+      border-left: 0;
+      border-top: 1px solid rgba(0,0,0,0.2);
   }
   .mikio-sidebar .mikio-sidebar-toggle {
-    display: block;
+      display: block;
   }
   #dw__pagetools {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
+      grid-column: 2 / span 1;
+      grid-row: 2 / span 1;
   }
   .mikio.dokuwiki div.ui-admin #admin__version {
-    padding-right: 1rem;
+      padding-right: 1rem;
   }
   .mikio-page-fill .mikio-sidebar {
-    display: none;
+      display: none;
   }
 }
 @media print {
@@ -2815,18 +2815,25 @@ pre {
   .mikio .mikio-sidebar,
   .mikio #dw__pagetools,
   .mikio .mikio-search {
-    display: none !important;
+      display: none !important;
   }
   .mikio .mikio-navbar {
-    box-shadow: none !important;
+      box-shadow: none !important;
   }
   .mikio .mikio-hero .mikio-hero-text {
-    min-height: auto;
-    padding-bottom: 0;
+      min-height: auto;
+      padding-bottom: 0;
   }
   .mikio .mikio-breadcrumbs,
   .mikio .mikio-hero,
   .mikio .mikio-footer {
-    background-color: #fff !important;
+      background-color: #fff !important;
   }
+}
+
+/* Plugin Patches */
+/* Indexmenu */
+.mikio-sidebar .mikio-sidebar-content .dtree a {
+  display: initial;
+  margin: initial;
 }
