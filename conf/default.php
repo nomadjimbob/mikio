@@ -62,7 +62,5 @@ $conf['footerInPage']           = 0;
 $conf['licenseType']            = 'badge';
 $conf['licenseImageOnly']       = 0;
 
-
 $conf['includePageUseACL']      = 1;
 $conf['includePagePropagate']   = 1;
-?>
