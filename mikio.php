@@ -414,6 +414,7 @@ class Template
         global $lang;
         global $USERINFO;
 
+        $loggedIn = (is_array($USERINFO) && count($USERINFO) > 0);
         $html = '<ul class="mikio-nav">';
 
         $pageToolsMenu = [];
@@ -429,12 +430,15 @@ class Template
             if ($item->getType() != 'top') {
                 $itemHtml = '';
 
-                $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
-                if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
-                if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
-                $itemHtml .= '</a>';
+                $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
+                if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
+                    $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                    if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
+                    if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                    $itemHtml .= '</a>';
 
-                $pageToolsMenu[] = $itemHtml;
+                    $pageToolsMenu[] = $itemHtml;
+                }
             }
         }
 
@@ -442,24 +446,30 @@ class Template
         foreach ($items as $item) {
             $itemHtml = '';
 
-            $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
-            if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
-            if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
-            $itemHtml .= '</a>';
+            $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
+            if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
+                $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
+                if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                $itemHtml .= '</a>';
 
-            $siteToolsMenu[] = $itemHtml;
+                $siteToolsMenu[] = $itemHtml;
+            }
         }
 
         $items = (new \dokuwiki\Menu\UserMenu())->getItems('action');
         foreach ($items as $item) {
             $itemHtml = '';
 
-            $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown ? ' mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
-            if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
-            if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
-            $itemHtml .= '</a>';
+            $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
+            if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
+                $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown ? ' mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
+                if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                $itemHtml .= '</a>';
 
-            $userToolsMenu[] = $itemHtml;
+                $userToolsMenu[] = $itemHtml;
+            }
         }
 
 

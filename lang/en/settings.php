@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Mikio Template English Language for Configuration
  *
@@ -24,6 +25,18 @@ $lang['navbarPosMiddle']        = 'Menu to show in the middle of the navbar';
 $lang['navbarPosRight']         = 'Menu to show on the right of the navbar';
 $lang['navbarShowSub']          = 'Show the sub navbar. This menu displays data from the submenu page searching from the current namespace to the root. Recommended to use lists for menu items';
 
+$lang['navbarItemShowCreate']   = 'Show the Create Page menu item';
+$lang['navbarItemShowShow']     = 'Show the Show Page menu item';
+$lang['navbarItemShowRevs']     = 'Show the Revisions menu item';
+$lang['navbarItemShowBacklink'] = 'Show the Backlinks menu item';
+$lang['navbarItemShowRecent']   = 'Show the Recent Changes menu item';
+$lang['navbarItemShowMedia']    = 'Show the Media Manager menu item';
+$lang['navbarItemShowIndex']    = 'Show the Sitemap menu item';
+$lang['navbarItemShowProfile']  = 'Show the Update Profile menu item';
+$lang['navbarItemShowAdmin']    = 'Show the Admin menu item';
+$lang['navbarItemShowLogin']    = 'Show the Login menu item';
+$lang['navbarItemShowLogout']   = 'Show the Logout menu item';
+
 $lang['searchButton']           = 'Search button type';
 
 $lang['heroTitle']              = 'Show pages in the hero title style';
@@ -46,7 +59,7 @@ $lang['sidebarLeftRow1']        = 'Content to show in the first row on the left 
 $lang['sidebarLeftRow2']        = 'Content to show in the second row on the left sidebar';
 $lang['sidebarLeftRow3']        = 'Content to show in the third row on the left sidebar';
 $lang['sidebarLeftRow4']        = 'Content to show in the forth row on the left sidebar';
-$lang['sidebarMobileDefaultCollapse']	= 'Hide the sidebars by default when in mobile view';
+$lang['sidebarMobileDefaultCollapse']    = 'Hide the sidebars by default when in mobile view';
 $lang['sidebarShowRight']       = 'Show the right sidebar';
 $lang['sidebarAlwaysShowRight'] = 'Always show the right sidebar, even when there is no content';
 
@@ -64,4 +77,3 @@ $lang['licenseImageOnly']       = 'Show the footer license as images only';
 
 $lang['includePageUseACL']      = 'Respect ACL when including pages';
 $lang['includePagePropagate']   = 'Search higher namespaces when including pages';
-?>

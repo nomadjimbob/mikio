@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Mikio Template Configuration Metadata
  *
@@ -25,6 +26,18 @@ $meta['navbarPosMiddle']        = array('multichoice', '_choices' => array('none
 $meta['navbarPosRight']         = array('multichoice', '_choices' => array('none', 'custom', 'search', 'dokuwiki'));
 $meta['navbarShowSub']          = array('onoff');
 
+$meta['navbarItemShowCreate']   = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowShow']     = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowRevs']     = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowBacklink'] = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowRecent']   = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowMedia']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowIndex']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowProfile']  = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowAdmin']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['navbarItemShowLogin']    = array('multichoice', '_choices' => array('always', 'never'));
+$meta['navbarItemShowLogout']   = array('multichoice', '_choices' => array('always', 'never'));
+
 $meta['searchButton']           = array('multichoice', '_choices' => array('icon', 'text'));
 
 $meta['heroTitle']              = array('onoff');
@@ -47,7 +60,7 @@ $meta['sidebarLeftRow1']        = array('multichoice', '_choices' => array('none
 $meta['sidebarLeftRow2']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow3']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
 $meta['sidebarLeftRow4']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
-$meta['sidebarMobileDefaultCollapse']	= array('onoff');
+$meta['sidebarMobileDefaultCollapse']    = array('onoff');
 $meta['sidebarShowRight']       = array('onoff');
 $meta['sidebarAlwaysShowRight'] = array('onoff');
 
@@ -65,4 +78,3 @@ $meta['licenseImageOnly']       = array('onoff');
 
 $meta['includePageUseACL']      = array('onoff');
 $meta['includePagePropagate']   = array('onoff');
-?>

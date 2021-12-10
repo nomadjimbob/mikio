@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Mikio Template Default Configuration
  *
@@ -24,6 +25,18 @@ $conf['navbarPosMiddle']        = 'search';
 $conf['navbarPosRight']         = 'dokuwiki';
 $conf['navbarShowSub']          = 0;
 
+$conf['navbarItemShowCreate']   = 'always';
+$conf['navbarItemShowShow']     = 'always';
+$conf['navbarItemShowRevs']     = 'always';
+$conf['navbarItemShowBacklink'] = 'always';
+$conf['navbarItemShowRecent']   = 'always';
+$conf['navbarItemShowMedia']    = 'always';
+$conf['navbarItemShowIndex']    = 'always';
+$conf['navbarItemShowProfile']  = 'always';
+$conf['navbarItemShowAdmin']    = 'always';
+$conf['navbarItemShowLogin']    = 'always';
+$conf['navbarItemShowLogout']   = 'always';
+
 $conf['searchButton']           = 'icon';
 
 $conf['heroTitle']              = 1;
@@ -46,7 +59,7 @@ $conf['sidebarLeftRow1']        = 'logged in user';
 $conf['sidebarLeftRow2']        = 'search';
 $conf['sidebarLeftRow3']        = 'content';
 $conf['sidebarLeftRow4']        = 'none';
-$conf['sidebarMobileDefaultCollapse']	= 1;
+$conf['sidebarMobileDefaultCollapse']    = 1;
 $conf['sidebarShowRight']       = 1;
 $conf['sidebarAlwaysShowright'] = 0;
 
