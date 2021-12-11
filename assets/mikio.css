@@ -1493,10 +1493,10 @@ pre {
   text-align: left;
 }
 .mikio .mode_admin #extension__list ul.extensionList li:nth-child(odd) {
-  background-color: #333;
+  background-color: #fff;
 }
 .mikio .mode_admin #extension__list ul.extensionList li:nth-child(even) {
-  background-color: #333;
+  background-color: #f2f2f2;
 }
 .mikio .mode_admin button#usrmgr__del {
   color: #dc3545;
@@ -2001,7 +2001,7 @@ pre {
 .mikio #mediamanager__page .qq-uploader .rows li,
 #media__manager .filelist .rows li,
 #media__manager .qq-uploader .rows li {
-  background-color: #333;
+  background-color: #fff;
   max-height: none;
   font-size: 90%;
 }
@@ -2009,7 +2009,7 @@ pre {
 .mikio #mediamanager__page .qq-uploader .rows li:nth-child(2n+1),
 #media__manager .filelist .rows li:nth-child(2n+1),
 #media__manager .qq-uploader .rows li:nth-child(2n+1) {
-  background-color: #333;
+  background-color: #f2f2f2;
 }
 .mikio #mediamanager__page .filelist .rows li a,
 .mikio #mediamanager__page .qq-uploader .rows li a,
@@ -2357,10 +2357,10 @@ pre {
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result {
   border-top: 1px solid #e5e5e5;
   padding: .75rem;
-  background-color: #333;
+  background-color: #fff;
 }
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result:nth-child(2n+1) {
-  background-color: #333;
+  background-color: #f2f2f2;
 }
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result .snippet {
   font-size: 90%;
@@ -2900,3 +2900,4 @@ pre {
 .mikio .indexmenu_toc .indexmenu_toc_inside ul .li {
   margin-bottom: 0.4rem;
 }
+
