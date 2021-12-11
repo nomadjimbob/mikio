@@ -17,6 +17,7 @@ var mikio = {
         this.addToggleClick('mikio-sidebar-toggle', 'mikio-sidebar-collapse');
         this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
         this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
+        this.indexmenuPatch();
 
         window.onresize = function () {
             if (!this.queueResize) {
@@ -496,7 +497,39 @@ var mikio = {
                 elem.style.display = 'none';
             });
         }
-    }
+    },
+
+    indexmenuPatch: function () {
+        window.setTimeout(function () {
+            Array.from(document.querySelectorAll('a.navSel')).forEach(function (elem) {
+                let prev = mikio.getPrevSibling(elem, 'img');
+                if (prev) {
+                    prev.style.opacity = 1;
+                }
+            });
+        }, 50);
+
+
+        document.addEventListener('mouseover', function (event) {
+            const indexmenuClasses = ['nodeUrl', 'nodeSel', 'node'];
+            if ([...event.target.classList].some(className => indexmenuClasses.indexOf(className) !== -1)) {
+                let prev = mikio.getPrevSibling(event.target, 'img');
+                if (prev) {
+                    prev.style.opacity = 1;
+                }
+            }
+        });
+
+        document.addEventListener('mouseout', function (event) {
+            const indexmenuClasses = ['nodeUrl', 'nodeSel', 'node'];
+            if ([...event.target.classList].some(className => indexmenuClasses.indexOf(className) !== -1)) {
+                let prev = mikio.getPrevSibling(event.target, 'img');
+                if (prev) {
+                    prev.style.opacity = '';
+                }
+            }
+        });
+    },
 };
 
 

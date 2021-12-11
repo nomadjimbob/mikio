@@ -2231,7 +2231,68 @@ code, pre {
 }
 
 /* Indexmenu */
-.mikio-sidebar .mikio-sidebar-content .dtree a {
-    display: initial;
-    margin: initial;
+.mikio-sidebar .mikio-sidebar-content .dtree {
+    font-size: inherit;
+
+    .dTreeNode {
+        margin: 0.5rem 0;
+
+        .indexmenu_tocbullet {
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        a, a.nodeUrl, a.nodeSel, a.node, a.navSel {
+            display: initial;
+            margin: initial;
+            color: #666;
+            background: transparent;
+
+            &:hover {
+                color: #333;
+                text-decoration: none;
+                background-color: transparent;
+            }
+        }
+
+        a.navSel {
+            font-weight: bold;
+            color: #333;
+        }
+
+        img:last-of-type {
+            margin-right: 0.2rem;
+            opacity: 0.5;
+        }
+    }
+}
+
+.mikio .indexmenu_toc {
+    padding: 0 4px 4px 0;
+
+    &> div {
+        border: 1px solid #999;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 10;
+    }
+
+    .tocheader {
+        padding: 0.2rem;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .indexmenu_toc_inside {
+        border: 0;
+        padding: 0.2rem;
+
+        ul {
+            margin: 0;
+            padding: 0 0 0 1.5rem;
+
+            .li {
+                margin-bottom: 0.4rem;
+            }
+        }
+    }
 }
