@@ -47,6 +47,18 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 - `navbarPosRight` : what menu to show on the right of the navbar
 - `navbarShowSub` : show the sub navbar. This menu is pulled from the `submenu` page in the current or parent namespaces. The menu is also shown on child pages. If no page is found, the sub navbar is automatically hidden
 
+- `navbarItemShowCreate` : show the Create Page menu item
+- `navbarItemShowShow` : show the Show Page menu item
+- `navbarItemShowRevs` : show the Revisions menu item
+- `navbarItemShowBacklink` : show the Backlinks menu item
+- `navbarItemShowRecent` : show the Recent Changes menu item
+- `navbarItemShowMedia` : show the Media Manager menu item
+- `navbarItemShowIndex` : show the Sitemap menu item
+- `navbarItemShowProfile` : show the Update Profile menu item
+- `navbarItemShowAdmin` : show the Admin menu item
+- `navbarItemShowLogin` : show the Login menu item
+- `navbarItemShowLogout` : show the Logout menu item
+
 - `searchButton` : show the search button as a icon or text
 
 - `heroTitle` : show the hero block on pages
@@ -74,7 +86,13 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 - `tocFull` : show the table of contents as a full height item
 
 - `pageToolsFloating` : when and if to show the floating page tools
-- `pageToolsFooter` : when and if to show page tools in the footer
+- `pageToolsFooter`
+
+- `pageToolsShowCreate` : show the Create Page item
+- `pageToolsShowEdit` : show the Edit Page item
+- `pageToolsShowRevs` : show the Revisions item
+- `pageToolsShowBacklink` : show the Backlinks item
+- `pageToolsShowTop` : show the Back to Top item
 
 - `footerCustomMenuText` : custom menu to use in the footer. Menu items are in the format of url|title with each item seperated by a semicolon
 - `footerSearch` : show the search bar in the footer
@@ -159,17 +177,18 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - `tools-menu` : Text for the combined tools DokuWiki menu title
 - `home` : Text for the breadcrumb home title
 
-## Issues
-
-- There is currently an issue when using the BookCreator Plugin. A fix is being investigated [#26](https://github.com/nomadjimbob/mikio/issues/26)
-
 ## Releases
 
-- **_2021-12-10_**
+- **_2021-12-11_**
 
   - Added table row background styling options
   - Fixed styling issue when using the indexmenu plugin [#35](https://github.com/nomadjimbob/mikio/issues/35). Thanks 3ole.
-  - Fixed tab/spaces in mikio.less
+  - Fixed inconsitant tab/spaces in mikio.less and mikio.css
+  - Removed debug logs from mikio.js
+  - Fixed input placeholders not hiding in prepopulated fields [#34](https://github.com/nomadjimbob/mikio/issues/34)
+  - Added option to hide menu items [#32](https://github.com/nomadjimbob/mikio/issues/32). Thanks annievoss.
+  - Fixed compadibility with BookCreator [#26](https://github.com/nomadjimbob/mikio/issues/26). Thanks johncourtland.
+  - Fixed Greebo styling errors not present in Hogsfather
 
 - **_2021-08-11_**
 
