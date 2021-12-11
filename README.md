@@ -186,7 +186,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   - Fixed inconsitant tab/spaces in mikio.less and mikio.css
   - Removed debug logs from mikio.js
   - Fixed input placeholders not hiding in prepopulated fields [#34](https://github.com/nomadjimbob/mikio/issues/34)
-  - Added option to hide menu items [#32](https://github.com/nomadjimbob/mikio/issues/32). Thanks annievoss.
+  - Added option to hide menu and page tool items [#32](https://github.com/nomadjimbob/mikio/issues/32). Thanks annievoss.
   - Fixed compadibility with BookCreator [#26](https://github.com/nomadjimbob/mikio/issues/26). Thanks johncourtland.
   - Fixed Greebo styling errors not present in Hogsfather
 
