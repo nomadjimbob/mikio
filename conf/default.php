@@ -68,6 +68,12 @@ $conf['tocFull']                = 0;
 $conf['pageToolsFloating']      = 'always';
 $conf['pageToolsFooter']        = 'none';
 
+$conf['pageToolsShowCreate']    = 'always';
+$conf['pageToolsShowEdit']      = 'always';
+$conf['pageToolsShowRevs']      = 'always';
+$conf['pageToolsShowBacklink']  = 'always';
+$conf['pageToolsShowTop']       = 'always';
+
 $conf['footerCustomMenuText']   = '';
 $conf['footerSearch']           = 0;
 $conf['footerInPage']           = 0;

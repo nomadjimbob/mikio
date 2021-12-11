@@ -207,7 +207,6 @@ class Template
                     if ($key == 'navbarPosRight') $value = 'dokuwiki';
                 }
                 break;
-
             case 'navbarItemShowCreate':
             case 'navbarItemShowShow':
             case 'navbarItemShowRevs':
@@ -222,7 +221,6 @@ class Template
                     $value = 'always';
                 }
                 break;
-
             case 'navbarItemShowLogin':
             case 'navbarItemShowLogout':
                 $value = strtolower($value);
@@ -230,7 +228,6 @@ class Template
                     $value = 'always';
                 }
                 break;
-
             case 'searchButton':
                 $value = strtolower($value);
                 if ($value != 'icon' && $value != 'text') $value = 'icon';
@@ -265,6 +262,16 @@ class Template
                 if ($value != 'none' && $value != 'page editors' && $value != 'always') {
                     if ($key == 'pageToolsFloating') $value = 'always';
                     if ($key == 'pageToolsFooter') $value = 'always';
+                }
+                break;
+            case 'pageToolsShowCreate':
+            case 'pageToolsShowEdit':
+            case 'pageToolsShowRevs':
+            case 'pageToolsShowBacklink':
+            case 'pageToolsShowTop':
+                $value = strtolower($value);
+                if ($value != 'always' && $value != 'logged in' && $value != 'logged out' && $value != 'never') {
+                    $value = 'always';
                 }
                 break;
             case 'showNotifications':
@@ -791,6 +798,9 @@ class Template
      */
     public function includePageTools($print = TRUE, $includeId = FALSE)
     {
+        global $USERINFO;
+
+        $loggedIn = (is_array($USERINFO) && count($USERINFO) > 0);
         $html = '';
 
         $html .= '<nav' . ($includeId ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
@@ -808,9 +818,12 @@ class Template
 
             $classes = array_unique($classes);
 
-            $html .= '<li class="' . implode(' ', $classes) . '">';
-            $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' . $item->getTitle() . '"><div class="icon">' . inlineSVG($item->getSvg()) . '</div><span class="a11y">' . $item->getLabel() . '</span></a>';
-            $html .= '</li>';
+            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()));
+            if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
+                $html .= '<li class="' . implode(' ', $classes) . '">';
+                $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' . $item->getTitle() . '"><div class="icon">' . inlineSVG($item->getSvg()) . '</div><span class="a11y">' . $item->getLabel() . '</span></a>';
+                $html .= '</li>';
+            }
         }
 
         $html .= '</ul>';

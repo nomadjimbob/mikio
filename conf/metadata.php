@@ -69,6 +69,12 @@ $meta['tocFull']                = array('onoff');
 $meta['pageToolsFloating']      = array('multichoice', '_choices' => array('none', 'page editors', 'always'));
 $meta['pageToolsFooter']        = array('multichoice', '_choices' => array('none', 'page editors', 'always'));
 
+$meta['pageToolsShowCreate']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['pageToolsShowEdit']      = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['pageToolsShowRevs']      = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['pageToolsShowBacklink']  = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['pageToolsShowTop']       = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+
 $meta['footerCustomMenuText']   = array('string');
 $meta['footerSearch']           = array('onoff');
 $meta['footerInPage']           = array('onoff');
