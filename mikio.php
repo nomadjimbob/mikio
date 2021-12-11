@@ -207,6 +207,30 @@ class Template
                     if ($key == 'navbarPosRight') $value = 'dokuwiki';
                 }
                 break;
+
+            case 'navbarItemShowCreate':
+            case 'navbarItemShowShow':
+            case 'navbarItemShowRevs':
+            case 'navbarItemShowBacklink':
+            case 'navbarItemShowRecent':
+            case 'navbarItemShowMedia':
+            case 'navbarItemShowIndex':
+            case 'navbarItemShowProfile':
+            case 'navbarItemShowAdmin':
+                $value = strtolower($value);
+                if ($value != 'always' && $value != 'logged in' && $value != 'logged out' && $value != 'never') {
+                    $value = 'always';
+                }
+                break;
+
+            case 'navbarItemShowLogin':
+            case 'navbarItemShowLogout':
+                $value = strtolower($value);
+                if ($value != 'always' && $value != 'never') {
+                    $value = 'always';
+                }
+                break;
+
             case 'searchButton':
                 $value = strtolower($value);
                 if ($value != 'icon' && $value != 'text') $value = 'icon';
