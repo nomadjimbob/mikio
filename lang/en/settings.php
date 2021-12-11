@@ -72,7 +72,7 @@ $lang['pageToolsShowCreate']    = 'Show the Create Page item';
 $lang['pageToolsShowEdit']      = 'Show the Edit Page item';
 $lang['pageToolsShowRevs']      = 'Show the Revisions item';
 $lang['pageToolsShowBacklink']  = 'Show the Backlinks item';
-$lang['pageToolsShowTop']       = 'Show the Top item';
+$lang['pageToolsShowTop']       = 'Show the Back to Top item';
 
 $lang['footerCustomMenuText']   = 'Allows custom menus in the footer. The format is url|title seperated by ;';
 $lang['footerSearch']           = 'Show the search bar in the footer';
