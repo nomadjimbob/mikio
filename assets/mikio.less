@@ -2297,3 +2297,43 @@ code, pre {
         }
     }
 }
+
+/* struct */
+.mikio .mode_admin table {
+    &.jsoneditor-values {
+        width: auto;
+    }
+
+    &.jsoneditor-tree, &.jsoneditor-values {
+        border-bottom: 0;
+
+        tbody {
+            tr {
+                background: transparent;
+            }
+
+            td {
+                padding: 0;
+
+                &.jsoneditor-separator {
+                    vertical-align: middle;
+                }
+            }
+
+        }
+
+        button {
+            background-color: transparent;
+            border: 0;
+            transition: none;
+
+            &:hover {
+                transition: none;
+            }
+        }
+
+        div.jsoneditor-value {
+            background-color: #fff;
+        }
+    }
+}
