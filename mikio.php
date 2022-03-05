@@ -1361,8 +1361,8 @@ class Template
                 // '<tr class="default"><td class="mikio-config-table-header" colspan="2">' . $this->mikioInlineIcon($icon) . tpl_getLang('config_' . $section) . '</td></tr><tr$1><td$2><span$3>$4</span>', $content);
 
                 $content = preg_replace(
-                    '/<tr class="default">\s*<td class="label">\s*<span class="outkey">(tpl»mikio»' . $search . ')<\/span>/',
-                    '<tr class="default"><td class="mikio-config-table-header" colspan="2">' . $this->mikioInlineIcon($icon) . tpl_getLang('config_' . $section) . '</td></tr><tr class="default"><td class="label"><span class="outkey">tpl»mikio»' . $search . '</span>',
+                    '/<tr(.*)>\s*<td class="label">\s*<span class="outkey">(tpl»mikio»' . $search . ')<\/span>/',
+                    '<tr$1><td class="mikio-config-table-header" colspan="2">' . $this->mikioInlineIcon($icon) . tpl_getLang('config_' . $section) . '</td></tr><tr class="default"><td class="label"><span class="outkey">tpl»mikio»' . $search . '</span>',
                     $content
                 );
             }
