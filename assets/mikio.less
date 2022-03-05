@@ -599,19 +599,28 @@ html, body {
     .dw__pagetools {
         margin-top: 1rem;
 
-        a {
-            margin: 0 .5rem;
-    
-            svg {
-                fill: @ini_footer_link_color;
+        .tools {
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                margin: 0 .5rem;
             }
-    
-            &:hover {
+
+            a {
+                // margin: 0 .5rem;
+        
                 svg {
-                    fill: @ini_footer_link_hover_color;
+                    fill: @ini_footer_link_color;
+                }
+        
+                &:hover {
+                    svg {
+                        fill: @ini_footer_link_hover_color;
+                    }
                 }
             }
-        }    
+        }
     }
 
     .mikio-nav {

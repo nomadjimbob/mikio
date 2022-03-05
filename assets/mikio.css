@@ -6,7 +6,7 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
- .mikio-sticky {
+.mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
 }
@@ -544,13 +544,17 @@ body {
 .mikio-footer .dw__pagetools {
   margin-top: 1rem;
 }
-.mikio-footer .dw__pagetools a {
+.mikio-footer .dw__pagetools .tools {
+  list-style-type: none;
+}
+.mikio-footer .dw__pagetools .tools li {
+  display: inline-block;
   margin: 0 .5rem;
 }
-.mikio-footer .dw__pagetools a svg {
+.mikio-footer .dw__pagetools .tools a svg {
   fill: #666;
 }
-.mikio-footer .dw__pagetools a:hover svg {
+.mikio-footer .dw__pagetools .tools a:hover svg {
   fill: #333;
 }
 .mikio-footer .mikio-nav {
