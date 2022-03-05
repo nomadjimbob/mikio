@@ -115,17 +115,19 @@ html, body {
 }
 
 .mikio-container {
-  max-width: @ini_site_width;
-  margin: 0 auto;
+    max-width: @ini_site_width;
+    margin: 0 auto;
 }
 
 .mikio-page-topheader {
     padding: 0 2rem;
-    border-bottom: 1px solid @ini_navbar_border_color;;
+    border-bottom: 1px solid @ini_navbar_border_color;
+    background-color: @ini_topheader_background_color;
 }
 
 .mikio-page-header {
     padding: 0 2rem;
+    background-color: @ini_header_background_color;
 }
 
 .mikio-sidebar-header {
@@ -204,11 +206,13 @@ html, body {
     border-bottom-color: @ini_navbar_border_color;
     background-color: @ini_navbar_background_color;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 
     .mikio-container {
-      display: flex;
-      flex: 1;
-      align-items: center;
+        display: flex;
+        flex: 1;
+        align-items: center;
     }
 
     .mikio-navbar-brand {
@@ -241,53 +245,53 @@ html, body {
     }
 
     .mikio-navbar-toggle {
-      display: none;
-      font-size: 1rem;
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-    
-      width: 1rem;
-      height: 1rem;
-      padding: 0;
-    
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-      vertical-align: middle;
-    
-      border: 0 none;
-      background: transparent;
-      
-      &:before, &:after {
-        content: "";
-      }
-
-      &:before, .icon, &:after {
-        display: block;
-      
-        width: 100%;
-        height: 0.2em;
-        margin: 0 0 0.2em;
-      
+        display: none;
+        font-size: 1rem;
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
+        
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+        
+        cursor: pointer;
         transition: transform 0.2s ease-in-out;
-      
-        border-radius: 0.05em;
-        background: @ini_control_text_color;
-      }
-      
-      &.open {
-        .icon {
-          transform: scale(0);
+        vertical-align: middle;
+        
+        border: 0 none;
+        background: transparent;
+        
+        &:before, &:after {
+            content: "";
+        }
+
+        &:before, .icon, &:after {
+            display: block;
+            
+            width: 100%;
+            height: 0.2em;
+            margin: 0 0 0.2em;
+        
+            transition: transform 0.2s ease-in-out;
+        
+            border-radius: 0.05em;
+            background: @ini_control_text_color;
         }
         
-        &:before {
-          transform: translateY(0.4em) rotate(135deg);
+        &.open {
+            .icon {
+                transform: scale(0);
+            }
+            
+            &:before {
+                transform: translateY(0.4em) rotate(135deg);
+            }
+            
+            &:after {
+                transform: translateY(-0.4em) rotate(-135deg);
+            }
         }
-        
-        &:after {
-          transform: translateY(-0.4em) rotate(-135deg);
-        }
-      }
     }
 
     .mikio-navbar-collapse {
@@ -2034,7 +2038,7 @@ code, pre {
         .mikio-navbar-brand {
             grid-column: 1 / span 1;
             grid-row: 1 / span 1;
-            margin-bottom: .5rem;
+            // margin-bottom: .5rem;
         }
 
         .mikio-navbar-toggle {

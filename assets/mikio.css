@@ -147,9 +147,11 @@ body {
 .mikio-page-topheader {
   padding: 0 2rem;
   border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
 }
 .mikio-page-header {
   padding: 0 2rem;
+  background-color: #fff;
 }
 .mikio-sidebar-header {
   border-bottom: 1px solid #e5e5e5;
@@ -210,6 +212,8 @@ body {
   border-bottom-color: #e5e5e5;
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
 }
 .mikio-navbar .mikio-container {
   display: flex;
@@ -2698,7 +2702,7 @@ pre {
   .mikio-navbar .mikio-navbar-brand {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    margin-bottom: .5rem;
+    /* margin-bottom: .5rem; */
   }
   .mikio-navbar .mikio-navbar-toggle {
     display: block;

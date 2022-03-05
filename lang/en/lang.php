@@ -48,6 +48,9 @@ $lang['__control_border_color__']           = 'The border color for controls';
 $lang['__control_background_color__']       = 'The background color for controls';
 $lang['__input_border_color__']             = 'The border color for controls';
 
+$lang['__topheader_background_color__']     = 'The background color for the top header part';
+$lang['__header_background_color__']        = 'The background color for the header part';
+
 $lang['__navbar_background_color__']        = 'The background color for the menu';
 $lang['__navbar_border_color__']            = 'The border color for the menu';
 $lang['__navbar_brand_text_color__']        = 'The font color for the site title';
