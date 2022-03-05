@@ -294,6 +294,8 @@ class Template
             case 'heroImagePropagation':
             case 'breadcrumbPrefix':
             case 'breadcrumbSep':
+            case 'youareherePrefix':
+            case 'youarehereSep':
             case 'sidebarShowLeft':
             case 'sidebarShowRight':
             case 'tocFull':
@@ -301,7 +303,7 @@ class Template
             case 'licenseImageOnly':
             case 'includePageUseACL':
             case 'includePagePropagate':
-            case 'breadcrumbHideHome':
+            case 'youarehereHideHome':
             case 'tagsConsolidate':
             case 'footerInPage':
             case 'sidebarMobileDefaultCollapse':
@@ -317,6 +319,8 @@ class Template
             case 'navbarCustomMenuText':
             case 'breadcrumbPrefixText':
             case 'breadcrumbSepText':
+            case 'youareherePrefixText':
+            case 'youarehereSepText':
             case 'footerCustomMenuText':
                 break;
             case 'useLESS':
