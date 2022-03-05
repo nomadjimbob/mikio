@@ -193,7 +193,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
   - Fixed page tools in footer not being horizontal [#38]. Thanks chitland
   - Fixed Mikio Config headers disappearing in some cases
-  - Seperated Breadcrumbs and You Are Here items [#36]. Thanks chitland
+  - Separated Breadcrumbs and You Are Here items [#36]. Thanks chitland
 
 - **_2021-12-11_**
 
