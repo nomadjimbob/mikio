@@ -51,8 +51,15 @@ $meta['breadcrumbPrefix']       = array('onoff');
 $meta['breadcrumbPrefixText']   = array('string');
 $meta['breadcrumbSep']          = array('onoff');
 $meta['breadcrumbSepText']      = array('string');
-$meta['breadcrumbHome']         = array('multichoice', '_choices' => array('none', 'page title', 'home', 'icon'));
-$meta['breadcrumbShowLast']     = array('numeric');
+
+$meta['youarehereHideHome']     = array('onoff');
+$meta['youareherePosition']     = array('multichoice', '_choices' => array('none', 'top', 'hero', 'page'));
+$meta['youareherePrefix']       = array('onoff');
+$meta['youareherePrefixText']   = array('string');
+$meta['youarehereSep']          = array('onoff');
+$meta['youarehereSepText']      = array('string');
+$meta['youarehereHome']         = array('multichoice', '_choices' => array('none', 'page title', 'home', 'icon'));
+$meta['youarehereShowLast']     = array('numeric');
 
 $meta['sidebarShowLeft']        = array('onoff');
 $meta['sidebarAlwaysShowLeft']  = array('onoff');

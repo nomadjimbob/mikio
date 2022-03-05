@@ -18,6 +18,7 @@ $lang['config_search']                      = 'Search';
 $lang['config_hero']                        = 'Hero';
 $lang['config_tags']                        = 'Tags';
 $lang['config_breadcrumb']                  = 'Breadcrumb';
+$lang['config_youarehere']                  = 'You Are Here';
 $lang['config_sidebar']                     = 'Sidebars';
 $lang['config_toc']                         = 'Table of Contents';
 $lang['config_pagetools']                   = 'Page Tools';

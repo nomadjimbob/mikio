@@ -6,7 +6,7 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-.mikio-sticky {
+ .mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
 }
@@ -163,34 +163,42 @@ body {
 .mikio-small-only {
   display: none;
 }
-.mikio .mikio-breadcrumbs {
+.mikio .mikio-breadcrumbs,
+.mikio .mikio-youarehere {
   padding: .75rem 2rem;
   background-color: #ccc;
   font-size: 80%;
   color: #808080;
 }
 .mikio .mikio-breadcrumbs span.curid a,
-.mikio .mikio-breadcrumbs a {
+.mikio .mikio-breadcrumbs a,
+.mikio .mikio-youarehere span.curid a,
+.mikio .mikio-youarehere a {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: #666;
   font-weight: normal;
 }
 .mikio .mikio-breadcrumbs span.curid a:hover,
-.mikio .mikio-breadcrumbs a:hover {
+.mikio .mikio-breadcrumbs a:hover,
+.mikio .mikio-youarehere span.curid a:hover,
+.mikio .mikio-youarehere a:hover {
   color: #000;
 }
-.mikio .mikio-breadcrumbs ul {
+.mikio .mikio-breadcrumbs ul,
+.mikio .mikio-youarehere ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.mikio .mikio-breadcrumbs li {
+.mikio .mikio-breadcrumbs li,
+.mikio .mikio-youarehere li {
   display: inline-block;
   margin-right: .5rem;
   vertical-align: text-bottom;
 }
-.mikio .mikio-breadcrumbs svg {
+.mikio .mikio-breadcrumbs svg,
+.mikio .mikio-youarehere svg {
   width: .9rem;
   height: .9rem;
 }
@@ -326,13 +334,14 @@ body {
   min-height: 5rem;
   padding: 2rem;
 }
-.mikio-hero .mikio-hero-text .mikio-breadcrumbs {
+.mikio-hero .mikio-hero-text .mikio-breadcrumbs,
+.mikio-hero .mikio-hero-text .mikio-youarehere {
   background-color: transparent;
   padding: 0;
-  margin: 0 0 .75rem 0;
+  margin: 0;
 }
 .mikio-hero .mikio-hero-text h1 {
-  margin: 0 0 1rem 0;
+  margin: .75rem 0 1rem 0;
   color: #000;
   line-height: 1.2;
 }
@@ -848,6 +857,7 @@ body {
   border-collapse: collapse;
   margin-bottom: 1rem;
   font-size: 90%;
+  border-bottom: 1px solid #e5e5e5;
 }
 .mikio .mode_show table tr,
 .mikio.dokuwiki .mode_showtag table.ul tr,
@@ -2829,6 +2839,7 @@ pre {
     padding-bottom: 0;
   }
   .mikio .mikio-breadcrumbs,
+  .mikio .mikio-youarehere,
   .mikio .mikio-hero,
   .mikio .mikio-footer {
     background-color: #fff !important;
@@ -2900,4 +2911,36 @@ pre {
 .mikio .indexmenu_toc .indexmenu_toc_inside ul .li {
   margin-bottom: 0.4rem;
 }
-
+.mikio .mode_admin table.jsoneditor-values {
+  width: auto;
+}
+.mikio .mode_admin table.jsoneditor-tree,
+.mikio .mode_admin table.jsoneditor-values {
+  border-bottom: 0;
+}
+.mikio .mode_admin table.jsoneditor-tree tbody tr,
+.mikio .mode_admin table.jsoneditor-values tbody tr {
+  background: transparent;
+}
+.mikio .mode_admin table.jsoneditor-tree tbody td,
+.mikio .mode_admin table.jsoneditor-values tbody td {
+  padding: 0;
+}
+.mikio .mode_admin table.jsoneditor-tree tbody td.jsoneditor-separator,
+.mikio .mode_admin table.jsoneditor-values tbody td.jsoneditor-separator {
+  vertical-align: middle;
+}
+.mikio .mode_admin table.jsoneditor-tree button,
+.mikio .mode_admin table.jsoneditor-values button {
+  background-color: transparent;
+  border: 0;
+  transition: none;
+}
+.mikio .mode_admin table.jsoneditor-tree button:hover,
+.mikio .mode_admin table.jsoneditor-values button:hover {
+  transition: none;
+}
+.mikio .mode_admin table.jsoneditor-tree div.jsoneditor-value,
+.mikio .mode_admin table.jsoneditor-values div.jsoneditor-value {
+  background-color: #fff;
+}

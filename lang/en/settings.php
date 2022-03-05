@@ -53,6 +53,8 @@ $lang['breadcrumbSepText']      = 'Replacement breadcrumb seperator text. Use ca
 $lang['breadcrumbHome']         = 'Change the text or icon used for the Home page in the breadcrumb bar';
 $lang['breadcrumbShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
 
+$lang['youareherePosition']     = 'Position of the you are here bar on the page';
+
 $lang['sidebarShowLeft']        = 'Show the left sidebar';
 $lang['sidebarAlwaysShowLeft']  = 'Always show the left sidebar, even when there is no content';
 $lang['sidebarLeftRow1']        = 'Content to show in the first row on the left sidebar';

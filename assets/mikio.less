@@ -160,37 +160,39 @@ html, body {
     display: none;
 }
 
-.mikio .mikio-breadcrumbs {
-    padding: .75rem 2rem;
-    background-color: @ini_breadcrumb_background_color;
-    font-size: @ini_breadcrumb_font_size;
-    color: @ini_breadcrumb_text_color;
+.mikio {
+    .mikio-breadcrumbs, .mikio-youarehere {
+        padding: .75rem 2rem;
+        background-color: @ini_breadcrumb_background_color;
+        font-size: @ini_breadcrumb_font_size;
+        color: @ini_breadcrumb_text_color;
 
-    span.curid a, a {
-        .mikio-text-decoration(none);
-        color: @ini_breadcrumb_link_color;
-        font-weight: normal;
+        span.curid a, a {
+            .mikio-text-decoration(none);
+            color: @ini_breadcrumb_link_color;
+            font-weight: normal;
 
-        &:hover {
-            color: @ini_breadcrumb_link_hover_color;
+            &:hover {
+                color: @ini_breadcrumb_link_hover_color;
+            }
         }
-    }
 
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-    li {
-        display: inline-block;
-        margin-right: .5rem;
-        vertical-align: text-bottom;
-    }
+        li {
+            display: inline-block;
+            margin-right: .5rem;
+            vertical-align: text-bottom;
+        }
 
-    svg {
-        width: .9rem;
-        height: .9rem;
+        svg {
+            width: .9rem;
+            height: .9rem;
+        }
     }
 }
 
@@ -341,8 +343,8 @@ html, body {
     background-color: @ini_hero_background_color;
     
     .mikio-container {
-      display: flex;
-      flex: 1;
+        display: flex;
+        flex: 1;
     }
     
     .mikio-hero-text {
@@ -350,14 +352,14 @@ html, body {
         min-height: 5rem;
         padding: 2rem;
 
-        .mikio-breadcrumbs {
+        .mikio-breadcrumbs, .mikio-youarehere {
             background-color: transparent;
             padding: 0;
-            margin: 0 0 .75rem 0;
+            margin: 0;
         }
 
         h1 {
-            margin: 0 0 1rem 0;
+            margin: .75rem 0 1rem 0;
             color: @ini_hero_title_color;
             line-height: 1.2
         }
@@ -2217,7 +2219,7 @@ code, pre {
             }
         }
 
-        .mikio-breadcrumbs, .mikio-hero, .mikio-footer {
+        .mikio-breadcrumbs, .mikio-youarehere, .mikio-hero, .mikio-footer {
             background-color: #fff !important;
         }
     }

@@ -47,11 +47,18 @@ $conf['tagsConsolidate']        = 1;
 $conf['breadcrumbHideHome']     = 1;
 $conf['breadcrumbPosition']     = 'hero';
 $conf['breadcrumbPrefix']       = 0;
-$conf['breadcrumbPrefixText']   = 'You are here:';
+$conf['breadcrumbPrefixText']   = 'Trace:';
 $conf['breadcrumbSep']          = 0;
 $conf['breadcrumbSepText']      = ' » ';
-$conf['breadcrumbHome']         = 'page title';
-$conf['breadcrumbShowLast']     = 0;
+
+$conf['youarehereHideHome']     = 1;
+$conf['youareherePosition']     = 'hero';
+$conf['youareherePrefix']       = 0;
+$conf['youareherePrefixText']   = 'You are here:';
+$conf['youarehereSep']          = 0;
+$conf['youarehereSepText']      = ' » ';
+$conf['youarehereHome']         = 'page title';
+$conf['youarehereShowLast']     = 0;
 
 $conf['sidebarShowLeft']        = 1;
 $conf['sidebarAlwaysShowLeft']  = 0;

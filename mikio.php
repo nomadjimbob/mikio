@@ -240,7 +240,11 @@ class Template
                 $value = strtolower($value);
                 if ($value != 'none' && $value != 'top' && $value != 'hero' && $value != 'page') $value = 'top';
                 break;
-            case 'breadcrumbHome':
+            case 'youareherePosition':
+                $value = strtolower($value);
+                if ($value != 'none' && $value != 'top' && $value != 'hero' && $value != 'page') $value = 'top';
+                break;
+            case 'youarehereHome':
                 $value = strtolower($value);
                 if ($value != 'none' && $value != 'page title' && $value != 'home' && $value != 'icon') $value = 'page title';
                 break;
@@ -305,7 +309,7 @@ class Template
             case 'sidebarAlwaysShowRight':
                 $value = (bool)$value;
                 break;
-            case 'breadcrumbShowLast':
+            case 'youarehereShowLast':
                 $value = (int)$value;
                 break;
             case 'iconTag':
@@ -994,8 +998,42 @@ class Template
 
                     $html .= '</ul>';
                 }
-            } else if ($conf['youarehere']) {
-                if (!$this->getConf('breadcrumbPrefix') && !$this->getConf('breadcrumbSep')) {
+            }
+
+        } else {
+            $html .= '&#8810; ';
+            if (isset($_GET['page'])) {
+                $html .= '<a href="' . wl($ID, array('do' => $ACT)) . '">Back</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
+            }
+            $html .= '<a href="' . wl($ID) . '">View Page</a>';
+        }
+
+        $html .= '</div>';
+        $html .= '</div>';
+
+        if ($parse) $html = $this->includeIcons($html);
+        if ($print) echo $html;
+        return $html;
+    }
+
+    /**
+     * Print or return you are here trail
+     *
+     * @param   boolean  $print     print out trail
+     * @param   boolean  $parse     parse trail before printing
+     * @return  string              html string containing breadcrumbs
+     */
+    public function includeYouAreHere($print = TRUE, $parse = TRUE)
+    {
+        global $conf, $ID, $lang, $ACT;
+
+        if ($this->getConf('youarehereHideHome') && $ID == 'start' && $ACT == 'show' || $ACT == 'showtag') return '';
+
+        $html = '<div class="mikio-youarehere">';
+        $html .= '<div class="mikio-container">';
+        if ($ACT == 'show') {
+            if ($conf['youarehere']) {
+                if (!$this->getConf('youareherePrefix') && !$this->getConf('youarehereSep')) {
                     ob_start();
                     tpl_youarehere();
                     $html .= ob_get_contents();
@@ -1004,18 +1042,18 @@ class Template
                     $sep = ' » ';
                     $prefix = $lang['youarehere'];
 
-                    if ($this->getConf('breadcrumbSep')) {
-                        $sep = $this->getConf('breadcrumbSepText');
-                        $img = $this->getMediaFile('breadcrumb-sep', FALSE);
+                    if ($this->getConf('youarehereSep')) {
+                        $sep = $this->getConf('youarehereSepText');
+                        $img = $this->getMediaFile('youarehere-sep', FALSE);
 
                         if ($img !== FALSE) {
                             $sep = '<img src="' . $img . '">';
                         }
                     }
 
-                    if ($this->getConf('breadcrumbPrefix')) {
-                        $prefix = $this->getConf('breadcrumbPrefixText');
-                        $img = $this->getMediaFile('breadcrumb-prefix', FALSE);
+                    if ($this->getConf('youareherePrefix')) {
+                        $prefix = $this->getConf('youareherePrefixText');
+                        $img = $this->getMediaFile('youarehere-prefix', FALSE);
 
                         if ($img !== FALSE) {
                             $prefix = '<img src="' . $img . '">';
@@ -1052,7 +1090,7 @@ class Template
                 }
             }
 
-            $showLast = $this->getConf('breadcrumbShowLast');
+            $showLast = $this->getConf('youarehereShowLast');
             if ($showLast != 0) {
                 preg_match_all('/(<li[^>]*>.+?<\/li>)/', $html, $matches);
                 if (count($matches) > 0 && count($matches[0]) > ($showLast * 2) + 2) {
@@ -1071,7 +1109,7 @@ class Template
                 }
             }
 
-            switch ($this->getConf('breadcrumbHome')) {
+            switch ($this->getConf('youarehereHome')) {
                 case 'none':
                     $html = preg_replace('/<li[^>]*>.+?<\/li>/', '', $html, 2);
                     break;
@@ -1127,6 +1165,7 @@ class Template
             $html .= '<div class="mikio-hero">';
             $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
+            if ($this->getConf('youareherePosition') == 'hero') $html .= $this->includeYouAreHere(FALSE);
             if ($this->getConf('breadcrumbPosition') == 'hero') $html .= $this->includeBreadcrumbs(FALSE);
 
             $html .= '<h1 class="mikio-hero-title">';
@@ -1305,6 +1344,7 @@ class Template
                 'hero'          => array('heroTitle',               ''),
                 'tags'          => array('tagsConsolidate',         ''),
                 'breadcrumb'    => array('breadcrumbHideHome',      ''),
+                'youarehere'    => array('youareherePosition',      ''),
                 'sidebar'       => array('sidebarShowLeft',         ''),
                 'toc'           => array('tocFull',                 ''),
                 'pagetools'     => array('pageToolsFloating',       ''),
