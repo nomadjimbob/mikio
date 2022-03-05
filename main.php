@@ -42,7 +42,7 @@ $showSidebar = $hasSidebar && ($ACT=='show');
     echo '<a name="dokuwiki__top" id="dokuwiki__top"></a>';
 
     if(($ACT == 'show' && $TEMPLATE->getConf('youareherePosition') == 'top') || ($ACT == 'show' && $TEMPLATE->getConf('youareherePosition') == 'hero' && $TEMPLATE->getConf('heroTitle') == FALSE) || ($ACT != 'show')) $TEMPLATE->includeYouAreHere();
-    if(($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'top') || ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'hero' && $TEMPLATE->getConf('heroTitle') == FALSE) || ($ACT != 'show')) $TEMPLATE->includeBreadcrumbs();
+    if(($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'top') || ($ACT == 'show' && $TEMPLATE->getConf('breadcrumbPosition') == 'hero' && $TEMPLATE->getConf('heroTitle') == FALSE)) $TEMPLATE->includeBreadcrumbs();
     if($ACT == 'show' && $TEMPLATE->getConf('heroTitle')) $TEMPLATE->includeHero();
 
     echo '<main class="mikio-page">';

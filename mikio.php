@@ -999,13 +999,6 @@ class Template
                     $html .= '</ul>';
                 }
             }
-
-        } else {
-            $html .= '&#8810; ';
-            if (isset($_GET['page'])) {
-                $html .= '<a href="' . wl($ID, array('do' => $ACT)) . '">Back</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
-            }
-            $html .= '<a href="' . wl($ID) . '">View Page</a>';
         }
 
         $html .= '</div>';
