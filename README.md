@@ -21,6 +21,9 @@
 
 ## Changes
 
+- 2022-03-05
+  - Breadcrumbs and You Are Here have now been seperated instead of combined. This removed the options `breadcrumbHome` and `breadcrumbShowLast` for the breadcrumbs as it only applies to the you are here bar. **Breadcrumbs and You Are Here options may have reset**
+
 - 2020-09-27
   - Sidebars now collapse by default on mobile. This can be overridden with the `sidebarMobileDefaultCollapse` option
   - The mikio LESS stylesheet is now disabled by default, with a precompilied CSS used. This can be reverted using the `useLESS` option
@@ -72,8 +75,15 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 - `breadcrumbPrefixText` : text to set the breadcrumb prefix. Requires `breadcrumbPrefix` to be enabled
 - `breadcrumbSep` : enable changing the breadcrumb seperator
 - `breadcrumbSepText` : text to set the breadcrumb seperator. Requires `breadcrumbSep` to be enabled
-- `breadcrumbHome` : change the breadcrumb home item to none, page title of root page, 'home' or an icon/image. The 'home' text is pulled from the `home` language value
-- `breadcrumbShowLast` : only show an amount of breadcrumbs from the last. Will also show the home item in the list if enabled. Set this to `0` to show all items
+
+- `youarehereHideHome` : hide you are here in the root namespace
+- `youareherePosition` : where to display the you are here, either under the navbar, in the hero element or above the page content
+- `youareherePrefix` : enable changing the you are here prefix
+- `youareherePrefixText` : text to set the you are here prefix. Requires `you are herePrefix` to be enabled
+- `youarehereSep` : enable changing the you are here seperator
+- `youarehereSepText` : text to set the you are here seperator. Requires `you are hereSep` to be enabled
+- `youarehereHome` : change the you are here home item to none, page title of root page, 'home' or an icon/image. The 'home' text is pulled from the `home` language value
+- `youarehereShowLast` : only show an amount of you are here from the last. Will also show the home item in the list if enabled. Set this to `0` to show all items
 
 - `sidebarShowLeft` : show the left sidebar if content is found
 - `sidebarLeftRow1` : content to show in the first row of the left sidebar
@@ -178,6 +188,11 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - `home` : Text for the breadcrumb home title
 
 ## Releases
+
+- **_2022-03-05_**
+
+  - Fixed Mikio Config headers disappearing in some cases
+  - Seperated Breadcrumbs and You Are Here items [#36]. Thanks chtiland
 
 - **_2021-12-11_**
 
