@@ -91,3 +91,7 @@ $meta['licenseImageOnly']       = array('onoff');
 
 $meta['includePageUseACL']      = array('onoff');
 $meta['includePagePropagate']   = array('onoff');
+
+$meta['stickyTopHeader']        = array('onoff');
+$meta['stickyNavbar']           = array('onoff');
+$meta['stickyHeader']           = array('onoff');

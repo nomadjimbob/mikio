@@ -85,3 +85,7 @@ $lang['licenseImageOnly']       = 'Show the footer license as images only';
 
 $lang['includePageUseACL']      = 'Respect ACL when including pages';
 $lang['includePagePropagate']   = 'Search higher namespaces when including pages';
+
+$lang['stickyTopHeader']        = 'Make the top header part sticky';
+$lang['stickyNavbar']           = 'Make the navbar sticky';
+$lang['stickyHeader']           = 'Make the header part sticky';

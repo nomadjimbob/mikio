@@ -33,7 +33,7 @@
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   border-color: #ced4da;
   line-height: inherit;
 }
@@ -57,7 +57,7 @@
 .mikio-controls button:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -128,8 +128,8 @@ body {
 }
 html,
 body {
-  background-color: #fff;
-  color: #333;
+  background-color: #ffffff;
+  color: #333333;
   margin: 0;
 }
 #dokuwiki__site {
@@ -147,11 +147,17 @@ body {
 .mikio-page-topheader {
   padding: 0 2rem;
   border-bottom: 1px solid #e5e5e5;
-  background-color: #fff;
+  background-color: #f8bf43;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 1001;
 }
 .mikio-page-header {
   padding: 0 2rem;
-  background-color: #fff;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 999;
 }
 .mikio-sidebar-header {
   border-bottom: 1px solid #e5e5e5;
@@ -168,7 +174,7 @@ body {
 .mikio .mikio-breadcrumbs,
 .mikio .mikio-youarehere {
   padding: .75rem 2rem;
-  background-color: #ccc;
+  background-color: #cccccc;
   font-size: 80%;
   color: #808080;
 }
@@ -178,14 +184,14 @@ body {
 .mikio .mikio-youarehere a {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #666;
+  color: #666666;
   font-weight: normal;
 }
 .mikio .mikio-breadcrumbs span.curid a:hover,
 .mikio .mikio-breadcrumbs a:hover,
 .mikio .mikio-youarehere span.curid a:hover,
 .mikio .mikio-youarehere a:hover {
-  color: #000;
+  color: #000000;
 }
 .mikio .mikio-breadcrumbs ul,
 .mikio .mikio-youarehere ul {
@@ -210,10 +216,11 @@ body {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #e5e5e5;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   width: 100%;
   box-sizing: border-box;
+  z-index: 1000;
 }
 .mikio-navbar .mikio-container {
   display: flex;
@@ -298,7 +305,7 @@ body {
   margin: 0 .5rem;
 }
 .mikio-sub-navbar {
-  color: #666;
+  color: #666666;
   justify-content: center;
   padding: .75rem 1rem;
   border-color: #e5e5e5;
@@ -321,10 +328,10 @@ body {
   margin: 0 .5rem;
 }
 .mikio-sub-navbar a {
-  color: #666;
+  color: #666666;
 }
 .mikio-sub-navbar a:hover {
-  color: #000;
+  color: #000000;
 }
 .mikio-hero {
   background-color: #ddf7fb;
@@ -346,14 +353,14 @@ body {
 }
 .mikio-hero .mikio-hero-text h1 {
   margin: .75rem 0 1rem 0;
-  color: #000;
+  color: #000000;
   line-height: 1.2;
 }
 .mikio-hero .mikio-hero-text h2 {
   margin: 0;
   font-weight: normal;
   font-size: 1.25rem;
-  color: #666;
+  color: #666666;
 }
 .mikio-hero .mikio-hero-image {
   display: flex;
@@ -377,17 +384,17 @@ body {
   margin: 0 .25rem;
   font-size: 80%;
   padding: .25rem .75rem;
-  border: 1px solid #999;
+  border: 1px solid #999999;
   border-radius: 1rem;
-  background-color: #999;
-  color: #fff;
+  background-color: #999999;
+  color: #ffffff;
   -webkit-text-decoration: none;
   text-decoration: none;
   transition: all .15s ease-in-out;
 }
 .mikio-tags a:hover {
   background-color: transparent;
-  color: #999;
+  color: #999999;
 }
 .mikio-sidebar {
   width: 14rem;
@@ -395,7 +402,7 @@ body {
   background-color: #f2f2f2;
   padding: 1rem;
   font-size: 90%;
-  color: #666;
+  color: #666666;
 }
 .mikio-sidebar.mikio-sidebar-left {
   border-left: 1px solid #e5e5e5;
@@ -455,12 +462,12 @@ body {
 .mikio-sidebar .mikio-sidebar-content a {
   display: block;
   margin: 1rem 0;
-  color: #666;
+  color: #666666;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 .mikio-sidebar .mikio-sidebar-content a:hover {
-  color: #333;
+  color: #333333;
 }
 .mikio-sidebar .mikio-sidebar-content ul,
 .mikio-sidebar .mikio-sidebar-content ul.idx {
@@ -535,15 +542,15 @@ body {
 .mikio-footer {
   padding: 2rem;
   color: #737373;
-  background-color: #ccc;
+  background-color: #cccccc;
   font-size: 80%;
   text-align: center;
 }
 .mikio-footer a {
-  color: #666;
+  color: #666666;
 }
 .mikio-footer a:hover {
-  color: #333;
+  color: #333333;
 }
 .mikio-footer .dw__pagetools {
   margin-top: 1rem;
@@ -556,10 +563,10 @@ body {
   margin: 0 .5rem;
 }
 .mikio-footer .dw__pagetools .tools a svg {
-  fill: #666;
+  fill: #666666;
 }
 .mikio-footer .dw__pagetools .tools a:hover svg {
-  fill: #333;
+  fill: #333333;
 }
 .mikio-footer .mikio-nav {
   margin-top: 1rem;
@@ -591,7 +598,7 @@ body {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio-control[type=color] {
   padding: 0;
@@ -609,7 +616,7 @@ body {
 .mikio-button:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -724,7 +731,7 @@ body {
 .mikio .mikio-sidebar .mikio-search button,
 .mikio .mikio-footer .mikio-search button,
 .mikio .mikio-search button {
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-radius: 0 .25rem .25rem 0;
   border-color: #6c757d;
@@ -733,7 +740,7 @@ body {
 .mikio .mikio-sidebar .mikio-search button:hover,
 .mikio .mikio-footer .mikio-search button:hover,
 .mikio .mikio-search button:hover {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #495057;
 }
 .mikio .mikio-navbar .mikio-search .mikio-iicon,
@@ -758,10 +765,10 @@ body {
   display: block;
 }
 #dw__pagetools a svg {
-  fill: #ccc;
+  fill: #cccccc;
 }
 #dw__pagetools a:hover svg {
-  fill: #666;
+  fill: #666666;
 }
 .mode_admin .mikio-toc {
   background-color: #f2f2f2;
@@ -833,13 +840,13 @@ body {
 .mikio .mikio-toc a {
   display: block;
   font-size: 80%;
-  color: #666;
+  color: #666666;
   -webkit-text-decoration: none;
   text-decoration: none;
   padding: .2rem 0;
 }
 .mikio .mikio-toc a:hover {
-  color: #000;
+  color: #000000;
 }
 .mikio-icon {
   margin-right: .25rem;
@@ -884,7 +891,7 @@ body {
 .mikio .mode_show table tbody tr:nth-child(odd),
 .mikio.dokuwiki .mode_showtag table.ul tbody tr:nth-child(odd),
 .mikio .mode_admin table tbody tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio .mode_show table tbody tr:nth-child(even),
 .mikio.dokuwiki .mode_showtag table.ul tbody tr:nth-child(even),
@@ -926,7 +933,7 @@ body {
   padding: 1rem 1.5rem;
   border: 1px solid #e5e5e5;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  background-color: #fff;
+  background-color: #ffffff;
   color: #1a1a1a;
 }
 .mikio-dropdown.closed {
@@ -1017,7 +1024,7 @@ body {
   line-height: 1.5;
   text-align: left;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   border: .1px solid #ced4da;
   border-radius: .25rem;
   -webkit-user-select: none;
@@ -1039,14 +1046,14 @@ body {
   content: "Browse";
   padding: .25rem 1rem;
   line-height: 1.5;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-radius: 0 .25rem .25rem 0;
   border: 1px solid #6c757d;
   transition: all .15s ease-in-out;
 }
 .mikio-input-file:hover:before {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #495057;
 }
 code,
@@ -1125,7 +1132,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   border-color: #ced4da;
   line-height: inherit;
 }
@@ -1205,7 +1212,7 @@ pre {
 .mikio .mode_admin button:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -1458,7 +1465,7 @@ pre {
   border: 1px solid #6c757d;
   border-radius: .25rem;
   margin: 1rem 1rem;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a,
 .mikio .mode_admin div.ui-admin ul.admin_plugins li a {
@@ -1487,13 +1494,13 @@ pre {
 .mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a:hover svg,
 .mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover svg {
-  fill: #fff;
+  fill: #ffffff;
 }
 .mikio .mode_admin .mikio-config-table-header {
   background-color: #ddd;
@@ -1511,7 +1518,7 @@ pre {
   text-align: left;
 }
 .mikio .mode_admin #extension__list ul.extensionList li:nth-child(odd) {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio .mode_admin #extension__list ul.extensionList li:nth-child(even) {
   background-color: #f2f2f2;
@@ -1530,7 +1537,7 @@ pre {
   background-color: #fff;
 }
 .mikio .mode_admin #acl_manager table tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio .mode_admin #acl_manager table tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -1706,7 +1713,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1733,7 +1740,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   display: inline-block;
   text-align: center;
   border-color: #6c757d;
@@ -1759,7 +1766,7 @@ pre {
 #media__manager .qq-upload-list a:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -1812,7 +1819,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   border-color: #ced4da;
   line-height: inherit;
 }
@@ -2019,7 +2026,7 @@ pre {
 .mikio #mediamanager__page .qq-uploader .rows li,
 #media__manager .filelist .rows li,
 #media__manager .qq-uploader .rows li {
-  background-color: #fff;
+  background-color: #ffffff;
   max-height: none;
   font-size: 90%;
 }
@@ -2272,7 +2279,7 @@ pre {
 }
 .mikio #mediamanager__page #media__content .odd,
 #media__manager #media__content .odd {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio #mediamanager__page #media__content .even,
 #media__manager #media__content .even {
@@ -2331,7 +2338,7 @@ pre {
   padding: 1rem 1.5rem;
   border: 1px solid #e5e5e5;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  background-color: #fff;
+  background-color: #ffffff;
   color: #999;
 }
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a {
@@ -2375,7 +2382,7 @@ pre {
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result {
   border-top: 1px solid #e5e5e5;
   padding: .75rem;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result:nth-child(2n+1) {
   background-color: #f2f2f2;
@@ -2463,7 +2470,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   border-color: #ced4da;
   line-height: inherit;
 }
@@ -2487,7 +2494,7 @@ pre {
 .mikio .content_partial button:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -2560,7 +2567,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   border-color: #ced4da;
   line-height: inherit;
 }
@@ -2584,7 +2591,7 @@ pre {
 .mikio div.dokuwiki div.comment_wrapper button:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -2650,7 +2657,7 @@ pre {
   vertical-align: middle;
   padding: .375rem .75rem;
   color: #495057;
-  background-color: #fff;
+  background-color: #ffffff;
   display: inline-block;
   text-align: center;
   border-color: #6c757d;
@@ -2666,7 +2673,7 @@ pre {
 .mikio div.dokuwiki div.comment_wrapper input[type=submit]:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
@@ -2695,6 +2702,9 @@ pre {
   .mikio-small-only {
     display: inline-block;
   }
+  .mikio-navbar {
+    padding-bottom: 0;
+  }
   .mikio-navbar .mikio-container {
     display: grid;
     grid-template-columns: auto 3rem;
@@ -2702,7 +2712,7 @@ pre {
   .mikio-navbar .mikio-navbar-brand {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    /* margin-bottom: .5rem; */
+    margin-bottom: .5rem;
   }
   .mikio-navbar .mikio-navbar-toggle {
     display: block;
@@ -2720,6 +2730,7 @@ pre {
     margin: 0 -2rem;
     padding-top: .5rem;
     padding-right: 1rem;
+    padding-bottom: .5rem;
     border-top: 1px solid rgba(0,0,0,0.1);
   }
   .mikio-navbar .mikio-nav-item {

@@ -90,3 +90,6 @@ $conf['licenseImageOnly']       = 0;
 
 $conf['includePageUseACL']      = 1;
 $conf['includePagePropagate']   = 1;
+
+$conf['fixedTopHeader']         = 0;
+$conf['fixedNavbar']            = 0;

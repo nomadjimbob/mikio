@@ -10,6 +10,9 @@
 var mikio = {
     queueResize: false,
     mikioCSS: false,
+    stickyItems: [],
+    stickyOffset: 0,
+    stickyIndex: 2010,
 
     ready: function () {
         var self = this;
@@ -19,6 +22,57 @@ var mikio = {
         this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
         this.indexmenuPatch();
 
+
+        var updateStickyItems = function () {
+            var stickyElements = document.getElementsByClassName('mikio-sticky');
+            self.stickyItems = [];
+            if (stickyElements && stickyElements.length > 0) {
+                var stickyOffset = stickyElements[0].offsetTop;
+                var stickyHeightCount = stickyOffset;
+
+                [].forEach.call(stickyElements, (item) => {
+                    var top = stickyOffset;
+                    if (item.offsetTop - stickyHeightCount > stickyHeightCount) {
+                        top = stickyHeightCount;
+                    }
+
+                    self.stickyItems.push({ element: item, offsetYTop: top, debugItemTop: item.offsetTop, debugOffset: stickyOffset, debugHeight: stickyHeightCount });
+                    stickyHeightCount += item.offsetHeight;
+                });
+            }
+        };
+
+        var updateStickyScroll = function () {
+            self.stickyItems.forEach((item) => {
+                if (window.pageYOffset > item.offsetYTop) {
+                    if (item.element.style.position != 'fixed') {
+                        var site = document.getElementById('dokuwiki__site');
+                        site.style.paddingTop = ((parseInt(site.style.paddingTop) || 0) + item.element.offsetHeight) + 'px';
+
+                        item.element.style.position = 'fixed';
+                        item.element.style.top = self.stickyOffset + 'px';
+                        item.element.style.zIndex = self.stickyIndex;
+
+                        self.stickyOffset += item.element.offsetHeight;
+                        self.stickyIndex--;
+                    }
+                } else {
+                    if (item.element.style.position == 'fixed') {
+                        var site = document.getElementById('dokuwiki__site');
+                        site.style.paddingTop = ((parseInt(site.style.paddingTop) || 0) - item.element.offsetHeight) + 'px';
+                        self.stickyOffset -= item.element.offsetHeight;
+                        self.stickyIndex++;
+
+                        item.element.style.position = 'relative';
+                        item.element.style.top = null;
+                        item.element.style.zIndex = null;
+                    }
+                }
+            });
+        };
+
+        updateStickyItems();
+        window.onscroll = updateStickyScroll;
         window.onresize = function () {
             if (!this.queueResize) {
                 this.queueResize = true;
@@ -29,6 +83,9 @@ var mikio = {
                             elem.classList.add('closed');
                         }
                     });
+
+                    updateStickyItems();
+                    updateStickyScroll();
                 }, 100);
             }
         };

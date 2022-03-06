@@ -25,6 +25,7 @@ $lang['config_pagetools']                   = 'Page Tools';
 $lang['config_footer']                      = 'Footer';
 $lang['config_license']                     = 'License';
 $lang['config_acl']                         = 'Permissions';
+$lang['config_sticky']                      = 'Sticky Parts';
 
 /* Style.ini */
 $lang['__link__']                           = 'The font color of links';

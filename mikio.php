@@ -652,7 +652,7 @@ class Template
 
         $html = '';
 
-        $html .= '<nav class="mikio-navbar">';
+        $html .= '<nav class="mikio-navbar'  . (($this->getConf('stickyNavbar')) ? ' mikio-sticky' : '') . '">';
         $html .= '<div class="mikio-container">';
         $html .= '<a class="mikio-navbar-brand" href="' . $homeUrl . '">';
         if ($this->getConf('navbarUseTitleIcon') || $this->getConf('navbarUseTitleText')) {
@@ -1348,6 +1348,7 @@ class Template
                 'footer'        => array('footerCustomMenuText',    ''),
                 'license'       => array('licenseType',             ''),
                 'acl'           => array('includePageUseACL',       ''),
+                'sticky'        => array('stickyTopHeader',         ''),
             );
 
             foreach ($admin_sections as $section => $items) {

@@ -123,11 +123,17 @@ html, body {
     padding: 0 2rem;
     border-bottom: 1px solid @ini_navbar_border_color;
     background-color: @ini_topheader_background_color;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 1001;
 }
 
 .mikio-page-header {
     padding: 0 2rem;
     background-color: @ini_header_background_color;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 999;
 }
 
 .mikio-sidebar-header {
@@ -208,6 +214,7 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     box-sizing: border-box;
+    z-index: 1000;
 
     .mikio-container {
         display: flex;
@@ -2021,8 +2028,6 @@ code, pre {
     }
 }
 
-
-
 /* Mobile */
 @media (max-width: 768px) {
     .mikio-small-only {
@@ -2030,6 +2035,8 @@ code, pre {
     }    
 
     .mikio-navbar {
+        padding-bottom: 0;
+
         .mikio-container {
             display: grid;
             grid-template-columns: auto 3rem;
@@ -2038,7 +2045,7 @@ code, pre {
         .mikio-navbar-brand {
             grid-column: 1 / span 1;
             grid-row: 1 / span 1;
-            // margin-bottom: .5rem;
+            margin-bottom: .5rem;
         }
 
         .mikio-navbar-toggle {
@@ -2059,6 +2066,7 @@ code, pre {
             margin: 0 -2rem;
             padding-top: .5rem;
             padding-right: 1rem;
+            padding-bottom: .5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 

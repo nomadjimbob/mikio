@@ -35,9 +35,9 @@ $showSidebar = $hasSidebar && ($ACT=='show');
 <div id="dokuwiki__site">
 <?php
     echo '<div id="dokuwiki__top" class="site ' . tpl_classes() . (($showSidebar) ? ' showSidebar' : '') . (($hasSidebar) ? ' hasSidebar' : '') . '">';
-    $TEMPLATE->includePage('topheader', TRUE, TRUE, 'mikio-page-topheader');
+    $TEMPLATE->includePage('topheader', TRUE, TRUE, 'mikio-page-topheader' . (($TEMPLATE->getConf('stickyTopHeader')) ? ' mikio-sticky' : ''));
     $TEMPLATE->includeNavbar(TRUE, $TEMPLATE->getConf('navbarShowSub', FALSE) && $ACT == 'show');
-    if($ACT == 'show' || $ACT == 'admin') $TEMPLATE->includePage('header', TRUE, TRUE, 'mikio-page-header');
+    if($ACT == 'show' || $ACT == 'admin') $TEMPLATE->includePage('header', TRUE, TRUE, 'mikio-page-header' . (($TEMPLATE->getConf('stickyHeader')) ? ' mikio-sticky' : ''));
 
     echo '<a name="dokuwiki__top" id="dokuwiki__top"></a>';
 
