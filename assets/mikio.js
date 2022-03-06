@@ -24,6 +24,8 @@ var mikio = {
 
 
         var updateStickyItems = function () {
+            window.removeEventListener('scroll', updateStickyScroll);
+
             var stickyElements = document.getElementsByClassName('mikio-sticky');
             self.stickyItems = [];
             if (stickyElements && stickyElements.length > 0) {
@@ -39,6 +41,9 @@ var mikio = {
                     self.stickyItems.push({ element: item, offsetYTop: top, debugItemTop: item.offsetTop, debugOffset: stickyOffset, debugHeight: stickyHeightCount });
                     stickyHeightCount += item.offsetHeight;
                 });
+
+                window.addEventListener('scroll', updateStickyScroll);
+                updateStickyScroll();
             }
         };
 
@@ -72,7 +77,7 @@ var mikio = {
         };
 
         updateStickyItems();
-        window.onscroll = updateStickyScroll;
+
         window.onresize = function () {
             if (!this.queueResize) {
                 this.queueResize = true;
@@ -85,7 +90,6 @@ var mikio = {
                     });
 
                     updateStickyItems();
-                    updateStickyScroll();
                 }, 100);
             }
         };
