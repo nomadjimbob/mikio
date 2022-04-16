@@ -18,6 +18,7 @@
 - Theming support
 - Tags plugin support
 - Mobile friendly
+- Typeahead search support
 
 ## Changes
 
@@ -63,6 +64,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 - `navbarItemShowLogout` : show the Logout menu item
 
 - `searchButton` : show the search button as a icon or text
+- `searchUseTypeahead` : use [Typeahead](https://github.com/bassjobsen/Bootstrap-3-Typeahead) page suggestions in search bar
 
 - `heroTitle` : show the hero block on pages
 - `heroImagePropagation` : search for hero images in parent namespaces if none is found in the current namespace
@@ -314,7 +316,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Third Party Libraries
 
-This template uses a [modified version](https://github.com/nomadjimbob/simple_html_dom) of [simple_html_dom](https://sourceforge.net/projects/simplehtmldom/)
+This template uses a [modified
+version](https://github.com/nomadjimbob/simple_html_dom) of
+[simple_html_dom](https://sourceforge.net/projects/simplehtmldom/) and
+of [bootstrap-3-typeahead](https://github.com/bassjobsen/Bootstrap-3-Typeahead).
 
 ## Support
 
