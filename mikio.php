@@ -874,7 +874,7 @@ class Template
         $html .= '<input type="hidden" name="do" value="search">';
         $html .= '<input type="hidden" name="id" value="' . $ID . '">';
         $html .= '<input name="q" ';
-        if ($this->getConf('navbarUseTitleText')) {
+        if ($this->getConf('useTypeaheadSearch')) {
             $html .= 'class="search_typeahead" ';
         }
         $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' . (($ACT == 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
