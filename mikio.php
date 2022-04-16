@@ -77,6 +77,7 @@ class Template
     public function metaHeadersHandler(\Doku_Event $event)
     {
         global $MIKIO_ICONS;
+        global $conf;
 
         $this->includePage('theme', FALSE, TRUE);
 
