@@ -597,7 +597,7 @@ var mikio = {
    // Add typeahead support for quick seach. Taken from bootstrap3 theme.
     typeahead: function () {
 
-        jQuery(".searchfield").typeahead({
+        jQuery(".search_typeahead").typeahead({
 
             source: function (query, process) {
 
