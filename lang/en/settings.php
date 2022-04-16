@@ -38,6 +38,7 @@ $lang['navbarItemShowLogin']    = 'Show the Login menu item';
 $lang['navbarItemShowLogout']   = 'Show the Logout menu item';
 
 $lang['searchButton']           = 'Search button type';
+$lang['searchUseTypeahead']     = 'Use Typeahead page suggestions in search bar';
 
 $lang['heroTitle']              = 'Show pages in the hero title style';
 $lang['heroImagePropagation']   = 'Search for hero images in the parent namespace if no hero image is found';

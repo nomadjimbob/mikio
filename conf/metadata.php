@@ -39,6 +39,7 @@ $meta['navbarItemShowLogin']    = array('multichoice', '_choices' => array('alwa
 $meta['navbarItemShowLogout']   = array('multichoice', '_choices' => array('always', 'never'));
 
 $meta['searchButton']           = array('multichoice', '_choices' => array('icon', 'text'));
+$meta['searchUseTypeahead']     = array('onoff');
 
 $meta['heroTitle']              = array('onoff');
 $meta['heroImagePropagation']   = array('onoff');
