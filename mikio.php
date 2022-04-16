@@ -147,7 +147,8 @@ class Template
                 $event->data['script'][] = array(
                     'type'  => 'text/javascript',
                     '_data' => '',
-                    'src'   => $script
+                    'src'   => $script,
+                    'defer' => 'defer',
                 );
             }
             $set[] = $script;
