@@ -38,6 +38,7 @@ $conf['navbarItemShowLogin']    = 'always';
 $conf['navbarItemShowLogout']   = 'always';
 
 $conf['searchButton']           = 'icon';
+$conf['searchUseTypeahead']     = 1;
 
 $conf['heroTitle']              = 1;
 $conf['heroImagePropagation']   = 1;
