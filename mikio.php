@@ -145,11 +145,15 @@ class Template
         $set = [];
         foreach ($scripts as $script) {
             if (in_array($script, $set) == FALSE) {
-                $event->data['script'][] = array(
+                $script_params = array(
                     'type'  => 'text/javascript',
                     '_data' => '',
                     'src'   => $script
                 );
+                if ($conf['defer_js']) {
+                    $script_params += ['defer' => 'defer'];
+                }
+                $event->data['script'][] = $script_params;
             }
             $set[] = $script;
         }
