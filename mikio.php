@@ -873,7 +873,7 @@ class Template
         $html .= '<form class="mikio-search search" action="' . wl() . '" accept-charset="utf-8" method="get" role="search">';
         $html .= '<input type="hidden" name="do" value="search">';
         $html .= '<input type="hidden" name="id" value="' . $ID . '">';
-        $html .= '<input name="q" id="qsearch" autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' . (($ACT == 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
+        $html .= '<input name="q" class="searchfield" autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' . (($ACT == 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
         $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
         if ($this->getConf('searchButton') == 'icon') {
             $html .= $this->mikioInlineIcon('search');
