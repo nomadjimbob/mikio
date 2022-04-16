@@ -21,6 +21,7 @@ var mikio = {
         this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
         this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
         this.indexmenuPatch();
+		this.typeahead();
 
 
         var updateStickyItems = function () {
@@ -591,6 +592,59 @@ var mikio = {
             }
         });
     },
+
+	
+   // Add typeahead support for quick seach. Taken from bootstrap3 theme.
+    typeahead: function () {
+
+        jQuery("#qsearch").typeahead({
+
+            source: function (query, process) {
+
+                return jQuery.post(DOKU_BASE + 'lib/exe/ajax.php',
+                    {
+                        call: 'qsearch',
+                        q: encodeURI(query)
+                    },
+                    function (data) {
+
+                        var results = [];
+
+                        jQuery(data).find('a').each(function () {
+
+                            var page = jQuery(this);
+
+                            results.push({
+                                name: page.text(),
+                                href: page.attr('href'),
+                                title: page.attr('title'),
+                                category: page.attr('title').replace(/:/g, ' : '),
+                            });
+
+                        });
+
+                        return process(results);
+
+                    });
+            },
+
+            itemLink: function (item) {
+                return item.href;
+            },
+
+            itemTitle: function (item) {
+                return item.title;
+            },
+
+            followLinkOnSelect: true,
+            autoSelect: false,
+            items: 10,
+            fitToElement: true,
+            delay: 500,
+			theme: 'bootstrap4',
+
+        });
+    }
 };
 
 
