@@ -198,16 +198,16 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 ## Releases
 
 - **_2022-04-25_**
-  - Added support for the defer js option, previously always deferred [#39]. Thanks cmacmackin
-  - Added typeahead search [#40]. Thanks cmacmackin
+  - Added support for the defer js option, previously always deferred [#39](https://github.com/nomadjimbob/mikio/issues/39). Thanks cmacmackin
+  - Added typeahead search [#40](https://github.com/nomadjimbob/mikio/issues/40). Thanks cmacmackin
   - Fixed double breadcrumb options on admin pages
   - Added sticky top header, navbar and header options. Thanks chitland
 
 - **_2022-03-05_**
 
-  - Fixed page tools in footer not being horizontal [#38]. Thanks chitland
+  - Fixed page tools in footer not being horizontal [#38](https://github.com/nomadjimbob/mikio/issues/38). Thanks chitland
   - Fixed Mikio Config headers disappearing in some cases
-  - Separated Breadcrumbs and You Are Here items [#36]. Thanks chitland
+  - Separated Breadcrumbs and You Are Here items [#36](https://github.com/nomadjimbob/mikio/issues/36). Thanks chitland
 
 - **_2021-12-11_**
 
