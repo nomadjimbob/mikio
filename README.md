@@ -21,6 +21,9 @@
 
 ## Changes
 
+- 2022-04-25
+  - Added support for the defer js option in Hogsfather to override the templates default defer action of always.
+
 - 2022-03-05
   - Breadcrumbs and You Are Here have now been seperated instead of combined. This removed the options `breadcrumbHome` and `breadcrumbShowLast` for the breadcrumbs as it only applies to the you are here bar. **Breadcrumbs and You Are Here options may have reset**
 
@@ -188,6 +191,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - `home` : Text for the breadcrumb home title
 
 ## Releases
+
+- **_2022-04-25_**
+  - Added support for the defer js option, previously always deferred [#39]. Thanks cmacmackin
+
 
 - **_2022-03-05_**
 
