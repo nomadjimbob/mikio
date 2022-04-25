@@ -1776,6 +1776,25 @@ class Template
         
         return 'unknown';
     }
+
+    /**
+     * Dokuwiki version number
+     *
+     * @return  string        the dw version date converted to integer
+     */
+    public function dwVersionNumber() {
+        if(function_exists('getVersionData')) {
+            $version_data = getVersionData();
+            if(is_array($version_data) && array_key_exists('date', $version_data)) {
+                $version_items = explode(' ', $version_data['date']);
+                if(count($version_items) >= 1) {
+                    return intval(preg_replace('/[^0-9]+/', '', strtolower($version_items[0])));
+                }
+            }
+        }
+        
+        return 0;
+    }
 }
 
 global $TEMPLATE;
