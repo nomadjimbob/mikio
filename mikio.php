@@ -150,9 +150,20 @@ class Template
                     '_data' => '',
                     'src'   => $script
                 );
-                if ($conf['defer_js']) {
-                    $script_params += ['defer' => 'defer'];
+
+                // equal to or greator than hogfather
+                if($this->dwVersionNumber() >= 20200729) {
+                    // greator than hogfather - defer always on
+                    if($this->dwVersionNumber() >= 20200729) {
+                        $script_params += ['defer' => 'defer'];
+                    } else {
+                        // hogfather - defer always on unless $conf['defer_js'] is false
+                        if(!array_key_exists('defer_js', $conf) || $conf['defer_js']) {
+                            $script_params += ['defer' => 'defer'];
+                        }
+                    }
                 }
+
                 $event->data['script'][] = $script_params;
             }
             $set[] = $script;
