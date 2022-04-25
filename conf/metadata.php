@@ -11,6 +11,8 @@ $meta['iconTag']                = array('string');
 $meta['customTheme']            = array('string');
 $meta['showNotifications']      = array('multichoise', '__choices' => array('none', 'admin', 'always'));
 $meta['useLESS']                = array('onoff');
+$meta['brandURLGuest']          = array('string');
+$meta['brandURLUser']           = array('string');
 
 $meta['navbarUseTitleIcon']     = array('onoff');
 $meta['navbarUseTitleText']     = array('onoff');

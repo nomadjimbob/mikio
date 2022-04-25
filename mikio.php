@@ -340,6 +340,8 @@ class Template
             case 'youareherePrefixText':
             case 'youarehereSepText':
             case 'footerCustomMenuText':
+            case 'brandURLGuest':
+            case 'brandURLUser':
                 break;
             case 'useLESS':
                 $value = (bool)$value;
@@ -652,21 +654,30 @@ class Template
      */
     public function includeNavbar($print = TRUE, $showSub = FALSE)
     {
-        global $conf;
+        global $conf, $USERINFO;
 
         $homeUrl = wl();
 
         if (!plugin_isdisabled('showpageafterlogin')) {
             $p = &plugin_load('action', 'showpageafterlogin');
             if ($p) {
-                global $USERINFO;
-
                 if (is_array($USERINFO) && count($USERINFO) > 0) {
                     $homeUrl = wl($p->getConf('page_after_login'));
                 }
             }
+        } else {
+            if (is_array($USERINFO) && count($USERINFO) > 0) {
+                $url = $this->getConf('brandURLUser');
+                if(strlen($url) > 0) {
+                    $homeUrl = $url;
+                }
+            } else {
+                $url = $this->getConf('brandURLGuest');
+                if(strlen($url) > 0) {
+                    $homeUrl = $url;
+                }
+            }
         }
-
 
         $html = '';
 
