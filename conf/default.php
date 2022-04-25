@@ -11,6 +11,8 @@ $conf['iconTag']                = 'icon';
 $conf['customTheme']            = '';
 $conf['showNotifications']      = 'admin';
 $conf['useLESS']                = 1;
+$conf['brandURLGuest']          = '';
+$conf['brandURLUser']           = '';
 
 $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarUseTitleText']     = 1;

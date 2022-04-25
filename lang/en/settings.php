@@ -11,6 +11,8 @@ $lang['iconTag']                = 'Tag to use to for icon tags. The default is \
 $lang['customTheme']            = 'Use a Mikio subtheme installed into the themes directory. Leave blank for the detault styling';
 $lang['showNotifications']      = 'Where to show site notifications to admin staff';
 $lang['useLESS']                = 'Use the LESS compiler for the mikio stylesheet or direct CSS. Requires PHP ctype extensions installed';
+$lang['brandURLGuest']          = 'Change the Brand Logo URL for guests. Leave blank for default home URL';
+$lang['brandURLUser']           = 'Change the Brand Logo URL for logged in users. Leave blank for default home URL';
 
 $lang['navbarUseTitleIcon']     = 'Show the wiki image in the menubar title. Will search for an image named logo (png/jpg/gif/svg) in the root or :wiki: namespace or the template/subtheme images directory';
 $lang['navbarUseTitleText']     = 'Show the wiki name in the menubar title. Will also hide the tagline if disabled';
