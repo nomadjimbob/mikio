@@ -41,6 +41,8 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 - `customTheme` : the mikio theme to use, located in the `mikio/themes` directory
 - `showNotifications` : where to show site notifications for admin staff
 - `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Requires the ctype PHP extension installed
+- `brandURLGuest` : change the brand URL for guests. Leave blank to use the default
+- `brandURLUser` : change the brand URL for logged in users. Leave blank to use the default
 
 - `navbarUseTitleIcon` : show the site logo in the navbar
 - `navbarUseTitleText` : show the site title in the navbar

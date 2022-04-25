@@ -1374,7 +1374,7 @@ class Template
                 'hero'          => array('heroTitle',               ''),
                 'tags'          => array('tagsConsolidate',         ''),
                 'breadcrumb'    => array('breadcrumbHideHome',      ''),
-                'youarehere'    => array('youareherePosition',      ''),
+                'youarehere'    => array('youarehereHideHome',      ''),
                 'sidebar'       => array('sidebarShowLeft',         ''),
                 'toc'           => array('tocFull',                 ''),
                 'pagetools'     => array('pageToolsFloating',       ''),

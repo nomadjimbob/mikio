@@ -53,10 +53,15 @@ $lang['breadcrumbPrefix']       = 'Change the breadcrumb prefix text';
 $lang['breadcrumbPrefixText']   = 'Replacement breadcrumb prefix text. Use can use an image by uploading breadcrumb.png to the templates images directory';
 $lang['breadcrumbSep']          = 'Change the breadcrumb seperator text';
 $lang['breadcrumbSepText']      = 'Replacement breadcrumb seperator text. Use can use an image by uploading breadcrumb.png to the templates images directory';;
-$lang['breadcrumbHome']         = 'Change the text or icon used for the Home page in the breadcrumb bar';
-$lang['breadcrumbShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
 
+$lang['youarehereHideHome']     = 'Hide you are here on home page';
 $lang['youareherePosition']     = 'Position of the you are here bar on the page';
+$lang['youareherePrefix']       = 'Change the you are here prefix text';
+$lang['youareherePrefixText']   = 'Replacement you are here prefix text. Use can use an image by uploading breadcrumb.png to the templates images directory';
+$lang['youarehereSep']          = 'Change the you are here seperator text';
+$lang['youarehereSepText']      = 'Replacement you are here seperator text. Use can use an image by uploading breadcrumb.png to the templates images directory';;
+$lang['youarehereHome']         = 'Change the text or icon used for the Home page in the breadcrumb bar';
+$lang['youarehereShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
 
 $lang['sidebarShowLeft']        = 'Show the left sidebar';
 $lang['sidebarAlwaysShowLeft']  = 'Always show the left sidebar, even when there is no content';
