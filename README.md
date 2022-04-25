@@ -198,6 +198,8 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - **_2022-04-25_**
   - Added support for the defer js option, previously always deferred [#39]. Thanks cmacmackin
   - Added typeahead search [#40]. Thanks cmacmackin
+  - Fixed double breadcrumb options on admin pages
+  - Added sticky top header, navbar and header options. Thanks chitland
 
 - **_2022-03-05_**
 
