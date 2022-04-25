@@ -326,6 +326,7 @@ class Template
             case 'sidebarMobileDefaultCollapse':
             case 'sidebarAlwaysShowLeft':
             case 'sidebarAlwaysShowRight':
+            case 'searchUseTypeahead':
                 $value = (bool)$value;
                 break;
             case 'youarehereShowLast':
