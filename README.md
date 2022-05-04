@@ -138,7 +138,10 @@ The following pages can be either html files in the root of the template or a pa
 
 ## Include Images
 
-The following images can be used to replace content in the template. Images can be in the root of the template or in the namespace. Images can be either png, jpg, gif or svg.
+The following images can be used to replace content in the
+template. Images can be in `TEMPLATE_ROOT/images/`,
+`TEMPLATE_ROOT/themes/THEME/images/`, or in the namespace. Images can
+be either png, jpg, gif or svg.
 
 - `logo` : site logo in the navbar
 - `breadcrumb-prefix` breadcrumb prefix

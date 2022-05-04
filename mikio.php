@@ -1641,7 +1641,7 @@ class Template
             $prefix[] = ':wiki:';
         }
         $theme = $this->getConf('customTheme');
-        if ($theme != '') $prefix[] = $this->tplDir . 'themes/' . $theme . '/images/';
+        if ($theme != '') $prefix[] = 'themes/' . $theme . '/images/';
         $prefix[] = 'images/';
 
         $search = array();
