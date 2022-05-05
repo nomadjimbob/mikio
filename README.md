@@ -20,7 +20,7 @@
 - Mobile friendly
 - Typeahead search support
 
-## Changes
+## Possible Breaking Changes
 
 - 2022-04-25
   - Added support for the defer js option in Hogsfather to override the templates default defer action of always.
