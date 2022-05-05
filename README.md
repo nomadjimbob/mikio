@@ -200,7 +200,8 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-- **_2022-04-25_**
+- **_2022-05-05_**
+  - Fixed searching for images in the theme directory [#42](https://github.com/nomadjimbob/mikio/issues/42). Thanks cmacmackin
   - Added support for the defer js option, previously always deferred [#39](https://github.com/nomadjimbob/mikio/issues/39). Thanks cmacmackin
   - Added typeahead search [#40](https://github.com/nomadjimbob/mikio/issues/40). Thanks cmacmackin
   - Fixed double breadcrumb options on admin pages
