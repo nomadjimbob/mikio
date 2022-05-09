@@ -15,6 +15,8 @@ $conf['brandURLGuest']          = '';
 $conf['brandURLUser']           = '';
 
 $conf['navbarUseTitleIcon']     = 1;
+$conf['navbarTitleIconHeight']  = '';
+$conf['navbarTitleIconWidth']   = '';
 $conf['navbarUseTitleText']     = 1;
 $conf['navbarUseTaglineText']   = 1;
 $conf['navbarCustomMenuText']   = '';

@@ -15,6 +15,8 @@ $meta['brandURLGuest']          = array('string');
 $meta['brandURLUser']           = array('string');
 
 $meta['navbarUseTitleIcon']     = array('onoff');
+$meta['navbarTitleIconHeight']  = array('string');
+$meta['navbarTitleIconWidth']   = array('string');
 $meta['navbarUseTitleText']     = array('onoff');
 $meta['navbarUseTaglineText']   = array('onoff');
 $meta['navbarCustomMenuText']   = array('string');

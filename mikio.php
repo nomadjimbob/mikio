@@ -690,7 +690,33 @@ class Template
             if ($this->getConf('navbarUseTitleIcon')) {
                 $logo = $this->getMediaFile('logo', FALSE);;
                 if ($logo != '') {
-                    $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image">';
+                    $width = $this->getConf('navbarTitleIconWidth');
+                    $height = $this->getConf('navbarTitleIconHeight');
+                    $styles = '';
+
+                    if(strlen($width) > 0 || strlen($height) > 0) {
+                        if(ctype_digit($width)) {
+                            $styles .= 'max-width:' . intval($width) . 'px;';
+                        } else if(preg_match('/^\d+(px|rem|em)$/', $width) == 1) {
+                            $styles .= 'max-width:' . $width . ';';
+                        } else if(strcasecmp($width, 'auto') == 0) {
+                            $styles .= 'max-width:auto;';
+                        }
+
+                        if(ctype_digit($height)) {
+                            $styles .= 'max-height:' . intval($height) . 'px;';
+                        } else if(preg_match('/^\d+(px|rem|em)$/', $height) == 1) {
+                            $styles .= 'max-height:' . $height . ';';
+                        } else if(strcasecmp($height, 'auto') == 0) {
+                            $styles .= 'max-height:auto;';
+                        }
+
+                        if(strlen($styles) > 0) {
+                            $styles = ' style="' . $styles . '"';
+                        }
+                    }
+
+                    $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image"' . $styles . '>';
                 }
             }
 

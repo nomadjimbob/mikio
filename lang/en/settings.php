@@ -15,6 +15,8 @@ $lang['brandURLGuest']          = 'Change the Brand Logo URL for guests. Leave b
 $lang['brandURLUser']           = 'Change the Brand Logo URL for logged in users. Leave blank for default home URL';
 
 $lang['navbarUseTitleIcon']     = 'Show the wiki image in the menubar title. Will search for an image named logo (png/jpg/gif/svg) in the root or :wiki: namespace or the template/subtheme images directory';
+$lang['navbarTitleIconHeight']  = 'Directly set the title icon height. Supports px (default), rem and em units';
+$lang['navbarTitleIconWidth']   = 'Directly set the title icon width. Supports px (default), rem and em units';
 $lang['navbarUseTitleText']     = 'Show the wiki name in the menubar title. Will also hide the tagline if disabled';
 $lang['navbarUseTaglineText']   = 'Show the wiki tag line in the menubar title';
 $lang['navbarCustomMenuText']   = 'Allows custom menus in the menubar. The format is url|title seperated by semicolons';
