@@ -697,18 +697,18 @@ class Template
                     if(strlen($width) > 0 || strlen($height) > 0) {
                         if(ctype_digit($width)) {
                             $styles .= 'max-width:' . intval($width) . 'px;';
-                        } else if(preg_match('/^\d+(px|rem|em)$/', $width) == 1) {
+                        } else if(preg_match('/^\d+(px|rem|em|%)$/', $width) == 1) {
                             $styles .= 'max-width:' . $width . ';';
-                        } else if(strcasecmp($width, 'auto') == 0) {
-                            $styles .= 'max-width:auto;';
+                        } else if(strcasecmp($width, 'none') == 0) {
+                            $styles .= 'max-width:none;';
                         }
 
                         if(ctype_digit($height)) {
                             $styles .= 'max-height:' . intval($height) . 'px;';
-                        } else if(preg_match('/^\d+(px|rem|em)$/', $height) == 1) {
+                        } else if(preg_match('/^\d+(px|rem|em|%)$/', $height) == 1) {
                             $styles .= 'max-height:' . $height . ';';
-                        } else if(strcasecmp($height, 'auto') == 0) {
-                            $styles .= 'max-height:auto;';
+                        } else if(strcasecmp($height, 'none') == 0) {
+                            $styles .= 'max-height:none;';
                         }
 
                         if(strlen($styles) > 0) {
