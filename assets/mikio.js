@@ -13,16 +13,17 @@ var mikio = {
     stickyItems: [],
     stickyOffset: 0,
     stickyIndex: 2010,
+    darkMode: 'auto',
 
     ready: function () {
         var self = this;
 
+        this.initDarkMode();
         this.addToggleClick('mikio-sidebar-toggle', 'mikio-sidebar-collapse');
         this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
         this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
         this.indexmenuPatch();
 		this.typeahead();
-
 
         var updateStickyItems = function () {
             window.removeEventListener('scroll', updateStickyScroll);
@@ -321,8 +322,6 @@ var mikio = {
 
         if (typeof mikioFooterRun === "function") mikioFooterRun();
 
-        // TESTING
-
         var mediaChangedObserver = new MutationObserver(function (mutationsList) {
             for (let mutation of mutationsList) {
                 if (mutation.type === 'attributes' && mutation.attributeName == 'href') {
@@ -351,6 +350,60 @@ var mikio = {
                     this.mikioCSS = element;
                 }
             }
+        }
+    },
+
+    initDarkMode: function () {
+        let setting = this.getCookie('lightDarkToggle');
+        if (setting == 'dark' || setting == 'light') {
+            this.darkMode = setting;
+        }
+
+        var self = this;
+        this.addEventListenerByClassName('mikio-theme-mode-button', 'click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            switch(self.darkMode) {
+                case 'dark':
+                    self.darkMode = 'light';
+                    break;
+                case 'light':
+                    self.darkMode = 'auto';
+                    break;
+                default:
+                    self.darkMode = 'dark';
+                    break;
+            }
+
+            self.updateDarkMode();
+        });
+
+        this.updateDarkMode();
+    },
+
+    updateDarkMode: function () {
+        if (this.darkMode == 'dark') {
+            document.body.classList.add('mikio-dark');
+            document.body.classList.remove('mikio-light');
+            document.body.classList.remove('mikio-auto');
+            this.setCookie('lightDarkToggle', 'dark');
+        } else if (this.darkMode == 'light') {
+            document.body.classList.add('mikio-light');
+            document.body.classList.remove('mikio-dark');
+            document.body.classList.remove('mikio-auto');
+            this.setCookie('lightDarkToggle', 'light');
+        } else {
+            document.body.classList.add('mikio-auto');
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('mikio-dark');
+                document.body.classList.remove('mikio-light'); 
+            } else {
+                document.body.classList.add('mikio-light');
+                document.body.classList.remove('mikio-dark'); 
+            }
+
+            this.clearCookie('lightDarkToggle');
         }
     },
 
@@ -593,7 +646,6 @@ var mikio = {
         });
     },
 
-	
    // Add typeahead support for quick seach. Taken from bootstrap3 theme.
     typeahead: function () {
 
@@ -644,6 +696,33 @@ var mikio = {
 			theme: 'bootstrap4',
 
         });
+    },
+
+    getCookie: function(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    },
+
+    setCookie: function(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    },
+
+    clearCookie: function(cname) {
+        document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
     }
 };
 

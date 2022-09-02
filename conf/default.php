@@ -14,6 +14,7 @@ $conf['showNotifications']      = 'admin';
 $conf['useLESS']                = 1;
 $conf['brandURLGuest']          = '';
 $conf['brandURLUser']           = '';
+$conf['showLightDark']          = 0;
 
 $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarTitleIconHeight']  = '';

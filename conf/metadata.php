@@ -14,6 +14,7 @@ $meta['showNotifications']      = ['multichoise', '__choices' => ['none', 'admin
 $meta['useLESS']                = ['onoff'];
 $meta['brandURLGuest']          = ['string'];
 $meta['brandURLUser']           = ['string'];
+$meta['showLightDark']          = ['onoff'];
 
 $meta['navbarUseTitleIcon']     = ['onoff'];
 $meta['navbarTitleIconHeight']  = ['string'];
@@ -21,7 +22,6 @@ $meta['navbarTitleIconWidth']   = ['string'];
 $meta['navbarUseTitleText']     = ['onoff'];
 $meta['navbarUseTaglineText']   = ['onoff'];
 $meta['navbarCustomMenuText']   = ['string'];
-
 
 $meta['navbarDWMenuType']       = ['multichoice', '_choices' => ['icons', 'text', 'both']];
 $meta['navbarDWMenuCombine']    = ['multichoice', '_choices' => ['seperate', 'dropdown', 'combine']];

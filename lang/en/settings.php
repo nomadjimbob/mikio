@@ -17,6 +17,7 @@ $lang['useLESS']                = 'Use the LESS compiler for the mikio styleshee
 extensions installed';
 $lang['brandURLGuest']          = 'Change the Brand Logo URL for guests. Leave blank for default home URL';
 $lang['brandURLUser']           = 'Change the Brand Logo URL for logged in users. Leave blank for default home URL';
+$lang['showLightDark']          = 'Show the light/dark toggle in the navbar';
 
 $lang['navbarUseTitleIcon']     = 'Show the wiki image in the menubar title. Will search for an image named logo 
 (png/jpg/gif/svg) in the root or :wiki: namespace or the template/subtheme images directory';

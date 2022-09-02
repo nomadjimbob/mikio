@@ -188,6 +188,10 @@ Users can also add their own icon sets into the template. Supported icon sets ca
 
 Themes should be placed in the themes directory, in its own directory. LESS files are supported.
 
+## Dark Mode
+
+Mikio now supports dark mode! When the user prefers a dark theme, or has selected dark mode, the body tag will contain the class `mikio-dark`
+
 ## Mikio Plugin
 
 The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also available to add bootstrap 4 style + more elements to DokuWiki pages.
@@ -206,6 +210,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   - Fixed Media Manager on small displays
   - Fixed Media Manager layout on Greebo
   - Fixed search results layout [#41](https://github.com/nomadjimbob/mikio/issues/41)
+  - Added Dark-mode support [#43](https://github.com/nomadjimbob/mikio/issues/43). Thanks chrbinder
 
 - **_2022-05-10_**
   - Added support to directly set title icon width and height in config. Thanks AlexiaR

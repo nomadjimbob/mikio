@@ -318,6 +318,7 @@ class Template
             ['keys' => ['sidebarAlwaysShowLeft'],           'type' => 'bool'],
             ['keys' => ['sidebarAlwaysShowRight'],          'type' => 'bool'],
             ['keys' => ['searchUseTypeahead'],              'type' => 'bool'],
+            ['keys' => ['showLightDark'],                   'type' => 'bool'],
             ['keys' => ['youarehereShowLast'],              'type' => 'int'],
 
             ['keys' => ['iconTag'],                         'type' => 'string'],
@@ -691,6 +692,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 break;
         }//end switch
+
+        if ($this->getConf('showLightDark') === true) {
+            $html .= '<li class="mikio-theme-mode"><a href="#" class="mikio-control mikio-button mikio-theme-mode-button"></a></li>';
+        }
 
         $html .= '</ul>';
 
