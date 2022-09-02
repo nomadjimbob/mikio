@@ -217,6 +217,10 @@ class Template
         return $html;
     }
 
+
+    // phpcs:disable Squiz.Commenting.FunctionComment.TypeHintMissing
+
+
     /**
      * Retreive and parse theme configuration options
      *
@@ -224,7 +228,7 @@ class Template
      * @param   mixed  $default If key doesn't exist, return this value.
      * @return  mixed           parsed value of configuration
      */
-    public function getConf(string $key, mixed $default = false)
+    public function getConf(string $key, $default = false)
     {
         $value = tpl_getConf($key, $default);
 
@@ -333,7 +337,7 @@ class Template
         foreach ($data as $row) {
             // does not check case....
             if (in_array($key, $row['keys']) === true) {
-                if (array_key_exists('type', 'row') === true) {
+                if (array_key_exists('type', $row) === true) {
                     switch ($row['type']) {
                         case 'bool':
                             return (bool) $value;
@@ -395,6 +399,9 @@ class Template
 
         return $value;
     }
+
+
+    // phpcs:enable
 
 
     /**
@@ -1150,7 +1157,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         if (
             $this->getConf('breadcrumbHideHome') === true && strcasecmp($ID, 'start') === 0 &&
-            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0
+            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0 || $conf['breadcrumbs'] === 0
         ) {
             return '';
         }
@@ -1158,7 +1165,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = '<div class="mikio-breadcrumbs">';
         $html .= '<div class="mikio-container">';
         if (strcasecmp($ACT, 'show') === 0) {
-            if ($conf['breadcrumbs'] === true) {
+            if ($conf['breadcrumbs'] !== 0) {
                 if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
                     ob_start();
                     tpl_breadcrumbs();
@@ -1197,7 +1204,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $i    = 0;
                     foreach ($crumbs as $id => $name) {
                         $i++;
-                        $html .= '<li class="sep">' . $sep . '</li>';
+                        if ($i !== 1) {
+                            $html .= '<li class="sep">' . $sep . '</li>';
+                        }
                         $html .= '<li' . ($i === $last ? ' class="curid"' : '') . '>';
                         $html .= tpl_pagelink($id, null, true);
                         $html .= '</li>';
@@ -1233,7 +1242,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         if (
             $this->getConf('youarehereHideHome') === true && strcasecmp($ID, 'start') === 0 &&
-            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0
+            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0 || $conf['youarehere'] === 0
         ) {
             return '';
         }
@@ -1241,12 +1250,14 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = '<div class="mikio-youarehere">';
         $html .= '<div class="mikio-container">';
         if (strcasecmp($ACT, 'show') === 0) {
-            if ($conf['youarehere'] === true) {
+            if ($conf['youarehere'] !== 0) {
                 if ($this->getConf('youareherePrefix') === false && $this->getConf('youarehereSep') === false) {
+                    $html .= '<div class="mikio-bcdw">';
                     ob_start();
                     tpl_youarehere();
                     $html .= ob_get_contents();
                     ob_end_clean();
+                    $html .= '</div>';
                 } else {
                     $sep = ' » ';
                     $prefix = $lang['youarehere'];
