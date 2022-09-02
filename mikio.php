@@ -61,7 +61,7 @@ class Template
     {
         static $instance = null;
 
-        if ($instance === null) {
+        if (empty($instance) === true) {
             $instance = new Template();
         }
 
@@ -104,7 +104,7 @@ class Template
         $stylesheets    = [];
         $scripts        = [];
 
-        if ($this->getConf('customTheme') !== '') {
+        if (empty($this->getConf('customTheme')) === false) {
             if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/style.less') === true) {
                 $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('customTheme') . '/style.less';
             } else {
@@ -117,13 +117,13 @@ class Template
             }
         }
 
-        if (is_array($MIKIO_ICONS) === true && $this->getConf('iconTag', 'icon') !== '') {
+        if (is_array($MIKIO_ICONS) === true && empty($this->getConf('iconTag', 'icon')) === false) {
             $icons = [];
             foreach ($MIKIO_ICONS as $icon) {
                 if (isset($icon['name']) === true && isset($icon['css']) === true && isset($icon['insert']) === true) {
                     $icons[] = $icon;
 
-                    if ($icon['css'] !== '') {
+                    if (empty($icon['css']) === false) {
                         if (strpos($icon['css'], '//') === false) {
                             $stylesheets[] = $this->baseDir . 'icons/' . $icon['css'];
                         } else {
@@ -150,7 +150,7 @@ class Template
         $set = [];
         foreach ($stylesheets as $style) {
             if (in_array($style, $set) === false) {
-                if (strtolower(substr($style, -5)) === '.less' && $this->getConf('useLESS') === true) {
+                if (strcasecmp(substr($style, -5), '.less') === 0 && $this->getConf('useLESS') === true) {
                     $style = $this->baseDir . 'css.php?css=' . str_replace($this->baseDir, '', $style);
                 }
 
@@ -228,214 +228,170 @@ class Template
     {
         $value = tpl_getConf($key, $default);
 
-        switch ($key) {
-            case 'navbarDWMenuType':
-                $value = strtolower($value);
-                if ($value !== 'icons' && $value !== 'text' && $value !== 'both') {
-                    $value = 'both';
-                }
-                break;
-            case 'navbarDWMenuCombine':
-                $value = strtolower($value);
-                if ($value !== 'seperate' && $value !== 'dropdown' && $value !== 'combine') {
-                    $value = 'combine';
-                }
-                break;
-            case 'navbarPosLeft':
-            case 'navbarPosMiddle':
-            case 'navbarPosRight':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'custom' && $value !== 'search' && $value !== 'dokuwiki') {
-                    if ($key === 'navbarPosLeft') {
-                        $value = 'none';
-                    }
-                    if ($key === 'navbarPosMiddle') {
-                        $value = 'search';
-                    }
-                    if ($key === 'navbarPosRight') {
-                        $value = 'dokuwiki';
-                    }
-                }
-                break;
-            case 'navbarItemShowCreate':
-            case 'navbarItemShowShow':
-            case 'navbarItemShowRevs':
-            case 'navbarItemShowBacklink':
-            case 'navbarItemShowRecent':
-            case 'navbarItemShowMedia':
-            case 'navbarItemShowIndex':
-            case 'navbarItemShowProfile':
-            case 'navbarItemShowAdmin':
-                $value = strtolower($value);
-                if ($value !== 'always' && $value !== 'logged in' && $value !== 'logged out' && $value !== 'never') {
-                    $value = 'always';
-                }
-                break;
-            case 'navbarItemShowLogin':
-            case 'navbarItemShowLogout':
-                $value = strtolower($value);
-                if ($value !== 'always' && $value !== 'never') {
-                    $value = 'always';
-                }
-                break;
-            case 'searchButton':
-                $value = strtolower($value);
-                if ($value !== 'icon' && $value !== 'text') {
-                    $value = 'icon';
-                }
-                break;
-            case 'searchButton':
-                $value = strtolower($value);
-                if ($value !== 'icon' && $value !== 'text') {
-                    $value = 'icon';
-                }
-                break;
-            case 'breadcrumbPosition':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'top' && $value !== 'hero' && $value !== 'page') {
-                    $value = 'top';
-                }
-                break;
-            case 'youareherePosition':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'top' && $value !== 'hero' && $value !== 'page') {
-                    $value = 'top';
-                }
-                break;
-            case 'youarehereHome':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'page title' && $value !== 'home' && $value !== 'icon') {
-                    $value = 'page title';
-                }
-                break;
-            case 'sidebarLeftRow1':
-            case 'sidebarLeftRow2':
-            case 'sidebarLeftRow3':
-            case 'sidebarLeftRow4':
-                $value = strtolower($value);
-                if (
-                    $value !== 'none' && $value !== 'logged in user' && $value !== 'search' && $value !== 'content' &&
-                    $value !== 'tags'
-                ) {
-                    if ($key === 'sidebarLeftRow1') {
-                        $value = 'logged in user';
-                    }
-                    if ($key === 'sidebarLeftRow2') {
-                        $value = 'search';
-                    }
-                    if ($key === 'sidebarLeftRow3') {
-                        $value = 'content';
-                    }
-                    if ($key === 'sidebarLeftRow4') {
-                        $value = 'none';
-                    }
-                }
-                break;
-            case 'pageToolsFloating':
-            case 'pageToolsFooter':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'page editors' && $value !== 'always') {
-                    if ($key === 'pageToolsFloating') {
-                        $value = 'always';
-                    }
-                    if ($key === 'pageToolsFooter') {
-                        $value = 'always';
-                    }
-                }
-                break;
-            case 'pageToolsShowCreate':
-            case 'pageToolsShowEdit':
-            case 'pageToolsShowRevs':
-            case 'pageToolsShowBacklink':
-            case 'pageToolsShowTop':
-                $value = strtolower($value);
-                if ($value !== 'always' && $value !== 'logged in' && $value !== 'logged out' && $value !== 'never') {
-                    $value = 'always';
-                }
-                break;
-            case 'showNotifications':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'admin' && $value !== 'always') {
-                    $value = 'admin';
-                }
-                break;
-            case 'licenseType':
-                $value = strtolower($value);
-                if ($value !== 'none' && $value !== 'badge' && $value !== 'buttom') {
-                    $value = 'badge';
-                }
-                break;
-            case 'navbarUseTitleIcon':
-            case 'navbarUseTitleText':
-            case 'navbarUseTaglineText':
-            case 'navbarShowSub':
-            case 'heroTitle':
-            case 'heroImagePropagation':
-            case 'breadcrumbPrefix':
-            case 'breadcrumbSep':
-            case 'youareherePrefix':
-            case 'youarehereSep':
-            case 'sidebarShowLeft':
-            case 'sidebarShowRight':
-            case 'tocFull':
-            case 'footerSearch':
-            case 'licenseImageOnly':
-            case 'includePageUseACL':
-            case 'includePagePropagate':
-            case 'youarehereHideHome':
-            case 'tagsConsolidate':
-            case 'footerInPage':
-            case 'sidebarMobileDefaultCollapse':
-            case 'sidebarAlwaysShowLeft':
-            case 'sidebarAlwaysShowRight':
-            case 'searchUseTypeahead':
-                $value = (bool) $value;
-                break;
-            case 'youarehereShowLast':
-                $value = (int) $value;
-                break;
-            case 'iconTag':
-            case 'customTheme':
-            case 'navbarCustomMenuText':
-            case 'breadcrumbPrefixText':
-            case 'breadcrumbSepText':
-            case 'youareherePrefixText':
-            case 'youarehereSepText':
-            case 'footerCustomMenuText':
-            case 'brandURLGuest':
-            case 'brandURLUser':
-                break;
-            case 'useLESS':
-                $value = (bool) $value;
-                $lessAvailable = true;
+        $data = [
+            ['keys' => ['navbarDWMenuType'],                'type' => 'choice',
+                'values' => ['both', 'icons', 'text']
+            ],
+            ['keys' => ['navbarDWMenuCombine'],             'type' => 'choice',
+                'values' => ['combine', 'seperate', 'dropdown']
+            ],
+            ['keys' => ['navbarPosLeft', 'navbarPosMiddle', 'navbarPosRight'],
+                'type' => 'choice',
+                'values' => ['none', 'custom', 'search', 'dokuwiki'],
+                'default' => [
+                    'navbarPosLeft' => 'none',
+                    'navbarPosMiddle' => 'search',
+                    'navbarPosRight' => 'dokuwiki'
+                ]
+            ],
+            ['keys' => ['navbarItemShowCreate', 'navbarItemShowShow', 'navbarItemShowRevs', 'navbarItemShowBacklink',
+                'navbarItemShowRecent', 'navbarItemShowMedia', 'navbarItemShowIndex', 'navbarItemShowProfile',
+                'navbarItemShowAdmin'
+            ],
+                'type' => 'choice',
+                'values' => ['always', 'logged in', 'logged out', 'never']
+            ],
+            ['keys' => ['navbarItemShowLogin', 'navbarItemShowLogout'],
+                'type' => 'choice',
+                'values' => ['always', 'never']
+            ],
+            ['keys' => ['searchButton'],                    'type' => 'choice',
+                'values' => ['icon', 'text']
+            ],
+            ['keys' => ['breadcrumbPosition', 'youareherePosition'],
+                'type' => 'choice',
+                'values' => ['top', 'hero', 'page', 'none']
+            ],
+            ['keys' => ['youarehereHome'],                  'type' => 'choice',
+                'values' => ['page title', 'home', 'icon', 'none']
+            ],
+            ['keys' => ['sidebarLeftRow1', 'sidebarLeftRow2', 'sidebarLeftRow3', 'sidebarLeftRow4'],
+                'type' => 'choice',
+                'values' => ['none', 'logged in user', 'search', 'content', 'tags'],
+                'default' => [
+                    'sidebarLeftRow1' => 'logged in user',
+                    'sidebarLeftRow2' => 'search',
+                    'sidebarLeftRow3' => 'content'
+                ]
+            ],
+            ['keys' => ['pageToolsFloating', 'pageToolsFooter'],
+                'type' => 'choice',
+                'values' => ['always', 'none', 'page editors']
+            ],
+            ['keys' => ['pageToolsShowCreate', 'pageToolsShowEdit', 'pageToolsShowRevs', 'pageToolsShowBacklink',
+                'pageToolsShowTop'
+            ],
+                'type' => 'choice',
+                'values' => ['always', 'logged in', 'logged out', 'never']
+            ],
+            ['keys' => ['showNotifications'],               'type' => 'choice',
+                'values' => ['admin', 'always', 'none']
+            ],
+            ['keys' => ['licenseType'],                     'type' => 'choice',
+                'values' => ['badge', 'button', 'none']
+            ],
+            ['keys' => ['navbarUseTitleIcon'],              'type' => 'bool'],
+            ['keys' => ['navbarUseTitleText'],              'type' => 'bool'],
+            ['keys' => ['navbarUseTaglineText'],            'type' => 'bool'],
+            ['keys' => ['navbarShowSub'],                   'type' => 'bool'],
+            ['keys' => ['heroTitle'],                       'type' => 'bool'],
+            ['keys' => ['heroImagePropagation'],            'type' => 'bool'],
+            ['keys' => ['breadcrumbPrefix'],                'type' => 'bool'],
+            ['keys' => ['breadcrumbSep'],                   'type' => 'bool'],
+            ['keys' => ['youareherePrefix'],                'type' => 'bool'],
+            ['keys' => ['youarehereSep'],                   'type' => 'bool'],
+            ['keys' => ['sidebarShowLeft'],                 'type' => 'bool'],
+            ['keys' => ['sidebarShowRight'],                'type' => 'bool'],
+            ['keys' => ['tocFull'],                         'type' => 'bool'],
+            ['keys' => ['footerSearch'],                    'type' => 'bool'],
+            ['keys' => ['licenseImageOnly'],                'type' => 'bool'],
+            ['keys' => ['includePageUseACL'],               'type' => 'bool'],
+            ['keys' => ['includePagePropagate'],            'type' => 'bool'],
+            ['keys' => ['youarehereHideHome'],              'type' => 'bool'],
+            ['keys' => ['tagsConsolidate'],                 'type' => 'bool'],
+            ['keys' => ['footerInPage'],                    'type' => 'bool'],
+            ['keys' => ['sidebarMobileDefaultCollapse'],    'type' => 'bool'],
+            ['keys' => ['sidebarAlwaysShowLeft'],           'type' => 'bool'],
+            ['keys' => ['sidebarAlwaysShowRight'],          'type' => 'bool'],
+            ['keys' => ['searchUseTypeahead'],              'type' => 'bool'],
+            ['keys' => ['youarehereShowLast'],              'type' => 'int'],
 
-                // check for less library
-                $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                if (file_exists($lesscLib) === false) {
-                    $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                }
-                if (file_exists($lesscLib) === false) {
-                    $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                }
-                if (file_exists($lesscLib) === false) {
-                    $lesscLib = $_SERVER['DOCUMENT_ROOT'] .
-                        '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                }
-                if (file_exists($lesscLib) === false) {
-                    $lessAvailable = false;
+            ['keys' => ['iconTag'],                         'type' => 'string'],
+            ['keys' => ['customTheme'],                     'type' => 'string'],
+            ['keys' => ['navbarCustomMenuText'],            'type' => 'string'],
+            ['keys' => ['breadcrumbPrefixText'],            'type' => 'string'],
+            ['keys' => ['breadcrumbSepText'],               'type' => 'string'],
+            ['keys' => ['youareherePrefixText'],            'type' => 'string'],
+            ['keys' => ['youarehereSepText'],               'type' => 'string'],
+            ['keys' => ['footerCustomMenuText'],            'type' => 'string'],
+            ['keys' => ['brandURLGuest'],                   'type' => 'string'],
+            ['keys' => ['brandURLUser'],                    'type' => 'string'],
+
+            ['keys' => ['useLESS'],                         'type' => 'less'],
+        ];
+
+        foreach ($data as $row) {
+            // does not check case....
+            if (in_array($key, $row['keys']) === true) {
+                if (array_key_exists('type', 'row') === true) {
+                    switch ($row['type']) {
+                        case 'bool':
+                            return (bool) $value;
+                        case 'int':
+                            return (int) $value;
+                        case 'string':
+                            return $value;
+                        case 'less':
+                            $value = (bool) $value;
+                            $lessAvailable = true;
+
+                            // check for less library
+                            $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                            if (file_exists($lesscLib) === false) {
+                                $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                            }
+                            if (file_exists($lesscLib) === false) {
+                                $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                            }
+                            if (file_exists($lesscLib) === false) {
+                                $lesscLib = $_SERVER['DOCUMENT_ROOT'] .
+                                    '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                            }
+                            if (file_exists($lesscLib) === false) {
+                                $lessAvailable = false;
+                            }
+
+                            // check for ctype extensions
+                            if (function_exists('ctype_digit') === false) {
+                                $lessAvailable = false;
+                            }
+
+                            if ($value === true && $lessAvailable === false) {
+                                $this->lessIgnored = true;
+                                $value = false;
+                            }
+
+                            return $value;
+                    }//end switch
+                }//end if
+
+                if (in_array($value, $row['values']) === true) {
+                    return $value;
                 }
 
-                // check for ctype extensions
-                if (function_exists('ctype_digit') === false) {
-                    $lessAvailable = false;
+                if (array_key_exists('default', $row) === true) {
+                    if (is_array($row['default']) === true) {
+                        if (array_key_exists($key, $row['default']) === true) {
+                            return $row['default'][$key];
+                        }
+                    } else {
+                        return $row['default'];
+                    }
                 }
 
-                if ($value === true && $lessAvailable === false) {
-                    $this->lessIgnored = true;
-                    $value = false;
-                }
-                break;
-        }//end switch
+                return reset($row['values']);
+            }//end if
+        }//end foreach
 
         return $value;
     }
@@ -454,7 +410,7 @@ class Template
         $html = ob_get_contents();
         ob_end_clean();
 
-        if ($html !== '') {
+        if (empty($html) === false) {
             return true;
         }
 
@@ -489,7 +445,7 @@ class Template
         $html = ob_get_contents();
         ob_end_clean();
 
-        if ($html === '') {
+        if (empty($html) === true) {
             $useACL = $this->getConf('includePageUseACL');
             $propagate = $this->getConf('includePagePropagate');
             $html = '';
@@ -497,11 +453,11 @@ class Template
             $html = tpl_include_page($page, false, $propagate, $useACL);
         }
 
-        if ($html !== '' && $parse === true) {
+        if (empty($html) === false && $parse === true) {
             $html = $this->parseContent($html);
         }
 
-        if ($classWrapper !== '' && $html !== '') {
+        if (empty($classWrapper) === false && empty($html) === false) {
             $html = '<div class="' . $classWrapper . '">' . $html . '</div>';
         }
 
@@ -567,8 +523,9 @@ class Template
 
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
                 if (
-                    $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' &&
-                    $loggedIn === true) || ($showItem === 'logged out' && $loggedIn === false))
+                    $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
+                    (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                    (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
                 ) {
                     $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') .
                         ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -591,8 +548,9 @@ class Template
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
-                $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' && $loggedIn === true) ||
-                ($showItem === 'logged out' && $loggedIn === false))
+                $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') . ' ' .
                     $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -614,8 +572,9 @@ class Template
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
-                $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' && $loggedIn === true) ||
-                ($showItem === 'logged out' && $loggedIn === false))
+                $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown === true ? ' mikio-dropdown-item' : '') . ' ' .
                 $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -745,7 +704,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         $html = '';
 
-        if ($str !== '') {
+        if (empty($str) === false) {
             $items = explode(';', $str);
             if (count($items) > 0) {
                 $html .= '<ul class="mikio-nav">';
@@ -779,7 +738,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         if (plugin_isdisabled('showpageafterlogin') === false) {
             $p = &plugin_load('action', 'showpageafterlogin');
-            if ($p !== null) {
+            if (empty($p) === false) {
                 if (is_array($USERINFO) === true && count($USERINFO) > 0) {
                     $homeUrl = wl($p->getConf('page_after_login'));
                 }
@@ -809,7 +768,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             if ($this->getConf('navbarUseTitleIcon') === true) {
                 $logo = $this->getMediaFile('logo', false);
                 ;
-                if ($logo !== '') {
+                if (empty($logo) === false) {
                     $width = $this->getConf('navbarTitleIconWidth');
                     $height = $this->getConf('navbarTitleIconHeight');
                     $styles = '';
@@ -882,7 +841,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         // Sub Navbar
         if ($showSub === true) {
             $sub = $this->includePage('submenu', false);
-            if ($sub !== '') {
+            if (empty($sub) === false) {
                 $html .= '<nav class="mikio-navbar mikio-sub-navbar">' . $sub . '</nav>';
             }
         }
@@ -904,7 +863,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         global $conf;
 
-        if ($prefix === 'left') {
+        if (strcasecmp($prefix, 'left') === 0) {
             $prefix = '';
         }
 
@@ -928,25 +887,25 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $confPrefix = preg_replace('/[^a-zA-Z0-9]/', '', ucwords($prefix));
         $prefix = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($prefix));
 
-        if ($confPrefix === '') {
+        if (empty($confPrefix) === true) {
             $confPrefix = 'Left';
         }
-        if ($prefix === 'Left') {
+        if (strcasecmp($prefix, 'Left') === 0) {
             $prefix = '';
         }
 
-        $sidebarPage = $conf[$prefix . 'sidebar'] === '' ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
+        empty($sidebarPage = $conf[$prefix . 'sidebar']) === true ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
 
         if (
             $this->getConf('sidebarShow' . $confPrefix) === true && page_findnearest($sidebarPage) !== false &&
             p_get_metadata($ID, 'nosidebar', false) === false
         ) {
             $content = $this->includePage($sidebarPage . 'header', false);
-            if ($content !== '') {
+            if (empty($content) === false) {
                 $html .= '<div class="mikio-sidebar-header">' . $content . '</div>';
             }
 
-            if ($prefix === '') {
+            if (empty($prefix) === true) {
                 $rows = [$this->getConf('sidebarLeftRow1'), $this->getConf('sidebarLeftRow2'),
                     $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4')
                 ];
@@ -961,7 +920,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                             break;
                         case 'content':
                             $content = $this->includePage($sidebarPage, false);
-                            if ($content !== '') {
+                            if (empty($content) === false) {
                                 $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
                             }
                             break;
@@ -971,19 +930,19 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 }
             } else {
                 $content = $this->includePage($sidebarPage, false);
-                if ($content !== '') {
+                if (empty($content) === false) {
                     $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
                 }
             }//end if
 
             $content = $this->includePage($sidebarPage . 'footer', false);
-            if ($content !== '') {
+            if (empty($content) === false) {
                 $html .= '<div class="mikio-sidebar-footer">' . $content . '</div>';
             }
         }//end if
 
-        if ($html === '') {
-            if ($prefix === '' && $this->getConf('sidebarAlwaysShowLeft') === true) {
+        if (empty($html) === true) {
+            if (empty($prefix) === true && $this->getConf('sidebarAlwaysShowLeft') === true) {
                 $html = '&nbsp;';
             }
             if ($this->getConf('sidebarAlwaysShow' . ucfirst($prefix)) === true) {
@@ -991,8 +950,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
         }
 
-        if ($html !== '') {
-            $html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix === '' ? 'left' : $prefix) .
+        if (empty($html) === false) {
+            empty($html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix) === true ? 'left' : $prefix) .
                 '"><a class="mikio-sidebar-toggle' .
                 ($this->getConf('sidebarMobileDefaultCollapse') === true ? ' closed' : '') . '" href="#">' .
                 tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="mikio-sidebar-collapse">' .
@@ -1040,8 +999,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()));
             if (
-                $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' && $loggedIn === true) ||
-                ($showItem === 'logged out' && $loggedIn === true))
+                $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === true))
             ) {
                 $html .= '<li class="' . implode(' ', $classes) . '">';
                 $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' .
@@ -1081,9 +1041,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $html .= 'class="search_typeahead" ';
         }
         $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' .
-            (($ACT === 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
+            ((strcasecmp($ACT, 'search') === 0) ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
         $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
-        if ($this->getConf('searchButton') === 'icon') {
+        if (strcasecmp($this->getConf('searchButton'), 'icon') === 0) {
             $html .= $this->mikioInlineIcon('search');
         } else {
             $html .= $lang['btn_search'];
@@ -1154,8 +1114,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
-            $ACT === 'show' && ($showPageTools === 'always' || $this->userCanEdit() === true &&
-            $showPageTools === 'page editors')
+            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, 'always') === 0 ||
+            $this->userCanEdit() === true && strcasecmp($showPageTools, 'page editors') === 0)
         ) {
             $html .= $this->includePageTools(false);
         }
@@ -1188,13 +1148,16 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         global $conf, $ID, $lang, $ACT;
 
-        if ($this->getConf('breadcrumbHideHome') === true && $ID === 'start' && $ACT === 'show' || $ACT === 'showtag') {
+        if (
+            $this->getConf('breadcrumbHideHome') === true && strcasecmp($ID, 'start') === 0 &&
+            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0
+        ) {
             return '';
         }
 
         $html = '<div class="mikio-breadcrumbs">';
         $html .= '<div class="mikio-container">';
-        if ($ACT === 'show') {
+        if (strcasecmp($ACT, 'show') === 0) {
             if ($conf['breadcrumbs'] === true) {
                 if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
                     ob_start();
@@ -1226,7 +1189,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $crumbs = breadcrumbs();
 
                     $html .= '<ul>';
-                    if ($prefix !== '') {
+                    if (empty($prefix) === false) {
                         $html .= '<li class="prefix">' . $prefix . '</li>';
                     }
 
@@ -1268,13 +1231,16 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         global $conf, $ID, $lang, $ACT;
 
-        if ($this->getConf('youarehereHideHome') === true && $ID === 'start' && $ACT === 'show' || $ACT === 'showtag') {
+        if (
+            $this->getConf('youarehereHideHome') === true && strcasecmp($ID, 'start') === 0 &&
+            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0
+        ) {
             return '';
         }
 
         $html = '<div class="mikio-youarehere">';
         $html .= '<div class="mikio-container">';
-        if ($ACT === 'show') {
+        if (strcasecmp($ACT, 'show') === 0) {
             if ($conf['youarehere'] === true) {
                 if ($this->getConf('youareherePrefix') === false && $this->getConf('youarehereSep') === false) {
                     ob_start();
@@ -1304,7 +1270,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     }
 
                     $html .= '<ul>';
-                    if ($prefix !== '') {
+                    if (empty($prefix) === false) {
                         $html .= '<li class="prefix">' . $prefix . '</li>';
                     }
                     $html .= '<li>' . tpl_pagelink(':' . $conf['start'], null, true) . '</li>';
@@ -1421,10 +1387,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $html .= '<div class="mikio-hero">';
             $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
-            if ($this->getConf('youareherePosition') === 'hero') {
+            if (strcasecmp($this->getConf('youareherePosition'), 'hero') === 0) {
                 $html .= $this->includeYouAreHere(false);
             }
-            if ($this->getConf('breadcrumbPosition') === 'hero') {
+            if (strcasecmp($this->getConf('breadcrumbPosition'), 'hero') === 0) {
                 $html .= $this->includeBreadcrumbs(false);
             }
 
@@ -1436,7 +1402,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $hero_image = $this->getMediaFile('hero', true, $this->getConf('heroImagePropagation', true));
             $hero_image_resize_class = '';
-            if ($hero_image !== '') {
+            if (empty($hero_image) === false) {
                 $hero_image = ' style="background-image:url(\'' . $hero_image . '\');"';
                 $hero_image_resize_class = ' mikio-hero-image-resize';
             }
@@ -1469,7 +1435,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $tocHtml = tpl_toc(true);
 
-        if ($tocHtml !== '') {
+        if (empty($tocHtml) === false) {
             $tocHtml = preg_replace('/<li.*><div.*><a.*><\/a><\/div><\/li>\s*/', '', $tocHtml);
             $tocHtml = preg_replace('/<ul.*>\s*<\/ul>\s*/', '', $tocHtml);
 
@@ -1501,18 +1467,18 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         global $ACT, $MIKIO_ICONS;
 
         $iconTag = $this->getConf('iconTag', 'icon');
-        if ($iconTag === '') {
+        if (empty($iconTag) === true) {
             return $str;
         }
 
         if (
             in_array($ACT, ['show', 'showtag', 'revisions', 'index', 'preview']) === true ||
-            $ACT === 'admin' && count($MIKIO_ICONS) > 0
+            strcasecmp($ACT, 'admin') === 0 && count($MIKIO_ICONS) > 0
         ) {
             $content = $str;
             $preview = null;
 
-            if ($ACT === 'preview') {
+            if (strcasecmp($ACT, 'preview') === 0) {
                 $html = new \simple_html_dom();
                 $html->stripRNAttrValues = false;
                 $html->load($str, true, false);
@@ -1551,7 +1517,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                                             $s = $icon['insert'];
                                             for ($i = 1; $i < 9; $i++) {
-                                                if (count($e) < $i || $e[$i] === '') {
+                                                if (count(empty($e) < $i || $e[$i]) === true) {
                                                     if (isset($icon['$' . $i]) === true) {
                                                         $s = str_replace('$' . $i, $icon['$' . $i], $s);
                                                     }
@@ -1587,7 +1553,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 );
             }, $content);
 
-            if ($ACT === 'preview') {
+            if (strcasecmp($ACT, 'preview') === 0) {
                 if (is_array($preview) === true && count($preview) > 0) {
                     $preview[0]->innertext = $content;
                 }
@@ -1614,7 +1580,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         global $INPUT, $ACT;
 
         // Add Mikio Section titles
-        if ($INPUT->str('page') === 'config') {
+        if (strcasecmp($INPUT->str('page'), 'config') === 0) {
             $admin_sections = [
                 // Section      Insert Before                 Icon
                 'navbar'        => ['navbarUseTitleIcon',      ''],
@@ -1647,7 +1613,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
         }//end if
 
-        if ($ACT === 'admin' && isset($_GET['page']) === false) {
+        if (strcasecmp($ACT, 'admin') === 0 && isset($_GET['page']) === false) {
             $content = preg_replace('/(<ul.*?>.*?)<\/ul>.*?<ul.*?>(.*?<\/ul>)/s', '$1$2', $content);
         }
 
@@ -1813,13 +1779,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $elm->setAttribute('style', 'display:none');
             }
 
-            if ($tags !== '') {
+            if (empty($tags) === false) {
                 $this->footerScript['tags'] = 'mikio.setTags(\'' . $tags . '\')';
             }
         }
 
         // Configuration Manager
-        if ($INPUT->str('page') === 'config') {
+        if (strcasecmp($INPUT->str('page'), 'config') === 0) {
             // Additional save buttons
             foreach ($html->find('#config__manager') as $cm) {
                 $saveButtons = '';
@@ -1912,7 +1878,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $prefix[] = ':wiki:';
         }
         $theme = $this->getConf('customTheme');
-        if ($theme !== '') {
+        if (empty($theme) === false) {
             $prefix[] = 'themes/' . $theme . '/images/';
         }
         $prefix[] = 'images/';
@@ -1931,7 +1897,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $found = false;
 
         foreach ($search as $img) {
-            if (substr($img, 0, 1) === ':') {
+            if (strcasecmp(substr($img, 0, 1), ':') === 0) {
                 $file    = mediaFN($img);
                 $ismedia = true;
             } else {
@@ -1971,7 +1937,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $html = '';
 
-        if ($page === '') {
+        if (empty($page) === true) {
             $page = $ID;
         }
 
@@ -2079,7 +2045,10 @@ xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
         }
 
         $show = $this->getConf('showNotifications');
-        if ($show === 'always' || ($show === 'admin' && $ACT === 'admin')) {
+        if (
+            strcasecmp($show, 'always') === 0 ||
+            (strcasecmp($show, 'admin') === 0 && strcasecmp($ACT, 'admin') === 0)
+        ) {
             global $MSG, $MSG_shown;
 
             if (isset($MSG) === false) {
