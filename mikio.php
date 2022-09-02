@@ -694,7 +694,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }//end switch
 
         if ($this->getConf('showLightDark') === true) {
-            $html .= '<li class="mikio-theme-mode"><a href="#" class="mikio-control mikio-button mikio-theme-mode-button"></a></li>';
+            $html .= '<li class="mikio-theme-mode">
+<a href="#" class="mikio-control mikio-button mikio-theme-mode-button"></a></li>';
         }
 
         $html .= '</ul>';
