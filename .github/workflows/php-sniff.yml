@@ -1,0 +1,38 @@
+name: PHP-Sniff
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - '.github/**'
+      - '*/**.css'
+      - '*/**.ico'
+      - '*/**.ini'
+      - '*/**.js'
+      - '*/**.md'
+      - '*/**.png'
+      - '*/**.txt'
+
+jobs:
+  php-code-sniffer:
+    name: Security / PHP Code Sniffer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: sodium
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          phpcsstandards_dir="$(mktemp -d)"
+          git clone "https://@github.com/PHPCSStandards/PHPCSUtils.git" "${phpcsstandards_dir}"
+          phpcompatibility_dir="$(mktemp -d)"
+          git clone "https://@github.com/PHPCompatibility/PHPCompatibility.git" "${phpcompatibility_dir}"
+          php phpcs.phar --config-set installed_paths "${phpcsstandards_dir}/PHPCSUtils,${phpcsstandards_dir}/PHPCS23Utils,${phpcompatibility_dir}/PHPCompatibility"
+          php phpcs.phar --extensions=php --standard=phpcs.xml
