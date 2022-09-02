@@ -8,8 +8,8 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-$lang['iconTag']                = 'Tag to use to for icon tags. The default is \'icon\' but this can be changed if it 
-conflicts with any plugins. Set to blank to disable icon tags';
+$lang['iconTag']                = 'Tag to use to for icon tags. The default is \'icon\' but this can be changed if 
+it conflicts with any plugins. Set to blank to disable icon tags';
 $lang['customTheme']            = 'Use a Mikio subtheme installed into the themes directory. Leave blank for the 
 detault styling';
 $lang['showNotifications']      = 'Where to show site notifications to admin staff';
@@ -28,8 +28,8 @@ $lang['navbarUseTaglineText']   = 'Show the wiki tag line in the menubar title';
 $lang['navbarCustomMenuText']   = 'Allows custom menus in the menubar. The format is url|title seperated by semicolons';
 
 $lang['navbarDWMenuType']       = 'Show Dokuwiki menus as icons, text or both';
-$lang['navbarDWMenuCombine']    = 'Show Dokuwiki menus as seperate items, a category dropdown or combined in a single 
-menu';
+$lang['navbarDWMenuCombine']    = 'Show Dokuwiki menus as seperate items, a category dropdown or combined in a 
+single menu';
 
 $lang['navbarPosLeft']          = 'Menu to show on the left of the navbar';
 $lang['navbarPosMiddle']        = 'Menu to show in the middle of the navbar';
@@ -60,12 +60,11 @@ $lang['tagsConsolidate']        = 'Consolidate page tags to hero, content header
 $lang['breadcrumbHideHome']     = 'Hide breadcrumb block on home page';
 $lang['breadcrumbPosition']     = 'Position of the breadcrumb bar on the page';
 $lang['breadcrumbPrefix']       = 'Change the breadcrumb prefix text';
-$lang['breadcrumbPrefixText']   = 'Replacement breadcrumb prefix text. Use can use an image by uploading breadcrumb-prefix.png 
-to the template\'s images directory';
+$lang['breadcrumbPrefixText']   = 'Replacement breadcrumb prefix text. Use can use an image by uploading 
+breadcrumb-prefix.png to the template\'s images directory';
 $lang['breadcrumbSep']          = 'Change the breadcrumb seperator text';
 $lang['breadcrumbSepText']      = 'Replacement breadcrumb seperator text. Use can use an image by uploading 
 breadcrumb-sep.png to the template\'s images directory';
-;
 
 $lang['youarehereHideHome']     = 'Hide you are here on home page';
 $lang['youareherePosition']     = 'Position of the you are here bar on the page';
@@ -75,7 +74,6 @@ youarehere-prefix.png to the template\'s images directory';
 $lang['youarehereSep']          = 'Change the you are here seperator text';
 $lang['youarehereSepText']      = 'Replacement you are here seperator text. Use can use an image by uploading 
 youarehere-sep.png to the template\'s images directory';
-;
 $lang['youarehereHome']         = 'Change the text or icon used for the Home page in the breadcrumb bar';
 $lang['youarehereShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
 
