@@ -203,6 +203,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - **_2022-09-02_**
   - Cleaned up the code to PHPCS standards
   - Fixed breadcrumb layouts on mobile [#31](https://github.com/nomadjimbob/mikio/issues/31)
+  - Fixed Media Manager on small displays
+  - Fixed Media Manager layout on Greebo
+  - Fixed search results layout [#41](https://github.com/nomadjimbob/mikio/issues/41)
 
 - **_2022-05-10_**
   - Added support to directly set title icon width and height in config. Thanks AlexiaR

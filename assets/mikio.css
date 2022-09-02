@@ -1163,20 +1163,36 @@ body {
 
 .mikio-tabs {
   padding: 0;
+  margin-top: 1rem;
   margin-bottom: -1px;
+  list-style-type: none;
+}
+
+.mikio-tabs li {
+  float: none;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .mikio-tabs li strong {
+  display: inline-block;
   background-color: #fff;
   font-weight: normal;
   color: #495057;
   border-color: #dee2e6 #dee2e6 #fff;
+  border-radius: .5rem .5rem 0 0;
+  border-width: 1px;
+  border-style: solid;
   padding: .5rem 1rem;
   margin: 0;
   bottom: -1px;
 }
 
 .mikio-tabs li a {
+  display: inline-block;
   padding: .5rem 1rem;
   border: 1px solid transparent;
   color: #007bff;
@@ -1188,7 +1204,8 @@ body {
 
 .mikio-tabs li a:hover {
   color: #0056b3;
-  border-color: #dee2e6 #dee2e6 #dee2e6;
+  border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+  border-radius: .5rem .5rem 0 0;
   background-color: transparent;
 }
 
@@ -1197,6 +1214,20 @@ body {
 }
 
 .mikio-tab-active {
+  display: inline-block;
+  background-color: #fff;
+  font-weight: normal;
+  color: #495057;
+  border-color: #dee2e6 #dee2e6 #fff;
+  border-radius: .5rem .5rem 0 0;
+  border-width: 1px;
+  border-style: solid;
+  padding: .5rem 1rem;
+  margin: 0;
+  bottom: -1px;
+}
+
+.mikio-tab {
   background-color: #fff;
   font-weight: normal;
   color: #495057;
@@ -2015,6 +2046,12 @@ pre {
   padding: 0;
 }
 
+.mikio #mediamanager__page,
+#media__manager {
+  width: 100%;
+  min-width: 100%;
+}
+
 .mikio #mediamanager__page button,
 .mikio #mediamanager__page .qq-upload-button,
 .mikio #mediamanager__page .qq-upload-list a,
@@ -2137,6 +2174,8 @@ pre {
 .mikio #mediamanager__page .ui-resizable-e,
 #media__manager .ui-resizable-e {
   background: transparent;
+  width: 6px;
+  right: 2px;
 }
 
 .mikio #mediamanager__page .ui-resizable-e:hover,
@@ -2144,17 +2183,32 @@ pre {
   background-color: #999;
 }
 
+.mikio #mediamanager__page .namespaces,
+#media__manager .namespaces {
+  width: 20%;
+  min-width: 10em;
+  left: 0 !important;
+}
+
 .mikio #mediamanager__page .namespaces h2,
 .mikio #mediamanager__page #media__tree h2,
 #media__manager .namespaces h2,
 #media__manager #media__tree h2 {
+  display: inline-block;
   background-color: #fff;
   font-weight: normal;
   color: #495057;
   border-color: #dee2e6 #dee2e6 #fff;
+  border-radius: .5rem .5rem 0 0;
+  border-width: 1px;
+  border-style: solid;
   padding: .5rem 1rem;
   margin: 0;
   bottom: -1px;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .mikio #mediamanager__page .namespaces .panelHeader,
@@ -2179,6 +2233,8 @@ pre {
 #media__manager #media__tree ul,
 #media__manager #media__tree ul.idx {
   margin-top: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .mikio #mediamanager__page .namespaces ul ul,
@@ -2204,6 +2260,17 @@ pre {
   white-space: nowrap;
 }
 
+.mikio #mediamanager__page .namespaces ul li img,
+.mikio #mediamanager__page .namespaces ul.idx li img,
+.mikio #mediamanager__page #media__tree ul li img,
+.mikio #mediamanager__page #media__tree ul.idx li img,
+#media__manager .namespaces ul li img,
+#media__manager .namespaces ul.idx li img,
+#media__manager #media__tree ul li img,
+#media__manager #media__tree ul.idx li img {
+  margin-right: .2rem;
+}
+
 .mikio #mediamanager__page .namespaces ul a,
 .mikio #mediamanager__page .namespaces ul.idx a,
 .mikio #mediamanager__page #media__tree ul a,
@@ -2217,6 +2284,24 @@ pre {
   color: #333;
 }
 
+.mikio #mediamanager__page .namespaces ul div,
+.mikio #mediamanager__page .namespaces ul.idx div,
+.mikio #mediamanager__page #media__tree ul div,
+.mikio #mediamanager__page #media__tree ul.idx div,
+#media__manager .namespaces ul div,
+#media__manager .namespaces ul.idx div,
+#media__manager #media__tree ul div,
+#media__manager #media__tree ul.idx div {
+  display: inline-block;
+}
+
+.mikio #mediamanager__page .filelist,
+#media__manager .filelist {
+  width: 50%;
+  min-width: 25em;
+  left: 0 !important;
+}
+
 .mikio #mediamanager__page .filelist .panelHeader,
 .mikio #mediamanager__page .qq-uploader .panelHeader,
 #media__manager .filelist .panelHeader,
@@ -2228,6 +2313,13 @@ pre {
   border-color: #dee2e6;
   word-wrap: break-word;
   word-break: break-word;
+}
+
+.mikio #mediamanager__page .filelist .panelHeader h3,
+.mikio #mediamanager__page .qq-uploader .panelHeader h3,
+#media__manager .filelist .panelHeader h3,
+#media__manager .qq-uploader .panelHeader h3 {
+  width: 100%;
 }
 
 .mikio #mediamanager__page .filelist form.options,
@@ -2250,6 +2342,13 @@ pre {
 #media__manager .qq-uploader .panelContent {
   padding-top: 1rem;
   text-align: center;
+}
+
+.mikio #mediamanager__page .filelist ul,
+.mikio #mediamanager__page .qq-uploader ul,
+#media__manager .filelist ul,
+#media__manager .qq-uploader ul {
+  margin: 1rem 0 -1px 0;
 }
 
 .mikio #mediamanager__page .filelist ul.thumbs,
@@ -2296,56 +2395,6 @@ pre {
 #media__manager .filelist ul.thumbs li .name a,
 #media__manager .qq-uploader ul.thumbs li .name a {
   color: #000;
-}
-
-.mikio #mediamanager__page .filelist ul.tabs,
-.mikio #mediamanager__page .qq-uploader ul.tabs,
-#media__manager .filelist ul.tabs,
-#media__manager .qq-uploader ul.tabs {
-  padding: 0;
-  margin-bottom: -1px;
-}
-
-.mikio #mediamanager__page .filelist ul.tabs li strong,
-.mikio #mediamanager__page .qq-uploader ul.tabs li strong,
-#media__manager .filelist ul.tabs li strong,
-#media__manager .qq-uploader ul.tabs li strong {
-  background-color: #fff;
-  font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
-  padding: .5rem 1rem;
-  margin: 0;
-  bottom: -1px;
-}
-
-.mikio #mediamanager__page .filelist ul.tabs li a,
-.mikio #mediamanager__page .qq-uploader ul.tabs li a,
-#media__manager .filelist ul.tabs li a,
-#media__manager .qq-uploader ul.tabs li a {
-  padding: .5rem 1rem;
-  border: 1px solid transparent;
-  color: #007bff;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  margin: 0;
-  background-color: transparent;
-}
-
-.mikio #mediamanager__page .filelist ul.tabs li a:hover,
-.mikio #mediamanager__page .qq-uploader ul.tabs li a:hover,
-#media__manager .filelist ul.tabs li a:hover,
-#media__manager .qq-uploader ul.tabs li a:hover {
-  color: #0056b3;
-  border-color: #dee2e6 #dee2e6 #dee2e6;
-  background-color: transparent;
-}
-
-.mikio #mediamanager__page .filelist ul.tabs:after,
-.mikio #mediamanager__page .qq-uploader ul.tabs:after,
-#media__manager .filelist ul.tabs:after,
-#media__manager .qq-uploader ul.tabs:after {
-  border-bottom: 0;
 }
 
 .mikio #mediamanager__page .filelist .rows li,
@@ -2429,15 +2478,31 @@ pre {
 .mikio #mediamanager__page .file ul.tabs,
 #media__manager .file ul.tabs {
   padding: 0;
+  margin-top: 1rem;
   margin-bottom: -1px;
+  list-style-type: none;
+}
+
+.mikio #mediamanager__page .file ul.tabs li,
+#media__manager .file ul.tabs li {
+  float: none;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .mikio #mediamanager__page .file ul.tabs li strong,
 #media__manager .file ul.tabs li strong {
+  display: inline-block;
   background-color: #fff;
   font-weight: normal;
   color: #495057;
   border-color: #dee2e6 #dee2e6 #fff;
+  border-radius: .5rem .5rem 0 0;
+  border-width: 1px;
+  border-style: solid;
   padding: .5rem 1rem;
   margin: 0;
   bottom: -1px;
@@ -2445,6 +2510,7 @@ pre {
 
 .mikio #mediamanager__page .file ul.tabs li a,
 #media__manager .file ul.tabs li a {
+  display: inline-block;
   padding: .5rem 1rem;
   border: 1px solid transparent;
   color: #007bff;
@@ -2457,7 +2523,8 @@ pre {
 .mikio #mediamanager__page .file ul.tabs li a:hover,
 #media__manager .file ul.tabs li a:hover {
   color: #0056b3;
-  border-color: #dee2e6 #dee2e6 #dee2e6;
+  border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+  border-radius: .5rem .5rem 0 0;
   background-color: transparent;
 }
 
@@ -2517,6 +2584,18 @@ pre {
   color: #fff;
   background-color: #0069d9;
   border-color: #0062cc;
+}
+
+.mikio #mediamanager__page .panel,
+#media__manager .panel {
+  float: left;
+}
+
+.mikio #mediamanager__page .panelHeader,
+#media__manager .panelHeader {
+  margin: 0 10px 10px 0;
+  padding: 10px 10px 8px;
+  font-size: .9rem;
 }
 
 .mikio #mediamanager__page .panelContent,
@@ -2652,6 +2731,7 @@ pre {
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form {
   display: grid;
   margin: 0 auto;
+  width: auto;
   max-width: 800px;
   grid-template-columns: auto 10rem 10rem;
   grid-gap: 1rem;
@@ -2689,10 +2769,22 @@ pre {
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions {
   grid-column: 1 / span 3;
   grid-row: 2 / span 1;
+  text-align: center;
+}
+
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  color: #1a1a1a;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+  text-align: left;
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle .current {
-  padding: .2rem 1.2rem .2rem 0rem;
+  padding: .2rem 2.2rem .2rem .2rem;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
   background-size: 1.2rem;
   background-position: right;
@@ -2707,11 +2799,22 @@ pre {
   position: absolute;
   right: 0;
   top: .5rem;
-  padding: 1rem 1.5rem;
+  padding: .5rem 2rem;
   border: 1px solid #e5e5e5;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   background-color: #fff;
   color: #999;
+  list-style-type: none;
+}
+
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul li {
+  margin: 0rem;
+  white-space: nowrap;
+}
+
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul li.active {
+  padding: .2rem 0;
+  display: block;
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a {
@@ -2720,12 +2823,21 @@ pre {
   -webkit-text-decoration: none;
   text-decoration: none;
   font-style: normal;
-  margin: 0 -1rem;
-  padding: 0 1rem;
+  display: block;
+  padding: .2rem 2rem;
+  margin: 0 -2rem;
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:hover {
   background-color: #e5e5e5;
+}
+
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul[aria-expanded="false"] {
+  display: none;
+}
+
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle+.toggle {
+  margin-left: 1rem;
 }
 
 .mikio.dokuwiki .mode_search .mikio-article h2 {
@@ -2737,11 +2849,11 @@ pre {
 .mikio.dokuwiki .mode_search .mikio-article .search_quickresult ul {
   background-color: #fff;
   padding: .5rem 1rem;
+  list-style-type: none;
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search_quickresult ul li {
   float: none;
-  display: inline-block;
   text-align: left;
   padding-left: 0;
 }
@@ -2793,20 +2905,36 @@ pre {
 
 .mikio.dokuwiki ul.tabs {
   padding: 0;
+  margin-top: 1rem;
   margin-bottom: -1px;
+  list-style-type: none;
+}
+
+.mikio.dokuwiki ul.tabs li {
+  float: none;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  position: relative;
+  z-index: 2;
 }
 
 .mikio.dokuwiki ul.tabs li strong {
+  display: inline-block;
   background-color: #fff;
   font-weight: normal;
   color: #495057;
   border-color: #dee2e6 #dee2e6 #fff;
+  border-radius: .5rem .5rem 0 0;
+  border-width: 1px;
+  border-style: solid;
   padding: .5rem 1rem;
   margin: 0;
   bottom: -1px;
 }
 
 .mikio.dokuwiki ul.tabs li a {
+  display: inline-block;
   padding: .5rem 1rem;
   border: 1px solid transparent;
   color: #007bff;
@@ -2818,7 +2946,8 @@ pre {
 
 .mikio.dokuwiki ul.tabs li a:hover {
   color: #0056b3;
-  border-color: #dee2e6 #dee2e6 #dee2e6;
+  border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+  border-radius: .5rem .5rem 0 0;
   background-color: transparent;
 }
 
@@ -3214,7 +3343,7 @@ pre {
     background-image: none !important;
   }
 
-  .mikio-page .mikio-container {
+  .mode_show .mikio-page .mikio-container {
     display: grid;
     grid-template-columns: auto 2.5rem;
   }
@@ -3240,7 +3369,6 @@ pre {
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
     padding-bottom: 1rem;
-    width: auto;
   }
 
   .mikio .mikio-content .mikio-article.toc-full {
@@ -3305,6 +3433,32 @@ pre {
 
   .mikio-page-fill .mikio-sidebar {
     display: none;
+  }
+
+  .mikio #mediamanager__page,
+  #media__manager {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mikio #mediamanager__page .ui-resizable-e,
+  #media__manager .ui-resizable-e {
+    display: none !important;
+  }
+
+  .mikio #mediamanager__page .namespaces,
+  .mikio #mediamanager__page .filelist,
+  #media__manager .namespaces,
+  #media__manager .filelist {
+    width: auto;
+    min-width: auto;
+  }
+
+  .mikio #mediamanager__page .panelHeader,
+  .mikio #mediamanager__page .panelContent,
+  #media__manager .panelHeader,
+  #media__manager .panelContent {
+    margin-right: 0;
   }
 }
 

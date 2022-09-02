@@ -1117,14 +1117,25 @@ html, body {
 
 .mikio-tabs {
     padding: 0;
+    margin-top: 1rem;
     margin-bottom: -1px;
+    list-style-type: none;
 
     li {
+        float: none;
+        display: inline-block;
+        font-size: 1rem;
+        display: inline-block;
+        line-height: 1.4rem;
+        position: relative;
+        z-index: 2;
+
         strong {
             .mikio-tab-active;
         }
 
         a {
+            display: inline-block;
             padding: .5rem 1rem;
             border: 1px solid transparent;
             color: #007bff;
@@ -1134,7 +1145,8 @@ html, body {
 
             &:hover {
                 color: #0056b3;
-                border-color:#dee2e6 #dee2e6 #dee2e6;
+                border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+                border-radius: .5rem .5rem 0 0;
                 background-color: transparent;
             }
         }
@@ -1146,6 +1158,21 @@ html, body {
 }
 
 .mikio-tab-active {
+    display: inline-block;
+    background-color: #fff;
+    font-weight: normal;
+    color: #495057;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-radius: .5rem .5rem 0 0;
+    border-width: 1px;
+    border-style: solid;
+    padding: .5rem 1rem;
+    margin: 0;
+    bottom: -1px;
+    // margin-bottom: -1px;
+}
+
+.mikio-tab {
     background-color: #fff;
     font-weight: normal;
     color: #495057;
@@ -1567,6 +1594,9 @@ code, pre {
 
 
 .mikio #mediamanager__page, #media__manager {
+    width: 100%;
+    min-width: 100%;
+
     button, .qq-upload-button, .qq-upload-list a {
         .mikio-control;
         .mikio-button;
@@ -1587,15 +1617,31 @@ code, pre {
 
     .ui-resizable-e {
         background: transparent;
+        width: 6px;
+        right: 2px;
 
         &:hover {
             background-color: #999;
         }
     }
 
+    .namespaces {
+        width: 20%;
+        min-width: 10em;
+        left: 0 !important;
+    }
+
     .namespaces, #media__tree {
         h2 {
             .mikio-tab-active;
+            font-size: 1rem;
+            display: inline-block;
+            border-radius: .5rem .5rem 0 0;
+            border-width: 1px;
+            border-style: solid;
+            line-height: 1.4rem;
+            position: relative;
+            z-index: 2;
         }
     
         .panelHeader {
@@ -1604,6 +1650,8 @@ code, pre {
 
         ul, ul.idx {
             margin-top: 0;
+            padding: 0;
+            list-style-type: none;
 
             ul {
                 margin-left: 1rem;
@@ -1612,18 +1660,36 @@ code, pre {
             li {
                 margin: .25rem 0;
                 white-space: nowrap;
+
+                img {
+                    margin-right: .2rem;
+                }
             }
 
             a {
                 .mikio-text-decoration(none);
                 color: #333;
             }
+
+            div {
+                display: inline-block;
+            }
         }
     }
     
+    .filelist {
+        width: 50%;
+        min-width: 25em;
+        left: 0 !important;
+    }
+
     .filelist, .qq-uploader {
         .panelHeader {
             .mikio-tab-panel;
+
+            h3 {
+                width: 100%;
+            }
         }
 
         form.options {
@@ -1640,6 +1706,8 @@ code, pre {
         }
 
         ul {
+            margin: 1rem 0 -1px 0;
+
             &.thumbs {
                 margin: 0;
 
@@ -1666,10 +1734,6 @@ code, pre {
                         }
                     }
                 }
-            }
-
-            &.tabs {
-                .mikio-tabs;
             }
         }
 
@@ -1758,6 +1822,16 @@ code, pre {
         button[name="mediado[save]"] {
             .mikio-button-submit;
         }
+    }
+
+    .panel {
+        float: left;
+    }
+
+    .panelHeader {
+        margin: 0 10px 10px 0;
+        padding: 10px 10px 8px;
+        font-size: .9rem;
     }
 
     .panelContent {
@@ -1853,6 +1927,7 @@ code, pre {
         fieldset.search-form {
             display: grid;
             margin: 0 auto;
+            width: auto;
             max-width: 800px;
             grid-template-columns: auto  10rem 10rem;
             grid-gap: 1rem;
@@ -1879,10 +1954,20 @@ code, pre {
             .advancedOptions {
                 grid-column: 1 / span 3;
                 grid-row: 2 / span 1;
+                text-align: center;
 
                 .toggle {
+                    position: relative;
+                    display: inline-block;
+                    border: 1px solid @ini_dropdown_border_color;
+                    background-color: @ini_dropdown_background_color;
+                    color: @ini_dropdown_color;
+                    border-radius: .25rem;
+                    padding: .375rem .75rem;
+                    text-align: left;
+
                     .current {
-                        padding: .2rem 1.2rem .2rem 0rem;
+                        padding: .2rem 2.2rem .2rem .2rem;
                         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
                         background-size: 1.2rem;
                         background-position: right;
@@ -1897,25 +1982,45 @@ code, pre {
                         position: absolute;
                         right: 0;
                         top: .5rem;
-                        padding: 1rem 1.5rem;
+                        padding: .5rem 2rem;
                         border: 1px solid @ini_dropdown_border_color;
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
                         background-color: @ini_dropdown_background_color;
                         color: #999;
+                        list-style-type: none;
+
+                        li {
+                            margin: 0rem;
+                            white-space: nowrap;
+                        }
+
+                        li.active {
+                            padding: .2rem 0;
+                            display: block;
+                        }
 
                         a {
                             transition: all 0.15s ease-in-out;
                             color: @ini_dropdown_color;
                             .mikio-text-decoration(none);
                             font-style: normal;
-                            margin: 0 -1rem;
-                            padding: 0 1rem;
+                            display: block;
+                            padding: .2rem 2rem;
+                            margin: 0 -2rem;
 
                             &:hover {
                                 background-color: @ini_dropdown_hover_color;
                             }
                         }
                     }
+
+                    ul[aria-expanded="false"] {
+                        display: none;
+                    }
+                }
+
+                .toggle + .toggle {
+                    margin-left: 1rem;
                 }
             }
         }
@@ -1930,10 +2035,10 @@ code, pre {
     .search_quickresult ul {
         background-color: #fff;
         padding: .5rem 1rem;
+        list-style-type: none;
 
         li {
             float: none;
-            display: inline-block;
             text-align: left;
             padding-left: 0;
 
@@ -2142,10 +2247,9 @@ code, pre {
         }
     }
 
-    .mikio-page .mikio-container {
+    .mode_show .mikio-page .mikio-container {
         display: grid;
         grid-template-columns: auto 2.5rem;
-        // grid-template-rows: min-content auto;
     }
 
     .mode_revisions,
@@ -2172,7 +2276,7 @@ code, pre {
         grid-row: 2 / span 1;
         padding-bottom: 1rem;
         // padding-right: 0;
-        width: auto;
+        // width: auto;
     }
     
     /* TOC */
@@ -2243,6 +2347,25 @@ code, pre {
     .mikio-page-fill {
         .mikio-sidebar {
             display: none;
+        }
+    }
+
+    /* Media Manager */
+    .mikio #mediamanager__page, #media__manager {
+        display: flex;
+        flex-direction: column;
+
+        .ui-resizable-e {
+            display: none !important;    
+        }
+
+        .namespaces, .filelist {
+            width: auto;
+            min-width: auto;
+        }
+
+        .panelHeader, .panelContent {
+            margin-right: 0;
         }
     }
 }
