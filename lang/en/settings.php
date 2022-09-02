@@ -61,20 +61,20 @@ $lang['breadcrumbHideHome']     = 'Hide breadcrumb block on home page';
 $lang['breadcrumbPosition']     = 'Position of the breadcrumb bar on the page';
 $lang['breadcrumbPrefix']       = 'Change the breadcrumb prefix text';
 $lang['breadcrumbPrefixText']   = 'Replacement breadcrumb prefix text. Use can use an image by uploading breadcrumb-prefix.png 
-to the templates images directory';
+to the template\'s images directory';
 $lang['breadcrumbSep']          = 'Change the breadcrumb seperator text';
 $lang['breadcrumbSepText']      = 'Replacement breadcrumb seperator text. Use can use an image by uploading 
-breadcrumb-sep.png to the templates images directory';
+breadcrumb-sep.png to the template\'s images directory';
 ;
 
 $lang['youarehereHideHome']     = 'Hide you are here on home page';
 $lang['youareherePosition']     = 'Position of the you are here bar on the page';
 $lang['youareherePrefix']       = 'Change the you are here prefix text';
 $lang['youareherePrefixText']   = 'Replacement you are here prefix text. Use can use an image by uploading 
-youarehere-prefix.png to the templates images directory';
+youarehere-prefix.png to the template\'s images directory';
 $lang['youarehereSep']          = 'Change the you are here seperator text';
 $lang['youarehereSepText']      = 'Replacement you are here seperator text. Use can use an image by uploading 
-youarehere-sep.png to the templates images directory';
+youarehere-sep.png to the template\'s images directory';
 ;
 $lang['youarehereHome']         = 'Change the text or icon used for the Home page in the breadcrumb bar';
 $lang['youarehereShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
