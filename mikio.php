@@ -17,8 +17,6 @@ if (defined('DOKU_INC') === false) {
 require_once('icons/icons.php');
 require_once('inc/simple_html_dom.php');
 
-$newfunc = create_function('$a,$b', 'return "ln($a) + ln($b) = " . log($a * $b);');
-echo $newfunc(2, M_E) . "\n";
 class Template
 {
     /**
