@@ -7,96 +7,101 @@
  * @author  James Collins <james.collins@outlook.com.au>
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
-$meta['iconTag']                = array('string');
-$meta['customTheme']            = array('string');
-$meta['showNotifications']      = array('multichoise', '__choices' => array('none', 'admin', 'always'));
-$meta['useLESS']                = array('onoff');
-$meta['brandURLGuest']          = array('string');
-$meta['brandURLUser']           = array('string');
 
-$meta['navbarUseTitleIcon']     = array('onoff');
-$meta['navbarTitleIconHeight']  = array('string');
-$meta['navbarTitleIconWidth']   = array('string');
-$meta['navbarUseTitleText']     = array('onoff');
-$meta['navbarUseTaglineText']   = array('onoff');
-$meta['navbarCustomMenuText']   = array('string');
+$meta['iconTag']                = ['string'];
+$meta['customTheme']            = ['string'];
+$meta['showNotifications']      = ['multichoise', '__choices' => ['none', 'admin', 'always']];
+$meta['useLESS']                = ['onoff'];
+$meta['brandURLGuest']          = ['string'];
+$meta['brandURLUser']           = ['string'];
+
+$meta['navbarUseTitleIcon']     = ['onoff'];
+$meta['navbarTitleIconHeight']  = ['string'];
+$meta['navbarTitleIconWidth']   = ['string'];
+$meta['navbarUseTitleText']     = ['onoff'];
+$meta['navbarUseTaglineText']   = ['onoff'];
+$meta['navbarCustomMenuText']   = ['string'];
 
 
-$meta['navbarDWMenuType']       = array('multichoice', '_choices' => array('icons', 'text', 'both'));
-$meta['navbarDWMenuCombine']    = array('multichoice', '_choices' => array('seperate', 'dropdown', 'combine'));
+$meta['navbarDWMenuType']       = ['multichoice', '_choices' => ['icons', 'text', 'both']];
+$meta['navbarDWMenuCombine']    = ['multichoice', '_choices' => ['seperate', 'dropdown', 'combine']];
 
-$meta['navbarPosLeft']          = array('multichoice', '_choices' => array('none', 'custom', 'search', 'dokuwiki'));
-$meta['navbarPosMiddle']        = array('multichoice', '_choices' => array('none', 'custom', 'search', 'dokuwiki'));
-$meta['navbarPosRight']         = array('multichoice', '_choices' => array('none', 'custom', 'search', 'dokuwiki'));
-$meta['navbarShowSub']          = array('onoff');
+$meta['navbarPosLeft']          = ['multichoice', '_choices' => ['none', 'custom', 'search', 'dokuwiki']];
+$meta['navbarPosMiddle']        = ['multichoice', '_choices' => ['none', 'custom', 'search', 'dokuwiki']];
+$meta['navbarPosRight']         = ['multichoice', '_choices' => ['none', 'custom', 'search', 'dokuwiki']];
+$meta['navbarShowSub']          = ['onoff'];
 
-$meta['navbarItemShowCreate']   = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowShow']     = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowRevs']     = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowBacklink'] = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowRecent']   = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowMedia']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowIndex']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowProfile']  = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowAdmin']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['navbarItemShowLogin']    = array('multichoice', '_choices' => array('always', 'never'));
-$meta['navbarItemShowLogout']   = array('multichoice', '_choices' => array('always', 'never'));
+$meta['navbarItemShowCreate']   = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowShow']     = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowRevs']     = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowBacklink'] = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowRecent']   = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowMedia']    = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowIndex']    = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowProfile']  = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowAdmin']    = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['navbarItemShowLogin']    = ['multichoice', '_choices' => ['always', 'never']];
+$meta['navbarItemShowLogout']   = ['multichoice', '_choices' => ['always', 'never']];
 
-$meta['searchButton']           = array('multichoice', '_choices' => array('icon', 'text'));
-$meta['searchUseTypeahead']     = array('onoff');
+$meta['searchButton']           = ['multichoice', '_choices' => ['icon', 'text']];
+$meta['searchUseTypeahead']     = ['onoff'];
 
-$meta['heroTitle']              = array('onoff');
-$meta['heroImagePropagation']   = array('onoff');
+$meta['heroTitle']              = ['onoff'];
+$meta['heroImagePropagation']   = ['onoff'];
 
-$meta['tagsConsolidate']        = array('onoff');
+$meta['tagsConsolidate']        = ['onoff'];
 
-$meta['breadcrumbHideHome']     = array('onoff');
-$meta['breadcrumbPosition']     = array('multichoice', '_choices' => array('none', 'top', 'hero', 'page'));
-$meta['breadcrumbPrefix']       = array('onoff');
-$meta['breadcrumbPrefixText']   = array('string');
-$meta['breadcrumbSep']          = array('onoff');
-$meta['breadcrumbSepText']      = array('string');
+$meta['breadcrumbHideHome']     = ['onoff'];
+$meta['breadcrumbPosition']     = ['multichoice', '_choices' => ['none', 'top', 'hero', 'page']];
+$meta['breadcrumbPrefix']       = ['onoff'];
+$meta['breadcrumbPrefixText']   = ['string'];
+$meta['breadcrumbSep']          = ['onoff'];
+$meta['breadcrumbSepText']      = ['string'];
 
-$meta['youarehereHideHome']     = array('onoff');
-$meta['youareherePosition']     = array('multichoice', '_choices' => array('none', 'top', 'hero', 'page'));
-$meta['youareherePrefix']       = array('onoff');
-$meta['youareherePrefixText']   = array('string');
-$meta['youarehereSep']          = array('onoff');
-$meta['youarehereSepText']      = array('string');
-$meta['youarehereHome']         = array('multichoice', '_choices' => array('none', 'page title', 'home', 'icon'));
-$meta['youarehereShowLast']     = array('numeric');
+$meta['youarehereHideHome']     = ['onoff'];
+$meta['youareherePosition']     = ['multichoice', '_choices' => ['none', 'top', 'hero', 'page']];
+$meta['youareherePrefix']       = ['onoff'];
+$meta['youareherePrefixText']   = ['string'];
+$meta['youarehereSep']          = ['onoff'];
+$meta['youarehereSepText']      = ['string'];
+$meta['youarehereHome']         = ['multichoice', '_choices' => ['none', 'page title', 'home', 'icon']];
+$meta['youarehereShowLast']     = ['numeric'];
 
-$meta['sidebarShowLeft']        = array('onoff');
-$meta['sidebarAlwaysShowLeft']  = array('onoff');
-$meta['sidebarLeftRow1']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
-$meta['sidebarLeftRow2']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
-$meta['sidebarLeftRow3']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
-$meta['sidebarLeftRow4']        = array('multichoice', '_choices' => array('none', 'logged in user', 'search', 'content', 'tags'));
-$meta['sidebarMobileDefaultCollapse']    = array('onoff');
-$meta['sidebarShowRight']       = array('onoff');
-$meta['sidebarAlwaysShowRight'] = array('onoff');
+$meta['sidebarShowLeft']        = ['onoff'];
+$meta['sidebarAlwaysShowLeft']  = ['onoff'];
+$meta['sidebarLeftRow1']        = ['multichoice', '_choices' => ['none', 'logged in user', 'search', 'content', 'tags']
+];
+$meta['sidebarLeftRow2']        = ['multichoice', '_choices' => ['none', 'logged in user', 'search', 'content', 'tags']
+];
+$meta['sidebarLeftRow3']        = ['multichoice', '_choices' => ['none', 'logged in user', 'search', 'content', 'tags']
+];
+$meta['sidebarLeftRow4']        = ['multichoice', '_choices' => ['none', 'logged in user', 'search', 'content', 'tags']
+];
+$meta['sidebarMobileDefaultCollapse']    = ['onoff'];
+$meta['sidebarShowRight']       = ['onoff'];
+$meta['sidebarAlwaysShowRight'] = ['onoff'];
 
-$meta['tocFull']                = array('onoff');
+$meta['tocFull']                = ['onoff'];
 
-$meta['pageToolsFloating']      = array('multichoice', '_choices' => array('none', 'page editors', 'always'));
-$meta['pageToolsFooter']        = array('multichoice', '_choices' => array('none', 'page editors', 'always'));
+$meta['pageToolsFloating']      = ['multichoice', '_choices' => ['none', 'page editors', 'always']];
+$meta['pageToolsFooter']        = ['multichoice', '_choices' => ['none', 'page editors', 'always']];
 
-$meta['pageToolsShowCreate']    = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['pageToolsShowEdit']      = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['pageToolsShowRevs']      = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['pageToolsShowBacklink']  = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
-$meta['pageToolsShowTop']       = array('multichoice', '_choices' => array('always', 'logged in', 'logged out', 'never'));
+$meta['pageToolsShowCreate']    = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['pageToolsShowEdit']      = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['pageToolsShowRevs']      = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['pageToolsShowBacklink']  = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
+$meta['pageToolsShowTop']       = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
 
-$meta['footerCustomMenuText']   = array('string');
-$meta['footerSearch']           = array('onoff');
-$meta['footerInPage']           = array('onoff');
+$meta['footerCustomMenuText']   = ['string'];
+$meta['footerSearch']           = ['onoff'];
+$meta['footerInPage']           = ['onoff'];
 
-$meta['licenseType']            = array('multichoice', '_choices' => array('none', 'badge', 'button'));
-$meta['licenseImageOnly']       = array('onoff');
+$meta['licenseType']            = ['multichoice', '_choices' => ['none', 'badge', 'button']];
+$meta['licenseImageOnly']       = ['onoff'];
 
-$meta['includePageUseACL']      = array('onoff');
-$meta['includePagePropagate']   = array('onoff');
+$meta['includePageUseACL']      = ['onoff'];
+$meta['includePagePropagate']   = ['onoff'];
 
-$meta['stickyTopHeader']        = array('onoff');
-$meta['stickyNavbar']           = array('onoff');
-$meta['stickyHeader']           = array('onoff');
+$meta['stickyTopHeader']        = ['onoff'];
+$meta['stickyNavbar']           = ['onoff'];
+$meta['stickyHeader']           = ['onoff'];

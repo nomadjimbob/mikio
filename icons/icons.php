@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Mikio Template Icons
  *
@@ -6,6 +7,7 @@
  * @author  James Collins <james.collins@outlook.com.au>
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
+
 global $MIKIO_ICONS;
 
 
@@ -56,7 +58,9 @@ global $MIKIO_ICONS;
 $MIKIO_ICONS[] = ['name' => 'fa', 'css' => 'fontawesome/css/all.min.css', 'insert' => '<i class="fa fa-$1"></i>'];
 
 /* Font Awesome 4 - CDN */
-/* $MIKIO_ICONS[] = ['name' => 'fa', 'css' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', 'insert' => '<i class="fa fa-$1"></i>']; */
+/* $MIKIO_ICONS[] = ['name' => 'fa',
+    'css' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+    'insert' => '<i class="fa fa-$1"></i>']; */
 
 /* Font Awesome 5 */
 /* $fa5 = 'fontawesome5/css/all.min.css'; */
@@ -73,18 +77,21 @@ $MIKIO_ICONS[] = ['name' => 'fa', 'css' => 'fontawesome/css/all.min.css', 'inser
 /* $MIKIO_ICONS[] = ['name' => 'fab', 'css' => $fa5, 'insert' => '<i class="fab fa-$1"></i>']; */
 
 /* Elusive 2 */
-/* $MIKIO_ICONS[] = ['name' => 'el', 'css' => 'elusive/css/elusive-icons.min.css', 'insert' => '<i class="el el-$1"></i>']; */
+/* $MIKIO_ICONS[] = ['name' => 'el',
+    'css' => 'elusive/css/elusive-icons.min.css',
+    'insert' => '<i class="el el-$1"></i>']; */
 
 /* Elusive 2 - CDN */
-/* $MIKIO_ICONS[] = ['name' => 'el', 'css' => '//maxcdn.bootstrapcdn.com/elusive-icons/2.0.0/css/elusive-icons.min.css', 'insert' => '<i class="el el-$1"></i>']; */
+/* $MIKIO_ICONS[] = ['name' => 'el',
+    'css' => '//maxcdn.bootstrapcdn.com/elusive-icons/2.0.0/css/elusive-icons.min.css',
+    'insert' => '<i class="el el-$1"></i>']; */
 
 /* TWBS - https://github.com/twbs/icons/releases */
 /* $MIKIO_ICONS[] = [
     'name' => 'bi',
     'dir' => 'bootstrap-icons',
     'css' => 'bootstrap-icons/bi.css',
-    'insert' => '<span class="bi-icon" style="background-color:$2; mask-image:url($0svg/$1.svg); -webkit-mask-image:url($0svg/$1.svg);"></span>',
+    'insert' => '<span class="bi-icon"
+        style="background-color:$2; mask-image:url($0svg/$1.svg); -webkit-mask-image:url($0svg/$1.svg);"></span>',
     '$2' => 'black',
 ]; */
-
-?>

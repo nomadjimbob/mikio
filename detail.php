@@ -1,14 +1,18 @@
 <?php
+
 /**
  * DokuWiki Mikio Template Image Detail Page
  *
  * @link    http://dokuwiki.org/template:mikio
  * @author  James Collins <james.collins@outlook.com.au>
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
- * 
+ *
  * Based on DokuWiki Theme Template
  */
-if (!defined('DOKU_INC')) die();
+
+if (defined('DOKU_INC') === false) {
+    die();
+}
 //require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 header('X-UA-Compatible: IE=edge,chrome=1');
 
@@ -18,13 +22,13 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 <head>
     <meta charset="UTF-8" />
     <title>
-        <?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG))?>
+        <?php echo hsc(tpl_img_getTag('IPTC.Headline', $IMG))?>
         [<?php echo strip_tags($conf['title'])?>]
     </title>
     <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
     <?php tpl_metaheaders()?>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
+    <?php echo tpl_favicon(['favicon', 'mobile']) ?>
     <?php tpl_includeFile('meta.html') ?>
     <?php
         $baseDir = tpl_basedir();
@@ -38,49 +42,51 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <div id="dokuwiki__detail" class="<?php echo tpl_classes(); ?>">
         <?php html_msgarea() ?>
 
-        <?php if($ERROR): print $ERROR; ?>
-        <?php else: ?>
-
-            <?php if($REV) echo p_locale_xhtml('showrev');?>
+        <?php if ($ERROR !== '') :
+            echo $ERROR; ?>
+        <?php else : ?>
+            <?php if ($REV !== '') {
+                echo p_locale_xhtml('showrev');
+            }?>
             <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline', $IMG))?></h1>
 
             <div class="content group">
                 <?php tpl_img(900, 700); /* the image; parameters: maximum width, maximum height (and more) */ ?>
 
                 <div class="img_detail">
-                    <h2><?php print nl2br(hsc(tpl_img_getTag('simple.title'))); ?></h2>
+                    <h2><?php echo nl2br(hsc(tpl_img_getTag('simple.title'))); ?></h2>
 
-                    <?php if(function_exists('tpl_img_meta')): ?>
+                    <?php if (function_exists('tpl_img_meta') === true) : ?>
                         <?php tpl_img_meta(); ?>
-                    <?php else: /* deprecated since Release 2014-05-05 */ ?>
+                    <?php else : /* deprecated since Release 2014-05-05 */ ?>
                         <dl>
                             <?php
                                 $config_files = getConfigFiles('mediameta');
-                                foreach ($config_files as $config_file) {
-                                    if(@file_exists($config_file)) {
-                                        include($config_file);
-                                    }
+                            foreach ($config_files as $config_file) {
+                                if (@file_exists($config_file) === true) {
+                                    include($config_file);
                                 }
+                            }
 
-                                foreach($fields as $key => $tag){
-                                    $t = array();
-                                    if (!empty($tag[0])) {
-                                        $t = array($tag[0]);
-                                    }
-                                    if(is_array($tag[3])) {
-                                        $t = array_merge($t,$tag[3]);
-                                    }
-                                    $value = tpl_img_getTag($t);
-                                    if ($value) {
-                                        echo '<dt>'.$lang[$tag[1]].':</dt><dd>';
-                                        if ($tag[2] == 'date') {
-                                            echo dformat($value);
-                                        } else {
-                                            echo hsc($value);
-                                        }
-                                        echo '</dd>';
-                                    }
+                            foreach ($fields as $key => $tag) {
+                                $t = [];
+                                if (empty($tag[0]) === false) {
+                                    $t = [$tag[0]];
                                 }
+                                if (is_array($tag[3]) === true) {
+                                    $t = array_merge($t, $tag[3]);
+                                }
+                                $value = tpl_img_getTag($t);
+                                if ($value !== '') {
+                                    echo '<dt>' . $lang[$tag[1]] . ':</dt><dd>';
+                                    if ($tag[2] === 'date') {
+                                        echo dformat($value);
+                                    } else {
+                                        echo hsc($value);
+                                    }
+                                    echo '</dd>';
+                                }
+                            }
                             ?>
                         </dl>
                     <?php endif; ?>

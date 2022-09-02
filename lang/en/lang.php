@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DokuWiki Mikio Template English Language File
  *
@@ -33,10 +34,12 @@ $lang['__line_height__']                    = 'The base font line height';
 $lang['__site_width__']                     = 'Width of the body content';
 
 $lang['__font_size__']                      = 'The base font size';
-$lang['__font_family__']                    = 'The base font family (fonts containing spaces must be in quotes. Multiple fonts can be seperated with commas)';
+$lang['__font_family__']                    = 'The base font family (fonts containing spaces must be in quotes. 
+Multiple fonts can be seperated with commas)';
 $lang['__admin_background_color__']         = 'Background color of admin pages';
 
-$lang['__code_font_family__']               = 'The font family for code blocks (fonts containing spaces must be in quotes. Multiple fonts can be seperated with commas)';
+$lang['__code_font_family__']               = 'The font family for code blocks (fonts containing spaces must be in 
+quotes. Multiple fonts can be seperated with commas)';
 $lang['__code_font_size__']                 = 'The font size for code blocks';
 $lang['__code_text_color__']                = 'The font color for code blocks';
 $lang['__code_background_color__']          = 'The background color for code blocks';
@@ -56,14 +59,16 @@ $lang['__navbar_background_color__']        = 'The background color for the menu
 $lang['__navbar_border_color__']            = 'The border color for the menu';
 $lang['__navbar_brand_text_color__']        = 'The font color for the site title';
 $lang['__navbar_brand_tagline_color__']     = 'The font color for the site tagline';
-$lang['__navbar_content_justify__']         = 'The content justification of the site menu (can be flex-start, flex-end, center, space-between or space-around)';
+$lang['__navbar_content_justify__']         = 'The content justification of the site menu (can be flex-start, flex-end, 
+center, space-between or space-around)';
 
 $lang['__subnavbar_text_color__']           = 'The font color for sub menu text';
 $lang['__subnavbar_link_color__']           = 'The font color for sub menu links';
 $lang['__subnavbar_link_hover_color__']     = 'The font color when the cursor hovers over sub menu links';
 $lang['__subnavbar_background_color__']     = 'The background color for the sub menu';
 $lang['__subnavbar_border_color__']         = 'The border color for the sub menu';
-$lang['__subnavbar_content_justify__']      = 'The content justification of the sub menu (can be flex-start, flex-end, center, space-between or space-around)';
+$lang['__subnavbar_content_justify__']      = 'The content justification of the sub menu (can be flex-start, flex-end, 
+center, space-between or space-around)';
 
 $lang['__tag_background_color__']           = 'The background color of tags';
 $lang['__tag_text_color__']                 = 'The font color of tags ';
@@ -101,7 +106,8 @@ $lang['__footer_font_size__']               = 'The font size for the footer';
 $lang['__footer_text_color__']              = 'The font color for the footer';
 $lang['__footer_link_color__']              = 'The font color for the footer links';
 $lang['__footer_link_hover_color__']        = 'The font color when cursor hovers over footer links';
-$lang['__footer_text_align__']              = 'The text alignment for the footer (can be left, center, right or justify)';
+$lang['__footer_text_align__']              = 'The text alignment for the footer (can be left, center, right or 
+justify)';
 $lang['__footer_background_color__']        = 'The background color for the footer';
 
 $lang['__table_font_size__']                = 'The font size for tables';

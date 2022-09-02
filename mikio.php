@@ -10,16 +10,33 @@
 
 namespace dokuwiki\template\mikio;
 
-if (!defined('DOKU_INC')) die();
+if (defined('DOKU_INC') === false) {
+    die();
+}
 
 require_once('icons/icons.php');
 require_once('inc/simple_html_dom.php');
 
 class Template
 {
+    /**
+     * @var string Template directory path from local FS.
+     */
     public $tplDir  = '';
+
+    /**
+     * @var string Template directory path from web.
+     */
     public $baseDir = '';
-    public $footerScript = array();
+
+    /**
+     * @var array Array of Javascript files to include in footer.
+     */
+    public $footerScript = [];
+
+    /**
+     * @var boolean Ignore LESS files.
+     */
     public $lessIgnored = false;
 
 
@@ -31,7 +48,7 @@ class Template
         $this->tplDir  = tpl_incdir();
         $this->baseDir = tpl_basedir();
 
-        $this->_registerHooks();
+        $this->registerHooks();
     }
 
 
@@ -54,14 +71,16 @@ class Template
 
     /**
      * Register the themes hooks into Dokuwiki
+     *
+     * @return void
      */
-    private function _registerHooks()
+    private function registerHooks()
     {
         global $EVENT_HANDLER;
 
-        $events_dispatcher = array(
+        $events_dispatcher = [
             'TPL_METAHEADER_OUTPUT'     => 'metaheadersHandler'
-        );
+        ];
 
         foreach ($events_dispatcher as $event => $method) {
             $EVENT_HANDLER->register_hook($event, 'BEFORE', $this, $method);
@@ -72,39 +91,40 @@ class Template
     /**
      * Meta handler hook for DokuWiki
      *
-     * @param   Doku_Event  $event
+     * @param   \Doku_Event $event DokuWiki Event.
+     * @return  void
      */
     public function metaHeadersHandler(\Doku_Event $event)
     {
         global $MIKIO_ICONS;
         global $conf;
 
-        $this->includePage('theme', FALSE, TRUE);
+        $this->includePage('theme', false, true);
 
-        $stylesheets    = array();
-        $scripts        = array();
+        $stylesheets    = [];
+        $scripts        = [];
 
-        if ($this->getConf('customTheme') != '') {
-            if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/style.less')) {
+        if ($this->getConf('customTheme') !== '') {
+            if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/style.less') === true) {
                 $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('customTheme') . '/style.less';
             } else {
-                if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/style.css')) {
+                if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/style.css') === true) {
                     $stylesheets[] = $this->baseDir . 'themes/' . $this->getConf('customTheme') . '/style.css';
                 }
             }
-            if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/script.js')) {
+            if (file_exists($this->tplDir . 'themes/' . $this->getConf('customTheme') . '/script.js') === true) {
                 $scripts[] = $this->baseDir . 'themes/' . $this->getConf('customTheme') . '/script.js';
             }
         }
 
-        if (is_array($MIKIO_ICONS) && $this->getConf('iconTag', 'icon') != '') {
-            $icons = array();
+        if (is_array($MIKIO_ICONS) === true && $this->getConf('iconTag', 'icon') !== '') {
+            $icons = [];
             foreach ($MIKIO_ICONS as $icon) {
-                if (isset($icon['name']) && isset($icon['css']) && isset($icon['insert'])) {
+                if (isset($icon['name']) === true && isset($icon['css']) === true && isset($icon['insert']) === true) {
                     $icons[] = $icon;
 
-                    if ($icon['css'] != '') {
-                        if (strpos($icon['css'], '//') === FALSE) {
+                    if ($icon['css'] !== '') {
+                        if (strpos($icon['css'], '//') === false) {
                             $stylesheets[] = $this->baseDir . 'icons/' . $icon['css'];
                         } else {
                             $stylesheets[] = $icon['css'];
@@ -120,7 +140,7 @@ class Template
         $scripts[] = $this->baseDir . 'assets/mikio-typeahead.js';
         $scripts[] = $this->baseDir . 'assets/mikio.js';
 
-        if ($this->getConf('useLESS')) {
+        if ($this->getConf('useLESS') === true) {
             $stylesheets[] = $this->baseDir . 'assets/mikio.less';
         } else {
             $stylesheets[] = $this->baseDir . 'assets/mikio.css';
@@ -129,55 +149,56 @@ class Template
 
         $set = [];
         foreach ($stylesheets as $style) {
-            if (in_array($style, $set) == FALSE) {
-                if (strtolower(substr($style, -5)) == '.less' && $this->getConf('useLESS')) {
+            if (in_array($style, $set) === false) {
+                if (strtolower(substr($style, -5)) === '.less' && $this->getConf('useLESS') === true) {
                     $style = $this->baseDir . 'css.php?css=' . str_replace($this->baseDir, '', $style);
                 }
 
-                array_unshift($event->data['link'], array(
+                array_unshift($event->data['link'], [
                     'type' => 'text/css',
                     'rel'  => 'stylesheet',
                     'href' => $style
-                ));
+                ]);
             }
             $set[] = $style;
         }
 
         $set = [];
         foreach ($scripts as $script) {
-            if (in_array($script, $set) == FALSE) {
-                $script_params = array(
+            if (in_array($script, $set) === false) {
+                $script_params = [
                     'type'  => 'text/javascript',
                     '_data' => '',
                     'src'   => $script
-                );
+                ];
 
                 // equal to or greator than hogfather
-                if($this->dwVersionNumber() >= 20200729) {
+                if ($this->dwVersionNumber() >= 20200729) {
                     // greator than hogfather - defer always on
-                    if($this->dwVersionNumber() >= 20200729) {
+                    if ($this->dwVersionNumber() >= 20200729) {
                         $script_params += ['defer' => 'defer'];
                     } else {
                         // hogfather - defer always on unless $conf['defer_js'] is false
-                        if(!array_key_exists('defer_js', $conf) || $conf['defer_js']) {
+                        if (array_key_exists('defer_js', $conf) === false || $conf['defer_js'] === true) {
                             $script_params += ['defer' => 'defer'];
                         }
                     }
                 }
 
                 $event->data['script'][] = $script_params;
-            }
+            }//end if
             $set[] = $script;
-        }
+        }//end foreach
     }
 
 
     /**
      * Print or return the footer meta data
      *
-     * @param   boolean $print      print the data to buffer
+     * @param   boolean $print Print the data to buffer.
+     * @return  string         HTML footer meta data
      */
-    public function includeFooterMeta($print = TRUE)
+    public function includeFooterMeta(bool $print = true)
     {
         $html = '';
 
@@ -190,38 +211,50 @@ class Template
         }
 
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
     /**
      * Retreive and parse theme configuration options
      *
-     * @param   string  $key        the configuration key to retreive
-     * @param   mixed   $default    if key doesn't exist, return this value
-     * @return  mixed               parsed value of configuration
+     * @param   string $key     The configuration key to retreive.
+     * @param   mixed  $default If key doesn't exist, return this value.
+     * @return  mixed           parsed value of configuration
      */
-    public function getConf($key, $default = FALSE)
+    public function getConf(string $key, mixed $default = false)
     {
         $value = tpl_getConf($key, $default);
 
         switch ($key) {
             case 'navbarDWMenuType':
                 $value = strtolower($value);
-                if ($value != 'icons' && $value != 'text' && $value != 'both') $value = 'both';
+                if ($value !== 'icons' && $value !== 'text' && $value !== 'both') {
+                    $value = 'both';
+                }
                 break;
             case 'navbarDWMenuCombine':
                 $value = strtolower($value);
-                if ($value != 'seperate' && $value != 'dropdown' && $value != 'combine') $value = 'combine';
+                if ($value !== 'seperate' && $value !== 'dropdown' && $value !== 'combine') {
+                    $value = 'combine';
+                }
                 break;
             case 'navbarPosLeft':
             case 'navbarPosMiddle':
             case 'navbarPosRight':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'custom' && $value != 'search' && $value != 'dokuwiki') {
-                    if ($key == 'navbarPosLeft') $value = 'none';
-                    if ($key == 'navbarPosMiddle') $value = 'search';
-                    if ($key == 'navbarPosRight') $value = 'dokuwiki';
+                if ($value !== 'none' && $value !== 'custom' && $value !== 'search' && $value !== 'dokuwiki') {
+                    if ($key === 'navbarPosLeft') {
+                        $value = 'none';
+                    }
+                    if ($key === 'navbarPosMiddle') {
+                        $value = 'search';
+                    }
+                    if ($key === 'navbarPosRight') {
+                        $value = 'dokuwiki';
+                    }
                 }
                 break;
             case 'navbarItemShowCreate':
@@ -234,55 +267,80 @@ class Template
             case 'navbarItemShowProfile':
             case 'navbarItemShowAdmin':
                 $value = strtolower($value);
-                if ($value != 'always' && $value != 'logged in' && $value != 'logged out' && $value != 'never') {
+                if ($value !== 'always' && $value !== 'logged in' && $value !== 'logged out' && $value !== 'never') {
                     $value = 'always';
                 }
                 break;
             case 'navbarItemShowLogin':
             case 'navbarItemShowLogout':
                 $value = strtolower($value);
-                if ($value != 'always' && $value != 'never') {
+                if ($value !== 'always' && $value !== 'never') {
                     $value = 'always';
                 }
                 break;
             case 'searchButton':
                 $value = strtolower($value);
-                if ($value != 'icon' && $value != 'text') $value = 'icon';
+                if ($value !== 'icon' && $value !== 'text') {
+                    $value = 'icon';
+                }
                 break;
             case 'searchButton':
                 $value = strtolower($value);
-                if ($value != 'icon' && $value != 'text') $value = 'icon';
+                if ($value !== 'icon' && $value !== 'text') {
+                    $value = 'icon';
+                }
                 break;
             case 'breadcrumbPosition':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'top' && $value != 'hero' && $value != 'page') $value = 'top';
+                if ($value !== 'none' && $value !== 'top' && $value !== 'hero' && $value !== 'page') {
+                    $value = 'top';
+                }
                 break;
             case 'youareherePosition':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'top' && $value != 'hero' && $value != 'page') $value = 'top';
+                if ($value !== 'none' && $value !== 'top' && $value !== 'hero' && $value !== 'page') {
+                    $value = 'top';
+                }
                 break;
             case 'youarehereHome':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'page title' && $value != 'home' && $value != 'icon') $value = 'page title';
+                if ($value !== 'none' && $value !== 'page title' && $value !== 'home' && $value !== 'icon') {
+                    $value = 'page title';
+                }
                 break;
             case 'sidebarLeftRow1':
             case 'sidebarLeftRow2':
             case 'sidebarLeftRow3':
             case 'sidebarLeftRow4':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'logged in user' && $value != 'search' && $value != 'content' && $value != 'tags') {
-                    if ($key == 'sidebarLeftRow1') $value = 'logged in user';
-                    if ($key == 'sidebarLeftRow2') $value = 'search';
-                    if ($key == 'sidebarLeftRow3') $value = 'content';
-                    if ($key == 'sidebarLeftRow4') $value = 'none';
+                if (
+                    $value !== 'none' && $value !== 'logged in user' && $value !== 'search' && $value !== 'content' &&
+                    $value !== 'tags'
+                ) {
+                    if ($key === 'sidebarLeftRow1') {
+                        $value = 'logged in user';
+                    }
+                    if ($key === 'sidebarLeftRow2') {
+                        $value = 'search';
+                    }
+                    if ($key === 'sidebarLeftRow3') {
+                        $value = 'content';
+                    }
+                    if ($key === 'sidebarLeftRow4') {
+                        $value = 'none';
+                    }
                 }
                 break;
             case 'pageToolsFloating':
             case 'pageToolsFooter':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'page editors' && $value != 'always') {
-                    if ($key == 'pageToolsFloating') $value = 'always';
-                    if ($key == 'pageToolsFooter') $value = 'always';
+                if ($value !== 'none' && $value !== 'page editors' && $value !== 'always') {
+                    if ($key === 'pageToolsFloating') {
+                        $value = 'always';
+                    }
+                    if ($key === 'pageToolsFooter') {
+                        $value = 'always';
+                    }
                 }
                 break;
             case 'pageToolsShowCreate':
@@ -291,17 +349,21 @@ class Template
             case 'pageToolsShowBacklink':
             case 'pageToolsShowTop':
                 $value = strtolower($value);
-                if ($value != 'always' && $value != 'logged in' && $value != 'logged out' && $value != 'never') {
+                if ($value !== 'always' && $value !== 'logged in' && $value !== 'logged out' && $value !== 'never') {
                     $value = 'always';
                 }
                 break;
             case 'showNotifications':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'admin' && $value != 'always') $value = 'admin';
+                if ($value !== 'none' && $value !== 'admin' && $value !== 'always') {
+                    $value = 'admin';
+                }
                 break;
             case 'licenseType':
                 $value = strtolower($value);
-                if ($value != 'none' && $value != 'badge' && $value != 'buttom') $value = 'badge';
+                if ($value !== 'none' && $value !== 'badge' && $value !== 'buttom') {
+                    $value = 'badge';
+                }
                 break;
             case 'navbarUseTitleIcon':
             case 'navbarUseTitleText':
@@ -327,10 +389,10 @@ class Template
             case 'sidebarAlwaysShowLeft':
             case 'sidebarAlwaysShowRight':
             case 'searchUseTypeahead':
-                $value = (bool)$value;
+                $value = (bool) $value;
                 break;
             case 'youarehereShowLast':
-                $value = (int)$value;
+                $value = (int) $value;
                 break;
             case 'iconTag':
             case 'customTheme':
@@ -344,32 +406,36 @@ class Template
             case 'brandURLUser':
                 break;
             case 'useLESS':
-                $value = (bool)$value;
+                $value = (bool) $value;
                 $lessAvailable = true;
 
                 // check for less library
                 $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                if (!file_exists($lesscLib))
+                if (file_exists($lesscLib) === false) {
                     $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                if (!file_exists($lesscLib))
+                }
+                if (file_exists($lesscLib) === false) {
                     $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                if (!file_exists($lesscLib))
-                    $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                if (!file_exists($lesscLib)) {
+                }
+                if (file_exists($lesscLib) === false) {
+                    $lesscLib = $_SERVER['DOCUMENT_ROOT'] .
+                        '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                }
+                if (file_exists($lesscLib) === false) {
                     $lessAvailable = false;
                 }
 
                 // check for ctype extensions
-                if (!function_exists('ctype_digit')) {
+                if (function_exists('ctype_digit') === false) {
                     $lessAvailable = false;
                 }
 
-                if ($value && !$lessAvailable) {
+                if ($value === true && $lessAvailable === false) {
                     $this->lessIgnored = true;
                     $value = false;
                 }
                 break;
-        }
+        }//end switch
 
         return $value;
     }
@@ -378,48 +444,52 @@ class Template
     /**
      * Check if a page exist in directory or namespace
      *
-     * @param   string  $page   page/namespace to search
-     * @return  boolean         if page exists
+     * @param   string $page Page/namespace to search.
+     * @return  boolean      if page exists
      */
-    public function pageExists($page)
+    public function pageExists(string $page)
     {
         ob_start();
         tpl_includeFile($page . '.html');
         $html = ob_get_contents();
         ob_end_clean();
 
-        if ($html != '') return TRUE;
+        if ($html !== '') {
+            return true;
+        }
 
         $useACL = $this->getConf('includePageUseACL');
         $propagate = $this->getConf('includePagePropagate');
 
-        if ($propagate) {
-            if (page_findnearest($page, $useACL)) return TRUE;
-        } elseif ($useACL && auth_quickaclcheck($page) != AUTH_NONE) {
-            return TRUE;
+        if ($propagate === true) {
+            if (page_findnearest($page, $useACL) !== false) {
+                return true;
+            }
+        } elseif ($useACL === true && auth_quickaclcheck($page) !== AUTH_NONE) {
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
 
     /**
      * Print or return page from directory or namespace
      *
-     * @param   string  $page           page/namespace to include
-     * @param   boolean $print          print content
-     * @param   boolean $parse          parse content before printing/returning
-     * @param   string  $classWrapper   wrap page in a div with class
-     * @return  string                  contents of page found
+     * @param   string  $page         Page/namespace to include.
+     * @param   boolean $print        Print content.
+     * @param   boolean $parse        Parse content before printing/returning.
+     * @param   string  $classWrapper Wrap page in a div with class.
+     * @return  string                contents of page found
      */
-    public function includePage($page, $print = TRUE, $parse = TRUE, $classWrapper = '')
+    public function includePage(string $page, bool $print = true, bool $parse = true, string $classWrapper = '')
     {
         ob_start();
         tpl_includeFile($page . '.html');
         $html = ob_get_contents();
         ob_end_clean();
 
-        if ($html == '') {
+        if ($html === '') {
             $useACL = $this->getConf('includePageUseACL');
             $propagate = $this->getConf('includePagePropagate');
             $html = '';
@@ -427,13 +497,17 @@ class Template
             $html = tpl_include_page($page, false, $propagate, $useACL);
         }
 
-        if ($html != '' && $parse) {
+        if ($html !== '' && $parse === true) {
             $html = $this->parseContent($html);
         }
 
-        if ($classWrapper != '' && $html != '') $html = '<div class="' . $classWrapper . '">' . $html . '</div>';
+        if ($classWrapper !== '' && $html !== '') {
+            $html = '<div class="' . $classWrapper . '">' . $html . '</div>';
+        }
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -441,14 +515,14 @@ class Template
     /**
      * Print or return logged in user information
      *
-     * @param   boolean $print          print content
-     * @return  string                  user information
+     * @param   boolean $print Print content.
+     * @return  string         user information
      */
-    public function includeLoggedIn($print = TRUE)
+    public function includeLoggedIn(bool $print = true)
     {
         $html = '';
 
-        if (!empty($_SERVER['REMOTE_USER'])) {
+        if (empty($_SERVER['REMOTE_USER']) === false) {
             $html .= '<div class="mikio-user-info">';
             ob_start();
             tpl_userinfo();
@@ -457,7 +531,9 @@ class Template
             $html .= '</div>';
         }
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -465,15 +541,15 @@ class Template
     /**
      * Print or return DokuWiki Menu
      *
-     * @param   boolean $print          print content
-     * @return  string                  contents of the menu
+     * @param   boolean $print Print content.
+     * @return  string         contents of the menu
      */
-    public function includeDWMenu($print = TRUE)
+    public function includeDWMenu(bool $print = true)
     {
         global $lang;
         global $USERINFO;
 
-        $loggedIn = (is_array($USERINFO) && count($USERINFO) > 0);
+        $loggedIn = (is_array($USERINFO) === true && count($USERINFO) > 0);
         $html = '<ul class="mikio-nav">';
 
         $pageToolsMenu = [];
@@ -486,56 +562,84 @@ class Template
 
         $items = (new \dokuwiki\Menu\PageMenu())->getItems();
         foreach ($items as $item) {
-            if ($item->getType() != 'top') {
+            if ($item->getType() !== 'top') {
                 $itemHtml = '';
 
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
-                if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
-                    $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
-                    if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
-                    if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                if (
+                    $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' &&
+                    $loggedIn === true) || ($showItem === 'logged out' && $loggedIn === false))
+                ) {
+                    $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') .
+                        ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                    if ($showIcons === true) {
+                        $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
+                    }
+                    if ($showText === true || $isDropDown === true) {
+                        $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                    }
                     $itemHtml .= '</a>';
 
                     $pageToolsMenu[] = $itemHtml;
                 }
-            }
-        }
+            }//end if
+        }//end foreach
 
         $items = (new \dokuwiki\Menu\SiteMenu())->getItems('action');
         foreach ($items as $item) {
             $itemHtml = '';
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
-            if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
-                $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown ? 'mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
-                if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
-                if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+            if (
+                $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' && $loggedIn === true) ||
+                ($showItem === 'logged out' && $loggedIn === false))
+            ) {
+                $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') . ' ' .
+                    $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                if ($showIcons === true) {
+                    $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
+                }
+                if ($showText === true || $isDropDown === true) {
+                    $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                }
                 $itemHtml .= '</a>';
 
                 $siteToolsMenu[] = $itemHtml;
             }
-        }
+        }//end foreach
 
         $items = (new \dokuwiki\Menu\UserMenu())->getItems('action');
         foreach ($items as $item) {
             $itemHtml = '';
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
-            if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
-                $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown ? ' mikio-dropdown-item' : '') . ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
-                if ($showIcons) $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
-                if ($showText || $isDropDown) $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+            if (
+                $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' && $loggedIn === true) ||
+                ($showItem === 'logged out' && $loggedIn === false))
+            ) {
+                $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown === true ? ' mikio-dropdown-item' : '') . ' ' .
+                $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                if ($showIcons === true) {
+                    $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
+                }
+                if ($showText === true || $isDropDown === true) {
+                    $itemHtml .= '<span>' . $item->getLabel() . '</span>';
+                }
                 $itemHtml .= '</a>';
 
                 $userToolsMenu[] = $itemHtml;
             }
-        }
+        }//end foreach
 
 
         switch ($this->getConf('navbarDWMenuCombine')) {
             case 'dropdown':
                 $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('file') : '') . ($showText ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] . '</span>') . '</a>';
+                $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" 
+data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                ($showIcons === true ? $this->mikioInlineIcon('file') : '') .
+                ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
+                '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 foreach ($pageToolsMenu as $item) {
@@ -546,7 +650,11 @@ class Template
                 $html .= '</li>';
 
                 $html .= '<li id="dokuwiki__sitetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('gear') : '') . ($showText ? $lang['site_tools'] : '<span class="mikio-small-only">' . $lang['site_tools'] . '</span>') . '</a>';
+                $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button" 
+data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                    ($showIcons === true ? $this->mikioInlineIcon('gear') : '') .
+                    ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
+                    $lang['site_tools'] . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 foreach ($siteToolsMenu as $item) {
@@ -557,7 +665,11 @@ class Template
                 $html .= '</li>';
 
                 $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ($showIcons ? $this->mikioInlineIcon('user') : '') . ($showText ? $lang['user_tools'] : '<span class="mikio-small-only">' . $lang['user_tools'] . '</span>') . '</a>';
+                $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button" 
+data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                    ($showIcons === true ? $this->mikioInlineIcon('user') : '') .
+                    ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
+                    $lang['user_tools'] . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 foreach ($userToolsMenu as $item) {
@@ -571,7 +683,10 @@ class Template
 
             case 'combine':
                 $html .= '<li class="mikio-nav-dropdown">';
-                $html .= '<a class="mikio-nav-link" href="#">' . ($showIcons ? $this->mikioInlineIcon('wrench') : '') . ($showText ? tpl_getLang('tools-menu') : '<span class="mikio-small-only">' . tpl_getLang('tools-menu') . '</span>') . '</a>';   // TODO change $lang
+                $html .= '<a class="mikio-nav-link" href="#">' .
+                    ($showIcons === true ? $this->mikioInlineIcon('wrench') : '') .
+                    ($showText === true ? tpl_getLang('tools-menu') : '<span class="mikio-small-only">' .
+                    tpl_getLang('tools-menu') . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
                 $html .= '<h6 class="mikio-dropdown-header">' . $lang['page_tools'] . '</h6>';
@@ -609,33 +724,37 @@ class Template
                 }
 
                 break;
-        }
+        }//end switch
 
         $html .= '</ul>';
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
 
     /**
      * Create a nav element from a string. <uri>|<title>;
-     * 
-     * @param string   $str     string to generate nav
-     * @return string           nav elements generated
+     *
+     * @param string $str String to generate nav.
+     * @return string     nav elements generated
      */
-    public function stringToNav($str)
+    public function stringToNav(string $str)
     {
         $html = '';
 
-        if ($str != '') {
+        if ($str !== '') {
             $items = explode(';', $str);
             if (count($items) > 0) {
                 $html .= '<ul class="mikio-nav">';
                 foreach ($items as $item) {
                     $parts = explode('|', $item);
                     if ($parts > 1) {
-                        $html .= '<li class="mikio-nav-item"><a class="mikio-nav-link" href="' . strip_tags($this->getLink(trim($parts[0]))) . '">' . strip_tags(trim($parts[1])) . '</a></li>';
+                        $html .= '<li class="mikio-nav-item"><a class="mikio-nav-link" href="' .
+                            strip_tags($this->getLink(trim($parts[0]))) . '">' . strip_tags(trim($parts[1])) .
+                            '</a></li>';
                     }
                 }
                 $html .= '</ul>';
@@ -647,33 +766,33 @@ class Template
 
     /**
      * print or return the main navbar
-     * 
-     * @param boolean   $print      print the navbar
-     * @param boolean   $showSub    include the sub navbar
-     * @return string               generated content
+     *
+     * @param boolean $print   Print the navbar.
+     * @param boolean $showSub Include the sub navbar.
+     * @return string          generated content
      */
-    public function includeNavbar($print = TRUE, $showSub = FALSE)
+    public function includeNavbar(bool $print = true, bool $showSub = false)
     {
         global $conf, $USERINFO;
 
         $homeUrl = wl();
 
-        if (!plugin_isdisabled('showpageafterlogin')) {
+        if (plugin_isdisabled('showpageafterlogin') === false) {
             $p = &plugin_load('action', 'showpageafterlogin');
-            if ($p) {
-                if (is_array($USERINFO) && count($USERINFO) > 0) {
+            if ($p !== null) {
+                if (is_array($USERINFO) === true && count($USERINFO) > 0) {
                     $homeUrl = wl($p->getConf('page_after_login'));
                 }
             }
         } else {
-            if (is_array($USERINFO) && count($USERINFO) > 0) {
+            if (is_array($USERINFO) === true && count($USERINFO) > 0) {
                 $url = $this->getConf('brandURLUser');
-                if(strlen($url) > 0) {
+                if (strlen($url) > 0) {
                     $homeUrl = $url;
                 }
             } else {
                 $url = $this->getConf('brandURLGuest');
-                if(strlen($url) > 0) {
+                if (strlen($url) > 0) {
                     $homeUrl = $url;
                 }
             }
@@ -681,62 +800,65 @@ class Template
 
         $html = '';
 
-        $html .= '<nav class="mikio-navbar'  . (($this->getConf('stickyNavbar')) ? ' mikio-sticky' : '') . '">';
+        $html .= '<nav class="mikio-navbar'  . (($this->getConf('stickyNavbar') === true) ? ' mikio-sticky' : '') .
+            '">';
         $html .= '<div class="mikio-container">';
         $html .= '<a class="mikio-navbar-brand" href="' . $homeUrl . '">';
-        if ($this->getConf('navbarUseTitleIcon') || $this->getConf('navbarUseTitleText')) {
-
+        if ($this->getConf('navbarUseTitleIcon') === true || $this->getConf('navbarUseTitleText') === true) {
             // Brand image
-            if ($this->getConf('navbarUseTitleIcon')) {
-                $logo = $this->getMediaFile('logo', FALSE);;
-                if ($logo != '') {
+            if ($this->getConf('navbarUseTitleIcon') === true) {
+                $logo = $this->getMediaFile('logo', false);
+                ;
+                if ($logo !== '') {
                     $width = $this->getConf('navbarTitleIconWidth');
                     $height = $this->getConf('navbarTitleIconHeight');
                     $styles = '';
 
-                    if(strlen($width) > 0 || strlen($height) > 0) {
-                        if(ctype_digit($width)) {
+                    if (strlen($width) > 0 || strlen($height) > 0) {
+                        if (ctype_digit($width) === true) {
                             $styles .= 'max-width:' . intval($width) . 'px;';
-                        } else if(preg_match('/^\d+(px|rem|em|%)$/', $width) == 1) {
+                        } elseif (preg_match('/^\d+(px|rem|em|%)$/', $width) === 1) {
                             $styles .= 'max-width:' . $width . ';';
-                        } else if(strcasecmp($width, 'none') == 0) {
+                        } elseif (strcasecmp($width, 'none') === 0) {
                             $styles .= 'max-width:none;';
                         }
 
-                        if(ctype_digit($height)) {
+                        if (ctype_digit($height) === true) {
                             $styles .= 'max-height:' . intval($height) . 'px;';
-                        } else if(preg_match('/^\d+(px|rem|em|%)$/', $height) == 1) {
+                        } elseif (preg_match('/^\d+(px|rem|em|%)$/', $height) === 1) {
                             $styles .= 'max-height:' . $height . ';';
-                        } else if(strcasecmp($height, 'none') == 0) {
+                        } elseif (strcasecmp($height, 'none') === 0) {
                             $styles .= 'max-height:none;';
                         }
 
-                        if(strlen($styles) > 0) {
+                        if (strlen($styles) > 0) {
                             $styles = ' style="' . $styles . '"';
                         }
-                    }
+                    }//end if
 
                     $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image"' . $styles . '>';
-                }
-            }
+                }//end if
+            }//end if
 
             // Brand title
-            if ($this->getConf('navbarUseTitleText')) {
+            if ($this->getConf('navbarUseTitleText') === true) {
                 $html .= '<div class="mikio-navbar-brand-title">';
                 $html .= '<h1 class="mikio-navbar-brand-title-text">' . $conf['title'] . '</h1>';
-                if ($this->getConf('navbarUseTaglineText')) {
+                if ($this->getConf('navbarUseTaglineText') === true) {
                     $html .= '<p class="claim mikio-navbar-brand-title-tagline">' . $conf['tagline'] . '</p>';
                 }
                 $html .= '</div>';
             }
-        }
+        }//end if
         $html .= '</a>';
         $html .= '<div class="mikio-navbar-toggle"><span class="icon"></span></div>';
 
         // Menus
         $html .= '<div class="mikio-navbar-collapse">';
 
-        $menus = array($this->getConf('navbarPosLeft', 'none'), $this->getConf('navbarPosMiddle', 'none'), $this->getConf('navbarPosRight', 'none'));
+        $menus = [$this->getConf('navbarPosLeft', 'none'), $this->getConf('navbarPosMiddle', 'none'),
+            $this->getConf('navbarPosRight', 'none')
+        ];
         foreach ($menus as $menuType) {
             switch ($menuType) {
                 case 'custom':
@@ -748,7 +870,7 @@ class Template
                     $html .= '</div>';
                     break;
                 case 'dokuwiki':
-                    $html .= $this->includeDWMenu(FALSE);
+                    $html .= $this->includeDWMenu(false);
                     break;
             }
         }
@@ -758,12 +880,16 @@ class Template
         $html .= '</nav>';
 
         // Sub Navbar
-        if ($showSub) {
-            $sub = $this->includePage('submenu', FALSE);
-            if ($sub != '') $html .= '<nav class="mikio-navbar mikio-sub-navbar">' . $sub . '</nav>';
+        if ($showSub === true) {
+            $sub = $this->includePage('submenu', false);
+            if ($sub !== '') {
+                $html .= '<nav class="mikio-navbar mikio-sub-navbar">' . $sub . '</nav>';
+            }
         }
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -771,14 +897,16 @@ class Template
     /**
      * Is there a sidebar
      *
-     * @param   string  $prefix     sidebar prefix to use when searching
-     * @return  boolean             if sidebar exists
+     * @param   string $prefix Sidebar prefix to use when searching.
+     * @return  boolean        if sidebar exists
      */
-    public function sidebarExists($prefix = '')
+    public function sidebarExists(string $prefix = '')
     {
         global $conf;
 
-        if ($prefix == 'left') $prefix = '';
+        if ($prefix === 'left') {
+            $prefix = '';
+        }
 
         return $this->pageExists($conf['sidebar' . $prefix]);
     }
@@ -787,12 +915,12 @@ class Template
     /**
      * Print or return the sidebar content
      *
-     * @param   string  $prefix     sidebar prefix to use when searching
-     * @param   boolean $print      print the generated content to the output buffer
-     * @param   boolean $parse      parse the content
-     * @return  string              generated content
+     * @param   string  $prefix Sidebar prefix to use when searching.
+     * @param   boolean $print  Print the generated content to the output buffer.
+     * @param   boolean $parse  Parse the content.
+     * @return  string          generated content
      */
-    public function includeSidebar($prefix = '', $print = TRUE, $parse = TRUE)
+    public function includeSidebar(string $prefix = '', bool $print = true, bool $parse = true)
     {
         global $conf, $ID;
 
@@ -800,54 +928,83 @@ class Template
         $confPrefix = preg_replace('/[^a-zA-Z0-9]/', '', ucwords($prefix));
         $prefix = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($prefix));
 
-        if ($confPrefix == '') $confPrefix = 'Left';
-        if ($prefix == 'Left') $prefix = '';
+        if ($confPrefix === '') {
+            $confPrefix = 'Left';
+        }
+        if ($prefix === 'Left') {
+            $prefix = '';
+        }
 
-        $sidebarPage = $conf[$prefix . 'sidebar'] == '' ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
+        $sidebarPage = $conf[$prefix . 'sidebar'] === '' ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
 
-        if ($this->getConf('sidebarShow' . $confPrefix) && page_findnearest($sidebarPage) != FALSE && p_get_metadata($ID, 'nosidebar', FALSE) == FALSE) {
-            $content = $this->includePage($sidebarPage . 'header', FALSE);
-            if ($content != '') $html .= '<div class="mikio-sidebar-header">' . $content . '</div>';
+        if (
+            $this->getConf('sidebarShow' . $confPrefix) === true && page_findnearest($sidebarPage) !== false &&
+            p_get_metadata($ID, 'nosidebar', false) === false
+        ) {
+            $content = $this->includePage($sidebarPage . 'header', false);
+            if ($content !== '') {
+                $html .= '<div class="mikio-sidebar-header">' . $content . '</div>';
+            }
 
-            if ($prefix == '') {
-                $rows = array($this->getConf('sidebarLeftRow1'), $this->getConf('sidebarLeftRow2'), $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4'));
+            if ($prefix === '') {
+                $rows = [$this->getConf('sidebarLeftRow1'), $this->getConf('sidebarLeftRow2'),
+                    $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4')
+                ];
 
                 foreach ($rows as $row) {
                     switch ($row) {
                         case 'search':
-                            $html .= $this->includeSearch(FALSE);
+                            $html .= $this->includeSearch(false);
                             break;
                         case 'logged in user':
-                            $html .= $this->includeLoggedIn(FALSE);
+                            $html .= $this->includeLoggedIn(false);
                             break;
                         case 'content':
-                            $content = $this->includePage($sidebarPage, FALSE);
-                            if ($content != '') $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
+                            $content = $this->includePage($sidebarPage, false);
+                            if ($content !== '') {
+                                $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
+                            }
                             break;
                         case 'tags':
                             $html .= '<div class="mikio-tags"></div>';
                     }
                 }
             } else {
-                $content = $this->includePage($sidebarPage, FALSE);
-                if ($content != '') $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
+                $content = $this->includePage($sidebarPage, false);
+                if ($content !== '') {
+                    $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
+                }
+            }//end if
+
+            $content = $this->includePage($sidebarPage . 'footer', false);
+            if ($content !== '') {
+                $html .= '<div class="mikio-sidebar-footer">' . $content . '</div>';
             }
+        }//end if
 
-            $content = $this->includePage($sidebarPage . 'footer', FALSE);
-            if ($content != '') $html .= '<div class="mikio-sidebar-footer">' . $content . '</div>';
+        if ($html === '') {
+            if ($prefix === '' && $this->getConf('sidebarAlwaysShowLeft') === true) {
+                $html = '&nbsp;';
+            }
+            if ($this->getConf('sidebarAlwaysShow' . ucfirst($prefix)) === true) {
+                $html = '&nbsp;';
+            }
         }
 
-        if ($html == '') {
-            if ($prefix == '' && $this->getConf('sidebarAlwaysShowLeft')) $html = '&nbsp;';
-            if ($this->getConf('sidebarAlwaysShow' . ucfirst($prefix))) $html = '&nbsp;';
+        if ($html !== '') {
+            $html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix === '' ? 'left' : $prefix) .
+                '"><a class="mikio-sidebar-toggle' .
+                ($this->getConf('sidebarMobileDefaultCollapse') === true ? ' closed' : '') . '" href="#">' .
+                tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="mikio-sidebar-collapse">' .
+                $html . '</div></aside>';
         }
 
-        if ($html != '') {
-            $html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix == '' ? 'left' : $prefix) . '"><a class="mikio-sidebar-toggle' . ($this->getConf('sidebarMobileDefaultCollapse') ? ' closed' : '') . '" href="#">' . tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="mikio-sidebar-collapse">' . $html . '</div></aside>';
+        if ($parse === true) {
+            $html = $this->includeIcons($html);
         }
-
-        if ($parse) $html = $this->includeIcons($html);
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -855,44 +1012,51 @@ class Template
     /**
      * Print or return the page tools content
      *
-     * @param   boolean $print      print the generated content to the output buffer
-     * @param   boolean $includeId  include the dw__pagetools id in the element
-     * @return  string              generated content
+     * @param   boolean $print     Print the generated content to the output buffer.
+     * @param   boolean $includeId Include the dw__pagetools id in the element.
+     * @return  string             generated content
      */
-    public function includePageTools($print = TRUE, $includeId = FALSE)
+    public function includePageTools(bool $print = true, bool $includeId = false)
     {
         global $USERINFO;
 
-        $loggedIn = (is_array($USERINFO) && count($USERINFO) > 0);
+        $loggedIn = (is_array($USERINFO) === true && count($USERINFO) > 0);
         $html = '';
 
-        $html .= '<nav' . ($includeId ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
+        $html .= '<nav' . ($includeId === true ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
         $html .= '<ul class="tools">';
 
         $items = (new \dokuwiki\Menu\PageMenu())->getItems();
         foreach ($items as $item) {
-            $classes = array();
+            $classes = [];
             $classes[] = $item->getType();
             $attr = $item->getLinkAttributes();
 
-            if (!empty($attr['class'])) {
+            if (empty($attr['class']) === false) {
                 $classes = array_merge($classes, explode(' ', $attr['class']));
             }
 
             $classes = array_unique($classes);
 
             $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()));
-            if ($showItem !== false && ($showItem == 'always' || ($showItem == 'logged in' && $loggedIn) || ($showItem == 'logged out' && !$loggedIn))) {
+            if (
+                $showItem !== false && ($showItem === 'always' || ($showItem === 'logged in' && $loggedIn === true) ||
+                ($showItem === 'logged out' && $loggedIn === true))
+            ) {
                 $html .= '<li class="' . implode(' ', $classes) . '">';
-                $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' . $item->getTitle() . '"><div class="icon">' . inlineSVG($item->getSvg()) . '</div><span class="a11y">' . $item->getLabel() . '</span></a>';
+                $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' .
+                    $item->getTitle() . '"><div class="icon">' . inlineSVG($item->getSvg()) .
+                    '</div><span class="a11y">' . $item->getLabel() . '</span></a>';
                 $html .= '</li>';
             }
-        }
+        }//end foreach
 
         $html .= '</ul>';
         $html .= '</nav>';
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -900,24 +1064,26 @@ class Template
     /**
      * Print or return the search bar
      *
-     * @param   boolean $print          print content
-     * @return  string                  contents of the search bar
+     * @param   boolean $print Print content.
+     * @return  string         contents of the search bar
      */
-    public function includeSearch($print = TRUE)
+    public function includeSearch(bool $print = true)
     {
-        global $lang, $ID;
+        global $lang, $ID, $ACT, $QUERY;
         $html = '';
 
-        $html .= '<form class="mikio-search search" action="' . wl() . '" accept-charset="utf-8" method="get" role="search">';
+        $html .= '<form class="mikio-search search" action="' . wl() .
+            '" accept-charset="utf-8" method="get" role="search">';
         $html .= '<input type="hidden" name="do" value="search">';
         $html .= '<input type="hidden" name="id" value="' . $ID . '">';
         $html .= '<input name="q" ';
-        if ($this->getConf('searchUseTypeahead')) {
+        if ($this->getConf('searchUseTypeahead') === true) {
             $html .= 'class="search_typeahead" ';
         }
-        $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' . (($ACT == 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
+        $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' .
+            (($ACT === 'search') ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
         $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
-        if ($this->getConf('searchButton') == 'icon') {
+        if ($this->getConf('searchButton') === 'icon') {
             $html .= $this->mikioInlineIcon('search');
         } else {
             $html .= $lang['btn_search'];
@@ -925,9 +1091,9 @@ class Template
         $html .= '</button>';
         $html .= '</form>';
 
-
-
-        if ($print) print $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -935,13 +1101,13 @@ class Template
     /**
      * Print or return content
      *
-     * @param   boolean $print          print content
-     * @return  string                  contents
+     * @param   boolean $print Print content.
+     * @return  string         contents
      */
-    public function includeContent($print = TRUE)
+    public function includeContent(bool $print = true)
     {
         ob_start();
-        tpl_content(FALSE);
+        tpl_content(false);
         $html = ob_get_contents();
         ob_end_clean();
 
@@ -950,52 +1116,63 @@ class Template
 
         $html .= '<div style="clear:both"></div>';
 
-        if (!$this->getConf('heroTitle')) $html = '<div class="mikio-tags"></div>' . $html;
+        if ($this->getConf('heroTitle') === false) {
+            $html = '<div class="mikio-tags"></div>' . $html;
+        }
 
         $html = '<div class="mikio-article-content">' . $html . '</div>';
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
     /**
      * Print or return footer
      *
-     * @param   boolean  $print     print footer
-     * @return  string              html string containing footer
+     * @param   boolean $print Print footer.
+     * @return  string         HTML string containing footer
      */
-    public function includeFooter($print = TRUE)
+    public function includeFooter(bool $print = true)
     {
         global $ACT;
 
         $html = '';
 
         $html .= '<footer class="mikio-footer">';
-        $html .= '<div class="doc">' . tpl_pageinfo(TRUE) . '</div>';
-        $html .= $this->includePage('footer', FALSE);
+        $html .= '<div class="doc">' . tpl_pageinfo(true) . '</div>';
+        $html .= $this->includePage('footer', false);
 
         $html .= $this->stringToNav($this->getConf('footerCustomMenuText'));
 
-        if ($this->getConf('footerSearch')) {
+        if ($this->getConf('footerSearch') === true) {
             $html .= '<div class="mikio-footer-search">';
-            $html .= $this->includeSearch(FALSE);
+            $html .= $this->includeSearch(false);
             $html .= '</div>';
         }
 
         $showPageTools = $this->getConf('pageToolsFooter');
-        if ($ACT == 'show' && ($showPageTools == 'always' || $this->userCanEdit() && $showPageTools == 'page editors')) $html .= $this->includePageTools(FALSE);
+        if (
+            $ACT === 'show' && ($showPageTools === 'always' || $this->userCanEdit() === true &&
+            $showPageTools === 'page editors')
+        ) {
+            $html .= $this->includePageTools(false);
+        }
 
-        $meta['licenseType']            = array('multichoice', '_choices' => array('none', 'badge', 'button'));
-        $meta['licenseImageOnly']       = array('onoff');
+        $meta['licenseType']            = ['multichoice', '_choices' => ['none', 'badge', 'button']];
+        $meta['licenseImageOnly']       = ['onoff'];
 
         $licenseType = $this->getConf('licenseType');
-        if ($licenseType != 'none') {
-            $html .= tpl_license($licenseType, $this->getConf('licenseImageOnly'), TRUE, TRUE);
+        if ($licenseType !== 'none') {
+            $html .= tpl_license($licenseType, $this->getConf('licenseImageOnly'), true, true);
         }
 
         $html .= '</footer>';
 
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
@@ -1003,21 +1180,23 @@ class Template
     /**
      * Print or return breadcrumb trail
      *
-     * @param   boolean  $print     print out trail
-     * @param   boolean  $parse     parse trail before printing
-     * @return  string              html string containing breadcrumbs
+     * @param   boolean $print Print out trail.
+     * @param   boolean $parse Parse trail before printing.
+     * @return  string         HTML string containing breadcrumbs
      */
-    public function includeBreadcrumbs($print = TRUE, $parse = TRUE)
+    public function includeBreadcrumbs(bool $print = true, bool $parse = true)
     {
         global $conf, $ID, $lang, $ACT;
 
-        if ($this->getConf('breadcrumbHideHome') && $ID == 'start' && $ACT == 'show' || $ACT == 'showtag') return '';
+        if ($this->getConf('breadcrumbHideHome') === true && $ID === 'start' && $ACT === 'show' || $ACT === 'showtag') {
+            return '';
+        }
 
         $html = '<div class="mikio-breadcrumbs">';
         $html .= '<div class="mikio-container">';
-        if ($ACT == 'show') {
-            if ($conf['breadcrumbs']) {
-                if (!$this->getConf('breadcrumbPrefix') && !$this->getConf('breadcrumbSep')) {
+        if ($ACT === 'show') {
+            if ($conf['breadcrumbs'] === true) {
+                if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
                     ob_start();
                     tpl_breadcrumbs();
                     $html .= ob_get_contents();
@@ -1026,20 +1205,20 @@ class Template
                     $sep = '•';
                     $prefix = $lang['breadcrumb'];
 
-                    if ($this->getConf('breadcrumbSep')) {
+                    if ($this->getConf('breadcrumbSep') === true) {
                         $sep = $this->getConf('breadcrumbSepText');
-                        $img = $this->getMediaFile('breadcrumb-sep', FALSE);
+                        $img = $this->getMediaFile('breadcrumb-sep', false);
 
-                        if ($img !== FALSE) {
+                        if ($img !== false) {
                             $sep = '<img src="' . $img . '">';
                         }
                     }
 
-                    if ($this->getConf('breadcrumbPrefix')) {
+                    if ($this->getConf('breadcrumbPrefix') === true) {
                         $prefix = $this->getConf('breadcrumbPrefixText');
-                        $img = $this->getMediaFile('breadcrumb-prefix', FALSE);
+                        $img = $this->getMediaFile('breadcrumb-prefix', false);
 
-                        if ($img !== FALSE) {
+                        if ($img !== false) {
                             $prefix = '<img src="' . $img . '">';
                         }
                     }
@@ -1047,49 +1226,57 @@ class Template
                     $crumbs = breadcrumbs();
 
                     $html .= '<ul>';
-                    if ($prefix != '') $html .= '<li class="prefix">' . $prefix . '</li>';
+                    if ($prefix !== '') {
+                        $html .= '<li class="prefix">' . $prefix . '</li>';
+                    }
 
                     $last = count($crumbs);
                     $i    = 0;
                     foreach ($crumbs as $id => $name) {
                         $i++;
                         $html .= '<li class="sep">' . $sep . '</li>';
-                        $html .= '<li' . ($i == $last ? ' class="curid"' : '') . '>';
-                        $html .= tpl_pagelink($id, NULL, TRUE);
+                        $html .= '<li' . ($i === $last ? ' class="curid"' : '') . '>';
+                        $html .= tpl_pagelink($id, null, true);
                         $html .= '</li>';
                     }
 
                     $html .= '</ul>';
-                }
-            }
+                }//end if
+            }//end if
+        }//end if
+
+        $html .= '</div>';
+        $html .= '</div>';
+
+        if ($parse === true) {
+            $html = $this->includeIcons($html);
         }
-
-        $html .= '</div>';
-        $html .= '</div>';
-
-        if ($parse) $html = $this->includeIcons($html);
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
     /**
      * Print or return you are here trail
      *
-     * @param   boolean  $print     print out trail
-     * @param   boolean  $parse     parse trail before printing
-     * @return  string              html string containing breadcrumbs
+     * @param   boolean $print Print out trail.
+     * @param   boolean $parse Parse trail before printing.
+     * @return  string         HTML string containing breadcrumbs
      */
-    public function includeYouAreHere($print = TRUE, $parse = TRUE)
+    public function includeYouAreHere(bool $print = true, bool $parse = true)
     {
         global $conf, $ID, $lang, $ACT;
 
-        if ($this->getConf('youarehereHideHome') && $ID == 'start' && $ACT == 'show' || $ACT == 'showtag') return '';
+        if ($this->getConf('youarehereHideHome') === true && $ID === 'start' && $ACT === 'show' || $ACT === 'showtag') {
+            return '';
+        }
 
         $html = '<div class="mikio-youarehere">';
         $html .= '<div class="mikio-container">';
-        if ($ACT == 'show') {
-            if ($conf['youarehere']) {
-                if (!$this->getConf('youareherePrefix') && !$this->getConf('youarehereSep')) {
+        if ($ACT === 'show') {
+            if ($conf['youarehere'] === true) {
+                if ($this->getConf('youareherePrefix') === false && $this->getConf('youarehereSep') === false) {
                     ob_start();
                     tpl_youarehere();
                     $html .= ob_get_contents();
@@ -1098,58 +1285,62 @@ class Template
                     $sep = ' » ';
                     $prefix = $lang['youarehere'];
 
-                    if ($this->getConf('youarehereSep')) {
+                    if ($this->getConf('youarehereSep') === true) {
                         $sep = $this->getConf('youarehereSepText');
-                        $img = $this->getMediaFile('youarehere-sep', FALSE);
+                        $img = $this->getMediaFile('youarehere-sep', false);
 
-                        if ($img !== FALSE) {
+                        if ($img !== false) {
                             $sep = '<img src="' . $img . '">';
                         }
                     }
 
-                    if ($this->getConf('youareherePrefix')) {
+                    if ($this->getConf('youareherePrefix') === true) {
                         $prefix = $this->getConf('youareherePrefixText');
-                        $img = $this->getMediaFile('youarehere-prefix', FALSE);
+                        $img = $this->getMediaFile('youarehere-prefix', false);
 
-                        if ($img !== FALSE) {
+                        if ($img !== false) {
                             $prefix = '<img src="' . $img . '">';
                         }
                     }
 
                     $html .= '<ul>';
-                    if ($prefix != '') $html .= '<li class="prefix">' . $prefix . '</li>';
-                    $html .= '<li>' . tpl_pagelink(':' . $conf['start'], NULL, TRUE) . '</li>';
+                    if ($prefix !== '') {
+                        $html .= '<li class="prefix">' . $prefix . '</li>';
+                    }
+                    $html .= '<li>' . tpl_pagelink(':' . $conf['start'], null, true) . '</li>';
 
                     $parts = explode(':', $ID);
                     $count = count($parts);
 
                     $part = '';
-                    for ($i = 0; $i < $count - 1; $i++) {
+                    for ($i = 0; $i < ($count - 1); $i++) {
                         $part .= $parts[$i] . ':';
                         $page = $part;
-                        if ($page == $conf['start']) continue;
+                        if ($page === $conf['start']) {
+                            continue;
+                        }
 
                         $html .= '<li class="sep">' . $sep . '</li>';
-                        $html .= '<li>' . tpl_pagelink($page, NULL, TRUE) . '</li>';
+                        $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
                     }
 
                     resolve_pageid('', $page, $exists);
-                    if (!(isset($page) && $page == $part . $parts[$i])) {
+                    if ((isset($page) === true && $page === $part . $parts[$i]) === false) {
                         $page = $part . $parts[$i];
-                        if ($page != $conf['start']) {
+                        if ($page !== $conf['start']) {
                             $html .= '<li class="sep">' . $sep . '</li>';
-                            $html .= '<li>' . tpl_pagelink($page, NULL, TRUE) . '</li>';
+                            $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
                         }
                     }
 
                     $html .= '</ul>';
-                }
-            }
+                }//end if
+            }//end if
 
             $showLast = $this->getConf('youarehereShowLast');
-            if ($showLast != 0) {
+            if ($showLast !== 0) {
                 preg_match_all('/(<li[^>]*>.+?<\/li>)/', $html, $matches);
-                if (count($matches) > 0 && count($matches[0]) > ($showLast * 2) + 2) {
+                if (count($matches) > 0 && count($matches[0]) > (($showLast * 2) + 2)) {
                     $count = count($matches[0]);
                     $list = '';
 
@@ -1157,7 +1348,7 @@ class Template
                     $list .= $matches[0][0] . $matches[0][1];
 
                     $list .= '<li>...</li>';
-                    for ($i = $count - ($showLast * 2); $i <= $count; $i++) {
+                    for ($i = ($count - ($showLast * 2)); $i <= $count; $i++) {
                         $list .= $matches[0][$i];
                     }
 
@@ -1173,34 +1364,43 @@ class Template
                     $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' . tpl_getlang('home') . '$3', $html, 1);
                     break;
                 case 'icon':
-                    $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' . $this->mikioInlineIcon('home') . '$3', $html, 1);
+                    $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' .
+                        $this->mikioInlineIcon('home') . '$3', $html, 1);
                     break;
             }
         } else {
             $html .= '&#8810; ';
-            if (isset($_GET['page'])) {
-                $html .= '<a href="' . wl($ID, array('do' => $ACT)) . '">Back</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
+            if (isset($_GET['page']) === true) {
+                $html .= '<a href="' . wl($ID, ['do' => $ACT]) . '">Back</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
             }
             $html .= '<a href="' . wl($ID) . '">View Page</a>';
+        }//end if
+
+        $html .= '</div>';
+        $html .= '</div>';
+
+        if ($parse === true) {
+            $html = $this->includeIcons($html);
         }
-
-        $html .= '</div>';
-        $html .= '</div>';
-
-        if ($parse) $html = $this->includeIcons($html);
-        if ($print) echo $html;
+        if ($print === true) {
+            echo $html;
+        }
         return $html;
     }
 
     /**
      * Get Page Title
+     *
+     * @return string page title
      */
     public function parsePageTitle()
     {
         global $ID;
 
         $title = p_get_first_heading($ID);
-        if (strlen($title) <= 0) $title = tpl_pagetitle(null, TRUE);
+        if (strlen($title) <= 0) {
+            $title = tpl_pagetitle(null, true);
+        }
         $title = $this->includeIcons($title);
 
         return $title;
@@ -1210,19 +1410,23 @@ class Template
     /**
      * Print or return hero block
      *
-     * @param   boolean $print          print content
-     * @return  string                  contents of hero
+     * @param   boolean $print Print content.
+     * @return  string         contents of hero
      */
-    public function includeHero($print = TRUE)
+    public function includeHero(bool $print = true)
     {
         $html = '';
 
-        if ($this->getConf('heroTitle')) {
+        if ($this->getConf('heroTitle') === true) {
             $html .= '<div class="mikio-hero">';
             $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
-            if ($this->getConf('youareherePosition') == 'hero') $html .= $this->includeYouAreHere(FALSE);
-            if ($this->getConf('breadcrumbPosition') == 'hero') $html .= $this->includeBreadcrumbs(FALSE);
+            if ($this->getConf('youareherePosition') === 'hero') {
+                $html .= $this->includeYouAreHere(false);
+            }
+            if ($this->getConf('breadcrumbPosition') === 'hero') {
+                $html .= $this->includeBreadcrumbs(false);
+            }
 
             $html .= '<h1 class="mikio-hero-title">';
             $html .= $this->parsePageTitle();    // No idea why this requires a blank space afterwards to work?
@@ -1230,20 +1434,23 @@ class Template
             $html .= '<h2 class="mikio-hero-subtitle"></h2>';
             $html .= '</div>';
 
-            $hero_image = $this->getMediaFile('hero', TRUE, $this->getConf('heroImagePropagation', TRUE));
+            $hero_image = $this->getMediaFile('hero', true, $this->getConf('heroImagePropagation', true));
             $hero_image_resize_class = '';
-            if ($hero_image != '') {
+            if ($hero_image !== '') {
                 $hero_image = ' style="background-image:url(\'' . $hero_image . '\');"';
                 $hero_image_resize_class = ' mikio-hero-image-resize';
             }
 
-            $html .= '<div class="mikio-hero-image' . $hero_image_resize_class . '"' . $hero_image . '><div class="mikio-tags"></div></div>';
+            $html .= '<div class="mikio-hero-image' . $hero_image_resize_class . '"' . $hero_image .
+                '><div class="mikio-tags"></div></div>';
 
             $html .= '</div>';
             $html .= '</div>';
+        }//end if
+
+        if ($print === true) {
+            echo $html;
         }
-
-        if ($print) echo $html;
 
         return $html;
     }
@@ -1252,16 +1459,17 @@ class Template
     /**
      * Print or return out TOC
      *
-     * @param   boolean $print          print TOC
-     * @return  string                  contents of TOC
+     * @param   boolean $print Print TOC.
+     * @param   boolean $parse Parse icons.
+     * @return  string         contents of TOC
      */
-    public function includeTOC($parse = TRUE)
+    public function includeTOC(bool $print = true, bool $parse = true)
     {
         $html = '';
 
         $tocHtml = tpl_toc(true);
 
-        if ($tocHtml != '') {
+        if ($tocHtml !== '') {
             $tocHtml = preg_replace('/<li.*><div.*><a.*><\/a><\/div><\/li>\s*/', '', $tocHtml);
             $tocHtml = preg_replace('/<ul.*>\s*<\/ul>\s*/', '', $tocHtml);
 
@@ -1270,41 +1478,53 @@ class Template
             $html .= '</div>';
         }
 
-        if ($parse) $html = $this->includeIcons($html);
-        echo $html;
+        if ($parse === true) {
+            $html = $this->includeIcons($html);
+        }
+
+        if ($print === true) {
+            echo $html;
+        }
+
+        return $html;
     }
 
 
     /**
      * Parse the string and replace icon elements with included icon libraries
      *
-     * @param   string  $str        content to parse
-     * @return  string              parsed string
+     * @param   string $str Content to parse.
+     * @return  string      parsed string
      */
-    public function includeIcons($str)
+    public function includeIcons(string $str)
     {
         global $ACT, $MIKIO_ICONS;
 
         $iconTag = $this->getConf('iconTag', 'icon');
-        if ($iconTag == '') return $str;
+        if ($iconTag === '') {
+            return $str;
+        }
 
-        if ($ACT == 'show' || $ACT == 'admin' && count($MIKIO_ICONS) > 0 || $ACT == 'showtag' || $ACT == 'revisions' || $ACT == 'index' || $ACT == 'preview') {
+        if (
+            in_array($ACT, ['show', 'showtag', 'revisions', 'index', 'preview']) === true ||
+            $ACT === 'admin' && count($MIKIO_ICONS) > 0
+        ) {
             $content = $str;
             $preview = null;
 
-            if ($ACT == 'preview') {
-                $html = new \simple_html_dom;
+            if ($ACT === 'preview') {
+                $html = new \simple_html_dom();
                 $html->stripRNAttrValues = false;
                 $html->load($str, true, false);
 
                 $preview = $html->find('div.preview');
-                if (is_array($preview) && count($preview) > 0) {
+                if (is_array($preview) === true && count($preview) > 0) {
                     $content = $preview[0]->innertext;
                 }
             }
 
             $page_regex = '/(.*)/';
-            if (stripos($str, '<pre')) {
+            if (stripos($str, '<pre') !== false) {
                 $page_regex = '/<(?!pre|\/).*?>(.*)[^<]*/';
             }
 
@@ -1326,13 +1546,13 @@ class Template
 
                                 if (count($e) > 1) {
                                     foreach ($MIKIO_ICONS as $iconItem) {
-                                        if (strcasecmp($iconItem['name'], $e[0]) == 0) {
+                                        if (strcasecmp($iconItem['name'], $e[0]) === 0) {
                                             $icon = $iconItem;
 
                                             $s = $icon['insert'];
                                             for ($i = 1; $i < 9; $i++) {
-                                                if (count($e) < $i || $e[$i] == '') {
-                                                    if (isset($icon['$' . $i])) {
+                                                if (count($e) < $i || $e[$i] === '') {
+                                                    if (isset($icon['$' . $i]) === true) {
                                                         $s = str_replace('$' . $i, $icon['$' . $i], $s);
                                                     }
                                                 } else {
@@ -1341,21 +1561,23 @@ class Template
                                             }
 
                                             $dir = '';
-                                            if (isset($icon['dir'])) $dir = $this->baseDir . 'icons/' . $icon['dir'] . '/';
+                                            if (isset($icon['dir']) === true) {
+                                                $dir = $this->baseDir . 'icons/' . $icon['dir'] . '/';
+                                            }
 
                                             $s = str_replace('$0', $dir, $s);
 
                                             break;
-                                        }
-                                    }
+                                        }//end if
+                                    }//end foreach
                                 } else {
                                     $s = str_replace('$1', $matches[1], $icon['insert']);
-                                }
-                            }
-                        }
+                                }//end if
+                            }//end if
+                        }//end if
 
                         $s = preg_replace('/(class=")(.*)"/', '$1mikio-icon $2"', $s, -1, $count);
-                        if ($count == 0) {
+                        if ($count === 0) {
                             $s = preg_replace('/(<\w* )/', '$1class="mikio-icon" ', $s);
                         }
 
@@ -1365,8 +1587,8 @@ class Template
                 );
             }, $content);
 
-            if ($ACT == 'preview') {
-                if (is_array($preview) && count($preview) > 0) {
+            if ($ACT === 'preview') {
+                if (is_array($preview) === true && count($preview) > 0) {
                     $preview[0]->innertext = $content;
                 }
 
@@ -1376,7 +1598,7 @@ class Template
             } else {
                 $str = $content;
             }
-        }
+        }//end if
 
         return $str;
     }
@@ -1384,66 +1606,74 @@ class Template
     /**
      * Parse HTML for theme
      *
-     * @param   string  $content    HTML content to parse
-     * @return  string              Parsed content
+     * @param   string $content HTML content to parse.
+     * @return  string          Parsed content
      */
-    public function parseContent($content)
+    public function parseContent(string $content)
     {
         global $INPUT, $ACT;
 
         // Add Mikio Section titles
-        if ($INPUT->str('page') == 'config') {
-            $admin_sections = array(
-                // Section      Insert Before                       Icon
-                'navbar'        => array('navbarUseTitleIcon',      ''),
-                'search'        => array('searchButton',            ''),
-                'hero'          => array('heroTitle',               ''),
-                'tags'          => array('tagsConsolidate',         ''),
-                'breadcrumb'    => array('breadcrumbHideHome',      ''),
-                'youarehere'    => array('youarehereHideHome',      ''),
-                'sidebar'       => array('sidebarShowLeft',         ''),
-                'toc'           => array('tocFull',                 ''),
-                'pagetools'     => array('pageToolsFloating',       ''),
-                'footer'        => array('footerCustomMenuText',    ''),
-                'license'       => array('licenseType',             ''),
-                'acl'           => array('includePageUseACL',       ''),
-                'sticky'        => array('stickyTopHeader',         ''),
-            );
+        if ($INPUT->str('page') === 'config') {
+            $admin_sections = [
+                // Section      Insert Before                 Icon
+                'navbar'        => ['navbarUseTitleIcon',      ''],
+                'search'        => ['searchButton',            ''],
+                'hero'          => ['heroTitle',               ''],
+                'tags'          => ['tagsConsolidate',         ''],
+                'breadcrumb'    => ['breadcrumbHideHome',      ''],
+                'youarehere'    => ['youarehereHideHome',      ''],
+                'sidebar'       => ['sidebarShowLeft',         ''],
+                'toc'           => ['tocFull',                 ''],
+                'pagetools'     => ['pageToolsFloating',       ''],
+                'footer'        => ['footerCustomMenuText',    ''],
+                'license'       => ['licenseType',             ''],
+                'acl'           => ['includePageUseACL',       ''],
+                'sticky'        => ['stickyTopHeader',         ''],
+            ];
 
             foreach ($admin_sections as $section => $items) {
                 $search = $items[0];
                 $icon   = $items[1];
 
-                // $content = preg_replace('/<tr(.*)>\s+<td(.*)>\s+<span(.*)>(tpl»mikio»' . $search . ')<\/span>/',
-                // '<tr class="default"><td class="mikio-config-table-header" colspan="2">' . $this->mikioInlineIcon($icon) . tpl_getLang('config_' . $section) . '</td></tr><tr$1><td$2><span$3>$4</span>', $content);
-
                 $content = preg_replace(
                     '/<tr(.*)>\s*<td class="label">\s*<span class="outkey">(tpl»mikio»' . $search . ')<\/span>/',
-                    '<tr$1><td class="mikio-config-table-header" colspan="2">' . $this->mikioInlineIcon($icon) . tpl_getLang('config_' . $section) . '</td></tr><tr class="default"><td class="label"><span class="outkey">tpl»mikio»' . $search . '</span>',
+                    '<tr$1><td class="mikio-config-table-header" colspan="2">' . $this->mikioInlineIcon($icon) .
+                        tpl_getLang('config_' . $section) .
+                        '</td></tr><tr class="default"><td class="label"><span class="outkey">tpl»mikio»' .
+                        $search . '</span>',
                     $content
                 );
             }
-        }
+        }//end if
 
-        if ($ACT == 'admin' && !isset($_GET['page'])) {
+        if ($ACT === 'admin' && isset($_GET['page']) === false) {
             $content = preg_replace('/(<ul.*?>.*?)<\/ul>.*?<ul.*?>(.*?<\/ul>)/s', '$1$2', $content);
         }
 
         // Page Revisions - Table Fix
-        if (strpos($content, 'id="page__revisions"') !== FALSE) {
-            $content = preg_replace('/(<span class="sum">\s.*<\/span>\s.*<span class="user">\s.*<\/span>)/', '<span>$1</span>', $content);
+        if (strpos($content, 'id="page__revisions"') !== false) {
+            $content = preg_replace(
+                '/(<span class="sum">\s.*<\/span>\s.*<span class="user">\s.*<\/span>)/',
+                '<span>$1</span>',
+                $content
+            );
         }
 
-        $html = new \simple_html_dom;
+        $html = new \simple_html_dom();
         $html->stripRNAttrValues = false;
         $html->load($content, true, false);
 
-        if (!$html) return $content;
+        if ($html === false) {
+            return $content;
+        }
 
         /* Buttons */
         foreach ($html->find('#config__manager button') as $node) {
             $c = explode(' ', $node->class);
-            if (!in_array('mikio-button', $c)) $c[] = 'mikio-button';
+            if (in_array('mikio-button', $c) === false) {
+                $c[] = 'mikio-button';
+            }
             $node->class = implode(' ', $c);
         }
 
@@ -1451,16 +1681,18 @@ class Template
         /* Buttons - Primary */
         foreach ($html->find('#config__manager [type=submit]') as $node) {
             $c = explode(' ', $node->class);
-            if (!in_array('mikio-primary', $c)) $c[] = 'mikio-primary';
+            if (in_array('mikio-primary', $c) === false) {
+                $c[] = 'mikio-primary';
+            }
             $node->class = implode(' ', $c);
         }
 
         /* Hide page title if hero is enabled */
-        if ($this->getConf('heroTitle') && $ACT != 'preview') {
+        if ($this->getConf('heroTitle') === true && $ACT !== 'preview') {
             $pageTitle = $this->parsePageTitle();
 
             foreach ($html->find('h1,h2,h3,h4') as $elm) {
-                if ($elm->innertext == $pageTitle) {
+                if ($elm->innertext === $pageTitle) {
                     // $elm->innertext = '';
                     $elm->setAttribute('style', 'display:none');
 
@@ -1473,10 +1705,10 @@ class Template
         foreach ($html->find('p') as $elm) {
             $i = stripos($elm->innertext, '~~hero-subtitle');
             if ($i !== false) {
-                $j = strpos($elm->innertext, '~~', $i + 2);
+                $j = strpos($elm->innertext, '~~', ($i + 2));
                 if ($j !== false) {
-                    if ($j > $i + 16) {
-                        $subtitle = substr($elm->innertext, $i + 16, $j - $i - 16);
+                    if ($j > ($i + 16)) {
+                        $subtitle = substr($elm->innertext, ($i + 16), ($j - $i - 16));
                         $this->footerScript['hero-subtitle'] = 'mikio.setHeroSubTitle(\'' . $subtitle . '\')';
 
                         // $elm->innertext = substr($elm->innertext, 0, $i + 2) . substr($elm->innertext, $j + 2);
@@ -1502,10 +1734,10 @@ class Template
                         $image = $imageTagMatches[1];
                     } else {
                         $image = strip_tags($matches[1]);
-                        if (stripos($image, ':') === FALSE) {
-                            $image = str_replace(array('{', '}'), '', $image);
+                        if (stripos($image, ':') === false) {
+                            $image = str_replace(['{', '}'], '', $image);
                             $i = stripos($image, '?');
-                            if ($i !== FALSE) {
+                            if ($i !== false) {
                                 $image = substr($image, 0, $i);
                             }
 
@@ -1517,17 +1749,18 @@ class Template
                 $this->footerScript['hero-image'] = 'mikio.setHeroImage(\'' . $image . '\')';
 
                 $elm->innertext = preg_replace('/~~hero-image (.+?)~~.*/ui', '', $elm->innertext);
-            }
-        }
+            }//end if
+        }//end foreach
 
-        /* Hero colors - ~~hero-colors [background-color] [hero-title-color] [hero-subtitle-color] [breadcrumb-text-color] [breadcrumb-hover-color] (use 'initial' for original color) */
+        /* Hero colors - ~~hero-colors [background-color] [hero-title-color] [hero-subtitle-color]
+        [breadcrumb-text-color] [breadcrumb-hover-color] (use 'initial' for original color) */
         foreach ($html->find('p') as $elm) {
             $i = stripos($elm->innertext, '~~hero-colors');
             if ($i !== false) {
-                $j = strpos($elm->innertext, '~~', $i + 2);
+                $j = strpos($elm->innertext, '~~', ($i + 2));
                 if ($j !== false) {
-                    if ($j > $i + 14) {
-                        $color = substr($elm->innertext, $i + 14, $j - $i - 14);
+                    if ($j > ($i + 14)) {
+                        $color = substr($elm->innertext, ($i + 14), ($j - $i - 14));
                         $this->footerScript['hero-colors'] = 'mikio.setHeroColor(\'' . $color . '\')';
 
                         $elm->innertext = preg_replace('/~~hero-colors (.+?)~~.*/ui', '', $elm->innertext);
@@ -1542,10 +1775,10 @@ class Template
         foreach ($html->find('p') as $elm) {
             $i = stripos($elm->innertext, '~~hide-parts');
             if ($i !== false) {
-                $j = strpos($elm->innertext, '~~', $i + 2);
+                $j = strpos($elm->innertext, '~~', ($i + 2));
                 if ($j !== false) {
-                    if ($j > $i + 13) {
-                        $parts = explode(' ', substr($elm->innertext, $i + 13, $j - $i - 13));
+                    if ($j > ($i + 13)) {
+                        $parts = explode(' ', substr($elm->innertext, ($i + 13), ($j - $i - 13)));
                         $script = '';
 
                         foreach ($parts as $part) {
@@ -1563,13 +1796,13 @@ class Template
                     }
 
                     break;
-                }
-            }
-        }
+                }//end if
+            }//end if
+        }//end foreach
 
 
         /* Page Tags (tag plugin) */
-        if ($this->getConf('tagsConsolidate')) {
+        if ($this->getConf('tagsConsolidate') === true) {
             $tags = '';
             foreach ($html->find('div.tags a') as $elm) {
                 $tags .= $elm->outertext;
@@ -1580,14 +1813,13 @@ class Template
                 $elm->setAttribute('style', 'display:none');
             }
 
-            if ($tags != '') {
+            if ($tags !== '') {
                 $this->footerScript['tags'] = 'mikio.setTags(\'' . $tags . '\')';
             }
         }
 
         // Configuration Manager
-        if ($INPUT->str('page') == 'config') {
-
+        if ($INPUT->str('page') === 'config') {
             // Additional save buttons
             foreach ($html->find('#config__manager') as $cm) {
                 $saveButtons = '';
@@ -1615,13 +1847,15 @@ class Template
     /**
      * Get DokuWiki namespace/page/URI as link
      *
-     * @param   string  $str            string to parse
-     * @return  string                  parsed uri
+     * @param   string $str String to parse.
+     * @return  string      parsed URI
      */
-    public function getLink($str)
+    public function getLink(string $str)
     {
         $i = strpos($str, '://');
-        if ($i !== false) return $str;
+        if ($i !== false) {
+            return $str;
+        }
 
         return wl($str);
     }
@@ -1630,7 +1864,7 @@ class Template
     /**
      * Check if the user can edit current namespace/page
      *
-     * @return  boolean                  user can edit
+     * @return  boolean  user can edit
      */
     public function userCanEdit()
     {
@@ -1638,11 +1872,19 @@ class Template
         global $ID;
 
         $wiki_file = wikiFN($ID);
-        if (@!file_exists($wiki_file)) return true;
-        if ($INFO['isadmin'] || $INFO['ismanager']) return true;
+        if (@file_exists($wiki_file) === false) {
+            return true;
+        }
+        if ($INFO['isadmin'] === true || $INFO['ismanager'] === true) {
+            return true;
+        }
         // $meta_file = metaFN($ID, '.meta');
-        if (!$INFO['meta']['user']) return true;
-        if ($INFO['client'] ==  $INFO['meta']['user']) return true;
+        if ($INFO['meta']['user'] === false) {
+            return true;
+        }
+        if ($INFO['client'] === $INFO['meta']['user']) {
+            return true;
+        }
 
         return false;
     }
@@ -1650,27 +1892,32 @@ class Template
 
     /**
      * Search for and return the uri of a media file
-     * 
-     * @param string    $image              image name to search for (without extension)
-     * @param bool      $searchCurrentNS    search the current namespace
-     * @return string                       uri of the found media file
+     *
+     * @param string  $image           Image name to search for (without extension).
+     * @param boolean $searchCurrentNS Search the current namespace.
+     * @param boolean $propagate       Propagate search through the namespace.
+     * @return string                  URI of the found media file
      */
-    public function getMediaFile($image, $searchCurrentNS = TRUE, $propagate = TRUE)
+    public function getMediaFile(string $image, bool $searchCurrentNS = true, bool $propagate = true)
     {
         global $INFO;
 
-        $ext = array('png', 'jpg', 'gif', 'svg');
+        $ext = ['png', 'jpg', 'gif', 'svg'];
 
-        if ($searchCurrentNS) $prefix[] = ':' . $INFO['namespace'] . ':';
-        if ($propagate) {
+        if ($searchCurrentNS === true) {
+            $prefix[] = ':' . $INFO['namespace'] . ':';
+        }
+        if ($propagate === true) {
             $prefix[] = ':';
             $prefix[] = ':wiki:';
         }
         $theme = $this->getConf('customTheme');
-        if ($theme != '') $prefix[] = 'themes/' . $theme . '/images/';
+        if ($theme !== '') {
+            $prefix[] = 'themes/' . $theme . '/images/';
+        }
         $prefix[] = 'images/';
 
-        $search = array();
+        $search = [];
         foreach ($prefix as $pitem) {
             foreach ($ext as $eitem) {
                 $search[] = $pitem . $image . '.' . $eitem;
@@ -1684,7 +1931,7 @@ class Template
         $found = false;
 
         foreach ($search as $img) {
-            if (substr($img, 0, 1) == ':') {
+            if (substr($img, 0, 1) === ':') {
                 $file    = mediaFN($img);
                 $ismedia = true;
             } else {
@@ -1692,15 +1939,17 @@ class Template
                 $ismedia = false;
             }
 
-            if (file_exists($file)) {
+            if (file_exists($file) === true) {
                 $found = true;
                 break;
             }
         }
 
-        if (!$found) return false;
+        if ($found === false) {
+            return false;
+        }
 
-        if ($ismedia) {
+        if ($ismedia === true) {
             $url = ml($img, '', true, '', false);
         } else {
             $url = tpl_basedir() . $img;
@@ -1712,17 +1961,19 @@ class Template
 
     /**
      * Print or return the page title
-     * 
-     * @param string    $page       page id or empty string for current page
-     * @return string               generated content
+     *
+     * @param string $page Page id or empty string for current page.
+     * @return string      generated content
      */
-    public function getPageTitle($page = '')
+    public function getPageTitle(string $page = '')
     {
         global $ID, $conf;
 
         $html = '';
 
-        if ($page == '') $page = $ID;
+        if ($page === '') {
+            $page = $ID;
+        }
 
         $html = p_get_first_heading($page);
         $html = strip_tags($html);
@@ -1737,31 +1988,72 @@ class Template
     /**
      * Return inline theme icon
      *
-     * @param   string  $type           icon to retreive
-     * @return  string                  html icon content
+     * @param   string $type Icon to retreive.
+     * @return  string       HTML icon content
      */
-    public function mikioInlineIcon($type)
+    public function mikioInlineIcon(string $type)
     {
         switch ($type) {
             case 'wrench':
-                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,53.152542,1217.0847)"><path d="m 384,64 q 0,26 -19,45 -19,19 -45,19 -26,0 -45,-19 -19,-19 -19,-45 0,-26 19,-45 19,-19 45,-19 26,0 45,19 19,19 19,45 z m 644,420 -682,-682 q -37,-37 -90,-37 -52,0 -91,37 L 59,-90 Q 21,-54 21,0 21,53 59,91 L 740,772 Q 779,674 854.5,598.5 930,523 1028,484 z m 634,435 q 0,-39 -23,-106 Q 1592,679 1474.5,595.5 1357,512 1216,512 1031,512 899.5,643.5 768,775 768,960 q 0,185 131.5,316.5 131.5,131.5 316.5,131.5 58,0 121.5,-16.5 63.5,-16.5 107.5,-46.5 16,-11 16,-28 0,-17 -16,-28 L 1152,1120 V 896 l 193,-107 q 5,3 79,48.5 74,45.5 135.5,81 61.5,35.5 70.5,35.5 15,0 23.5,-10 8.5,-10 8.5,-25 z"/></g></svg>';
+                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" 
+style="fill:currentColor"><g transform="matrix(1,0,0,-1,53.152542,1217.0847)"><path d="m 384,64 q 0,26 -19,45 -19,19 
+-45,19 -26,0 -45,-19 -19,-19 -19,-45 0,-26 19,-45 19,-19 45,-19 26,0 45,19 19,19 19,45 z m 644,420 -682,-682 q -37,-37 
+-90,-37 -52,0 -91,37 L 59,-90 Q 21,-54 21,0 21,53 59,91 L 740,772 Q 779,674 854.5,598.5 930,523 1028,484 z m 634,435 q 
+0,-39 -23,-106 Q 1592,679 1474.5,595.5 1357,512 1216,512 1031,512 899.5,643.5 768,775 768,960 q 0,185 131.5,316.5 131.5,
+131.5 316.5,131.5 58,0 121.5,-16.5 63.5,-16.5 107.5,-46.5 16,-11 16,-28 0,-17 -16,-28 L 1152,1120 V 896 l 193,-107 q 5,
+3 79,48.5 74,45.5 135.5,81 61.5,35.5 70.5,35.5 15,0 23.5,-10 8.5,-10 8.5,-25 z"/></g></svg>';
             case 'file':
-                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,235.38983,1277.8305)" id="g2991"><path d="M 128,0 H 1152 V 768 H 736 q -40,0 -68,28 -28,28 -28,68 v 416 H 128 V 0 z m 640,896 h 299 L 768,1195 V 896 z M 1280,768 V -32 q 0,-40 -28,-68 -28,-28 -68,-28 H 96 q -40,0 -68,28 -28,28 -28,68 v 1344 q 0,40 28,68 28,28 68,28 h 544 q 40,0 88,-20 48,-20 76,-48 l 408,-408 q 28,-28 48,-76 20,-48 20,-88 z" id="path2993" inkscape:connector-curvature="0" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
+                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" 
+style="fill:currentColor"><g transform="matrix(1,0,0,-1,235.38983,1277.8305)" id="g2991"><path d="M 128,0 H 1152 V 768 
+H 736 q -40,0 -68,28 -28,28 -28,68 v 416 H 128 V 0 z m 640,896 h 299 L 768,1195 V 896 z M 1280,768 V -32 q 0,-40 -28,
+-68 -28,-28 -68,-28 H 96 q -40,0 -68,28 -28,28 -28,68 v 1344 q 0,40 28,68 28,28 68,28 h 544 q 40,0 88,-20 48,-20 76,-48 
+l 408,-408 q 28,-28 48,-76 20,-48 20,-88 z" id="path2993" inkscape:connector-curvature="0" 
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
             case 'gear':
-                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,121.49153,1285.4237)" id="g3027"><path d="m 1024,640 q 0,106 -75,181 -75,75 -181,75 -106,0 -181,-75 -75,-75 -75,-181 0,-106 75,-181 75,-75 181,-75 106,0 181,75 75,75 75,181 z m 512,109 V 527 q 0,-12 -8,-23 -8,-11 -20,-13 l -185,-28 q -19,-54 -39,-91 35,-50 107,-138 10,-12 10,-25 0,-13 -9,-23 -27,-37 -99,-108 -72,-71 -94,-71 -12,0 -26,9 l -138,108 q -44,-23 -91,-38 -16,-136 -29,-186 -7,-28 -36,-28 H 657 q -14,0 -24.5,8.5 Q 622,-111 621,-98 L 593,86 q -49,16 -90,37 L 362,16 Q 352,7 337,7 323,7 312,18 186,132 147,186 q -7,10 -7,23 0,12 8,23 15,21 51,66.5 36,45.5 54,70.5 -27,50 -41,99 L 29,495 Q 16,497 8,507.5 0,518 0,531 v 222 q 0,12 8,23 8,11 19,13 l 186,28 q 14,46 39,92 -40,57 -107,138 -10,12 -10,24 0,10 9,23 26,36 98.5,107.5 72.5,71.5 94.5,71.5 13,0 26,-10 l 138,-107 q 44,23 91,38 16,136 29,186 7,28 36,28 h 222 q 14,0 24.5,-8.5 Q 914,1391 915,1378 l 28,-184 q 49,-16 90,-37 l 142,107 q 9,9 24,9 13,0 25,-10 129,-119 165,-170 7,-8 7,-22 0,-12 -8,-23 -15,-21 -51,-66.5 -36,-45.5 -54,-70.5 26,-50 41,-98 l 183,-28 q 13,-2 21,-12.5 8,-10.5 8,-23.5 z" id="path3029" inkscape:connector-curvature="0" /></g></svg>';
+                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" 
+style="fill:currentColor"><g transform="matrix(1,0,0,-1,121.49153,1285.4237)" id="g3027"><path d="m 1024,640 q 0,106 
+-75,181 -75,75 -181,75 -106,0 -181,-75 -75,-75 -75,-181 0,-106 75,-181 75,-75 181,-75 106,0 181,75 75,75 75,181 z m 
+512,109 V 527 q 0,-12 -8,-23 -8,-11 -20,-13 l -185,-28 q -19,-54 -39,-91 35,-50 107,-138 10,-12 10,-25 0,-13 -9,-23 -27,
+-37 -99,-108 -72,-71 -94,-71 -12,0 -26,9 l -138,108 q -44,-23 -91,-38 -16,-136 -29,-186 -7,-28 -36,-28 H 657 q -14,0 
+-24.5,8.5 Q 622,-111 621,-98 L 593,86 q -49,16 -90,37 L 362,16 Q 352,7 337,7 323,7 312,18 186,132 147,186 q -7,10 -7,23 
+0,12 8,23 15,21 51,66.5 36,45.5 54,70.5 -27,50 -41,99 L 29,495 Q 16,497 8,507.5 0,518 0,531 v 222 q 0,12 8,23 8,11 19,
+13 l 186,28 q 14,46 39,92 -40,57 -107,138 -10,12 -10,24 0,10 9,23 26,36 98.5,107.5 72.5,71.5 94.5,71.5 13,0 26,-10 l 
+138,-107 q 44,23 91,38 16,136 29,186 7,28 36,28 h 222 q 14,0 24.5,-8.5 Q 914,1391 915,1378 l 28,-184 q 49,-16 90,-37 l 
+142,107 q 9,9 24,9 13,0 25,-10 129,-119 165,-170 7,-8 7,-22 0,-12 -8,-23 -15,-21 -51,-66.5 -36,-45.5 -54,-70.5 26,-50 
+41,-98 l 183,-28 q 13,-2 21,-12.5 8,-10.5 8,-23.5 z" id="path3029" inkscape:connector-curvature="0" /></g></svg>';
             case 'user':
-                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,197.42373,1300.6102)"><path d="M 1408,131 Q 1408,11 1335,-58.5 1262,-128 1141,-128 H 267 Q 146,-128 73,-58.5 0,11 0,131 0,184 3.5,234.5 7,285 17.5,343.5 28,402 44,452 q 16,50 43,97.5 27,47.5 62,81 35,33.5 85.5,53.5 50.5,20 111.5,20 9,0 42,-21.5 33,-21.5 74.5,-48 41.5,-26.5 108,-48 Q 637,565 704,565 q 67,0 133.5,21.5 66.5,21.5 108,48 41.5,26.5 74.5,48 33,21.5 42,21.5 61,0 111.5,-20 50.5,-20 85.5,-53.5 35,-33.5 62,-81 27,-47.5 43,-97.5 16,-50 26.5,-108.5 10.5,-58.5 14,-109 Q 1408,184 1408,131 z m -320,893 Q 1088,865 975.5,752.5 863,640 704,640 545,640 432.5,752.5 320,865 320,1024 320,1183 432.5,1295.5 545,1408 704,1408 863,1408 975.5,1295.5 1088,1183 1088,1024 z"/></g></svg>';
+                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" 
+style="fill:currentColor"><g transform="matrix(1,0,0,-1,197.42373,1300.6102)"><path d="M 1408,131 Q 1408,11 1335,-58.5 
+1262,-128 1141,-128 H 267 Q 146,-128 73,-58.5 0,11 0,131 0,184 3.5,234.5 7,285 17.5,343.5 28,402 44,452 q 16,50 43,97.5 
+27,47.5 62,81 35,33.5 85.5,53.5 50.5,20 111.5,20 9,0 42,-21.5 33,-21.5 74.5,-48 41.5,-26.5 108,-48 Q 637,565 704,565 q 
+67,0 133.5,21.5 66.5,21.5 108,48 41.5,26.5 74.5,48 33,21.5 42,21.5 61,0 111.5,-20 50.5,-20 85.5,-53.5 35,-33.5 62,-81 
+27,-47.5 43,-97.5 16,-50 26.5,-108.5 10.5,-58.5 14,-109 Q 1408,184 1408,131 z m -320,893 Q 1088,865 975.5,752.5 863,640 
+704,640 545,640 432.5,752.5 320,865 320,1024 320,1183 432.5,1295.5 545,1408 704,1408 863,1408 975.5,1295.5 1088,1183 
+1088,1024 z"/></g></svg>';
             case 'search':
-                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:currentColor"><path d="M27 24.57l-5.647-5.648a8.895 8.895 0 0 0 1.522-4.984C22.875 9.01 18.867 5 13.938 5 9.01 5 5 9.01 5 13.938c0 4.929 4.01 8.938 8.938 8.938a8.887 8.887 0 0 0 4.984-1.522L24.568 27 27 24.57zm-13.062-4.445a6.194 6.194 0 0 1-6.188-6.188 6.195 6.195 0 0 1 6.188-6.188 6.195 6.195 0 0 1 6.188 6.188 6.195 6.195 0 0 1-6.188 6.188z"/></svg>';
+                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" 
+aria-hidden="true" style="fill:currentColor"><path d="M27 24.57l-5.647-5.648a8.895 8.895 0 0 0 1.522-4.984C22.875 9.01 
+18.867 5 13.938 5 9.01 5 5 9.01 5 13.938c0 4.929 4.01 8.938 8.938 8.938a8.887 8.887 0 0 0 4.984-1.522L24.568 27 27 
+24.57zm-13.062-4.445a6.194 6.194 0 0 1-6.188-6.188 6.195 6.195 0 0 1 6.188-6.188 6.195 6.195 0 0 1 6.188 6.188 6.195 
+6.195 0 0 1-6.188 6.188z"/></svg>';
             case 'home':
-                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" aria-hidden="true" style="fill:currentColor"><g transform="matrix(1,0,0,-1,68.338983,1285.4237)" id="g3015"><path d="M 1408,544 V 64 Q 1408,38 1389,19 1370,0 1344,0 H 960 V 384 H 704 V 0 H 320 q -26,0 -45,19 -19,19 -19,45 v 480 q 0,1 0.5,3 0.5,2 0.5,3 l 575,474 575,-474 q 1,-2 1,-6 z m 223,69 -62,-74 q -8,-9 -21,-11 h -3 q -13,0 -21,7 L 832,1112 140,535 q -12,-8 -24,-7 -13,2 -21,11 l -62,74 q -8,10 -7,23.5 1,13.5 11,21.5 l 719,599 q 32,26 76,26 44,0 76,-26 l 244,-204 v 195 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 V 840 l 219,-182 q 10,-8 11,-21.5 1,-13.5 -7,-23.5 z" id="path3017" inkscape:connector-curvature="0" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
-        }
+                return '<svg class="mikio-iicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792" 
+aria-hidden="true" style="fill:currentColor"><g transform="matrix(1,0,0,-1,68.338983,1285.4237)" id="g3015">
+<path d="M 1408,544 V 64 Q 1408,38 1389,19 1370,0 1344,0 H 960 V 384 H 704 V 0 H 320 q -26,0 -45,19 -19,19 -19,
+45 v 480 q 0,1 0.5,3 0.5,2 0.5,3 l 575,474 575,-474 q 1,-2 1,-6 z m 223,69 -62,-74 q -8,-9 -21,-11 h -3 q -13,
+0 -21,7 L 832,1112 140,535 q -12,-8 -24,-7 -13,2 -21,11 l -62,74 q -8,10 -7,23.5 1,13.5 11,21.5 l 719,
+599 q 32,26 76,26 44,0 76,-26 l 244,-204 v 195 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 V 840 l 219,
+-182 q 10,-8 11,-21.5 1,-13.5 -7,-23.5 z" id="path3017" inkscape:connector-curvature="0" 
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
+        }//end switch
 
         return '';
     }
 
     /**
      * Finalize theme
+     *
+     * @return void
      */
     public function finalize()
     {
@@ -1769,47 +2061,53 @@ class Template
 
     /**
      * Show Messages
+     *
+     * @return void
      */
     public function showMessages()
     {
         global $ACT;
 
-        if ($this->lessIgnored) {
-            msg('useLESS is enabled on the Mikio template, however is not supported on this server', 2, '', '', MSG_ADMINS_ONLY);
+        if ($this->lessIgnored === true) {
+            msg(
+                'useLESS is enabled on the Mikio template, however is not supported on this server',
+                2,
+                '',
+                '',
+                MSG_ADMINS_ONLY
+            );
         }
 
         $show = $this->getConf('showNotifications');
-        if ($show == 'always' || ($show == 'admin' && $ACT == 'admin')) {
+        if ($show === 'always' || ($show === 'admin' && $ACT === 'admin')) {
             global $MSG, $MSG_shown;
 
-            if (!isset($MSG)) {
+            if (isset($MSG) === false) {
                 return;
             }
 
-            if (!isset($MSG_shown)) {
-                $MSG_shown = array();
+            if (isset($MSG_shown) === false) {
+                $MSG_shown = [];
             }
 
             foreach ($MSG as $msg) {
-
                 $hash = md5($msg['msg']);
-                if (isset($MSG_shown[$hash])) {
+                if (isset($MSG_shown[$hash]) === true) {
                     continue;
                 }
                 // skip double messages
 
-                if (info_msg_allowed($msg)) {
-
-                    print '<div class="' . $msg['lvl'] . '">';
-                    print $msg['msg'];
-                    print '</div>';
+                if (info_msg_allowed($msg) === true) {
+                    echo '<div class="' . $msg['lvl'] . '">';
+                    echo $msg['msg'];
+                    echo '</div>';
                 }
 
                 $MSG_shown[$hash] = true;
             }
 
             unset($GLOBALS['MSG']);
-        }
+        }//end if
     }
 
     /**
@@ -1817,17 +2115,18 @@ class Template
      *
      * @return  string        the dw version name
      */
-    public function dwVersion() {
-        if(function_exists('getVersionData')) {
+    public function dwVersion()
+    {
+        if (function_exists('getVersionData') === true) {
             $version_data = getVersionData();
-            if(is_array($version_data) && array_key_exists('date', $version_data)) {
+            if (is_array($version_data) === true && array_key_exists('date', $version_data) === true) {
                 $version_items = explode(' ', $version_data['date']);
-                if(count($version_items) >= 2) {
+                if (count($version_items) >= 2) {
                     return preg_replace('/[^a-zA-Z0-9 ]+/', '', strtolower($version_items[1]));
                 }
             }
         }
-        
+
         return 'unknown';
     }
 
@@ -1836,17 +2135,18 @@ class Template
      *
      * @return  string        the dw version date converted to integer
      */
-    public function dwVersionNumber() {
-        if(function_exists('getVersionData')) {
+    public function dwVersionNumber()
+    {
+        if (function_exists('getVersionData') === true) {
             $version_data = getVersionData();
-            if(is_array($version_data) && array_key_exists('date', $version_data)) {
+            if (is_array($version_data) === true && array_key_exists('date', $version_data) === true) {
                 $version_items = explode(' ', $version_data['date']);
-                if(count($version_items) >= 1) {
+                if (count($version_items) >= 1) {
                     return intval(preg_replace('/[^0-9]+/', '', strtolower($version_items[0])));
                 }
             }
         }
-        
+
         return 0;
     }
 }
