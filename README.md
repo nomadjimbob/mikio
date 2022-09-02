@@ -1,6 +1,6 @@
 # Mikio DokuWiki Template
 
-![screenshot](https://github.com/nomadjimbob/mikio/blob/master/images/screenshot.png)
+![screenshot](https://github.com/nomadjimbob/mikio/blob/main/images/screenshot.png)
 
 ## About
 
