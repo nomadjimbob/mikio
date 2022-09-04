@@ -351,7 +351,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 This template uses a [modified
 version](https://github.com/nomadjimbob/simple_html_dom) of
 [simple_html_dom](https://sourceforge.net/projects/simplehtmldom/) and
-of [bootstrap-3-typeahead](https://github.com/bassjobsen/Bootstrap-3-Typeahead).
+ [bootstrap-3-typeahead](https://github.com/bassjobsen/Bootstrap-3-Typeahead).
 
 ## Support
 
