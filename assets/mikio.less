@@ -459,34 +459,34 @@ html, body {
         color: rgba(0, 0, 0, 0.6);
         
         .icon {
-          &:before, &:after {
-            content: "";
-            display: inline-block;          
-            width: 0.5rem;
-            height: 0.1em;
-            margin: 0 0 0.2em;
-            transition: transform 0.2s ease-in-out;
-            border-radius: 0.05em;
-            background: rgba(0,0,0,0.6);
-          }
-          
-          &:before {
-            transform: translateX(0.1rem) translateY(0) rotate(-135deg);
-          }
-          
-          &:after {
-            transform: translateX(-0.1rem) translateY(0) rotate(135deg);
-          }
+            &:before, &:after {
+                content: "";
+                display: inline-block;          
+                width: 0.5rem;
+                height: 0.1em;
+                margin: 0 0 0.2em;
+                transition: transform 0.2s ease-in-out;
+                border-radius: 0.05em;
+                background: rgba(0,0,0,0.6);
+            }
+
+            &:before {
+                transform: translateX(0.1rem) translateY(0) rotate(-135deg);
+            }
+
+            &:after {
+                transform: translateX(-0.1rem) translateY(0) rotate(135deg);
+            }
         }
         
         .open .icon {
-          &:before {
-            transform: translateX(0.1rem) rotate(135deg);
-          }
-          
-          &:after {
-            transform: translateX(-0.1rem) rotate(-135deg);
-          }
+            &:before {
+                transform: translateX(0.1rem) rotate(135deg);
+            }
+
+            &:after {
+                transform: translateX(-0.1rem) rotate(-135deg);
+            }
         }
     }
 
@@ -546,14 +546,14 @@ html, body {
 }
 
 .mikio-page {
-  .mikio-container {
-      display: flex;
-      // flex: 1;
-      padding: 0;
+    .mikio-container {
+        display: flex;
+        // flex: 1;
+        padding: 0;
     }
     
     a {
-      color: @ini_link;
+        color: @ini_link;
     }
 }
 
@@ -841,8 +841,6 @@ html, body {
     }
 
     .mikio-iicon {
-        // width: 1.4rem;
-        // height: 1.4rem;
         margin: 0 -4px 0 -4px;
     }
 }
@@ -871,6 +869,28 @@ html, body {
                 fill: @ini_pagetools_hover_color;
             }
         }
+    }
+}
+
+.toolbar.group {
+    margin-bottom: .5rem;
+}
+
+#wiki__editbar {
+    overflow: hidden;
+    margin-bottom: .5em;
+
+    #size__ctl {
+        float: right;
+    }
+
+    .editButtons {
+        display: inline;
+        margin-right: 1rem;
+    }
+
+    .summary {
+        display: inline;
     }
 }
 
@@ -1005,7 +1025,6 @@ html, body {
     }
 
     td, th {
-        // border-top: 1px solid @ini_table_row_border_color;
         padding: .75rem;
         text-align: left;    
     }
@@ -1043,7 +1062,7 @@ html, body {
     .mikio-nav-dropdown > a {
         display: inline-block;
         padding: .2rem 1.2rem .2rem 0rem;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit;stroke:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z" /></svg>');
         background-size: 1.2rem;
         background-position: right;
         background-repeat: no-repeat;
@@ -1288,6 +1307,30 @@ code, pre {
 .mikio.dokuwiki fieldset {
     margin: 2rem auto;
     border: 0;
+    width: auto;
+    max-width: 40rem;
+
+    label.block {
+        display: flex;
+        flex-direction: row;
+        text-align: right;
+
+        span {
+            margin-right: 1rem;
+            width: 15rem;
+            align-self: center;
+        }
+
+        input {
+            flex-grow: 1
+        }
+    }
+            //     span {
+    //         display: inline-block;
+    //         margin-right: 1rem;
+    //         max-width: 10rem;
+    //     }
+    // }
 }
 
 .mikio.dokuwiki .mode_login,
@@ -1561,6 +1604,10 @@ code, pre {
 }
 
 .mode_recent .mikio-article {
+    ul {
+        list-style-type: none;
+    }
+
     li {
         padding: .5rem 1rem;
         border-top: 1px solid #e5e5e5;
@@ -1583,6 +1630,17 @@ code, pre {
 
         span.sizechange {
             width: 100%;
+            font-size: 80%;
+            border-radius: .2em;
+            padding: .1em .2em;
+
+            &.positive {
+                background-color: #cfc;
+            }
+
+            &.negative {
+                background-color: #fdd;
+            }
         }
     }
 
@@ -1703,6 +1761,10 @@ code, pre {
         .panelContent {
             padding-top: 1rem;
             text-align: center;
+
+            ul li:hover {
+                background-color: #eee;
+            }
         }
 
         ul {
@@ -1712,11 +1774,23 @@ code, pre {
                 margin: 0;
 
                 li {
+                    display: inline-block;
                     width: 200px;
                     background-color: #fff;
 
-                    dt a {
-                        display: inline;
+                    dt {
+                        text-align: center;
+                        // display: flex;
+
+                        a {
+                            display: block;
+                            width: 100%;
+
+                            img {
+                                min-height: 90px;
+                                min-width: 90px;
+                            }
+                        }
                     }
 
                     dd {
@@ -1724,6 +1798,7 @@ code, pre {
                         font-size: 90%;
                         color: #666;
                         margin-bottom: .25rem;
+                        margin-inline-start: 0;
                     }
 
                     .name {
@@ -2512,7 +2587,7 @@ code, pre {
     }
 }
 
-/* dark-light mode */
+/* dark-light mode button */
 .mikio {
     .mikio-theme-mode {
         display: inline-block;
@@ -2528,15 +2603,21 @@ code, pre {
     }
 
     &.mikio-auto {
-        .mikio-theme-mode-button {
-            background-size: 50%;
+        &.mikio-dark .mikio-theme-mode-button {
+            background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:%23dddddd" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
+
+            &:hover {
+                background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:%23333333" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
+            }
+        }
+
+        &.mikio-light .mikio-theme-mode-button {
             background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
         }
     }
 
     &.mikio-light {
         .mikio-theme-mode-button {
-            background-size: 50%;
             background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z" /></svg>');
         }
     }
@@ -2546,5 +2627,402 @@ code, pre {
             background-size: 50%;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" /></svg>');
         }
+    }
+}
+
+/* dark-mode */
+.mikio.mikio-dark {
+    background-color: @ini_darkmode_background;
+    color: @ini_darkmode_text;
+
+    .mikio-navbar {
+        border-bottom-color: @ini_darkmode_navbar_border_color;
+        background-color: @ini_darkmode_navbar_background_color;
+
+        .mikio-navbar-brand {
+            .mikio-navbar-brand-title-text {
+                color: @ini_darkmode_navbar_brand_text_color;
+            }
+        
+            .mikio-navbar-brand-title-tagline {
+                color: @ini_darkmode_navbar_brand_tagline_color;
+            }
+        }
+
+        .mikio-navbar-toggle {
+            &:before, .icon, &:after {
+                background: @ini_darkmode_control_text_color;
+            }
+        }
+    }
+
+    .mikio-sub-navbar {
+        color: @ini_darkmode_subnavbar_text_color;
+        border-color: @ini_darkmode_subnavbar_border_color;
+        background-color: @ini_darkmode_subnavbar_background_color;
+
+        a {
+            color: @ini_darkmode_subnavbar_link_color;
+            color: @ini_darkmode_tag_text_color;
+
+            &:hover {
+                color: @ini_darkmode_subnavbar_link_hover_color;
+            }
+        }
+    }
+
+    .mikio-sidebar {
+        background-color: @ini_darkmode_sidebar_background_color;
+        color: @ini_darkmode_sidebar_text_color;
+
+        &.mikio-sidebar-left {
+            border-left-color: @ini_darkmode_sidebar_border_color;
+            border-right-color: @ini_darkmode_sidebar_border_color;
+        }
+    
+        &.mikio-sidebar-right {
+            border-left-color: @ini_darkmode_sidebar_border_color;
+            border-right-color: @ini_darkmode_sidebar_border_color;
+        }
+
+        .mikio-user-info {
+            border-bottom-color: @ini_darkmode_sidebar_border_color;
+        }
+
+        .mikio-sidebar-content {
+            a {
+                color: @ini_darkmode_sidebar_link_color;
+
+                &:hover {
+                    color: @ini_darkmode_sidebar_link_hover_color;
+                }
+            }
+        }
+    }
+
+    .mikio-sidebar-header {
+        border-bottom-color: @ini_darkmode_sidebar_border_color;
+    }
+
+    .mikio-sidebar-footer {
+        border-top-color: @ini_darkmode_sidebar_border_color;
+    }
+
+    .mikio-breadcrumbs, .mikio-youarehere {
+        background-color: @ini_darkmode_breadcrumb_background_color;
+        color: @ini_darkmode_breadcrumb_text_color;
+
+        span.curid a, a {
+            color: @ini_darkmode_breadcrumb_link_color;
+
+            &:hover {
+                color: @ini_darkmode_breadcrumb_link_hover_color;
+            }
+        }
+    }
+
+    .mikio-tags {
+        a {
+            border-color: @ini_darkmode_tag_background_color;
+            background-color: @ini_darkmode_tag_background_color;
+
+            &:hover {
+                color: @ini_darkmode_tag_background_color;
+            }
+        }
+    }
+
+    .mikio-control {
+        color: @ini_darkmode_control_text_color;
+        background-color: @ini_darkmode_control_background_color;
+    }
+
+    .mikio-input-text, .mikio-toolbar-button {
+        border-color: @ini_darkmode_input_border_color;
+    }
+
+    .mikio-page-topheader {
+        background-color: @ini_darkmode_topheader_background_color;
+    }
+
+    .mikio-page-header {
+        background-color: @ini_darkmode_header_background_color;
+    }
+
+    .mikio-hero {
+        background-color: @ini_darkmode_hero_background_color;
+
+        .mikio-hero-text {
+            h1 {
+                color: @ini_darkmode_hero_title_color;
+            }
+
+            h2 {
+                color: @ini_darkmode_hero_subtitle_color;
+            }
+        }
+    }
+
+    .mikio-admin {
+        background-color: @ini_darkmode_admin_background_color;
+
+        div.ui-admin {
+            ul.admin_tasks, ul.admin_plugins {
+                li {
+                    border-color: @ini_darkmode_control_border_color;
+                    background-color: @ini_darkmode_control_background_color;
+
+                    a {
+                        &:hover {
+                            color: @ini_darkmode_control_background_color;
+                            background-color: @ini_darkmode_control_border_color;
+                            border-color: @ini_darkmode_control_border_color;
+
+                            svg {
+                                fill: @ini_darkmode_control_background_color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #extension__list {
+            ul.extensionList {
+                li {
+                    border-color: @ini_darkmode_table_row_border_color;
+
+                    &:nth-child(odd) {
+                        background-color: @ini_darkmode_table_odd_row_background_color;
+                    }
+                
+                    &:nth-child(even) {
+                        background-color: @ini_darkmode_table_even_row_background_color;
+                    }
+                }
+            }
+        }
+
+        #acl_manager table tr {
+            &:nth-child(odd) {
+                background-color: @ini_darkmode_table_odd_row_background_color;
+            }
+
+            &:nth-child(even) {
+                background-color: @ini_darkmode_table_even_row_background_color;
+            }
+        }
+    }
+
+    .mikio-navbar .mikio-search, .mikio-sidebar .mikio-search, .mikio-footer .mikio-search, .mikio-search {
+        button {
+            background-color: @ini_darkmode_control_border_color;
+            border-color: @ini_darkmode_control_border_color;
+
+            &:hover {
+                background-color: @ini_darkmode_control_background_color;
+                color: @ini_darkmode_control_text_color;
+            }
+        }
+    }
+
+    .mikio-input-file {
+        color: @ini_darkmode_control_text_color;
+        background-color: @ini_darkmode_control_background_color;
+        border-color: @ini_darkmode_input_border_color;
+
+        &:before {
+            color: @ini_darkmode_control_background_color;
+            background-color: @ini_darkmode_control_border_color;
+            border-color: @ini_darkmode_control_border_color;
+        }
+
+        &:hover:before {
+            background-color: @ini_darkmode_control_background_color;
+            color: @ini_darkmode_control_text_color;
+        }
+    }
+
+    .mikio-button {
+        border-color: @ini_darkmode_control_border_color;
+
+        &:hover:not(:disabled) {
+            color: @ini_darkmode_control_background_color;
+            background-color: @ini_darkmode_control_border_color;
+            border-color: @ini_darkmode_control_border_color;
+        }
+    }
+
+    .mikio-footer {
+        color: @ini_darkmode_footer_text_color;
+        background-color: @ini_darkmode_footer_background_color;
+
+        a {
+            color: @ini_darkmode_footer_link_color;
+
+            &:hover {
+                color: @ini_darkmode_footer_link_hover_color;
+            }
+        }
+
+        .dw__pagetools {
+            .tools {
+                a {
+                    svg {
+                        fill: @ini_darkmode_footer_link_color;
+                    }
+
+                    &:hover {
+                        svg {
+                            fill: @ini_darkmode_footer_link_hover_color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    code, pre {
+        color: @ini_darkmode_code_text_color;
+        background-color: @ini_darkmode_code_background_color;
+    }
+
+    .mode_show {
+        code, pre {
+            border-color: @ini_darkmode_code_border_color;
+        }
+    }
+
+    &.dokuwiki div.preview, .mikio-content, .mode_admin .mikio-toc #dw__toc {
+        background-color: @ini_darkmode_content_background;
+    }
+
+    .mikio-toc {
+        #dw__toc {
+            background-color: @ini_darkmode_toc_background_color;
+            border-color: @ini_darkmode_toc_border_color;
+        }
+
+        a {
+            color: @ini_darkmode_toc_link_color;
+
+            &:hover {
+                color: @ini_darkmode_toc_link_hover_color;
+            }
+        }
+    }
+
+    #dw__pagetools {
+        a {
+            svg {
+                fill: @ini_darkmode_pagetools_color;
+            }
+
+            &:hover {
+                svg {
+                    fill: @ini_darkmode_pagetools_hover_color;
+                }
+            }
+        }
+    }
+
+    .mode_show table, &.dokuwiki .mode_showtag table.ul, .mode_admin table {
+        border-bottom-color: @ini_darkmode_table_row_border_color;
+
+        tr {
+            border-top-color: @ini_darkmode_table_row_border_color;
+        }
+
+        tbody tr {
+            &:nth-child(odd) {
+                background-color: @ini_darkmode_table_odd_row_background_color;
+            }
+    
+            &:nth-child(even) {
+                background-color: @ini_darkmode_table_even_row_background_color;
+            }
+        }
+    }
+
+    #mediamanager__page, #media__manager {
+        #media__content {
+            .odd, .even {
+                border-top-color: @ini_darkmode_table_row_border_color;
+            }
+
+            .odd {
+                background-color: @ini_darkmode_table_odd_row_background_color;
+            }
+    
+            .even {
+                background-color: @ini_darkmode_table_even_row_background_color;
+            }
+        }
+
+        .filelist, .qq-uploader {
+            .rows {
+                li {
+                    background-color: @ini_darkmode_table_odd_row_background_color;
+
+                    &:nth-child(2n+1) {
+                        background-color: @ini_darkmode_table_even_row_background_color;
+                    }
+                }
+            }
+        }
+    }
+
+    &.dokuwiki .mode_search .mikio-article {
+        .search_fullpage_result {
+            border-top-color: @ini_darkmode_table_row_border_color;
+            background-color: @ini_darkmode_table_odd_row_background_color;
+
+            &:nth-child(2n+1) {
+                background-color: @ini_darkmode_table_even_row_background_color;
+            }
+
+            fieldset.search-form {
+                .advancedOptions {
+                    .toggle {
+                        color: @ini_darkmode_dropdown_color;
+                        border-color: @ini_darkmode_dropdown_border_color;
+                        background-color: @ini_darkmode_dropdown_background_color;
+
+                        ul {
+                            border-color: @ini_darkmode_dropdown_border_color;
+                            background-color: @ini_darkmode_dropdown_background_color;
+
+                            a {
+                                color: @ini_darkmode_dropdown_color;
+
+                                &:hover {
+                                    background-color: @ini_darkmode_dropdown_hover_color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .mikio-dropdown {
+        border-color: @ini_darkmode_dropdown_border_color;
+        background-color: @ini_darkmode_dropdown_background_color;
+        color: @ini_darkmode_dropdown_color;
+
+        .mikio-dropdown-divider {
+            border-bottom-color: @ini_darkmode_dropdown_border_color;
+        }
+
+        .mikio-nav-link {
+            &:hover {
+                background-color: @ini_darkmode_dropdown_hover_color;
+            }
+        }
+    }
+
+    &.dokuwiki div.section_highlight {
+        background-color: @ini_darkmode_section_edit_highlight;
     }
 }
