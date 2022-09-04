@@ -1628,15 +1628,14 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $content
                 );
             }
-        }
-        else if(strcasecmp($INPUT->str('page'), 'styling') === 0) {
+        } elseif (strcasecmp($INPUT->str('page'), 'styling') === 0) {
             $content = preg_replace(
-                    '/(<tr>\s*<td>\s*<label for="tpl____darkmode_.*?<\/tr>)/',
-                    '</tbody></table><h2>Dark Mode</h2><table><tbody>$1',
-                    $content,
-                    1
+                '/(<tr>\s*<td>\s*<label for="tpl____darkmode_.*?<\/tr>)/',
+                '</tbody></table><h2>Dark Mode</h2><table><tbody>$1',
+                $content,
+                1
             );
-        }
+        }//end if
 
         if (strcasecmp($ACT, 'admin') === 0 && isset($_GET['page']) === false) {
             $content = preg_replace('/(<ul.*?>.*?)<\/ul>.*?<ul.*?>(.*?<\/ul>)/s', '$1$2', $content);
