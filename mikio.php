@@ -906,15 +906,15 @@ $this->mikioInlineIcon('moon', 'mikio-darklight-dark') .
         if (empty($confPrefix) === true) {
             $confPrefix = 'Left';
         }
-        if (strcasecmp($prefix, 'Left') === 0) {
+        if (strcasecmp($prefix, 'left') === 0) {
             $prefix = '';
         }
 
-        empty($sidebarPage = $conf[$prefix . 'sidebar']) === true ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
+        $sidebarPage = empty($conf[$prefix . 'sidebar']) === true ? $prefix . 'sidebar' : $conf[$prefix . 'sidebar'];
 
         if (
             $this->getConf('sidebarShow' . $confPrefix) === true && page_findnearest($sidebarPage) !== false &&
-            p_get_metadata($ID, 'nosidebar', false) === false
+            p_get_metadata($ID, 'nosidebar', false) === null
         ) {
             $content = $this->includePage($sidebarPage . 'header', false);
             if (empty($content) === false) {
@@ -967,7 +967,7 @@ $this->mikioInlineIcon('moon', 'mikio-darklight-dark') .
         }
 
         if (empty($html) === false) {
-            empty($html = '<aside class="mikio-sidebar mikio-sidebar-' . ($prefix) === true ? 'left' : $prefix) .
+            $html = '<aside class="mikio-sidebar mikio-sidebar-' . (empty($prefix) === true ? 'left' : $prefix) .
                 '"><a class="mikio-sidebar-toggle' .
                 ($this->getConf('sidebarMobileDefaultCollapse') === true ? ' closed' : '') . '" href="#">' .
                 tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="mikio-sidebar-collapse">' .
@@ -1537,7 +1537,7 @@ $this->mikioInlineIcon('moon', 'mikio-darklight-dark') .
 
                                             $s = $icon['insert'];
                                             for ($i = 1; $i < 9; $i++) {
-                                                if (count(empty($e) < $i || $e[$i]) === true) {
+                                                if (count($e) < $i || empty($e[$i]) === true) {
                                                     if (isset($icon['$' . $i]) === true) {
                                                         $s = str_replace('$' . $i, $icon['$' . $i], $s);
                                                     }
