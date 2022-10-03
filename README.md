@@ -204,7 +204,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
-- **_PENDING_**
+- **_2022-10-04_**
   - Cleaned up the code to PHPCS standards
   - Fixed breadcrumb layouts on mobile [#31](https://github.com/nomadjimbob/mikio/issues/31)
   - Fixed Media Manager on small displays
@@ -212,6 +212,7 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
   - Fixed search results layout [#41](https://github.com/nomadjimbob/mikio/issues/41)
   - Added Dark-mode support [#43](https://github.com/nomadjimbob/mikio/issues/43). Thanks chrbinder
   - Fixed incorrect file names listed [#45](https://github.com/nomadjimbob/mikio/issues/45). Thanks babudro
+  - Fixed sidebars not showing [#46](https://github.com/nomadjimbob/mikio/issues/46). Thanks dasbenjo
 
 - **_2022-05-10_**
   - Added support to directly set title icon width and height in config. Thanks AlexiaR
