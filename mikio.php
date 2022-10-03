@@ -1632,12 +1632,56 @@ $this->mikioInlineIcon('moon', 'mikio-darklight-dark') .
                 );
             }
         } elseif (strcasecmp($INPUT->str('page'), 'styling') === 0) {
-            $content = preg_replace(
-                '/(<tr>\s*<td>\s*<label for="tpl____darkmode_.*?<\/tr>)/',
-                '</tbody></table><h2>Dark Mode</h2><table><tbody>$1',
-                $content,
-                1
-            );
+            $style_headers = [
+                ['title' => 'Base', 'starts_with' => '__text'],
+                ['title' => 'Code', 'starts_with' => '__code'],
+                ['title' => 'Controls', 'starts_with' => '__control'],
+                ['title' => 'Header', 'starts_with' => '__topheader'],
+                ['title' => 'Navbar', 'starts_with' => '__navbar'],
+                ['title' => 'Sub Navbar', 'starts_with' => '__subnavbar'],
+                ['title' => 'Tags', 'starts_with' => '__tag_background_color'],
+                ['title' => 'Breadcrumbs', 'starts_with' => '__breadcrumb'],
+                ['title' => 'Hero', 'starts_with' => '__hero'],
+                ['title' => 'Sidebar', 'starts_with' => '__sidebar'],
+                ['title' => 'Content', 'starts_with' => '__content'],
+                ['title' => 'TOC', 'starts_with' => '__toc'],
+                ['title' => 'Page Tools', 'starts_with' => '__pagetools'],
+                ['title' => 'Footer', 'starts_with' => '__footer'],
+                ['title' => 'Table', 'starts_with' => '__table'],
+                ['title' => 'Dropdown', 'starts_with' => '__dropdown'],
+                ['title' => 'Section Edit', 'starts_with' => '__section_edit'],
+                ['title' => 'Dark Mode', 'starts_with' => '__darkmode_', 'heading' => 'h2'],
+                ['title' => 'Base', 'starts_with' => '__darkmode_text'],
+                ['title' => 'Code', 'starts_with' => '__darkmode_code'],
+                ['title' => 'Controls', 'starts_with' => '__darkmode_control'],
+                ['title' => 'Header', 'starts_with' => '__darkmode_topheader'],
+                ['title' => 'Navbar', 'starts_with' => '__darkmode_navbar'],
+                ['title' => 'Sub Navbar', 'starts_with' => '__darkmode_subnavbar'],
+                ['title' => 'Tags', 'starts_with' => '__darkmode_tag_background_color'],
+                ['title' => 'Breadcrumbs', 'starts_with' => '__darkmode_breadcrumb'],
+                ['title' => 'Hero', 'starts_with' => '__darkmode_hero'],
+                ['title' => 'Sidebar', 'starts_with' => '__darkmode_sidebar'],
+                ['title' => 'Content', 'starts_with' => '__darkmode_content'],
+                ['title' => 'TOC', 'starts_with' => '__darkmode_toc'],
+                ['title' => 'Page Tools', 'starts_with' => '__darkmode_pagetools'],
+                ['title' => 'Footer', 'starts_with' => '__darkmode_footer'],
+                ['title' => 'Table', 'starts_with' => '__darkmode_table'],
+                ['title' => 'Dropdown', 'starts_with' => '__darkmode_dropdown'],
+                ['title' => 'Section Edit', 'starts_with' => '__darkmode_section_edit'],
+            ];
+
+            foreach($style_headers as $header) {
+                if(array_key_exists('heading', $header) === false) {
+                    $header['heading'] = 'h3';
+                }
+
+                $content = preg_replace(
+                    '/(<tr>\s*<td>\s*<label for="tpl__'.$header['starts_with'].'.*?<\/tr>)/',
+                    '</tbody></table><'.$header['heading'].'>'.$header['title'].'</'.$header['heading'].'><table><tbody>$1',
+                    $content,
+                    1
+                );
+            }
         }//end if
 
         if (strcasecmp($ACT, 'admin') === 0 && isset($_GET['page']) === false) {
