@@ -13,7 +13,7 @@ var mikio = {
     stickyItems: [],
     stickyOffset: 0,
     stickyIndex: 2010,
-    darkMode: 'auto',
+    darkMode: 'light',
 
     ready: function () {
         var self = this;
@@ -354,26 +354,21 @@ var mikio = {
     },
 
     initDarkMode: function () {
+        // document.getElementsByTagName('body')[0].style.background='red';
         let setting = this.getCookie('lightDarkToggle');
         if (setting == 'dark' || setting == 'light') {
             this.darkMode = setting;
         }
 
         var self = this;
-        this.addEventListenerByClassName('mikio-theme-mode-button', 'click', function (event) {
+        this.addEventListenerByClassName('mikio-darklight-button', 'click', function (event) {
             event.preventDefault();
             event.stopPropagation();
             
-            switch(self.darkMode) {
-                case 'dark':
-                    self.darkMode = 'light';
-                    break;
-                case 'light':
-                    self.darkMode = 'auto';
-                    break;
-                default:
-                    self.darkMode = 'dark';
-                    break;
+            if(self.darkMode == 'dark') {
+                self.darkMode = 'light';
+            } else {
+                self.darkMode = 'dark';
             }
 
             self.updateDarkMode();
@@ -386,24 +381,11 @@ var mikio = {
         if (this.darkMode == 'dark') {
             document.body.classList.add('mikio-dark');
             document.body.classList.remove('mikio-light');
-            document.body.classList.remove('mikio-auto');
             this.setCookie('lightDarkToggle', 'dark');
-        } else if (this.darkMode == 'light') {
+        } else {
             document.body.classList.add('mikio-light');
             document.body.classList.remove('mikio-dark');
-            document.body.classList.remove('mikio-auto');
             this.setCookie('lightDarkToggle', 'light');
-        } else {
-            document.body.classList.add('mikio-auto');
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.classList.add('mikio-dark');
-                document.body.classList.remove('mikio-light'); 
-            } else {
-                document.body.classList.add('mikio-light');
-                document.body.classList.remove('mikio-dark'); 
-            }
-
-            this.clearCookie('lightDarkToggle');
         }
     },
 
@@ -726,9 +708,9 @@ var mikio = {
     }
 };
 
-
 if (document.readyState != 'loading') {
     mikio.ready();
 } else {
     document.addEventListener('DOMContentLoaded', function () { mikio.ready() });
+    document.getElementsByTagName('html')[0].style.background = 'green';
 }
