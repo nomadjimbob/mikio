@@ -89,6 +89,6 @@ try {
     }
 }
 catch(Exception $e) {
-  header('Content-Type: text/css; charset=utf-8');
-  include(dirname(__FILE__) . '/assets/mikio.css');
+    header('Content-Type: text/css; charset=utf-8');
+    include(dirname(__FILE__) . '/assets/mikio.css');
 }
