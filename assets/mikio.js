@@ -354,7 +354,6 @@ var mikio = {
     },
 
     initDarkMode: function () {
-        // document.getElementsByTagName('body')[0].style.background='red';
         let setting = this.getCookie('lightDarkToggle');
         if (setting == 'dark' || setting == 'light') {
             this.darkMode = setting;
@@ -378,15 +377,9 @@ var mikio = {
     },
 
     updateDarkMode: function () {
-        if (this.darkMode == 'dark') {
-            document.body.classList.add('mikio-dark');
-            document.body.classList.remove('mikio-light');
-            this.setCookie('lightDarkToggle', 'dark');
-        } else {
-            document.body.classList.add('mikio-light');
-            document.body.classList.remove('mikio-dark');
-            this.setCookie('lightDarkToggle', 'light');
-        }
+        const html = document.querySelector('html');
+        html.dataset.theme = `theme-${this.darkMode}`;
+        this.setCookie('lightDarkToggle', this.darkMode);
     },
 
     insertAfter: function (newNode, existingNode) {
