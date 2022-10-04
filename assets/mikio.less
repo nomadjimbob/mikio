@@ -2936,16 +2936,34 @@ code, pre {
         .mikio-button();
         .mikio-button-small();
         background-image: none;
-        border: 0;
+        border-left-width: 0 !important;
+        border-right-width: 0 !important;
 
-        &.ui-state-active {
-            .mikio-button-submit();
+        &:first-of-type {
+            border-left-width: 1px !important;
+        }
+
+        &:last-of-type {
+            border-right-width: 1px !important;
         }
 
         &:hover {
             background-image: none !important;
-            border: 0 !important;
+            border-left-width: 0 !important;
+            border-right-width: 0 !important;
+        
+            &:first-of-type {
+                border-left-width: 1px !important;
+            }
+        
+            &:last-of-type {
+                border-right-width: 1px !important;
+            }
         }
+    }
+
+    label.ui-state-active {
+        .mikio-button-submit();
     }
 }
 
