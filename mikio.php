@@ -1456,6 +1456,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $tocHtml = tpl_toc(true);
 
         if (empty($tocHtml) === false) {
+            $tocHtml = preg_replace(
+                '/(<h3.+?toggle.+?>)(.+?)<\/h3>/',
+                '$1' .
+                $this->mikioInlineIcon('hamburger', 'hamburger') . '$2' .
+                $this->mikioInlineIcon('down-arrow', 'down-arrow') . '</h3>',
+                $tocHtml
+            );
             $tocHtml = preg_replace('/<li.*><div.*><a.*><\/a><\/div><\/li>\s*/', '', $tocHtml);
             $tocHtml = preg_replace('/<ul.*>\s*<\/ul>\s*/', '', $tocHtml);
 
@@ -1633,41 +1640,45 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
         } elseif (strcasecmp($INPUT->str('page'), 'styling') === 0) {
             $style_headers = [
-                ['title' => 'Base', 'starts_with' => '__text'],
-                ['title' => 'Code', 'starts_with' => '__code'],
-                ['title' => 'Controls', 'starts_with' => '__control'],
-                ['title' => 'Header', 'starts_with' => '__topheader'],
-                ['title' => 'Navbar', 'starts_with' => '__navbar'],
-                ['title' => 'Sub Navbar', 'starts_with' => '__subnavbar'],
-                ['title' => 'Tags', 'starts_with' => '__tag_background_color'],
-                ['title' => 'Breadcrumbs', 'starts_with' => '__breadcrumb'],
-                ['title' => 'Hero', 'starts_with' => '__hero'],
-                ['title' => 'Sidebar', 'starts_with' => '__sidebar'],
-                ['title' => 'Content', 'starts_with' => '__content'],
-                ['title' => 'TOC', 'starts_with' => '__toc'],
-                ['title' => 'Page Tools', 'starts_with' => '__pagetools'],
-                ['title' => 'Footer', 'starts_with' => '__footer'],
-                ['title' => 'Table', 'starts_with' => '__table'],
-                ['title' => 'Dropdown', 'starts_with' => '__dropdown'],
-                ['title' => 'Section Edit', 'starts_with' => '__section_edit'],
+                ['title' => 'Base', 'starts_with' => '__text_'],
+                ['title' => 'Code', 'starts_with' => '__code_'],
+                ['title' => 'Controls', 'starts_with' => '__control_'],
+                ['title' => 'Header', 'starts_with' => '__topheader_'],
+                ['title' => 'Navbar', 'starts_with' => '__navbar_'],
+                ['title' => 'Sub Navbar', 'starts_with' => '__subnavbar_'],
+                ['title' => 'Tags', 'starts_with' => '__tag_background_color_'],
+                ['title' => 'Breadcrumbs', 'starts_with' => '__breadcrumb_'],
+                ['title' => 'Hero', 'starts_with' => '__hero_'],
+                ['title' => 'Sidebar', 'starts_with' => '__sidebar_'],
+                ['title' => 'Content', 'starts_with' => '__content_'],
+                ['title' => 'TOC', 'starts_with' => '__toc_'],
+                ['title' => 'Page Tools', 'starts_with' => '__pagetools_'],
+                ['title' => 'Footer', 'starts_with' => '__footer_'],
+                ['title' => 'Table', 'starts_with' => '__table_'],
+                ['title' => 'Dropdown', 'starts_with' => '__dropdown_'],
+                ['title' => 'Section Edit', 'starts_with' => '__section_edit_'],
+                ['title' => 'Tree', 'starts_with' => '__tree_'],
+                ['title' => 'Tabs', 'starts_with' => '__tab_'],
                 ['title' => 'Dark Mode', 'starts_with' => '__darkmode_', 'heading' => 'h2'],
-                ['title' => 'Base', 'starts_with' => '__darkmode_text'],
-                ['title' => 'Code', 'starts_with' => '__darkmode_code'],
-                ['title' => 'Controls', 'starts_with' => '__darkmode_control'],
-                ['title' => 'Header', 'starts_with' => '__darkmode_topheader'],
-                ['title' => 'Navbar', 'starts_with' => '__darkmode_navbar'],
-                ['title' => 'Sub Navbar', 'starts_with' => '__darkmode_subnavbar'],
-                ['title' => 'Tags', 'starts_with' => '__darkmode_tag_background_color'],
-                ['title' => 'Breadcrumbs', 'starts_with' => '__darkmode_breadcrumb'],
-                ['title' => 'Hero', 'starts_with' => '__darkmode_hero'],
-                ['title' => 'Sidebar', 'starts_with' => '__darkmode_sidebar'],
-                ['title' => 'Content', 'starts_with' => '__darkmode_content'],
-                ['title' => 'TOC', 'starts_with' => '__darkmode_toc'],
-                ['title' => 'Page Tools', 'starts_with' => '__darkmode_pagetools'],
-                ['title' => 'Footer', 'starts_with' => '__darkmode_footer'],
-                ['title' => 'Table', 'starts_with' => '__darkmode_table'],
-                ['title' => 'Dropdown', 'starts_with' => '__darkmode_dropdown'],
-                ['title' => 'Section Edit', 'starts_with' => '__darkmode_section_edit'],
+                ['title' => 'Base', 'starts_with' => '__darkmode_text_'],
+                ['title' => 'Code', 'starts_with' => '__darkmode_code_'],
+                ['title' => 'Controls', 'starts_with' => '__darkmode_control_'],
+                ['title' => 'Header', 'starts_with' => '__darkmode_topheader_'],
+                ['title' => 'Navbar', 'starts_with' => '__darkmode_navbar_'],
+                ['title' => 'Sub Navbar', 'starts_with' => '__darkmode_subnavbar_'],
+                ['title' => 'Tags', 'starts_with' => '__darkmode_tag_background_color_'],
+                ['title' => 'Breadcrumbs', 'starts_with' => '__darkmode_breadcrumb_'],
+                ['title' => 'Hero', 'starts_with' => '__darkmode_hero_'],
+                ['title' => 'Sidebar', 'starts_with' => '__darkmode_sidebar_'],
+                ['title' => 'Content', 'starts_with' => '__darkmode_content_'],
+                ['title' => 'TOC', 'starts_with' => '__darkmode_toc_'],
+                ['title' => 'Page Tools', 'starts_with' => '__darkmode_pagetools_'],
+                ['title' => 'Footer', 'starts_with' => '__darkmode_footer_'],
+                ['title' => 'Table', 'starts_with' => '__darkmode_table_'],
+                ['title' => 'Dropdown', 'starts_with' => '__darkmode_dropdown_'],
+                ['title' => 'Section Edit', 'starts_with' => '__darkmode_section_edit_'],
+                ['title' => 'Tree', 'starts_with' => '__darkmode_tree_'],
+                ['title' => 'Tabs', 'starts_with' => '__darkmode_tab_'],
             ];
 
             foreach ($style_headers as $header) {
@@ -1676,13 +1687,15 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 }
 
                 $content = preg_replace(
-                    '/(<tr>\s*<td>\s*<label for="tpl__' . $header['starts_with'] . '.*?<\/tr>)/',
+                    '/(<tr>\s*<td>\s*<label for="tpl__' . $header['starts_with'] . '.+?<\/tr>)/s',
                     '</tbody></table><' . $header['heading'] . '>' . $header['title'] . '</' . $header['heading'] . '>
                     <table><tbody>$1',
                     $content,
                     1
                 );
             }
+
+            $content = preg_replace('/type="color"/', 'type="text"', $content);
         }//end if
 
         if (strcasecmp($ACT, 'admin') === 0 && isset($_GET['page']) === false) {
@@ -2107,6 +2120,16 @@ style="fill:currentColor" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .0
 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 
 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 
 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" /></svg>';
+            case 'hamburger':
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" 
+style="fill:currentColor"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 
+76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 
+16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 
+16v40c0 8.837 7.163 16 16 16z"/></svg>';
+            case 'down-arrow':
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" 
+aria-hidden="true" style="fill:currentColor"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 
+1.917-1.916z"/></svg>';
         }//end switch
 
         return '';
