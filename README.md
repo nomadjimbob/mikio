@@ -22,6 +22,9 @@
 
 ## Possible Breaking Changes
 
+- 2022-10-04
+  - Some elements now have their own color options to allow finer control of your website design.
+
 - 2022-04-25
   - Added support for the defer js option in Hogsfather to override the templates default defer action of always.
   - The new Typeahead search feature is enabled by default. This can be turned off in the config.
@@ -190,7 +193,24 @@ Themes should be placed in the themes directory, in its own directory. LESS file
 
 ## Dark Mode
 
-Mikio now supports dark mode! When the user prefers a dark theme, or has selected dark mode, the body tag will contain the class `mikio-dark`. The navbar toggle is disabled by default.
+Mikio now supports dark mode! When the user prefers a dark theme, or has selected dark mode, the html tag will set the theme dataset to `theme-dark`, else it will be `theme-light`.
+
+You can detect this in CSS using:
+
+```
+:root[data-theme="theme-dark"] {
+  // CSS selectors here
+}
+```
+
+or in Javascript using:
+
+```
+const html = document.querySelector('html');
+if(html.dataset.theme == 'theme-dark') {
+  // ...
+}
+```
 
 ## Mikio Plugin
 
