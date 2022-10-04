@@ -31,6 +31,7 @@ $lang['config_sticky']      = 'Sticky Parts';
 
 /* Style.ini */
 $lang['__link__']       = 'The font color of links';
+$lang['__link_hover__'] = 'The font color of links when cursor hovers over';
 $lang['__existing__']   = 'The font color of wiki links for existing pages';
 $lang['__missing__']    = 'The font color of wiki links for missing pages';
 
@@ -54,6 +55,12 @@ $lang['__code_border_color__']      = 'The border color for code blocks';
 $lang['__control_text_color__']                     = 'The font color for controls';
 $lang['__control_border_color__']                   = 'The border color for controls';
 $lang['__control_background_color__']               = 'The background color for controls';
+$lang['__button_text_color__']                      = 'The font color for buttons';
+$lang['__button_background_color__']                = 'The background color for buttons';
+$lang['__button_border_color__']                    = 'The border color for buttons';
+$lang['__button_text_hover_color__']                = 'The font color for buttons when cursor hovers over';
+$lang['__button_background_hover_color__']          = 'The background color for buttons when cursor hovers over';
+$lang['__button_border_hover_color__']              = 'The border color for buttons when cursor hovers over';
 $lang['__input_border_color__']                     = 'The border color for controls';
 $lang['__button_default_text_color__']              = 'The font color for the default button';
 $lang['__button_default_background_color__']        = 'The background color for the default button';
@@ -62,6 +69,13 @@ $lang['__button_default_text_hover_color__']        = 'The font color for the de
 $lang['__button_default_background_hover_color__']  = 'The background color for the default button when cursor hovers 
 over';
 $lang['__button_default_border_hover_color__']      = 'The border color for the default button when cursor hovers over';
+$lang['__button_search_text_color__']               = 'The font color for the search button';
+$lang['__button_search_background_color__']         = 'The background color for the search button';
+$lang['__button_search_border_color__']             = 'The border color for the search button';
+$lang['__button_search_text_hover_color__']         = 'The font color for the search button when cursor hovers over';
+$lang['__button_search_background_hover_color__']   = 'The background color for the search button when cursor hovers 
+over';
+$lang['__button_search_border_hover_color__']       = 'The border color for the search button when cursor hovers over';
 
 $lang['__topheader_background_color__'] = 'The background color for the top header part';
 $lang['__header_background_color__']    = 'The background color for the header part';
@@ -72,6 +86,8 @@ $lang['__navbar_brand_text_color__']    = 'The font color for the site title';
 $lang['__navbar_brand_tagline_color__'] = 'The font color for the site tagline';
 $lang['__navbar_content_justify__']     = 'The content justification of the site menu (can be flex-start, flex-end, 
 center, space-between or space-around)';
+$lang['__navbar_link_color__']          = 'The font color for the navbar links';
+$lang['__navbar_link_hover_color__']    = 'The font color for the navbar links when cursor hovers over';
 
 $lang['__subnavbar_text_color__']       = 'The font color for sub menu text';
 $lang['__subnavbar_link_color__']       = 'The font color for sub menu links';
@@ -122,6 +138,7 @@ $lang['__footer_background_color__']    = 'The background color for the footer';
 
 $lang['__table_font_size__']                    = 'The font size for tables';
 $lang['__table_row_border_color__']             = 'The border color for tables';
+$lang['__table_header_row_background_color__']  = 'The background color for table heading rows';
 $lang['__table_odd_row_color__']                = 'The font color for table odd rows';
 $lang['__table_odd_row_background_color__']     = 'The background color for table odd rows';
 $lang['__table_even_row_color__']               = 'The font color for table even rows';
@@ -133,6 +150,19 @@ $lang['__dropdown_border_color__']      = 'The border color for dropdown menus';
 $lang['__dropdown_background_color__']  = 'The background color for dropdown menus';
 
 $lang['__section_edit_highlight__']     = 'The color when highlighting an edit area';
+
+$lang['__tree_background_color__']  = 'The background color of the tree view';
+$lang['__tree_border_color__']      = 'The border color of the tree view';
+
+$lang['__tab_color__']                      = 'The font color of a tab';
+$lang['__tab_background_color__']           = 'The background color of a tab';
+$lang['__tab_border_color__']               = 'The border color of a tab';
+$lang['__tab_hover_color__']                = 'The font color of a tab when cursor hovers over';
+$lang['__tab_background_hover_color__']     = 'The background color of a tab when cursor hovers over';
+$lang['__tab_border_hover_color__']         = 'The border color of a tab when cursor hovers over';
+$lang['__tab_active_color__']               = 'The font color of an active tab';
+$lang['__tab_active_background_color__']    = 'The background color of an active tab';
+$lang['__tab_active_border_color__']        = 'The border color of an active tab';
 
 /* Add darkmode language */
 $lang['__darkmode_text__']          = 'Main text color';

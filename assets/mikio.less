@@ -29,6 +29,192 @@
     text-decoration: @value;
 }
 
+/* CSS Variables */
+:root[data-theme="theme-light"] {
+    --text: @ini_text;
+    --link: @ini_link;
+    --link-hover: @ini_link_hover;
+    --background: @ini_background;
+    --admin-background-color: @ini_admin_background_color;
+    --code-text-color: @ini_code_text_color;
+    --code-border-color: @ini_code_border_color;
+    --code-background-color: @ini_code_background_color;
+    --control-text-color: @ini_control_text_color;
+    --control-border-color: @ini_control_border_color;
+    --control-background-color: @ini_control_background_color;
+    --input-border-color: @ini_input_border_color;
+    --button-text-color: @ini_button_text_color;
+    --button-background-color: @ini_button_background_color;
+    --button-border-color: @ini_button_border_color;
+    --button-text-hover-color: @ini_button_text_hover_color;
+    --button-background-hover-color: @ini_button_background_hover_color;
+    --button-border-hover-color: @ini_button_border_hover_color;
+    --button-search-text-color: @ini_button_search_text_color;
+    --button-search-background-color: @ini_button_search_background_color;
+    --button-search-border-color: @ini_button_search_border_color;
+    --button-search-text-hover-color: @ini_button_search_text_hover_color;
+    --button-search-background-hover-color: @ini_button_search_background_hover_color;
+    --button-search-border-hover-color: @ini_button_search_border_hover_color;
+    --button-default-text-color: @ini_button_default_text_color;
+    --button-default-background-color: @ini_button_default_background_color;
+    --button-default-border-color: @ini_button_default_border_color;
+    --button-default-text-hover-color: @ini_button_default_text_hover_color;
+    --button-default-background-hover-color: @ini_button_default_background_hover_color;
+    --button-default-border-hover-color: @ini_button_default_border_hover_color;
+    --topheader-background-color: @ini_topheader_background_color;
+    --header-background-color: @ini_header_background_color;
+    --navbar-background-color: @ini_navbar_background_color;
+    --navbar-border-color: @ini_navbar_border_color;
+    --navbar-brand-text-color: @ini_navbar_brand_text_color;
+    --navbar-brand-tagline-color: @ini_navbar_brand_tagline_color;
+    --navbar-link-color: @ini_navbar_link_color;
+    --navbar-link-hover-color: @ini_navbar_link_hover_color;
+    --subnavbar-text-color: @ini_subnavbar_text_color;
+    --subnavbar-link-color: @ini_subnavbar_link_color;
+    --subnavbar-link-hover-color: @ini_subnavbar_link_hover_color;
+    --subnavbar-background-color: @ini_subnavbar_background_color;
+    --subnavbar-border-color: @ini_subnavbar_border_color;
+    --tag-background-color: @ini_tag_background_color;
+    --tag-text-color: @ini_tag_text_color;
+    --breadcrumb-background-color: @ini_breadcrumb_background_color;
+    --breadcrumb-text-color: @ini_breadcrumb_text_color;
+    --breadcrumb-link-color: @ini_breadcrumb_link_color;
+    --breadcrumb-link-hover-color: @ini_breadcrumb_link_hover_color;
+    --hero-title-color: @ini_hero_title_color;
+    --hero-subtitle-color: @ini_hero_subtitle_color;
+    --hero-background-color: @ini_hero_background_color;
+    --sidebar-text-color: @ini_sidebar_text_color;
+    --sidebar-link-color: @ini_sidebar_link_color;
+    --sidebar-link-hover-color: @ini_sidebar_link_hover_color;
+    --sidebar-background-color: @ini_sidebar_background_color;
+    --sidebar-border-color: @ini_sidebar_border_color;
+    --content-background: @ini_content_background;
+    --toc-background-color: @ini_toc_background_color;
+    --toc-border-color: @ini_toc_border_color;
+    --toc-link-color: @ini_toc_link_color;
+    --toc-link-hover-color: @ini_toc_link_hover_color;
+    --pagetools-color: @ini_pagetools_color;
+    --pagetools-hover-color: @ini_pagetools_hover_color;
+    --footer-text-color: @ini_footer_text_color;
+    --footer-link-color: @ini_footer_link_color;
+    --footer-link-hover-color: @ini_footer_link_hover_color;
+    --footer-background-color: @ini_footer_background_color;
+    --table-header-row-background-color: @ini_table_header_row_background_color;
+    --table-row-border-color: @ini_table_row_border_color;
+    --table-odd-row-background-color: @ini_table_odd_row_background_color;
+    --table-even-row-background-color: @ini_table_even_row_background_color;
+    --dropdown-color: @ini_dropdown_color;
+    --dropdown-hover-color: @ini_dropdown_hover_color;
+    --dropdown-border-color: @ini_dropdown_border_color;
+    --dropdown-background-color: @ini_dropdown_background_color;
+    --section-edit-highlight: @ini_section_edit_highlight;
+    --tree-background-color: @ini_tree_background_color;
+    --tree-border-color: @ini_tree_border_color;
+    --tab-color: @ini_tab_color;
+    --tab-background-color: @ini_tab_background_color;
+    --tab-border-color: @ini_tab_border_color;
+    --tab-hover-color: @ini_tab_hover_color;
+    --tab-background-hover-color: @ini_tab_background_hover_color;
+    --tab-border-hover-color: @ini_tab_border_hover_color;
+    --tab-active-color: @ini_tab_active_color;
+    --tab-active-background-color: @ini_tab_active_background_color;
+    --tab-active-border-color: @ini_tab_active_border_color;
+    --display-theme-light: inline-block;
+    --display-theme-dark: none;
+}
+
+:root[data-theme="theme-dark"] {
+    --text: @ini_darkmode_text;
+    --link: @ini_darkmode_link;
+    --link-hover: @ini_darkmode_link_hover;
+    --background: @ini_darkmode_background;
+    --admin-background-color: @ini_darkmode_admin_background_color;
+    --code-text-color: @ini_darkmode_code_text_color;
+    --code-border-color: @ini_darkmode_code_border_color;
+    --code-background-color: @ini_darkmode_code_background_color;
+    --control-text-color: @ini_darkmode_control_text_color;
+    --control-border-color: @ini_darkmode_control_border_color;
+    --control-background-color: @ini_darkmode_control_background_color;
+    --input-border-color: @ini_darkmode_input_border_color;
+    --button-text-color: @ini_darkmode_button_text_color;
+    --button-background-color: @ini_darkmode_button_background_color;
+    --button-border-color: @ini_darkmode_button_border_color;
+    --button-text-hover-color: @ini_darkmode_button_text_hover_color;
+    --button-background-hover-color: @ini_darkmode_button_background_hover_color;
+    --button-border-hover-color: @ini_darkmode_button_border_hover_color;
+    --button-search-text-color: @ini_darkmode_button_search_text_color;
+    --button-search-background-color: @ini_darkmode_button_search_background_color;
+    --button-search-border-color: @ini_darkmode_button_search_border_color;
+    --button-search-text-hover-color: @ini_darkmode_button_search_text_hover_color;
+    --button-search-background-hover-color: @ini_darkmode_button_search_background_hover_color;
+    --button-search-border-hover-color: @ini_darkmode_button_search_border_hover_color;    --button-default-text-color: @ini_darkmode_button_default_text_color;
+    --button-default-background-color: @ini_darkmode_button_default_background_color;
+    --button-default-border-color: @ini_darkmode_button_default_border_color;
+    --button-default-text-hover-color: @ini_darkmode_button_default_text_hover_color;
+    --button-default-background-hover-color: @ini_darkmode_button_default_background_hover_color;
+    --button-default-border-hover-color: @ini_darkmode_button_default_border_hover_color;
+    --topheader-background-color: @ini_darkmode_topheader_background_color;
+    --header-background-color: @ini_darkmode_header_background_color;
+    --navbar-background-color: @ini_darkmode_navbar_background_color;
+    --navbar-border-color: @ini_darkmode_navbar_border_color;
+    --navbar-brand-text-color: @ini_darkmode_navbar_brand_text_color;
+    --navbar-brand-tagline-color: @ini_darkmode_navbar_brand_tagline_color;
+    --navbar-link-color: @ini_darkmode_navbar_link_color;
+    --navbar-link-hover-color: @ini_darkmode_navbar_link_hover_color;
+    --subnavbar-text-color: @ini_darkmode_subnavbar_text_color;
+    --subnavbar-link-color: @ini_darkmode_subnavbar_link_color;
+    --subnavbar-link-hover-color: @ini_darkmode_subnavbar_link_hover_color;
+    --subnavbar-background-color: @ini_darkmode_subnavbar_background_color;
+    --subnavbar-border-color: @ini_darkmode_subnavbar_border_color;
+    --tag-background-color: @ini_darkmode_tag_background_color;
+    --tag-text-color: @ini_darkmode_tag_text_color;
+    --breadcrumb-background-color: @ini_darkmode_breadcrumb_background_color;
+    --breadcrumb-text-color: @ini_darkmode_breadcrumb_text_color;
+    --breadcrumb-link-color: @ini_darkmode_breadcrumb_link_color;
+    --breadcrumb-link-hover-color: @ini_darkmode_breadcrumb_link_hover_color;
+    --hero-title-color: @ini_darkmode_hero_title_color;
+    --hero-subtitle-color: @ini_darkmode_hero_subtitle_color;
+    --hero-background-color: @ini_darkmode_hero_background_color;
+    --sidebar-text-color: @ini_darkmode_sidebar_text_color;
+    --sidebar-link-color: @ini_darkmode_sidebar_link_color;
+    --sidebar-link-hover-color: @ini_darkmode_sidebar_link_hover_color;
+    --sidebar-background-color: @ini_darkmode_sidebar_background_color;
+    --sidebar-border-color: @ini_darkmode_sidebar_border_color;
+    --content-background: @ini_darkmode_content_background;
+    --toc-background-color: @ini_darkmode_toc_background_color;
+    --toc-border-color: @ini_darkmode_toc_border_color;
+    --toc-link-color: @ini_darkmode_toc_link_color;
+    --toc-link-hover-color: @ini_darkmode_toc_link_hover_color;
+    --pagetools-color: @ini_darkmode_pagetools_color;
+    --pagetools-hover-color: @ini_darkmode_pagetools_hover_color;
+    --footer-text-color: @ini_darkmode_footer_text_color;
+    --footer-link-color: @ini_darkmode_footer_link_color;
+    --footer-link-hover-color: @ini_darkmode_footer_link_hover_color;
+    --footer-background-color: @ini_darkmode_footer_background_color;
+    --table-header-row-background-color: @ini_darkmode_table_header_row_background_color;
+    --table-row-border-color: @ini_darkmode_table_row_border_color;
+    --table-odd-row-background-color: @ini_darkmode_table_odd_row_background_color;
+    --table-even-row-background-color: @ini_darkmode_table_even_row_background_color;
+    --dropdown-color: @ini_darkmode_dropdown_color;
+    --dropdown-hover-color: @ini_darkmode_dropdown_hover_color;
+    --dropdown-border-color: @ini_darkmode_dropdown_border_color;
+    --dropdown-background-color: @ini_darkmode_dropdown_background_color;
+    --section-edit-highlight: @ini_darkmode_section_edit_highlight;
+    --tree-background-color: @ini_darkmode_tree_background_color;
+    --tree-border-color: @ini_darkmode_tree_border_color;
+    --tab-color: @ini_darkmode_tab_color;
+    --tab-background-color: @ini_darkmode_tab_background_color;
+    --tab-border-color: @ini_darkmode_tab_border_color;
+    --tab-hover-color: @ini_darkmode_tab_hover_color;
+    --tab-background-hover-color: @ini_darkmode_tab_background_hover_color;
+    --tab-border-hover-color: @ini_darkmode_tab_border_hover_color;
+    --tab-active-color: @ini_darkmode_tab_active_color;
+    --tab-active-background-color: @ini_darkmode_tab_active_background_color;
+    --tab-active-border-color: @ini_darkmode_tab_active_border_color;
+    --display-theme-light: none;
+    --display-theme-dark: inline-block;
+}
+
 .mikio-sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -43,16 +229,16 @@
 
 .mikio-controls {
     button, input, optgroup, select, textarea {
-        .mikio-control;
-        .mikio-input-text;
+        .mikio-control();
+        .mikio-input-text();
     }
 
-    button {
-        .mikio-button;
+    button, input[type=button], input[type=image] {
+        .mikio-button();
     }
 
     button#edbtn__save, button[name="run[save]"] {
-        .mikio-button-submit;
+        .mikio-button-submit();
     }
 
     input[type=text], input[type=search], input[type=password], input[type=email] {
@@ -69,11 +255,11 @@
     }
 
     select {
-        .mikio-select;
+        .mikio-select();
     }
 
     .toolbutton {
-        .mikio-toolbar-button;
+        .mikio-toolbar-button();
     }
 }
 
@@ -99,8 +285,8 @@ body {
 }
 
 html, body {
-    background-color: @ini_background;
-    color: @ini_text;
+    background-color: var(--background);
+    color: var(--text);
     margin: 0;
 }
 
@@ -121,8 +307,8 @@ html, body {
 
 .mikio-page-topheader {
     padding: 0 2rem;
-    border-bottom: 1px solid @ini_navbar_border_color;
-    background-color: @ini_topheader_background_color;
+    border-bottom: 1px solid var(--navbar-border-color);
+    background-color: var(--topheader-background-color);
     box-sizing: border-box;
     width: 100%;
     z-index: 1001;
@@ -130,18 +316,18 @@ html, body {
 
 .mikio-page-header {
     padding: 0 2rem;
-    background-color: @ini_header_background_color;
+    background-color: var(--header-background-color);
     box-sizing: border-box;
     width: 100%;
     z-index: 999;
 }
 
 .mikio-sidebar-header {
-    border-bottom: 1px solid @ini_sidebar_border_color;
+    border-bottom: 1px solid var(--sidebar-border-color);
 }
 
 .mikio-sidebar-footer {
-    border-top: 1px solid @ini_sidebar_border_color;
+    border-top: 1px solid var(--sidebar-border-color);
 }
 
 .mikio-page-contentheader {
@@ -161,7 +347,7 @@ html, body {
 }
 
 .mikio-admin {
-    background-color: @ini_admin_background_color;
+    background-color: var(--admin-background-color);
 }
 
 .mikio-small-only {
@@ -170,18 +356,20 @@ html, body {
 
 .mikio {
     .mikio-breadcrumbs, .mikio-youarehere {
-        padding: .75rem 2rem;
-        background-color: @ini_breadcrumb_background_color;
+        padding: .5rem 1rem;
+        background-color: var(--breadcrumb-background-color);
+        border: 1px solid var(--breadcrumb-background-color);
+        border-radius: 4px;
         font-size: @ini_breadcrumb_font_size;
-        color: @ini_breadcrumb_text_color;
+        color: var(--breadcrumb-text-color);
 
         span.curid a, a {
             .mikio-text-decoration(none);
-            color: @ini_breadcrumb_link_color;
+            color: var(--breadcrumb-link-color);
             font-weight: normal;
 
             &:hover {
-                color: @ini_breadcrumb_link_hover_color;
+                color: var(--breadcrumb-link-hover-color);
             }
         }
 
@@ -219,8 +407,8 @@ html, body {
     padding: .5rem 1rem .5rem 2rem;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: @ini_navbar_border_color;
-    background-color: @ini_navbar_background_color;
+    border-bottom-color: var(--navbar-border-color);
+    background-color: var(--navbar-background-color);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     box-sizing: border-box;
@@ -249,7 +437,7 @@ html, body {
         }
 
         .mikio-navbar-brand-title-text {
-            color: @ini_navbar_brand_text_color;
+            color: var(--navbar-brand-text-color);
             margin: 0;
             font-weight: 500;
             font-size: 1.2rem;
@@ -257,7 +445,7 @@ html, body {
 
         .mikio-navbar-brand-title-tagline {
             margin: 0;
-            color: @ini_navbar_brand_tagline_color;
+            color: var(--navbar-brand-tagline-color);
         }
     }
 
@@ -273,7 +461,7 @@ html, body {
         padding: 0;
         
         cursor: pointer;
-        transition: transform 0.2s ease-in-out;
+        transition: transform .15s ease-in-out;
         vertical-align: middle;
         
         border: 0 none;
@@ -290,10 +478,10 @@ html, body {
             height: 0.2em;
             margin: 0 0 0.2em;
         
-            transition: transform 0.2s ease-in-out;
+            transition: transform .15s ease-in-out;
         
             border-radius: 0.05em;
-            background: @ini_control_text_color;
+            background: var(--control-text-color);
         }
         
         &.open {
@@ -320,20 +508,46 @@ html, body {
 
     a {
         .mikio-text-decoration(none);
-        color: inherit;
+        color: var(--navbar-link-color);
+        transition: all .15s ease-in-out;
+
+        &:hover {
+            color: var(--navbar-link-hover-color);
+        }
+    }
+
+    .mikio-nav-dropdown a {
+        &:after {
+            border-color: var(--navbar-link-color) !important;
+        }
+
+        &:hover:after {
+            border-color: var(--navbar-link-hover-color) !important;
+        }
     }
 
     .mikio-search {
         margin: 0 .5rem;
     }
+
+    .mikio-button {
+        background-color: transparent;
+        border-color: transparent;
+
+        &:hover:not(:disabled) {
+            background-color: transparent;
+            border-color: transparent;
+            color: var(--navbar-link-hover-color);
+        }
+    }
 }
 
 .mikio-sub-navbar {
-    color: @ini_subnavbar_text_color;
+    color: var(--subnavbar-text-color);
     justify-content: @ini_subnavbar_content_justify;
     padding: .75rem 1rem;
-    border-color: @ini_subnavbar_border_color;
-    background-color: @ini_subnavbar_background_color;
+    border-color: var(--subnavbar-border-color);
+    background-color: var(--subnavbar-background-color);
 
     ul, ol, p {
         list-style: none;
@@ -352,16 +566,16 @@ html, body {
     }
 
     a {
-        color: @ini_subnavbar_link_color;
+        color: var(--subnavbar-link-color);
 
         &:hover {
-            color: @ini_subnavbar_link_hover_color;
+            color: var(--subnavbar-link-hover-color);
         }
     }
 }
 
 .mikio-hero {
-    background-color: @ini_hero_background_color;
+    background-color: var(--hero-background-color);
     
     .mikio-container {
         display: flex;
@@ -381,7 +595,7 @@ html, body {
 
         h1 {
             margin: .75rem 0 1rem 0;
-            color: @ini_hero_title_color;
+            color: var(--hero-title-color);
             line-height: 1.2
         }
 
@@ -389,7 +603,7 @@ html, body {
             margin: 0;
             font-weight: normal;
             font-size: 1.25rem;
-            color: @ini_hero_subtitle_color;
+            color: var(--hero-subtitle-color);
         }
     }
 
@@ -407,7 +621,7 @@ html, body {
     }
 }
 
-.mikio-tags {
+.mikio .mikio-tags {
     display: block;
     width: 100%;
     text-align: right;
@@ -418,16 +632,16 @@ html, body {
         margin: 0 .25rem;
         font-size: 80%;
         padding: .25rem .75rem;
-        border: 1px solid @ini_tag_background_color;
+        border: 1px solid var(--tag-background-color);
         border-radius: 1rem;
-        background-color: @ini_tag_background_color;
-        color: @ini_tag_text_color;
+        background-color: var(--tag-background-color);
+        color: var(--tag-text-color);
         .mikio-text-decoration(none);
         transition: all .15s ease-in-out;
 
         &:hover {
             background-color: transparent;
-            color: @ini_tag_background_color;
+            color: var(--tag-background-color);
         }
     }
 }
@@ -436,19 +650,19 @@ html, body {
 .mikio-sidebar {
     width: @ini_sidebar_width;
     flex-shrink: 0;
-    background-color: @ini_sidebar_background_color;
+    background-color: var(--sidebar-background-color);
     padding: 1rem;
     font-size: @ini_sidebar_font_size;
-    color: @ini_sidebar_text_color;
+    color: var(--sidebar-text-color);
 
     &.mikio-sidebar-left {
-        border-left: 1px solid @ini_sidebar_border_color;
-        border-right: 1px solid @ini_sidebar_border_color;
+        border-left-width: 0;
+        border-right: 1px solid var(--sidebar-border-color);
     }
 
     &.mikio-sidebar-right {
-        border-left: 1px solid @ini_sidebar_border_color;
-        border-right: 1px solid @ini_sidebar_border_color;
+        border-left: 1px solid var(--sidebar-border-color);
+        border-right-width: 0;
     }
 
     .mikio-sidebar-toggle {
@@ -465,7 +679,7 @@ html, body {
                 width: 0.5rem;
                 height: 0.1em;
                 margin: 0 0 0.2em;
-                transition: transform 0.2s ease-in-out;
+                transition: transform .15s ease-in-out;
                 border-radius: 0.05em;
                 background: rgba(0,0,0,0.6);
             }
@@ -498,7 +712,7 @@ html, body {
         margin-bottom: 1rem;
         margin: 0 -1rem;
         padding: 0 1rem 1rem 1rem;
-        border-bottom: 1px solid @ini_sidebar_border_color;
+        border-bottom: 1px solid var(--sidebar-border-color);
     }
 
     .mikio-search {
@@ -512,11 +726,11 @@ html, body {
         a {
             display: block;
             margin: 1rem 0;
-            color: @ini_sidebar_link_color;
+            color: var(--sidebar-link-color);
             .mikio-text-decoration(none);
 
             &:hover {
-                color: @ini_sidebar_link_hover_color;
+                color: var(--sidebar-link-hover-color);
             }
         }
 
@@ -553,7 +767,12 @@ html, body {
     }
     
     a {
-        color: @ini_link;
+        color: var(--link);
+        transition: all .15s ease-in-out;
+
+        &:hover {
+            color: var(--link-hover);
+        }
     }
 }
 
@@ -566,7 +785,7 @@ html, body {
     margin: 0 auto;
 
     ul, ul.idx {
-        padding-left: 1rem;
+        // padding-left: 1rem;
     }
 
     &.toc-full {
@@ -593,27 +812,27 @@ html, body {
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
-    background-color: @ini_content_background;
+    background-color: var(--content-background);
     padding: .5rem 2rem;
 }
 
 .mikio.dokuwiki div.preview {
-    background-color: @ini_content_background;
+    background-color: var(--content-background);
     padding: 1rem 2rem;
 }
 
 .mikio-footer {
     padding: 2rem;
-    color: @ini_footer_text_color;
-    background-color: @ini_footer_background_color;
+    color: var(--footer-text-color);
+    background-color: var(--footer-background-color);
     font-size: @ini_footer_font_size;
     text-align: @ini_footer_text_align;
 
     a {
-        color: @ini_footer_link_color;
+        color: var(--footer-link-color);
 
         &:hover {
-            color: @ini_footer_link_hover_color;
+            color: var(--footer-link-hover-color);
         }
     }
 
@@ -632,12 +851,12 @@ html, body {
                 // margin: 0 .5rem;
         
                 svg {
-                    fill: @ini_footer_link_color;
+                    fill: var(--footer-link-color);
                 }
         
                 &:hover {
                     svg {
-                        fill: @ini_footer_link_hover_color;
+                        fill: var(--footer-link-hover-color);
                     }
                 }
             }
@@ -682,8 +901,8 @@ html, body {
     box-sizing: border-box;
     vertical-align: middle;
     padding: .375rem .75rem;
-    color: @ini_control_text_color;
-    background-color: @ini_control_background_color;
+    color: var(--control-text-color);
+    background-color: var(--control-background-color);
 
     &[type=color] {
         padding: 0;
@@ -693,7 +912,9 @@ html, body {
 .mikio-button {
     display: inline-block;
     text-align: center;
-    border-color: @ini_control_border_color;
+    color: var(--button-text-color);
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
     line-height: 1.5;
     .mikio-text-decoration(none);
     text-transform: capitalize;
@@ -702,9 +923,9 @@ html, body {
 
     &:hover:not(:disabled) {
         .mikio-text-decoration(none);
-        color: @ini_control_background_color;
-        background-color: @ini_control_border_color;
-        border-color: @ini_control_border_color;
+        color: var(--button-text-hover-color);
+        background-color: var(--button-background-hover-color);
+        border-color: var(--button-border-hover-color);
     }
 
     &:disabled {
@@ -713,36 +934,37 @@ html, body {
 }
 
 .mikio-button-small {
-    padding: .1rem .2rem;
-    font-size: 80%;
+    padding: .1rem .75rem;
+    font-size: 80% !important;
     min-width: 3rem;
 }
 
 .mikio-button-submit {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-
+    color: var(--button-default-text-color);
+    background-color: var(--button-default-background-color);
+    border-color: var(--button-default-border-color);
+    
     &:hover {
-        color: #fff;
-        background-color: #0069d9;
-        border-color: #0062cc;
+        color: var(--button-default-text-hover-color);
+        background-color: var(--button-default-background-hover-color);
+        border-color: var(--button-default-border-hover-color);
     }
 }
 
 .mikio-button-danger {
-    color: #dc3545;
+    color: #fff;
     border-color: #dc3545;
+    background-color: #dc3545;
 
     &:hover {
         color: #fff;
-        background-color: #dc3545;
-        border-color: #dc3545;
+        background-color: #c03040;
+        border-color: #c03040;
     }
 }
 
 .mikio-input-text {
-    border-color: @ini_input_border_color;
+    border-color: var(--input-border-color);
     line-height: inherit;
 }
 
@@ -754,7 +976,7 @@ html, body {
 .mikio-toolbar-button {
     border-radius: 0;
     border-right-width: 0;
-    border-color: @ini_input_border_color;
+    border-color: var(--input-border-color);
 
     &:first-of-type {
         border-radius: .25rem 0 0 .25rem;
@@ -806,7 +1028,7 @@ html, body {
             width: 100%;
 
             &[type=submit] {
-                .mikio-button-submit;
+                .mikio-button-submit();
             }
         }
 
@@ -829,14 +1051,15 @@ html, body {
     }
 
     button {
-        color: @ini_control_background_color;
-        background-color: @ini_control_border_color;
+        color: var(--button-search-text-color);
+        background-color: var(--button-search-background-color);
         border-radius: 0 .25rem .25rem 0;
-        border-color: @ini_control_border_color;
+        border-color: var(--button-search-border-color);
 
         &:hover {
-            background-color: @ini_control_background_color;
-            color: @ini_control_text_color;
+            color: var(--button-search-text-hover-color);
+            background-color: var(--button-search-background--hover-color);
+            border-color: var(--button-search-border-hover-color);
         }
     }
 
@@ -846,7 +1069,7 @@ html, body {
 }
 
 #dw__pagetools {
-    .mikio-sticky;
+    .mikio-sticky();
     top: 0;
     align-self: flex-start;
     padding: 3rem .5rem 0 .5rem;
@@ -861,12 +1084,12 @@ html, body {
         display: block;
 
         svg {
-            fill: @ini_pagetools_color;
+            fill: var(--pagetools-color);
         }
 
         &:hover {
             svg {
-                fill: @ini_pagetools_hover_color;
+                fill: var(--pagetools-hover-color);
             }
         }
     }
@@ -895,27 +1118,28 @@ html, body {
 }
 
 .mode_admin .mikio-toc {
-    background-color: @ini_admin_background_color;
+    background-color: var(--admin-background-color);
 
     #dw__toc {
-        background-color: #fff;
+        background-color: var(--toc-background-color);
     }
 }
 
 .mikio .mode_admin .mikio-toc #dw__toc {
-    background-color: @ini_content_background;    
+    background-color: var(--toc-background-color);    
 }
 
 .mikio .mikio-toc {
     float: right;
     padding-left: 1rem;
     padding-bottom: 1rem;
-    // background-color: @ini_content_background;
+    // background-color: var(--content-background);
     margin-top: 1rem;
 
     #dw__toc {
-        background-color: @ini_toc_background_color;
-        border: 1px solid @ini_toc_border_color;
+        color: var(--toc-link-color);
+        background-color: var(--toc-background-color);
+        border: 1px solid var(--toc-border-color);
         border-radius: .25rem;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         padding: .5rem;
@@ -944,28 +1168,36 @@ html, body {
         margin: 0;
         padding-right: 2rem;
         font-size: @ini_toc_font_size;
-        background-size: 1rem;
-        background-position: 95% 50%;
-        background-repeat: no-repeat;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
+        position: relative;
+        height: 1rem;
+
+        .hamburger {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .down-arrow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto 0;
+        }
+            
+        &.open {
+            .hamburger {
+                display: none;
+            }
+        }
 
         &.closed {
             font-size: 0;
-            height: 1rem;
+            // height: 1rem;
             width: 2rem;
             padding-right: 0;
-
-            &:before {
-                display: inline-block;
-                content: "";
-                width: .8rem;
-                height: .8rem;
-                margin-right: .5rem;
-                margin-top: .1rem;    
-                background-size: .8rem;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="fill:inherit"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>');
+            
+            .down-arrow {
+                right: -4px;
             }
         }
 
@@ -977,25 +1209,22 @@ html, body {
     a {
         display: block;
         font-size: @ini_toc_font_size;
-        color: @ini_toc_link_color;
+        color: var(--toc-link-color);
         .mikio-text-decoration(none);
         padding: .2rem 0;
 
         &:hover {
-            color: @ini_toc_link_hover_color;
+            color: var(--toc-link-hover-color);
         }
     }
 }
 
 .mikio-icon {
     margin-right: .25rem;
-    // max-width: 1.4rem;
-    // max-height: 1.4rem;
 
     svg {
-        // max-width: 1.4rem;
-        // max-height: 1.4rem;
         vertical-align: middle;
+        fill: currentColor;
     }
 }
 
@@ -1018,10 +1247,10 @@ html, body {
     border-collapse: collapse;
     margin-bottom: 1rem;
     font-size: @ini_table_font_size;
-    border-bottom: 1px solid @ini_table_row_border_color;
+    border-bottom: 1px solid var(--table-row-border-color);
     
     tr {
-        border-top: 1px solid @ini_table_row_border_color;        
+        border-top: 1px solid var(--table-row-border-color);        
     }
 
     td, th {
@@ -1031,11 +1260,11 @@ html, body {
 
     tbody tr {
         &:nth-child(odd) {
-            background-color: @ini_table_odd_row_background_color;
+            background-color: var(--table-odd-row-background-color);
         }
 
         &:nth-child(even) {
-            background-color: @ini_table_even_row_background_color;
+            background-color: var(--table-even-row-background-color);
         }
     }    
 }
@@ -1044,6 +1273,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
 
     .mikio-nav-item, .mikio-nav-dropdown {
         display: inline-block;
@@ -1062,10 +1292,19 @@ html, body {
     .mikio-nav-dropdown > a {
         display: inline-block;
         padding: .2rem 1.2rem .2rem 0rem;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit;stroke:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z" /></svg>');
-        background-size: 1.2rem;
-        background-position: right;
-        background-repeat: no-repeat;
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: '';
+            top: 10px;
+            right: 6px;
+            width: 6px;
+            height: 6px;
+            border-left: 2px solid var(--text);
+            border-bottom: 2px solid var(--text);
+            transform: rotateZ(-45deg);
+        }
     }
 
     a {
@@ -1080,10 +1319,11 @@ html, body {
     min-width: 12rem;
     right: 0;
     padding: 1rem 1.5rem;
-    border: 1px solid @ini_dropdown_border_color;
+    border: 1px solid var(--dropdown-border-color);
+    border-radius: 4px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    background-color: @ini_dropdown_background_color;
-    color: @ini_dropdown_color;
+    background-color: var(--dropdown-background-color);
+    color: var(--dropdown-color);
 
     &.closed {
         display: none;
@@ -1102,16 +1342,18 @@ html, body {
 
     .mikio-dropdown-divider {
         margin: 1rem -1rem;
-        border-bottom: 1px solid @ini_dropdown_border_color;
+        border-bottom: 1px solid var(--dropdown-border-color);
     }
 
     .mikio-nav-link {
         margin: 0rem -1rem 0rem -1rem;
         padding: .25rem 1rem .25rem 1rem;
-        transition: all 0.15s ease-in-out;
+        transition: all .15s ease-in-out;
+        color: var(--dropdown-color);
 
         &:hover {
-            background-color: @ini_dropdown_hover_color;
+            color: var(--dropdown-color);
+            background-color: var(--dropdown-hover-color);
         }
     }
 }
@@ -1125,7 +1367,8 @@ html, body {
         margin-bottom: 0em;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #999999;
+        // color: #999999;
+        color: var(--dropdown-color);
     }
 
     .mikio-dropdown-divider {
@@ -1150,23 +1393,23 @@ html, body {
         z-index: 2;
 
         strong {
-            .mikio-tab-active;
+            .mikio-tab-active();
         }
 
         a {
             display: inline-block;
             padding: .5rem 1rem;
-            border: 1px solid transparent;
-            color: #007bff;
+            border: 1px solid var(--tab-border-color);
+            color: var(--tab-color);
             .mikio-text-decoration(none);
             margin: 0;
-            background-color: transparent;
+            background-color: var(--tab-background-color);
 
             &:hover {
-                color: #0056b3;
-                border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+                color: var(--tab-hover-color);
+                border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
                 border-radius: .5rem .5rem 0 0;
-                background-color: transparent;
+                background-color: var(--tab-background-hover-color);
             }
         }
     }
@@ -1178,10 +1421,10 @@ html, body {
 
 .mikio-tab-active {
     display: inline-block;
-    background-color: #fff;
+    background-color: var(--tab-active-background-color);
     font-weight: normal;
-    color: #495057;
-    border-color: #dee2e6 #dee2e6 #fff;
+    color: var(--tab-active-color);
+    border-color: var(--tab-active-border-color) var(--tab-active-border-color) var(--tab-active-background-color);
     border-radius: .5rem .5rem 0 0;
     border-width: 1px;
     border-style: solid;
@@ -1192,10 +1435,10 @@ html, body {
 }
 
 .mikio-tab {
-    background-color: #fff;
+    background-color: var(--tab-background-color);
     font-weight: normal;
-    color: #495057;
-    border-color: #dee2e6 #dee2e6 #fff;
+    color: var(--tab-color);
+    border-color: var(--tab-border-color) var(--tab-border-color) var(--tab-background-color);
     padding: .5rem 1rem;
     margin: 0;
     bottom: -1px;
@@ -1203,17 +1446,17 @@ html, body {
 }
 
 .mikio-tab-panel {
-    margin-bottom: 0;
-    background-color: #fff;
+    margin-bottom: 0 !important;
+    background-color: var(--tab-active-background-color);
     border-width: 1px 1px 1px 1px;
     border-style: solid;
-    border-color: #dee2e6;
+    border-color: var(--tab-active-border-color) !important;
     word-wrap: break-word;
     word-break: break-word;
 }
 
 .mikio.dokuwiki div.section_highlight {
-    background-color: @ini_section_edit_highlight;
+    background-color: var(--section-edit-highlight);
     border-width: 0;
     margin: 0 -1rem;
     padding: 0 1rem;
@@ -1221,7 +1464,7 @@ html, body {
 
 .mikio-input-file {
     position: absolute;
-    // margin-top: -.5rem;
+    margin-top: -.5rem;
     top: 0;
     right: 0;
     left: 0;
@@ -1229,10 +1472,9 @@ html, body {
     padding: .25rem 1rem;
     line-height: 1.5;
     text-align: left;
-    color: @ini_control_text_color;
-    background-color: @ini_control_background_color;
-    // border: .1px solid @ini_control_border_color;
-    border: .1px solid @ini_input_border_color;
+    color: var(--control-text-color);
+    background-color: var(--control-background-color);
+    border: .1px solid var(--input-border-color);
     border-radius: .25rem;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1253,16 +1495,17 @@ html, body {
         content: "Browse";
         padding: .25rem 1rem;
         line-height: 1.5;
-        color: @ini_control_background_color;
-        background-color: @ini_control_border_color;
+        color: var(--button-text-color);
+        background-color: var(--button-background-color);
         border-radius: 0 .25rem .25rem 0;
-        border: 1px solid @ini_control_border_color;
+        border: 1px solid var(--button-border-color);
         transition: all .15s ease-in-out;
     }
 
     &:hover:before {
-        background-color: @ini_control_background_color;
-        color: @ini_control_text_color;
+        background-color: var(--button-background-hover-color);
+        border-color: var(--button-border-hover-color);
+        color: var(--button-text-hover-color);
     }
 }
 
@@ -1270,32 +1513,33 @@ code, pre {
     overflow-x: auto;
     font-family: @ini_code_font_family;
     font-size: @ini_code_font_size;
-    color: @ini_code_text_color;
-    background-color: @ini_code_background_color;
+    color: var(--code-text-color);
+    background-color: var(--code-background-color);
     word-wrap: @ini_code_word_wrap;
-    .mikio-pre-wrap;
+    .mikio-pre-wrap();
     line-height: @ini_code_line_height;
 }
 
 .mode_show {
     code, pre {
-        border: 1px solid @ini_code_border_color;
+        border: 1px solid var(--code-border-color);
         padding: 1em;
     }
 }
 
-
 /* Dokuwiki Patches */
-.mikio-search,
-.mikio .dokuwiki fieldset,
-.mikio.dokuwiki .secedit,
-.mikio .mode_revisions,
-.mikio .mode_edit,
-.mikio .mode_draft,
-.mikio .mode_preview,
-.mikio .mode_showtag,
-.mikio .mode_admin {
-    .mikio-controls;
+.mikio {
+    .mikio-search,
+    &.dokuwiki fieldset,
+    &.dokuwiki .secedit,
+    .mode_revisions,
+    .mode_edit,
+    .mode_draft,
+    .mode_preview,
+    .mode_showtag,
+    .mode_admin {
+        .mikio-controls();
+    }
 }
 
 .mikio.dokuwiki .secedit {
@@ -1335,7 +1579,7 @@ code, pre {
 
 .mikio.dokuwiki .mode_login,
 .mikio.dokuwiki .mode_denied {
-    .mikio-dialog;
+    .mikio-dialog();
 }
 
 .mikio .mode_admin {
@@ -1360,10 +1604,10 @@ code, pre {
             justify-content: center;
         
             li {
-                border: 1px solid @ini_control_border_color;
+                border: 1px solid var(--button-border-color);
                 border-radius: .25rem;
                 margin: 1rem 1rem;
-                background-color: @ini_control_background_color;
+                background-color: var(--button-background-color);
                             
                 a {
                     display: flex;
@@ -1375,7 +1619,7 @@ code, pre {
                     font-size: 1rem;
                     font-weight: normal;
                     padding: 1rem 2rem;
-                    color: #333;
+                    color: var(--button-text-color);
                     .mikio-text-decoration(none);
                     overflow: hidden;
                     transition: all .15s ease-in-out;
@@ -1386,14 +1630,18 @@ code, pre {
                         min-height: auto;
                     }
 
+                    svg {
+                        fill: var(--button-text-color);
+                    }
+
                     &:hover {
                         .mikio-text-decoration(none);
-                        color: @ini_control_background_color;
-                        background-color: @ini_control_border_color;
-                        border-color: @ini_control_border_color;
+                        color: var(--button-text-hover-color);
+                        background-color: var(--button-background-hover-color);
+                        border-color: var(--button-border-hover-color);
 
                         svg {
-                            fill: @ini_control_background_color;                            
+                            fill: var(--button-text-hover-color);                            
                         }
                     }
                 }            
@@ -1402,7 +1650,7 @@ code, pre {
     }
 
     .mikio-config-table-header {
-        background-color: #ddd;
+        background-color: var(--table-header-row-background-color);
         font-weight: bold;
 
         .mikio-iicon {
@@ -1415,38 +1663,52 @@ code, pre {
             li {
                 border-width: 0 0 1px 0;
                 border-style: solid;
-                border-color: @ini_table_row_border_color;
+                border-color: var(--table-row-border-color);
                 padding: .75rem;
                 margin: 0;
                 text-align: left;    
 
                 &:nth-child(odd) {
-                    background-color: @ini_table_odd_row_background_color;
+                    background-color: var(--table-odd-row-background-color);
                 }
         
                 &:nth-child(even) {
-                    background-color: @ini_table_even_row_background_color;
+                    background-color: var(--table-even-row-background-color);
                 }
             }
         }
     }
 
     button#usrmgr__del {
-        .mikio-button-danger;
+        .mikio-button-danger();
         margin-right: .5rem;
     }
 
+    #acl__detail div#acl__user {
+        border-color: var(--toc-border-color);
+    }
+
     #acl__tree {
-        background-color: #fff;
+        background-color: var(--tree-background-color);
+        border-color: var(--tree-border-color);
+        color: var(--control-text-color);
+
+        // li[role=treeitem] {
+            // padding-left: 2rem;
+        // }
+
+        a.cur {
+            background-color: var(--section-edit-highlight);
+        }
     }
 
     #acl_manager table tr {
         &:nth-child(odd) {
-            background-color: @ini_table_odd_row_background_color;
+            background-color: var(--table-odd-row-background-color);
         }
 
         &:nth-child(even) {
-            background-color: @ini_table_even_row_background_color;
+            background-color: var(--table-even-row-background-color);
         }
     }
 }
@@ -1465,7 +1727,7 @@ code, pre {
 .mode_preview,
 .mode_showtag {
     .mikio-content, .mikio-page-fill {
-        .mikio-admin;
+        .mikio-admin();
     }
 }
 
@@ -1475,7 +1737,7 @@ code, pre {
 
 .mikio.dokuwiki .secedit {
     button {
-        .mikio-button-small;
+        .mikio-button-small();
     }
 }
 
@@ -1510,6 +1772,7 @@ code, pre {
 
 .mikio #config__manager {
     fieldset {
+        color: var(--text);
         background-color: transparent;
         margin: 0;
         padding: 0;
@@ -1519,19 +1782,15 @@ code, pre {
         }
     }
 
-    tr {
-        .input, input {
+    tr {        
+        textarea {
             color: inherit;
-            background-color: transparent;
+            background-color: var(--control-background-color);
         }
         
-        textarea, select {
-            color: inherit;
-            background-color: #fff;
-        }
-
         select {
             width: 100%;
+            background-color: var(--control-background-color);
         }
     }
 
@@ -1568,18 +1827,19 @@ code, pre {
     }
 
     button[type=submit] {
-        .mikio-button-submit;
+        .mikio-button-submit();
     }
 }
 
 .mode_revisions .mikio-article {
     li {
         padding: .5rem 1rem;
-        border-top: 1px solid #e5e5e5;
+        border-top: 1px solid var(--table-row-border-color);
+        background-color: var(--table-even-row-background-color);
     }
 
     li:nth-child(odd) {
-        background-color: #fff;
+        background-color: var(--table-odd-row-background-color);
     }
 
     .li {
@@ -1595,6 +1855,10 @@ code, pre {
 
         span.sizechange {
             width: 100%;
+            font-size: 80%;
+            border-radius: .2em;
+            padding: .1em .2em;
+            color: var(--control-text-color) !important;
         }
     }
 
@@ -1610,11 +1874,12 @@ code, pre {
 
     li {
         padding: .5rem 1rem;
-        border-top: 1px solid #e5e5e5;
+        border-top: 1px solid var(--table-row-border-color);
+        background-color: var(--table-even-row-background-color);
     }
 
     li:nth-child(odd) {
-        background-color: #fff;
+        background-color: var(--table-odd-row-background-color);
     }
 
     .li {
@@ -1633,6 +1898,7 @@ code, pre {
             font-size: 80%;
             border-radius: .2em;
             padding: .1em .2em;
+            color: var(--control-text-color);
 
             &.positive {
                 background-color: #cfc;
@@ -1645,8 +1911,8 @@ code, pre {
     }
 
     select {
-        .mikio-control;
-        .mikio-select;
+        .mikio-control();
+        .mikio-select();
     }
 }
 
@@ -1656,20 +1922,20 @@ code, pre {
     min-width: 100%;
 
     button, .qq-upload-button, .qq-upload-list a {
-        .mikio-control;
-        .mikio-button;
+        .mikio-control();
+        .mikio-button();
     }
 
     .qq-upload-list a.qq-upload-cancel {
-        .mikio-button-danger;
+        .mikio-button-danger();
     }
 
     button.qq-upload-action {
-        .mikio-button-submit;
+        .mikio-button-submit();
     }
 
     input[type=text], input[type=search], textarea {
-        .mikio-control;
+        .mikio-control();
         .mikio-input-text
     }
 
@@ -1687,27 +1953,20 @@ code, pre {
         width: 20%;
         min-width: 10em;
         left: 0 !important;
+
+        h2 {
+            .mikio-tab-active();
+            font-size: 1rem;
+        }
     }
 
-    .namespaces, #media__tree {
-        h2 {
-            .mikio-tab-active;
-            font-size: 1rem;
-            display: inline-block;
-            border-radius: .5rem .5rem 0 0;
-            border-width: 1px;
-            border-style: solid;
-            line-height: 1.4rem;
-            position: relative;
-            z-index: 2;
-        }
-    
-        .panelHeader {
-            .mikio-tab-panel;
-        }
+    #media__tree {
+        background-color: var(--tree-background-color);
+        border-color: var(--tree-border-color);
 
         ul, ul.idx {
             margin-top: 0;
+            margin-bottom: 0;
             padding: 0;
             list-style-type: none;
 
@@ -1726,7 +1985,6 @@ code, pre {
 
             a {
                 .mikio-text-decoration(none);
-                color: #333;
             }
 
             div {
@@ -1734,6 +1992,28 @@ code, pre {
             }
         }
     }
+
+    // .namespaces, #media__tree {
+    //     h2 {
+    //         .mikio-tab-active();
+    //         font-size: 1rem;
+    //         display: inline-block;
+    //         border-radius: .5rem .5rem 0 0;
+    //         border-width: 1px;
+    //         border-style: solid;
+    //         line-height: 1.4rem;
+    //         position: relative;
+    //         z-index: 2;
+    //     }
+    
+    .panelHeader {
+        .mikio-tab-panel();
+    }
+
+
+
+    //     }
+    // }
     
     .filelist {
         width: 50%;
@@ -1743,7 +2023,7 @@ code, pre {
 
     .filelist, .qq-uploader {
         .panelHeader {
-            .mikio-tab-panel;
+            .mikio-tab-panel();
 
             h3 {
                 width: 100%;
@@ -1759,11 +2039,11 @@ code, pre {
         }
 
         .panelContent {
-            padding-top: 1rem;
+            // padding-top: 1rem;
             text-align: center;
 
             ul li:hover {
-                background-color: #eee;
+                background-color: initial;
             }
         }
 
@@ -1776,11 +2056,11 @@ code, pre {
                 li {
                     display: inline-block;
                     width: 200px;
-                    background-color: #fff;
+                    background-color: var(--tab-active-background-color);
+                    color: var(--tab-active-color);
 
                     dt {
                         text-align: center;
-                        // display: flex;
 
                         a {
                             display: block;
@@ -1795,8 +2075,8 @@ code, pre {
 
                     dd {
                         width: auto;
-                        font-size: 90%;
-                        color: #666;
+                        font-size: 80%;
+                        // color: #666;
                         margin-bottom: .25rem;
                         margin-inline-start: 0;
                     }
@@ -1805,34 +2085,80 @@ code, pre {
                         font-weight: normal;
 
                         a {
-                            color: #000;
+                            // color: #000;
                         }
                     }
                 }
             }
         }
 
-        .rows {
+        ul.rows {
+            list-style-type: none;
+            padding: 0;
+
             li {
-                background-color: @ini_table_odd_row_background_color;
+                background-color: var(--table-odd-row-background-color);
                 max-height: none;
                 font-size: 90%;
+                color: var(--text);
+                overflow: auto;
 
                 &:nth-child(2n+1) {
-                    background-color: @ini_table_even_row_background_color;
+                    background-color: var(--table-even-row-background-color);
                 }
 
                 a {
                     font-weight: normal;
-                    color: #333;
                 }
 
-                dt a {
-                    height: auto;
+                dl {
+                    display: flex;
+                    align-items: center;
+                }
+
+                dt {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 10%;
+                    
+                    a {
+                        height: auto;
+                        width: auto;
+
+                        img {
+                            display: block;
+                            max-width: 40px;
+                            max-height: 40px;
+                        }
+                    }
                 }
 
                 dd.name {
                     text-align: left;
+                    width: 30%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    float: left;
+                    margin-left: 1%;
+                    white-space: nowrap;
+                }
+
+                dd.size {
+                    width: 15%;
+                }
+
+                dd.date {
+                    width: 20%;
+                }
+
+                dd.filesize {
+                    width: 15%;
+                }
+
+                dd {
+                    margin: 0;
+                    font-size: 90%;
                 }
             }
         }
@@ -1856,7 +2182,7 @@ code, pre {
 
     .file {
         .panelHeader {
-            .mikio-tab-panel;
+            .mikio-tab-panel();
 
             a {
                 font-weight: normal;
@@ -1866,12 +2192,12 @@ code, pre {
 
         ul {
             &.tabs {
-                .mikio-tabs;
+                .mikio-tabs();
             }
         }
 
         #mediamanager__btn_delete button {
-            .mikio-button-danger;
+            .mikio-button-danger();
         }
 
         dl {
@@ -1895,7 +2221,7 @@ code, pre {
         }
 
         button[name="mediado[save]"] {
-            .mikio-button-submit;
+            .mikio-button-submit();
         }
     }
 
@@ -1907,25 +2233,38 @@ code, pre {
         margin: 0 10px 10px 0;
         padding: 10px 10px 8px;
         font-size: .9rem;
+        overflow: hidden;
+
+        h3 {
+            float: left;
+            font-weight: normal;
+            font-size: 1em;
+            padding: 0;
+            margin: 0 0 3px;
+        }
+
+        form.options {
+            float: right;
+        }
     }
 
     .panelContent {
-        background-color: #fff;
+        background-color: var(--tab-active-background-color);
         margin: 0 10px 0 0;
         border-width: 0 1px 1px 1px;
         border-style: solid;
-        border-color: #dee2e6;
+        border-color: var(--tab-active-border-color);
         padding: .5rem;
     }
 
     #media__opts {
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid var(--tab-active-border-color);
         padding-bottom: .75rem;
     }
 
     #media__content {
         .odd, .even {
-            border-top: 1px solid @ini_table_row_border_color;
+            border-top: 1px solid var(--table-row-border-color);
             font-size: 90%;
             display: grid;
             grid-template-columns: 9rem auto 10rem 1.5rem 1.5rem 1.5rem;
@@ -1988,11 +2327,11 @@ code, pre {
         }
 
         .odd {
-            background-color: @ini_table_odd_row_background_color;
+            background-color: var(--table-odd-row-background-color);
         }
 
         .even {
-            background-color: @ini_table_even_row_background_color;
+            background-color: var(--table-even-row-background-color);
         }
     }
 }
@@ -2014,13 +2353,13 @@ code, pre {
             }
 
             button[type=submit] {
-                .mikio-button-submit;
+                .mikio-button-submit();
                 grid-column: 2 / span 1;
                 grid-row: 1 / span 1;
             }
 
             .toggleAssistant {
-                .mikio-button-small;
+                .mikio-button-small();
                 grid-column: 3 / span 1;
                 grid-row: 1 / span 1;
                 flex: 0;
@@ -2034,9 +2373,9 @@ code, pre {
                 .toggle {
                     position: relative;
                     display: inline-block;
-                    border: 1px solid @ini_dropdown_border_color;
-                    background-color: @ini_dropdown_background_color;
-                    color: @ini_dropdown_color;
+                    border: 1px solid var(--dropdown-border-color);
+                    background-color: var(--dropdown-background-color);
+                    color: var(--dropdown-color);
                     border-radius: .25rem;
                     padding: .375rem .75rem;
                     text-align: left;
@@ -2058,9 +2397,9 @@ code, pre {
                         right: 0;
                         top: .5rem;
                         padding: .5rem 2rem;
-                        border: 1px solid @ini_dropdown_border_color;
+                        border: 1px solid var(--dropdown-border-color);
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                        background-color: @ini_dropdown_background_color;
+                        background-color: var(--dropdown-background-color);
                         color: #999;
                         list-style-type: none;
 
@@ -2076,7 +2415,7 @@ code, pre {
 
                         a {
                             transition: all 0.15s ease-in-out;
-                            color: @ini_dropdown_color;
+                            color: var(--dropdown-color);
                             .mikio-text-decoration(none);
                             font-style: normal;
                             display: block;
@@ -2084,7 +2423,7 @@ code, pre {
                             margin: 0 -2rem;
 
                             &:hover {
-                                background-color: @ini_dropdown_hover_color;
+                                background-color: var(--dropdown-hover-color);
                             }
                         }
                     }
@@ -2134,12 +2473,12 @@ code, pre {
     }
 
     .search_fullpage_result {
-        border-top: 1px solid @ini_table_row_border_color;
+        border-top: 1px solid var(--table-row-border-color);
         padding: .75rem;
-        background-color: @ini_table_odd_row_background_color;
+        background-color: var(--table-odd-row-background-color);
 
         &:nth-child(2n+1) {
-            background-color: @ini_table_even_row_background_color;
+            background-color: var(--table-even-row-background-color);
         }
 
         .snippet {
@@ -2150,22 +2489,26 @@ code, pre {
 }
 
 #index__tree {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    padding: 0 .5rem;
+    background-color: var(--tree-background-color);
+    border: 1px solid var(--tree-border-color);
+    padding: 0 1rem;
+
+    ul {
+        padding-left: 1rem;
+    }
 
     a {
-        color: #333;
+        // color: var(--text);
         .mikio-text-decoration(none);
     }
 
     .curid a {
-        color: red;
+        color: var(--section-edit-highlight);
     }
 }
 
 .mikio.dokuwiki ul.tabs {
-    .mikio-tabs;
+    .mikio-tabs();
 }
 
 .mikio .mode_draft {
@@ -2175,7 +2518,7 @@ code, pre {
 }
 
 #dokuwiki__detail {
-    .mikio-admin;
+    .mikio-admin();
     height: 100vh;
     padding: 0 2rem;
 
@@ -2197,17 +2540,17 @@ code, pre {
 /* Plugin Patches */
 /* FastWiki Plugin Patch - .mikio .content_partial */
 .mikio .content_partial {
-    .mikio-controls;
+    .mikio-controls();
 }
 
 /* Discussion Plugin Patch - .mikio .content_partial */
 .mikio div.dokuwiki div.comment_wrapper {
-    .mikio-controls;
+    .mikio-controls();
     padding: 1em;
 
     input[type=submit] {
-        .mikio-control;
-        .mikio-button;
+        .mikio-control();
+        .mikio-button();
     }
 
     h2 {
@@ -2582,447 +2925,54 @@ code, pre {
         }
 
         div.jsoneditor-value {
-            background-color: #fff;
+            background-color: var(--background);
+        }
+    }
+}
+
+.ui-controlgroup-horizontal {
+    label {
+        .mikio-button();
+        .mikio-button-small();
+        background-image: none;
+        border: 0;
+
+        &.ui-state-active {
+            .mikio-button-submit();
+        }
+
+        &:hover {
+            background-image: none !important;
+            border: 0 !important;
         }
     }
 }
 
 /* dark-light mode button */
 .mikio {
-    .mikio-theme-mode {
+    .mikio-darklight {
         display: inline-block;
+        align-self: center;
+
+        .mikio-darklight-light {
+            display: var(--display-theme-light);
+        }
+
+        .mikio-darklight-dark {
+            display: var(--display-theme-dark);
+        }
     }
 
-    .mikio-theme-mode-button {
-        border: 0;
+    .mikio-darklight-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 2.2rem;
         height: 2.2rem;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 75%;
-    }
+        padding: 0;
 
-    &.mikio-auto {
-        &.mikio-dark .mikio-theme-mode-button {
-            background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:%23dddddd" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
-
-            &:hover {
-                background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:%23333333" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
-            }
+        .mikio-iicon {
+            margin: 0;
         }
-
-        &.mikio-light .mikio-theme-mode-button {
-            background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
-        }
-    }
-
-    &.mikio-light {
-        .mikio-theme-mode-button {
-            background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z" /></svg>');
-        }
-    }
-        
-    &.mikio-dark {
-        .mikio-theme-mode-button {
-            background-size: 50%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" /></svg>');
-        }
-    }
-}
-
-/* dark-mode */
-.mikio.mikio-dark {
-    background-color: @ini_darkmode_background;
-    color: @ini_darkmode_text;
-
-    .mikio-navbar {
-        border-bottom-color: @ini_darkmode_navbar_border_color;
-        background-color: @ini_darkmode_navbar_background_color;
-
-        .mikio-navbar-brand {
-            .mikio-navbar-brand-title-text {
-                color: @ini_darkmode_navbar_brand_text_color;
-            }
-        
-            .mikio-navbar-brand-title-tagline {
-                color: @ini_darkmode_navbar_brand_tagline_color;
-            }
-        }
-
-        .mikio-navbar-toggle {
-            &:before, .icon, &:after {
-                background: @ini_darkmode_control_text_color;
-            }
-        }
-    }
-
-    .mikio-sub-navbar {
-        color: @ini_darkmode_subnavbar_text_color;
-        border-color: @ini_darkmode_subnavbar_border_color;
-        background-color: @ini_darkmode_subnavbar_background_color;
-
-        a {
-            color: @ini_darkmode_subnavbar_link_color;
-            color: @ini_darkmode_tag_text_color;
-
-            &:hover {
-                color: @ini_darkmode_subnavbar_link_hover_color;
-            }
-        }
-    }
-
-    .mikio-sidebar {
-        background-color: @ini_darkmode_sidebar_background_color;
-        color: @ini_darkmode_sidebar_text_color;
-
-        &.mikio-sidebar-left {
-            border-left-color: @ini_darkmode_sidebar_border_color;
-            border-right-color: @ini_darkmode_sidebar_border_color;
-        }
-    
-        &.mikio-sidebar-right {
-            border-left-color: @ini_darkmode_sidebar_border_color;
-            border-right-color: @ini_darkmode_sidebar_border_color;
-        }
-
-        .mikio-user-info {
-            border-bottom-color: @ini_darkmode_sidebar_border_color;
-        }
-
-        .mikio-sidebar-content {
-            a {
-                color: @ini_darkmode_sidebar_link_color;
-
-                &:hover {
-                    color: @ini_darkmode_sidebar_link_hover_color;
-                }
-            }
-        }
-    }
-
-    .mikio-sidebar-header {
-        border-bottom-color: @ini_darkmode_sidebar_border_color;
-    }
-
-    .mikio-sidebar-footer {
-        border-top-color: @ini_darkmode_sidebar_border_color;
-    }
-
-    .mikio-breadcrumbs, .mikio-youarehere {
-        background-color: @ini_darkmode_breadcrumb_background_color;
-        color: @ini_darkmode_breadcrumb_text_color;
-
-        span.curid a, a {
-            color: @ini_darkmode_breadcrumb_link_color;
-
-            &:hover {
-                color: @ini_darkmode_breadcrumb_link_hover_color;
-            }
-        }
-    }
-
-    .mikio-tags {
-        a {
-            border-color: @ini_darkmode_tag_background_color;
-            background-color: @ini_darkmode_tag_background_color;
-
-            &:hover {
-                color: @ini_darkmode_tag_background_color;
-            }
-        }
-    }
-
-    .mikio-control {
-        color: @ini_darkmode_control_text_color;
-        background-color: @ini_darkmode_control_background_color;
-    }
-
-    .mikio-input-text, .mikio-toolbar-button {
-        border-color: @ini_darkmode_input_border_color;
-    }
-
-    .mikio-page-topheader {
-        background-color: @ini_darkmode_topheader_background_color;
-    }
-
-    .mikio-page-header {
-        background-color: @ini_darkmode_header_background_color;
-    }
-
-    .mikio-hero {
-        background-color: @ini_darkmode_hero_background_color;
-
-        .mikio-hero-text {
-            h1 {
-                color: @ini_darkmode_hero_title_color;
-            }
-
-            h2 {
-                color: @ini_darkmode_hero_subtitle_color;
-            }
-        }
-    }
-
-    .mikio-admin {
-        background-color: @ini_darkmode_admin_background_color;
-
-        div.ui-admin {
-            ul.admin_tasks, ul.admin_plugins {
-                li {
-                    border-color: @ini_darkmode_control_border_color;
-                    background-color: @ini_darkmode_control_background_color;
-
-                    a {
-                        &:hover {
-                            color: @ini_darkmode_control_background_color;
-                            background-color: @ini_darkmode_control_border_color;
-                            border-color: @ini_darkmode_control_border_color;
-
-                            svg {
-                                fill: @ini_darkmode_control_background_color;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        #extension__list {
-            ul.extensionList {
-                li {
-                    border-color: @ini_darkmode_table_row_border_color;
-
-                    &:nth-child(odd) {
-                        background-color: @ini_darkmode_table_odd_row_background_color;
-                    }
-                
-                    &:nth-child(even) {
-                        background-color: @ini_darkmode_table_even_row_background_color;
-                    }
-                }
-            }
-        }
-
-        #acl_manager table tr {
-            &:nth-child(odd) {
-                background-color: @ini_darkmode_table_odd_row_background_color;
-            }
-
-            &:nth-child(even) {
-                background-color: @ini_darkmode_table_even_row_background_color;
-            }
-        }
-    }
-
-    .mikio-navbar .mikio-search, .mikio-sidebar .mikio-search, .mikio-footer .mikio-search, .mikio-search {
-        button {
-            background-color: @ini_darkmode_control_border_color;
-            border-color: @ini_darkmode_control_border_color;
-
-            &:hover {
-                background-color: @ini_darkmode_control_background_color;
-                color: @ini_darkmode_control_text_color;
-            }
-        }
-    }
-
-    .mikio-input-file {
-        color: @ini_darkmode_control_text_color;
-        background-color: @ini_darkmode_control_background_color;
-        border-color: @ini_darkmode_input_border_color;
-
-        &:before {
-            color: @ini_darkmode_control_background_color;
-            background-color: @ini_darkmode_control_border_color;
-            border-color: @ini_darkmode_control_border_color;
-        }
-
-        &:hover:before {
-            background-color: @ini_darkmode_control_background_color;
-            color: @ini_darkmode_control_text_color;
-        }
-    }
-
-    .mikio-button {
-        border-color: @ini_darkmode_control_border_color;
-
-        &:hover:not(:disabled) {
-            color: @ini_darkmode_control_background_color;
-            background-color: @ini_darkmode_control_border_color;
-            border-color: @ini_darkmode_control_border_color;
-        }
-    }
-
-    .mikio-footer {
-        color: @ini_darkmode_footer_text_color;
-        background-color: @ini_darkmode_footer_background_color;
-
-        a {
-            color: @ini_darkmode_footer_link_color;
-
-            &:hover {
-                color: @ini_darkmode_footer_link_hover_color;
-            }
-        }
-
-        .dw__pagetools {
-            .tools {
-                a {
-                    svg {
-                        fill: @ini_darkmode_footer_link_color;
-                    }
-
-                    &:hover {
-                        svg {
-                            fill: @ini_darkmode_footer_link_hover_color;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    code, pre {
-        color: @ini_darkmode_code_text_color;
-        background-color: @ini_darkmode_code_background_color;
-    }
-
-    .mode_show {
-        code, pre {
-            border-color: @ini_darkmode_code_border_color;
-        }
-    }
-
-    &.dokuwiki div.preview, .mikio-content, .mode_admin .mikio-toc #dw__toc {
-        background-color: @ini_darkmode_content_background;
-    }
-
-    .mikio-toc {
-        #dw__toc {
-            background-color: @ini_darkmode_toc_background_color;
-            border-color: @ini_darkmode_toc_border_color;
-        }
-
-        a {
-            color: @ini_darkmode_toc_link_color;
-
-            &:hover {
-                color: @ini_darkmode_toc_link_hover_color;
-            }
-        }
-    }
-
-    #dw__pagetools {
-        a {
-            svg {
-                fill: @ini_darkmode_pagetools_color;
-            }
-
-            &:hover {
-                svg {
-                    fill: @ini_darkmode_pagetools_hover_color;
-                }
-            }
-        }
-    }
-
-    .mode_show table, &.dokuwiki .mode_showtag table.ul, .mode_admin table {
-        border-bottom-color: @ini_darkmode_table_row_border_color;
-
-        tr {
-            border-top-color: @ini_darkmode_table_row_border_color;
-        }
-
-        tbody tr {
-            &:nth-child(odd) {
-                background-color: @ini_darkmode_table_odd_row_background_color;
-            }
-    
-            &:nth-child(even) {
-                background-color: @ini_darkmode_table_even_row_background_color;
-            }
-        }
-    }
-
-    #mediamanager__page, #media__manager {
-        #media__content {
-            .odd, .even {
-                border-top-color: @ini_darkmode_table_row_border_color;
-            }
-
-            .odd {
-                background-color: @ini_darkmode_table_odd_row_background_color;
-            }
-    
-            .even {
-                background-color: @ini_darkmode_table_even_row_background_color;
-            }
-        }
-
-        .filelist, .qq-uploader {
-            .rows {
-                li {
-                    background-color: @ini_darkmode_table_odd_row_background_color;
-
-                    &:nth-child(2n+1) {
-                        background-color: @ini_darkmode_table_even_row_background_color;
-                    }
-                }
-            }
-        }
-    }
-
-    &.dokuwiki .mode_search .mikio-article {
-        .search_fullpage_result {
-            border-top-color: @ini_darkmode_table_row_border_color;
-            background-color: @ini_darkmode_table_odd_row_background_color;
-
-            &:nth-child(2n+1) {
-                background-color: @ini_darkmode_table_even_row_background_color;
-            }
-
-            fieldset.search-form {
-                .advancedOptions {
-                    .toggle {
-                        color: @ini_darkmode_dropdown_color;
-                        border-color: @ini_darkmode_dropdown_border_color;
-                        background-color: @ini_darkmode_dropdown_background_color;
-
-                        ul {
-                            border-color: @ini_darkmode_dropdown_border_color;
-                            background-color: @ini_darkmode_dropdown_background_color;
-
-                            a {
-                                color: @ini_darkmode_dropdown_color;
-
-                                &:hover {
-                                    background-color: @ini_darkmode_dropdown_hover_color;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .mikio-dropdown {
-        border-color: @ini_darkmode_dropdown_border_color;
-        background-color: @ini_darkmode_dropdown_background_color;
-        color: @ini_darkmode_dropdown_color;
-
-        .mikio-dropdown-divider {
-            border-bottom-color: @ini_darkmode_dropdown_border_color;
-        }
-
-        .mikio-nav-link {
-            &:hover {
-                background-color: @ini_darkmode_dropdown_hover_color;
-            }
-        }
-    }
-
-    &.dokuwiki div.section_highlight {
-        background-color: @ini_darkmode_section_edit_highlight;
     }
 }
