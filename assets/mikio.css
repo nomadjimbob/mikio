@@ -6,6 +6,192 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
+:root[data-theme="theme-light"] {
+  --text: #333;
+  --link: #2b73b7;
+  --link-hover: #2b73b7;
+  --background: #fff;
+  --admin-background-color: #f2f2f2;
+  --code-text-color: #e83e8c;
+  --code-border-color: transparent;
+  --code-background-color: transparent;
+  --control-text-color: #495057;
+  --control-border-color: #6c757d;
+  --control-background-color: #fff;
+  --input-border-color: #ced4da;
+  --button-text-color: #6c757d;
+  --button-background-color: #fff;
+  --button-border-color: #ced4da;
+  --button-text-hover-color: #6c757d;
+  --button-background-hover-color: #ddd;
+  --button-border-hover-color: #ced4da;
+  --button-search-text-color: #fff;
+  --button-search-background-color: #666;
+  --button-search-border-color: #666;
+  --button-search-text-hover-color: #fff;
+  --button-search-background-hover-color: #666;
+  --button-search-border-hover-color: #666;
+  --button-default-text-color: #ffffff;
+  --button-default-background-color: #007bff;
+  --button-default-border-color: #007bff;
+  --button-default-text-hover-color: #ffffff;
+  --button-default-background-hover-color: #0069d9;
+  --button-default-border-hover-color: #0062cc;
+  --topheader-background-color: #fff;
+  --header-background-color: #fff;
+  --navbar-background-color: #fff;
+  --navbar-border-color: #e5e5e5;
+  --navbar-brand-text-color: #1a1a1a;
+  --navbar-brand-tagline-color: #6c757d;
+  --navbar-link-color: #1a1a1a;
+  --navbar-link-hover-color: #1a1a1a;
+  --subnavbar-text-color: #666;
+  --subnavbar-link-color: #666;
+  --subnavbar-link-hover-color: #000;
+  --subnavbar-background-color: #f8f8f8;
+  --subnavbar-border-color: #e5e5e5;
+  --tag-background-color: #999;
+  --tag-text-color: #fff;
+  --breadcrumb-background-color: #ccc;
+  --breadcrumb-text-color: #808080;
+  --breadcrumb-link-color: #666;
+  --breadcrumb-link-hover-color: #000;
+  --hero-title-color: #000;
+  --hero-subtitle-color: #666;
+  --hero-background-color: #ddf7fb;
+  --sidebar-text-color: #666;
+  --sidebar-link-color: #666;
+  --sidebar-link-hover-color: #333;
+  --sidebar-background-color: #f2f2f2;
+  --sidebar-border-color: #e5e5e5;
+  --content-background: #fff;
+  --toc-background-color: #f2f2f2;
+  --toc-border-color: #e5e5e5;
+  --toc-link-color: #666;
+  --toc-link-hover-color: #000;
+  --pagetools-color: #ccc;
+  --pagetools-hover-color: #666;
+  --footer-text-color: #737373;
+  --footer-link-color: #666;
+  --footer-link-hover-color: #333;
+  --footer-background-color: #ccc;
+  --table-header-row-background-color: #ddd;
+  --table-row-border-color: #e5e5e5;
+  --table-odd-row-background-color: #fff;
+  --table-even-row-background-color: #f2f2f2;
+  --dropdown-color: #1a1a1a;
+  --dropdown-hover-color: #e5e5e5;
+  --dropdown-border-color: #e5e5e5;
+  --dropdown-background-color: #fff;
+  --section-edit-highlight: rgba(255, 255, 0, 0.3);
+  --tree-background-color: #fff;
+  --tree-border-color: #e5e5e5;
+  --tab-color: #333;
+  --tab-background-color: transparent;
+  --tab-border-color: transparent;
+  --tab-hover-color: #333;
+  --tab-background-hover-color: #fff;
+  --tab-border-hover-color: #ddd;
+  --tab-active-color: #333;
+  --tab-active-background-color: #fff;
+  --tab-active-border-color: #ddd;
+  --display-theme-light: inline-block;
+  --display-theme-dark: none;
+}
+
+:root[data-theme="theme-dark"] {
+  --text: #fff;
+  --link: #00bc8c;
+  --link-hover: #009670;
+  --background: #222;
+  --admin-background-color: #222;
+  --code-text-color: #e83e8c;
+  --code-border-color: transparent;
+  --code-background-color: transparent;
+  --control-text-color: #303030;
+  --control-border-color: #222;
+  --control-background-color: #fff;
+  --input-border-color: #222;
+  --button-text-color: #fff;
+  --button-background-color: #444;
+  --button-border-color: #333333;
+  --button-text-hover-color: #fff;
+  --button-background-hover-color: #363636;
+  --button-border-hover-color: #363636;
+  --button-search-text-color: #fff;
+  --button-search-background-color: #444;
+  --button-search-border-color: #333333;
+  --button-search-text-hover-color: #fff;
+  --button-search-background-hover-color: #363636;
+  --button-search-border-hover-color: #363636;
+  --button-default-text-color: #ffffff;
+  --button-default-background-color: #007bff;
+  --button-default-border-color: #007bff;
+  --button-default-text-hover-color: #ffffff;
+  --button-default-background-hover-color: #0069d9;
+  --button-default-border-hover-color: #0062cc;
+  --topheader-background-color: #222;
+  --header-background-color: #222;
+  --navbar-background-color: #375a7f;
+  --navbar-border-color: #375a7f;
+  --navbar-brand-text-color: #fff;
+  --navbar-brand-tagline-color: #ddd;
+  --navbar-link-color: rgba(255, 255, 255, 0.6);
+  --navbar-link-hover-color: #ffffff;
+  --subnavbar-text-color: #222;
+  --subnavbar-link-color: rgba(34, 34, 34, 0.7);
+  --subnavbar-link-hover-color: #222222;
+  --subnavbar-background-color: #adb5bd;
+  --subnavbar-border-color: #adb5bd;
+  --tag-background-color: #00bc8c;
+  --tag-text-color: #333;
+  --breadcrumb-background-color: #333;
+  --breadcrumb-text-color: #666;
+  --breadcrumb-link-color: #777;
+  --breadcrumb-link-hover-color: #fff;
+  --hero-title-color: #fff;
+  --hero-subtitle-color: #ddd;
+  --hero-background-color: #00bc8c;
+  --sidebar-text-color: #888;
+  --sidebar-link-color: #999;
+  --sidebar-link-hover-color: #ccc;
+  --sidebar-background-color: #111;
+  --sidebar-border-color: #333;
+  --content-background: #222;
+  --toc-background-color: #303030;
+  --toc-border-color: #444;
+  --toc-link-color: #fff;
+  --toc-link-hover-color: #fff;
+  --pagetools-color: #444;
+  --pagetools-hover-color: #555;
+  --footer-text-color: #888;
+  --footer-link-color: #999;
+  --footer-link-hover-color: #ccc;
+  --footer-background-color: #111;
+  --table-header-row-background-color: #00bc8c;
+  --table-row-border-color: #444;
+  --table-odd-row-background-color: #222;
+  --table-even-row-background-color: #333;
+  --dropdown-color: #fff;
+  --dropdown-hover-color: #375a7f;
+  --dropdown-border-color: #444;
+  --dropdown-background-color: #222;
+  --section-edit-highlight: #cc0;
+  --tree-background-color: #333;
+  --tree-border-color: #444;
+  --tab-color: #ccc;
+  --tab-background-color: transparent;
+  --tab-border-color: transparent;
+  --tab-hover-color: #fff;
+  --tab-background-hover-color: transparent;
+  --tab-border-hover-color: #444;
+  --tab-active-color: #fff;
+  --tab-active-background-color: #333;
+  --tab-active-border-color: #444;
+  --display-theme-light: none;
+  --display-theme-dark: inline-block;
+}
+
 .mikio-sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -34,9 +220,9 @@
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
-  border-color: #ced4da;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
+  border-color: var(--input-border-color);
   line-height: inherit;
 }
 
@@ -48,10 +234,14 @@
   padding: 0;
 }
 
-.mikio-controls button {
+.mikio-controls button,
+.mikio-controls input[type=button],
+.mikio-controls input[type=image] {
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -59,30 +249,34 @@
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.mikio-controls button:hover:not(:disabled) {
+.mikio-controls button:hover:not(:disabled),
+.mikio-controls input[type=button]:hover:not(:disabled),
+.mikio-controls input[type=image]:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
-.mikio-controls button:disabled {
+.mikio-controls button:disabled,
+.mikio-controls input[type=button]:disabled,
+.mikio-controls input[type=image]:disabled {
   opacity: .65;
 }
 
 .mikio-controls button#edbtn__save,
 .mikio-controls button[name="run[save]"] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio-controls button#edbtn__save:hover,
 .mikio-controls button[name="run[save]"]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio-controls input[type=text],
@@ -113,7 +307,7 @@
 .mikio-controls .toolbutton {
   border-radius: 0;
   border-right-width: 0;
-  border-color: #ced4da;
+  border-color: var(--input-border-color);
 }
 
 .mikio-controls .toolbutton:first-of-type {
@@ -145,8 +339,8 @@ body {
 
 html,
 body {
-  background-color: #fff;
-  color: #333;
+  background-color: var(--background);
+  color: var(--text);
   margin: 0;
 }
 
@@ -167,8 +361,8 @@ body {
 
 .mikio-page-topheader {
   padding: 0 2rem;
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #fff;
+  border-bottom: 1px solid var(--navbar-border-color);
+  background-color: var(--topheader-background-color);
   box-sizing: border-box;
   width: 100%;
   z-index: 1001;
@@ -176,22 +370,22 @@ body {
 
 .mikio-page-header {
   padding: 0 2rem;
-  background-color: #fff;
+  background-color: var(--header-background-color);
   box-sizing: border-box;
   width: 100%;
   z-index: 999;
 }
 
 .mikio-sidebar-header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--sidebar-border-color);
 }
 
 .mikio-sidebar-footer {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--sidebar-border-color);
 }
 
 .mikio-admin {
-  background-color: #f2f2f2;
+  background-color: var(--admin-background-color);
 }
 
 .mikio-small-only {
@@ -200,10 +394,12 @@ body {
 
 .mikio .mikio-breadcrumbs,
 .mikio .mikio-youarehere {
-  padding: .75rem 2rem;
-  background-color: #ccc;
+  padding: .5rem 1rem;
+  background-color: var(--breadcrumb-background-color);
+  border: 1px solid var(--breadcrumb-background-color);
+  border-radius: 4px;
   font-size: 80%;
-  color: #808080;
+  color: var(--breadcrumb-text-color);
 }
 
 .mikio .mikio-breadcrumbs span.curid a,
@@ -212,7 +408,7 @@ body {
 .mikio .mikio-youarehere a {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #666;
+  color: var(--breadcrumb-link-color);
   font-weight: normal;
 }
 
@@ -220,7 +416,7 @@ body {
 .mikio .mikio-breadcrumbs a:hover,
 .mikio .mikio-youarehere span.curid a:hover,
 .mikio .mikio-youarehere a:hover {
-  color: #000;
+  color: var(--breadcrumb-link-hover-color);
 }
 
 .mikio .mikio-breadcrumbs ul,
@@ -254,8 +450,8 @@ body {
   padding: .5rem 1rem .5rem 2rem;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: #e5e5e5;
-  background-color: #fff;
+  border-bottom-color: var(--navbar-border-color);
+  background-color: var(--navbar-background-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
@@ -286,7 +482,7 @@ body {
 }
 
 .mikio-navbar .mikio-navbar-brand .mikio-navbar-brand-title-text {
-  color: #1a1a1a;
+  color: var(--navbar-brand-text-color);
   margin: 0;
   font-weight: 500;
   font-size: 1.2rem;
@@ -294,7 +490,7 @@ body {
 
 .mikio-navbar .mikio-navbar-brand .mikio-navbar-brand-title-tagline {
   margin: 0;
-  color: #6c757d;
+  color: var(--navbar-brand-tagline-color);
 }
 
 .mikio-navbar .mikio-navbar-toggle {
@@ -307,7 +503,7 @@ body {
   height: 1rem;
   padding: 0;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform .15s ease-in-out;
   vertical-align: middle;
   border: 0 none;
   background: transparent;
@@ -325,9 +521,9 @@ body {
   width: 100%;
   height: 0.2em;
   margin: 0 0 0.2em;
-  transition: transform 0.2s ease-in-out;
+  transition: transform .15s ease-in-out;
   border-radius: 0.05em;
-  background: #495057;
+  background: var(--control-text-color);
 }
 
 .mikio-navbar .mikio-navbar-toggle.open .icon {
@@ -352,19 +548,43 @@ body {
 .mikio-navbar a {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: inherit;
+  color: var(--navbar-link-color);
+  transition: all .15s ease-in-out;
+}
+
+.mikio-navbar a:hover {
+  color: var(--navbar-link-hover-color);
+}
+
+.mikio-navbar .mikio-nav-dropdown a:after {
+  border-color: var(--navbar-link-color) !important;
+}
+
+.mikio-navbar .mikio-nav-dropdown a:hover:after {
+  border-color: var(--navbar-link-hover-color) !important;
 }
 
 .mikio-navbar .mikio-search {
   margin: 0 .5rem;
 }
 
+.mikio-navbar .mikio-button {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.mikio-navbar .mikio-button:hover:not(:disabled) {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--navbar-link-hover-color);
+}
+
 .mikio-sub-navbar {
-  color: #666;
+  color: var(--subnavbar-text-color);
   justify-content: center;
   padding: .75rem 1rem;
-  border-color: #e5e5e5;
-  background-color: #f8f8f8;
+  border-color: var(--subnavbar-border-color);
+  background-color: var(--subnavbar-background-color);
 }
 
 .mikio-sub-navbar ul,
@@ -387,15 +607,15 @@ body {
 }
 
 .mikio-sub-navbar a {
-  color: #666;
+  color: var(--subnavbar-link-color);
 }
 
 .mikio-sub-navbar a:hover {
-  color: #000;
+  color: var(--subnavbar-link-hover-color);
 }
 
 .mikio-hero {
-  background-color: #ddf7fb;
+  background-color: var(--hero-background-color);
 }
 
 .mikio-hero .mikio-container {
@@ -418,7 +638,7 @@ body {
 
 .mikio-hero .mikio-hero-text h1 {
   margin: .75rem 0 1rem 0;
-  color: #000;
+  color: var(--hero-title-color);
   line-height: 1.2;
 }
 
@@ -426,7 +646,7 @@ body {
   margin: 0;
   font-weight: normal;
   font-size: 1.25rem;
-  color: #666;
+  color: var(--hero-subtitle-color);
 }
 
 .mikio-hero .mikio-hero-image {
@@ -442,7 +662,7 @@ body {
   height: 15rem;
 }
 
-.mikio-tags {
+.mikio .mikio-tags {
   display: block;
   width: 100%;
   text-align: right;
@@ -450,41 +670,41 @@ body {
   margin-bottom: .5rem;
 }
 
-.mikio-tags a {
+.mikio .mikio-tags a {
   margin: 0 .25rem;
   font-size: 80%;
   padding: .25rem .75rem;
-  border: 1px solid #999;
+  border: 1px solid var(--tag-background-color);
   border-radius: 1rem;
-  background-color: #999;
-  color: #fff;
+  background-color: var(--tag-background-color);
+  color: var(--tag-text-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   transition: all .15s ease-in-out;
 }
 
-.mikio-tags a:hover {
+.mikio .mikio-tags a:hover {
   background-color: transparent;
-  color: #999;
+  color: var(--tag-background-color);
 }
 
 .mikio-sidebar {
   width: 14rem;
   flex-shrink: 0;
-  background-color: #f2f2f2;
+  background-color: var(--sidebar-background-color);
   padding: 1rem;
   font-size: 90%;
-  color: #666;
+  color: var(--sidebar-text-color);
 }
 
 .mikio-sidebar.mikio-sidebar-left {
-  border-left: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
+  border-left-width: 0;
+  border-right: 1px solid var(--sidebar-border-color);
 }
 
 .mikio-sidebar.mikio-sidebar-right {
-  border-left: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid var(--sidebar-border-color);
+  border-right-width: 0;
 }
 
 .mikio-sidebar .mikio-sidebar-toggle {
@@ -503,7 +723,7 @@ body {
   width: 0.5rem;
   height: 0.1em;
   margin: 0 0 0.2em;
-  transition: transform 0.2s ease-in-out;
+  transition: transform .15s ease-in-out;
   border-radius: 0.05em;
   background: rgba(0, 0, 0, 0.6);
 }
@@ -532,7 +752,7 @@ body {
   margin-bottom: 1rem;
   margin: 0 -1rem;
   padding: 0 1rem 1rem 1rem;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--sidebar-border-color);
 }
 
 .mikio-sidebar .mikio-search {
@@ -547,13 +767,13 @@ body {
 .mikio-sidebar .mikio-sidebar-content a {
   display: block;
   margin: 1rem 0;
-  color: #666;
+  color: var(--sidebar-link-color);
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 .mikio-sidebar .mikio-sidebar-content a:hover {
-  color: #333;
+  color: var(--sidebar-link-hover-color);
 }
 
 .mikio-sidebar .mikio-sidebar-content ul,
@@ -592,7 +812,12 @@ body {
 }
 
 .mikio-page a {
-  color: #2b73b7;
+  color: var(--link);
+  transition: all .15s ease-in-out;
+}
+
+.mikio-page a:hover {
+  color: var(--link-hover);
 }
 
 .mikio-page-fill {
@@ -602,11 +827,6 @@ body {
 
 .mikio .mikio-content .mikio-article {
   margin: 0 auto;
-}
-
-.mikio .mikio-content .mikio-article ul,
-.mikio .mikio-content .mikio-article ul.idx {
-  padding-left: 1rem;
 }
 
 .mikio .mikio-content .mikio-article.toc-full {
@@ -632,29 +852,29 @@ body {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  background-color: #fff;
+  background-color: var(--content-background);
   padding: .5rem 2rem;
 }
 
 .mikio.dokuwiki div.preview {
-  background-color: #fff;
+  background-color: var(--content-background);
   padding: 1rem 2rem;
 }
 
 .mikio-footer {
   padding: 2rem;
-  color: #737373;
-  background-color: #ccc;
+  color: var(--footer-text-color);
+  background-color: var(--footer-background-color);
   font-size: 80%;
   text-align: center;
 }
 
 .mikio-footer a {
-  color: #666;
+  color: var(--footer-link-color);
 }
 
 .mikio-footer a:hover {
-  color: #333;
+  color: var(--footer-link-hover-color);
 }
 
 .mikio-footer .dw__pagetools {
@@ -671,11 +891,11 @@ body {
 }
 
 .mikio-footer .dw__pagetools .tools a svg {
-  fill: #666;
+  fill: var(--footer-link-color);
 }
 
 .mikio-footer .dw__pagetools .tools a:hover svg {
-  fill: #333;
+  fill: var(--footer-link-hover-color);
 }
 
 .mikio-footer .mikio-nav {
@@ -712,8 +932,8 @@ body {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
 }
 
 .mikio-control[type=color] {
@@ -723,7 +943,9 @@ body {
 .mikio-button {
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -734,9 +956,9 @@ body {
 .mikio-button:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
 .mikio-button:disabled {
@@ -744,36 +966,37 @@ body {
 }
 
 .mikio-button-small {
-  padding: .1rem .2rem;
-  font-size: 80%;
+  padding: .1rem .75rem;
+  font-size: 80% !important;
   min-width: 3rem;
 }
 
 .mikio-button-submit {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio-button-submit:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio-button-danger {
-  color: #dc3545;
+  color: #fff;
   border-color: #dc3545;
+  background-color: #dc3545;
 }
 
 .mikio-button-danger:hover {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #c03040;
+  border-color: #c03040;
 }
 
 .mikio-input-text {
-  border-color: #ced4da;
+  border-color: var(--input-border-color);
   line-height: inherit;
 }
 
@@ -787,7 +1010,7 @@ body {
 .mikio-toolbar-button {
   border-radius: 0;
   border-right-width: 0;
-  border-color: #ced4da;
+  border-color: var(--input-border-color);
 }
 
 .mikio-toolbar-button:first-of-type {
@@ -839,15 +1062,15 @@ body {
 }
 
 .mikio-dialog fieldset button[type=submit] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio-dialog fieldset button[type=submit]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio-dialog fieldset input[type=checkbox] {
@@ -874,18 +1097,19 @@ body {
 .mikio .mikio-sidebar .mikio-search button,
 .mikio .mikio-footer .mikio-search button,
 .mikio .mikio-search button {
-  color: #fff;
-  background-color: #6c757d;
+  color: var(--button-search-text-color);
+  background-color: var(--button-search-background-color);
   border-radius: 0 .25rem .25rem 0;
-  border-color: #6c757d;
+  border-color: var(--button-search-border-color);
 }
 
 .mikio .mikio-navbar .mikio-search button:hover,
 .mikio .mikio-sidebar .mikio-search button:hover,
 .mikio .mikio-footer .mikio-search button:hover,
 .mikio .mikio-search button:hover {
-  background-color: #fff;
-  color: #495057;
+  color: var(--button-search-text-hover-color);
+  background-color: var(--button-search-background--hover-color);
+  border-color: var(--button-search-border-hover-color);
 }
 
 .mikio .mikio-navbar .mikio-search .mikio-iicon,
@@ -914,23 +1138,45 @@ body {
 }
 
 #dw__pagetools a svg {
-  fill: #ccc;
+  fill: var(--pagetools-color);
 }
 
 #dw__pagetools a:hover svg {
-  fill: #666;
+  fill: var(--pagetools-hover-color);
+}
+
+.toolbar.group {
+  margin-bottom: .5rem;
+}
+
+#wiki__editbar {
+  overflow: hidden;
+  margin-bottom: .5em;
+}
+
+#wiki__editbar #size__ctl {
+  float: right;
+}
+
+#wiki__editbar .editButtons {
+  display: inline;
+  margin-right: 1rem;
+}
+
+#wiki__editbar .summary {
+  display: inline;
 }
 
 .mode_admin .mikio-toc {
-  background-color: #f2f2f2;
+  background-color: var(--admin-background-color);
 }
 
 .mode_admin .mikio-toc #dw__toc {
-  background-color: #fff;
+  background-color: var(--toc-background-color);
 }
 
 .mikio .mode_admin .mikio-toc #dw__toc {
-  background-color: #fff;
+  background-color: var(--toc-background-color);
 }
 
 .mikio .mikio-toc {
@@ -941,8 +1187,9 @@ body {
 }
 
 .mikio .mikio-toc #dw__toc {
-  background-color: #f2f2f2;
-  border: 1px solid #e5e5e5;
+  color: var(--toc-link-color);
+  background-color: var(--toc-background-color);
+  border: 1px solid var(--toc-border-color);
   border-radius: .25rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   padding: .5rem;
@@ -970,30 +1217,35 @@ body {
   margin: 0;
   padding-right: 2rem;
   font-size: 80%;
-  background-size: 1rem;
-  background-position: 95% 50%;
-  background-repeat: no-repeat;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
+  position: relative;
+  height: 1rem;
+}
+
+.mikio .mikio-toc h3.toggle .hamburger {
+  width: 1rem;
+  height: 1rem;
+}
+
+.mikio .mikio-toc h3.toggle .down-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+}
+
+.mikio .mikio-toc h3.toggle.open .hamburger {
+  display: none;
 }
 
 .mikio .mikio-toc h3.toggle.closed {
   font-size: 0;
-  height: 1rem;
   width: 2rem;
   padding-right: 0;
 }
 
-.mikio .mikio-toc h3.toggle.closed:before {
-  display: inline-block;
-  content: "";
-  width: .8rem;
-  height: .8rem;
-  margin-right: .5rem;
-  margin-top: .1rem;
-  background-size: .8rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="fill:inherit"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>');
+.mikio .mikio-toc h3.toggle.closed .down-arrow {
+  right: -4px;
 }
 
 .mikio .mikio-toc h3.toggle span {
@@ -1003,14 +1255,14 @@ body {
 .mikio .mikio-toc a {
   display: block;
   font-size: 80%;
-  color: #666;
+  color: var(--toc-link-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   padding: .2rem 0;
 }
 
 .mikio .mikio-toc a:hover {
-  color: #000;
+  color: var(--toc-link-hover-color);
 }
 
 .mikio-icon {
@@ -1019,6 +1271,7 @@ body {
 
 .mikio-icon svg {
   vertical-align: middle;
+  fill: currentColor;
 }
 
 .mikio-iicon {
@@ -1040,13 +1293,13 @@ body {
   border-collapse: collapse;
   margin-bottom: 1rem;
   font-size: 90%;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--table-row-border-color);
 }
 
 .mikio .mode_show table tr,
 .mikio.dokuwiki .mode_showtag table.ul tr,
 .mikio .mode_admin table tr {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--table-row-border-color);
 }
 
 .mikio .mode_show table td,
@@ -1062,19 +1315,20 @@ body {
 .mikio .mode_show table tbody tr:nth-child(odd),
 .mikio.dokuwiki .mode_showtag table.ul tbody tr:nth-child(odd),
 .mikio .mode_admin table tbody tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
 .mikio .mode_show table tbody tr:nth-child(even),
 .mikio.dokuwiki .mode_showtag table.ul tbody tr:nth-child(even),
 .mikio .mode_admin table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--table-even-row-background-color);
 }
 
 .mikio-nav {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
 .mikio-nav .mikio-nav-item,
@@ -1091,10 +1345,19 @@ body {
 .mikio-nav .mikio-nav-dropdown>a {
   display: inline-block;
   padding: .2rem 1.2rem .2rem 0rem;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" style="fill:inherit"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>');
-  background-size: 1.2rem;
-  background-position: right;
-  background-repeat: no-repeat;
+  position: relative;
+}
+
+.mikio-nav .mikio-nav-dropdown>a::after {
+  position: absolute;
+  content: '';
+  top: 10px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-left: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  transform: rotateZ(-45deg);
 }
 
 .mikio-nav a {
@@ -1109,10 +1372,11 @@ body {
   min-width: 12rem;
   right: 0;
   padding: 1rem 1.5rem;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--dropdown-border-color);
+  border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  color: #1a1a1a;
+  background-color: var(--dropdown-background-color);
+  color: var(--dropdown-color);
 }
 
 .mikio-dropdown.closed {
@@ -1132,17 +1396,19 @@ body {
 
 .mikio-dropdown .mikio-dropdown-divider {
   margin: 1rem -1rem;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--dropdown-border-color);
 }
 
 .mikio-dropdown .mikio-nav-link {
   margin: 0rem -1rem 0rem -1rem;
   padding: .25rem 1rem .25rem 1rem;
-  transition: all 0.15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: var(--dropdown-color);
 }
 
 .mikio-dropdown .mikio-nav-link:hover {
-  background-color: #e5e5e5;
+  color: var(--dropdown-color);
+  background-color: var(--dropdown-hover-color);
 }
 
 .typeahead.mikio-dropdown a.mikio-dropdown-item {
@@ -1153,7 +1419,7 @@ body {
   margin-bottom: 0em;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #999999;
+  color: var(--dropdown-color);
 }
 
 .typeahead.mikio-dropdown .mikio-dropdown-divider {
@@ -1179,10 +1445,10 @@ body {
 
 .mikio-tabs li strong {
   display: inline-block;
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
   font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: var(--tab-active-color);
+  border-color: var(--tab-active-border-color) var(--tab-active-border-color) var(--tab-active-background-color);
   border-radius: .5rem .5rem 0 0;
   border-width: 1px;
   border-style: solid;
@@ -1194,19 +1460,19 @@ body {
 .mikio-tabs li a {
   display: inline-block;
   padding: .5rem 1rem;
-  border: 1px solid transparent;
-  color: #007bff;
+  border: 1px solid var(--tab-border-color);
+  color: var(--tab-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   margin: 0;
-  background-color: transparent;
+  background-color: var(--tab-background-color);
 }
 
 .mikio-tabs li a:hover {
-  color: #0056b3;
-  border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+  color: var(--tab-hover-color);
+  border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
   border-radius: .5rem .5rem 0 0;
-  background-color: transparent;
+  background-color: var(--tab-background-hover-color);
 }
 
 .mikio-tabs:after {
@@ -1215,10 +1481,10 @@ body {
 
 .mikio-tab-active {
   display: inline-block;
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
   font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: var(--tab-active-color);
+  border-color: var(--tab-active-border-color) var(--tab-active-border-color) var(--tab-active-background-color);
   border-radius: .5rem .5rem 0 0;
   border-width: 1px;
   border-style: solid;
@@ -1228,27 +1494,27 @@ body {
 }
 
 .mikio-tab {
-  background-color: #fff;
+  background-color: var(--tab-background-color);
   font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: var(--tab-color);
+  border-color: var(--tab-border-color) var(--tab-border-color) var(--tab-background-color);
   padding: .5rem 1rem;
   margin: 0;
   bottom: -1px;
 }
 
 .mikio-tab-panel {
-  margin-bottom: 0;
-  background-color: #fff;
+  margin-bottom: 0 !important;
+  background-color: var(--tab-active-background-color);
   border-width: 1px 1px 1px 1px;
   border-style: solid;
-  border-color: #dee2e6;
+  border-color: var(--tab-active-border-color) !important;
   word-wrap: break-word;
   word-break: break-word;
 }
 
 .mikio.dokuwiki div.section_highlight {
-  background-color: rgba(255, 255, 0, 0.3);
+  background-color: var(--section-edit-highlight);
   border-width: 0;
   margin: 0 -1rem;
   padding: 0 1rem;
@@ -1256,6 +1522,7 @@ body {
 
 .mikio-input-file {
   position: absolute;
+  margin-top: -0.5rem;
   top: 0;
   right: 0;
   left: 0;
@@ -1263,9 +1530,9 @@ body {
   padding: .25rem 1rem;
   line-height: 1.5;
   text-align: left;
-  color: #495057;
-  background-color: #fff;
-  border: .1px solid #ced4da;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
+  border: .1px solid var(--input-border-color);
   border-radius: .25rem;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1287,16 +1554,17 @@ body {
   content: "Browse";
   padding: .25rem 1rem;
   line-height: 1.5;
-  color: #fff;
-  background-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
   border-radius: 0 .25rem .25rem 0;
-  border: 1px solid #6c757d;
+  border: 1px solid var(--button-border-color);
   transition: all .15s ease-in-out;
 }
 
 .mikio-input-file:hover:before {
-  background-color: #fff;
-  color: #495057;
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
+  color: var(--button-text-hover-color);
 }
 
 code,
@@ -1304,8 +1572,8 @@ pre {
   overflow-x: auto;
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 87.5%;
-  color: #e83e8c;
-  background-color: transparent;
+  color: var(--code-text-color);
+  background-color: var(--code-background-color);
   word-wrap: break-word;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -1316,20 +1584,20 @@ pre {
 
 .mode_show code,
 .mode_show pre {
-  border: 1px solid transparent;
+  border: 1px solid var(--code-border-color);
   padding: 1em;
 }
 
-.mikio-search button,
-.mikio-search input,
-.mikio-search optgroup,
-.mikio-search select,
-.mikio-search textarea,
-.mikio .dokuwiki fieldset button,
-.mikio .dokuwiki fieldset input,
-.mikio .dokuwiki fieldset optgroup,
-.mikio .dokuwiki fieldset select,
-.mikio .dokuwiki fieldset textarea,
+.mikio .mikio-search button,
+.mikio .mikio-search input,
+.mikio .mikio-search optgroup,
+.mikio .mikio-search select,
+.mikio .mikio-search textarea,
+.mikio.dokuwiki fieldset button,
+.mikio.dokuwiki fieldset input,
+.mikio.dokuwiki fieldset optgroup,
+.mikio.dokuwiki fieldset select,
+.mikio.dokuwiki fieldset textarea,
 .mikio.dokuwiki .secedit button,
 .mikio.dokuwiki .secedit input,
 .mikio.dokuwiki .secedit optgroup,
@@ -1376,22 +1644,22 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
-  border-color: #ced4da;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
+  border-color: var(--input-border-color);
   line-height: inherit;
 }
 
-.mikio-search button[type=color],
-.mikio-search input[type=color],
-.mikio-search optgroup[type=color],
-.mikio-search select[type=color],
-.mikio-search textarea[type=color],
-.mikio .dokuwiki fieldset button[type=color],
-.mikio .dokuwiki fieldset input[type=color],
-.mikio .dokuwiki fieldset optgroup[type=color],
-.mikio .dokuwiki fieldset select[type=color],
-.mikio .dokuwiki fieldset textarea[type=color],
+.mikio .mikio-search button[type=color],
+.mikio .mikio-search input[type=color],
+.mikio .mikio-search optgroup[type=color],
+.mikio .mikio-search select[type=color],
+.mikio .mikio-search textarea[type=color],
+.mikio.dokuwiki fieldset button[type=color],
+.mikio.dokuwiki fieldset input[type=color],
+.mikio.dokuwiki fieldset optgroup[type=color],
+.mikio.dokuwiki fieldset select[type=color],
+.mikio.dokuwiki fieldset textarea[type=color],
 .mikio.dokuwiki .secedit button[type=color],
 .mikio.dokuwiki .secedit input[type=color],
 .mikio.dokuwiki .secedit optgroup[type=color],
@@ -1430,18 +1698,38 @@ pre {
   padding: 0;
 }
 
-.mikio-search button,
-.mikio .dokuwiki fieldset button,
+.mikio .mikio-search button,
+.mikio .mikio-search input[type=button],
+.mikio .mikio-search input[type=image],
+.mikio.dokuwiki fieldset button,
+.mikio.dokuwiki fieldset input[type=button],
+.mikio.dokuwiki fieldset input[type=image],
 .mikio.dokuwiki .secedit button,
+.mikio.dokuwiki .secedit input[type=button],
+.mikio.dokuwiki .secedit input[type=image],
 .mikio .mode_revisions button,
+.mikio .mode_revisions input[type=button],
+.mikio .mode_revisions input[type=image],
 .mikio .mode_edit button,
+.mikio .mode_edit input[type=button],
+.mikio .mode_edit input[type=image],
 .mikio .mode_draft button,
+.mikio .mode_draft input[type=button],
+.mikio .mode_draft input[type=image],
 .mikio .mode_preview button,
+.mikio .mode_preview input[type=button],
+.mikio .mode_preview input[type=image],
 .mikio .mode_showtag button,
-.mikio .mode_admin button {
+.mikio .mode_showtag input[type=button],
+.mikio .mode_showtag input[type=image],
+.mikio .mode_admin button,
+.mikio .mode_admin input[type=button],
+.mikio .mode_admin input[type=image] {
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1449,38 +1737,74 @@ pre {
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.mikio-search button:hover:not(:disabled),
-.mikio .dokuwiki fieldset button:hover:not(:disabled),
+.mikio .mikio-search button:hover:not(:disabled),
+.mikio .mikio-search input[type=button]:hover:not(:disabled),
+.mikio .mikio-search input[type=image]:hover:not(:disabled),
+.mikio.dokuwiki fieldset button:hover:not(:disabled),
+.mikio.dokuwiki fieldset input[type=button]:hover:not(:disabled),
+.mikio.dokuwiki fieldset input[type=image]:hover:not(:disabled),
 .mikio.dokuwiki .secedit button:hover:not(:disabled),
+.mikio.dokuwiki .secedit input[type=button]:hover:not(:disabled),
+.mikio.dokuwiki .secedit input[type=image]:hover:not(:disabled),
 .mikio .mode_revisions button:hover:not(:disabled),
+.mikio .mode_revisions input[type=button]:hover:not(:disabled),
+.mikio .mode_revisions input[type=image]:hover:not(:disabled),
 .mikio .mode_edit button:hover:not(:disabled),
+.mikio .mode_edit input[type=button]:hover:not(:disabled),
+.mikio .mode_edit input[type=image]:hover:not(:disabled),
 .mikio .mode_draft button:hover:not(:disabled),
+.mikio .mode_draft input[type=button]:hover:not(:disabled),
+.mikio .mode_draft input[type=image]:hover:not(:disabled),
 .mikio .mode_preview button:hover:not(:disabled),
+.mikio .mode_preview input[type=button]:hover:not(:disabled),
+.mikio .mode_preview input[type=image]:hover:not(:disabled),
 .mikio .mode_showtag button:hover:not(:disabled),
-.mikio .mode_admin button:hover:not(:disabled) {
+.mikio .mode_showtag input[type=button]:hover:not(:disabled),
+.mikio .mode_showtag input[type=image]:hover:not(:disabled),
+.mikio .mode_admin button:hover:not(:disabled),
+.mikio .mode_admin input[type=button]:hover:not(:disabled),
+.mikio .mode_admin input[type=image]:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
-.mikio-search button:disabled,
-.mikio .dokuwiki fieldset button:disabled,
+.mikio .mikio-search button:disabled,
+.mikio .mikio-search input[type=button]:disabled,
+.mikio .mikio-search input[type=image]:disabled,
+.mikio.dokuwiki fieldset button:disabled,
+.mikio.dokuwiki fieldset input[type=button]:disabled,
+.mikio.dokuwiki fieldset input[type=image]:disabled,
 .mikio.dokuwiki .secedit button:disabled,
+.mikio.dokuwiki .secedit input[type=button]:disabled,
+.mikio.dokuwiki .secedit input[type=image]:disabled,
 .mikio .mode_revisions button:disabled,
+.mikio .mode_revisions input[type=button]:disabled,
+.mikio .mode_revisions input[type=image]:disabled,
 .mikio .mode_edit button:disabled,
+.mikio .mode_edit input[type=button]:disabled,
+.mikio .mode_edit input[type=image]:disabled,
 .mikio .mode_draft button:disabled,
+.mikio .mode_draft input[type=button]:disabled,
+.mikio .mode_draft input[type=image]:disabled,
 .mikio .mode_preview button:disabled,
+.mikio .mode_preview input[type=button]:disabled,
+.mikio .mode_preview input[type=image]:disabled,
 .mikio .mode_showtag button:disabled,
-.mikio .mode_admin button:disabled {
+.mikio .mode_showtag input[type=button]:disabled,
+.mikio .mode_showtag input[type=image]:disabled,
+.mikio .mode_admin button:disabled,
+.mikio .mode_admin input[type=button]:disabled,
+.mikio .mode_admin input[type=image]:disabled {
   opacity: .65;
 }
 
-.mikio-search button#edbtn__save,
-.mikio-search button[name="run[save]"],
-.mikio .dokuwiki fieldset button#edbtn__save,
-.mikio .dokuwiki fieldset button[name="run[save]"],
+.mikio .mikio-search button#edbtn__save,
+.mikio .mikio-search button[name="run[save]"],
+.mikio.dokuwiki fieldset button#edbtn__save,
+.mikio.dokuwiki fieldset button[name="run[save]"],
 .mikio.dokuwiki .secedit button#edbtn__save,
 .mikio.dokuwiki .secedit button[name="run[save]"],
 .mikio .mode_revisions button#edbtn__save,
@@ -1495,15 +1819,15 @@ pre {
 .mikio .mode_showtag button[name="run[save]"],
 .mikio .mode_admin button#edbtn__save,
 .mikio .mode_admin button[name="run[save]"] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
-.mikio-search button#edbtn__save:hover,
-.mikio-search button[name="run[save]"]:hover,
-.mikio .dokuwiki fieldset button#edbtn__save:hover,
-.mikio .dokuwiki fieldset button[name="run[save]"]:hover,
+.mikio .mikio-search button#edbtn__save:hover,
+.mikio .mikio-search button[name="run[save]"]:hover,
+.mikio.dokuwiki fieldset button#edbtn__save:hover,
+.mikio.dokuwiki fieldset button[name="run[save]"]:hover,
 .mikio.dokuwiki .secedit button#edbtn__save:hover,
 .mikio.dokuwiki .secedit button[name="run[save]"]:hover,
 .mikio .mode_revisions button#edbtn__save:hover,
@@ -1518,19 +1842,19 @@ pre {
 .mikio .mode_showtag button[name="run[save]"]:hover,
 .mikio .mode_admin button#edbtn__save:hover,
 .mikio .mode_admin button[name="run[save]"]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
-.mikio-search input[type=text],
-.mikio-search input[type=search],
-.mikio-search input[type=password],
-.mikio-search input[type=email],
-.mikio .dokuwiki fieldset input[type=text],
-.mikio .dokuwiki fieldset input[type=search],
-.mikio .dokuwiki fieldset input[type=password],
-.mikio .dokuwiki fieldset input[type=email],
+.mikio .mikio-search input[type=text],
+.mikio .mikio-search input[type=search],
+.mikio .mikio-search input[type=password],
+.mikio .mikio-search input[type=email],
+.mikio.dokuwiki fieldset input[type=text],
+.mikio.dokuwiki fieldset input[type=search],
+.mikio.dokuwiki fieldset input[type=password],
+.mikio.dokuwiki fieldset input[type=email],
 .mikio.dokuwiki .secedit input[type=text],
 .mikio.dokuwiki .secedit input[type=search],
 .mikio.dokuwiki .secedit input[type=password],
@@ -1564,8 +1888,8 @@ pre {
   -ms-appearance: none;
 }
 
-.mikio-search textarea,
-.mikio .dokuwiki fieldset textarea,
+.mikio .mikio-search textarea,
+.mikio.dokuwiki fieldset textarea,
 .mikio.dokuwiki .secedit textarea,
 .mikio .mode_revisions textarea,
 .mikio .mode_edit textarea,
@@ -1581,8 +1905,8 @@ pre {
   white-space: pre-wrap;
 }
 
-.mikio-search select,
-.mikio .dokuwiki fieldset select,
+.mikio .mikio-search select,
+.mikio.dokuwiki fieldset select,
 .mikio.dokuwiki .secedit select,
 .mikio .mode_revisions select,
 .mikio .mode_edit select,
@@ -1596,8 +1920,8 @@ pre {
   height: 2.25rem;
 }
 
-.mikio-search .toolbutton,
-.mikio .dokuwiki fieldset .toolbutton,
+.mikio .mikio-search .toolbutton,
+.mikio.dokuwiki fieldset .toolbutton,
 .mikio.dokuwiki .secedit .toolbutton,
 .mikio .mode_revisions .toolbutton,
 .mikio .mode_edit .toolbutton,
@@ -1607,11 +1931,11 @@ pre {
 .mikio .mode_admin .toolbutton {
   border-radius: 0;
   border-right-width: 0;
-  border-color: #ced4da;
+  border-color: var(--input-border-color);
 }
 
-.mikio-search .toolbutton:first-of-type,
-.mikio .dokuwiki fieldset .toolbutton:first-of-type,
+.mikio .mikio-search .toolbutton:first-of-type,
+.mikio.dokuwiki fieldset .toolbutton:first-of-type,
 .mikio.dokuwiki .secedit .toolbutton:first-of-type,
 .mikio .mode_revisions .toolbutton:first-of-type,
 .mikio .mode_edit .toolbutton:first-of-type,
@@ -1622,8 +1946,8 @@ pre {
   border-radius: .25rem 0 0 .25rem;
 }
 
-.mikio-search .toolbutton:last-of-type,
-.mikio .dokuwiki fieldset .toolbutton:last-of-type,
+.mikio .mikio-search .toolbutton:last-of-type,
+.mikio.dokuwiki fieldset .toolbutton:last-of-type,
 .mikio.dokuwiki .secedit .toolbutton:last-of-type,
 .mikio .mode_revisions .toolbutton:last-of-type,
 .mikio .mode_edit .toolbutton:last-of-type,
@@ -1644,6 +1968,24 @@ pre {
 .mikio.dokuwiki fieldset {
   margin: 2rem auto;
   border: 0;
+  width: auto;
+  max-width: 40rem;
+}
+
+.mikio.dokuwiki fieldset label.block {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+}
+
+.mikio.dokuwiki fieldset label.block span {
+  margin-right: 1rem;
+  width: 15rem;
+  align-self: center;
+}
+
+.mikio.dokuwiki fieldset label.block input {
+  flex-grow: 1;
 }
 
 .mikio.dokuwiki .mode_login .mikio-article,
@@ -1696,16 +2038,16 @@ pre {
 
 .mikio.dokuwiki .mode_login fieldset button[type=submit],
 .mikio.dokuwiki .mode_denied fieldset button[type=submit] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio.dokuwiki .mode_login fieldset button[type=submit]:hover,
 .mikio.dokuwiki .mode_denied fieldset button[type=submit]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio.dokuwiki .mode_login fieldset input[type=checkbox],
@@ -1736,10 +2078,10 @@ pre {
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li,
 .mikio .mode_admin div.ui-admin ul.admin_plugins li {
-  border: 1px solid #6c757d;
+  border: 1px solid var(--button-border-color);
   border-radius: .25rem;
   margin: 1rem 1rem;
-  background-color: #fff;
+  background-color: var(--button-background-color);
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a,
@@ -1753,7 +2095,7 @@ pre {
   font-size: 1rem;
   font-weight: normal;
   padding: 1rem 2rem;
-  color: #333;
+  color: var(--button-text-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   overflow: hidden;
@@ -1767,22 +2109,27 @@ pre {
   min-height: auto;
 }
 
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a svg {
+  fill: var(--button-text-color);
+}
+
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a:hover,
 .mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a:hover svg,
 .mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover svg {
-  fill: #fff;
+  fill: var(--button-text-hover-color);
 }
 
 .mikio .mode_admin .mikio-config-table-header {
-  background-color: #ddd;
+  background-color: var(--table-header-row-background-color);
   font-weight: bold;
 }
 
@@ -1793,42 +2140,53 @@ pre {
 .mikio .mode_admin #extension__list ul.extensionList li {
   border-width: 0 0 1px 0;
   border-style: solid;
-  border-color: #e5e5e5;
+  border-color: var(--table-row-border-color);
   padding: .75rem;
   margin: 0;
   text-align: left;
 }
 
 .mikio .mode_admin #extension__list ul.extensionList li:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
 .mikio .mode_admin #extension__list ul.extensionList li:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--table-even-row-background-color);
 }
 
 .mikio .mode_admin button#usrmgr__del {
-  color: #dc3545;
+  color: #fff;
   border-color: #dc3545;
+  background-color: #dc3545;
   margin-right: .5rem;
 }
 
 .mikio .mode_admin button#usrmgr__del:hover {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #c03040;
+  border-color: #c03040;
+}
+
+.mikio .mode_admin #acl__detail div#acl__user {
+  border-color: var(--toc-border-color);
 }
 
 .mikio .mode_admin #acl__tree {
-  background-color: #fff;
+  background-color: var(--tree-background-color);
+  border-color: var(--tree-border-color);
+  color: var(--control-text-color);
+}
+
+.mikio .mode_admin #acl__tree a.cur {
+  background-color: var(--section-edit-highlight);
 }
 
 .mikio .mode_admin #acl_manager table tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
 .mikio .mode_admin #acl_manager table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--table-even-row-background-color);
 }
 
 .mode_admin .mikio-content,
@@ -1857,7 +2215,7 @@ pre {
 .mode_preview .mikio-page-fill,
 .mode_showtag .mikio-content,
 .mode_showtag .mikio-page-fill {
-  background-color: #f2f2f2;
+  background-color: var(--admin-background-color);
 }
 
 .mikio #plugin__styling button.primary {
@@ -1865,8 +2223,8 @@ pre {
 }
 
 .mikio.dokuwiki .secedit button {
-  padding: .1rem .2rem;
-  font-size: 80%;
+  padding: .1rem .75rem;
+  font-size: 80% !important;
   min-width: 3rem;
 }
 
@@ -1900,6 +2258,7 @@ pre {
 }
 
 .mikio #config__manager fieldset {
+  color: var(--text);
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -1909,20 +2268,14 @@ pre {
   text-align: left;
 }
 
-.mikio #config__manager tr .input,
-.mikio #config__manager tr input {
+.mikio #config__manager tr textarea {
   color: inherit;
-  background-color: transparent;
-}
-
-.mikio #config__manager tr textarea,
-.mikio #config__manager tr select {
-  color: inherit;
-  background-color: #fff;
+  background-color: var(--control-background-color);
 }
 
 .mikio #config__manager tr select {
   width: 100%;
+  background-color: var(--control-background-color);
 }
 
 .mikio #config__manager td.label {
@@ -1956,24 +2309,25 @@ pre {
 }
 
 .mikio #config__manager button[type=submit] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio #config__manager button[type=submit]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mode_revisions .mikio-article li {
   padding: .5rem 1rem;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--table-row-border-color);
+  background-color: var(--table-even-row-background-color);
 }
 
 .mode_revisions .mikio-article li:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
 .mode_revisions .mikio-article .li {
@@ -1990,19 +2344,28 @@ pre {
 
 .mode_revisions .mikio-article .li span.sizechange {
   width: 100%;
+  font-size: 80%;
+  border-radius: .2em;
+  padding: .1em .2em;
+  color: var(--control-text-color) !important;
 }
 
 .mode_revisions .mikio-article .sum {
   display: block;
 }
 
+.mode_recent .mikio-article ul {
+  list-style-type: none;
+}
+
 .mode_recent .mikio-article li {
   padding: .5rem 1rem;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--table-row-border-color);
+  background-color: var(--table-even-row-background-color);
 }
 
 .mode_recent .mikio-article li:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
 .mode_recent .mikio-article .li {
@@ -2020,6 +2383,18 @@ pre {
 
 .mode_recent .mikio-article .li span.sizechange {
   width: 100%;
+  font-size: 80%;
+  border-radius: .2em;
+  padding: .1em .2em;
+  color: var(--control-text-color);
+}
+
+.mode_recent .mikio-article .li span.sizechange.positive {
+  background-color: #cfc;
+}
+
+.mode_recent .mikio-article .li span.sizechange.negative {
+  background-color: #fdd;
 }
 
 .mode_recent .mikio-article select {
@@ -2034,8 +2409,8 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2069,11 +2444,13 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -2098,9 +2475,9 @@ pre {
 #media__manager .qq-upload-list a:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
 .mikio #mediamanager__page button:disabled,
@@ -2114,29 +2491,30 @@ pre {
 
 .mikio #mediamanager__page .qq-upload-list a.qq-upload-cancel,
 #media__manager .qq-upload-list a.qq-upload-cancel {
-  color: #dc3545;
+  color: #fff;
   border-color: #dc3545;
+  background-color: #dc3545;
 }
 
 .mikio #mediamanager__page .qq-upload-list a.qq-upload-cancel:hover,
 #media__manager .qq-upload-list a.qq-upload-cancel:hover {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #c03040;
+  border-color: #c03040;
 }
 
 .mikio #mediamanager__page button.qq-upload-action,
 #media__manager button.qq-upload-action {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio #mediamanager__page button.qq-upload-action:hover,
 #media__manager button.qq-upload-action:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio #mediamanager__page input[type=text],
@@ -2156,9 +2534,9 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
-  border-color: #ced4da;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
+  border-color: var(--input-border-color);
   line-height: inherit;
 }
 
@@ -2191,14 +2569,12 @@ pre {
 }
 
 .mikio #mediamanager__page .namespaces h2,
-.mikio #mediamanager__page #media__tree h2,
-#media__manager .namespaces h2,
-#media__manager #media__tree h2 {
+#media__manager .namespaces h2 {
   display: inline-block;
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
   font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: var(--tab-active-color);
+  border-color: var(--tab-active-border-color) var(--tab-active-border-color) var(--tab-active-background-color);
   border-radius: .5rem .5rem 0 0;
   border-width: 1px;
   border-style: solid;
@@ -2206,93 +2582,70 @@ pre {
   margin: 0;
   bottom: -1px;
   font-size: 1rem;
-  line-height: 1.4rem;
-  position: relative;
-  z-index: 2;
 }
 
-.mikio #mediamanager__page .namespaces .panelHeader,
-.mikio #mediamanager__page #media__tree .panelHeader,
-#media__manager .namespaces .panelHeader,
-#media__manager #media__tree .panelHeader {
-  margin-bottom: 0;
-  background-color: #fff;
-  border-width: 1px 1px 1px 1px;
-  border-style: solid;
-  border-color: #dee2e6;
-  word-wrap: break-word;
-  word-break: break-word;
+.mikio #mediamanager__page #media__tree,
+#media__manager #media__tree {
+  background-color: var(--tree-background-color);
+  border-color: var(--tree-border-color);
 }
 
-.mikio #mediamanager__page .namespaces ul,
-.mikio #mediamanager__page .namespaces ul.idx,
 .mikio #mediamanager__page #media__tree ul,
 .mikio #mediamanager__page #media__tree ul.idx,
-#media__manager .namespaces ul,
-#media__manager .namespaces ul.idx,
 #media__manager #media__tree ul,
 #media__manager #media__tree ul.idx {
   margin-top: 0;
+  margin-bottom: 0;
   padding: 0;
   list-style-type: none;
 }
 
-.mikio #mediamanager__page .namespaces ul ul,
-.mikio #mediamanager__page .namespaces ul.idx ul,
 .mikio #mediamanager__page #media__tree ul ul,
 .mikio #mediamanager__page #media__tree ul.idx ul,
-#media__manager .namespaces ul ul,
-#media__manager .namespaces ul.idx ul,
 #media__manager #media__tree ul ul,
 #media__manager #media__tree ul.idx ul {
   margin-left: 1rem;
 }
 
-.mikio #mediamanager__page .namespaces ul li,
-.mikio #mediamanager__page .namespaces ul.idx li,
 .mikio #mediamanager__page #media__tree ul li,
 .mikio #mediamanager__page #media__tree ul.idx li,
-#media__manager .namespaces ul li,
-#media__manager .namespaces ul.idx li,
 #media__manager #media__tree ul li,
 #media__manager #media__tree ul.idx li {
   margin: .25rem 0;
   white-space: nowrap;
 }
 
-.mikio #mediamanager__page .namespaces ul li img,
-.mikio #mediamanager__page .namespaces ul.idx li img,
 .mikio #mediamanager__page #media__tree ul li img,
 .mikio #mediamanager__page #media__tree ul.idx li img,
-#media__manager .namespaces ul li img,
-#media__manager .namespaces ul.idx li img,
 #media__manager #media__tree ul li img,
 #media__manager #media__tree ul.idx li img {
   margin-right: .2rem;
 }
 
-.mikio #mediamanager__page .namespaces ul a,
-.mikio #mediamanager__page .namespaces ul.idx a,
 .mikio #mediamanager__page #media__tree ul a,
 .mikio #mediamanager__page #media__tree ul.idx a,
-#media__manager .namespaces ul a,
-#media__manager .namespaces ul.idx a,
 #media__manager #media__tree ul a,
 #media__manager #media__tree ul.idx a {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #333;
 }
 
-.mikio #mediamanager__page .namespaces ul div,
-.mikio #mediamanager__page .namespaces ul.idx div,
 .mikio #mediamanager__page #media__tree ul div,
 .mikio #mediamanager__page #media__tree ul.idx div,
-#media__manager .namespaces ul div,
-#media__manager .namespaces ul.idx div,
 #media__manager #media__tree ul div,
 #media__manager #media__tree ul.idx div {
   display: inline-block;
+}
+
+.mikio #mediamanager__page .panelHeader,
+#media__manager .panelHeader {
+  margin-bottom: 0 !important;
+  background-color: var(--tab-active-background-color);
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: var(--tab-active-border-color) !important;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .mikio #mediamanager__page .filelist,
@@ -2306,11 +2659,11 @@ pre {
 .mikio #mediamanager__page .qq-uploader .panelHeader,
 #media__manager .filelist .panelHeader,
 #media__manager .qq-uploader .panelHeader {
-  margin-bottom: 0;
-  background-color: #fff;
+  margin-bottom: 0 !important;
+  background-color: var(--tab-active-background-color);
   border-width: 1px 1px 1px 1px;
   border-style: solid;
-  border-color: #dee2e6;
+  border-color: var(--tab-active-border-color) !important;
   word-wrap: break-word;
   word-break: break-word;
 }
@@ -2340,8 +2693,14 @@ pre {
 .mikio #mediamanager__page .qq-uploader .panelContent,
 #media__manager .filelist .panelContent,
 #media__manager .qq-uploader .panelContent {
-  padding-top: 1rem;
   text-align: center;
+}
+
+.mikio #mediamanager__page .filelist .panelContent ul li:hover,
+.mikio #mediamanager__page .qq-uploader .panelContent ul li:hover,
+#media__manager .filelist .panelContent ul li:hover,
+#media__manager .qq-uploader .panelContent ul li:hover {
+  background-color: initial;
 }
 
 .mikio #mediamanager__page .filelist ul,
@@ -2362,15 +2721,33 @@ pre {
 .mikio #mediamanager__page .qq-uploader ul.thumbs li,
 #media__manager .filelist ul.thumbs li,
 #media__manager .qq-uploader ul.thumbs li {
+  display: inline-block;
   width: 200px;
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
+  color: var(--tab-active-color);
+}
+
+.mikio #mediamanager__page .filelist ul.thumbs li dt,
+.mikio #mediamanager__page .qq-uploader ul.thumbs li dt,
+#media__manager .filelist ul.thumbs li dt,
+#media__manager .qq-uploader ul.thumbs li dt {
+  text-align: center;
 }
 
 .mikio #mediamanager__page .filelist ul.thumbs li dt a,
 .mikio #mediamanager__page .qq-uploader ul.thumbs li dt a,
 #media__manager .filelist ul.thumbs li dt a,
 #media__manager .qq-uploader ul.thumbs li dt a {
-  display: inline;
+  display: block;
+  width: 100%;
+}
+
+.mikio #mediamanager__page .filelist ul.thumbs li dt a img,
+.mikio #mediamanager__page .qq-uploader ul.thumbs li dt a img,
+#media__manager .filelist ul.thumbs li dt a img,
+#media__manager .qq-uploader ul.thumbs li dt a img {
+  min-height: 90px;
+  min-width: 90px;
 }
 
 .mikio #mediamanager__page .filelist ul.thumbs li dd,
@@ -2378,9 +2755,9 @@ pre {
 #media__manager .filelist ul.thumbs li dd,
 #media__manager .qq-uploader ul.thumbs li dd {
   width: auto;
-  font-size: 90%;
-  color: #666;
+  font-size: 80%;
   margin-bottom: .25rem;
+  margin-inline-start: 0;
 }
 
 .mikio #mediamanager__page .filelist ul.thumbs li .name,
@@ -2390,49 +2767,114 @@ pre {
   font-weight: normal;
 }
 
-.mikio #mediamanager__page .filelist ul.thumbs li .name a,
-.mikio #mediamanager__page .qq-uploader ul.thumbs li .name a,
-#media__manager .filelist ul.thumbs li .name a,
-#media__manager .qq-uploader ul.thumbs li .name a {
-  color: #000;
+.mikio #mediamanager__page .filelist ul.rows,
+.mikio #mediamanager__page .qq-uploader ul.rows,
+#media__manager .filelist ul.rows,
+#media__manager .qq-uploader ul.rows {
+  list-style-type: none;
+  padding: 0;
 }
 
-.mikio #mediamanager__page .filelist .rows li,
-.mikio #mediamanager__page .qq-uploader .rows li,
-#media__manager .filelist .rows li,
-#media__manager .qq-uploader .rows li {
-  background-color: #fff;
+.mikio #mediamanager__page .filelist ul.rows li,
+.mikio #mediamanager__page .qq-uploader ul.rows li,
+#media__manager .filelist ul.rows li,
+#media__manager .qq-uploader ul.rows li {
+  background-color: var(--table-odd-row-background-color);
   max-height: none;
   font-size: 90%;
+  color: var(--text);
+  overflow: auto;
 }
 
-.mikio #mediamanager__page .filelist .rows li:nth-child(2n + 1),
-.mikio #mediamanager__page .qq-uploader .rows li:nth-child(2n + 1),
-#media__manager .filelist .rows li:nth-child(2n + 1),
-#media__manager .qq-uploader .rows li:nth-child(2n + 1) {
-  background-color: #f2f2f2;
+.mikio #mediamanager__page .filelist ul.rows li:nth-child(2n+1),
+.mikio #mediamanager__page .qq-uploader ul.rows li:nth-child(2n+1),
+#media__manager .filelist ul.rows li:nth-child(2n+1),
+#media__manager .qq-uploader ul.rows li:nth-child(2n+1) {
+  background-color: var(--table-even-row-background-color);
 }
 
-.mikio #mediamanager__page .filelist .rows li a,
-.mikio #mediamanager__page .qq-uploader .rows li a,
-#media__manager .filelist .rows li a,
-#media__manager .qq-uploader .rows li a {
+.mikio #mediamanager__page .filelist ul.rows li a,
+.mikio #mediamanager__page .qq-uploader ul.rows li a,
+#media__manager .filelist ul.rows li a,
+#media__manager .qq-uploader ul.rows li a {
   font-weight: normal;
-  color: #333;
 }
 
-.mikio #mediamanager__page .filelist .rows li dt a,
-.mikio #mediamanager__page .qq-uploader .rows li dt a,
-#media__manager .filelist .rows li dt a,
-#media__manager .qq-uploader .rows li dt a {
+.mikio #mediamanager__page .filelist ul.rows li dl,
+.mikio #mediamanager__page .qq-uploader ul.rows li dl,
+#media__manager .filelist ul.rows li dl,
+#media__manager .qq-uploader ul.rows li dl {
+  display: flex;
+  align-items: center;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dt,
+.mikio #mediamanager__page .qq-uploader ul.rows li dt,
+#media__manager .filelist ul.rows li dt,
+#media__manager .qq-uploader ul.rows li dt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dt a,
+.mikio #mediamanager__page .qq-uploader ul.rows li dt a,
+#media__manager .filelist ul.rows li dt a,
+#media__manager .qq-uploader ul.rows li dt a {
   height: auto;
+  width: auto;
 }
 
-.mikio #mediamanager__page .filelist .rows li dd.name,
-.mikio #mediamanager__page .qq-uploader .rows li dd.name,
-#media__manager .filelist .rows li dd.name,
-#media__manager .qq-uploader .rows li dd.name {
+.mikio #mediamanager__page .filelist ul.rows li dt a img,
+.mikio #mediamanager__page .qq-uploader ul.rows li dt a img,
+#media__manager .filelist ul.rows li dt a img,
+#media__manager .qq-uploader ul.rows li dt a img {
+  display: block;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dd.name,
+.mikio #mediamanager__page .qq-uploader ul.rows li dd.name,
+#media__manager .filelist ul.rows li dd.name,
+#media__manager .qq-uploader ul.rows li dd.name {
   text-align: left;
+  width: 30%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+  margin-left: 1%;
+  white-space: nowrap;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dd.size,
+.mikio #mediamanager__page .qq-uploader ul.rows li dd.size,
+#media__manager .filelist ul.rows li dd.size,
+#media__manager .qq-uploader ul.rows li dd.size {
+  width: 15%;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dd.date,
+.mikio #mediamanager__page .qq-uploader ul.rows li dd.date,
+#media__manager .filelist ul.rows li dd.date,
+#media__manager .qq-uploader ul.rows li dd.date {
+  width: 20%;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dd.filesize,
+.mikio #mediamanager__page .qq-uploader ul.rows li dd.filesize,
+#media__manager .filelist ul.rows li dd.filesize,
+#media__manager .qq-uploader ul.rows li dd.filesize {
+  width: 15%;
+}
+
+.mikio #mediamanager__page .filelist ul.rows li dd,
+.mikio #mediamanager__page .qq-uploader ul.rows li dd,
+#media__manager .filelist ul.rows li dd,
+#media__manager .qq-uploader ul.rows li dd {
+  margin: 0;
+  font-size: 90%;
 }
 
 .mikio #mediamanager__page .filelist .qq-upload-list,
@@ -2460,11 +2902,11 @@ pre {
 
 .mikio #mediamanager__page .file .panelHeader,
 #media__manager .file .panelHeader {
-  margin-bottom: 0;
-  background-color: #fff;
+  margin-bottom: 0 !important;
+  background-color: var(--tab-active-background-color);
   border-width: 1px 1px 1px 1px;
   border-style: solid;
-  border-color: #dee2e6;
+  border-color: var(--tab-active-border-color) !important;
   word-wrap: break-word;
   word-break: break-word;
 }
@@ -2496,10 +2938,10 @@ pre {
 .mikio #mediamanager__page .file ul.tabs li strong,
 #media__manager .file ul.tabs li strong {
   display: inline-block;
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
   font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: var(--tab-active-color);
+  border-color: var(--tab-active-border-color) var(--tab-active-border-color) var(--tab-active-background-color);
   border-radius: .5rem .5rem 0 0;
   border-width: 1px;
   border-style: solid;
@@ -2512,20 +2954,20 @@ pre {
 #media__manager .file ul.tabs li a {
   display: inline-block;
   padding: .5rem 1rem;
-  border: 1px solid transparent;
-  color: #007bff;
+  border: 1px solid var(--tab-border-color);
+  color: var(--tab-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   margin: 0;
-  background-color: transparent;
+  background-color: var(--tab-background-color);
 }
 
 .mikio #mediamanager__page .file ul.tabs li a:hover,
 #media__manager .file ul.tabs li a:hover {
-  color: #0056b3;
-  border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+  color: var(--tab-hover-color);
+  border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
   border-radius: .5rem .5rem 0 0;
-  background-color: transparent;
+  background-color: var(--tab-background-hover-color);
 }
 
 .mikio #mediamanager__page .file ul.tabs:after,
@@ -2535,15 +2977,16 @@ pre {
 
 .mikio #mediamanager__page .file #mediamanager__btn_delete button,
 #media__manager .file #mediamanager__btn_delete button {
-  color: #dc3545;
+  color: #fff;
   border-color: #dc3545;
+  background-color: #dc3545;
 }
 
 .mikio #mediamanager__page .file #mediamanager__btn_delete button:hover,
 #media__manager .file #mediamanager__btn_delete button:hover {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #c03040;
+  border-color: #c03040;
 }
 
 .mikio #mediamanager__page .file dl,
@@ -2574,16 +3017,16 @@ pre {
 
 .mikio #mediamanager__page .file button[name="mediado[save]"],
 #media__manager .file button[name="mediado[save]"] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio #mediamanager__page .file button[name="mediado[save]"]:hover,
 #media__manager .file button[name="mediado[save]"]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio #mediamanager__page .panel,
@@ -2596,21 +3039,36 @@ pre {
   margin: 0 10px 10px 0;
   padding: 10px 10px 8px;
   font-size: .9rem;
+  overflow: hidden;
+}
+
+.mikio #mediamanager__page .panelHeader h3,
+#media__manager .panelHeader h3 {
+  float: left;
+  font-weight: normal;
+  font-size: 1em;
+  padding: 0;
+  margin: 0 0 3px;
+}
+
+.mikio #mediamanager__page .panelHeader form.options,
+#media__manager .panelHeader form.options {
+  float: right;
 }
 
 .mikio #mediamanager__page .panelContent,
 #media__manager .panelContent {
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
   margin: 0 10px 0 0;
   border-width: 0 1px 1px 1px;
   border-style: solid;
-  border-color: #dee2e6;
+  border-color: var(--tab-active-border-color);
   padding: .5rem;
 }
 
 .mikio #mediamanager__page #media__opts,
 #media__manager #media__opts {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--tab-active-border-color);
   padding-bottom: .75rem;
 }
 
@@ -2618,7 +3076,7 @@ pre {
 .mikio #mediamanager__page #media__content .even,
 #media__manager #media__content .odd,
 #media__manager #media__content .even {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--table-row-border-color);
   font-size: 90%;
   display: grid;
   grid-template-columns: 9rem auto 10rem 1.5rem 1.5rem 1.5rem;
@@ -2720,12 +3178,12 @@ pre {
 
 .mikio #mediamanager__page #media__content .odd,
 #media__manager #media__content .odd {
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
 .mikio #mediamanager__page #media__content .even,
 #media__manager #media__content .even {
-  background-color: #f2f2f2;
+  background-color: var(--table-even-row-background-color);
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form {
@@ -2744,22 +3202,22 @@ pre {
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form button[type=submit] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form button[type=submit]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .toggleAssistant {
-  padding: .1rem .2rem;
-  font-size: 80%;
+  padding: .1rem .75rem;
+  font-size: 80% !important;
   min-width: 3rem;
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
@@ -2775,9 +3233,9 @@ pre {
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle {
   position: relative;
   display: inline-block;
-  border: 1px solid #e5e5e5;
-  background-color: #fff;
-  color: #1a1a1a;
+  border: 1px solid var(--dropdown-border-color);
+  background-color: var(--dropdown-background-color);
+  color: var(--dropdown-color);
   border-radius: .25rem;
   padding: .375rem .75rem;
   text-align: left;
@@ -2800,9 +3258,9 @@ pre {
   right: 0;
   top: .5rem;
   padding: .5rem 2rem;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--dropdown-border-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+  background-color: var(--dropdown-background-color);
   color: #999;
   list-style-type: none;
 }
@@ -2819,7 +3277,7 @@ pre {
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a {
   transition: all 0.15s ease-in-out;
-  color: #1a1a1a;
+  color: var(--dropdown-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   font-style: normal;
@@ -2829,7 +3287,7 @@ pre {
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:hover {
-  background-color: #e5e5e5;
+  background-color: var(--dropdown-hover-color);
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul[aria-expanded="false"] {
@@ -2873,13 +3331,13 @@ pre {
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--table-row-border-color);
   padding: .75rem;
-  background-color: #fff;
+  background-color: var(--table-odd-row-background-color);
 }
 
-.mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result:nth-child(2n + 1) {
-  background-color: #f2f2f2;
+.mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result:nth-child(2n+1) {
+  background-color: var(--table-even-row-background-color);
 }
 
 .mikio.dokuwiki .mode_search .mikio-article .search_fullpage_result .snippet {
@@ -2888,19 +3346,22 @@ pre {
 }
 
 #index__tree {
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  padding: 0 .5rem;
+  background-color: var(--tree-background-color);
+  border: 1px solid var(--tree-border-color);
+  padding: 0 1rem;
+}
+
+#index__tree ul {
+  padding-left: 1rem;
 }
 
 #index__tree a {
-  color: #333;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 #index__tree .curid a {
-  color: red;
+  color: var(--section-edit-highlight);
 }
 
 .mikio.dokuwiki ul.tabs {
@@ -2921,10 +3382,10 @@ pre {
 
 .mikio.dokuwiki ul.tabs li strong {
   display: inline-block;
-  background-color: #fff;
+  background-color: var(--tab-active-background-color);
   font-weight: normal;
-  color: #495057;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: var(--tab-active-color);
+  border-color: var(--tab-active-border-color) var(--tab-active-border-color) var(--tab-active-background-color);
   border-radius: .5rem .5rem 0 0;
   border-width: 1px;
   border-style: solid;
@@ -2936,19 +3397,19 @@ pre {
 .mikio.dokuwiki ul.tabs li a {
   display: inline-block;
   padding: .5rem 1rem;
-  border: 1px solid transparent;
-  color: #007bff;
+  border: 1px solid var(--tab-border-color);
+  color: var(--tab-color);
   -webkit-text-decoration: none;
   text-decoration: none;
   margin: 0;
-  background-color: transparent;
+  background-color: var(--tab-background-color);
 }
 
 .mikio.dokuwiki ul.tabs li a:hover {
-  color: #0056b3;
-  border-color: #dee2e6 #dee2e6 transparent #dee2e6;
+  color: var(--tab-hover-color);
+  border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
   border-radius: .5rem .5rem 0 0;
-  background-color: transparent;
+  background-color: var(--tab-background-hover-color);
 }
 
 .mikio.dokuwiki ul.tabs:after {
@@ -2960,7 +3421,7 @@ pre {
 }
 
 #dokuwiki__detail {
-  background-color: #f2f2f2;
+  background-color: var(--admin-background-color);
   height: 100vh;
   padding: 0 2rem;
 }
@@ -2995,9 +3456,9 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
-  border-color: #ced4da;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
+  border-color: var(--input-border-color);
   line-height: inherit;
 }
 
@@ -3009,10 +3470,14 @@ pre {
   padding: 0;
 }
 
-.mikio .content_partial button {
+.mikio .content_partial button,
+.mikio .content_partial input[type=button],
+.mikio .content_partial input[type=image] {
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -3020,30 +3485,34 @@ pre {
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.mikio .content_partial button:hover:not(:disabled) {
+.mikio .content_partial button:hover:not(:disabled),
+.mikio .content_partial input[type=button]:hover:not(:disabled),
+.mikio .content_partial input[type=image]:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
-.mikio .content_partial button:disabled {
+.mikio .content_partial button:disabled,
+.mikio .content_partial input[type=button]:disabled,
+.mikio .content_partial input[type=image]:disabled {
   opacity: .65;
 }
 
 .mikio .content_partial button#edbtn__save,
 .mikio .content_partial button[name="run[save]"] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio .content_partial button#edbtn__save:hover,
 .mikio .content_partial button[name="run[save]"]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio .content_partial input[type=text],
@@ -3074,7 +3543,7 @@ pre {
 .mikio .content_partial .toolbutton {
   border-radius: 0;
   border-right-width: 0;
-  border-color: #ced4da;
+  border-color: var(--input-border-color);
 }
 
 .mikio .content_partial .toolbutton:first-of-type {
@@ -3106,9 +3575,9 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
-  border-color: #ced4da;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
+  border-color: var(--input-border-color);
   line-height: inherit;
 }
 
@@ -3120,10 +3589,14 @@ pre {
   padding: 0;
 }
 
-.mikio div.dokuwiki div.comment_wrapper button {
+.mikio div.dokuwiki div.comment_wrapper button,
+.mikio div.dokuwiki div.comment_wrapper input[type=button],
+.mikio div.dokuwiki div.comment_wrapper input[type=image] {
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -3131,30 +3604,34 @@ pre {
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.mikio div.dokuwiki div.comment_wrapper button:hover:not(:disabled) {
+.mikio div.dokuwiki div.comment_wrapper button:hover:not(:disabled),
+.mikio div.dokuwiki div.comment_wrapper input[type=button]:hover:not(:disabled),
+.mikio div.dokuwiki div.comment_wrapper input[type=image]:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
-.mikio div.dokuwiki div.comment_wrapper button:disabled {
+.mikio div.dokuwiki div.comment_wrapper button:disabled,
+.mikio div.dokuwiki div.comment_wrapper input[type=button]:disabled,
+.mikio div.dokuwiki div.comment_wrapper input[type=image]:disabled {
   opacity: .65;
 }
 
 .mikio div.dokuwiki div.comment_wrapper button#edbtn__save,
 .mikio div.dokuwiki div.comment_wrapper button[name="run[save]"] {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
 }
 
 .mikio div.dokuwiki div.comment_wrapper button#edbtn__save:hover,
 .mikio div.dokuwiki div.comment_wrapper button[name="run[save]"]:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
 }
 
 .mikio div.dokuwiki div.comment_wrapper input[type=text],
@@ -3185,7 +3662,7 @@ pre {
 .mikio div.dokuwiki div.comment_wrapper .toolbutton {
   border-radius: 0;
   border-right-width: 0;
-  border-color: #ced4da;
+  border-color: var(--input-border-color);
 }
 
 .mikio div.dokuwiki div.comment_wrapper .toolbutton:first-of-type {
@@ -3209,11 +3686,13 @@ pre {
   box-sizing: border-box;
   vertical-align: middle;
   padding: .375rem .75rem;
-  color: #495057;
-  background-color: #fff;
+  color: var(--control-text-color);
+  background-color: var(--control-background-color);
   display: inline-block;
   text-align: center;
-  border-color: #6c757d;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
   line-height: 1.5;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -3228,9 +3707,9 @@ pre {
 .mikio div.dokuwiki div.comment_wrapper input[type=submit]:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
 }
 
 .mikio div.dokuwiki div.comment_wrapper input[type=submit]:disabled {
@@ -3607,33 +4086,78 @@ pre {
 
 .mikio .mode_admin table.jsoneditor-tree div.jsoneditor-value,
 .mikio .mode_admin table.jsoneditor-values div.jsoneditor-value {
-  background-color: #fff;
+  background-color: var(--background);
 }
 
-.mikio .mikio-theme-mode {
+.ui-controlgroup-horizontal label {
   display: inline-block;
+  text-align: center;
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border-color: var(--button-border-color);
+  line-height: 1.5;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  padding: .1rem .75rem;
+  font-size: 80% !important;
+  min-width: 3rem;
+  background-image: none;
+  border: 0;
 }
 
-.mikio .mikio-theme-mode-button {
-  border: 0;
+.ui-controlgroup-horizontal label:hover:not(:disabled) {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: var(--button-text-hover-color);
+  background-color: var(--button-background-hover-color);
+  border-color: var(--button-border-hover-color);
+}
+
+.ui-controlgroup-horizontal label:disabled {
+  opacity: .65;
+}
+
+.ui-controlgroup-horizontal label.ui-state-active {
+  color: var(--button-default-text-color);
+  background-color: var(--button-default-background-color);
+  border-color: var(--button-default-border-color);
+}
+
+.ui-controlgroup-horizontal label.ui-state-active:hover {
+  color: var(--button-default-text-hover-color);
+  background-color: var(--button-default-background-hover-color);
+  border-color: var(--button-default-border-hover-color);
+}
+
+.ui-controlgroup-horizontal label:hover {
+  background-image: none !important;
+  border: 0 !important;
+}
+
+.mikio .mikio-darklight {
+  display: inline-block;
+  align-self: center;
+}
+
+.mikio .mikio-darklight .mikio-darklight-light {
+  display: var(--display-theme-light);
+}
+
+.mikio .mikio-darklight .mikio-darklight-dark {
+  display: var(--display-theme-dark);
+}
+
+.mikio .mikio-darklight-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2.2rem;
   height: 2.2rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 75%;
+  padding: 0;
 }
 
-.mikio.mikio-auto .mikio-theme-mode-button {
-  background-size: 50%;
-  background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M4.414,6.493c-1.187,-0 -2.164,-0.977 -2.164,-2.165c-0,-1.187 0.977,-2.164 2.164,-2.164c1.187,0 2.164,0.977 2.164,2.164c0,1.188 -0.977,2.165 -2.164,2.165Zm0,0.721c1.583,0 2.886,-1.303 2.886,-2.886c-0,-1.583 -1.303,-2.885 -2.886,-2.885c-1.583,-0 -2.886,1.302 -2.886,2.885c0,1.583 1.303,2.886 2.886,2.886Zm0.361,-6.853c-0,0.198 -0.163,0.36 -0.361,0.36c-0.198,0 -0.361,-0.162 -0.361,-0.36c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,-0 0.361,0.163 0.361,0.361Zm-0,7.935c-0,0.198 -0.163,0.361 -0.361,0.361c-0.198,-0 -0.361,-0.163 -0.361,-0.361c0,-0.198 0.163,-0.361 0.361,-0.361c0.198,0 0.361,0.163 0.361,0.361Zm3.607,-3.607c-0.198,0 -0.361,-0.163 -0.361,-0.361c0,-0.197 0.163,-0.36 0.361,-0.36c0.198,-0 0.36,0.163 0.36,0.36c0,0.198 -0.162,0.361 -0.36,0.361Zm-7.936,0c-0.198,0 -0.36,-0.163 -0.36,-0.361c-0,-0.197 0.162,-0.36 0.36,-0.36c0.198,-0 0.361,0.163 0.361,0.36c-0,0.198 -0.163,0.361 -0.361,0.361Zm7.029,-2.911c-0.068,0.07 -0.162,0.11 -0.26,0.11c-0.197,-0 -0.36,-0.163 -0.36,-0.361c-0,-0.098 0.04,-0.192 0.11,-0.259c0.067,-0.065 0.157,-0.102 0.25,-0.102c0.198,0 0.361,0.163 0.361,0.361c0,0.093 -0.036,0.183 -0.101,0.251Zm-5.612,5.611c-0.068,0.071 -0.162,0.11 -0.259,0.11c-0.198,0 -0.361,-0.162 -0.361,-0.36c-0,-0.098 0.04,-0.192 0.11,-0.26c0.067,-0.065 0.157,-0.101 0.251,-0.101c0.198,0 0.36,0.163 0.36,0.361c0,0.093 -0.036,0.183 -0.101,0.25Zm5.102,0c-0.07,-0.068 -0.11,-0.161 -0.11,-0.259c-0,-0.198 0.163,-0.361 0.36,-0.361c0.098,0 0.192,0.04 0.26,0.11c0.065,0.068 0.101,0.157 0.101,0.251c0,0.198 -0.163,0.361 -0.361,0.361c-0.093,-0 -0.183,-0.037 -0.25,-0.102Zm-5.612,-5.611c-0.07,-0.068 -0.11,-0.162 -0.11,-0.26c-0,-0.198 0.163,-0.361 0.361,-0.361c0.097,0 0.191,0.04 0.259,0.111c0.065,0.067 0.101,0.157 0.101,0.25c0,0.198 -0.162,0.361 -0.36,0.361c-0.094,-0 -0.184,-0.037 -0.251,-0.101Z" style="fill-rule:nonzero;" /><path d="M11.646,8.393c0.096,0.117 0.111,0.282 0.038,0.415c-0.279,0.513 -0.426,1.089 -0.425,1.674c0,1.946 1.587,3.521 3.541,3.521c0.255,0 0.504,-0.027 0.742,-0.077c0.149,-0.033 0.304,0.028 0.392,0.153c0.093,0.13 0.087,0.308 -0.015,0.432c-0.768,0.943 -1.923,1.491 -3.139,1.489c-2.231,-0 -4.038,-1.797 -4.038,-4.011c0,-1.667 1.023,-3.096 2.48,-3.702c0.148,-0.063 0.322,-0.019 0.424,0.106Zm-0.553,0.5c-1.139,0.611 -1.853,1.803 -1.855,3.096c0,1.945 1.587,3.52 3.542,3.52c0.945,0.002 1.852,-0.375 2.518,-1.046c-0.163,0.021 -0.329,0.031 -0.498,0.031c-2.23,-0 -4.036,-1.797 -4.036,-4.011c-0,-0.565 0.117,-1.103 0.329,-1.59Z" /></svg>') !important;
-}
-
-.mikio.mikio-light .mikio-theme-mode-button {
-  background-size: 50%;
-  background-image: url('data: image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z" /></svg>');
-}
-
-.mikio.mikio-dark .mikio-theme-mode-button {
-  background-size: 50%;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:inherit" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" /></svg>');
+.mikio .mikio-darklight-button .mikio-iicon {
+  margin: 0;
 }
