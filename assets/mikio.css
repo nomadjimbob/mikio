@@ -10,6 +10,16 @@
   --text: #333;
   --link: #2b73b7;
   --link-hover: #2b73b7;
+  --link-visited: #2b73b7;
+  --link-active: #2b73b7;
+  --existing: #080;
+  --existing-hover: #080;
+  --existing-visited: #080;
+  --existing-active: #080;
+  --missing: #d30;
+  --missing-hover: #d30;
+  --missing-visited: #d30;
+  --missing-active: #d30;
   --background: #fff;
   --admin-background-color: #f2f2f2;
   --code-text-color: #e83e8c;
@@ -65,7 +75,7 @@
   --sidebar-background-color: #f2f2f2;
   --sidebar-border-color: #e5e5e5;
   --content-background: #fff;
-  --toc-background-color: #f2f2f2;
+  --toc-background-color: #fff;
   --toc-border-color: #e5e5e5;
   --toc-link-color: #666;
   --toc-link-hover-color: #000;
@@ -103,6 +113,16 @@
   --text: #fff;
   --link: #00bc8c;
   --link-hover: #009670;
+  --link-visited: #00bc8c;
+  --link-active: #00bc8c;
+  --existing: #00bc8c;
+  --existing-hover: #00bc8c;
+  --existing-visited: #00bc8c;
+  --existing-active: #00bc8c;
+  --missing: #ff0000;
+  --missing-hover: #ff0000;
+  --missing-visited: #ff0000;
+  --missing-active: #ff0000;
   --background: #222;
   --admin-background-color: #222;
   --code-text-color: #e83e8c;
@@ -403,9 +423,17 @@ body {
 }
 
 .mikio .mikio-breadcrumbs span.curid a,
+.mikio .mikio-breadcrumbs span.curid a:visited,
+.mikio .mikio-breadcrumbs span.curid a:active,
 .mikio .mikio-breadcrumbs a,
+.mikio .mikio-breadcrumbs a:visited,
+.mikio .mikio-breadcrumbs a:active,
 .mikio .mikio-youarehere span.curid a,
-.mikio .mikio-youarehere a {
+.mikio .mikio-youarehere span.curid a:visited,
+.mikio .mikio-youarehere span.curid a:active,
+.mikio .mikio-youarehere a,
+.mikio .mikio-youarehere a:visited,
+.mikio .mikio-youarehere a:active {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: var(--breadcrumb-link-color);
@@ -413,9 +441,17 @@ body {
 }
 
 .mikio .mikio-breadcrumbs span.curid a:hover,
+.mikio .mikio-breadcrumbs span.curid a:visited:hover,
+.mikio .mikio-breadcrumbs span.curid a:active:hover,
 .mikio .mikio-breadcrumbs a:hover,
+.mikio .mikio-breadcrumbs a:visited:hover,
+.mikio .mikio-breadcrumbs a:active:hover,
 .mikio .mikio-youarehere span.curid a:hover,
-.mikio .mikio-youarehere a:hover {
+.mikio .mikio-youarehere span.curid a:visited:hover,
+.mikio .mikio-youarehere span.curid a:active:hover,
+.mikio .mikio-youarehere a:hover,
+.mikio .mikio-youarehere a:visited:hover,
+.mikio .mikio-youarehere a:active:hover {
   color: var(--breadcrumb-link-hover-color);
 }
 
@@ -545,22 +581,30 @@ body {
   justify-content: flex-end;
 }
 
-.mikio-navbar a {
+.mikio-navbar a,
+.mikio-navbar a:visited,
+.mikio-navbar a:active {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: var(--navbar-link-color);
   transition: all .15s ease-in-out;
 }
 
-.mikio-navbar a:hover {
+.mikio-navbar a:hover,
+.mikio-navbar a:visited:hover,
+.mikio-navbar a:active:hover {
   color: var(--navbar-link-hover-color);
 }
 
-.mikio-navbar .mikio-nav-dropdown a:after {
+.mikio-navbar .mikio-nav-dropdown a:after,
+.mikio-navbar .mikio-nav-dropdown a:visited:after,
+.mikio-navbar .mikio-nav-dropdown a:active:after {
   border-color: var(--navbar-link-color) !important;
 }
 
-.mikio-navbar .mikio-nav-dropdown a:hover:after {
+.mikio-navbar .mikio-nav-dropdown a:hover:after,
+.mikio-navbar .mikio-nav-dropdown a:visited:hover:after,
+.mikio-navbar .mikio-nav-dropdown a:active:hover:after {
   border-color: var(--navbar-link-hover-color) !important;
 }
 
@@ -568,12 +612,16 @@ body {
   margin: 0 .5rem;
 }
 
-.mikio-navbar .mikio-button {
+.mikio-navbar .mikio-button,
+.mikio-navbar .mikio-button:visited,
+.mikio-navbar .mikio-button:active {
   background-color: transparent;
   border-color: transparent;
 }
 
-.mikio-navbar .mikio-button:hover:not(:disabled) {
+.mikio-navbar .mikio-button:hover:not(:disabled),
+.mikio-navbar .mikio-button:visited:hover:not(:disabled),
+.mikio-navbar .mikio-button:active:hover:not(:disabled) {
   background-color: transparent;
   border-color: transparent;
   color: var(--navbar-link-hover-color);
@@ -606,11 +654,15 @@ body {
   margin: 0 .5rem;
 }
 
-.mikio-sub-navbar a {
+.mikio-sub-navbar a,
+.mikio-sub-navbar a:visited,
+.mikio-sub-navbar a:active {
   color: var(--subnavbar-link-color);
 }
 
-.mikio-sub-navbar a:hover {
+.mikio-sub-navbar a:hover,
+.mikio-sub-navbar a:visited:hover,
+.mikio-sub-navbar a:active:hover {
   color: var(--subnavbar-link-hover-color);
 }
 
@@ -632,6 +684,7 @@ body {
 .mikio-hero .mikio-hero-text .mikio-breadcrumbs,
 .mikio-hero .mikio-hero-text .mikio-youarehere {
   background-color: transparent;
+  border-color: transparent;
   padding: 0;
   margin: 0;
 }
@@ -670,7 +723,9 @@ body {
   margin-bottom: .5rem;
 }
 
-.mikio .mikio-tags a {
+.mikio .mikio-tags a,
+.mikio .mikio-tags a:visited,
+.mikio .mikio-tags a:active {
   margin: 0 .25rem;
   font-size: 80%;
   padding: .25rem .75rem;
@@ -683,7 +738,9 @@ body {
   transition: all .15s ease-in-out;
 }
 
-.mikio .mikio-tags a:hover {
+.mikio .mikio-tags a:hover,
+.mikio .mikio-tags a:visited:hover,
+.mikio .mikio-tags a:active:hover {
   background-color: transparent;
   color: var(--tag-background-color);
 }
@@ -764,7 +821,9 @@ body {
   margin-bottom: 1rem;
 }
 
-.mikio-sidebar .mikio-sidebar-content a {
+.mikio-sidebar .mikio-sidebar-content a,
+.mikio-sidebar .mikio-sidebar-content a:visited,
+.mikio-sidebar .mikio-sidebar-content a:active {
   display: block;
   margin: 1rem 0;
   color: var(--sidebar-link-color);
@@ -772,7 +831,9 @@ body {
   text-decoration: none;
 }
 
-.mikio-sidebar .mikio-sidebar-content a:hover {
+.mikio-sidebar .mikio-sidebar-content a:hover,
+.mikio-sidebar .mikio-sidebar-content a:visited:hover,
+.mikio-sidebar .mikio-sidebar-content a:active:hover {
   color: var(--sidebar-link-hover-color);
 }
 
@@ -816,8 +877,60 @@ body {
   transition: all .15s ease-in-out;
 }
 
+.mikio-page a.wikilink1 {
+  color: var(--existing);
+}
+
+.mikio-page a.wikilink1:hover {
+  color: var(--existing-hover);
+}
+
+.mikio-page a.wikilink1:visited {
+  color: var(--existing-visited);
+}
+
+.mikio-page a.wikilink1:visited:hover {
+  color: var(--existing-hover);
+}
+
+.mikio-page a.wikilink1:active {
+  color: var(--existing-active);
+}
+
+.mikio-page a.wikilink2 {
+  color: var(--missing);
+}
+
+.mikio-page a.wikilink2:hover {
+  color: var(--missing-hover);
+}
+
+.mikio-page a.wikilink2:visited {
+  color: var(--missing-visited);
+}
+
+.mikio-page a.wikilink2:visited:hover {
+  color: var(--missing-hover);
+}
+
+.mikio-page a.wikilink2:active {
+  color: var(--missing-active);
+}
+
 .mikio-page a:hover {
   color: var(--link-hover);
+}
+
+.mikio-page a:visited {
+  color: var(--link-visited);
+}
+
+.mikio-page a:visited:hover {
+  color: var(--link-hover);
+}
+
+.mikio-page a:active {
+  color: var(--link-active);
 }
 
 .mikio-page-fill {
@@ -869,11 +982,15 @@ body {
   text-align: center;
 }
 
-.mikio-footer a {
+.mikio-footer a,
+.mikio-footer a:visited,
+.mikio-footer a:active {
   color: var(--footer-link-color);
 }
 
-.mikio-footer a:hover {
+.mikio-footer a:hover,
+.mikio-footer a:visited:hover,
+.mikio-footer a:active:hover {
   color: var(--footer-link-hover-color);
 }
 
@@ -890,11 +1007,15 @@ body {
   margin: 0 .5rem;
 }
 
-.mikio-footer .dw__pagetools .tools a svg {
+.mikio-footer .dw__pagetools .tools a svg,
+.mikio-footer .dw__pagetools .tools a:visited svg,
+.mikio-footer .dw__pagetools .tools a:active svg {
   fill: var(--footer-link-color);
 }
 
-.mikio-footer .dw__pagetools .tools a:hover svg {
+.mikio-footer .dw__pagetools .tools a:hover svg,
+.mikio-footer .dw__pagetools .tools a:visited:hover svg,
+.mikio-footer .dw__pagetools .tools a:active:hover svg {
   fill: var(--footer-link-hover-color);
 }
 
@@ -940,7 +1061,9 @@ body {
   padding: 0;
 }
 
-.mikio-button {
+.mikio-button,
+.mikio-button:visited,
+.mikio-button:active {
   display: inline-block;
   text-align: center;
   color: var(--button-text-color);
@@ -953,7 +1076,9 @@ body {
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.mikio-button:hover:not(:disabled) {
+.mikio-button:hover:not(:disabled),
+.mikio-button:visited:hover:not(:disabled),
+.mikio-button:active:hover:not(:disabled) {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: var(--button-text-hover-color);
@@ -961,7 +1086,9 @@ body {
   border-color: var(--button-border-hover-color);
 }
 
-.mikio-button:disabled {
+.mikio-button:disabled,
+.mikio-button:visited:disabled,
+.mikio-button:active:disabled {
   opacity: .65;
 }
 
@@ -971,25 +1098,33 @@ body {
   min-width: 3rem;
 }
 
-.mikio-button-submit {
+.mikio-button-submit,
+.mikio-button-submit:visited,
+.mikio-button-submit:active {
   color: var(--button-default-text-color);
   background-color: var(--button-default-background-color);
   border-color: var(--button-default-border-color);
 }
 
-.mikio-button-submit:hover {
+.mikio-button-submit:hover,
+.mikio-button-submit:visited:hover,
+.mikio-button-submit:active:hover {
   color: var(--button-default-text-hover-color);
   background-color: var(--button-default-background-hover-color);
   border-color: var(--button-default-border-hover-color);
 }
 
-.mikio-button-danger {
+.mikio-button-danger,
+.mikio-button-danger:visited,
+.mikio-button-danger:active {
   color: #fff;
   border-color: #dc3545;
   background-color: #dc3545;
 }
 
-.mikio-button-danger:hover {
+.mikio-button-danger:hover,
+.mikio-button-danger:visited:hover,
+.mikio-button-danger:active:hover {
   color: #fff;
   background-color: #c03040;
   border-color: #c03040;
@@ -1133,15 +1268,21 @@ body {
   margin: 0;
 }
 
-#dw__pagetools a {
+#dw__pagetools a,
+#dw__pagetools a:visited,
+#dw__pagetools a:active {
   display: block;
 }
 
-#dw__pagetools a svg {
+#dw__pagetools a svg,
+#dw__pagetools a:visited svg,
+#dw__pagetools a:active svg {
   fill: var(--pagetools-color);
 }
 
-#dw__pagetools a:hover svg {
+#dw__pagetools a:hover svg,
+#dw__pagetools a:visited:hover svg,
+#dw__pagetools a:active:hover svg {
   fill: var(--pagetools-hover-color);
 }
 
@@ -1252,7 +1393,9 @@ body {
   display: none;
 }
 
-.mikio .mikio-toc a {
+.mikio .mikio-toc a,
+.mikio .mikio-toc a:visited,
+.mikio .mikio-toc a:active {
   display: block;
   font-size: 80%;
   color: var(--toc-link-color);
@@ -1261,7 +1404,9 @@ body {
   padding: .2rem 0;
 }
 
-.mikio .mikio-toc a:hover {
+.mikio .mikio-toc a:hover,
+.mikio .mikio-toc a:visited:hover,
+.mikio .mikio-toc a:active:hover {
   color: var(--toc-link-hover-color);
 }
 
@@ -1399,14 +1544,18 @@ body {
   border-bottom: 1px solid var(--dropdown-border-color);
 }
 
-.mikio-dropdown .mikio-nav-link {
+.mikio-dropdown .mikio-nav-link,
+.mikio-dropdown .mikio-nav-link:visited,
+.mikio-dropdown .mikio-nav-link.active {
   margin: 0rem -1rem 0rem -1rem;
   padding: .25rem 1rem .25rem 1rem;
   transition: all .15s ease-in-out;
   color: var(--dropdown-color);
 }
 
-.mikio-dropdown .mikio-nav-link:hover {
+.mikio-dropdown .mikio-nav-link:hover,
+.mikio-dropdown .mikio-nav-link:visited:hover,
+.mikio-dropdown .mikio-nav-link.active:hover {
   color: var(--dropdown-color);
   background-color: var(--dropdown-hover-color);
 }
@@ -1457,7 +1606,9 @@ body {
   bottom: -1px;
 }
 
-.mikio-tabs li a {
+.mikio-tabs li a,
+.mikio-tabs li a:visited,
+.mikio-tabs li a:active {
   display: inline-block;
   padding: .5rem 1rem;
   border: 1px solid var(--tab-border-color);
@@ -1468,7 +1619,9 @@ body {
   background-color: var(--tab-background-color);
 }
 
-.mikio-tabs li a:hover {
+.mikio-tabs li a:hover,
+.mikio-tabs li a:visited:hover,
+.mikio-tabs li a:active:hover {
   color: var(--tab-hover-color);
   border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
   border-radius: .5rem .5rem 0 0;
@@ -2085,7 +2238,11 @@ pre {
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a,
-.mikio .mode_admin div.ui-admin ul.admin_plugins li a {
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:visited,
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:active,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:visited,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:active {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2103,19 +2260,31 @@ pre {
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a span.icon,
-.mikio .mode_admin div.ui-admin ul.admin_plugins li a span.icon {
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:visited span.icon,
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:active span.icon,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a span.icon,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:visited span.icon,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:active span.icon {
   width: auto;
   height: auto;
   min-height: auto;
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a svg,
-.mikio .mode_admin div.ui-admin ul.admin_plugins li a svg {
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:visited svg,
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:active svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:visited svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:active svg {
   fill: var(--button-text-color);
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a:hover,
-.mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover {
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:visited:hover,
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:active:hover,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:visited:hover,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:active:hover {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: var(--button-text-hover-color);
@@ -2124,7 +2293,11 @@ pre {
 }
 
 .mikio .mode_admin div.ui-admin ul.admin_tasks li a:hover svg,
-.mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover svg {
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:visited:hover svg,
+.mikio .mode_admin div.ui-admin ul.admin_tasks li a:active:hover svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:hover svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:visited:hover svg,
+.mikio .mode_admin div.ui-admin ul.admin_plugins li a:active:hover svg {
   fill: var(--button-text-hover-color);
 }
 
@@ -2951,7 +3124,11 @@ pre {
 }
 
 .mikio #mediamanager__page .file ul.tabs li a,
-#media__manager .file ul.tabs li a {
+.mikio #mediamanager__page .file ul.tabs li a:visited,
+.mikio #mediamanager__page .file ul.tabs li a:active,
+#media__manager .file ul.tabs li a,
+#media__manager .file ul.tabs li a:visited,
+#media__manager .file ul.tabs li a:active {
   display: inline-block;
   padding: .5rem 1rem;
   border: 1px solid var(--tab-border-color);
@@ -2963,7 +3140,11 @@ pre {
 }
 
 .mikio #mediamanager__page .file ul.tabs li a:hover,
-#media__manager .file ul.tabs li a:hover {
+.mikio #mediamanager__page .file ul.tabs li a:visited:hover,
+.mikio #mediamanager__page .file ul.tabs li a:active:hover,
+#media__manager .file ul.tabs li a:hover,
+#media__manager .file ul.tabs li a:visited:hover,
+#media__manager .file ul.tabs li a:active:hover {
   color: var(--tab-hover-color);
   border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
   border-radius: .5rem .5rem 0 0;
@@ -3275,7 +3456,9 @@ pre {
   display: block;
 }
 
-.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a {
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a,
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:visited,
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:active {
   transition: all 0.15s ease-in-out;
   color: var(--dropdown-color);
   -webkit-text-decoration: none;
@@ -3286,7 +3469,9 @@ pre {
   margin: 0 -2rem;
 }
 
-.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:hover {
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:hover,
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:visited:hover,
+.mikio.dokuwiki .mode_search .mikio-article .search-results-form fieldset.search-form .advancedOptions .toggle ul a:active:hover {
   background-color: var(--dropdown-hover-color);
 }
 
@@ -3394,7 +3579,9 @@ pre {
   bottom: -1px;
 }
 
-.mikio.dokuwiki ul.tabs li a {
+.mikio.dokuwiki ul.tabs li a,
+.mikio.dokuwiki ul.tabs li a:visited,
+.mikio.dokuwiki ul.tabs li a:active {
   display: inline-block;
   padding: .5rem 1rem;
   border: 1px solid var(--tab-border-color);
@@ -3405,7 +3592,9 @@ pre {
   background-color: var(--tab-background-color);
 }
 
-.mikio.dokuwiki ul.tabs li a:hover {
+.mikio.dokuwiki ul.tabs li a:hover,
+.mikio.dokuwiki ul.tabs li a:visited:hover,
+.mikio.dokuwiki ul.tabs li a:active:hover {
   color: var(--tab-hover-color);
   border-color: var(--tab-border-hover-color) var(--tab-border-hover-color) transparent var(--tab-border-hover-color);
   border-radius: .5rem .5rem 0 0;
@@ -3998,11 +4187,32 @@ pre {
   background: transparent;
 }
 
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a:visited,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a:active,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeUrl:visited,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeUrl:active,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeSel:visited,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeSel:active,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.node:visited,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.node:active,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.navSel:visited,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.navSel:active {
+  display: initial;
+  margin: initial;
+  color: #666;
+  background: transparent;
+}
+
 .mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a:hover,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a:visited:hover,
 .mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeUrl:hover,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeUrl:visited:hover,
 .mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeSel:hover,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.nodeSel:visited:hover,
 .mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.node:hover,
-.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.navSel:hover {
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.node:visited:hover,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.navSel:hover,
+.mikio-sidebar .mikio-sidebar-content .dtree .dTreeNode a.navSel:visited:hover {
   color: #333;
   text-decoration: none;
   background-color: transparent;
@@ -4104,7 +4314,8 @@ pre {
   font-size: 80% !important;
   min-width: 3rem;
   background-image: none;
-  border: 0;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
 }
 
 .ui-controlgroup-horizontal label:hover:not(:disabled) {
@@ -4119,6 +4330,28 @@ pre {
   opacity: .65;
 }
 
+.ui-controlgroup-horizontal label:first-of-type {
+  border-left-width: 1px !important;
+}
+
+.ui-controlgroup-horizontal label:last-of-type {
+  border-right-width: 1px !important;
+}
+
+.ui-controlgroup-horizontal label:hover {
+  background-image: none !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+}
+
+.ui-controlgroup-horizontal label:hover:first-of-type {
+  border-left-width: 1px !important;
+}
+
+.ui-controlgroup-horizontal label:hover:last-of-type {
+  border-right-width: 1px !important;
+}
+
 .ui-controlgroup-horizontal label.ui-state-active {
   color: var(--button-default-text-color);
   background-color: var(--button-default-background-color);
@@ -4129,11 +4362,6 @@ pre {
   color: var(--button-default-text-hover-color);
   background-color: var(--button-default-background-hover-color);
   border-color: var(--button-default-border-hover-color);
-}
-
-.ui-controlgroup-horizontal label:hover {
-  background-image: none !important;
-  border: 0 !important;
 }
 
 .mikio .mikio-darklight {
