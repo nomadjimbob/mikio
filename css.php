@@ -46,13 +46,19 @@ try {
             if(strpos($cssFile, $baseDir) === 0 && file_exists($cssFile)) {
                 $rawVars = Array();
                 $file = 'style.ini';
-                if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
+                if(file_exists($file)) {
+                    $rawVars = arrayDeepMerge($rawVars, parse_ini_file($file, TRUE));
+                }
 
                 $file = platformSlashes('../../../conf/tpl/mikio/style.ini');
-                if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
+                if(file_exists($file)) {
+                    $rawVars = arrayDeepMerge($rawVars, parse_ini_file($file, TRUE));
+                }
 
                 $file = ($_SERVER['DOCUMENT_ROOT'] . '/conf/tpl/mikio/style.ini');
-                if(file_exists($file)) $rawVars = array_merge($rawVars, parse_ini_file($file, TRUE));
+                if(file_exists($file)) {
+                    $rawVars = arrayDeepMerge($rawVars, parse_ini_file($file, TRUE));
+                }
 
                 $css = file_get_contents($cssFile);
 
@@ -73,7 +79,7 @@ try {
                 if(count($vars) > 0) {
                     $less->setVariables($vars);
                 }
-                
+
                 $css = $less->compile($css);
                 echo $css;
             } else {
@@ -89,6 +95,18 @@ try {
     }
 }
 catch(Exception $e) {
+    // echo $e;
     header('Content-Type: text/css; charset=utf-8');
     include(dirname(__FILE__) . '/assets/mikio.css');
+}
+
+function arrayDeepMerge($arr1, $arr2) {
+    foreach ($arr2 as $key => $value){
+        if(array_key_exists($key, $arr1)) {
+            $arr1[$key] = array_merge($arr1[$key], $value);
+        } else {
+            $arr1[$key] = $value;
+        }
+    }
+    return $arr1;
 }
