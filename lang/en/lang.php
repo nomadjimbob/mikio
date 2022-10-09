@@ -32,9 +32,16 @@ $lang['config_sticky']      = 'Sticky Parts';
 /* Style.ini */
 $lang['__link__']       = 'The font color of links';
 $lang['__link_hover__'] = 'The font color of links when cursor hovers over';
+$lang['__link_visited__'] = 'The font color of links when previously visited';
+$lang['__link_active__'] = 'The font color of links the moment it is clicked';
 $lang['__existing__']   = 'The font color of wiki links for existing pages';
+$lang['__existing_hover__']   = 'The font color of wiki links for existing pages when cursor hovers over';
+$lang['__existing_visited__']   = 'The font color of wiki links for existing pages when previously visited';
+$lang['__existing_active__']   = 'The font color of wiki links for existing pages the moment it is clicked';
 $lang['__missing__']    = 'The font color of wiki links for missing pages';
-
+$lang['__missing_hover__']    = 'The font color of wiki links for missing pages when cursor hovers over';
+$lang['__missing_visited__']    = 'The font color of wiki links for missing pages when previously visited';
+$lang['__missing_active__']    = 'The font color of wiki links for missing pages the moment it is clicked';
 $lang['__line_height__']    = 'The base font line height';
 $lang['__site_width__']     = 'Width of the body content';
 

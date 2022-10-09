@@ -224,6 +224,11 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+- **_2022-10-09_**
+  - Fixed issue of new elements not being added to CSS when a custom template style is set
+  - Fixed issue of wiki page style (existing and missing) not taking priority of link colouring
+  - Added support for styling link pseudo classes (visited, hover, active) for links and page links [#47](https://github.com/nomadjimbob/mikio/issues/47). Thanks chrbinder
+
 - **_2022-10-04_**
   - Cleaned up the code to PHPCS standards
   - Fixed breadcrumb layouts on mobile [#31](https://github.com/nomadjimbob/mikio/issues/31)

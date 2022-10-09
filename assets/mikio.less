@@ -34,6 +34,16 @@
     --text: @ini_text;
     --link: @ini_link;
     --link-hover: @ini_link_hover;
+    --link-visited: @ini_link_visited;
+    --link-active: @ini_link_active;
+    --existing: @ini_existing;
+    --existing-hover: @ini_existing_hover;
+    --existing-visited: @ini_existing_visited;
+    --existing-active: @ini_existing_active;
+    --missing: @ini_missing;
+    --missing-hover: @ini_missing_hover;
+    --missing-visited: @ini_missing_visited;
+    --missing-active: @ini_missing_active;
     --background: @ini_background;
     --admin-background-color: @ini_admin_background_color;
     --code-text-color: @ini_code_text_color;
@@ -127,6 +137,16 @@
     --text: @ini_darkmode_text;
     --link: @ini_darkmode_link;
     --link-hover: @ini_darkmode_link_hover;
+    --link-visited: @ini_darkmode_link_visited;
+    --link-active: @ini_darkmode_link_active;
+    --existing: @ini_darkmode_existing;
+    --existing-hover: @ini_darkmode_existing_hover;
+    --existing-visited: @ini_darkmode_existing_visited;
+    --existing-active: @ini_darkmode_existing_active;
+    --missing: @ini_darkmode_missing;
+    --missing-hover: @ini_darkmode_missing_hover;
+    --missing-visited: @ini_darkmode_missing_visited;
+    --missing-active: @ini_darkmode_missing_active;
     --background: @ini_darkmode_background;
     --admin-background-color: @ini_darkmode_admin_background_color;
     --code-text-color: @ini_darkmode_code_text_color;
@@ -363,7 +383,7 @@ html, body {
         font-size: @ini_breadcrumb_font_size;
         color: var(--breadcrumb-text-color);
 
-        span.curid a, a {
+        span.curid a, span.curid a:visited, span.curid a:active, a, a:visited, a:active {
             .mikio-text-decoration(none);
             color: var(--breadcrumb-link-color);
             font-weight: normal;
@@ -506,7 +526,7 @@ html, body {
         justify-content: @ini_navbar_content_justify;
     }
 
-    a {
+    a, a:visited, a:active {
         .mikio-text-decoration(none);
         color: var(--navbar-link-color);
         transition: all .15s ease-in-out;
@@ -516,7 +536,7 @@ html, body {
         }
     }
 
-    .mikio-nav-dropdown a {
+    .mikio-nav-dropdown a, .mikio-nav-dropdown a:visited, .mikio-nav-dropdown a:active {
         &:after {
             border-color: var(--navbar-link-color) !important;
         }
@@ -530,7 +550,7 @@ html, body {
         margin: 0 .5rem;
     }
 
-    .mikio-button {
+    .mikio-button, .mikio-button:visited, .mikio-button:active {
         background-color: transparent;
         border-color: transparent;
 
@@ -565,7 +585,7 @@ html, body {
         margin: 0 .5rem;
     }
 
-    a {
+    a, a:visited, a:active {
         color: var(--subnavbar-link-color);
 
         &:hover {
@@ -629,7 +649,7 @@ html, body {
     padding-right: .5rem;
     margin-bottom: .5rem;
     
-    a {
+    a, a:visited, a:active {
         margin: 0 .25rem;
         font-size: 80%;
         padding: .25rem .75rem;
@@ -724,7 +744,7 @@ html, body {
         overflow-wrap: break-word;
         margin-bottom: 1rem;
 
-        a {
+        a, a:visited, a:active {
             display: block;
             margin: 1rem 0;
             color: var(--sidebar-link-color);
@@ -771,8 +791,60 @@ html, body {
         color: var(--link);
         transition: all .15s ease-in-out;
 
+        &.wikilink1 {
+            color: var(--existing);
+
+            &:hover {
+                color: var(--existing-hover);
+            }
+        
+            &:visited {
+                color: var(--existing-visited);
+
+                &:hover {
+                    color: var(--existing-hover);
+                }
+            }
+        
+            &:active {
+                color: var(--existing-active);
+            }
+        }
+
+        &.wikilink2 {
+            color: var(--missing);
+
+            &:hover {
+                color: var(--missing-hover);
+            }
+
+            &:visited {
+                color: var(--missing-visited);
+
+                &:hover {
+                    color: var(--missing-hover);
+                }
+            }
+
+            &:active {
+                color: var(--missing-active);
+            }
+        }
+
         &:hover {
             color: var(--link-hover);
+        }
+
+        &:visited {
+            color: var(--link-visited);
+
+            &:hover {
+                color: var(--link-hover);
+            }
+        }
+
+        &:active {
+            color: var(--link-active);
         }
     }
 }
@@ -829,7 +901,7 @@ html, body {
     font-size: @ini_footer_font_size;
     text-align: @ini_footer_text_align;
 
-    a {
+    a, a:visited, a:active {
         color: var(--footer-link-color);
 
         &:hover {
@@ -848,7 +920,7 @@ html, body {
                 margin: 0 .5rem;
             }
 
-            a {
+            a, a:visited, a:active {
                 // margin: 0 .5rem;
         
                 svg {
@@ -910,7 +982,7 @@ html, body {
     }
 }
 
-.mikio-button {
+.mikio-button, .mikio-button:visited, .mikio-button:active {
     display: inline-block;
     text-align: center;
     color: var(--button-text-color);
@@ -940,7 +1012,7 @@ html, body {
     min-width: 3rem;
 }
 
-.mikio-button-submit {
+.mikio-button-submit, .mikio-button-submit:visited, .mikio-button-submit:active {
     color: var(--button-default-text-color);
     background-color: var(--button-default-background-color);
     border-color: var(--button-default-border-color);
@@ -952,7 +1024,7 @@ html, body {
     }
 }
 
-.mikio-button-danger {
+.mikio-button-danger, .mikio-button-danger:visited, .mikio-button-danger:active {
     color: #fff;
     border-color: #dc3545;
     background-color: #dc3545;
@@ -1081,7 +1153,7 @@ html, body {
         margin: 0;
     }
 
-    a {
+    a, a:visited, a:active {
         display: block;
 
         svg {
@@ -1207,7 +1279,7 @@ html, body {
         }
     }
 
-    a {
+    a, a:visited, a:active {
         display: block;
         font-size: @ini_toc_font_size;
         color: var(--toc-link-color);
@@ -1346,7 +1418,7 @@ html, body {
         border-bottom: 1px solid var(--dropdown-border-color);
     }
 
-    .mikio-nav-link {
+    .mikio-nav-link, .mikio-nav-link:visited, .mikio-nav-link.active {
         margin: 0rem -1rem 0rem -1rem;
         padding: .25rem 1rem .25rem 1rem;
         transition: all .15s ease-in-out;
@@ -1397,7 +1469,7 @@ html, body {
             .mikio-tab-active();
         }
 
-        a {
+        a, a:visited, a:active {
             display: inline-block;
             padding: .5rem 1rem;
             border: 1px solid var(--tab-border-color);
@@ -1610,7 +1682,7 @@ code, pre {
                 margin: 1rem 1rem;
                 background-color: var(--button-background-color);
                             
-                a {
+                a, a:visited, a:active {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -2414,7 +2486,7 @@ code, pre {
                             display: block;
                         }
 
-                        a {
+                        a, a:visited, a:active {
                             transition: all 0.15s ease-in-out;
                             color: var(--dropdown-color);
                             .mikio-text-decoration(none);
@@ -2842,7 +2914,14 @@ code, pre {
             color: #666;
             background: transparent;
 
-            &:hover {
+            &:visited, &:active {
+                display: initial;
+                margin: initial;
+                color: #666;
+                background: transparent;
+            }
+
+            &:hover, &:visited:hover {
                 color: #333;
                 text-decoration: none;
                 background-color: transparent;
