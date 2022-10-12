@@ -42,10 +42,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <div id="dokuwiki__detail" class="<?php echo tpl_classes(); ?>">
         <?php html_msgarea() ?>
 
-        <?php if ($ERROR !== '') :
+        <?php if (strlen($ERROR) !== 0) :
             echo $ERROR; ?>
         <?php else : ?>
-            <?php if ($REV !== '') {
+            <?php if (strlen($REV) !== '0' && strcmp($REV, '0') !== 0) {
                 echo p_locale_xhtml('showrev');
             }?>
             <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline', $IMG))?></h1>
