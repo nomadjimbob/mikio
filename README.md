@@ -224,6 +224,10 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 
 ## Releases
 
+- **_2022-10-12_**
+  - Fixed blank page being displayed instead of media detail [#48](https://github.com/nomadjimbob/mikio/issues/48). Thanks spratinatin
+
+
 - **_2022-10-09_**
   - Fixed issue of new elements not being added to CSS when a custom template style is set
   - Fixed issue of wiki page style (existing and missing) not taking priority of link colouring
