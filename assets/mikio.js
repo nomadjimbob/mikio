@@ -705,5 +705,4 @@ if (document.readyState != 'loading') {
     mikio.ready();
 } else {
     document.addEventListener('DOMContentLoaded', function () { mikio.ready() });
-    document.getElementsByTagName('html')[0].style.background = 'green';
 }
