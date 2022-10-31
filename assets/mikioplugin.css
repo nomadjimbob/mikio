@@ -116,10 +116,6 @@
     --mikiop-tooltip-border-color: #9a7d0a;
 }
 
-
-
-
-
 :root[data-theme="theme-dark"] {
     --mikiop-background-color: #ffffff20;
     --mikiop-border-color: #ffffff20;
