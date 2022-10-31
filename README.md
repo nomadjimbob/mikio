@@ -216,6 +216,8 @@ if(html.dataset.theme == 'theme-dark') {
 
 The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also available to add bootstrap 4 style + more elements to DokuWiki pages.
 
+If the plugin is installed, the **Template Styles Settings** page will be expanded to allow directly editing the plugin element styling.
+
 ## Languages
 
 - `sidebar-title` : Text for the collapsable block in the sidebar
@@ -223,6 +225,9 @@ The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also availabl
 - `home` : Text for the breadcrumb home title
 
 ## Releases
+
+- **_2022-10-31_**
+  - Added support to directly editing Mikio Plugin within Template Style Settings.
 
 - **_2022-10-12_**
   - Fixed blank page being displayed instead of media detail [#48](https://github.com/nomadjimbob/mikio/issues/48). Thanks spratinatin

@@ -1,0 +1,139 @@
+:root[data-theme="theme-light"] {
+    --mikiop-background-color: #00000007;
+    --mikiop-border-color: #00000020;
+    --mikiop-header-background-color: #00000007;
+    --mikiop-footer-background-color: #00000007;
+
+    --mikiop-primary-text-color: #ffffff;
+    --mikiop-primary-text-hover-color: #ffffff;
+    --mikiop-primary-background-color: #007bff;
+    --mikiop-primary-background-hover-color: #0069d9;
+    --mikiop-primary-border-color: #007bff;
+    --mikiop-primary-border-hover-color: #0062cc;
+    --mikiop-primary-light-text-color: #004085;
+    --mikiop-primary-light-background-color: #cce5ff;
+    --mikiop-primary-light-border-color: #b8daff;
+
+    --mikiop-secondary-text-color: #fff;
+    --mikiop-secondary-text-hover-color: #fff;
+    --mikiop-secondary-background-color: #6c757d;
+    --mikiop-secondary-background-hover-color: #5a6268;
+    --mikiop-secondary-border-color: #6c757d;
+    --mikiop-secondary-border-hover-color: #545b62;
+    --mikiop-secondary-light-text-color: #383d41;
+    --mikiop-secondary-light-background-color: #e2e3e5;
+    --mikiop-secondary-light-border-color: #d6d8db;
+
+    --mikiop-success-text-color: #fff;
+    --mikiop-success-text-hover-color: #fff;
+    --mikiop-success-background-color: #28a745;
+    --mikiop-success-background-hover-color: #218838;
+    --mikiop-success-border-color: #28a745;
+    --mikiop-success-border-hover-color: #1e7e34;
+    --mikiop-success-light-text-color: #155724;
+    --mikiop-success-light-background-color: #d4edda;
+    --mikiop-success-light-border-color: #c3e6cb;
+
+    --mikiop-danger-text-color: #fff;
+    --mikiop-danger-background-color: #dc3545;
+    --mikiop-danger-border-color: #dc3545;
+    --mikiop-danger-text-hover-color: #fff;
+    --mikiop-danger-background-hover-color: #c82333;
+    --mikiop-danger-border-hover-color: #bd2130;
+    --mikiop-danger-light-text-color: #721c24;
+    --mikiop-danger-light-background-color: #f8d7da;
+    --mikiop-danger-light-border-color: #f5c6cb;
+
+    --mikiop-warning-text-color: #fff;
+    --mikiop-warning-background-color: #ffc107;
+    --mikiop-warning-border-color: #ffc107;
+    --mikiop-warning-text-hover-color: #fff;
+    --mikiop-warning-background-hover-color: #e0a800;
+    --mikiop-warning-border-hover-color: #d39e00;
+    --mikiop-warning-light-text-color: #856404;
+    --mikiop-warning-light-background-color: #fff3cd;
+    --mikiop-warning-light-border-color: #ffeeba;
+
+    --mikiop-info-text-color: #fff;
+    --mikiop-info-background-color: #17a2b8;
+    --mikiop-info-border-color: #17a2b8;
+    --mikiop-info-text-hover-color: #fff;
+    --mikiop-info-background-hover-color: #138496;
+    --mikiop-info-border-hover-color: #117a8b;
+    --mikiop-info-light-text-color: #0c5460;
+    --mikiop-info-light-background-color: #d1ecf1;
+    --mikiop-info-light-border-color: #bee5eb;
+
+    --mikiop-light-text-color: #212529;
+    --mikiop-light-background-color: #f8f9fa;
+    --mikiop-light-border-color: #f8f9fa;
+    --mikiop-light-text-hover-color: #212529;
+    --mikiop-light-background-hover-color: #e2e6ea;
+    --mikiop-light-border-hover-color: #dae0e5;
+    --mikiop-light-light-text-color: #818182;
+    --mikiop-light-light-background-color: #fefefe;
+    --mikiop-light-light-border-color: #fdfdfe;
+
+    --mikiop-dark-text-color: #fff;
+    --mikiop-dark-background-color: #343a40;
+    --mikiop-dark-border-color: #343a40;
+    --mikiop-dark-text-hover-color: #fff;
+    --mikiop-dark-background-hover-color: #23272b;
+    --mikiop-dark-border-hover-color: #1d2124;
+    --mikiop-dark-light-text-color: #1b1e21;
+    --mikiop-dark-light-background-color: #d6d8d9;
+    --mikiop-dark-light-border-color: #c6c8ca;
+
+    --mikiop-link-text-color: #007bff;
+    --mikiop-link-background-color: transparent;
+    --mikiop-link-border-color: transparent;
+    --mikiop-link-text-hover-color: #0056b3;
+    --mikiop-link-background-hover-color: transparent;
+    --mikiop-link-border-hover-color: transparent;
+
+    /* Carousel */
+    --mikiop-carousel-title-text-color: #fff;
+    --mikiop-carousel-caption-text-color: #fff;
+    --mikiop-carousel-caption-background-color: #00000080;
+    --mikiop-carousel-control-fill-color: #fff;
+    --mikiop-carousel-control-stroke-color: #000;
+    --mikiop-carousel-indicator-color: #fff;
+
+    /* Steps */
+    --mikiop-steps-step-text-color: inherit;
+    --mikiop-steps-border-color: #00000040;
+    --mikiop-steps-step-background-color: #fff;
+    --mikiop-steps-step-background-complete-color: #f8f8f8;
+
+    /* Tabgroup */
+    --mikiop-tabgroup-tab-text-active-color: #000000d0;
+    --mikiop-tabgroup-tab-background-active-color: #ffffff20;
+    --mikiop-tabgroup-tab-border-hover-color: #00000020;
+
+    /* Tooltip */
+    --mikiop-tooltip-text-color: #333;
+    --mikiop-tooltip-background-color: #fcf3cf;
+    --mikiop-tooltip-border-color: #9a7d0a;
+}
+
+
+
+
+
+:root[data-theme="theme-dark"] {
+    --mikiop-background-color: #ffffff20;
+    --mikiop-border-color: #ffffff20;
+    --mikiop-header-background-color: #ffffff07;
+    --mikiop-footer-background-color: #ffffff07;
+
+    /* Steps */
+    --mikiop-steps-step-text-color: #fff;
+    --mikiop-steps-border-color: #ffffff40;
+    --mikiop-steps-step-background-color: #222;
+    --mikiop-steps-step-background-complete-color: #000;
+
+    /* Tabgroup */
+    --mikiop-tabgroup-tab-text-active-color: #ffffffd0;
+    --mikiop-tabgroup-tab-background-active-color: #00000020;
+    --mikiop-tabgroup-tab-border-hover-color: #ffffff20;
+}
