@@ -1764,8 +1764,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 $content = preg_replace(
                     '/(<tr>\s*<td>\s*<label for="tpl__' . $header['starts_with'] . '.+?<\/tr>)/s',
-                    '</tbody></table><' . $header['heading'] . ' style="display:' . 
-                    ($header['hidden'] === true ? 'none' : 'block') . '">' . 
+                    '</tbody></table><' . $header['heading'] . ' style="display:' .
+                    ($header['hidden'] === true ? 'none' : 'block') . '">' .
                     $header['title'] . '</' . $header['heading'] . '>
                     <table style="display:' . ($header['hidden'] === true ? 'none' : 'table') . '"><tbody>$1',
                     $content,
