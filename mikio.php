@@ -97,7 +97,7 @@ class Template
     {
         global $MIKIO_ICONS;
         global $conf;
-        
+
         global $MIKIO_TEMPLATE;
         $MIKIO_TEMPLATE = '123';
 
@@ -149,7 +149,7 @@ class Template
         }
 
         /* MikioPlugin Support */
-        if(empty(plugin_load('action', 'mikioplugin')) === false) {
+        if (plugin_load('action', 'mikioplugin') !== null) {
             if ($this->getConf('useLESS') === true) {
                 $stylesheets[] = $this->baseDir . 'assets/mikioplugin.less';
             } else {
@@ -1651,7 +1651,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         } elseif (strcasecmp($INPUT->str('page'), 'styling') === 0) {
             $mikioPluginMissing = true;
             /* Hide plugin fields if not installed */
-            if(empty(plugin_load('action', 'mikioplugin')) === false) {
+            if (plugin_load('action', 'mikioplugin') !== null) {
                 $mikioPluginMissing = false;
             }
 
@@ -1676,10 +1676,12 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 ['title' => 'Tree', 'starts_with' => '__tree_'],
                 ['title' => 'Tabs', 'starts_with' => '__tab_'],
                 ['title' => 'Mikio Plugin', 'starts_with' => '__plugin_', 'heading' => 'h2',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Primary Colours', 'starts_with' => '__plugin_primary_', 'hidden' => $mikioPluginMissing],
                 ['title' => 'Secondary Colours', 'starts_with' => '__plugin_secondary_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Success Colours', 'starts_with' => '__plugin_success_', 'hidden' => $mikioPluginMissing],
                 ['title' => 'Danger Colours', 'starts_with' => '__plugin_danger_', 'hidden' => $mikioPluginMissing],
                 ['title' => 'Warning Colours', 'starts_with' => '__plugin_warning_', 'hidden' => $mikioPluginMissing],
@@ -1712,30 +1714,42 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 ['title' => 'Tree', 'starts_with' => '__darkmode_tree_'],
                 ['title' => 'Tabs', 'starts_with' => '__darkmode_tab_'],
                 ['title' => 'Mikio Plugin (Dark mode)', 'starts_with' => '__plugin_darkmode_', 'heading' => 'h2',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Primary Colours', 'starts_with' => '__plugin_darkmode_primary_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Secondary Colours', 'starts_with' => '__plugin_darkmode_secondary_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Success Colours', 'starts_with' => '__plugin_darkmode_success_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Danger Colours', 'starts_with' => '__plugin_darkmode_danger_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Warning Colours', 'starts_with' => '__plugin_darkmode_warning_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Info Colours', 'starts_with' => '__plugin_darkmode_info_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Light Colours', 'starts_with' => '__plugin_darkmode_light_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Dark Colours', 'starts_with' => '__plugin_darkmode_dark_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Link Colours', 'starts_with' => '__plugin_darkmode_link_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Carousel', 'starts_with' => '__plugin_darkmode_carousel_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Steps', 'starts_with' => '__plugin_darkmode_steps_', 'hidden' => $mikioPluginMissing],
                 ['title' => 'Tabgroup', 'starts_with' => '__plugin_darkmode_tabgroup_',
-                    'hidden' => $mikioPluginMissing],
+                    'hidden' => $mikioPluginMissing
+                ],
                 ['title' => 'Tooltip', 'starts_with' => '__plugin_darkmode_tooltip_', 'hidden' => $mikioPluginMissing],
             ];
 
@@ -1750,7 +1764,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 $content = preg_replace(
                     '/(<tr>\s*<td>\s*<label for="tpl__' . $header['starts_with'] . '.+?<\/tr>)/s',
-                    '</tbody></table><' . $header['heading'] . ' style="display:' . ($header['hidden'] === true ? 'none' : 'block') . '">' . $header['title'] . '</' . $header['heading'] . '>
+                    '</tbody></table><' . $header['heading'] . ' style="display:' . 
+                    ($header['hidden'] === true ? 'none' : 'block') . '">' . 
+                    $header['title'] . '</' . $header['heading'] . '>
                     <table style="display:' . ($header['hidden'] === true ? 'none' : 'table') . '"><tbody>$1',
                     $content,
                     1

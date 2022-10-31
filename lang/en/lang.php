@@ -290,8 +290,8 @@ $lang['__darkmode_text__']          = 'Main text color';
 $lang['__darkmode_background__']    = 'Main background color';
 
 foreach ($lang as $key => $val) {
-    if(strpos($key, '_darkmode_') === false) {
-        if(substr($key, 0, 9) === '__plugin_') {
+    if (strpos($key, '_darkmode_') === false) {
+        if (substr($key, 0, 9) === '__plugin_') {
             $lang['__plugin_darkmode_' . substr($key, 9)] = $val;
         } else {
             $lang['__darkmode_' . substr($key, 2)] = $val;
