@@ -955,6 +955,12 @@ body {
   align-self: flex-start;
   overflow: scroll;
   max-height: 100vh;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.mikio .mikio-content .mikio-article.toc-full .mikio-toc::-webkit-scrollbar {
+  display: none;
 }
 
 .mikio .mikio-content .mikio-article.toc-full .mikio-article-content {

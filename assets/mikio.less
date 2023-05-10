@@ -873,6 +873,13 @@ html, body {
             align-self: flex-start;
             overflow: scroll;
             max-height: 100vh;
+
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+    
+            &::-webkit-scrollbar {
+                display: none;
+            }    
         }
 
         .mikio-article-content {
