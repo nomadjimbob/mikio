@@ -226,6 +226,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+- **_2022-05-11_**
+  - Fixed empty scrollbars being shown when TOC is set to full height [#49](https://github.com/nomadjimbob/mikio/issues/49). Thanks vitaprimo and RonaldPR.
+  - Added a `noshadow` subtheme
+
 - **_2022-10-31_**
   - Added support to directly editing Mikio Plugin within Template Style Settings.
 
