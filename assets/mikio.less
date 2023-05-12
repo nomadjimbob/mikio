@@ -110,9 +110,12 @@
     --footer-link-hover-color: @ini_footer_link_hover_color;
     --footer-background-color: @ini_footer_background_color;
     --table-header-row-background-color: @ini_table_header_row_background_color;
+    --table-header-row-text-color: @ini_table_header_row_text_color;
     --table-row-border-color: @ini_table_row_border_color;
     --table-odd-row-background-color: @ini_table_odd_row_background_color;
+    --table-odd-row-text-color: @ini_table_odd_row_text_color;
     --table-even-row-background-color: @ini_table_even_row_background_color;
+    --table-even-row-text-color: @ini_table_even_row_text_color;
     --dropdown-color: @ini_dropdown_color;
     --dropdown-hover-color: @ini_dropdown_hover_color;
     --dropdown-border-color: @ini_dropdown_border_color;
@@ -212,9 +215,12 @@
     --footer-link-hover-color: @ini_darkmode_footer_link_hover_color;
     --footer-background-color: @ini_darkmode_footer_background_color;
     --table-header-row-background-color: @ini_darkmode_table_header_row_background_color;
+    --table-header-row-text-color: @ini_darkmode_table_header_row_text_color;
     --table-row-border-color: @ini_darkmode_table_row_border_color;
     --table-odd-row-background-color: @ini_darkmode_table_odd_row_background_color;
+    --table-odd-row-text-color: @ini_darkmode_table_odd_row_text_color;
     --table-even-row-background-color: @ini_darkmode_table_even_row_background_color;
+    --table-even-row-text-color: @ini_darkmode_table_even_row_text_color;
     --dropdown-color: @ini_darkmode_dropdown_color;
     --dropdown-hover-color: @ini_darkmode_dropdown_hover_color;
     --dropdown-border-color: @ini_darkmode_dropdown_border_color;
@@ -1330,7 +1336,7 @@ html, body {
     border-bottom: 1px solid var(--table-row-border-color);
     
     tr {
-        border-top: 1px solid var(--table-row-border-color);        
+        border-top: 1px solid var(--table-row-border-color);
     }
 
     td, th {
@@ -1338,13 +1344,20 @@ html, body {
         text-align: left;    
     }
 
+    thead tr {
+        background-color: var(--table-header-row-background-color);
+        color: var(--table-header-row-text-color);
+    }
+
     tbody tr {
         &:nth-child(odd) {
             background-color: var(--table-odd-row-background-color);
+            color: var(--table-odd-row-text-color);
         }
 
         &:nth-child(even) {
             background-color: var(--table-even-row-background-color);
+            color: var(--table-even-row-text-color);
         }
     }    
 }
@@ -1731,6 +1744,7 @@ code, pre {
 
     .mikio-config-table-header {
         background-color: var(--table-header-row-background-color);
+        color: var(--table-header-row-text-color);
         font-weight: bold;
 
         .mikio-iicon {
@@ -1750,10 +1764,12 @@ code, pre {
 
                 &:nth-child(odd) {
                     background-color: var(--table-odd-row-background-color);
+                    color: var(--table-odd-row-text-color);
                 }
         
                 &:nth-child(even) {
                     background-color: var(--table-even-row-background-color);
+                    color: var(--table-even-row-text-color);
                 }
             }
         }
@@ -1785,10 +1801,12 @@ code, pre {
     #acl_manager table tr {
         &:nth-child(odd) {
             background-color: var(--table-odd-row-background-color);
+            color: var(--table-odd-row-text-color);
         }
 
         &:nth-child(even) {
             background-color: var(--table-even-row-background-color);
+            color: var(--table-even-row-text-color);
         }
     }
 }
@@ -1916,10 +1934,12 @@ code, pre {
         padding: .5rem 1rem;
         border-top: 1px solid var(--table-row-border-color);
         background-color: var(--table-even-row-background-color);
+        color: (--table-even-row-text-color);
     }
 
     li:nth-child(odd) {
         background-color: var(--table-odd-row-background-color);
+        color: var(--table-odd-row-text-color);
     }
 
     .li {
@@ -1956,10 +1976,12 @@ code, pre {
         padding: .5rem 1rem;
         border-top: 1px solid var(--table-row-border-color);
         background-color: var(--table-even-row-background-color);
+        color: var(--table-even-row-text-color);
     }
 
     li:nth-child(odd) {
         background-color: var(--table-odd-row-background-color);
+        color: var(--table-odd-row-text-color);
     }
 
     .li {
@@ -2178,13 +2200,15 @@ code, pre {
 
             li {
                 background-color: var(--table-odd-row-background-color);
+                color: var(--table-odd-row-text-color);
                 max-height: none;
                 font-size: 90%;
-                color: var(--text);
+                // color: var(--text);
                 overflow: auto;
 
                 &:nth-child(2n+1) {
                     background-color: var(--table-even-row-background-color);
+                    color: var(--table-even-row-text-color);
                 }
 
                 a {
@@ -2408,10 +2432,12 @@ code, pre {
 
         .odd {
             background-color: var(--table-odd-row-background-color);
+            color: var(--table-odd-row-text-color);
         }
 
         .even {
             background-color: var(--table-even-row-background-color);
+            color: var(--table-even-row-text-color);
         }
     }
 }
@@ -2556,9 +2582,11 @@ code, pre {
         border-top: 1px solid var(--table-row-border-color);
         padding: .75rem;
         background-color: var(--table-odd-row-background-color);
+        color: var(--table-odd-row-text-color);
 
         &:nth-child(2n+1) {
             background-color: var(--table-even-row-background-color);
+            color: var(--table-even-row-text-color);
         }
 
         .snippet {
