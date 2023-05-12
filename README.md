@@ -22,6 +22,9 @@
 
 ## Possible Breaking Changes
 
+- 2023-05-13
+  - Table styling had a long-standing bug found by RonaldPR which has been fixed. This fix may require updating the styling if your website was relying on this bug.
+
 - 2022-10-04
   - Some elements now have their own color options to allow finer control of your website design.
 
@@ -225,6 +228,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 - `home` : Text for the breadcrumb home title
 
 ## Releases
+
+- **_2022-05-13_**
+  - Fixed tables not being styling correctly and incorrect language used in the styling config [#50](https://github.com/nomadjimbob/mikio/issues/50). Thanks RonaldPR.
+  - The themes LessC engine will output any exceptions that occur in the fallback CSS to help track issues.
 
 - **_2022-05-11_**
   - Fixed empty scrollbars being shown when TOC is set to full height [#49](https://github.com/nomadjimbob/mikio/issues/49). Thanks vitaprimo and RonaldPR.
