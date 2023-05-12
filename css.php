@@ -95,9 +95,17 @@ try {
     }
 }
 catch(Exception $e) {
-    // echo $e;
     header('Content-Type: text/css; charset=utf-8');
-    include(dirname(__FILE__) . '/assets/mikio.css');
+    $cssFile = file_get_contents(dirname(__FILE__) . '/assets/mikio.css');
+    $exceptionComment = "\n\n/** An exception occurred in the Mikio Less engine:\n\n " . $e->getMessage() . "\n\n*/";
+    
+    // Find the position of the first comment in the CSS file
+    $pos = strpos($cssFile, '*/');
+    
+    // Insert the exception comment after the first comment
+    $modifiedCSSFile = substr_replace($cssFile, $exceptionComment, $pos + 2, 0);
+    
+    echo $modifiedCSSFile;
 }
 
 function arrayDeepMerge($arr1, $arr2) {
