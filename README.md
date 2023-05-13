@@ -229,6 +229,9 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+- **NEXT**
+  - Added automatic Light/Dark mode option (disabled by default).
+
 - **_2022-05-13_**
   - Fixed tables not being styling correctly and incorrect language used in the styling config [#50](https://github.com/nomadjimbob/mikio/issues/50). Thanks RonaldPR.
   - The themes LessC engine will output any exceptions that occur in the fallback CSS to help track issues.

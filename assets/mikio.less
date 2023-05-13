@@ -30,6 +30,12 @@
 }
 
 /* CSS Variables */
+:root[data-theme-auto="true"] {
+    --display-theme-light: none !important;
+    --display-theme-dark: none !important;
+    --display-theme-auto: inline-block !important;
+}
+
 :root[data-theme="theme-light"] {
     --text: @ini_text;
     --link: @ini_link;
@@ -134,6 +140,7 @@
     --tab-active-border-color: @ini_tab_active_border_color;
     --display-theme-light: inline-block;
     --display-theme-dark: none;
+    --display-theme-auto: none;
 }
 
 :root[data-theme="theme-dark"] {
@@ -240,6 +247,7 @@
     --tab-active-border-color: @ini_darkmode_tab_active_border_color;
     --display-theme-light: none;
     --display-theme-dark: inline-block;
+    --display-theme-auto: none;
 }
 
 .mikio-sticky {
@@ -3094,6 +3102,10 @@ code, pre {
 
         .mikio-darklight-dark {
             display: var(--display-theme-dark);
+        }
+
+        .mikio-darklight-auto {
+            display: var(--display-theme-auto);
         }
     }
 

@@ -355,16 +355,33 @@ var mikio = {
 
     initDarkMode: function () {
         let setting = this.getCookie('lightDarkToggle');
-        if (setting == 'dark' || setting == 'light') {
+        if (setting == 'dark' || setting == 'light' || setting == 'auto') {
             this.darkMode = setting;
         }
 
         var self = this;
+
+        if(window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+                self.updateDarkMode();
+            });
+        }
+
         this.addEventListenerByClassName('mikio-darklight-button', 'click', function (event) {
             event.preventDefault();
             event.stopPropagation();
             
-            if(self.darkMode == 'dark') {
+            const autoAllowed = (document.querySelector('.mikio-iicon.mikio-darklight-auto') != null);
+
+            if(self.darkMode == 'light') {
+                self.darkMode = 'dark';
+            } else if(self.darkMode == 'dark') {
+                if(autoAllowed == true) {
+                    self.darkMode = 'auto';
+                } else {
+                    self.darkMode = 'light';
+                }
+            } else if(self.darkMode == 'auto') {
                 self.darkMode = 'light';
             } else {
                 self.darkMode = 'dark';
@@ -378,7 +395,21 @@ var mikio = {
 
     updateDarkMode: function () {
         const html = document.querySelector('html');
-        html.dataset.theme = `theme-${this.darkMode}`;
+        let themeMode = this.darkMode;
+
+        if(this.darkMode == 'auto') {
+            html.dataset.themeAuto = true;
+
+            themeMode = 'light';
+            if (window.matchMedia) {
+                let prefersColorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                themeMode = prefersColorSchemeQuery.matches ? 'dark' : 'light';
+              }
+        } else {
+            delete html.dataset.themeAuto;
+        }
+
+        html.dataset.theme = `theme-${themeMode}`;
         this.setCookie('lightDarkToggle', this.darkMode);
     },
 
