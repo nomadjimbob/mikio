@@ -705,9 +705,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }//end switch
 
         if ($this->getConf('showLightDark') === true) {
+            $autoLightDark = $this->getConf('autoLightDark');
             $html .= '<li class="mikio-darklight">
 <a href="#" class="mikio-control mikio-button mikio-darklight-button">' .
-            ($this->getConf('autoLightDark') === true ? $this->mikioInlineIcon('sunmoon', 'mikio-darklight-auto') : '') .
+            ($autoLightDark === true ? $this->mikioInlineIcon('sunmoon', 'mikio-darklight-auto') : '') .
             $this->mikioInlineIcon('sun', 'mikio-darklight-light') .
             $this->mikioInlineIcon('moon', 'mikio-darklight-dark') .
             '</a></li>';
@@ -2201,7 +2202,12 @@ style="fill:currentColor" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .0
 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 
 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" /></svg>';
             case 'sunmoon':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" viewBox="0 0 32 32"><line x1="16" y1="3" x2="16" y2="29"/><path d="M16,23c-3.87,0-7-3.13-7-7s3.13-7,7-7"/><line x1="6.81" y1="6.81" x2="8.93" y2="8.93"/><line x1="3" y1="16" x2="6" y2="16"/><line x1="6.81" y1="25.19" x2="8.93" y2="23.07"/><path d="M16,12.55C17.2,10.43,19.48,9,22.09,9c0.16,0,0.31,0.01,0.47,0.02c-1.67,0.88-2.8,2.63-2.8,4.64c0,2.9,2.35,5.25,5.25,5.25c1.6,0,3.03-0.72,3.99-1.85C28.48,20.43,25.59,23,22.09,23c-2.61,0-4.89-1.43-6.09-3.55"/></svg>';
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
+style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" 
+viewBox="0 0 32 32"><line x1="16" y1="3" x2="16" y2="29"/><path d="M16,23c-3.87,0-7-3.13-7-7s3.13-7,7-7"/><line 
+x1="6.81" y1="6.81" x2="8.93" y2="8.93"/><line x1="3" y1="16" x2="6" y2="16"/><line x1="6.81" y1="25.19" x2="8.93" 
+y2="23.07"/><path d="M16,12.55C17.2,10.43,19.48,9,22.09,9c0.16,0,0.31,0.01,0.47,0.02c-1.67,0.88-2.8,2.63-2.8,4.64c0,2.9,
+2.35,5.25,5.25,5.25c1.6,0,3.03-0.72,3.99-1.85C28.48,20.43,25.59,23,22.09,23c-2.61,0-4.89-1.43-6.09-3.55"/></svg>';
             case 'hamburger':
                 return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" 
 style="fill:currentColor"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 
