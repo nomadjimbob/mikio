@@ -237,6 +237,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
     -   Fixed notifications appearing in weird places at times.
     -   Setting `tpl»mikio»showNotifications` to an empty string is the same as setting it to `always`.
+    -   Fixed languages not shown in dropdown correctly with the translate plugin when `plugin»translation»dropdown` is turned on.
+    -   Fixed some css issues on small screens.
 
 -   **_2022-05-18_**
 

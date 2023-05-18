@@ -405,6 +405,10 @@ body {
   font-size: 80%;
   color: var(--breadcrumb-text-color);
 }
+.mikio .mikio-breadcrumbs .mikio-container,
+.mikio .mikio-youarehere .mikio-container {
+  flex-direction: row;
+}
 .mikio .mikio-breadcrumbs span.curid a,
 .mikio .mikio-breadcrumbs span.curid a:visited,
 .mikio .mikio-breadcrumbs span.curid a:active,
@@ -1199,6 +1203,7 @@ body {
   font-size: 80%;
   position: relative;
   height: 1rem;
+  white-space: nowrap;
 }
 .mikio .mikio-toc h3.toggle .hamburger {
   width: 1rem;
@@ -1210,6 +1215,7 @@ body {
   bottom: 0;
   right: 0;
   margin: auto 0;
+  background-color: var(--toc-background-color);
 }
 .mikio .mikio-toc h3.toggle.open .hamburger {
   display: none;
@@ -3536,6 +3542,7 @@ pre {
   }
   .mikio-navbar .mikio-nav {
     width: 100%;
+    flex-direction: column;
   }
   .mikio-navbar .mikio-nav-dropdown {
     width: 100%;
@@ -3589,6 +3596,9 @@ pre {
   }
   .mikio .mikio-content .mikio-article .mikio-toc #dw__toc {
     max-width: none;
+  }
+  .mikio .mikio-content .mikio-article .mikio-toc #dw__toc .mikio-iicon.hamburger {
+    display: none;
   }
   .mikio .mikio-content .mikio-article .mikio-toc h3.toggle {
     background-position: 99% 50%;

@@ -391,6 +391,10 @@ html, body {
 
 .mikio {
     .mikio-breadcrumbs, .mikio-youarehere {
+        .mikio-container {
+            flex-direction: row;
+        }
+    
         padding: .5rem 1rem;
         background-color: var(--breadcrumb-background-color);
         border: 1px solid var(--breadcrumb-background-color);
@@ -1265,6 +1269,7 @@ html, body {
         font-size: @ini_toc_font_size;
         position: relative;
         height: 1rem;
+        white-space: nowrap;
 
         .hamburger {
             width: 1rem;
@@ -1277,6 +1282,8 @@ html, body {
             bottom: 0;
             right: 0;
             margin: auto 0;
+            // border: 1px solid red;
+            background-color: var(--toc-background-color);
         }
             
         &.open {
@@ -2752,6 +2759,7 @@ code, pre {
 
         .mikio-nav {
             width: 100%;
+            flex-direction: column;
         }
 
         .mikio-nav-dropdown {
@@ -2825,6 +2833,9 @@ code, pre {
             
             #dw__toc {
                 max-width: none;
+                .mikio-iicon.hamburger {
+                    display: none;
+                }
             }
             
             h3.toggle {
