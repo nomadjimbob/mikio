@@ -3122,3 +3122,53 @@ code, pre {
         }
     }
 }
+
+.mikio.dokuwiki {
+    #mikio__translate .mikio-dropdown {
+        min-width: auto;
+    }
+
+    div.plugin_translation {
+        text-align: left;
+
+        .title {
+            display: none;
+        }
+
+        ul {
+            li {
+                margin: 0;
+                display: block;
+
+                a, span {
+                    margin: 0 -1rem 0 -1rem;
+                    padding: .25rem 1rem .25rem 1rem !important;
+                    background-color: var(--dropdown-background-color)  !important;
+                    color: var(--dropdown-color) !important;
+                }
+
+                a:hover {
+                    background-color: var(--dropdown-hover-color) !important;
+                }
+
+                span {
+                    margin-right: 0.1rem;
+                    position: relative;
+
+                    &:after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        height: 0.75rem;
+                        width: 0.25rem;
+                        margin-top: 0.2rem;
+                        margin-left: 0.75rem;
+                        border-right: 2px solid var(--dropdown-color);
+                        border-bottom: 2px solid var(--dropdown-color);
+                        transform: rotateZ(45deg);
+                    }
+                }
+            }
+        }
+    }
+}
