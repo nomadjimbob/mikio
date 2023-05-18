@@ -233,6 +233,11 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+-   **_2022-05-19_**
+
+    -   Fixed notifications appearing in weird places at times.
+    -   Setting `tpl»mikio»showNotifications` to an empty string is the same as setting it to `always`.
+
 -   **_2022-05-18_**
 
     -   Added automatic Light/Dark mode option (disabled by default).

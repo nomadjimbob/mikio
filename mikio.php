@@ -39,6 +39,11 @@ class Template
      */
     public $lessIgnored = false;
 
+    /**
+     * @var string Notifications from included pages.
+     */
+    private $includedPageNotifications = '';
+
 
     /**
      * Class constructor
@@ -465,11 +470,16 @@ class Template
         ob_end_clean();
 
         if (empty($html) === true) {
+            global $MSG;
+
             $useACL = $this->getConf('includePageUseACL');
             $propagate = $this->getConf('includePagePropagate');
             $html = '';
 
+            ob_start();
             $html = tpl_include_page($page, false, $propagate, $useACL);
+            $this->includedPageNotifications .= ob_get_contents();
+            ob_end_clean();
         }
 
         if (empty($html) === false && $parse === true) {
@@ -1008,6 +1018,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         if ($print === true) {
             echo $html;
         }
+
         return $html;
     }
 
@@ -2278,36 +2289,39 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
 
         $show = $this->getConf('showNotifications');
         if (
+            strlen($show) === 0 ||
             strcasecmp($show, 'always') === 0 ||
             (strcasecmp($show, 'admin') === 0 && strcasecmp($ACT, 'admin') === 0)
         ) {
             global $MSG, $MSG_shown;
 
-            if (isset($MSG) === false) {
-                return;
-            }
-
-            if (isset($MSG_shown) === false) {
-                $MSG_shown = [];
-            }
-
-            foreach ($MSG as $msg) {
-                $hash = md5($msg['msg']);
-                if (isset($MSG_shown[$hash]) === true) {
-                    continue;
-                }
-                // skip double messages
-
-                if (info_msg_allowed($msg) === true) {
-                    echo '<div class="' . $msg['lvl'] . '">';
-                    echo $msg['msg'];
-                    echo '</div>';
+            if (isset($MSG) !== false) {
+                if (isset($MSG_shown) === false) {
+                    $MSG_shown = [];
                 }
 
-                $MSG_shown[$hash] = true;
-            }
+                foreach ($MSG as $msg) {
+                    $hash = md5($msg['msg']);
+                    if (isset($MSG_shown[$hash]) === true) {
+                        continue;
+                    }
+                    // skip double messages
 
-            unset($GLOBALS['MSG']);
+                    if (info_msg_allowed($msg) === true) {
+                        echo '<div class="' . $msg['lvl'] . '">';
+                        echo $msg['msg'];
+                        echo '</div>';
+                    }
+
+                    $MSG_shown[$hash] = true;
+                }
+
+                unset($GLOBALS['MSG']);
+            }//end if
+
+            if (strlen($this->includedPageNotifications) > 0) {
+                echo $this->includedPageNotifications;
+            }
         }//end if
     }
 
