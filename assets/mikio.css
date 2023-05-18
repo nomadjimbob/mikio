@@ -3874,3 +3874,52 @@ pre {
 .mikio .mikio-darklight-button .mikio-iicon {
   margin: 0;
 }
+.mikio.dokuwiki #mikio__translate .mikio-dropdown {
+  min-width: auto;
+}
+.mikio.dokuwiki div.plugin_translation {
+  text-align: left;
+}
+.mikio.dokuwiki div.plugin_translation.is-dropdown {
+  padding-bottom: 0;
+}
+.mikio.dokuwiki div.plugin_translation.is-dropdown ul {
+  position: relative;
+  display: block;
+}
+.mikio.dokuwiki div.plugin_translation.is-dropdown ul li a {
+  display: block;
+}
+.mikio.dokuwiki div.plugin_translation .title {
+  display: none;
+}
+.mikio.dokuwiki div.plugin_translation ul li {
+  margin: 0;
+  display: block;
+}
+.mikio.dokuwiki div.plugin_translation ul li a,
+.mikio.dokuwiki div.plugin_translation ul li span {
+  margin: 0 -1rem 0 -1rem;
+  padding: .25rem 1rem .25rem 1rem !important;
+  background-color: var(--dropdown-background-color) !important;
+  color: var(--dropdown-color) !important;
+}
+.mikio.dokuwiki div.plugin_translation ul li a:hover {
+  background-color: var(--dropdown-hover-color) !important;
+}
+.mikio.dokuwiki div.plugin_translation ul li span {
+  margin-right: 0.1rem;
+  position: relative;
+}
+.mikio.dokuwiki div.plugin_translation ul li span:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 0.75rem;
+  width: 0.25rem;
+  margin-top: 0.2rem;
+  margin-left: 0.75rem;
+  border-right: 2px solid var(--dropdown-color);
+  border-bottom: 2px solid var(--dropdown-color);
+  transform: rotateZ(45deg);
+}
