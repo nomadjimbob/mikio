@@ -233,24 +233,24 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
--   **_2022-05-19_**
+-   **_2023-05-19_**
 
     -   Fixed notifications appearing in weird places at times.
     -   Setting `tpl»mikio»showNotifications` to an empty string is the same as setting it to `always`.
     -   Fixed languages not shown in dropdown correctly with the translate plugin when `plugin»translation»dropdown` is turned on.
     -   Fixed some css issues on small screens.
 
--   **_2022-05-18_**
+-   **_2023-05-18_**
 
     -   Added automatic Light/Dark mode option (disabled by default).
     -   Added support for the [translate plugin](https://www.dokuwiki.org/plugin:translation).
 
--   **_2022-05-13_**
+-   **_2023-05-13_**
 
     -   Fixed tables not being styling correctly and incorrect language used in the styling config [#50](https://github.com/nomadjimbob/mikio/issues/50). Thanks RonaldPR.
     -   The themes LessC engine will output any exceptions that occur in the fallback CSS to help track issues.
 
--   **_2022-05-11_**
+-   **_2023-05-11_**
 
     -   Fixed empty scrollbars being shown when TOC is set to full height [#49](https://github.com/nomadjimbob/mikio/issues/49). Thanks vitaprimo and RonaldPR.
     -   Added a `noshadow` subtheme
