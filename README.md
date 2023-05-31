@@ -43,7 +43,7 @@
     -   Sidebars now collapse by default on mobile. This can be overridden with the `sidebarMobileDefaultCollapse` option
     -   The mikio LESS stylesheet is now disabled by default, with a precompilied CSS used. This can be reverted using the `useLESS` option
 
-## Incompadibilities
+## Incompatibilities
 
 **Comment Syntax support** converts custom control macros such as the Mikio macro `~~hero-image ...~~` into comments. If you plan to use this extension on your site, you will need to use the alternative macro format of `-~hero-image ...~-` for Mikio to detect the information.
 
