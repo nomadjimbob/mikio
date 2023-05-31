@@ -166,7 +166,7 @@ be either png, jpg, gif or svg.
 
 -   `title` : The hero title is sourced from the page title. The page title is removed from the page content
 -   `subtitle` : Pages can set the subtitle by inserting `~~hero-subtitle TEXT~~` in the page content
--   `image` : The hero image is sourced from an image named hero in the current or parental namespace. Namespace searching can be confined by the `includePagePropagate` setting. Pages can also override the image by inserting `~~hero-image URL~~` in the page content. DokuWiki and external URLs are supported. The height of the image area is 240px while the width is 33% of the window width. It is recommended to use an image of at least 480x240 (2:1).
+-   `image` : The hero image is sourced from an image named hero in the current or parental namespace. Namespace searching can be confined by the `includePagePropagate` setting. Pages can also override the image by inserting `~~hero-image URL~~` in the page content. DokuWiki and external URLs are supported. The height of the image area is 240px while the width is 33% of the window width. It is recommended to use an image of at least 480x240 (2:1)
 -   `colors` : Colors can be overridden by including `~~hero-colors BACKGROUND_COLOR HERO_TITLE_COLOR HERO_SUBTITLE_COLOR BREADCRUMB_TEXT_COLOR BREADCRUMB_HOVER_COLOR~~`. You do not need to include all the color options. Use 'initial' to skip a color override
 
 Namespaces can also apply the above hero settings in child pages by including the above settings in a page named `theme`.
