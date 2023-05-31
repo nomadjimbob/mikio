@@ -1861,27 +1861,19 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         /* Hero subtitle */
         foreach ($html->find('p') as $elm) {
-            $i = stripos($elm->innertext, '~~hero-subtitle');
-            if ($i !== false) {
-                $j = strpos($elm->innertext, '~~', ($i + 2));
-                if ($j !== false) {
-                    if ($j > ($i + 16)) {
-                        $subtitle = substr($elm->innertext, ($i + 16), ($j - $i - 16));
-                        $this->footerScript['hero-subtitle'] = 'mikio.setHeroSubTitle(\'' . $subtitle . '\')';
+            if (preg_match('/[~-]~hero-subtitle (.+?)~[~-]/ui', $elm->innertext, $matches) === 1) {
+                $subtitle = $matches[1];
+                $this->footerScript['hero-subtitle'] = 'mikio.setHeroSubTitle(\'' . $subtitle . '\')';
 
-                        // $elm->innertext = substr($elm->innertext, 0, $i + 2) . substr($elm->innertext, $j + 2);
-                        $elm->innertext = preg_replace('/~~hero-subtitle (.+?)~~.*/ui', '', $elm->innertext);
-                    }
-
-                    break;
-                }
+                $elm->innertext = preg_replace('/[~-]~hero-subtitle (.+?)~[~-]/ui', '', $elm->innertext);
+                break;
             }
         }
 
         /* Hero image */
         foreach ($html->find('p') as $elm) {
             $image = '';
-            preg_match('/~~hero-image (.+?)~~(?!.?")/ui', $elm->innertext, $matches);
+            preg_match('/[~-]~hero-image (.+?)~[~-](?!.?")/ui', $elm->innertext, $matches);
             if (count($matches) > 0) {
                 preg_match('/<img.*src="(.+?)"/ui', $matches[1], $imageTagMatches);
                 if (count($imageTagMatches) > 0) {
@@ -1906,56 +1898,41 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 $this->footerScript['hero-image'] = 'mikio.setHeroImage(\'' . $image . '\')';
 
-                $elm->innertext = preg_replace('/~~hero-image (.+?)~~.*/ui', '', $elm->innertext);
+                $elm->innertext = preg_replace('/[~-]~hero-image (.+?)~[~-].*/ui', '', $elm->innertext);
             }//end if
         }//end foreach
 
         /* Hero colors - ~~hero-colors [background-color] [hero-title-color] [hero-subtitle-color]
         [breadcrumb-text-color] [breadcrumb-hover-color] (use 'initial' for original color) */
         foreach ($html->find('p') as $elm) {
-            $i = stripos($elm->innertext, '~~hero-colors');
-            if ($i !== false) {
-                $j = strpos($elm->innertext, '~~', ($i + 2));
-                if ($j !== false) {
-                    if ($j > ($i + 14)) {
-                        $color = substr($elm->innertext, ($i + 14), ($j - $i - 14));
-                        $this->footerScript['hero-colors'] = 'mikio.setHeroColor(\'' . $color . '\')';
+            if (preg_match('/[~-]~hero-colors (.+?)~[~-]/ui', $elm->innertext, $matches) === 1) {
+                $subtitle = $matches[1];
+                $this->footerScript['hero-colors'] = 'mikio.setHeroColor(\'' . $subtitle . '\')';
 
-                        $elm->innertext = preg_replace('/~~hero-colors (.+?)~~.*/ui', '', $elm->innertext);
-                    }
-
-                    break;
-                }
+                $elm->innertext = preg_replace('/[~-]~hero-colors (.+?)~[~-]/ui', '', $elm->innertext);
+                break;
             }
         }
 
         /* Hide parts - ~~hide-parts [parts]~~  */
         foreach ($html->find('p') as $elm) {
-            $i = stripos($elm->innertext, '~~hide-parts');
-            if ($i !== false) {
-                $j = strpos($elm->innertext, '~~', ($i + 2));
-                if ($j !== false) {
-                    if ($j > ($i + 13)) {
-                        $parts = explode(' ', substr($elm->innertext, ($i + 13), ($j - $i - 13)));
-                        $script = '';
+            if (preg_match('/[~-]~hero-colors (.+?)~[~-]/ui', $elm->innertext, $matches) === 1) {
+                $parts = explode(' ', $matches[1]);
+                $script = '';
 
-                        foreach ($parts as $part) {
-                            // $part = trim($part);
-                            if (strlen($part) > 0) {
-                                $script .= 'mikio.hidePart(\'' . $part . '\');';
-                            }
-                        }
-
-                        if (strlen($script) > 0) {
-                            $this->footerScript['hide-parts'] = $script;
-                        }
-
-                        $elm->innertext = preg_replace('/~~hide-parts (.+?)~~.*/ui', '', $elm->innertext);
+                foreach ($parts as $part) {
+                    if (strlen($part) > 0) {
+                        $script .= 'mikio.hidePart(\'' . $part . '\');';
                     }
+                }
 
-                    break;
-                }//end if
-            }//end if
+                if (strlen($script) > 0) {
+                    $this->footerScript['hide-parts'] = $script;
+                }
+
+                $elm->innertext = preg_replace('/[~-]~hero-parts (.+?)~[~-]/ui', '', $elm->innertext);
+                break;
+            }
         }//end foreach
 
 
