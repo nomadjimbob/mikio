@@ -237,8 +237,9 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
--   **_NEXT_**
+-   **_2023-06-05_**
 
+    -   Fixed bug with `~~hide-parts~~` no longer working. [#52](https://github.com/nomadjimbob/mikio/issues/52). Thanks nathanmcguire.
     -   Mikio Control Macros now support the format `-~SETTING~-` as well as the standard `~~SETTING~~`. This fixes an incompatibility with the [Comment Syntax support](https://www.dokuwiki.org/plugin:commentsyntax) extension.
 
 -   **_2023-05-19_**

@@ -1916,7 +1916,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         /* Hide parts - ~~hide-parts [parts]~~  */
         foreach ($html->find('p') as $elm) {
-            if (preg_match('/[~-]~hero-colors (.+?)~[~-]/ui', $elm->innertext, $matches) === 1) {
+            if (preg_match('/[~-]~hide-parts (.+?)~[~-]/ui', $elm->innertext, $matches) === 1) {
                 $parts = explode(' ', $matches[1]);
                 $script = '';
 
@@ -1930,7 +1930,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $this->footerScript['hide-parts'] = $script;
                 }
 
-                $elm->innertext = preg_replace('/[~-]~hero-parts (.+?)~[~-]/ui', '', $elm->innertext);
+                $elm->innertext = preg_replace('/[~-]~hide-parts (.+?)~[~-]/ui', '', $elm->innertext);
                 break;
             }
         }//end foreach
