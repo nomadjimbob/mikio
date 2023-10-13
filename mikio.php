@@ -1052,7 +1052,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $classes = array_unique($classes);
 
-            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()));
+            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), 'always');
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                 (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||

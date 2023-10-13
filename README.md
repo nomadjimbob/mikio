@@ -237,6 +237,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+-   **_2023-10-14_**
+
+    -   Fixed bug where external page tools where not showing in the tool bar. Thanks Jan.
+
 -   **_2023-06-05_**
 
     -   Fixed bug with `~~hide-parts~~` no longer working. [#52](https://github.com/nomadjimbob/mikio/issues/52). Thanks nathanmcguire.
