@@ -1807,8 +1807,11 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 preg_match('/id="([^"]*)"/', $match[0], $matches);
 
                 // Replace type with text and remove the id attribute
-                $replacement = preg_replace(['/type="color"/', '/id="([^"]*)"/'],
-                    ['type="text" class="mikio-color-text-input"', 'for="$1"'], $match[0]);
+                $replacement = preg_replace(
+                    ['/type="color"/', '/id="([^"]*)"/'],
+                    ['type="text" class="mikio-color-text-input"', 'for="$1"'],
+                    $match[0]
+                );
 
                 return '<div class="mikio-color-picker">' . $replacement . $match[0] . '</div>';
             }, $content);

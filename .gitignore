@@ -73,4 +73,10 @@ Temporary Items
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/composer,visualstudiocode,macos
+
+# caches
 .dccache
+
+# sniffers
+phpcbf.phar
+phpcs.phar
