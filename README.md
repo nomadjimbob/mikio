@@ -237,6 +237,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+-   **_2023-10-16_**
+
+    -   Added color picker selector back to style page. Requested by Jan.
+
 -   **_2023-10-14_**
 
     -   Fixed bug where external page tools where not showing in the tool bar. Thanks Jan.

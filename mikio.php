@@ -1802,7 +1802,16 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 );
             }
 
-            $content = preg_replace('/type="color"/', 'type="text"', $content);
+            $content = preg_replace_callback('/<input type="color"[^>]*>/', function ($match) {
+                // Get the ID of the <input type="color"> element
+                preg_match('/id="([^"]*)"/', $match[0], $matches);
+                $id = isset($matches[1]) ? $matches[1] : null;
+            
+                // Replace type with text and remove the id attribute
+                $replacement = preg_replace(['/type="color"/', '/id="([^"]*)"/'], ['type="text" class="mikio-color-text-input"', 'for="$1"'], $match[0]);
+
+                return '<div class="mikio-color-picker">' . $replacement . $match[0] . '</div>';
+            }, $content);
         }//end if
 
         if (strcasecmp($ACT, 'admin') === 0 && isset($_GET['page']) === false) {

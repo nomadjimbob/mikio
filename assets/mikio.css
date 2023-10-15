@@ -1989,6 +1989,23 @@ pre {
 .mikio .mode_admin input[type=email] {
   width: 100%;
 }
+.mikio .mode_admin div.mikio-color-picker {
+  position: relative;
+}
+.mikio .mode_admin div.mikio-color-picker input[type=color] {
+  height: 35px;
+  border: 0;
+  border-radius: 0;
+}
+.mikio .mode_admin div.mikio-color-picker input[type=text] {
+  width: auto;
+}
+.mikio .mode_admin div.mikio-color-button {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  color: #999999;
+}
 .mikio .mode_admin p button + button {
   margin-left: .5rem;
 }

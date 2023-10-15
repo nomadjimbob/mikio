@@ -351,6 +351,29 @@ var mikio = {
                 }
             }
         }
+
+        // Update color text field when selector changes
+        let colorSelectorInputs = document.querySelectorAll('div.mikio-color-picker input[type="color"]');
+        colorSelectorInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                let colorTextInput = document.querySelector(`div.mikio-color-picker input[for="${input.id}"]`);
+                if (colorTextInput) {
+                    colorTextInput.value = input.value;
+                }
+            });
+        });
+
+        let colorTextInputs = document.querySelectorAll('div.mikio-color-picker input[type="text"]');
+        colorTextInputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                const id = input.getAttribute('for');
+                let colorSelectorInput = document.querySelector(`div.mikio-color-picker input[id="${id}"]`);
+                if (colorSelectorInput) {
+                    let s = this.colorToHex(input.value);
+                    colorSelectorInput.value = s;
+                }
+            });
+        });
     },
 
     initDarkMode: function () {
@@ -729,6 +752,26 @@ var mikio = {
 
     clearCookie: function(cname) {
         document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    },
+
+    colorToHex: function(color) {
+        // Create a canvas element
+        let canvas = document.createElement('canvas');
+        canvas.height = 1;
+        canvas.width = 1;
+        let ctx = canvas.getContext('2d');
+    
+        // Set the fillStyle to the color input
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, 1, 1);
+    
+        // Get the pixel data from the canvas
+        let data = ctx.getImageData(0, 0, 1, 1).data;
+    
+        // Convert the RGB values to HEX
+        let hex = '#' + ((1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2]).toString(16).slice(1).toUpperCase();
+    
+        return hex;
     }
 };
 
