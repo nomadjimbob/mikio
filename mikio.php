@@ -380,7 +380,11 @@ class Template
                                 if ($lessAvailable !== true) {
                                     $path = '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
                                     for ($i = 0; $i < 6; $i++) {
-                                        if (($lessAvailable = file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) === true) {
+                                        if (
+                                            ($lessAvailable = file_exists(
+                                                $_SERVER['DOCUMENT_ROOT'] . $path
+                                            )) === true
+                                        ) {
                                             break;
                                         }
 
