@@ -364,23 +364,30 @@ class Template
                             return $value;
                         case 'less':
                             $value = (bool) $value;
-                            $lessAvailable = true;
+                            $lessAvailable = false;
 
-                            // check for less library
-                            $lesscLib = '../../../vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                            if (file_exists($lesscLib) === false) {
-                                $lesscLib = $_SERVER['DOCUMENT_ROOT'] . '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                            }
-                            if (file_exists($lesscLib) === false) {
-                                $lesscLib = '../../../../../app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                            }
-                            if (file_exists($lesscLib) === false) {
-                                $lesscLib = $_SERVER['DOCUMENT_ROOT'] .
-                                    '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                            }
-                            if (file_exists($lesscLib) === false) {
-                                $lessAvailable = false;
-                            }
+                            // search for less library
+                            $path = '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                            if (($lessAvailable = file_exists('.' . $path)) !== true) {
+                                for ($i = 0; $i < 6; $i++) {
+                                    if (($lessAvailable = file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) === true) {
+                                        break;
+                                    }
+
+                                    $path = '/..' . $path;
+                                }
+
+                                if ($lessAvailable !== true) {
+                                    $path = '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
+                                    for ($i = 0; $i < 6; $i++) {
+                                        if (($lessAvailable = file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) === true) {
+                                            break;
+                                        }
+
+                                        $path = '/..' . $path;
+                                    }
+                                }
+                            }//end if
 
                             // check for ctype extensions
                             if (function_exists('ctype_digit') === false) {
