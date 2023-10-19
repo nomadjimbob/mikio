@@ -237,6 +237,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+-   **_2023-10-20_**
+
+    -   Fixed LESS engine not being discovered when DokuWiki is hosted in a sub directory. Thanks Jan.
+
 -   **_2023-10-16_**
 
     -   Added color picker selector back to style page. Requested by Jan.
