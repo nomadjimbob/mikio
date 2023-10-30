@@ -237,6 +237,11 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+-   **_2023-10-30_**
+
+    -   Added support for the FastWiki plugin. Requested by kjumybit.
+    -   Fixed panels on the Administration page sometimes showing dots as part of the name.
+
 -   **_2023-10-20_**
 
     -   Fixed LESS engine not being discovered when DokuWiki is hosted in a sub directory. Thanks Jan.
