@@ -1545,7 +1545,7 @@ pre {
   white-space: -o-pre-wrap;
   line-height: 1.75;
 }
-.mode_show code,
+.mode_show code:not(.content_partial code),
 .mode_show pre {
   border: 1px solid var(--code-border-color);
   padding: 1em;
