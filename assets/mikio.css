@@ -6,7 +6,7 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
- :root[data-theme-auto="true"] {
+:root[data-theme-auto="true"] {
   --display-theme-light: none !important;
   --display-theme-dark: none !important;
   --display-theme-auto: inline-block !important;
@@ -1156,6 +1156,10 @@ body {
   display: inline;
   margin-right: 1rem;
 }
+#wiki__editbar .editButtons button {
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
 #wiki__editbar .summary {
   display: inline;
 }
@@ -2021,6 +2025,7 @@ pre {
 }
 .mikio .mode_admin div.ui-admin ul.admin_tasks li,
 .mikio .mode_admin div.ui-admin ul.admin_plugins li {
+  list-style-type: none;
   border: 1px solid var(--button-border-color);
   border-radius: .25rem;
   margin: 1rem 1rem;
