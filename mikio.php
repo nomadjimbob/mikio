@@ -16,6 +16,7 @@ if (defined('DOKU_INC') === false) {
 
 require_once('icons/icons.php');
 require_once('inc/simple_html_dom.php');
+require_once('inc/parens-parser.php');
 
 class Template
 {
@@ -344,6 +345,7 @@ class Template
             ['keys' => ['breadcrumbSepText'],               'type' => 'string'],
             ['keys' => ['youareherePrefixText'],            'type' => 'string'],
             ['keys' => ['youarehereSepText'],               'type' => 'string'],
+            ['keys' => ['footerPageInfoText'],              'type' => 'string'],
             ['keys' => ['footerCustomMenuText'],            'type' => 'string'],
             ['keys' => ['brandURLGuest'],                   'type' => 'string'],
             ['keys' => ['brandURLUser'],                    'type' => 'string'],
@@ -1154,6 +1156,96 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         return $html;
     }
 
+    private function custom_tpl_pageinfo($ret = false)
+    {
+        global $conf;
+        global $lang;
+        global $INFO;
+        global $ID;
+
+        // return if we are not allowed to view the page
+        if (!auth_quickaclcheck($ID)) {
+            return false;
+        }
+
+        if ($INFO['exists']) {
+            $file = $INFO['filepath'];
+            if (!$conf['fullpath']) {
+                if ($INFO['rev']) {
+                    $file = str_replace($conf['olddir'] . '/', '', $file);
+                } else {
+                    $file = str_replace($conf['datadir'] . '/', '', $file);
+                }
+            }
+            $file = utf8_decodeFN($file);
+            $date = dformat($INFO['lastmod']);
+
+            $string = $this->getConf('footerPageInfoText', '');
+
+            // replace lang items
+            $string = preg_replace_callback('/%([^%]+)%/', function ($matches) use ($lang) {
+                return isset($lang[$matches[1]]) ? $lang[$matches[1]] : '';
+            }, $string);
+
+            $options = [
+                'file' => '<bdi>' . $file . '</bdi>',
+                'date' => $date,
+                'user' => $INFO['editor'] ? '<bdi>' . editorinfo($INFO['editor']) . '</bdi>' : $lang['external_edit']
+            ];
+
+            if (!empty($_SERVER['REMOTE_USER'])) {
+                $options['loggedin'] = true;
+            }
+
+            if ($INFO['locked']) {
+                $options['locked'] = '<bdi>' . editorinfo($INFO['locked']) . '</bdi>';
+            }
+
+            $parser = new \ParensParser();
+            $result = $parser->parse($string);
+
+            $parserIterate = function ($arr, $func) use ($options) {
+                $str = '';
+
+                foreach ($arr as $value) {
+                    if (is_array($value)) {
+                        $str .= $func($value, $func);
+                    } else {
+                        if (preg_match('/^([a-zA-Z]+)=(.*)/', $value, $matches)) {
+                            $key = strtolower($matches[1]); // Extract the key (a-zA-Z part)
+
+                            if (isset($options[$key])) {
+                                $str .= $matches[2];
+                            } else {
+                                return $str;
+                            }
+                        } else {
+                            $str .= $value;
+                        }
+                    }
+                }//end foreach
+
+                return $str;
+            };
+
+            $string = $parserIterate($result, $parserIterate);
+
+            $string = preg_replace_callback('/{([^}]+)}/', function ($matches) use ($options) {
+                $key = strtolower($matches[1]);
+                return isset($options[$key]) ? $options[$key] : '';
+            }, $string);
+
+            if ($ret) {
+                return $string;
+            } else {
+                echo $string;
+                return true;
+            }
+        }//end if
+
+        return false;
+    }
+
     /**
      * Print or return footer
      *
@@ -1167,7 +1259,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = '';
 
         $html .= '<footer class="mikio-footer">';
-        $html .= '<div class="doc">' . tpl_pageinfo(true) . '</div>';
+        $html .= '<div class="doc">' . $this->custom_tpl_pageinfo(true) . '</div>';
         $html .= $this->includePage('footer', false);
 
         $html .= $this->stringToNav($this->getConf('footerCustomMenuText'));
@@ -1669,7 +1761,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 'sidebar'       => ['sidebarShowLeft',         ''],
                 'toc'           => ['tocFull',                 ''],
                 'pagetools'     => ['pageToolsFloating',       ''],
-                'footer'        => ['footerCustomMenuText',    ''],
+                'footer'        => ['footerPageInfoText',      ''],
                 'license'       => ['licenseType',             ''],
                 'acl'           => ['includePageUseACL',       ''],
                 'sticky'        => ['stickyTopHeader',         ''],

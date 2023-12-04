@@ -198,6 +198,29 @@ To hide the topheader, navbar and hero, you would use the macro `~~hide-parts to
 
 Users can also add their own icon sets into the template. Supported icon sets can either be webfonts or indivial files (such as a SVG library). Instructions can be found in the `/icons/icons.php` file.
 
+## Customizing Page Footer Info Text
+
+By default, Dokuwiki inserts the text `start.txt · Last modified: 2023/12/04 10:57...` on each page. This can now be customized in the config.
+
+You can use the follow placeholders to insert page attributes:
+
+-   `{file}` - The file name of the page
+-   `{date}` - The last modification date of the page
+-   `{user}` - The user whom last edited the page
+-   `{locked}` - The user whom has the page currently locked
+
+You can also use Dokuwiki language settings by wrapping the string ID with the percentage symbol. For example use to the language string set against `lastmod`, use `%lastmod%`. In a default install under english, `%lastmod%` will be replaced with `Last modified:`.
+
+There is also support for simple optional text. By wrapping text in square brackets and at the beginning of the square bracket, inserting the placeholder name followed by an equals sign, if the placeholder exists, then the contents of the square brackets will be parsed. There is also support for `LOGGEDIN` to check if there is a logged in user.
+
+For example the string `Hello[LOGGEDIN= by {user}]` would output as `Hello` if the vistor is a guest (not logged in) or `Hello by james` if the visitor has logged into the site.
+
+Optionals can also be stacked, for example `Hello[LOGGEDIN=[USER= by {user}]]`. the `by {user}` would only be present if there is a logged in user AND the page has a user editor set.
+
+Of course, you can leave the setting blank to hide the page info altogether.
+
+The default value which is the same standard DokuWiki is: `{file} · %lastmod% {date}[LOGGEDIN=[USER= %by% {user}][LOCKED= · %lockedby% {locked}]]`
+
 ## Themes
 
 Themes should be placed in the themes directory, in its own directory. LESS files are supported.
@@ -236,6 +259,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 -   `home` : Text for the breadcrumb home title
 
 ## Releases
+
+-   **_2023-12-04_**
+
+    -   Added ability to customize the page footer info text.
 
 -   **_2023-10-30_**
 

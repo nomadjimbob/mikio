@@ -99,6 +99,7 @@ $lang['pageToolsShowRevs']      = 'Show the Revisions item';
 $lang['pageToolsShowBacklink']  = 'Show the Backlinks item';
 $lang['pageToolsShowTop']       = 'Show the Back to Top item';
 
+$lang['footerPageInfoText']     = 'Customize the page info in the footer';
 $lang['footerCustomMenuText']   = 'Allows custom menus in the footer. The format is url|title seperated by ;';
 $lang['footerSearch']           = 'Show the search bar in the footer';
 $lang['footerInPage']           = 'Show the wiki footer in the article. Bottom footer remains on page';

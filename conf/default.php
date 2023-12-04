@@ -89,6 +89,7 @@ $conf['pageToolsShowRevs']      = 'always';
 $conf['pageToolsShowBacklink']  = 'always';
 $conf['pageToolsShowTop']       = 'always';
 
+$conf['footerPageInfoText']     = '{file} · %lastmod% {date}[LOGGEDIN=[USER= %by% {user}][LOCKED= · %lockedby% {locked}]]';
 $conf['footerCustomMenuText']   = '';
 $conf['footerSearch']           = 0;
 $conf['footerInPage']           = 0;

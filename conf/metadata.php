@@ -93,6 +93,7 @@ $meta['pageToolsShowRevs']      = ['multichoice', '_choices' => ['always', 'logg
 $meta['pageToolsShowBacklink']  = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
 $meta['pageToolsShowTop']       = ['multichoice', '_choices' => ['always', 'logged in', 'logged out', 'never']];
 
+$meta['footerPageInfoText']     = ['string'];
 $meta['footerCustomMenuText']   = ['string'];
 $meta['footerSearch']           = ['onoff'];
 $meta['footerInPage']           = ['onoff'];
