@@ -260,6 +260,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+-   **_2023-12-11_**
+
+    -   Fixed bug with tags not correctly coloured. [#59](https://github.com/nomadjimbob/mikio/issues/59). Thanks WetenSchaap.
+
 -   **_2023-12-04_**
 
     -   Added ability to customize the page footer info text.
