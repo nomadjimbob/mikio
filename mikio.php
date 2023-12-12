@@ -305,7 +305,7 @@ class Template
                 'values' => ['always', 'logged in', 'logged out', 'never']
             ],
             ['keys' => ['showNotifications'],               'type' => 'choice',
-                'values' => ['admin', 'always', 'none']
+                'values' => ['admin', 'always', 'none', '', 'never']
             ],
             ['keys' => ['licenseType'],                     'type' => 'choice',
                 'values' => ['badge', 'button', 'none']
@@ -2385,31 +2385,33 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
             strcasecmp($show, 'always') === 0 ||
             (strcasecmp($show, 'admin') === 0 && strcasecmp($ACT, 'admin') === 0)
         ) {
-            global $MSG, $MSG_shown;
+            html_msgarea();
 
-            if (isset($MSG) !== false) {
-                if (isset($MSG_shown) === false) {
-                    $MSG_shown = [];
-                }
+            // global $MSG, $MSG_shown;
 
-                foreach ($MSG as $msg) {
-                    $hash = md5($msg['msg']);
-                    if (isset($MSG_shown[$hash]) === true) {
-                        continue;
-                    }
-                    // skip double messages
+            // if (isset($MSG) !== false) {
+            //     if (isset($MSG_shown) === false) {
+            //         $MSG_shown = [];
+            //     }
 
-                    if (info_msg_allowed($msg) === true) {
-                        echo '<div class="' . $msg['lvl'] . '">';
-                        echo $msg['msg'];
-                        echo '</div>';
-                    }
+            //     foreach ($MSG as $msg) {
+            //         $hash = md5($msg['msg']);
+            //         if (isset($MSG_shown[$hash]) === true) {
+            //             continue;
+            //         }
+            //         // skip double messages
 
-                    $MSG_shown[$hash] = true;
-                }
+            //         if (info_msg_allowed($msg) === true) {
+            //             echo '<div class="me ' . $msg['lvl'] . '">';
+            //             echo $msg['msg'];
+            //             echo '</div>';
+            //         }
 
-                unset($GLOBALS['MSG']);
-            }//end if
+            //         $MSG_shown[$hash] = true;
+            //     }
+
+            //     unset($GLOBALS['MSG']);
+            // }//end if
 
             if (strlen($this->includedPageNotifications) > 0) {
                 echo $this->includedPageNotifications;
