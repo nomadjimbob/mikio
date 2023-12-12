@@ -323,8 +323,6 @@ Typeahead.prototype = {
                 });
             }
 
-            console.log("Show header:");
-            console.log(this.showCategoryHeader);
             this.showCategoryHeader = true;
             if (this.showCategoryHeader) {
                 // inject category header
