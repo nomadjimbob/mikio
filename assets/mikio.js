@@ -377,9 +377,20 @@ var mikio = {
     },
 
     initDarkMode: function () {
-        let setting = this.getCookie('lightDarkToggle');
-        if (setting == 'dark' || setting == 'light' || setting == 'auto') {
-            this.darkMode = setting;
+        const showLightDark = document.querySelector('.mikio-darklight-button') != null;
+        if (showLightDark == true) {
+            let setting = this.getCookie('lightDarkToggle');
+            if (setting == 'dark' || setting == 'light' || setting == 'auto') {
+                this.darkMode = setting;
+            }
+
+            if (document.querySelector('.mikio-auto-darklight') == null && setting == 'auto') {
+                this.darkMode = 'light';
+            }
+        } else {
+            if (document.querySelector('.mikio-auto-darklight') != null) {
+                this.darkMode = 'auto';
+            }
         }
 
         var self = this;
