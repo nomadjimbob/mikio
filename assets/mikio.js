@@ -23,7 +23,7 @@ var mikio = {
         this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
         this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
         this.indexmenuPatch();
-		this.typeahead();
+        this.typeahead();
 
         var updateStickyItems = function () {
             window.removeEventListener('scroll', updateStickyScroll);
@@ -384,7 +384,7 @@ var mikio = {
 
         var self = this;
 
-        if(window.matchMedia) {
+        if (window.matchMedia) {
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
                 self.updateDarkMode();
             });
@@ -393,18 +393,18 @@ var mikio = {
         this.addEventListenerByClassName('mikio-darklight-button', 'click', function (event) {
             event.preventDefault();
             event.stopPropagation();
-            
+
             const autoAllowed = (document.querySelector('.mikio-iicon.mikio-darklight-auto') != null);
 
-            if(self.darkMode == 'light') {
+            if (self.darkMode == 'light') {
                 self.darkMode = 'dark';
-            } else if(self.darkMode == 'dark') {
-                if(autoAllowed == true) {
+            } else if (self.darkMode == 'dark') {
+                if (autoAllowed == true) {
                     self.darkMode = 'auto';
                 } else {
                     self.darkMode = 'light';
                 }
-            } else if(self.darkMode == 'auto') {
+            } else if (self.darkMode == 'auto') {
                 self.darkMode = 'light';
             } else {
                 self.darkMode = 'dark';
@@ -420,14 +420,14 @@ var mikio = {
         const html = document.querySelector('html');
         let themeMode = this.darkMode;
 
-        if(this.darkMode == 'auto') {
+        if (this.darkMode == 'auto') {
             html.dataset.themeAuto = true;
 
             themeMode = 'light';
             if (window.matchMedia) {
                 let prefersColorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
                 themeMode = prefersColorSchemeQuery.matches ? 'dark' : 'light';
-              }
+            }
         } else {
             delete html.dataset.themeAuto;
         }
@@ -675,7 +675,7 @@ var mikio = {
         });
     },
 
-   // Add typeahead support for quick seach. Taken from bootstrap3 theme.
+    // Add typeahead support for quick seach. Taken from bootstrap3 theme.
     typeahead: function () {
 
         jQuery(".search_typeahead").typeahead({
@@ -722,12 +722,12 @@ var mikio = {
             items: 10,
             fitToElement: true,
             delay: 500,
-			theme: 'bootstrap4',
+            theme: 'bootstrap4',
 
         });
     },
 
-    getCookie: function(cname) {
+    getCookie: function (cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
@@ -743,34 +743,34 @@ var mikio = {
         return "";
     },
 
-    setCookie: function(cname, cvalue, exdays) {
+    setCookie: function (cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         let expires = "expires=" + d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     },
 
-    clearCookie: function(cname) {
+    clearCookie: function (cname) {
         document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
     },
 
-    colorToHex: function(color) {
+    colorToHex: function (color) {
         // Create a canvas element
         let canvas = document.createElement('canvas');
         canvas.height = 1;
         canvas.width = 1;
         let ctx = canvas.getContext('2d');
-    
+
         // Set the fillStyle to the color input
         ctx.fillStyle = color;
         ctx.fillRect(0, 0, 1, 1);
-    
+
         // Get the pixel data from the canvas
         let data = ctx.getImageData(0, 0, 1, 1).data;
-    
+
         // Convert the RGB values to HEX
         let hex = '#' + ((1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2]).toString(16).slice(1).toUpperCase();
-    
+
         return hex;
     }
 };
