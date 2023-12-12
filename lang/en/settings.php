@@ -12,7 +12,7 @@ $lang['iconTag']                = 'Tag to use to for icon tags. The default is \
 it conflicts with any plugins. Set to blank to disable icon tags';
 $lang['customTheme']            = 'Use a Mikio subtheme installed into the themes directory. Leave blank for the 
 detault styling';
-$lang['showNotifications']      = 'Where to show site notifications to admin staff';
+$lang['showNotifications']      = 'Where to show site notifications';
 $lang['useLESS']                = 'Use the LESS compiler for the mikio stylesheet or direct CSS. Requires PHP ctype 
 extensions installed';
 $lang['brandURLGuest']          = 'Change the Brand Logo URL for guests. Leave blank for default home URL';

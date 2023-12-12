@@ -262,6 +262,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 -   **_NEXT_**
 
+    -   Fixed bug in config for showNotifications not being a dropdown.
+    -   Changed default value of showNotifications to `always` to reflect DokuWiki. [#58](https://github.com/nomadjimbob/mikio/issues/58). Thanks schplurtz.
     -   Fixed z-index bug with the sub navbar. [#60](https://github.com/nomadjimbob/mikio/issues/60). Thanks schplurtz.
 
 -   **_2023-12-11_**

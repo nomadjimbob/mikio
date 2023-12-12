@@ -10,7 +10,7 @@
 
 $conf['iconTag']                = 'icon';
 $conf['customTheme']            = '';
-$conf['showNotifications']      = 'admin';
+$conf['showNotifications']      = 'always';
 $conf['useLESS']                = 1;
 $conf['brandURLGuest']          = '';
 $conf['brandURLUser']           = '';
