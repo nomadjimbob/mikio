@@ -747,11 +747,11 @@ var mikio = {
         const d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         let expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Lax";
     },
 
     clearCookie: function (cname) {
-        document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+        document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Lax";
     },
 
     colorToHex: function (color) {
