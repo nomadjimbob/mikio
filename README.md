@@ -260,12 +260,12 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
--   **_NEXT_**
+-   **_2023-12-12_**
 
     -   `autoDarkLight` configuration setting will override user setting when `showDarkLight` is disabled [#56](https://github.com/nomadjimbob/mikio/issues/56).
     -   Cookies used in the template now use the upcoming `SameSite` requirement.
     -   Fixed snapshots not being detected and causing script loading issues [#57](https://github.com/nomadjimbob/mikio/issues/57). Thanks schplurtz.
-    -   Updated the typescript library to suppport jQuery compatibility mode [#57](https://github.com/nomadjimbob/mikio/issues/57). Thanks schplurtz.
+    -   Updated the typescript library to support jQuery compatibility mode [#57](https://github.com/nomadjimbob/mikio/issues/57). Thanks schplurtz.
     -   Fixed bug in config for showNotifications not being a dropdown.
     -   Changed default value of showNotifications to `always` to reflect DokuWiki. [#58](https://github.com/nomadjimbob/mikio/issues/58). Thanks schplurtz.
     -   Fixed z-index bug with the sub navbar. [#60](https://github.com/nomadjimbob/mikio/issues/60). Thanks schplurtz.
