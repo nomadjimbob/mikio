@@ -646,42 +646,43 @@ body {
   color: var(--navbar-link-hover-color);
 }
 
-.mikio-sub-navbar {
+.mikio-navbar.mikio-sub-navbar {
   color: var(--subnavbar-text-color);
   justify-content: center;
   padding: .75rem 1rem;
   border-color: var(--subnavbar-border-color);
   background-color: var(--subnavbar-background-color);
+  z-index: 999;
 }
 
-.mikio-sub-navbar ul,
-.mikio-sub-navbar ol,
-.mikio-sub-navbar p {
+.mikio-navbar.mikio-sub-navbar ul,
+.mikio-navbar.mikio-sub-navbar ol,
+.mikio-navbar.mikio-sub-navbar p {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.mikio-sub-navbar ul,
-.mikio-sub-navbar ol {
+.mikio-navbar.mikio-sub-navbar ul,
+.mikio-navbar.mikio-sub-navbar ol {
   list-style: none;
 }
 
-.mikio-sub-navbar li {
+.mikio-navbar.mikio-sub-navbar li {
   display: inline-block;
   padding: 0 .2rem;
   margin: 0 .5rem;
 }
 
-.mikio-sub-navbar a,
-.mikio-sub-navbar a:visited,
-.mikio-sub-navbar a:active {
+.mikio-navbar.mikio-sub-navbar a,
+.mikio-navbar.mikio-sub-navbar a:visited,
+.mikio-navbar.mikio-sub-navbar a:active {
   color: var(--subnavbar-link-color);
 }
 
-.mikio-sub-navbar a:hover,
-.mikio-sub-navbar a:visited:hover,
-.mikio-sub-navbar a:active:hover {
+.mikio-navbar.mikio-sub-navbar a:hover,
+.mikio-navbar.mikio-sub-navbar a:visited:hover,
+.mikio-navbar.mikio-sub-navbar a:active:hover {
   color: var(--subnavbar-link-hover-color);
 }
 
@@ -744,10 +745,7 @@ body {
 
 .mikio .mikio-tags a,
 .mikio .mikio-tags a:visited,
-.mikio .mikio-tags a:active,
-.mikio .mikio-tags a.wikilink1,
-.mikio .mikio-tags a.wikilink1:visited,
-.mikio .mikio-tags a.wikilink1:active {
+.mikio .mikio-tags a:active {
   margin: 0 .25rem;
   font-size: 80%;
   padding: .25rem .75rem;
@@ -762,10 +760,7 @@ body {
 
 .mikio .mikio-tags a:hover,
 .mikio .mikio-tags a:visited:hover,
-.mikio .mikio-tags a:active:hover,
-.mikio .mikio-tags a.wikilink1:hover,
-.mikio .mikio-tags a.wikilink1:visited:hover,
-.mikio .mikio-tags a.wikilink1:active:hover {
+.mikio .mikio-tags a:active:hover {
   background-color: transparent;
   color: var(--tag-background-color);
 }

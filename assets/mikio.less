@@ -263,20 +263,31 @@
 }
 
 .mikio-controls {
-    button, input, optgroup, select, textarea {
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
         .mikio-control();
         .mikio-input-text();
     }
 
-    button, input[type=button], input[type=image] {
+    button,
+    input[type=button],
+    input[type=image] {
         .mikio-button();
     }
 
-    button#edbtn__save, button[name="run[save]"] {
+    button#edbtn__save,
+    button[name="run[save]"] {
         .mikio-button-submit();
     }
 
-    input[type=text], input[type=search], input[type=password], input[type=email] {
+    input[type=text],
+    input[type=search],
+    input[type=password],
+    input[type=email] {
         .mikio-appearance();
     }
 
@@ -319,7 +330,8 @@ body {
     padding: 0;
 }
 
-html, body {
+html,
+body {
     background-color: var(--background);
     color: var(--text);
     margin: 0;
@@ -365,21 +377,13 @@ html, body {
     border-top: 1px solid var(--sidebar-border-color);
 }
 
-.mikio-page-contentheader {
+.mikio-page-contentheader {}
 
-}
+.mikio-page-contentfooter {}
 
-.mikio-page-contentfooter {
+.mikio-page-footer {}
 
-}
-
-.mikio-page-footer {
-
-}
-
-.mikio-page-bottomfooter {
-
-}
+.mikio-page-bottomfooter {}
 
 .mikio-admin {
     background-color: var(--admin-background-color);
@@ -390,11 +394,13 @@ html, body {
 }
 
 .mikio {
-    .mikio-breadcrumbs, .mikio-youarehere {
+
+    .mikio-breadcrumbs,
+    .mikio-youarehere {
         .mikio-container {
             flex-direction: row;
         }
-    
+
         padding: .5rem 1rem;
         background-color: var(--breadcrumb-background-color);
         border: 1px solid var(--breadcrumb-background-color);
@@ -402,7 +408,12 @@ html, body {
         font-size: @ini_breadcrumb_font_size;
         color: var(--breadcrumb-text-color);
 
-        span.curid a, span.curid a:visited, span.curid a:active, a, a:visited, a:active {
+        span.curid a,
+        span.curid a:visited,
+        span.curid a:active,
+        a,
+        a:visited,
+        a:active {
             .mikio-text-decoration(none);
             color: var(--breadcrumb-link-color);
             font-weight: normal;
@@ -428,7 +439,8 @@ html, body {
         //     margin-right: .5rem;
         // }
 
-        li, span.bchead {
+        li,
+        span.bchead {
             display: inline-block;
             // vertical-align: text-bottom;
             // margin-right: .5rem;
@@ -494,44 +506,47 @@ html, body {
         position: absolute;
         top: 1.2rem;
         right: 1.2rem;
-        
+
         width: 1rem;
         height: 1rem;
         padding: 0;
-        
+
         cursor: pointer;
         transition: transform .15s ease-in-out;
         vertical-align: middle;
-        
+
         border: 0 none;
         background: transparent;
-        
-        &:before, &:after {
+
+        &:before,
+        &:after {
             content: "";
         }
 
-        &:before, .icon, &:after {
+        &:before,
+        .icon,
+        &:after {
             display: block;
-            
+
             width: 100%;
             height: 0.2em;
             margin: 0 0 0.2em;
-        
+
             transition: transform .15s ease-in-out;
-        
+
             border-radius: 0.05em;
             background: var(--control-text-color);
         }
-        
+
         &.open {
             .icon {
                 transform: scale(0);
             }
-            
+
             &:before {
                 transform: translateY(0.4em) rotate(135deg);
             }
-            
+
             &:after {
                 transform: translateY(-0.4em) rotate(-135deg);
             }
@@ -545,7 +560,9 @@ html, body {
         justify-content: @ini_navbar_content_justify;
     }
 
-    a, a:visited, a:active {
+    a,
+    a:visited,
+    a:active {
         .mikio-text-decoration(none);
         color: var(--navbar-link-color);
         transition: all .15s ease-in-out;
@@ -555,7 +572,9 @@ html, body {
         }
     }
 
-    .mikio-nav-dropdown a, .mikio-nav-dropdown a:visited, .mikio-nav-dropdown a:active {
+    .mikio-nav-dropdown a,
+    .mikio-nav-dropdown a:visited,
+    .mikio-nav-dropdown a:active {
         &:after {
             border-color: var(--navbar-link-color) !important;
         }
@@ -569,7 +588,9 @@ html, body {
         margin: 0 .5rem;
     }
 
-    .mikio-button, .mikio-button:visited, .mikio-button:active {
+    .mikio-button,
+    .mikio-button:visited,
+    .mikio-button:active {
         background-color: transparent;
         border-color: transparent;
 
@@ -581,20 +602,24 @@ html, body {
     }
 }
 
-.mikio-sub-navbar {
+.mikio-navbar.mikio-sub-navbar {
     color: var(--subnavbar-text-color);
     justify-content: @ini_subnavbar_content_justify;
     padding: .75rem 1rem;
     border-color: var(--subnavbar-border-color);
     background-color: var(--subnavbar-background-color);
+    z-index: 999;
 
-    ul, ol, p {
+    ul,
+    ol,
+    p {
         list-style: none;
         margin: 0;
         padding: 0;
     }
 
-    ul, ol {
+    ul,
+    ol {
         list-style: none;
     }
 
@@ -604,7 +629,9 @@ html, body {
         margin: 0 .5rem;
     }
 
-    a, a:visited, a:active {
+    a,
+    a:visited,
+    a:active {
         color: var(--subnavbar-link-color);
 
         &:hover {
@@ -615,18 +642,19 @@ html, body {
 
 .mikio-hero {
     background-color: var(--hero-background-color);
-    
+
     .mikio-container {
         display: flex;
         flex: 1;
     }
-    
+
     .mikio-hero-text {
         flex: 1;
         min-height: 5rem;
         padding: 2rem;
 
-        .mikio-breadcrumbs, .mikio-youarehere {
+        .mikio-breadcrumbs,
+        .mikio-youarehere {
             background-color: transparent;
             border-color: transparent;
             padding: 0;
@@ -667,8 +695,10 @@ html, body {
     text-align: right;
     padding-right: .5rem;
     margin-bottom: .5rem;
-    
-    a, a:visited, a:active {
+
+    a,
+    a:visited,
+    a:active {
         margin: 0 .25rem;
         font-size: 80%;
         padding: .25rem .75rem;
@@ -711,17 +741,19 @@ html, body {
         .mikio-text-decoration(none);
         text-align: center;
         color: rgba(0, 0, 0, 0.6);
-        
+
         .icon {
-            &:before, &:after {
+
+            &:before,
+            &:after {
                 content: "";
-                display: inline-block;          
+                display: inline-block;
                 width: 0.5rem;
                 height: 0.1em;
                 margin: 0 0 0.2em;
                 transition: transform .15s ease-in-out;
                 border-radius: 0.05em;
-                background: rgba(0,0,0,0.6);
+                background: rgba(0, 0, 0, 0.6);
             }
 
             &:before {
@@ -732,7 +764,7 @@ html, body {
                 transform: translateX(-0.1rem) translateY(0) rotate(135deg);
             }
         }
-        
+
         .open .icon {
             &:before {
                 transform: translateX(0.1rem) rotate(135deg);
@@ -744,7 +776,7 @@ html, body {
         }
     }
 
-    .mikio-sidebar-toggle.closed + .mikio-sidebar-collapse {
+    .mikio-sidebar-toggle.closed+.mikio-sidebar-collapse {
         display: block;
     }
 
@@ -763,7 +795,9 @@ html, body {
         overflow-wrap: break-word;
         margin-bottom: 1rem;
 
-        a, a:visited, a:active {
+        a,
+        a:visited,
+        a:active {
             display: block;
             margin: 1rem 0;
             color: var(--sidebar-link-color);
@@ -774,15 +808,18 @@ html, body {
             }
         }
 
-        ul, ul.idx {
+        ul,
+        ul.idx {
             margin: 0;
             padding: 0;
 
             ul {
                 padding-left: 1rem;
             }
-    
-            li, li.closed, li.open {
+
+            li,
+            li.closed,
+            li.open {
                 list-style: none;
             }
         }
@@ -805,7 +842,7 @@ html, body {
         // flex: 1;
         padding: 0;
     }
-    
+
     a {
         color: var(--link);
         transition: all .15s ease-in-out;
@@ -816,7 +853,7 @@ html, body {
             &:hover {
                 color: var(--existing-hover);
             }
-        
+
             &:visited {
                 color: var(--existing-visited);
 
@@ -824,7 +861,7 @@ html, body {
                     color: var(--existing-hover);
                 }
             }
-        
+
             &:active {
                 color: var(--existing-active);
             }
@@ -876,7 +913,8 @@ html, body {
 .mikio .mikio-content .mikio-article {
     margin: 0 auto;
 
-    ul, ul.idx {
+    ul,
+    ul.idx {
         // padding-left: 1rem;
     }
 
@@ -895,10 +933,10 @@ html, body {
 
             scroll-behavior: smooth;
             scrollbar-width: none;
-    
+
             &::-webkit-scrollbar {
                 display: none;
-            }    
+            }
         }
 
         .mikio-article-content {
@@ -927,7 +965,9 @@ html, body {
     font-size: @ini_footer_font_size;
     text-align: @ini_footer_text_align;
 
-    a, a:visited, a:active {
+    a,
+    a:visited,
+    a:active {
         color: var(--footer-link-color);
 
         &:hover {
@@ -946,13 +986,15 @@ html, body {
                 margin: 0 .5rem;
             }
 
-            a, a:visited, a:active {
+            a,
+            a:visited,
+            a:active {
                 // margin: 0 .5rem;
-        
+
                 svg {
                     fill: var(--footer-link-color);
                 }
-        
+
                 &:hover {
                     svg {
                         fill: var(--footer-link-hover-color);
@@ -981,7 +1023,7 @@ html, body {
     }
 }
 
-.mikio .site > div.no {
+.mikio .site>div.no {
     display: none;
 }
 
@@ -1008,7 +1050,9 @@ html, body {
     }
 }
 
-.mikio-button, .mikio-button:visited, .mikio-button:active {
+.mikio-button,
+.mikio-button:visited,
+.mikio-button:active {
     display: inline-block;
     text-align: center;
     color: var(--button-text-color);
@@ -1017,8 +1061,8 @@ html, body {
     line-height: 1.5;
     .mikio-text-decoration(none);
     text-transform: capitalize;
-    
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
     &:hover:not(:disabled) {
         .mikio-text-decoration(none);
@@ -1038,11 +1082,13 @@ html, body {
     min-width: 3rem;
 }
 
-.mikio-button-submit, .mikio-button-submit:visited, .mikio-button-submit:active {
+.mikio-button-submit,
+.mikio-button-submit:visited,
+.mikio-button-submit:active {
     color: var(--button-default-text-color);
     background-color: var(--button-default-background-color);
     border-color: var(--button-default-border-color);
-    
+
     &:hover {
         color: var(--button-default-text-hover-color);
         background-color: var(--button-default-background-hover-color);
@@ -1050,7 +1096,9 @@ html, body {
     }
 }
 
-.mikio-button-danger, .mikio-button-danger:visited, .mikio-button-danger:active {
+.mikio-button-danger,
+.mikio-button-danger:visited,
+.mikio-button-danger:active {
     color: #fff;
     border-color: #dc3545;
     background-color: #dc3545;
@@ -1092,13 +1140,14 @@ html, body {
         max-width: 40rem;
     }
 
-    fieldset {    
+    fieldset {
         legend {
             font-size: 1.75rem;
             font-weight: 400;
         }
 
-        label.block input.edit, select {
+        label.block input.edit,
+        select {
             width: 100%;
         }
 
@@ -1115,7 +1164,7 @@ html, body {
         label.block {
             position: relative;
         }
-        
+
         label.block span {
             position: absolute;
             padding: .4rem .9rem;
@@ -1179,7 +1228,9 @@ html, body {
         margin: 0;
     }
 
-    a, a:visited, a:active {
+    a,
+    a:visited,
+    a:active {
         display: block;
 
         svg {
@@ -1230,7 +1281,7 @@ html, body {
 }
 
 .mikio .mode_admin .mikio-toc #dw__toc {
-    background-color: var(--toc-background-color);    
+    background-color: var(--toc-background-color);
 }
 
 .mikio .mikio-toc {
@@ -1263,7 +1314,7 @@ html, body {
             }
         }
 
-        &> div {
+        &>div {
             padding: .2em .5em;
         }
     }
@@ -1290,7 +1341,7 @@ html, body {
             // border: 1px solid red;
             background-color: var(--toc-background-color);
         }
-            
+
         &.open {
             .hamburger {
                 display: none;
@@ -1302,7 +1353,7 @@ html, body {
             // height: 1rem;
             width: 2rem;
             padding-right: 0;
-            
+
             .down-arrow {
                 right: -4px;
             }
@@ -1313,7 +1364,9 @@ html, body {
         }
     }
 
-    a, a:visited, a:active {
+    a,
+    a:visited,
+    a:active {
         display: block;
         font-size: @ini_toc_font_size;
         color: var(--toc-link-color);
@@ -1355,14 +1408,15 @@ html, body {
     margin-bottom: 1rem;
     font-size: @ini_table_font_size;
     border-bottom: 1px solid var(--table-row-border-color);
-    
+
     tr {
         border-top: 1px solid var(--table-row-border-color);
     }
 
-    td, th {
+    td,
+    th {
         padding: .75rem;
-        text-align: left;    
+        text-align: left;
     }
 
     thead tr {
@@ -1380,7 +1434,7 @@ html, body {
             background-color: var(--table-even-row-background-color);
             color: var(--table-even-row-text-color);
         }
-    }    
+    }
 }
 
 .mikio-nav {
@@ -1389,21 +1443,20 @@ html, body {
     padding: 0;
     display: flex;
 
-    .mikio-nav-item, .mikio-nav-dropdown {
+    .mikio-nav-item,
+    .mikio-nav-dropdown {
         display: inline-block;
         padding: .5rem .2rem;
         margin: 0 .5rem;
     }
 
-    .mikio-nav-link {
-
-    }
+    .mikio-nav-link {}
 
     .mikio-nav-dropdown {
         position: relative;
     }
 
-    .mikio-nav-dropdown > a {
+    .mikio-nav-dropdown>a {
         display: inline-block;
         padding: .2rem 1.2rem .2rem 0rem;
         position: relative;
@@ -1459,7 +1512,9 @@ html, body {
         border-bottom: 1px solid var(--dropdown-border-color);
     }
 
-    .mikio-nav-link, .mikio-nav-link:visited, .mikio-nav-link.active {
+    .mikio-nav-link,
+    .mikio-nav-link:visited,
+    .mikio-nav-link.active {
         margin: 0rem -1rem 0rem -1rem;
         padding: .25rem 1rem .25rem 1rem;
         transition: all .15s ease-in-out;
@@ -1510,7 +1565,9 @@ html, body {
             .mikio-tab-active();
         }
 
-        a, a:visited, a:active {
+        a,
+        a:visited,
+        a:active {
             display: inline-block;
             padding: .5rem 1rem;
             border: 1px solid var(--tab-border-color);
@@ -1593,8 +1650,8 @@ html, body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;    
-    white-space: nowrap; 
+    user-select: none;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     box-sizing: border-box;
@@ -1623,7 +1680,8 @@ html, body {
     }
 }
 
-code, pre {
+code,
+pre {
     overflow-x: auto;
     font-family: @ini_code_font_family;
     font-size: @ini_code_font_size;
@@ -1635,7 +1693,9 @@ code, pre {
 }
 
 .mode_show {
-    code:not(.content_partial code), pre {
+
+    code:not(.content_partial code),
+    pre {
         border: 1px solid var(--code-border-color);
         padding: 1em;
     }
@@ -1643,6 +1703,7 @@ code, pre {
 
 /* Dokuwiki Patches */
 .mikio {
+
     .mikio-search,
     &.dokuwiki fieldset,
     &.dokuwiki .secedit,
@@ -1683,7 +1744,8 @@ code, pre {
             flex-grow: 1
         }
     }
-            //     span {
+
+    //     span {
     //         display: inline-block;
     //         margin-right: 1rem;
     //         max-width: 10rem;
@@ -1697,7 +1759,10 @@ code, pre {
 }
 
 .mikio .mode_admin {
-    input[type=text], input[type=password], input[type=email] {
+
+    input[type=text],
+    input[type=password],
+    input[type=email] {
         width: 100%;
     }
 
@@ -1714,7 +1779,7 @@ code, pre {
             width: auto;
         }
     }
-    
+
     div.mikio-color-button {
         position: absolute;
         top: 4px;
@@ -1723,13 +1788,15 @@ code, pre {
     }
 
     p {
-        button + button {
+        button+button {
             margin-left: .5rem;
         }
     }
 
     div.ui-admin {
-        ul.admin_tasks, ul.admin_plugins {
+
+        ul.admin_tasks,
+        ul.admin_plugins {
             float: none;
             display: grid;
             grid-template-columns: repeat(auto-fit, 15rem);
@@ -1737,15 +1804,17 @@ code, pre {
             padding: 0;
             margin: 0;
             justify-content: center;
-        
+
             li {
                 list-style-type: none;
                 border: 1px solid var(--button-border-color);
                 border-radius: .25rem;
                 margin: 1rem 1rem;
                 background-color: var(--button-background-color);
-                            
-                a, a:visited, a:active {
+
+                a,
+                a:visited,
+                a:active {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -1777,10 +1846,10 @@ code, pre {
                         border-color: var(--button-border-hover-color);
 
                         svg {
-                            fill: var(--button-text-hover-color);                            
+                            fill: var(--button-text-hover-color);
                         }
                     }
-                }            
+                }
             }
         }
     }
@@ -1803,13 +1872,13 @@ code, pre {
                 border-color: var(--table-row-border-color);
                 padding: .75rem;
                 margin: 0;
-                text-align: left;    
+                text-align: left;
 
                 &:nth-child(odd) {
                     background-color: var(--table-odd-row-background-color);
                     color: var(--table-odd-row-text-color);
                 }
-        
+
                 &:nth-child(even) {
                     background-color: var(--table-even-row-background-color);
                     color: var(--table-even-row-text-color);
@@ -1833,7 +1902,7 @@ code, pre {
         color: var(--control-text-color);
 
         // li[role=treeitem] {
-            // padding-left: 2rem;
+        // padding-left: 2rem;
         // }
 
         a.cur {
@@ -1867,7 +1936,9 @@ code, pre {
 .mode_draft,
 .mode_preview,
 .mode_showtag {
-    .mikio-content, .mikio-page-fill {
+
+    .mikio-content,
+    .mikio-page-fill {
         .mikio-admin();
     }
 }
@@ -1923,12 +1994,12 @@ code, pre {
         }
     }
 
-    tr {        
+    tr {
         textarea {
             color: inherit;
             background-color: var(--control-background-color);
         }
-        
+
         select {
             width: 100%;
             background-color: var(--control-background-color);
@@ -1948,7 +2019,7 @@ code, pre {
                 grid-column: 1 / span 1;
                 grid-row: 1 / span 1;
             }
-        
+
             label {
                 grid-column: 1 / span 1;
                 grid-row: 2 / span 1;
@@ -1959,7 +2030,7 @@ code, pre {
                 grid-column: 2 / span 1;
                 grid-row: 1 / span 2;
                 align-self: center;
-            }            
+            }
         }
 
         input.edit {
@@ -2034,7 +2105,8 @@ code, pre {
         text-align: center;
         font-size: 90%;
 
-        a.wikilink1, span.curid {
+        a.wikilink1,
+        span.curid {
             text-align: left;
         }
 
@@ -2062,11 +2134,14 @@ code, pre {
 }
 
 
-.mikio #mediamanager__page, #media__manager {
+.mikio #mediamanager__page,
+#media__manager {
     width: 100%;
     min-width: 100%;
 
-    button, .qq-upload-button, .qq-upload-list a {
+    button,
+    .qq-upload-button,
+    .qq-upload-list a {
         .mikio-control();
         .mikio-button();
     }
@@ -2079,7 +2154,9 @@ code, pre {
         .mikio-button-submit();
     }
 
-    input[type=text], input[type=search], textarea {
+    input[type=text],
+    input[type=search],
+    textarea {
         .mikio-control();
         .mikio-input-text
     }
@@ -2109,7 +2186,8 @@ code, pre {
         background-color: var(--tree-background-color);
         border-color: var(--tree-border-color);
 
-        ul, ul.idx {
+        ul,
+        ul.idx {
             margin-top: 0;
             margin-bottom: 0;
             padding: 0;
@@ -2150,7 +2228,7 @@ code, pre {
     //         position: relative;
     //         z-index: 2;
     //     }
-    
+
     .panelHeader {
         .mikio-tab-panel();
     }
@@ -2159,14 +2237,15 @@ code, pre {
 
     //     }
     // }
-    
+
     .filelist {
         width: 50%;
         min-width: 25em;
         left: 0 !important;
     }
 
-    .filelist, .qq-uploader {
+    .filelist,
+    .qq-uploader {
         .panelHeader {
             .mikio-tab-panel();
 
@@ -2268,7 +2347,7 @@ code, pre {
                     align-items: center;
                     justify-content: center;
                     width: 10%;
-                    
+
                     a {
                         height: auto;
                         width: auto;
@@ -2361,7 +2440,8 @@ code, pre {
             }
         }
 
-        input[type=text], form.meta textarea.edit {
+        input[type=text],
+        form.meta textarea.edit {
             width: 100%;
             min-width: 100%;
             max-width: 100%;
@@ -2410,7 +2490,9 @@ code, pre {
     }
 
     #media__content {
-        .odd, .even {
+
+        .odd,
+        .even {
             border-top: 1px solid var(--table-row-border-color);
             font-size: 90%;
             display: grid;
@@ -2452,7 +2534,9 @@ code, pre {
                 text-align: center;
             }
 
-            div.example, div.clearer, br {
+            div.example,
+            div.clearer,
+            br {
                 display: none;
             }
 
@@ -2492,7 +2576,7 @@ code, pre {
             margin: 0 auto;
             width: auto;
             max-width: 800px;
-            grid-template-columns: auto  10rem 10rem;
+            grid-template-columns: auto 10rem 10rem;
             grid-gap: 1rem;
 
             input[name=q] {
@@ -2540,7 +2624,7 @@ code, pre {
                             content: "";
                         }
                     }
-    
+
                     ul {
                         position: absolute;
                         right: 0;
@@ -2562,7 +2646,9 @@ code, pre {
                             display: block;
                         }
 
-                        a, a:visited, a:active {
+                        a,
+                        a:visited,
+                        a:active {
                             transition: all 0.15s ease-in-out;
                             color: var(--dropdown-color);
                             .mikio-text-decoration(none);
@@ -2582,7 +2668,7 @@ code, pre {
                     }
                 }
 
-                .toggle + .toggle {
+                .toggle+.toggle {
                     margin-left: 1rem;
                 }
             }
@@ -2607,8 +2693,8 @@ code, pre {
 
             &:before {
                 font-size: 1.2rem;
-                content:'\2022';
-                margin-right:0.5em;
+                content: '\2022';
+                margin-right: 0.5em;
             }
 
             .li {
@@ -2734,7 +2820,7 @@ code, pre {
 @media (max-width: 768px) {
     .mikio-small-only {
         display: inline-block;
-    }    
+    }
 
     .mikio-navbar {
         padding-bottom: 0;
@@ -2757,7 +2843,7 @@ code, pre {
             grid-row: 1 / span 1;
         }
 
-        .mikio-navbar-toggle.closed + .mikio-navbar-collapse {
+        .mikio-navbar-toggle.closed+.mikio-navbar-collapse {
             display: none;
         }
 
@@ -2834,7 +2920,7 @@ code, pre {
             grid-template-columns: auto;
         }
     }
-    
+
     .mikio #config__manager td .input,
     .mikio #config__manager td input.edit,
     .mikio #config__manager tr select {
@@ -2848,31 +2934,32 @@ code, pre {
         // padding-right: 0;
         // width: auto;
     }
-    
+
     /* TOC */
     .mikio .mikio-content .mikio-article {
         &.toc-full {
             display: block;
         }
-    
+
         .mikio-toc {
             float: none;
-            
+
             #dw__toc {
                 max-width: none;
+
                 .mikio-iicon.hamburger {
                     display: none;
                 }
             }
-            
+
             h3.toggle {
                 background-position: 99% 50%;
                 text-align: center;
-                
+
                 &.closed {
                     font-size: @ini_toc_font_size;
                     width: auto;
-                
+
                     &:before {
                         display: none;
                     }
@@ -2886,7 +2973,7 @@ code, pre {
         grid-column: 1 / span 2;
         width: auto;
 
-        .mikio-sidebar-toggle.closed + .mikio-sidebar-collapse {
+        .mikio-sidebar-toggle.closed+.mikio-sidebar-collapse {
             display: none;
         }
 
@@ -2904,7 +2991,7 @@ code, pre {
 
         .mikio-sidebar-toggle {
             display: block;
-        }    
+        }
     }
 
     /* Page Tools */
@@ -2924,20 +3011,23 @@ code, pre {
     }
 
     /* Media Manager */
-    .mikio #mediamanager__page, #media__manager {
+    .mikio #mediamanager__page,
+    #media__manager {
         display: flex;
         flex-direction: column;
 
         .ui-resizable-e {
-            display: none !important;    
+            display: none !important;
         }
 
-        .namespaces, .filelist {
+        .namespaces,
+        .filelist {
             width: auto;
             min-width: auto;
         }
 
-        .panelHeader, .panelContent {
+        .panelHeader,
+        .panelContent {
             margin-right: 0;
         }
     }
@@ -2945,16 +3035,19 @@ code, pre {
 
 @media print {
     .mikio {
+
         .mikio-navbar-collapse,
         .mikio-toc,
         .mikio-sidebar,
         #dw__pagetools,
         .mikio-search {
-            display: none !important;;
+            display: none !important;
+            ;
         }
 
         .mikio-navbar {
-            box-shadow: none !important;;
+            box-shadow: none !important;
+            ;
         }
 
         .mikio-hero {
@@ -2964,7 +3057,10 @@ code, pre {
             }
         }
 
-        .mikio-breadcrumbs, .mikio-youarehere, .mikio-hero, .mikio-footer {
+        .mikio-breadcrumbs,
+        .mikio-youarehere,
+        .mikio-hero,
+        .mikio-footer {
             background-color: #fff !important;
         }
     }
@@ -2990,20 +3086,26 @@ code, pre {
             margin-left: 2px;
         }
 
-        a, a.nodeUrl, a.nodeSel, a.node, a.navSel {
+        a,
+        a.nodeUrl,
+        a.nodeSel,
+        a.node,
+        a.navSel {
             display: initial;
             margin: initial;
             color: #666;
             background: transparent;
 
-            &:visited, &:active {
+            &:visited,
+            &:active {
                 display: initial;
                 margin: initial;
                 color: #666;
                 background: transparent;
             }
 
-            &:hover, &:visited:hover {
+            &:hover,
+            &:visited:hover {
                 color: #333;
                 text-decoration: none;
                 background-color: transparent;
@@ -3025,9 +3127,9 @@ code, pre {
 .mikio .indexmenu_toc {
     padding: 0 4px 4px 0;
 
-    &> div {
+    &>div {
         border: 1px solid #999;
-        box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
         position: relative;
         z-index: 10;
     }
@@ -3058,7 +3160,8 @@ code, pre {
         width: auto;
     }
 
-    &.jsoneditor-tree, &.jsoneditor-values {
+    &.jsoneditor-tree,
+    &.jsoneditor-values {
         border-bottom: 0;
 
         tbody {
@@ -3112,11 +3215,11 @@ code, pre {
             background-image: none !important;
             border-left-width: 0 !important;
             border-right-width: 0 !important;
-        
+
             &:first-of-type {
                 border-left-width: 1px !important;
             }
-        
+
             &:last-of-type {
                 border-right-width: 1px !important;
             }
@@ -3193,10 +3296,11 @@ code, pre {
                 margin: 0;
                 display: block;
 
-                a, span {
+                a,
+                span {
                     margin: 0 -1rem 0 -1rem;
                     padding: .25rem 1rem .25rem 1rem !important;
-                    background-color: var(--dropdown-background-color)  !important;
+                    background-color: var(--dropdown-background-color) !important;
                     color: var(--dropdown-color) !important;
                 }
 
