@@ -189,9 +189,9 @@ class Template
                 ];
 
                 // equal to or greator than hogfather
-                if ($this->dwVersionNumber() >= 20200729) {
+                if ($this->dwVersionNumber() >= 20200729 || $this->dwVersionNumber() == 0) {
                     // greator than hogfather - defer always on
-                    if ($this->dwVersionNumber() >= 20200729) {
+                    if ($this->dwVersionNumber() >= 20200729 || $this->dwVersionNumber() == 0) {
                         $script_params += ['defer' => 'defer'];
                     } else {
                         // hogfather - defer always on unless $conf['defer_js'] is false
