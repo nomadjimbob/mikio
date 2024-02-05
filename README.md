@@ -260,7 +260,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
--   **_2023-12-12_**
+- **_2024-02-05_**  
+    -   Added access key support to page elements [#64]    (https://github.com/nomadjimbob/mikio/issues/64). Thanks rebeka-catalina. 
+
+- **_2023-12-12_**
 
     -   `autoDarkLight` configuration setting will override user setting when `showDarkLight` is disabled [#56](https://github.com/nomadjimbob/mikio/issues/56).
     -   Cookies used in the template now use the upcoming `SameSite` requirement.

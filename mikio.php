@@ -569,8 +569,10 @@ class Template
                     (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
                     (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
                 ) {
+                    $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
+
                     $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') .
-                        ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
+                        ' ' . $item->getType() . '" href="' . $item->getLink() . '" title="' . $title . '"' . (isset($attr['accesskey']) && $attr['accesskey'] !== '' ? ' accesskey="' . $attr['accesskey'] . '"' : '') . '>';
                     if ($showIcons === true) {
                         $itemHtml .= '<span class="mikio-icon">' . inlineSVG($item->getSvg()) . '</span>';
                     }
@@ -1064,6 +1066,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
 
             $classes = array_unique($classes);
+            $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
             $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), 'always');
             if (
@@ -1073,7 +1076,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             ) {
                 $html .= '<li class="' . implode(' ', $classes) . '">';
                 $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' .
-                    $item->getTitle() . '"><div class="icon">' . inlineSVG($item->getSvg()) .
+                    $title . '"' . (isset($attr['accesskey']) && $attr['accesskey'] !== '' ? ' accesskey="' . $attr['accesskey'] . '"' : '') . '><div class="icon">' . inlineSVG($item->getSvg()) .
                     '</div><span class="a11y">' . $item->getLabel() . '</span></a>';
                 $html .= '</li>';
             }
@@ -1452,6 +1455,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                         $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
                     }
 
+                    $exists = false;
                     resolve_pageid('', $page, $exists);
                     if ((isset($page) === true && $page === $part . $parts[$i]) === false) {
                         $page = $part . $parts[$i];
