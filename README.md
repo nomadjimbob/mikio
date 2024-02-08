@@ -260,7 +260,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
-- **_2024-02-05_**  
+- **_2024-02-09_**
+    -   Added support for DokuWiki Kaos
     -   Added access key support to page elements [#64]    (https://github.com/nomadjimbob/mikio/issues/64). Thanks rebeka-catalina. 
 
 - **_2023-12-12_**

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection DuplicatedCode */
 
 /**
  * DokuWiki Mikio Template
@@ -9,6 +9,13 @@
  */
 
 namespace dokuwiki\template\mikio;
+
+use Doku_Event;
+use dokuwiki\Menu\PageMenu;
+use dokuwiki\Menu\SiteMenu;
+use dokuwiki\Menu\UserMenu;
+use ParensParser;
+use simple_html_dom;
 
 if (defined('DOKU_INC') === false) {
     die();
@@ -36,11 +43,6 @@ class Template
     public $footerScript = [];
 
     /**
-     * @var boolean Ignore LESS files.
-     */
-    public $lessIgnored = false;
-
-    /**
      * @var string Notifications from included pages.
      */
     private $includedPageNotifications = '';
@@ -62,7 +64,7 @@ class Template
      *
      * @return  Template        class instance
      */
-    public static function getInstance()
+    public static function getInstance(): Template
     {
         static $instance = null;
 
@@ -96,10 +98,11 @@ class Template
     /**
      * Meta handler hook for DokuWiki
      *
-     * @param   \Doku_Event $event DokuWiki Event.
+     * @param   Doku_Event $event DokuWiki Event.
      * @return  void
+     * @noinspection PhpUnused
      */
-    public function metaHeadersHandler(\Doku_Event $event)
+    public function metaHeadersHandler(Doku_Event $event)
     {
         global $MIKIO_ICONS;
         global $conf;
@@ -107,7 +110,7 @@ class Template
         global $MIKIO_TEMPLATE;
         $MIKIO_TEMPLATE = '123';
 
-        $this->includePage('theme', false, true);
+        $this->includePage('theme', false);
 
         $stylesheets    = [];
         $scripts        = [];
@@ -209,12 +212,12 @@ class Template
 
 
     /**
-     * Print or return the footer meta data
+     * Print or return the footer metadata
      *
      * @param   boolean $print Print the data to buffer.
      * @return  string         HTML footer meta data
      */
-    public function includeFooterMeta(bool $print = true)
+    public function includeFooterMeta(bool $print = true): string
     {
         $html = '';
 
@@ -350,7 +353,7 @@ class Template
             ['keys' => ['brandURLGuest'],                   'type' => 'string'],
             ['keys' => ['brandURLUser'],                    'type' => 'string'],
 
-            ['keys' => ['useLESS'],                         'type' => 'less'],
+            ['keys' => ['useLESS'],                         'type' => 'bool'],
         ];
 
         foreach ($data as $row) {
@@ -363,48 +366,6 @@ class Template
                         case 'int':
                             return (int) $value;
                         case 'string':
-                            return $value;
-                        case 'less':
-                            $value = (bool) $value;
-                            $lessAvailable = false;
-
-                            // search for less library
-                            $path = '/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                            if (($lessAvailable = file_exists('.' . $path)) !== true) {
-                                for ($i = 0; $i < 6; $i++) {
-                                    if (($lessAvailable = file_exists($_SERVER['DOCUMENT_ROOT'] . $path)) === true) {
-                                        break;
-                                    }
-
-                                    $path = '/..' . $path;
-                                }
-
-                                if ($lessAvailable !== true) {
-                                    $path = '/app/dokuwiki/vendor/marcusschwarz/lesserphp/lessc.inc.php';
-                                    for ($i = 0; $i < 6; $i++) {
-                                        if (
-                                            ($lessAvailable = file_exists(
-                                                $_SERVER['DOCUMENT_ROOT'] . $path
-                                            )) === true
-                                        ) {
-                                            break;
-                                        }
-
-                                        $path = '/..' . $path;
-                                    }
-                                }
-                            }//end if
-
-                            // check for ctype extensions
-                            if (function_exists('ctype_digit') === false) {
-                                $lessAvailable = false;
-                            }
-
-                            if ($value === true && $lessAvailable === false) {
-                                $this->lessIgnored = true;
-                                $value = false;
-                            }
-
                             return $value;
                     }//end switch
                 }//end if
@@ -440,7 +401,7 @@ class Template
      * @param   string $page Page/namespace to search.
      * @return  boolean      if page exists
      */
-    public function pageExists(string $page)
+    public function pageExists(string $page): bool
     {
         ob_start();
         tpl_includeFile($page . '.html');
@@ -475,7 +436,7 @@ class Template
      * @param   string  $classWrapper Wrap page in a div with class.
      * @return  string                contents of page found
      */
-    public function includePage(string $page, bool $print = true, bool $parse = true, string $classWrapper = '')
+    public function includePage(string $page, bool $print = true, bool $parse = true, string $classWrapper = ''): string
     {
         ob_start();
         tpl_includeFile($page . '.html');
@@ -483,11 +444,8 @@ class Template
         ob_end_clean();
 
         if (empty($html) === true) {
-            global $MSG;
-
             $useACL = $this->getConf('includePageUseACL');
             $propagate = $this->getConf('includePagePropagate');
-            $html = '';
 
             ob_start();
             $html = tpl_include_page($page, false, $propagate, $useACL);
@@ -511,12 +469,12 @@ class Template
 
 
     /**
-     * Print or return logged in user information
+     * Print or return logged-in user information
      *
      * @param   boolean $print Print content.
      * @return  string         user information
      */
-    public function includeLoggedIn(bool $print = true)
+    public function includeLoggedIn(bool $print = true): string
     {
         $html = '';
 
@@ -542,7 +500,7 @@ class Template
      * @param   boolean $print Print content.
      * @return  string         contents of the menu
      */
-    public function includeDWMenu(bool $print = true)
+    public function includeDWMenu(bool $print = true): string
     {
         global $lang;
         global $USERINFO;
@@ -558,7 +516,7 @@ class Template
         $showText   = ($this->getConf('navbarDWMenuType') != 'icons');
         $isDropDown = ($this->getConf('navbarDWMenuCombine') != 'seperate');
 
-        $items = (new \dokuwiki\Menu\PageMenu())->getItems();
+        $items = (new PageMenu())->getItems();
         foreach ($items as $item) {
             if ($item->getType() !== 'top') {
                 $itemHtml = '';
@@ -586,7 +544,7 @@ class Template
             }//end if
         }//end foreach
 
-        $items = (new \dokuwiki\Menu\SiteMenu())->getItems('action');
+        $items = (new SiteMenu())->getItems('action');
         foreach ($items as $item) {
             $itemHtml = '';
 
@@ -610,7 +568,7 @@ class Template
             }
         }//end foreach
 
-        $items = (new \dokuwiki\Menu\UserMenu())->getItems('action');
+        $items = (new UserMenu())->getItems('action');
         foreach ($items as $item) {
             $itemHtml = '';
 
@@ -643,11 +601,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 ($showIcons === true ? $this->mikioInlineIcon('file') : '') .
                 ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
                 '</span>') . '</a>';
-                $html .= '<div class="mikio-dropdown closed">';
 
-                foreach ($pageToolsMenu as $item) {
-                    $html .= $item;
-                }
+                $html = '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
 
                 $html .= '</div>';
                 $html .= '</li>';
@@ -658,11 +613,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     ($showIcons === true ? $this->mikioInlineIcon('gear') : '') .
                     ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
                     $lang['site_tools'] . '</span>') . '</a>';
-                $html .= '<div class="mikio-dropdown closed">';
 
-                foreach ($siteToolsMenu as $item) {
-                    $html .= $item;
-                }
+                $html = '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
 
                 $html .= '</div>';
                 $html .= '</li>';
@@ -673,11 +625,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     ($showIcons === true ? $this->mikioInlineIcon('user') : '') .
                     ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
                     $lang['user_tools'] . '</span>') . '</a>';
-                $html .= '<div class="mikio-dropdown closed">';
 
-                foreach ($userToolsMenu as $item) {
-                    $html .= $item;
-                }
+                $html = '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
 
                 $html .= '</div>';
                 $html .= '</li>';
@@ -730,7 +679,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }//end switch
 
         $translation = plugin_load('helper', 'translation');
-        if ($translation !== null) {
+        if ($translation !== null && method_exists($translation, 'showTranslations')) {
             $html .= '<li id="mikio__translate" class="mikio-nav-dropdown">';
             $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button" 
 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
@@ -806,7 +755,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $homeUrl = wl();
 
         if (plugin_isdisabled('showpageafterlogin') === false) {
-            $p = &plugin_load('action', 'showpageafterlogin');
+            $p = plugin_load('action', 'showpageafterlogin');
             if (empty($p) === false) {
                 if (is_array($USERINFO) === true && count($USERINFO) > 0) {
                     $homeUrl = wl($p->getConf('page_after_login'));
@@ -836,7 +785,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             // Brand image
             if ($this->getConf('navbarUseTitleIcon') === true) {
                 $logo = $this->getMediaFile('logo', false);
-                ;
                 if (empty($logo) === false) {
                     $width = $this->getConf('navbarTitleIconWidth');
                     $height = $this->getConf('navbarTitleIconHeight');
@@ -1055,7 +1003,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html .= '<nav' . ($includeId === true ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
         $html .= '<ul class="tools">';
 
-        $items = (new \dokuwiki\Menu\PageMenu())->getItems();
+        $items = (new PageMenu())->getItems();
         foreach ($items as $item) {
             $classes = [];
             $classes[] = $item->getType();
@@ -1204,7 +1152,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $options['locked'] = '<bdi>' . editorinfo($INFO['locked']) . '</bdi>';
             }
 
-            $parser = new \ParensParser();
+            $parser = new ParensParser();
             $result = $parser->parse($string);
 
             $parserIterate = function ($arr, $func) use ($options) {
@@ -1561,7 +1509,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
 
             $html .= '<h1 class="mikio-hero-title">';
-            $html .= $this->parsePageTitle();    // No idea why this requires a blank space afterwards to work?
+            $html .= $this->parsePageTitle();    // No idea why this requires a blank space afterward to work?
             $html .= '</h1>';
             $html .= '<h2 class="mikio-hero-subtitle"></h2>';
             $html .= '</div>';
@@ -1652,7 +1600,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $preview = null;
 
             if (strcasecmp($ACT, 'preview') === 0) {
-                $html = new \simple_html_dom();
+                $html = new simple_html_dom();
                 $html->stripRNAttrValues = false;
                 $html->load($str, true, false);
 
@@ -1937,7 +1885,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             );
         }
 
-        $html = new \simple_html_dom();
+        $html = new simple_html_dom();
         $html->stripRNAttrValues = false;
         $html->load($content, true, false);
 
@@ -2179,7 +2127,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         $img = '';
-        $file = '';
         $url = '';
         $ismedia = false;
         $found = false;
@@ -2219,7 +2166,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param string $page Page id or empty string for current page.
      * @return string      generated content
      */
-    public function getPageTitle(string $page = '')
+    public function getPageTitle(string $page = ''): string
     {
         global $ID, $conf;
 
@@ -2233,9 +2180,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = strip_tags($html);
         $html = preg_replace('/\s+/', ' ', $html);
         $html .= ' [' . strip_tags($conf['title']) . ']';
-        $html = trim($html);
-
-        return $html;
+        return trim($html);
     }
 
 
@@ -2246,10 +2191,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   string $class Classname to insert.
      * @return  string        HTML icon content
      */
-    public function mikioInlineIcon(string $type, string $class = "")
+    public function mikioInlineIcon(string $type, string $class = ""): string
     {
         if (is_array($class) === true) {
-            $class = explode(' ', $class);
+            $class = implode(' ', $class);
         }
 
         if (strlen($class) > 0) {
@@ -2270,8 +2215,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,235.38983,1277.8305)" id="g2991">
 <path d="M 128,0 H 1152 V 768 H 736 q -40,0 -68,28 -28,28 -28,68 v 416 H 128 V 0 z m 640,896 h 299 L 768,1195 V 896 z M 
 1280,768 V -32 q 0,-40 -28,-68 -28,-28 -68,-28 H 96 q -40,0 -68,28 -28,28 -28,68 v 1344 q 0,40 28,68 28,28 68,28 h 544 
-q 40,0 88,-20 48,-20 76,-48 l 408,-408 q 28,-28 48,-76 20,-48 20,-88 z" id="path2993" inkscape:connector-curvature="0" 
-xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
+q 40,0 88,-20 48,-20 76,-48 l 408,-408 q 28,-28 48,-76 20,-48 20,-88 z" id="path2993" /></g></svg>';
             case 'gear':
                 return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
 viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,121.49153,1285.4237)" id="g3027">
@@ -2283,7 +2227,7 @@ viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,
 q 0,12 8,23 8,11 19,13 l 186,28 q 14,46 39,92 -40,57 -107,138 -10,12 -10,24 0,10 9,23 26,36 98.5,107.5 72.5,71.5 94.5,
 71.5 13,0 26,-10 l 138,-107 q 44,23 91,38 16,136 29,186 7,28 36,28 h 222 q 14,0 24.5,-8.5 Q 914,1391 915,1378 l 28,-184 
 q 49,-16 90,-37 l 142,107 q 9,9 24,9 13,0 25,-10 129,-119 165,-170 7,-8 7,-22 0,-12 -8,-23 -15,-21 -51,-66.5 -36,-45.5 
--54,-70.5 26,-50 41,-98 l 183,-28 q 13,-2 21,-12.5 8,-10.5 8,-23.5 z" id="path3029" inkscape:connector-curvature="0" />
+-54,-70.5 26,-50 41,-98 l 183,-28 q 13,-2 21,-12.5 8,-10.5 8,-23.5 z" id="path3029" />
 </g></svg>';
             case 'user':
                 return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
@@ -2307,8 +2251,7 @@ transform="matrix(1,0,0,-1,68.338983,1285.4237)" id="g3015"><path d="M 1408,544 
 960 V 384 H 704 V 0 H 320 q -26,0 -45,19 -19,19 -19,45 v 480 q 0,1 0.5,3 0.5,2 0.5,3 l 575,474 575,-474 q 1,-2 1,-6 z 
 m 223,69 -62,-74 q -8,-9 -21,-11 h -3 q -13,0 -21,7 L 832,1112 140,535 q -12,-8 -24,-7 -13,2 -21,11 l -62,74 q -8,10 
 -7,23.5 1,13.5 11,21.5 l 719,599 q 32,26 76,26 44,0 76,-26 l 244,-204 v 195 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,
--9 9,-23 V 840 l 219,-182 q 10,-8 11,-21.5 1,-13.5 -7,-23.5 z" id="path3017" inkscape:connector-curvature="0" 
-xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" /></g></svg>';
+-9 9,-23 V 840 l 219,-182 q 10,-8 11,-21.5 1,-13.5 -7,-23.5 z" id="path3017" /></g></svg>';
             case 'sun':
                 return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
 style="fill:currentColor" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 
@@ -2373,16 +2316,6 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
     {
         global $ACT;
 
-        if ($this->lessIgnored === true) {
-            msg(
-                'useLESS is enabled on the Mikio template, however is not supported on this server',
-                2,
-                '',
-                '',
-                MSG_ADMINS_ONLY
-            );
-        }
-
         $show = $this->getConf('showNotifications');
         if (
             strlen($show) === 0 ||
@@ -2424,26 +2357,6 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
     }
 
     /**
-     * Dokuwiki version
-     *
-     * @return  string        the dw version name
-     */
-    public function dwVersion()
-    {
-        if (function_exists('getVersionData') === true) {
-            $version_data = getVersionData();
-            if (is_array($version_data) === true && array_key_exists('date', $version_data) === true) {
-                $version_items = explode(' ', $version_data['date']);
-                if (count($version_items) >= 2) {
-                    return preg_replace('/[^a-zA-Z0-9 ]+/', '', strtolower($version_items[1]));
-                }
-            }
-        }
-
-        return 'unknown';
-    }
-
-    /**
      * Dokuwiki version number
      *
      * @return  string        the dw version date converted to integer
@@ -2465,4 +2378,4 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
 }
 
 global $TEMPLATE;
-$TEMPLATE = \dokuwiki\template\mikio\Template::getInstance();
+$TEMPLATE = Template::getInstance();
