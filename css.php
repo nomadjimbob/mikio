@@ -10,7 +10,7 @@
 require(dirname(__FILE__) . '/inc/polyfill-ctype.php');
 
 if(!class_exists('lessc')) {
-    require(dirname(__FILE__) . '/inc/marcusschwarz/lesserphp/lessc.inc.php');
+    require(dirname(__FILE__) . '/inc/stemmechanics/lesserphp/lessc.inc.php');
 }
 
 if(!function_exists('getallheaders')) {
