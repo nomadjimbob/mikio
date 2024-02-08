@@ -602,7 +602,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
                 '</span>') . '</a>';
 
-                $html = '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
+                $html .= '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
 
                 $html .= '</div>';
                 $html .= '</li>';
@@ -614,7 +614,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
                     $lang['site_tools'] . '</span>') . '</a>';
 
-                $html = '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
+                $html .= '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
 
                 $html .= '</div>';
                 $html .= '</li>';
@@ -626,7 +626,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
                     $lang['user_tools'] . '</span>') . '</a>';
 
-                $html = '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
+                $html .= '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
 
                 $html .= '</div>';
                 $html .= '</li>';
@@ -780,7 +780,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html .= '<nav class="mikio-navbar'  . (($this->getConf('stickyNavbar') === true) ? ' mikio-sticky' : '') .
             '">';
         $html .= '<div class="mikio-container">';
-        $html .= '<a class="mikio-navbar-brand" href="' . $homeUrl . '">';
+        $html .= '<a class="mikio-navbar-brand" href="' . $homeUrl . '" accesskey="h" title="Home [h]">';
         if ($this->getConf('navbarUseTitleIcon') === true || $this->getConf('navbarUseTitleText') === true) {
             // Brand image
             if ($this->getConf('navbarUseTitleIcon') === true) {
