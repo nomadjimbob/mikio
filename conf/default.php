@@ -100,5 +100,7 @@ $conf['licenseImageOnly']       = 0;
 $conf['includePageUseACL']      = 1;
 $conf['includePagePropagate']   = 1;
 
-$conf['fixedTopHeader']         = 0;
-$conf['fixedNavbar']            = 0;
+$meta['stickyTopHeader']        = 0;
+$meta['stickyNavbar']           = 0;
+$meta['stickyHeader']           = 0;
+$meta['stickyLeftSidebar']      = 0;

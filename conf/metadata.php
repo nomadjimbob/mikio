@@ -107,3 +107,4 @@ $meta['includePagePropagate']   = ['onoff'];
 $meta['stickyTopHeader']        = ['onoff'];
 $meta['stickyNavbar']           = ['onoff'];
 $meta['stickyHeader']           = ['onoff'];
+$meta['stickyLeftSidebar']      = ['onoff'];

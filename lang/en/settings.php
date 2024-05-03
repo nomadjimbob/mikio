@@ -113,3 +113,4 @@ $lang['includePagePropagate']   = 'Search higher namespaces when including pages
 $lang['stickyTopHeader']        = 'Make the top header part sticky';
 $lang['stickyNavbar']           = 'Make the navbar sticky';
 $lang['stickyHeader']           = 'Make the header part sticky';
+$lang['stickyLeftSidebar']      = 'Make the left sidebar sticky';

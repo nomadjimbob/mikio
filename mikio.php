@@ -354,6 +354,11 @@ class Template
             ['keys' => ['brandURLUser'],                    'type' => 'string'],
 
             ['keys' => ['useLESS'],                         'type' => 'bool'],
+
+            ['keys' => ['stickyTopHeader'],                  'type' => 'bool'],
+            ['keys' => ['stickyNavbar'],                     'type' => 'bool'],
+            ['keys' => ['stickyHeader'],                     'type' => 'bool'],
+            ['keys' => ['stickyLeftSidebar'],                'type' => 'bool'],
         ];
 
         foreach ($data as $row) {
@@ -968,10 +973,20 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         if (empty($html) === false) {
-            $html = '<aside class="mikio-sidebar mikio-sidebar-' . (empty($prefix) === true ? 'left' : $prefix) .
-                '"><a class="mikio-sidebar-toggle' .
+            $sidebarClasses = [
+                'mikio-sidebar',
+                'mikio-sidebar-' . (empty($prefix) === true ? 'left' : $prefix)
+            ];
+
+            $collapseClasses = ['mikio-sidebar-collapse'];
+
+            if(empty($prefix) === true && $this->getConf('stickyLeftSidebar') === true) {
+                $collapseClasses[] = 'mikio-sidebar-sticky';
+            }
+
+            $html = '<aside class="' . implode(' ', $sidebarClasses) . '"><a class="mikio-sidebar-toggle' .
                 ($this->getConf('sidebarMobileDefaultCollapse') === true ? ' closed' : '') . '" href="#">' .
-                tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="mikio-sidebar-collapse">' .
+                tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="' . implode(' ', $collapseClasses) . '">' .
                 $html . '</div></aside>';
         }
 
