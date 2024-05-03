@@ -260,7 +260,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
-- **_2024-03-05_**
+- **_2024-05-03_**
    -    Fixed incorrect style file names. Thanks Wolfram.
    -    Table cell padding now adjustable through the style config page. Thanks Hakker.
    -    Added ability to style row border color through the style config page. Thanks Elanndelh.
