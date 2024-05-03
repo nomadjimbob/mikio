@@ -260,6 +260,9 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+- **_2024-03-05_**
+   -    Fixed incorrect style file names. Thanks Wolfram.
+
 - **_2024-02-09_**
     -   Added support for DokuWiki Kaos
     -   Updated to support PHP 8.2
