@@ -262,6 +262,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_2024-03-05_**
    -    Fixed incorrect style file names. Thanks Wolfram.
+   -    Table cell padding now adjustable through the style config page. Thanks Hakker.
+   - 
 
 - **_2024-02-09_**
     -   Added support for DokuWiki Kaos
