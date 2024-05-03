@@ -144,7 +144,8 @@ $lang['__footer_text_align__']          = 'The text alignment for the footer (ca
 $lang['__footer_background_color__']    = 'The background color for the footer';
 
 $lang['__table_font_size__']                    = 'The font size for tables';
-$lang['__table_row_border_color__']             = 'The border color for tables';
+$lang['__table_row_border_color__']             = 'The row border color for tables';
+$lang['__table_col_border_color__']             = 'The column border color for tables';
 $lang['__table_header_row_background_color__']  = 'The background color for table heading rows';
 $lang['__table_header_row_text_color__']        = 'The font color for table heading rows';
 $lang['__table_odd_row_text_color__']           = 'The font color for table odd rows';
