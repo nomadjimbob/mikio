@@ -51,6 +51,7 @@ $conf['heroTitle']              = 1;
 $conf['heroImagePropagation']   = 1;
 
 $conf['tagsConsolidate']        = 1;
+$conf['tagsShowHero']           = 1;
 
 $conf['breadcrumbHideHome']     = 1;
 $conf['breadcrumbPosition']     = 'hero';

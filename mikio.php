@@ -332,6 +332,7 @@ class Template
             ['keys' => ['includePagePropagate'],            'type' => 'bool'],
             ['keys' => ['youarehereHideHome'],              'type' => 'bool'],
             ['keys' => ['tagsConsolidate'],                 'type' => 'bool'],
+            ['keys' => ['tagsShowHero'],                    'type' => 'bool'],
             ['keys' => ['footerInPage'],                    'type' => 'bool'],
             ['keys' => ['sidebarMobileDefaultCollapse'],    'type' => 'bool'],
             ['keys' => ['sidebarAlwaysShowLeft'],           'type' => 'bool'],
@@ -1110,7 +1111,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $html .= '<div style="clear:both"></div>';
 
-        if ($this->getConf('heroTitle') === false) {
+        if ($this->getConf('heroTitle') === false && $this->getConf('tagsShowHero') === true) {
             $html = '<div class="mikio-tags"></div>' . $html;
         }
 
@@ -1537,7 +1538,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
 
             $html .= '<div class="mikio-hero-image' . $hero_image_resize_class . '"' . $hero_image .
-                '><div class="mikio-tags"></div></div>';
+                '>';
+
+            if($this->getConf('tagsShowHero') === true) {
+                $html .= '<div class="mikio-tags"></div>';
+            }
+
+            $html .= '</div>';
 
             $html .= '</div>';
             $html .= '</div>';

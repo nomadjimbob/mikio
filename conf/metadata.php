@@ -51,6 +51,7 @@ $meta['heroTitle']              = ['onoff'];
 $meta['heroImagePropagation']   = ['onoff'];
 
 $meta['tagsConsolidate']        = ['onoff'];
+$meta['tagsShowHero']           = ['onoff'];
 
 $meta['breadcrumbHideHome']     = ['onoff'];
 $meta['breadcrumbPosition']     = ['multichoice', '_choices' => ['none', 'top', 'hero', 'page']];

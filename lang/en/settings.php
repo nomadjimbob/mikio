@@ -57,6 +57,7 @@ $lang['heroTitle']              = 'Show pages in the hero title style';
 $lang['heroImagePropagation']   = 'Search for hero images in the parent namespace if no hero image is found';
 
 $lang['tagsConsolidate']        = 'Consolidate page tags to hero, content header or sidebar';
+$lang['tagsShowHero']           = 'Show tags in the page hero';
 
 $lang['breadcrumbHideHome']     = 'Hide breadcrumb block on home page';
 $lang['breadcrumbPosition']     = 'Position of the breadcrumb bar on the page';
