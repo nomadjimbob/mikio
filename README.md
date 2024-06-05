@@ -90,7 +90,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 -   `heroImagePropagation` : search for hero images in parent namespaces if none is found in the current namespace
 
 -   `tagsConsolidate` : Consolidate tags found in the current page and display it in the hero, content header or sidebar
-    `tagsShowHero` : Show the tags in the hero element of the page. Can be turned off if using the `<tags>` element in the MikioPlugin
+-   `tagsShowHero` : Show the tags in the hero element of the page. Can be turned off if using the `<tags>` element in the MikioPlugin
 
 -   `breadcrumbHideHome` : hide breadcrumbs in the root namespace
 -   `breadcrumbPosition` : where to display the breadcrumbs, either under the navbar, in the hero element or above the page content
@@ -135,6 +135,9 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 
 -   `includePageUseACL` : respect ACL when including pages
 -   `includePagePropagate` : search parent namespaces when including pages
+
+## Right Sidebar
+The right sidebar can be applied by creating a normal wiki page called "rightsidebar". Go to http://your-wiki.com/doku.php?id=rightsidebar, click "Create this page", edit the page, save, and you're done. That's it, your saved changes will appear in your right sidebar. 
 
 ## Include Pages
 
