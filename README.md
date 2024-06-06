@@ -264,6 +264,10 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+- **_NEXT-RELEASE_**
+
+   -    Fixed incorrect padding on code/pre blocks [#77](https://github.com/nomadjimbob/mikio/issues/77). Thanks macin.
+
 - **_2024-06-05_**
 
    -    Fix tag text colouring not applying correctly.
