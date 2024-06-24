@@ -266,6 +266,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Fixed incorrect language entries [#78](https://github.com/nomadjimbob/mikio/issues/78). Thanks Little-Data.
    -    Fixed incorrect padding on code/pre blocks [#77](https://github.com/nomadjimbob/mikio/issues/77). Thanks macin.
 
 - **_2024-06-05_**
