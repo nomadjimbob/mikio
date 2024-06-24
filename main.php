@@ -105,6 +105,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
     if ($showSidebar === true) {
         $rightsidebar = $TEMPLATE->includeSidebar('right');
     }
+
     echo '</div>';
     echo '</main>';
     echo '<div class="mikio-page-fill">';

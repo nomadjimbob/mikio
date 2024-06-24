@@ -250,21 +250,23 @@ class Template
     public function getConf(string $key, $default = false)
     {
         $value = tpl_getConf($key, $default);
-
+        
         $data = [
-            ['keys' => ['navbarDWMenuType'],                'type' => 'choice',
-                'values' => ['both', 'icons', 'text']
+            ['keys' => ['navbarDWMenuType'],
+                'type' => 'choice',
+                'values' => [tpl_getLang('value_both'), tpl_getLang('value_icons'), tpl_getLang('value_text')]
             ],
-            ['keys' => ['navbarDWMenuCombine'],             'type' => 'choice',
-                'values' => ['combine', 'seperate', 'dropdown']
+            ['keys' => ['navbarDWMenuCombine'],
+                'type' => 'choice',
+                'values' => [tpl_getLang('value_combine'), tpl_getLang('value_separate'), tpl_getLang('value_dropdown')]
             ],
             ['keys' => ['navbarPosLeft', 'navbarPosMiddle', 'navbarPosRight'],
                 'type' => 'choice',
-                'values' => ['none', 'custom', 'search', 'dokuwiki'],
+                'values' => [tpl_getLang('value_none'), tpl_getLang('value_custom'), tpl_getLang('value_search'), tpl_getLang('value_dokuwiki')],
                 'default' => [
-                    'navbarPosLeft' => 'none',
-                    'navbarPosMiddle' => 'search',
-                    'navbarPosRight' => 'dokuwiki'
+                    'navbarPosLeft' => tpl_getLang('value_none'),
+                    'navbarPosMiddle' => tpl_getLang('value_search'),
+                    'navbarPosRight' => tpl_getLang('value_dokuwiki')
                 ]
             ],
             ['keys' => ['navbarItemShowCreate', 'navbarItemShowShow', 'navbarItemShowRevs', 'navbarItemShowBacklink',
@@ -272,46 +274,46 @@ class Template
                 'navbarItemShowAdmin'
             ],
                 'type' => 'choice',
-                'values' => ['always', 'logged in', 'logged out', 'never']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), tpl_getLang('value_never')]
             ],
             ['keys' => ['navbarItemShowLogin', 'navbarItemShowLogout'],
                 'type' => 'choice',
-                'values' => ['always', 'never']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_never')]
             ],
             ['keys' => ['searchButton'],                    'type' => 'choice',
-                'values' => ['icon', 'text']
+                'values' => [tpl_getLang('value_icon'), tpl_getLang('value_text')]
             ],
             ['keys' => ['breadcrumbPosition', 'youareherePosition'],
                 'type' => 'choice',
-                'values' => ['top', 'hero', 'page', 'none']
+                'values' => [tpl_getLang('value_top'), tpl_getLang('value_hero'), tpl_getLang('value_page'), tpl_getLang('value_none')]
             ],
             ['keys' => ['youarehereHome'],                  'type' => 'choice',
-                'values' => ['page title', 'home', 'icon', 'none']
+                'values' => [tpl_getLang('value_page_title'), tpl_getLang('value_home'), tpl_getLang('value_icon'), tpl_getLang('value_none')]
             ],
             ['keys' => ['sidebarLeftRow1', 'sidebarLeftRow2', 'sidebarLeftRow3', 'sidebarLeftRow4'],
                 'type' => 'choice',
-                'values' => ['none', 'logged in user', 'search', 'content', 'tags'],
+                'values' => [tpl_getLang('value_none'), tpl_getLang('value_logged in user'), tpl_getLang('value_search'), tpl_getLang('value_content'), tpl_getLang('value_tags')],
                 'default' => [
-                    'sidebarLeftRow1' => 'logged in user',
-                    'sidebarLeftRow2' => 'search',
-                    'sidebarLeftRow3' => 'content'
+                    'sidebarLeftRow1' => tpl_getLang('value_logged in user'),
+                    'sidebarLeftRow2' => tpl_getLang('value_search'),
+                    'sidebarLeftRow3' => tpl_getLang('value_content')
                 ]
             ],
             ['keys' => ['pageToolsFloating', 'pageToolsFooter'],
                 'type' => 'choice',
-                'values' => ['always', 'none', 'page editors']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_none'), tpl_getLang('value_page_editors')]
             ],
             ['keys' => ['pageToolsShowCreate', 'pageToolsShowEdit', 'pageToolsShowRevs', 'pageToolsShowBacklink',
                 'pageToolsShowTop'
             ],
                 'type' => 'choice',
-                'values' => ['always', 'logged in', 'logged out', 'never']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), tpl_getLang('value_never')]
             ],
             ['keys' => ['showNotifications'],               'type' => 'choice',
-                'values' => ['admin', 'always', 'none', '', 'never']
+                'values' => [tpl_getLang('value_admin'), tpl_getLang('value_always'), tpl_getLang('value_none'), '', tpl_getLang('value_never')]
             ],
             ['keys' => ['licenseType'],                     'type' => 'choice',
-                'values' => ['badge', 'button', 'none']
+                'values' => [tpl_getLang('value_badge'), tpl_getLang('value_button'), tpl_getLang('value_none')]
             ],
             ['keys' => ['navbarUseTitleIcon'],              'type' => 'bool'],
             ['keys' => ['navbarUseTitleText'],              'type' => 'bool'],
@@ -518,9 +520,9 @@ class Template
         $siteToolsMenu = [];
         $userToolsMenu = [];
 
-        $showIcons  = ($this->getConf('navbarDWMenuType') != 'text');
-        $showText   = ($this->getConf('navbarDWMenuType') != 'icons');
-        $isDropDown = ($this->getConf('navbarDWMenuCombine') != 'seperate');
+        $showIcons  = ($this->getConf('navbarDWMenuType') != tpl_getLang('value_text'));
+        $showText   = ($this->getConf('navbarDWMenuType') != tpl_getLang('value_icons'));
+        $isDropDown = ($this->getConf('navbarDWMenuCombine') != tpl_getLang('value_separate'));
 
         $items = (new PageMenu())->getItems();
         foreach ($items as $item) {
@@ -529,9 +531,9 @@ class Template
 
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
                 if (
-                    $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                    (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                    (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
+                    $showItem !== false && (strcasecmp($showItem, tpl_getLang('value_always')) === 0 ||
+                    (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
+                    (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
                 ) {
                     $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
@@ -556,9 +558,9 @@ class Template
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
-                $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
+                $showItem !== false && (strcasecmp($showItem, tpl_getLang('value_always')) === 0 ||
+                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') . ' ' .
                     $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -581,8 +583,8 @@ class Template
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
+                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown === true ? ' mikio-dropdown-item' : '') . ' ' .
                 $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -598,9 +600,12 @@ class Template
             }
         }//end foreach
 
+        $value_dropdown = tpl_getLang('value_dropdown');
+        $value_combine = tpl_getLang('value_combine');
+        $value_separate = tpl_getLang('value_separate');
 
         switch ($this->getConf('navbarDWMenuCombine')) {
-            case 'dropdown':
+            case $value_dropdown:
                 $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
                 $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" 
 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
@@ -639,7 +644,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 break;
 
-            case 'combine':
+            case $value_combine:
                 $html .= '<li class="mikio-nav-dropdown">';
                 $html .= '<a class="mikio-nav-link" href="#">' .
                     ($showIcons === true ? $this->mikioInlineIcon('wrench') : '') .
@@ -668,7 +673,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $html .= '</li>';
                 break;
 
-            default:    // seperate
+            default:    // separate
                 foreach ($siteToolsMenu as $item) {
                     $html .= '<li class="mikio-nav-item">' . $item . '</li>';
                 }
@@ -838,20 +843,25 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         // Menus
         $html .= '<div class="mikio-navbar-collapse">';
 
-        $menus = [$this->getConf('navbarPosLeft', 'none'), $this->getConf('navbarPosMiddle', 'none'),
-            $this->getConf('navbarPosRight', 'none')
+        $menus = [$this->getConf('navbarPosLeft', tpl_getLang('value_none')), $this->getConf('navbarPosMiddle', tpl_getLang('value_none')),
+            $this->getConf('navbarPosRight', tpl_getLang('value_none'))
         ];
+
+        $value_custom = tpl_getLang('value_custom');
+        $value_search = tpl_getLang('value_search');
+        $value_dokuwiki = tpl_getLang('value_dokuwiki');
+
         foreach ($menus as $menuType) {
             switch ($menuType) {
-                case 'custom':
+                case $value_custom:
                     $html .= $this->stringToNav($this->getConf('navbarCustomMenuText', ''));
                     break;
-                case 'search':
+                case $value_search:
                     $html .= '<div class="mikio-nav-item">';
                     $html .= $this->includeSearch(false);
                     $html .= '</div>';
                     break;
-                case 'dokuwiki':
+                case $value_dokuwiki:
                     $html .= $this->includeDWMenu(false);
                     break;
             }
@@ -933,21 +943,26 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4')
                 ];
 
+                $value_search = tpl_getLang('value_search');
+                $value_logged_in_user = tpl_getLang('value_logged_in_user');
+                $value_content = tpl_getLang('value_content');
+                $value_tags = tpl_getLang('value_tags');
+
                 foreach ($rows as $row) {
                     switch ($row) {
-                        case 'search':
+                        case $value_search:
                             $html .= $this->includeSearch(false);
                             break;
-                        case 'logged in user':
+                        case $value_logged_in_user:
                             $html .= $this->includeLoggedIn(false);
                             break;
-                        case 'content':
+                        case $value_content:
                             $content = $this->includePage($sidebarPage, false);
                             if (empty($content) === false) {
                                 $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
                             }
                             break;
-                        case 'tags':
+                        case $value_tags:
                             $html .= '<div class="mikio-tags"></div>';
                     }
                 }
@@ -1032,7 +1047,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $classes = array_unique($classes);
             $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
-            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), 'always');
+            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), tpl_getLang('value_always'));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                 (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
@@ -1078,7 +1093,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' .
             ((strcasecmp($ACT, 'search') === 0) ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
         $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
-        if (strcasecmp($this->getConf('searchButton'), 'icon') === 0) {
+        if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
             $html .= $this->mikioInlineIcon('search');
         } else {
             $html .= $lang['btn_search'];
@@ -1239,13 +1254,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
-            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, 'always') === 0 ||
-            $this->userCanEdit() === true && strcasecmp($showPageTools, 'page editors') === 0)
+            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
+            $this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0)
         ) {
             $html .= $this->includePageTools(false);
         }
 
-        $meta['licenseType']            = ['multichoice', '_choices' => ['none', 'badge', 'button']];
+        $meta['licenseType']            = ['multichoice', '_choices' => [tpl_getLang('value_none'), tpl_getLang('value_badge'), tpl_getLang('value_button')]];
         $meta['licenseImageOnly']       = ['onoff'];
 
         $licenseType = $this->getConf('licenseType');
@@ -1452,14 +1467,18 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 }
             }
 
+            $value_none = tpl_getLang('value_none');
+            $value_home = tpl_getLang('value_home');
+            $value_icon = tpl_getLang('value_icon');
+
             switch ($this->getConf('youarehereHome')) {
-                case 'none':
+                case $value_none:
                     $html = preg_replace('/<li[^>]*>.+?<\/li>/', '', $html, 2);
                     break;
-                case 'home':
+                case $value_home:
                     $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' . tpl_getlang('home') . '$3', $html, 1);
                     break;
-                case 'icon':
+                case $value_icon:
                     $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' .
                         $this->mikioInlineIcon('home') . '$3', $html, 1);
                     break;
@@ -1517,10 +1536,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $html .= '<div class="mikio-hero">';
             $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
-            if (strcasecmp($this->getConf('youareherePosition'), 'hero') === 0) {
+            if (strcasecmp($this->getConf('youareherePosition'), tpl_getLang('value_hero')) === 0) {
                 $html .= $this->includeYouAreHere(false);
             }
-            if (strcasecmp($this->getConf('breadcrumbPosition'), 'hero') === 0) {
+            if (strcasecmp($this->getConf('breadcrumbPosition'), tpl_getLang('value_hero')) === 0) {
                 $html .= $this->includeBreadcrumbs(false);
             }
 
@@ -2341,8 +2360,8 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
         $show = $this->getConf('showNotifications');
         if (
             strlen($show) === 0 ||
-            strcasecmp($show, 'always') === 0 ||
-            (strcasecmp($show, 'admin') === 0 && strcasecmp($ACT, 'admin') === 0)
+            strcasecmp($show, tpl_getLang('value_always')) === 0 ||
+            (strcasecmp($show, tpl_getLang('value_admin')) === 0 && strcasecmp($ACT, 'admin') === 0)
         ) {
             html_msgarea();
 
