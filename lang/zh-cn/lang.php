@@ -206,61 +206,61 @@ $lang['__plugin_success_light_background_color__']  = '灯箱项目的成功样�
 $lang['__plugin_success_light_border_color__']      = '灯箱项目的成功样式边框颜色';
 
 $lang['__plugin_danger_text_color__']               = '危险样式字体颜色';
-$lang['__plugin_danger_background_color__']         = '危险样式背景颜色';
-$lang['__plugin_danger_border_color__']             = '危险样式边框颜色';
 $lang['__plugin_danger_text_hover_color__']         = '光标悬停时的危险样式字体颜色';
+$lang['__plugin_danger_background_color__']         = '危险样式背景颜色';
 $lang['__plugin_danger_background_hover_color__']   = '光标悬停时的危险样式背景颜色';
+$lang['__plugin_danger_border_color__']             = '危险样式边框颜色';
 $lang['__plugin_danger_border_hover_color__']       = '光标悬停时的危险样式边框颜色';
 $lang['__plugin_danger_light_text_color__']         = '灯箱项目的危险样式字体颜色';
 $lang['__plugin_danger_light_background_color__']   = '灯箱项目的危险样式背景颜色';
 $lang['__plugin_danger_light_border_color__']       = '灯箱项目的危险样式边框颜色';
 
 $lang['__plugin_warning_text_color__']              = '警告样式字体颜色';
+$lang['__plugin_warning_text_hover_color__']        = '光标悬停时警告样式字体颜色';
 $lang['__plugin_warning_background_color__']        = '警告样式背景颜色';
-$lang['__plugin_warning_border_color__']            = '警告样式边框颜色';
-$lang['__plugin_warning_text_hover_color__']        = '光标悬停时警告样式字体的颜色';
 $lang['__plugin_warning_background_hover_color__']  = '光标悬停时的警告样式背景颜色';
+$lang['__plugin_warning_border_color__']            = '警告样式边框颜色';
 $lang['__plugin_warning_border_hover_color__']      = '光标悬停时的警告样式边框颜色';
 $lang['__plugin_warning_light_text_color__']        = '灯箱项目的警告样式字体颜色';
 $lang['__plugin_warning_light_background_color__']  = '灯箱项目的警告样式背景颜色';
 $lang['__plugin_warning_light_border_color__']      = '灯箱项目的警告样式边框颜色';
 
 $lang['__plugin_info_text_color__']                 = '信息样式字体颜色';
-$lang['__plugin_info_background_color__']           = '信息样式背景颜色';
-$lang['__plugin_info_border_color__']               = '信息样式边框颜色';
 $lang['__plugin_info_text_hover_color__']           = '光标悬停时信息样式字体的颜色';
+$lang['__plugin_info_background_color__']           = '信息样式背景颜色';
 $lang['__plugin_info_background_hover_color__']     = '光标悬停时的信息样式背景颜色';
+$lang['__plugin_info_border_color__']               = '信息样式边框颜色';
 $lang['__plugin_info_border_hover_color__']         = '光标悬停时的信息样式边框颜色';
 $lang['__plugin_info_light_text_color__']           = '灯箱项目的信息样式字体颜色';
 $lang['__plugin_info_light_background_color__']     = '灯箱项目的信息样式背景颜色';
 $lang['__plugin_info_light_border_color__']         = '灯箱项目的信息样式边框颜色';
 
 $lang['__plugin_light_text_color__']                = '浅色模式字体颜色';
-$lang['__plugin_light_background_color__']          = '浅色模式背景颜色';
-$lang['__plugin_light_border_color__']              = '浅色模式边框颜色';
 $lang['__plugin_light_text_hover_color__']          = '光标悬停时浅色模式字体颜色';
+$lang['__plugin_light_background_color__']          = '浅色模式背景颜色';
 $lang['__plugin_light_background_hover_color__']    = '光标悬停时浅色模式背景颜色';
+$lang['__plugin_light_border_color__']              = '浅色模式边框颜色';
 $lang['__plugin_light_border_hover_color__']        = '光标悬停时浅色模式边框颜色';
 $lang['__plugin_light_light_text_color__']          = '浅色模式灯箱项目字体颜色';
 $lang['__plugin_light_light_background_color__']    = '浅色模式灯箱项目背景颜色';
 $lang['__plugin_light_light_border_color__']        = '浅色模式灯箱项目边框颜色';
 
 $lang['__plugin_dark_text_color__']                 = '深色模式字体颜色';
-$lang['__plugin_dark_background_color__']           = '深色模式背景颜色';
-$lang['__plugin_dark_border_color__']               = '深色模式边框颜色';
 $lang['__plugin_dark_text_hover_color__']           = '光标悬停时深色模式字体颜色';
+$lang['__plugin_dark_background_color__']           = '深色模式背景颜色';
 $lang['__plugin_dark_background_hover_color__']     = '光标悬停时深色模式背景颜色';
+$lang['__plugin_dark_border_color__']               = '深色模式边框颜色';
 $lang['__plugin_dark_border_hover_color__']         = '光标悬停时深色模式边框颜色';
 $lang['__plugin_dark_light_text_color__']           = '深色模式灯箱项目字体颜色';
 $lang['__plugin_dark_light_background_color__']     = '深色模式灯箱项目背景颜色';
 $lang['__plugin_dark_light_border_color__']         = '深色模式灯箱项目边框颜色';
 
-$lang['__plugin_link_text_color__']             = '链接样式字体颜色';
-$lang['__plugin_link_background_color__']       = '链接样式背景颜色';
-$lang['__plugin_link_border_color__']           = '链接样式边框颜色';
-$lang['__plugin_link_text_hover_color__']       = '光标悬停时链接样式字体颜色';
-$lang['__plugin_link_background_hover_color__'] = '光标悬停时链接样式背景颜色';
-$lang['__plugin_link_border_hover_color__']     = '光标悬停时链接样式边框颜色';
+$lang['__plugin_link_text_color__']                 = '链接样式字体颜色';
+$lang['__plugin_link_text_hover_color__']           = '光标悬停时链接样式字体颜色';
+$lang['__plugin_link_background_color__']           = '链接样式背景颜色';
+$lang['__plugin_link_background_hover_color__']     = '光标悬停时链接样式背景颜色';
+$lang['__plugin_link_border_color__']               = '链接样式边框颜色';
+$lang['__plugin_link_border_hover_color__']         = '光标悬停时链接样式边框颜色';
 
 $lang['__plugin_carousel_title_text_color__']           = '轮播框标题字体颜色';
 $lang['__plugin_carousel_caption_text_color__']         = '轮播框说明文字颜色';
@@ -276,8 +276,7 @@ $lang['__plugin_steps_step_background_complete_color__']    = '已完成步骤�
 
 $lang['__plugin_tabgroup_tab_text_active_color__']          = '选项卡组活动选项卡字体颜色';
 $lang['__plugin_tabgroup_tab_background_active_color__']    = '选项卡组活动选项卡背景颜色';
-$lang['__plugin_tabgroup_tab_border_hover_color__']         = '光标悬停时选项卡组非活动选项卡边框颜色 
-over';
+$lang['__plugin_tabgroup_tab_border_hover_color__']         = '光标悬停时选项卡组非活动选项卡边框颜色';
 
 $lang['__plugin_tooltip_text_color__']          = '工具提示字体颜色';
 $lang['__plugin_tooltip_background_color__']    = '工具提示背景颜色';
