@@ -266,6 +266,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Fixed input backgrounds not rendering colours correctly in some circumstances on the configuration page.
+   -    Fixed styling on input fields in darkmode. Style.ini now supports seperate input options [#82](https://github.com/nomadjimbob/mikio/issues/82). Thanks  BioSehnsucht.
    -    Fixed padding on inline code blocks to be smaller.
    -    Cleaned up the display of the versionswitcher syntax. Thanks macin.
    -    Fixed incorrect language entries [#78](https://github.com/nomadjimbob/mikio/issues/78). Thanks Little-Data.
