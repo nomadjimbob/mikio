@@ -2829,6 +2829,26 @@ pre {
     }
 }
 
+/* VersionSwitch */
+.mikio ul.plugin_versionswitch {
+    background-color: var(--control-background-color);
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+
+    li {
+        a {
+            color: var(--control-text-color) !important;
+            margin: 0;
+            padding: .375rem .75rem;
+
+            &:hover {
+                color: var(--dropdown-color);
+                background-color: var(--dropdown-hover-color);
+            }
+        }
+    }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .mikio-small-only {
