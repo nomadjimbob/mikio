@@ -29,6 +29,40 @@ $lang['config_license']     = 'License';
 $lang['config_acl']         = 'Permissions';
 $lang['config_sticky']      = 'Sticky Parts';
 
+
+/* Setting Values */
+$lang['value_never']        = 'never';
+$lang['value_admin']        = 'admin';
+$lang['value_always']       = 'always';
+$lang['value_icons']        = 'icons';
+$lang['value_text']         = 'text';
+$lang['value_both']         = 'both';
+$lang['value_separate']     = 'separate';
+$lang['value_dropdown']     = 'dropdown';
+$lang['value_combine']      = 'combine';
+$lang['value_none']         = 'none';
+$lang['value_custom']       = 'custom';
+$lang['value_search']       = 'search';
+$lang['value_dokuwiki']     = 'dokuwiki';
+$lang['value_logged_in']    = 'logged in';
+$lang['value_logged_out']   = 'logged out';
+$lang['value_icon']         = 'icon';
+$lang['value_top']          = 'top';
+$lang['value_hero']         = 'hero';
+$lang['value_page']         = 'page';
+$lang['value_page_title']   = 'page title';
+$lang['value_home']         = 'home';
+$lang['value_logged_in_user'] = 'logged in user';
+$lang['value_content']      = 'content';
+$lang['value_tags']         = 'tags';
+$lang['value_page_editors'] = 'page editors';
+$lang['value_badge']        = 'badge';
+$lang['value_button']       = 'button';
+
+
+
+
+
 /* Style.ini */
 $lang['__link__']       = 'The font color of links';
 $lang['__link_hover__'] = 'The font color of links when cursor hovers over';

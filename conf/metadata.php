@@ -25,7 +25,7 @@ $meta['navbarUseTaglineText']   = ['onoff'];
 $meta['navbarCustomMenuText']   = ['string'];
 
 $meta['navbarDWMenuType']       = ['multichoice', '_choices' => ['icons', 'text', 'both']];
-$meta['navbarDWMenuCombine']    = ['multichoice', '_choices' => ['seperate', 'dropdown', 'combine']];
+$meta['navbarDWMenuCombine']    = ['multichoice', '_choices' => ['separate', 'dropdown', 'combine']];
 
 $meta['navbarPosLeft']          = ['multichoice', '_choices' => ['none', 'custom', 'search', 'dokuwiki']];
 $meta['navbarPosMiddle']        = ['multichoice', '_choices' => ['none', 'custom', 'search', 'dokuwiki']];
