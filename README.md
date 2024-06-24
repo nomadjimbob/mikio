@@ -266,6 +266,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Fixed padding on inline code blocks to be smaller.
    -    Cleaned up the display of the versionswitcher syntax. Thanks macin.
    -    Fixed incorrect language entries [#78](https://github.com/nomadjimbob/mikio/issues/78). Thanks Little-Data.
    -    Fixed incorrect padding on code/pre blocks [#77](https://github.com/nomadjimbob/mikio/issues/77). Thanks macin.
