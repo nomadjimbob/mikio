@@ -16,6 +16,13 @@ if (defined('DOKU_INC') === false) {
 //require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 header('X-UA-Compatible: IE=edge,chrome=1');
 
+global $conf;
+global $lang;
+global $IMG;
+global $REV;
+global $ERROR;
+global $fields;
+
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
  lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
@@ -45,7 +52,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         <?php if (strlen($ERROR) !== 0) :
             echo $ERROR; ?>
         <?php else : ?>
-            <?php if (strlen($REV) !== '0' && strcmp($REV, '0') !== 0) {
+            <?php if (strlen($REV) !== 0 && strcmp($REV, '0') !== 0) {
                 echo p_locale_xhtml('showrev');
             }?>
             <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline', $IMG))?></h1>

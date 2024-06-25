@@ -1,5 +1,4 @@
 <?php
-
 /**
  * DokuWiki Media Manager Popup
  *
@@ -11,7 +10,10 @@
 if (defined('DOKU_INC') === false) {
     die();
 }
+
 header('X-UA-Compatible: IE=edge,chrome=1');
+global $conf;
+global $lang;
 
 ?><!DOCTYPE html>
 <html lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction'] ?>" class="popup no-js">
@@ -22,7 +24,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         [<?php echo strip_tags($conf['title'])?>]
     </title>
     <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
-    <?php tpl_metaheaders()?>
+    <?php try { tpl_metaheaders(); } catch (Exception $e) { /* empty */ } ?>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <?php echo tpl_favicon(['favicon', 'mobile']) ?>
     <?php tpl_includeFile('meta.html') ?>

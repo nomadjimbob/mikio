@@ -10,7 +10,7 @@
 
 -   [bootstrap styling](http://getbootstrap.com/)
 -   Navbar with dropdown support
--   Subnavbar support (using a page named submenu)
+-   Sub navbar support (using a page named submenu)
 -   Right sidebar
 -   Hero element
 -   Icon support
