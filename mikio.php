@@ -250,7 +250,7 @@ class Template
     public function getConf(string $key, $default = false)
     {
         $value = tpl_getConf($key, $default);
-        
+
         $data = [
             ['keys' => ['navbarDWMenuType'],
                 'type' => 'choice',
@@ -688,6 +688,43 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 break;
         }//end switch
+
+        $vswitch = plugin_load('syntax', 'versionswitch');
+        if ($vswitch) {
+            $versionData = $vswitch->versionSelector();
+            $links = [];
+            $currentLinkText = "NA";
+
+            // Regex to find all 'a' tags
+            $pattern = '/<a\s+[^>]*href="([^"]+)"[^>]*>.*?<\/a>/i';
+            preg_match_all($pattern, $versionData, $matches);
+
+            // Loop through matches to build the links array
+            foreach ($matches[0] as $match) {
+                $links[] = $match;
+            }
+
+            // Regex to find the 'a' tag within 'curid' class span
+            $currentPattern = '/<li[^>]*class="[^"]*current[^"]*"[^>]*>\s*<a\s+[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/i';
+            preg_match($currentPattern, $versionData, $currentMatch);
+
+            if (!empty($currentMatch)) {
+                $currentLinkText = $currentMatch[2]; // This will capture the text inside the <a> tag
+            }
+
+            $html .= '<li id="mikio__versionswitch" class="mikio-nav-dropdown">';
+            $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button" 
+data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $currentLinkText . '</a>';
+            $html .= '<div class="mikio-dropdown closed">';
+
+            foreach($links as $link) {
+                $classPattern = '/class="[^"]*"/i';
+                $html .= preg_replace($classPattern, 'class="mikio-nav-link mikio-dropdown-item"', $link);
+            }
+
+            $html .= '</div>';
+            $html .= '</li>';
+        }
 
         $translation = plugin_load('helper', 'translation');
         if ($translation !== null && method_exists($translation, 'showTranslations')) {
