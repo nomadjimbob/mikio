@@ -29,6 +29,35 @@ $lang['config_license']     = '许可';
 $lang['config_acl']         = '权限';
 $lang['config_sticky']      = '粘性部件';
 
+/* Setting Values */
+$lang['value_never']        = '从不';
+$lang['value_admin']        = '管理员';
+$lang['value_always']       = '总是';
+$lang['value_icons']        = '图标';
+$lang['value_text']         = '文本';
+$lang['value_both']         = '两个都要';
+$lang['value_separate']     = '分离式';
+$lang['value_dropdown']     = '下拉式';
+$lang['value_combine']      = '组合';
+$lang['value_none']         = '无';
+$lang['value_custom']       = '自定义';
+$lang['value_search']       = '搜索';
+$lang['value_dokuwiki']     = 'dokuwiki';
+$lang['value_logged_in']    = '已登录';
+$lang['value_logged_out']   = '已退出登录';
+$lang['value_icon']         = '图标';
+$lang['value_top']          = '顶部';
+$lang['value_hero']         = '顶部大标题';
+$lang['value_page']         = '页面';
+$lang['value_page_title']   = '页面标题';
+$lang['value_home']         = '首页';
+$lang['value_logged_in_user'] = '登录的用户';
+$lang['value_content']      = '内容';
+$lang['value_tags']         = '标签';
+$lang['value_page_editors'] = '页面编辑者';
+$lang['value_badge']        = '徽章';
+$lang['value_button']       = '按钮';
+
 /* Style.ini */
 $lang['__link__']       = '链接文字颜色';
 $lang['__link_hover__'] = '光标悬停在链接上时文字颜色';
