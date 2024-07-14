@@ -1,4 +1,6 @@
-<?php /** @noinspection DuplicatedCode */
+<?php
+/** @noinspection DuplicatedCode */
+/** @noinspection SpellCheckingInspection */
 
 /**
  * DokuWiki Mikio Template
@@ -252,19 +254,21 @@ class Template
         $value = tpl_getConf($key, $default);
 
         $data = [
-            ['keys' => ['navbarDWMenuType'],                'type' => 'choice',
-                'values' => ['both', 'icons', 'text']
+            ['keys' => ['navbarDWMenuType'],
+                'type' => 'choice',
+                'values' => [tpl_getLang('value_both'), tpl_getLang('value_icons'), tpl_getLang('value_text')]
             ],
-            ['keys' => ['navbarDWMenuCombine'],             'type' => 'choice',
-                'values' => ['combine', 'seperate', 'dropdown']
+            ['keys' => ['navbarDWMenuCombine'],
+                'type' => 'choice',
+                'values' => [tpl_getLang('value_combine'), tpl_getLang('value_separate'), tpl_getLang('value_dropdown')]
             ],
             ['keys' => ['navbarPosLeft', 'navbarPosMiddle', 'navbarPosRight'],
                 'type' => 'choice',
-                'values' => ['none', 'custom', 'search', 'dokuwiki'],
+                'values' => [tpl_getLang('value_none'), tpl_getLang('value_custom'), tpl_getLang('value_search'), tpl_getLang('value_dokuwiki')],
                 'default' => [
-                    'navbarPosLeft' => 'none',
-                    'navbarPosMiddle' => 'search',
-                    'navbarPosRight' => 'dokuwiki'
+                    'navbarPosLeft' => tpl_getLang('value_none'),
+                    'navbarPosMiddle' => tpl_getLang('value_search'),
+                    'navbarPosRight' => tpl_getLang('value_dokuwiki')
                 ]
             ],
             ['keys' => ['navbarItemShowCreate', 'navbarItemShowShow', 'navbarItemShowRevs', 'navbarItemShowBacklink',
@@ -272,46 +276,46 @@ class Template
                 'navbarItemShowAdmin'
             ],
                 'type' => 'choice',
-                'values' => ['always', 'logged in', 'logged out', 'never']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), tpl_getLang('value_never')]
             ],
             ['keys' => ['navbarItemShowLogin', 'navbarItemShowLogout'],
                 'type' => 'choice',
-                'values' => ['always', 'never']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_never')]
             ],
             ['keys' => ['searchButton'],                    'type' => 'choice',
-                'values' => ['icon', 'text']
+                'values' => [tpl_getLang('value_icon'), tpl_getLang('value_text')]
             ],
             ['keys' => ['breadcrumbPosition', 'youareherePosition'],
                 'type' => 'choice',
-                'values' => ['top', 'hero', 'page', 'none']
+                'values' => [tpl_getLang('value_top'), tpl_getLang('value_hero'), tpl_getLang('value_page'), tpl_getLang('value_none')]
             ],
             ['keys' => ['youarehereHome'],                  'type' => 'choice',
-                'values' => ['page title', 'home', 'icon', 'none']
+                'values' => [tpl_getLang('value_page_title'), tpl_getLang('value_home'), tpl_getLang('value_icon'), tpl_getLang('value_none')]
             ],
             ['keys' => ['sidebarLeftRow1', 'sidebarLeftRow2', 'sidebarLeftRow3', 'sidebarLeftRow4'],
                 'type' => 'choice',
-                'values' => ['none', 'logged in user', 'search', 'content', 'tags'],
+                'values' => [tpl_getLang('value_none'), tpl_getLang('value_logged in user'), tpl_getLang('value_search'), tpl_getLang('value_content'), tpl_getLang('value_tags')],
                 'default' => [
-                    'sidebarLeftRow1' => 'logged in user',
-                    'sidebarLeftRow2' => 'search',
-                    'sidebarLeftRow3' => 'content'
+                    'sidebarLeftRow1' => tpl_getLang('value_logged in user'),
+                    'sidebarLeftRow2' => tpl_getLang('value_search'),
+                    'sidebarLeftRow3' => tpl_getLang('value_content')
                 ]
             ],
             ['keys' => ['pageToolsFloating', 'pageToolsFooter'],
                 'type' => 'choice',
-                'values' => ['always', 'none', 'page editors']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_none'), tpl_getLang('value_page_editors')]
             ],
             ['keys' => ['pageToolsShowCreate', 'pageToolsShowEdit', 'pageToolsShowRevs', 'pageToolsShowBacklink',
                 'pageToolsShowTop'
             ],
                 'type' => 'choice',
-                'values' => ['always', 'logged in', 'logged out', 'never']
+                'values' => [tpl_getLang('value_always'), tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), tpl_getLang('value_never')]
             ],
             ['keys' => ['showNotifications'],               'type' => 'choice',
-                'values' => ['admin', 'always', 'none', '', 'never']
+                'values' => [tpl_getLang('value_admin'), tpl_getLang('value_always'), tpl_getLang('value_none'), '', tpl_getLang('value_never')]
             ],
             ['keys' => ['licenseType'],                     'type' => 'choice',
-                'values' => ['badge', 'button', 'none']
+                'values' => [tpl_getLang('value_badge'), tpl_getLang('value_button'), tpl_getLang('value_none')]
             ],
             ['keys' => ['navbarUseTitleIcon'],              'type' => 'bool'],
             ['keys' => ['navbarUseTitleText'],              'type' => 'bool'],
@@ -518,9 +522,9 @@ class Template
         $siteToolsMenu = [];
         $userToolsMenu = [];
 
-        $showIcons  = ($this->getConf('navbarDWMenuType') != 'text');
-        $showText   = ($this->getConf('navbarDWMenuType') != 'icons');
-        $isDropDown = ($this->getConf('navbarDWMenuCombine') != 'seperate');
+        $showIcons  = ($this->getConf('navbarDWMenuType') != tpl_getLang('value_text'));
+        $showText   = ($this->getConf('navbarDWMenuType') != tpl_getLang('value_icons'));
+        $isDropDown = ($this->getConf('navbarDWMenuCombine') != tpl_getLang('value_separate'));
 
         $items = (new PageMenu())->getItems();
         foreach ($items as $item) {
@@ -529,9 +533,9 @@ class Template
 
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
                 if (
-                    $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                    (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                    (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
+                    $showItem !== false && (strcasecmp($showItem, tpl_getLang('value_always')) === 0 ||
+                    (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
+                    (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
                 ) {
                     $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
@@ -550,15 +554,15 @@ class Template
             }//end if
         }//end foreach
 
-        $items = (new SiteMenu())->getItems('action');
+        $items = (new SiteMenu())->getItems();
         foreach ($items as $item) {
             $itemHtml = '';
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
-                $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
+                $showItem !== false && (strcasecmp($showItem, tpl_getLang('value_always')) === 0 ||
+                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') . ' ' .
                     $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -574,15 +578,15 @@ class Template
             }
         }//end foreach
 
-        $items = (new UserMenu())->getItems('action');
+        $items = (new UserMenu())->getItems();
         foreach ($items as $item) {
             $itemHtml = '';
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
+                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown === true ? ' mikio-dropdown-item' : '') . ' ' .
                 $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -598,9 +602,12 @@ class Template
             }
         }//end foreach
 
+        $value_dropdown = tpl_getLang('value_dropdown');
+        $value_combine = tpl_getLang('value_combine');
+//        $value_separate = tpl_getLang('value_separate');
 
         switch ($this->getConf('navbarDWMenuCombine')) {
-            case 'dropdown':
+            case $value_dropdown:
                 $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
                 $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" 
 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
@@ -639,7 +646,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 break;
 
-            case 'combine':
+            case $value_combine:
                 $html .= '<li class="mikio-nav-dropdown">';
                 $html .= '<a class="mikio-nav-link" href="#">' .
                     ($showIcons === true ? $this->mikioInlineIcon('wrench') : '') .
@@ -668,7 +675,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $html .= '</li>';
                 break;
 
-            default:    // seperate
+            default:    // separate
                 foreach ($siteToolsMenu as $item) {
                     $html .= '<li class="mikio-nav-item">' . $item . '</li>';
                 }
@@ -683,6 +690,43 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 break;
         }//end switch
+
+        $vswitch = plugin_load('syntax', 'versionswitch');
+        if ($vswitch && method_exists($vswitch, 'versionSelector')) {
+            $versionData = $vswitch->versionSelector();
+            $links = [];
+            $currentLinkText = "NA";
+
+            // Regex to find all 'a' tags
+            $pattern = '/<a\s+[^>]*href="([^"]+)"[^>]*>.*?<\/a>/i';
+            preg_match_all($pattern, $versionData, $matches);
+
+            // Loop through matches to build the links array
+            foreach ($matches[0] as $match) {
+                $links[] = $match;
+            }
+
+            // Regex to find the 'a' tag within 'curid' class span
+            $currentPattern = '/<li[^>]*class="[^"]*current[^"]*"[^>]*>\s*<a\s+[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/i';
+            preg_match($currentPattern, $versionData, $currentMatch);
+
+            if (!empty($currentMatch)) {
+                $currentLinkText = $currentMatch[2]; // This will capture the text inside the <a> tag
+            }
+
+            $html .= '<li id="mikio__versionswitch" class="mikio-nav-dropdown">';
+            $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button" 
+data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $currentLinkText . '</a>';
+            $html .= '<div class="mikio-dropdown closed">';
+
+            foreach($links as $link) {
+                $classPattern = '/class="[^"]*"/i';
+                $html .= preg_replace($classPattern, 'class="mikio-nav-link mikio-dropdown-item"', $link);
+            }
+
+            $html .= '</div>';
+            $html .= '</li>';
+        }
 
         $translation = plugin_load('helper', 'translation');
         if ($translation !== null && method_exists($translation, 'showTranslations')) {
@@ -724,7 +768,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param string $str String to generate nav.
      * @return string     nav elements generated
      */
-    public function stringToNav(string $str)
+    public function stringToNav(string $str): string
     {
         $html = '';
 
@@ -754,7 +798,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param boolean $showSub Include the sub navbar.
      * @return string          generated content
      */
-    public function includeNavbar(bool $print = true, bool $showSub = false)
+    public function includeNavbar(bool $print = true, bool $showSub = false): string
     {
         global $conf, $USERINFO;
 
@@ -770,20 +814,15 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         } else {
             if (is_array($USERINFO) === true && count($USERINFO) > 0) {
                 $url = $this->getConf('brandURLUser');
-                if (strlen($url) > 0) {
-                    $homeUrl = $url;
-                }
             } else {
                 $url = $this->getConf('brandURLGuest');
-                if (strlen($url) > 0) {
-                    $homeUrl = $url;
-                }
+            }
+            if (strlen($url) > 0) {
+                $homeUrl = $url;
             }
         }
 
-        $html = '';
-
-        $html .= '<nav class="mikio-navbar'  . (($this->getConf('stickyNavbar') === true) ? ' mikio-sticky' : '') .
+        $html = '<nav class="mikio-navbar' . (($this->getConf('stickyNavbar') === true) ? ' mikio-sticky' : '') .
             '">';
         $html .= '<div class="mikio-container">';
         $html .= '<a class="mikio-navbar-brand" href="' . $homeUrl . '" accesskey="h" title="Home [h]">';
@@ -838,20 +877,25 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         // Menus
         $html .= '<div class="mikio-navbar-collapse">';
 
-        $menus = [$this->getConf('navbarPosLeft', 'none'), $this->getConf('navbarPosMiddle', 'none'),
-            $this->getConf('navbarPosRight', 'none')
+        $menus = [$this->getConf('navbarPosLeft', tpl_getLang('value_none')), $this->getConf('navbarPosMiddle', tpl_getLang('value_none')),
+            $this->getConf('navbarPosRight', tpl_getLang('value_none'))
         ];
+
+        $value_custom = tpl_getLang('value_custom');
+        $value_search = tpl_getLang('value_search');
+        $value_dokuwiki = tpl_getLang('value_dokuwiki');
+
         foreach ($menus as $menuType) {
             switch ($menuType) {
-                case 'custom':
+                case $value_custom:
                     $html .= $this->stringToNav($this->getConf('navbarCustomMenuText', ''));
                     break;
-                case 'search':
+                case $value_search:
                     $html .= '<div class="mikio-nav-item">';
                     $html .= $this->includeSearch(false);
                     $html .= '</div>';
                     break;
-                case 'dokuwiki':
+                case $value_dokuwiki:
                     $html .= $this->includeDWMenu(false);
                     break;
             }
@@ -882,7 +926,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   string $prefix Sidebar prefix to use when searching.
      * @return  boolean        if sidebar exists
      */
-    public function sidebarExists(string $prefix = '')
+    public function sidebarExists(string $prefix = ''): bool
     {
         global $conf;
 
@@ -902,7 +946,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $parse  Parse the content.
      * @return  string          generated content
      */
-    public function includeSidebar(string $prefix = '', bool $print = true, bool $parse = true)
+    public function includeSidebar(string $prefix = '', bool $print = true, bool $parse = true): string
     {
         global $conf, $ID;
 
@@ -933,21 +977,26 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4')
                 ];
 
+                $value_search = tpl_getLang('value_search');
+                $value_logged_in_user = tpl_getLang('value_logged_in_user');
+                $value_content = tpl_getLang('value_content');
+                $value_tags = tpl_getLang('value_tags');
+
                 foreach ($rows as $row) {
                     switch ($row) {
-                        case 'search':
+                        case $value_search:
                             $html .= $this->includeSearch(false);
                             break;
-                        case 'logged in user':
+                        case $value_logged_in_user:
                             $html .= $this->includeLoggedIn(false);
                             break;
-                        case 'content':
+                        case $value_content:
                             $content = $this->includePage($sidebarPage, false);
                             if (empty($content) === false) {
                                 $html .= '<div class="mikio-sidebar-content">' . $content . '</div>';
                             }
                             break;
-                        case 'tags':
+                        case $value_tags:
                             $html .= '<div class="mikio-tags"></div>';
                     }
                 }
@@ -1009,14 +1058,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $includeId Include the dw__pagetools id in the element.
      * @return  string             generated content
      */
-    public function includePageTools(bool $print = true, bool $includeId = false)
+    public function includePageTools(bool $print = true, bool $includeId = false): string
     {
         global $USERINFO;
 
         $loggedIn = (is_array($USERINFO) === true && count($USERINFO) > 0);
-        $html = '';
 
-        $html .= '<nav' . ($includeId === true ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
+        $html = '<nav' . ($includeId === true ? ' id="dw__pagetools"' : '') . ' class="hidden-print dw__pagetools">';
         $html .= '<ul class="tools">';
 
         $items = (new PageMenu())->getItems();
@@ -1032,7 +1080,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $classes = array_unique($classes);
             $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
-            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), 'always');
+            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), tpl_getLang('value_always'));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                 (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
@@ -1062,12 +1110,11 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $print Print content.
      * @return  string         contents of the search bar
      */
-    public function includeSearch(bool $print = true)
+    public function includeSearch(bool $print = true): string
     {
         global $lang, $ID, $ACT, $QUERY;
-        $html = '';
 
-        $html .= '<form class="mikio-search search" action="' . wl() .
+        $html = '<form class="mikio-search search" action="' . wl() .
             '" accept-charset="utf-8" method="get" role="search">';
         $html .= '<input type="hidden" name="do" value="search">';
         $html .= '<input type="hidden" name="id" value="' . $ID . '">';
@@ -1078,7 +1125,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' .
             ((strcasecmp($ACT, 'search') === 0) ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
         $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
-        if (strcasecmp($this->getConf('searchButton'), 'icon') === 0) {
+        if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
             $html .= $this->mikioInlineIcon('search');
         } else {
             $html .= $lang['btn_search'];
@@ -1099,7 +1146,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $print Print content.
      * @return  string         contents
      */
-    public function includeContent(bool $print = true)
+    public function includeContent(bool $print = true): string
     {
         ob_start();
         tpl_content(false);
@@ -1151,7 +1198,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             // replace lang items
             $string = preg_replace_callback('/%([^%]+)%/', function ($matches) use ($lang) {
-                return isset($lang[$matches[1]]) ? $lang[$matches[1]] : '';
+                return $lang[$matches[1]] ?? '';
             }, $string);
 
             $options = [
@@ -1199,7 +1246,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $string = preg_replace_callback('/{([^}]+)}/', function ($matches) use ($options) {
                 $key = strtolower($matches[1]);
-                return isset($options[$key]) ? $options[$key] : '';
+                return $options[$key] ?? '';
             }, $string);
 
             if ($ret) {
@@ -1219,13 +1266,11 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $print Print footer.
      * @return  string         HTML string containing footer
      */
-    public function includeFooter(bool $print = true)
+    public function includeFooter(bool $print = true): string
     {
         global $ACT;
 
-        $html = '';
-
-        $html .= '<footer class="mikio-footer">';
+        $html = '<footer class="mikio-footer">';
         $html .= '<div class="doc">' . $this->custom_tpl_pageinfo(true) . '</div>';
         $html .= $this->includePage('footer', false);
 
@@ -1239,18 +1284,19 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
-            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, 'always') === 0 ||
-            $this->userCanEdit() === true && strcasecmp($showPageTools, 'page editors') === 0)
+            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
+            $this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0)
         ) {
             $html .= $this->includePageTools(false);
         }
 
-        $meta['licenseType']            = ['multichoice', '_choices' => ['none', 'badge', 'button']];
+        $meta['licenseType']            = ['multichoice', '_choices' => [tpl_getLang('value_none'), tpl_getLang('value_badge'), tpl_getLang('value_button')]];
+        /** @noinspection PhpArrayWriteIsNotUsedInspection */
         $meta['licenseImageOnly']       = ['onoff'];
 
         $licenseType = $this->getConf('licenseType');
         if ($licenseType !== 'none') {
-            $html .= tpl_license($licenseType, $this->getConf('licenseImageOnly'), true, true);
+            $html .= tpl_license($licenseType, $this->getConf('licenseImageOnly'), true);
         }
 
         $html .= '</footer>';
@@ -1269,7 +1315,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $parse Parse trail before printing.
      * @return  string         HTML string containing breadcrumbs
      */
-    public function includeBreadcrumbs(bool $print = true, bool $parse = true)
+    public function includeBreadcrumbs(bool $print = true, bool $parse = true): string
     {
         global $conf, $ID, $lang, $ACT;
 
@@ -1283,55 +1329,53 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = '<div class="mikio-breadcrumbs">';
         $html .= '<div class="mikio-container">';
         if (strcasecmp($ACT, 'show') === 0) {
-            if ($conf['breadcrumbs'] !== 0) {
-                if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
-                    ob_start();
-                    tpl_breadcrumbs();
-                    $html .= ob_get_contents();
-                    ob_end_clean();
-                } else {
-                    $sep = '•';
-                    $prefix = $lang['breadcrumb'];
+            if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
+                ob_start();
+                tpl_breadcrumbs();
+                $html .= ob_get_contents();
+                ob_end_clean();
+            } else {
+                $sep = '•';
+                $prefix = $lang['breadcrumb'];
 
-                    if ($this->getConf('breadcrumbSep') === true) {
-                        $sep = $this->getConf('breadcrumbSepText');
-                        $img = $this->getMediaFile('breadcrumb-sep', false);
+                if ($this->getConf('breadcrumbSep') === true) {
+                    $sep = $this->getConf('breadcrumbSepText');
+                    $img = $this->getMediaFile('breadcrumb-sep', false);
 
-                        if ($img !== false) {
-                            $sep = '<img src="' . $img . '">';
-                        }
+                    if ($img !== false) {
+                        $sep = '<img src="' . $img . '">';
                     }
+                }
 
-                    if ($this->getConf('breadcrumbPrefix') === true) {
-                        $prefix = $this->getConf('breadcrumbPrefixText');
-                        $img = $this->getMediaFile('breadcrumb-prefix', false);
+                if ($this->getConf('breadcrumbPrefix') === true) {
+                    $prefix = $this->getConf('breadcrumbPrefixText');
+                    $img = $this->getMediaFile('breadcrumb-prefix', false);
 
-                        if ($img !== false) {
-                            $prefix = '<img src="' . $img . '">';
-                        }
+                    if ($img !== false) {
+                        $prefix = '<img src="' . $img . '">';
                     }
+                }
 
-                    $crumbs = breadcrumbs();
+                $crumbs = breadcrumbs();
 
-                    $html .= '<ul>';
-                    if (empty($prefix) === false) {
-                        $html .= '<li class="prefix">' . $prefix . '</li>';
+                $html .= '<ul>';
+                if (empty($prefix) === false) {
+                    $html .= '<li class="prefix">' . $prefix . '</li>';
+                }
+
+                $last = count($crumbs);
+                $i    = 0;
+                foreach ($crumbs as $id => $name) {
+                    $i++;
+                    if ($i !== 1) {
+                        $html .= '<li class="sep">' . $sep . '</li>';
                     }
+                    $html .= '<li' . ($i === $last ? ' class="curid"' : '') . '>';
+                    $html .= tpl_pagelink($id, null, true);
+                    $html .= '</li>';
+                }
 
-                    $last = count($crumbs);
-                    $i    = 0;
-                    foreach ($crumbs as $id => $name) {
-                        $i++;
-                        if ($i !== 1) {
-                            $html .= '<li class="sep">' . $sep . '</li>';
-                        }
-                        $html .= '<li' . ($i === $last ? ' class="curid"' : '') . '>';
-                        $html .= tpl_pagelink($id, null, true);
-                        $html .= '</li>';
-                    }
-
-                    $html .= '</ul>';
-                }//end if
+                $html .= '</ul>';
             }//end if
         }//end if
 
@@ -1354,7 +1398,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $parse Parse trail before printing.
      * @return  string         HTML string containing breadcrumbs
      */
-    public function includeYouAreHere(bool $print = true, bool $parse = true)
+    public function includeYouAreHere(bool $print = true, bool $parse = true): string
     {
         global $conf, $ID, $lang, $ACT;
 
@@ -1368,69 +1412,75 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = '<div class="mikio-youarehere">';
         $html .= '<div class="mikio-container">';
         if (strcasecmp($ACT, 'show') === 0) {
-            if ($conf['youarehere'] !== 0) {
-                if ($this->getConf('youareherePrefix') === false && $this->getConf('youarehereSep') === false) {
-                    $html .= '<div class="mikio-bcdw">';
-                    ob_start();
-                    tpl_youarehere();
-                    $html .= ob_get_contents();
-                    ob_end_clean();
-                    $html .= '</div>';
+            if ($this->getConf('youareherePrefix') === false && $this->getConf('youarehereSep') === false) {
+                $html .= '<div class="mikio-bcdw">';
+                ob_start();
+                tpl_youarehere();
+                $html .= ob_get_contents();
+                ob_end_clean();
+                $html .= '</div>';
+            } else {
+                $sep = ' » ';
+                $prefix = $lang['youarehere'];
+
+                if ($this->getConf('youarehereSep') === true) {
+                    $sep = $this->getConf('youarehereSepText');
+                    $img = $this->getMediaFile('youarehere-sep', false);
+
+                    if ($img !== false) {
+                        $sep = '<img src="' . $img . '">';
+                    }
+                }
+
+                if ($this->getConf('youareherePrefix') === true) {
+                    $prefix = $this->getConf('youareherePrefixText');
+                    $img = $this->getMediaFile('youarehere-prefix', false);
+
+                    if ($img !== false) {
+                        $prefix = '<img src="' . $img . '">';
+                    }
+                }
+
+                $html .= '<ul>';
+                if (empty($prefix) === false) {
+                    $html .= '<li class="prefix">' . $prefix . '</li>';
+                }
+                $html .= '<li>' . tpl_pagelink(':' . $conf['start'], null, true) . '</li>';
+
+                $parts = explode(':', $ID);
+                $count = count($parts);
+
+                $part = '';
+                for ($i = 0; $i < ($count - 1); $i++) {
+                    $part .= $parts[$i] . ':';
+                    $page = $part;
+                    if ($page === $conf['start']) {
+                        continue;
+                    }
+
+                    $html .= '<li class="sep">' . $sep . '</li>';
+                    $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
+                }
+
+                $page = '';
+
+                if ($this->dwVersionNumber() >= 20200729) {
+                    $page = cleanID($page);
                 } else {
-                    $sep = ' » ';
-                    $prefix = $lang['youarehere'];
+                    $exists = false;
+                    /** @noinspection PhpDeprecationInspection */
+                    resolve_pageid('', $page, $exists);
+                }
 
-                    if ($this->getConf('youarehereSep') === true) {
-                        $sep = $this->getConf('youarehereSepText');
-                        $img = $this->getMediaFile('youarehere-sep', false);
-
-                        if ($img !== false) {
-                            $sep = '<img src="' . $img . '">';
-                        }
-                    }
-
-                    if ($this->getConf('youareherePrefix') === true) {
-                        $prefix = $this->getConf('youareherePrefixText');
-                        $img = $this->getMediaFile('youarehere-prefix', false);
-
-                        if ($img !== false) {
-                            $prefix = '<img src="' . $img . '">';
-                        }
-                    }
-
-                    $html .= '<ul>';
-                    if (empty($prefix) === false) {
-                        $html .= '<li class="prefix">' . $prefix . '</li>';
-                    }
-                    $html .= '<li>' . tpl_pagelink(':' . $conf['start'], null, true) . '</li>';
-
-                    $parts = explode(':', $ID);
-                    $count = count($parts);
-
-                    $part = '';
-                    for ($i = 0; $i < ($count - 1); $i++) {
-                        $part .= $parts[$i] . ':';
-                        $page = $part;
-                        if ($page === $conf['start']) {
-                            continue;
-                        }
-
+                if ((isset($page) === true && $page === $part . $parts[$i]) === false) {
+                    $page = $part . $parts[$i];
+                    if ($page !== $conf['start']) {
                         $html .= '<li class="sep">' . $sep . '</li>';
                         $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
                     }
+                }
 
-                    $exists = false;
-                    resolve_pageid('', $page, $exists);
-                    if ((isset($page) === true && $page === $part . $parts[$i]) === false) {
-                        $page = $part . $parts[$i];
-                        if ($page !== $conf['start']) {
-                            $html .= '<li class="sep">' . $sep . '</li>';
-                            $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
-                        }
-                    }
-
-                    $html .= '</ul>';
-                }//end if
+                $html .= '</ul>';
             }//end if
 
             $showLast = $this->getConf('youarehereShowLast');
@@ -1452,14 +1502,18 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 }
             }
 
+            $value_none = tpl_getLang('value_none');
+            $value_home = tpl_getLang('value_home');
+            $value_icon = tpl_getLang('value_icon');
+
             switch ($this->getConf('youarehereHome')) {
-                case 'none':
+                case $value_none:
                     $html = preg_replace('/<li[^>]*>.+?<\/li>/', '', $html, 2);
                     break;
-                case 'home':
+                case $value_home:
                     $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' . tpl_getlang('home') . '$3', $html, 1);
                     break;
-                case 'icon':
+                case $value_icon:
                     $html = preg_replace('/(<a[^>]*>)(.+?)(<\/a>)/', '$1' .
                         $this->mikioInlineIcon('home') . '$3', $html, 1);
                     break;
@@ -1489,7 +1543,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      *
      * @return string page title
      */
-    public function parsePageTitle()
+    public function parsePageTitle(): string
     {
         global $ID;
 
@@ -1497,9 +1551,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         if (strlen($title) <= 0) {
             $title = tpl_pagetitle(null, true);
         }
-        $title = $this->includeIcons($title);
-
-        return $title;
+        return $this->includeIcons($title);
     }
 
 
@@ -1509,7 +1561,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $print Print content.
      * @return  string         contents of hero
      */
-    public function includeHero(bool $print = true)
+    public function includeHero(bool $print = true): string
     {
         $html = '';
 
@@ -1517,10 +1569,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $html .= '<div class="mikio-hero">';
             $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
-            if (strcasecmp($this->getConf('youareherePosition'), 'hero') === 0) {
+            if (strcasecmp($this->getConf('youareherePosition'), tpl_getLang('value_hero')) === 0) {
                 $html .= $this->includeYouAreHere(false);
             }
-            if (strcasecmp($this->getConf('breadcrumbPosition'), 'hero') === 0) {
+            if (strcasecmp($this->getConf('breadcrumbPosition'), tpl_getLang('value_hero')) === 0) {
                 $html .= $this->includeBreadcrumbs(false);
             }
 
@@ -1565,7 +1617,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   boolean $parse Parse icons.
      * @return  string         contents of TOC
      */
-    public function includeTOC(bool $print = true, bool $parse = true)
+    public function includeTOC(bool $print = true, bool $parse = true): string
     {
         $html = '';
 
@@ -1605,7 +1657,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   string $str Content to parse.
      * @return  string      parsed string
      */
-    public function includeIcons(string $str)
+    public function includeIcons(string $str): string
     {
         global $ACT, $MIKIO_ICONS;
 
@@ -1621,6 +1673,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $content = $str;
             $preview = null;
 
+            $html = null;
             if (strcasecmp($ACT, 'preview') === 0) {
                 $html = new simple_html_dom();
                 $html->stripRNAttrValues = false;
@@ -1718,7 +1771,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   string $content HTML content to parse.
      * @return  string          Parsed content
      */
-    public function parseContent(string $content)
+    public function parseContent(string $content): string
     {
         global $INPUT, $ACT;
 
@@ -1881,7 +1934,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $content = preg_replace_callback('/<input type="color"[^>]*>/', function ($match) {
                 // Get the ID of the <input type="color"> element
-                preg_match('/id="([^"]*)"/', $match[0], $matches);
+                preg_match('/id="([^"]*)"/', $match[0]);
 
                 // Replace type with text and remove the id attribute
                 $replacement = preg_replace(
@@ -1910,10 +1963,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $html = new simple_html_dom();
         $html->stripRNAttrValues = false;
         $html->load($content, true, false);
-
-        if ($html === false) {
-            return $content;
-        }
 
         /* Buttons */
         foreach ($html->find('#config__manager button') as $node) {
@@ -1961,7 +2010,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         /* Hero image */
         foreach ($html->find('p') as $elm) {
-            $image = '';
             preg_match('/[~-]~hero-image (.+?)~[~-](?!.?")/ui', $elm->innertext, $matches);
             if (count($matches) > 0) {
                 preg_match('/<img.*src="(.+?)"/ui', $matches[1], $imageTagMatches);
@@ -1980,7 +2028,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                                 $image = substr($image, 0, $i);
                             }
 
-                            $image = ml($image, '', true, '', false);
+                            $image = ml($image, '', true, '');
                         }
                     }
                 }
@@ -2074,7 +2122,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      * @param   string $str String to parse.
      * @return  string      parsed URI
      */
-    public function getLink(string $str)
+    public function getLink(string $str): string
     {
         $i = strpos($str, '://');
         if ($i !== false) {
@@ -2090,7 +2138,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      *
      * @return  boolean  user can edit
      */
-    public function userCanEdit()
+    public function userCanEdit(): bool
     {
         global $INFO;
         global $ID;
@@ -2149,7 +2197,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         $img = '';
-        $url = '';
         $ismedia = false;
         $found = false;
 
@@ -2173,7 +2220,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         if ($ismedia === true) {
-            $url = ml($img, '', true, '', false);
+            $url = ml($img, '', true, '');
         } else {
             $url = tpl_basedir() . $img;
         }
@@ -2191,8 +2238,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     public function getPageTitle(string $page = ''): string
     {
         global $ID, $conf;
-
-        $html = '';
 
         if (empty($page) === true) {
             $page = $ID;
@@ -2341,8 +2386,8 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
         $show = $this->getConf('showNotifications');
         if (
             strlen($show) === 0 ||
-            strcasecmp($show, 'always') === 0 ||
-            (strcasecmp($show, 'admin') === 0 && strcasecmp($ACT, 'admin') === 0)
+            strcasecmp($show, tpl_getLang('value_always')) === 0 ||
+            (strcasecmp($show, tpl_getLang('value_admin')) === 0 && strcasecmp($ACT, 'admin') === 0)
         ) {
             html_msgarea();
 
@@ -2381,9 +2426,9 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
     /**
      * Dokuwiki version number
      *
-     * @return  string        the dw version date converted to integer
+     * @return  int        the dw version date converted to integer
      */
-    public function dwVersionNumber()
+    public function dwVersionNumber(): int
     {
         if (function_exists('getVersionData') === true) {
             $version_data = getVersionData();

@@ -58,7 +58,10 @@
     --control-text-color: @ini_control_text_color;
     --control-border-color: @ini_control_border_color;
     --control-background-color: @ini_control_background_color;
+    --input-text-color: @ini_input_text_color;
     --input-border-color: @ini_input_border_color;
+    --input-background-color: @ini_input_background_color;
+    --search-button-border-color: @ini_button_border_color;
     --button-text-color: @ini_button_text_color;
     --button-background-color: @ini_button_background_color;
     --button-border-color: @ini_button_border_color;
@@ -166,7 +169,10 @@
     --control-text-color: @ini_darkmode_control_text_color;
     --control-border-color: @ini_darkmode_control_border_color;
     --control-background-color: @ini_darkmode_control_background_color;
+    --input-text-color: @ini_darkmode_input_text_color;
     --input-border-color: @ini_darkmode_input_border_color;
+    --input-background-color: @ini_darkmode_input_background_color;
+    --search-button-border-color: @ini_darkmode_input_border_color;
     --button-text-color: @ini_darkmode_button_text_color;
     --button-background-color: @ini_darkmode_button_background_color;
     --button-border-color: @ini_darkmode_button_border_color;
@@ -1119,7 +1125,9 @@ body {
 }
 
 .mikio-input-text {
+    color: var(--input-text-color);
     border-color: var(--input-border-color);
+    background-color: var(--input-background-color);
     line-height: inherit;
 }
 
@@ -1710,7 +1718,7 @@ pre {
     code:not(.content_partial code),
     pre {
         border: 1px solid var(--code-border-color);
-        padding: 1em;
+        padding: .2em;
     }
 }
 
@@ -1720,6 +1728,7 @@ pre {
     .mikio-search,
     &.dokuwiki fieldset,
     &.dokuwiki .secedit,
+    #config__manager tr,
     .mode_revisions,
     .mode_edit,
     .mode_draft,
@@ -1727,6 +1736,19 @@ pre {
     .mode_showtag,
     .mode_admin {
         .mikio-controls();
+    }
+
+    #config__manager {
+        tr, tr.default {
+            .input {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .mikio-search.search button[type=submit] {
+        border-left-width: 0;
+        border-color: var(--search-button-border-color);
     }
 }
 
@@ -2826,6 +2848,26 @@ pre {
         float: none;
         text-align: right;
         margin-top: 1em;
+    }
+}
+
+/* VersionSwitch */
+.mikio ul.plugin_versionswitch {
+    background-color: var(--control-background-color);
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+
+    li {
+        a {
+            color: var(--control-text-color) !important;
+            margin: 0;
+            padding: .375rem .75rem;
+
+            &:hover {
+                color: var(--dropdown-color);
+                background-color: var(--dropdown-hover-color);
+            }
+        }
     }
 }
 

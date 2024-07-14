@@ -29,6 +29,40 @@ $lang['config_license']     = 'License';
 $lang['config_acl']         = 'Permissions';
 $lang['config_sticky']      = 'Sticky Parts';
 
+
+/* Setting Values */
+$lang['value_never']        = 'never';
+$lang['value_admin']        = 'admin';
+$lang['value_always']       = 'always';
+$lang['value_icons']        = 'icons';
+$lang['value_text']         = 'text';
+$lang['value_both']         = 'both';
+$lang['value_separate']     = 'separate';
+$lang['value_dropdown']     = 'dropdown';
+$lang['value_combine']      = 'combine';
+$lang['value_none']         = 'none';
+$lang['value_custom']       = 'custom';
+$lang['value_search']       = 'search';
+$lang['value_dokuwiki']     = 'dokuwiki';
+$lang['value_logged_in']    = 'logged in';
+$lang['value_logged_out']   = 'logged out';
+$lang['value_icon']         = 'icon';
+$lang['value_top']          = 'top';
+$lang['value_hero']         = 'hero';
+$lang['value_page']         = 'page';
+$lang['value_page_title']   = 'page title';
+$lang['value_home']         = 'home';
+$lang['value_logged_in_user'] = 'logged in user';
+$lang['value_content']      = 'content';
+$lang['value_tags']         = 'tags';
+$lang['value_page_editors'] = 'page editors';
+$lang['value_badge']        = 'badge';
+$lang['value_button']       = 'button';
+
+
+
+
+
 /* Style.ini */
 $lang['__link__']       = 'The font color of links';
 $lang['__link_hover__'] = 'The font color of links when cursor hovers over';
@@ -68,7 +102,9 @@ $lang['__button_border_color__']                    = 'The border color for butt
 $lang['__button_text_hover_color__']                = 'The font color for buttons when cursor hovers over';
 $lang['__button_background_hover_color__']          = 'The background color for buttons when cursor hovers over';
 $lang['__button_border_hover_color__']              = 'The border color for buttons when cursor hovers over';
-$lang['__input_border_color__']                     = 'The border color for controls';
+$lang['__input_text_color__']                       = 'The text color for input fields';
+$lang['__input_border_color__']                     = 'The border color for input fields';
+$lang['__input_background_color__']                 = 'The background color for input fields';
 $lang['__button_default_text_color__']              = 'The font color for the default button';
 $lang['__button_default_background_color__']        = 'The background color for the default button';
 $lang['__button_default_border_color__']            = 'The border color for the default button';
@@ -212,61 +248,61 @@ $lang['__plugin_success_light_background_color__']  = 'Success style background 
 $lang['__plugin_success_light_border_color__']      = 'Success style border color for light box items';
 
 $lang['__plugin_danger_text_color__']               = 'Danger style font color';
-$lang['__plugin_danger_background_color__']         = 'Danger style font color when cursor hovers over';
-$lang['__plugin_danger_border_color__']             = 'Danger style background color';
-$lang['__plugin_danger_text_hover_color__']         = 'Danger style background color when cursor hovers over';
-$lang['__plugin_danger_background_hover_color__']   = 'Danger style border color';
+$lang['__plugin_danger_text_hover_color__']         = 'Danger style font color when cursor hovers over';
+$lang['__plugin_danger_background_color__']         = 'Danger style background color';
+$lang['__plugin_danger_background_hover_color__']   = 'Danger style background color when cursor hovers over';
+$lang['__plugin_danger_border_color__']             = 'Danger style border color';
 $lang['__plugin_danger_border_hover_color__']       = 'Danger style border color when cursor hovers over';
 $lang['__plugin_danger_light_text_color__']         = 'Danger style font color for light box items';
 $lang['__plugin_danger_light_background_color__']   = 'Danger style background color for light box items';
 $lang['__plugin_danger_light_border_color__']       = 'Danger style border color for light box items';
 
 $lang['__plugin_warning_text_color__']              = 'Warning style font color';
-$lang['__plugin_warning_background_color__']        = 'Warning style font color when cursor hovers over';
-$lang['__plugin_warning_border_color__']            = 'Warning style background color';
-$lang['__plugin_warning_text_hover_color__']        = 'Warning style background color when cursor hovers over';
-$lang['__plugin_warning_background_hover_color__']  = 'Warning style border color';
+$lang['__plugin_warning_text_hover_color__']        = 'Warning style font color when cursor hovers over';
+$lang['__plugin_warning_background_color__']        = 'Warning style background color';
+$lang['__plugin_warning_background_hover_color__']  = 'Warning style background color when cursor hovers over';
+$lang['__plugin_warning_border_color__']  =           'Warning style border color';
 $lang['__plugin_warning_border_hover_color__']      = 'Warning style border color when cursor hovers over';
 $lang['__plugin_warning_light_text_color__']        = 'Warning style font color for light box items';
 $lang['__plugin_warning_light_background_color__']  = 'Warning style background color for light box items';
 $lang['__plugin_warning_light_border_color__']      = 'Warning style border color for light box items';
 
 $lang['__plugin_info_text_color__']                 = 'Info style font color';
-$lang['__plugin_info_background_color__']           = 'Info style font color when cursor hovers over';
-$lang['__plugin_info_border_color__']               = 'Info style background color';
-$lang['__plugin_info_text_hover_color__']           = 'Info style background color when cursor hovers over';
-$lang['__plugin_info_background_hover_color__']     = 'Info style border color';
+$lang['__plugin_info_text_hover_color__']           = 'Info style font color when cursor hovers over';
+$lang['__plugin_info_background_color__']           = 'Info style background color';
+$lang['__plugin_info_background_hover_color__']     = 'Info style background color when cursor hovers over';
+$lang['__plugin_info_border_color__']               = 'Info style border color';
 $lang['__plugin_info_border_hover_color__']         = 'Info style border color when cursor hovers over';
 $lang['__plugin_info_light_text_color__']           = 'Info style font color for light box items';
 $lang['__plugin_info_light_background_color__']     = 'Info style background color for light box items';
 $lang['__plugin_info_light_border_color__']         = 'Info style border color for light box items';
 
 $lang['__plugin_light_text_color__']                = 'Light style font color';
-$lang['__plugin_light_background_color__']          = 'Light style font color when cursor hovers over';
-$lang['__plugin_light_border_color__']              = 'Light style background color';
-$lang['__plugin_light_text_hover_color__']          = 'Light style background color when cursor hovers over';
-$lang['__plugin_light_background_hover_color__']    = 'Light style border color';
+$lang['__plugin_light_text_hover_color__']          = 'Light style font color when cursor hovers over';
+$lang['__plugin_light_background_color__']          = 'Light style background color';
+$lang['__plugin_light_background_hover_color__']    = 'Light style background color when cursor hovers over';
+$lang['__plugin_light_border_color__']              = 'Light style border color';
 $lang['__plugin_light_border_hover_color__']        = 'Light style border color when cursor hovers over';
 $lang['__plugin_light_light_text_color__']          = 'Light style font color for light box items';
 $lang['__plugin_light_light_background_color__']    = 'Light style background color for light box items';
 $lang['__plugin_light_light_border_color__']        = 'Light style border color for light box items';
 
 $lang['__plugin_dark_text_color__']                 = 'Dark style font color';
-$lang['__plugin_dark_background_color__']           = 'Dark style font color when cursor hovers over';
-$lang['__plugin_dark_border_color__']               = 'Dark style background color';
-$lang['__plugin_dark_text_hover_color__']           = 'Dark style background color when cursor hovers over';
-$lang['__plugin_dark_background_hover_color__']     = 'Dark style border color';
+$lang['__plugin_dark_text_hover_color__']           = 'Dark style font color when cursor hovers over';
+$lang['__plugin_dark_background_color__']           = 'Dark style background color';
+$lang['__plugin_dark_background_hover_color__']     = 'Dark style background color when cursor hovers over';
+$lang['__plugin_dark_border_color__']               = 'Dark style border color';
 $lang['__plugin_dark_border_hover_color__']         = 'Dark style border color when cursor hovers over';
 $lang['__plugin_dark_light_text_color__']           = 'Dark style font color for light box items';
 $lang['__plugin_dark_light_background_color__']     = 'Dark style background color for light box items';
 $lang['__plugin_dark_light_border_color__']         = 'Dark style border color for light box items';
 
-$lang['__plugin_link_text_color__']             = 'Link style font color';
-$lang['__plugin_link_background_color__']       = 'Link style font color when cursor hovers over';
-$lang['__plugin_link_border_color__']           = 'Link style background color';
-$lang['__plugin_link_text_hover_color__']       = 'Link style background color when cursor hovers over';
-$lang['__plugin_link_background_hover_color__'] = 'Link style border color';
-$lang['__plugin_link_border_hover_color__']     = 'Link style border color when cursor hovers over';
+$lang['__plugin_link_text_color__']                 = 'Link style font color';
+$lang['__plugin_link_text_hover_color__']           = 'Link style font color when cursor hovers over';
+$lang['__plugin_link_background_color__']           = 'Link style background color';
+$lang['__plugin_link_background_hover_color__']     = 'Link style background color when cursor hovers over';
+$lang['__plugin_link_border_color__']               = 'Link style border color';
+$lang['__plugin_link_border_hover_color__']         = 'Link style border color when cursor hovers over';
 
 $lang['__plugin_carousel_title_text_color__']           = 'Carousel title font color';
 $lang['__plugin_carousel_caption_text_color__']         = 'Carousel caption font color';

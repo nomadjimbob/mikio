@@ -10,7 +10,7 @@
 
 -   [bootstrap styling](http://getbootstrap.com/)
 -   Navbar with dropdown support
--   Subnavbar support (using a page named submenu)
+-   Sub navbar support (using a page named submenu)
 -   Right sidebar
 -   Hero element
 -   Icon support
@@ -266,6 +266,12 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Added navbar support for versionswicher plugin [#79](https://github.com/nomadjimbob/mikio/issues/79). Requested by macin.
+   -    Fixed input backgrounds not rendering colours correctly in some circumstances on the configuration page.
+   -    Fixed styling on input fields in darkmode. Style.ini now supports separate input options [#82](https://github.com/nomadjimbob/mikio/issues/82). Thanks  BioSehnsucht.
+   -    Fixed padding on inline code blocks to be smaller.
+   -    Cleaned up the display of the versionswitcher syntax. Thanks macin.
+   -    Fixed incorrect language entries [#78](https://github.com/nomadjimbob/mikio/issues/78). Thanks Little-Data.
    -    Fixed incorrect padding on code/pre blocks [#77](https://github.com/nomadjimbob/mikio/issues/77). Thanks macin.
 
 - **_2024-06-05_**

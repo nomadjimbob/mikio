@@ -26,9 +26,13 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><?php echo $TEMPLATE->getPageTitle() ?></title>
     <?php
-        echo '<title>' . $TEMPLATE->getPageTitle() . '</title>';
-        tpl_metaheaders();
+        try {
+            tpl_metaheaders();
+        } catch (Exception $e) {
+            /* empty */
+        }
         echo tpl_favicon(['favicon', 'mobile']);
         tpl_includeFile('meta.html');
     ?>
@@ -46,6 +50,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
             (($TEMPLATE->getConf('stickyHeader') === true) ? ' mikio-sticky' : ''));
     }
 
+    /** @noinspection HtmlDeprecatedAttribute */
     echo '<a name="dokuwiki__top" id="dokuwiki__top"></a>';
 
     if (
@@ -105,6 +110,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
     if ($showSidebar === true) {
         $rightsidebar = $TEMPLATE->includeSidebar('right');
     }
+
     echo '</div>';
     echo '</main>';
     echo '<div class="mikio-page-fill">';
@@ -124,7 +130,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
     $TEMPLATE->includePage('bottomfooter', true, true, 'mikio-page-bottomfooter');
     ?>
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
-</div></div>
+</div>
 <?php $TEMPLATE->includeFooterMeta(); ?>
 </body>
 <?php $TEMPLATE->finalize(); ?>
