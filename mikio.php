@@ -18,6 +18,7 @@ use dokuwiki\Menu\SiteMenu;
 use dokuwiki\Menu\UserMenu;
 use ParensParser;
 use simple_html_dom;
+use DOMDocument;
 
 if (defined('DOKU_INC') === false) {
     die();
@@ -1112,26 +1113,44 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      */
     public function includeSearch(bool $print = true): string
     {
-        global $lang, $ID, $ACT, $QUERY;
+        $html = $this->parseHTML('tpl_searchform', function($dom) {
+            $forms = $dom->getElementsByTagName('form');
+            if (0 !== count($forms)) {
+                foreach ($forms as $form) {
+                    $currentClasses = $form->getAttribute('class');
+                    $newClasses = trim($currentClasses . ' mikio-search');
+                    $form->setAttribute('class', $newClasses);
+                }
+            }
 
-        $html = '<form class="mikio-search search" action="' . wl() .
-            '" accept-charset="utf-8" method="get" role="search">';
-        $html .= '<input type="hidden" name="do" value="search">';
-        $html .= '<input type="hidden" name="id" value="' . $ID . '">';
-        $html .= '<input name="q" ';
-        if ($this->getConf('searchUseTypeahead') === true) {
-            $html .= 'class="search_typeahead" ';
-        }
-        $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' .
-            ((strcasecmp($ACT, 'search') === 0) ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
-        $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
-        if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
-            $html .= $this->mikioInlineIcon('search');
-        } else {
-            $html .= $lang['btn_search'];
-        }
-        $html .= '</button>';
-        $html .= '</form>';
+            if ($this->getConf('searchUseTypeahead') === true) {
+                $inputs = $dom->getElementsByTagName('input');
+                foreach ($inputs as $input) {
+                    if ($input->getAttribute('name') === 'q') {
+                        $inputClasses = $input->getAttribute('class');
+                        $inputNewClasses = trim($inputClasses . ' search_typeahead');
+                        $input->setAttribute('class', $inputNewClasses);
+                    }
+                }
+            }
+
+            if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
+                $buttons = $dom->getElementsByTagName('button');
+                foreach($buttons as $button) {
+                    if($button->getAttribute('type') === 'submit') {
+                        $svg = new DOMDocument();
+                        $svg->loadXML($this->mikioInlineIcon('search'));
+                        $svgList = $svg->getElementsByTagName('svg');
+                        if(count($svgList) > 0) {
+                            $svgItem = $svgList->item(0);
+                            $importedSvg = $dom->importNode($svgItem, true);
+                            $button->nodeValue = '';
+                            $button->appendChild($importedSvg);
+                        }
+                    }
+                }
+            }
+        });
 
         if ($print === true) {
             echo $html;
@@ -2441,6 +2460,36 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
         }
 
         return 0;
+    }
+
+    /**
+     * Call a method and parse the HTML output
+     *
+     * @param   callable $method The method to call and capture output
+     * @param   callable $parser The parser method which is passed a DOMDocument to manipulate
+     * @return  string           The raw parsed HTML
+     */
+    protected function parseHTML($method, $parser)
+    {
+        if(!is_callable($method) || !is_callable($parser)) {
+            return '';
+        }
+
+        ob_start();
+        $method();
+        $content = ob_get_clean();
+        if($content !== '') {
+            $domDocument = new DOMDocument();
+            $domContent = $domDocument->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES'));
+            if (false === $domContent) {
+                return $content;
+            }
+
+            $parser($domDocument);
+            return $domDocument->saveHTML();
+        }
+
+        return $content;
     }
 }
 
