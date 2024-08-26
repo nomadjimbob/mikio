@@ -133,5 +133,4 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
 </div>
 <?php $TEMPLATE->includeFooterMeta(); ?>
 </body>
-<?php $TEMPLATE->finalize(); ?>
 </html>

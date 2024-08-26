@@ -29,7 +29,7 @@ require_once('icons/icons.php');
 require_once('inc/simple_html_dom.php');
 require_once('inc/parens-parser.php');
 
-class Template
+class mikio
 {
     /**
      * @var string Template directory path from local FS.
@@ -66,14 +66,14 @@ class Template
     /**
      * Returns the instance of the class
      *
-     * @return  Template        class instance
+     * @return  mikio        class instance
      */
-    public static function getInstance(): Template
+    public static function getInstance(): mikio
     {
         static $instance = null;
 
-        if (empty($instance) === true) {
-            $instance = new Template();
+        if ($instance === null) {
+            $instance = new mikio();
         }
 
         return $instance;
@@ -417,8 +417,7 @@ class Template
     {
         ob_start();
         tpl_includeFile($page . '.html');
-        $html = ob_get_contents();
-        ob_end_clean();
+        $html = ob_get_clean();
 
         if (empty($html) === false) {
             return true;
@@ -452,8 +451,7 @@ class Template
     {
         ob_start();
         tpl_includeFile($page . '.html');
-        $html = ob_get_contents();
-        ob_end_clean();
+        $html = ob_get_clean();
 
         if (empty($html) === true) {
             $useACL = $this->getConf('includePageUseACL');
@@ -461,8 +459,7 @@ class Template
 
             ob_start();
             $html = tpl_include_page($page, false, $propagate, $useACL);
-            $this->includedPageNotifications .= ob_get_contents();
-            ob_end_clean();
+            $this->includedPageNotifications .= ob_get_clean();
         }
 
         if (empty($html) === false && $parse === true) {
@@ -494,8 +491,7 @@ class Template
             $html .= '<div class="mikio-user-info">';
             ob_start();
             tpl_userinfo();
-            $html .= ob_get_contents();
-            ob_end_clean();
+            $html .= ob_get_clean();
             $html .= '</div>';
         }
 
@@ -1164,8 +1160,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         ob_start();
         tpl_content(false);
-        $html = ob_get_contents();
-        ob_end_clean();
+        $html = ob_get_clean();
 
         $html = $this->includeIcons($html);
         $html = $this->parseContent($html);
@@ -1211,7 +1206,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $string = $this->getConf('footerPageInfoText', '');
 
             // replace lang items
-            $string = preg_replace_callback('/%([^%]+)%/', function ($matches) use ($lang) {
+            $string = preg_replace_callback('/%([^%]+)%/', static function ($matches) use ($lang) {
                 return $lang[$matches[1]] ?? '';
             }, $string);
 
@@ -1258,17 +1253,17 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $string = $parserIterate($result, $parserIterate);
 
-            $string = preg_replace_callback('/{([^}]+)}/', function ($matches) use ($options) {
+            $string = preg_replace_callback('/{([^}]+)}/', static function ($matches) use ($options) {
                 $key = strtolower($matches[1]);
                 return $options[$key] ?? '';
             }, $string);
 
             if ($ret) {
                 return $string;
-            } else {
-                echo $string;
-                return true;
             }
+
+            echo $string;
+            return true;
         }//end if
 
         return false;
@@ -1299,7 +1294,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
             strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
-            $this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0)
+                ($this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0))
         ) {
             $html .= $this->includePageTools(false);
         }
@@ -1334,8 +1329,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         global $conf, $ID, $lang, $ACT;
 
         if (
-            $this->getConf('breadcrumbHideHome') === true && strcasecmp($ID, 'start') === 0 &&
-            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0 || $conf['breadcrumbs'] === 0
+            ($this->getConf('breadcrumbHideHome') === true && strcasecmp($ID, 'start') === 0 &&
+                strcasecmp($ACT, 'show') === 0) || strcasecmp($ACT, 'showtag') === 0 || $conf['breadcrumbs'] === 0
         ) {
             return '';
         }
@@ -1346,8 +1341,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
                 ob_start();
                 tpl_breadcrumbs();
-                $html .= ob_get_contents();
-                ob_end_clean();
+                $html .= ob_get_clean();
             } else {
                 $sep = '•';
                 $prefix = $lang['breadcrumb'];
@@ -1417,8 +1411,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         global $conf, $ID, $lang, $ACT;
 
         if (
-            $this->getConf('youarehereHideHome') === true && strcasecmp($ID, 'start') === 0 &&
-            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0 || $conf['youarehere'] === 0
+            ($this->getConf('youarehereHideHome') === true && strcasecmp($ID, 'start') === 0 &&
+                strcasecmp($ACT, 'show') === 0) || strcasecmp($ACT, 'showtag') === 0 || $conf['youarehere'] === 0
         ) {
             return '';
         }
@@ -1430,8 +1424,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $html .= '<div class="mikio-bcdw">';
                 ob_start();
                 tpl_youarehere();
-                $html .= ob_get_contents();
-                ob_end_clean();
+                $html .= ob_get_clean();
                 $html .= '</div>';
             } else {
                 $sep = ' » ';
@@ -1682,7 +1675,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         if (
             in_array($ACT, ['show', 'showtag', 'revisions', 'index', 'preview']) === true ||
-            strcasecmp($ACT, 'admin') === 0 && count($MIKIO_ICONS) > 0
+            (strcasecmp($ACT, 'admin') === 0 && count($MIKIO_ICONS) > 0)
         ) {
             $content = $str;
             $preview = null;
@@ -2380,15 +2373,6 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
     }
 
     /**
-     * Finalize theme
-     *
-     * @return void
-     */
-    public function finalize()
-    {
-    }
-
-    /**
      * Show Messages
      *
      * @return void
@@ -2506,4 +2490,4 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
 }
 
 global $TEMPLATE;
-$TEMPLATE = Template::getInstance();
+$TEMPLATE = mikio::getInstance();
