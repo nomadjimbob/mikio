@@ -19,6 +19,7 @@ use dokuwiki\Menu\UserMenu;
 use ParensParser;
 use simple_html_dom;
 use DOMDocument;
+use DOMNode;
 
 if (defined('DOKU_INC') === false) {
     die();
@@ -1138,15 +1139,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $buttons = $dom->getElementsByTagName('button');
                 foreach($buttons as $button) {
                     if($button->getAttribute('type') === 'submit') {
-                        $svg = new DOMDocument();
-                        $svg->loadXML($this->mikioInlineIcon('search'));
-                        $svgList = $svg->getElementsByTagName('svg');
-                        if(count($svgList) > 0) {
-                            $svgItem = $svgList->item(0);
-                            $importedSvg = $dom->importNode($svgItem, true);
-                            $button->nodeValue = '';
-                            $button->appendChild($importedSvg);
-                        }
+                        $icon = $this->iconAsDomElement($dom, 'search');
+                        $button->nodeValue = '';
+                        $button->appendChild($icon);
                     }
                 }
             }
@@ -2490,6 +2485,23 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
         }
 
         return $content;
+    }
+
+
+    /**
+     * Get an icon as a DOM element
+     *
+     * @param DOMDocument $domDocument The DOMDocument to import the icon into
+     * @param string $type The icon type
+     * @param string $class The icon class
+     * @return DOMNode The icon as a DOM element
+     */
+    protected function iconAsDomElement(DOMDocument $domDocument, string $type, string $class = ''): DOMNode
+    {
+        $svgDoc = new DOMDocument();
+        $svgDoc->loadXML($this->mikioInlineIcon($type, $class));
+        $svgElement = $svgDoc->documentElement;
+        return $domDocument->importNode($svgElement, true);
     }
 }
 
