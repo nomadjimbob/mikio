@@ -2465,11 +2465,11 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
     /**
      * Call a method and parse the HTML output
      *
-     * @param   callable $method The method to call and capture output
-     * @param   callable $parser The parser method which is passed a DOMDocument to manipulate
+     * @param callable $method The method to call and capture output
+     * @param callable $parser The parser method which is passed a DOMDocument to manipulate
      * @return  string           The raw parsed HTML
      */
-    protected function parseHTML($method, $parser)
+    protected function parseHTML(callable $method, callable $parser): string
     {
         if(!is_callable($method) || !is_callable($parser)) {
             return '';
