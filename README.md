@@ -266,6 +266,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Added styling support for footnotes [#87](https://github.com/nomadjimbob/mikio/issues/87). Thanks aloade.
    -    Fixed missing configuration data.
    -    Added navbar support for versionswicher plugin [#79](https://github.com/nomadjimbob/mikio/issues/79). Requested by macin.
    -    Fixed input backgrounds not rendering colours correctly in some circumstances on the configuration page.

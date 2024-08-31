@@ -2809,6 +2809,26 @@ pre {
     }
 }
 
+.mikio {
+    div.insitu-footnote {
+        padding: @ini_footnote_popup_vertical_padding @ini_footnote_popup_horizontal_padding;
+        border: 1px solid @ini_footnote_popup_border_color;
+        border-radius: 0.25em;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        font-size: @ini_footnote_popup_font_size;
+        color: @ini_footnote_popup_text_color;
+        background-color: @ini_footnote_popup_background_color
+    }
+
+    .dokuwiki div.footnotes {
+        font-size: @ini_footnote_popup_font_size;
+
+        div.fn sup a.fn_bot {
+            font-weight: normal;
+        }
+    }
+}
+
 /* Plugin Patches */
 /* FastWiki Plugin Patch - .mikio .content_partial */
 .mikio .content_partial {
