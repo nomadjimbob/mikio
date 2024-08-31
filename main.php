@@ -18,8 +18,9 @@ global $TEMPLATE, $ACT, $conf, $USERINFO;
 header('X-UA-Compatible: IE=edge,chrome=1');
 
 $hasSidebar = $TEMPLATE->sidebarExists();
-$showSidebar = $hasSidebar && ($ACT == 'show');
+$showSidebar = $hasSidebar && ($ACT === 'show');
 
+ob_start();
 ?>
 <!doctype html>
 <html lang="<?php echo $conf['lang'] ?>">
@@ -44,7 +45,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
         (($hasSidebar === true) ? ' hasSidebar' : '') . '">';
     $TEMPLATE->includePage('topheader', true, true, 'mikio-page-topheader' .
         (($TEMPLATE->getConf('stickyTopHeader') === true) ? ' mikio-sticky' : ''));
-    $TEMPLATE->includeNavbar(true, $TEMPLATE->getConf('navbarShowSub', false) && $ACT == 'show');
+    $TEMPLATE->includeNavbar(true, $ACT === 'show' && $TEMPLATE->getConf('navbarShowSub', false));
     if ($ACT === 'show' || $ACT === 'admin') {
         $TEMPLATE->includePage('header', true, true, 'mikio-page-header' .
             (($TEMPLATE->getConf('stickyHeader') === true) ? ' mikio-sticky' : ''));
@@ -100,8 +101,8 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
 
         $showPageTools = $TEMPLATE->getConf('pageToolsFloating');
     if (
-        $ACT === 'show' && ($showPageTools === 'always' || $TEMPLATE->userCanEdit() === true &&
-        $showPageTools === 'page editors')
+        $ACT === 'show' && ($showPageTools === 'always' || ($TEMPLATE->userCanEdit() === true &&
+        $showPageTools === 'page editors'))
     ) {
         $TEMPLATE->includePageTools(true, true);
     }
@@ -115,7 +116,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
     echo '</main>';
     echo '<div class="mikio-page-fill">';
         echo '<div class="mikio-content" style="padding:0">';
-    if ($TEMPLATE->getConf('footerInPage') === true && $ACT === 'show') {
+    if ($ACT === 'show' && $TEMPLATE->getConf('footerInPage') === true) {
         $TEMPLATE->includeFooter();
     }
         echo '</div>';
@@ -124,7 +125,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
     }
     echo '</div>';
 
-    if ($TEMPLATE->getConf('footerInPage') === false && $ACT === 'show') {
+    if ($ACT === 'show' && $TEMPLATE->getConf('footerInPage') === false) {
         $TEMPLATE->includeFooter();
     }
     $TEMPLATE->includePage('bottomfooter', true, true, 'mikio-page-bottomfooter');
@@ -134,3 +135,7 @@ $showSidebar = $hasSidebar && ($ACT == 'show');
 <?php $TEMPLATE->includeFooterMeta(); ?>
 </body>
 </html>
+<?php
+$html = ob_get_clean();
+echo $html;
+?>

@@ -32,6 +32,11 @@ require_once('inc/parens-parser.php');
 class mikio
 {
     /**
+     * @var mikio|null Instance of the class.
+     */
+    private static $instance = null;
+
+    /**
      * @var string Template directory path from local FS.
      */
     public $tplDir  = '';
@@ -51,6 +56,11 @@ class mikio
      */
     private $includedPageNotifications = '';
 
+    /**
+     * @var array Array of formatted template configuration values.
+     */
+    static private $formattedConfigValues = [];
+
 
     /**
      * Class constructor
@@ -66,26 +76,39 @@ class mikio
     /**
      * Returns the instance of the class
      *
-     * @return  mikio        class instance
+     * @return  self        class instance
      */
-    public static function getInstance(): mikio
+    public static function getInstance(): self
     {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new mikio();
+        if (self::$instance === null) {
+            self::$instance = new self();
         }
 
-        return $instance;
+        return self::$instance;
     }
+
+    /**
+     * Prevent cloning of the instance
+     *
+     * @noinspection PhpUnusedPrivateMethodInspection
+     */
+    private function __clone() {}
+
+    /**
+     * Prevent unserialization of the instance
+     *
+     * @noinspection PhpUnusedPrivateMethodInspection
+     */
+    private function __wakeup() {}
 
 
     /**
      * Register the themes hooks into Dokuwiki
      *
      * @return void
+     * @noinspection PhpUnusedPrivateMethodInspection
      */
-    private function registerHooks()
+    private function registerHooks(): void
     {
         global $EVENT_HANDLER;
 
@@ -104,15 +127,14 @@ class mikio
      *
      * @param   Doku_Event $event DokuWiki Event.
      * @return  void
-     * @noinspection PhpUnused
      */
-    public function metaHeadersHandler(Doku_Event $event)
+    public function metaHeadersHandler(Doku_Event $event): void
     {
         global $MIKIO_ICONS;
         global $conf;
 
         global $MIKIO_TEMPLATE;
-        $MIKIO_TEMPLATE = '123';
+        $MIKIO_TEMPLATE = '123';    // TODO - is this set correctly?
 
         $this->includePage('theme', false);
 
@@ -172,8 +194,8 @@ class mikio
 
         $set = [];
         foreach ($stylesheets as $style) {
-            if (in_array($style, $set) === false) {
-                if (strcasecmp(substr($style, -5), '.less') === 0 && $this->getConf('useLESS') === true) {
+            if (in_array($style, $set, true) === false) {
+                if ($this->getConf('useLESS') === true && strcasecmp(substr($style, -5), '.less') === 0) {
                     $style = $this->baseDir . 'css.php?css=' . str_replace($this->baseDir, '', $style);
                 }
 
@@ -188,7 +210,7 @@ class mikio
 
         $set = [];
         foreach ($scripts as $script) {
-            if (in_array($script, $set) === false) {
+            if (in_array($script, $set, true) === false) {
                 $script_params = [
                     'type'  => 'text/javascript',
                     '_data' => '',
@@ -196,9 +218,9 @@ class mikio
                 ];
 
                 // equal to or greator than hogfather
-                if ($this->dwVersionNumber() >= 20200729 || $this->dwVersionNumber() == 0) {
+                if ($this->getDokuWikiVersion() >= 20200729 || $this->getDokuWikiVersion() === 0) {
                     // greator than hogfather - defer always on
-                    if ($this->dwVersionNumber() >= 20200729 || $this->dwVersionNumber() == 0) {
+                    if ($this->getDokuWikiVersion() >= 20200729 || $this->getDokuWikiVersion() === 0) {
                         $script_params += ['defer' => 'defer'];
                     } else {
                         // hogfather - defer always on unless $conf['defer_js'] is false
@@ -240,10 +262,6 @@ class mikio
         return $html;
     }
 
-
-    // phpcs:disable Squiz.Commenting.FunctionComment.TypeHintMissing
-
-
     /**
      * Retreive and parse theme configuration options
      *
@@ -253,6 +271,10 @@ class mikio
      */
     public function getConf(string $key, $default = false)
     {
+        if(array_key_exists($key, self::$formattedConfigValues) === true) {
+            return self::$formattedConfigValues[$key];
+        }
+
         $value = tpl_getConf($key, $default);
 
         $data = [
@@ -370,7 +392,7 @@ class mikio
 
         foreach ($data as $row) {
             // does not check case....
-            if (in_array($key, $row['keys']) === true) {
+            if (in_array($key, $row['keys'], true) === true) {
                 if (array_key_exists('type', $row) === true) {
                     switch ($row['type']) {
                         case 'bool':
@@ -382,7 +404,7 @@ class mikio
                     }//end switch
                 }//end if
 
-                if (in_array($value, $row['values']) === true) {
+                if (in_array($value, $row['values'], true) === true) {
                     return $value;
                 }
 
@@ -400,11 +422,9 @@ class mikio
             }//end if
         }//end foreach
 
+        self::$formattedConfigValues[$key] = $value;
         return $value;
     }
-
-
-    // phpcs:enable
 
 
     /**
@@ -463,7 +483,7 @@ class mikio
         }
 
         if (empty($html) === false && $parse === true) {
-            $html = $this->parseContent($html);
+            $html = $this->parseContent($html); // TODO - move to end of main.php
         }
 
         if (empty($classWrapper) === false && empty($html) === false) {
@@ -1471,7 +1491,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 $page = '';
 
-                if ($this->dwVersionNumber() >= 20200729) {
+                if ($this->getDokuWikiVersion() >= 20200729) {
                     $page = cleanID($page);
                 } else {
                     $exists = false;
@@ -2426,14 +2446,14 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
      *
      * @return  int        the dw version date converted to integer
      */
-    public function dwVersionNumber(): int
+    public function getDokuWikiVersion(): int
     {
         if (function_exists('getVersionData') === true) {
             $version_data = getVersionData();
             if (is_array($version_data) === true && array_key_exists('date', $version_data) === true) {
                 $version_items = explode(' ', $version_data['date']);
                 if (count($version_items) >= 1) {
-                    return intval(preg_replace('/[^0-9]+/', '', strtolower($version_items[0])));
+                    return (int)preg_replace('/\D+/', '', strtolower($version_items[0]));
                 }
             }
         }
@@ -2491,3 +2511,4 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
 
 global $TEMPLATE;
 $TEMPLATE = mikio::getInstance();
+// 2494
