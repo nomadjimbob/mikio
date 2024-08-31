@@ -18,6 +18,8 @@ use dokuwiki\Menu\SiteMenu;
 use dokuwiki\Menu\UserMenu;
 use ParensParser;
 use simple_html_dom;
+use DOMDocument;
+use DOMNode;
 
 if (defined('DOKU_INC') === false) {
     die();
@@ -27,8 +29,13 @@ require_once('icons/icons.php');
 require_once('inc/simple_html_dom.php');
 require_once('inc/parens-parser.php');
 
-class Template
+class mikio
 {
+    /**
+     * @var mikio|null Instance of the class.
+     */
+    private static $instance = null;
+
     /**
      * @var string Template directory path from local FS.
      */
@@ -49,6 +56,11 @@ class Template
      */
     private $includedPageNotifications = '';
 
+    /**
+     * @var array Array of formatted template configuration values.
+     */
+    static private $formattedConfigValues = [];
+
 
     /**
      * Class constructor
@@ -64,26 +76,39 @@ class Template
     /**
      * Returns the instance of the class
      *
-     * @return  Template        class instance
+     * @return  self        class instance
      */
-    public static function getInstance(): Template
+    public static function getInstance(): self
     {
-        static $instance = null;
-
-        if (empty($instance) === true) {
-            $instance = new Template();
+        if (self::$instance === null) {
+            self::$instance = new self();
         }
 
-        return $instance;
+        return self::$instance;
     }
+
+    /**
+     * Prevent cloning of the instance
+     *
+     * @noinspection PhpUnusedPrivateMethodInspection
+     */
+    private function __clone() {}
+
+    /**
+     * Prevent unserialization of the instance
+     *
+     * @noinspection PhpUnusedPrivateMethodInspection
+     */
+    public function __wakeup() {}
 
 
     /**
      * Register the themes hooks into Dokuwiki
      *
      * @return void
+     * @noinspection PhpUnusedPrivateMethodInspection
      */
-    private function registerHooks()
+    private function registerHooks(): void
     {
         global $EVENT_HANDLER;
 
@@ -102,15 +127,14 @@ class Template
      *
      * @param   Doku_Event $event DokuWiki Event.
      * @return  void
-     * @noinspection PhpUnused
      */
-    public function metaHeadersHandler(Doku_Event $event)
+    public function metaHeadersHandler(Doku_Event $event): void
     {
         global $MIKIO_ICONS;
         global $conf;
 
         global $MIKIO_TEMPLATE;
-        $MIKIO_TEMPLATE = '123';
+        $MIKIO_TEMPLATE = '123';    // TODO - is this set correctly?
 
         $this->includePage('theme', false);
 
@@ -170,8 +194,8 @@ class Template
 
         $set = [];
         foreach ($stylesheets as $style) {
-            if (in_array($style, $set) === false) {
-                if (strcasecmp(substr($style, -5), '.less') === 0 && $this->getConf('useLESS') === true) {
+            if (in_array($style, $set, true) === false) {
+                if ($this->getConf('useLESS') === true && strcasecmp(substr($style, -5), '.less') === 0) {
                     $style = $this->baseDir . 'css.php?css=' . str_replace($this->baseDir, '', $style);
                 }
 
@@ -186,7 +210,7 @@ class Template
 
         $set = [];
         foreach ($scripts as $script) {
-            if (in_array($script, $set) === false) {
+            if (in_array($script, $set, true) === false) {
                 $script_params = [
                     'type'  => 'text/javascript',
                     '_data' => '',
@@ -194,9 +218,9 @@ class Template
                 ];
 
                 // equal to or greator than hogfather
-                if ($this->dwVersionNumber() >= 20200729 || $this->dwVersionNumber() == 0) {
+                if ($this->getDokuWikiVersion() >= 20200729 || $this->getDokuWikiVersion() === 0) {
                     // greator than hogfather - defer always on
-                    if ($this->dwVersionNumber() >= 20200729 || $this->dwVersionNumber() == 0) {
+                    if ($this->getDokuWikiVersion() >= 20200729 || $this->getDokuWikiVersion() === 0) {
                         $script_params += ['defer' => 'defer'];
                     } else {
                         // hogfather - defer always on unless $conf['defer_js'] is false
@@ -238,10 +262,6 @@ class Template
         return $html;
     }
 
-
-    // phpcs:disable Squiz.Commenting.FunctionComment.TypeHintMissing
-
-
     /**
      * Retreive and parse theme configuration options
      *
@@ -251,6 +271,10 @@ class Template
      */
     public function getConf(string $key, $default = false)
     {
+        if(array_key_exists($key, self::$formattedConfigValues) === true) {
+            return self::$formattedConfigValues[$key];
+        }
+
         $value = tpl_getConf($key, $default);
 
         $data = [
@@ -368,7 +392,7 @@ class Template
 
         foreach ($data as $row) {
             // does not check case....
-            if (in_array($key, $row['keys']) === true) {
+            if (in_array($key, $row['keys'], true) === true) {
                 if (array_key_exists('type', $row) === true) {
                     switch ($row['type']) {
                         case 'bool':
@@ -380,7 +404,7 @@ class Template
                     }//end switch
                 }//end if
 
-                if (in_array($value, $row['values']) === true) {
+                if (in_array($value, $row['values'], true) === true) {
                     return $value;
                 }
 
@@ -398,11 +422,9 @@ class Template
             }//end if
         }//end foreach
 
+        self::$formattedConfigValues[$key] = $value;
         return $value;
     }
-
-
-    // phpcs:enable
 
 
     /**
@@ -415,8 +437,7 @@ class Template
     {
         ob_start();
         tpl_includeFile($page . '.html');
-        $html = ob_get_contents();
-        ob_end_clean();
+        $html = ob_get_clean();
 
         if (empty($html) === false) {
             return true;
@@ -450,8 +471,7 @@ class Template
     {
         ob_start();
         tpl_includeFile($page . '.html');
-        $html = ob_get_contents();
-        ob_end_clean();
+        $html = ob_get_clean();
 
         if (empty($html) === true) {
             $useACL = $this->getConf('includePageUseACL');
@@ -459,12 +479,11 @@ class Template
 
             ob_start();
             $html = tpl_include_page($page, false, $propagate, $useACL);
-            $this->includedPageNotifications .= ob_get_contents();
-            ob_end_clean();
+            $this->includedPageNotifications .= ob_get_clean();
         }
 
         if (empty($html) === false && $parse === true) {
-            $html = $this->parseContent($html);
+            $html = $this->parseContent($html); // TODO - move to end of main.php
         }
 
         if (empty($classWrapper) === false && empty($html) === false) {
@@ -492,8 +511,7 @@ class Template
             $html .= '<div class="mikio-user-info">';
             ob_start();
             tpl_userinfo();
-            $html .= ob_get_contents();
-            ob_end_clean();
+            $html .= ob_get_clean();
             $html .= '</div>';
         }
 
@@ -608,41 +626,47 @@ class Template
 
         switch ($this->getConf('navbarDWMenuCombine')) {
             case $value_dropdown:
-                $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button" 
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
-                ($showIcons === true ? $this->mikioInlineIcon('file') : '') .
-                ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
-                '</span>') . '</a>';
+                if (count($pageToolsMenu) > 0 ) {
+                    $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
+                    $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                        ($showIcons === true ? $this->mikioInlineIcon('file') : '') .
+                        ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
+                            '</span>') . '</a>';
 
-                $html .= '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
+                    $html .= '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
 
-                $html .= '</div>';
-                $html .= '</li>';
+                    $html .= '</div>';
+                    $html .= '</li>';
+                }
 
-                $html .= '<li id="dokuwiki__sitetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button" 
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
-                    ($showIcons === true ? $this->mikioInlineIcon('gear') : '') .
-                    ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
-                    $lang['site_tools'] . '</span>') . '</a>';
+                if (count($siteToolsMenu) > 0 ) {
+                    $html .= '<li id="dokuwiki__sitetools" class="mikio-nav-dropdown">';
+                    $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                        ($showIcons === true ? $this->mikioInlineIcon('gear') : '') .
+                        ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
+                        $lang['site_tools'] . '</span>') . '</a>';
 
-                $html .= '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
+                    $html .= '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
 
-                $html .= '</div>';
-                $html .= '</li>';
+                    $html .= '</div>';
+                    $html .= '</li>';
+                }
 
-                $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button" 
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
-                    ($showIcons === true ? $this->mikioInlineIcon('user') : '') .
-                    ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
-                    $lang['user_tools'] . '</span>') . '</a>';
+                if (count($userToolsMenu) > 0 ) {
+                    $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
+                    $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                        ($showIcons === true ? $this->mikioInlineIcon('user') : '') .
+                        ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
+                            $lang['user_tools'] . '</span>') . '</a>';
 
-                $html .= '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
+                    $html .= '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
 
-                $html .= '</div>';
-                $html .= '</li>';
+                    $html .= '</div>';
+                    $html .= '</li>';
+                }
 
                 break;
 
@@ -654,21 +678,27 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     tpl_getLang('tools-menu') . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
-                $html .= '<h6 class="mikio-dropdown-header">' . $lang['page_tools'] . '</h6>';
-                foreach ($pageToolsMenu as $item) {
-                    $html .= $item;
+                if (count($pageToolsMenu) > 0) {
+                    $html .= '<h6 class="mikio-dropdown-header">' . $lang['page_tools'] . '</h6>';
+                    foreach ($pageToolsMenu as $item) {
+                        $html .= $item;
+                    }
                 }
 
-                $html .= '<div class="mikio-dropdown-divider"></div>';
-                $html .= '<h6 class="mikio-dropdown-header">' . $lang['site_tools'] . '</h6>';
-                foreach ($siteToolsMenu as $item) {
-                    $html .= $item;
+                if (count($siteToolsMenu) > 0) {
+                    $html .= '<div class="mikio-dropdown-divider"></div>';
+                    $html .= '<h6 class="mikio-dropdown-header">' . $lang['site_tools'] . '</h6>';
+                    foreach ($siteToolsMenu as $item) {
+                        $html .= $item;
+                    }
                 }
 
-                $html .= '<div class="mikio-dropdown-divider"></div>';
-                $html .= '<h6 class="mikio-dropdown-header">' . $lang['user_tools'] . '</h6>';
-                foreach ($userToolsMenu as $item) {
-                    $html .= $item;
+                if (count($userToolsMenu) > 0) {
+                    $html .= '<div class="mikio-dropdown-divider"></div>';
+                    $html .= '<h6 class="mikio-dropdown-header">' . $lang['user_tools'] . '</h6>';
+                    foreach ($userToolsMenu as $item) {
+                        $html .= $item;
+                    }
                 }
 
                 $html .= '</div>';
@@ -715,7 +745,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
 
             $html .= '<li id="mikio__versionswitch" class="mikio-nav-dropdown">';
-            $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button" 
+            $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button"
 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $currentLinkText . '</a>';
             $html .= '<div class="mikio-dropdown closed">';
 
@@ -731,7 +761,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . $currentLi
         $translation = plugin_load('helper', 'translation');
         if ($translation !== null && method_exists($translation, 'showTranslations')) {
             $html .= '<li id="mikio__translate" class="mikio-nav-dropdown">';
-            $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button" 
+            $html .= '<a id="mikio_dropdown_translate" class="nav-link dropdown-toggle" href="#" role="button"
 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $this->mikioInlineIcon('language') .
                  '</a>';
@@ -1112,26 +1142,38 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
      */
     public function includeSearch(bool $print = true): string
     {
-        global $lang, $ID, $ACT, $QUERY;
+        $html = $this->parseHTML('tpl_searchform', function($dom) {
+            $forms = $dom->getElementsByTagName('form');
+            if (0 !== count($forms)) {
+                foreach ($forms as $form) {
+                    $currentClasses = $form->getAttribute('class');
+                    $newClasses = trim($currentClasses . ' mikio-search');
+                    $form->setAttribute('class', $newClasses);
+                }
+            }
 
-        $html = '<form class="mikio-search search" action="' . wl() .
-            '" accept-charset="utf-8" method="get" role="search">';
-        $html .= '<input type="hidden" name="do" value="search">';
-        $html .= '<input type="hidden" name="id" value="' . $ID . '">';
-        $html .= '<input name="q" ';
-        if ($this->getConf('searchUseTypeahead') === true) {
-            $html .= 'class="search_typeahead" ';
-        }
-        $html .= 'autocomplete="off" type="search" placeholder="' . $lang['btn_search'] . '" value="' .
-            ((strcasecmp($ACT, 'search') === 0) ? htmlspecialchars($QUERY) : '') . '" accesskey="f" title="[F]" />';
-        $html .= '<button type="submit" title="' .  $lang['btn_search'] . '">';
-        if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
-            $html .= $this->mikioInlineIcon('search');
-        } else {
-            $html .= $lang['btn_search'];
-        }
-        $html .= '</button>';
-        $html .= '</form>';
+            if ($this->getConf('searchUseTypeahead') === true) {
+                $inputs = $dom->getElementsByTagName('input');
+                foreach ($inputs as $input) {
+                    if ($input->getAttribute('name') === 'q') {
+                        $inputClasses = $input->getAttribute('class');
+                        $inputNewClasses = trim($inputClasses . ' search_typeahead');
+                        $input->setAttribute('class', $inputNewClasses);
+                    }
+                }
+            }
+
+            if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
+                $buttons = $dom->getElementsByTagName('button');
+                foreach($buttons as $button) {
+                    if($button->getAttribute('type') === 'submit') {
+                        $icon = $this->iconAsDomElement($dom, 'search');
+                        $button->nodeValue = '';
+                        $button->appendChild($icon);
+                    }
+                }
+            }
+        });
 
         if ($print === true) {
             echo $html;
@@ -1150,8 +1192,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         ob_start();
         tpl_content(false);
-        $html = ob_get_contents();
-        ob_end_clean();
+        $html = ob_get_clean();
 
         $html = $this->includeIcons($html);
         $html = $this->parseContent($html);
@@ -1182,7 +1223,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             return false;
         }
 
-        if ($INFO['exists']) {
+        if (isset($INFO['exists'])) {
             $file = $INFO['filepath'];
             if (!$conf['fullpath']) {
                 if ($INFO['rev']) {
@@ -1197,7 +1238,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $string = $this->getConf('footerPageInfoText', '');
 
             // replace lang items
-            $string = preg_replace_callback('/%([^%]+)%/', function ($matches) use ($lang) {
+            $string = preg_replace_callback('/%([^%]+)%/', static function ($matches) use ($lang) {
                 return $lang[$matches[1]] ?? '';
             }, $string);
 
@@ -1244,17 +1285,17 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
             $string = $parserIterate($result, $parserIterate);
 
-            $string = preg_replace_callback('/{([^}]+)}/', function ($matches) use ($options) {
+            $string = preg_replace_callback('/{([^}]+)}/', static function ($matches) use ($options) {
                 $key = strtolower($matches[1]);
                 return $options[$key] ?? '';
             }, $string);
 
             if ($ret) {
                 return $string;
-            } else {
-                echo $string;
-                return true;
             }
+
+            echo $string;
+            return true;
         }//end if
 
         return false;
@@ -1285,7 +1326,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
             strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
-            $this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0)
+                ($this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0))
         ) {
             $html .= $this->includePageTools(false);
         }
@@ -1320,8 +1361,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         global $conf, $ID, $lang, $ACT;
 
         if (
-            $this->getConf('breadcrumbHideHome') === true && strcasecmp($ID, 'start') === 0 &&
-            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0 || $conf['breadcrumbs'] === 0
+            ($this->getConf('breadcrumbHideHome') === true && strcasecmp($ID, 'start') === 0 &&
+                strcasecmp($ACT, 'show') === 0) || strcasecmp($ACT, 'showtag') === 0 || $conf['breadcrumbs'] === 0
         ) {
             return '';
         }
@@ -1332,8 +1373,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             if ($this->getConf('breadcrumbPrefix') === false && $this->getConf('breadcrumbSep') === false) {
                 ob_start();
                 tpl_breadcrumbs();
-                $html .= ob_get_contents();
-                ob_end_clean();
+                $html .= ob_get_clean();
             } else {
                 $sep = '•';
                 $prefix = $lang['breadcrumb'];
@@ -1403,8 +1443,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         global $conf, $ID, $lang, $ACT;
 
         if (
-            $this->getConf('youarehereHideHome') === true && strcasecmp($ID, 'start') === 0 &&
-            strcasecmp($ACT, 'show') === 0 || strcasecmp($ACT, 'showtag') === 0 || $conf['youarehere'] === 0
+            ($this->getConf('youarehereHideHome') === true && strcasecmp($ID, 'start') === 0 &&
+                strcasecmp($ACT, 'show') === 0) || strcasecmp($ACT, 'showtag') === 0 || $conf['youarehere'] === 0
         ) {
             return '';
         }
@@ -1416,8 +1456,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $html .= '<div class="mikio-bcdw">';
                 ob_start();
                 tpl_youarehere();
-                $html .= ob_get_contents();
-                ob_end_clean();
+                $html .= ob_get_clean();
                 $html .= '</div>';
             } else {
                 $sep = ' » ';
@@ -1464,7 +1503,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 $page = '';
 
-                if ($this->dwVersionNumber() >= 20200729) {
+                if ($this->getDokuWikiVersion() >= 20200729) {
                     $page = cleanID($page);
                 } else {
                     $exists = false;
@@ -1668,7 +1707,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         if (
             in_array($ACT, ['show', 'showtag', 'revisions', 'index', 'preview']) === true ||
-            strcasecmp($ACT, 'admin') === 0 && count($MIKIO_ICONS) > 0
+            (strcasecmp($ACT, 'admin') === 0 && count($MIKIO_ICONS) > 0)
         ) {
             $content = $str;
             $preview = null;
@@ -2270,108 +2309,99 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         switch ($type) {
             case 'wrench':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792
 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,53.152542,1217.0847)"><path d="m 384,64 q 0,26 -19,45 -19,
 19 -45,19 -26,0 -45,-19 -19,-19 -19,-45 0,-26 19,-45 19,-19 45,-19 26,0 45,19 19,19 19,45 z m 644,420 -682,-682 q -37,
 -37 -90,-37 -52,0 -91,37 L 59,-90 Q 21,-54 21,0 21,53 59,91 L 740,772 Q 779,674 854.5,598.5 930,523 1028,484 z m 634,
-435 q 0,-39 -23,-106 Q 1592,679 1474.5,595.5 1357,512 1216,512 1031,512 899.5,643.5 768,775 768,960 q 0,185 131.5,316.5 
+435 q 0,-39 -23,-106 Q 1592,679 1474.5,595.5 1357,512 1216,512 1031,512 899.5,643.5 768,775 768,960 q 0,185 131.5,316.5
 131.5,131.5 316.5,131.5 58,0 121.5,-16.5 63.5,-16.5 107.5,-46.5 16,-11 16,-28 0,-17 -16,-28 L 1152,1120 V 896 l 193,
 -107 q 5,3 79,48.5 74,45.5 135.5,81 61.5,35.5 70.5,35.5 15,0 23.5,-10 8.5,-10 8.5,-25 z"/></g></svg>';
             case 'file':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
 viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,235.38983,1277.8305)" id="g2991">
-<path d="M 128,0 H 1152 V 768 H 736 q -40,0 -68,28 -28,28 -28,68 v 416 H 128 V 0 z m 640,896 h 299 L 768,1195 V 896 z M 
-1280,768 V -32 q 0,-40 -28,-68 -28,-28 -68,-28 H 96 q -40,0 -68,28 -28,28 -28,68 v 1344 q 0,40 28,68 28,28 68,28 h 544 
+<path d="M 128,0 H 1152 V 768 H 736 q -40,0 -68,28 -28,28 -28,68 v 416 H 128 V 0 z m 640,896 h 299 L 768,1195 V 896 z M
+1280,768 V -32 q 0,-40 -28,-68 -28,-28 -68,-28 H 96 q -40,0 -68,28 -28,28 -28,68 v 1344 q 0,40 28,68 28,28 68,28 h 544
 q 40,0 88,-20 48,-20 76,-48 l 408,-408 q 28,-28 48,-76 20,-48 20,-88 z" id="path2993" /></g></svg>';
             case 'gear':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
 viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,121.49153,1285.4237)" id="g3027">
-<path d="m 1024,640 q 0,106 -75,181 -75,75 -181,75 -106,0 -181,-75 -75,-75 -75,-181 0,-106 75,-181 75,-75 181,-75 106,0 
-181,75 75,75 75,181 z m 512,109 V 527 q 0,-12 -8,-23 -8,-11 -20,-13 l -185,-28 q -19,-54 -39,-91 35,-50 107,-138 10,-12 
-10,-25 0,-13 -9,-23 -27,-37 -99,-108 -72,-71 -94,-71 -12,0 -26,9 l -138,108 q -44,-23 -91,-38 -16,-136 -29,-186 -7,-28 
--36,-28 H 657 q -14,0 -24.5,8.5 Q 622,-111 621,-98 L 593,86 q -49,16 -90,37 L 362,16 Q 352,7 337,7 323,7 312,18 186,132 
-147,186 q -7,10 -7,23 0,12 8,23 15,21 51,66.5 36,45.5 54,70.5 -27,50 -41,99 L 29,495 Q 16,497 8,507.5 0,518 0,531 v 222 
+<path d="m 1024,640 q 0,106 -75,181 -75,75 -181,75 -106,0 -181,-75 -75,-75 -75,-181 0,-106 75,-181 75,-75 181,-75 106,0
+181,75 75,75 75,181 z m 512,109 V 527 q 0,-12 -8,-23 -8,-11 -20,-13 l -185,-28 q -19,-54 -39,-91 35,-50 107,-138 10,-12
+10,-25 0,-13 -9,-23 -27,-37 -99,-108 -72,-71 -94,-71 -12,0 -26,9 l -138,108 q -44,-23 -91,-38 -16,-136 -29,-186 -7,-28
+-36,-28 H 657 q -14,0 -24.5,8.5 Q 622,-111 621,-98 L 593,86 q -49,16 -90,37 L 362,16 Q 352,7 337,7 323,7 312,18 186,132
+147,186 q -7,10 -7,23 0,12 8,23 15,21 51,66.5 36,45.5 54,70.5 -27,50 -41,99 L 29,495 Q 16,497 8,507.5 0,518 0,531 v 222
 q 0,12 8,23 8,11 19,13 l 186,28 q 14,46 39,92 -40,57 -107,138 -10,12 -10,24 0,10 9,23 26,36 98.5,107.5 72.5,71.5 94.5,
-71.5 13,0 26,-10 l 138,-107 q 44,23 91,38 16,136 29,186 7,28 36,28 h 222 q 14,0 24.5,-8.5 Q 914,1391 915,1378 l 28,-184 
-q 49,-16 90,-37 l 142,107 q 9,9 24,9 13,0 25,-10 129,-119 165,-170 7,-8 7,-22 0,-12 -8,-23 -15,-21 -51,-66.5 -36,-45.5 
+71.5 13,0 26,-10 l 138,-107 q 44,23 91,38 16,136 29,186 7,28 36,28 h 222 q 14,0 24.5,-8.5 Q 914,1391 915,1378 l 28,-184
+q 49,-16 90,-37 l 142,107 q 9,9 24,9 13,0 25,-10 129,-119 165,-170 7,-8 7,-22 0,-12 -8,-23 -15,-21 -51,-66.5 -36,-45.5
 -54,-70.5 26,-50 41,-98 l 183,-28 q 13,-2 21,-12.5 8,-10.5 8,-23.5 z" id="path3029" />
 </g></svg>';
             case 'user':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
-viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,197.42373,1300.6102)"><path d="M 
-1408,131 Q 1408,11 1335,-58.5 1262,-128 1141,-128 H 267 Q 146,-128 73,-58.5 0,11 0,131 0,184 3.5,234.5 7,285 17.5,343.5 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
+viewBox="0 -256 1792 1792" style="fill:currentColor"><g transform="matrix(1,0,0,-1,197.42373,1300.6102)"><path d="M
+1408,131 Q 1408,11 1335,-58.5 1262,-128 1141,-128 H 267 Q 146,-128 73,-58.5 0,11 0,131 0,184 3.5,234.5 7,285 17.5,343.5
 28,402 44,452 q 16,50 43,97.5 27,47.5 62,81 35,33.5 85.5,53.5 50.5,20 111.5,20 9,0 42,-21.5 33,-21.5 74.5,-48 41.5,
--26.5 108,-48 Q 637,565 704,565 q 67,0 133.5,21.5 66.5,21.5 108,48 41.5,26.5 74.5,48 33,21.5 42,21.5 61,0 111.5,-20 
-50.5,-20 85.5,-53.5 35,-33.5 62,-81 27,-47.5 43,-97.5 16,-50 26.5,-108.5 10.5,-58.5 14,-109 Q 1408,184 1408,131 z m 
+-26.5 108,-48 Q 637,565 704,565 q 67,0 133.5,21.5 66.5,21.5 108,48 41.5,26.5 74.5,48 33,21.5 42,21.5 61,0 111.5,-20
+50.5,-20 85.5,-53.5 35,-33.5 62,-81 27,-47.5 43,-97.5 16,-50 26.5,-108.5 10.5,-58.5 14,-109 Q 1408,184 1408,131 z m
 -320,893 Q 1088,865 975.5,752.5 863,640 704,640 545,640 432.5,752.5 320,865 320,1024 320,1183 432.5,1295.5 545,1408 704,
 1408 863,1408 975.5,1295.5 1088,1183 1088,1024 z"/></g></svg>';
             case 'search':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" 
-aria-hidden="true" style="fill:currentColor"><path d="M27 24.57l-5.647-5.648a8.895 8.895 0 0 0 1.522-4.984C22.875 9.01 
-18.867 5 13.938 5 9.01 5 5 9.01 5 13.938c0 4.929 4.01 8.938 8.938 8.938a8.887 8.887 0 0 0 4.984-1.522L24.568 27 27 
-24.57zm-13.062-4.445a6.194 6.194 0 0 1-6.188-6.188 6.195 6.195 0 0 1 6.188-6.188 6.195 6.195 0 0 1 6.188 6.188 6.195 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+aria-hidden="true" style="fill:currentColor"><path d="M27 24.57l-5.647-5.648a8.895 8.895 0 0 0 1.522-4.984C22.875 9.01
+18.867 5 13.938 5 9.01 5 5 9.01 5 13.938c0 4.929 4.01 8.938 8.938 8.938a8.887 8.887 0 0 0 4.984-1.522L24.568 27 27
+24.57zm-13.062-4.445a6.194 6.194 0 0 1-6.188-6.188 6.195 6.195 0 0 1 6.188-6.188 6.195 6.195 0 0 1 6.188 6.188 6.195
 6.195 0 0 1-6.188 6.188z"/></svg>';
             case 'home':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
-viewBox="0 -256 1792 1792" aria-hidden="true" style="fill:currentColor"><g 
-transform="matrix(1,0,0,-1,68.338983,1285.4237)" id="g3015"><path d="M 1408,544 V 64 Q 1408,38 1389,19 1370,0 1344,0 H 
-960 V 384 H 704 V 0 H 320 q -26,0 -45,19 -19,19 -19,45 v 480 q 0,1 0.5,3 0.5,2 0.5,3 l 575,474 575,-474 q 1,-2 1,-6 z 
-m 223,69 -62,-74 q -8,-9 -21,-11 h -3 q -13,0 -21,7 L 832,1112 140,535 q -12,-8 -24,-7 -13,2 -21,11 l -62,74 q -8,10 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
+viewBox="0 -256 1792 1792" aria-hidden="true" style="fill:currentColor"><g
+transform="matrix(1,0,0,-1,68.338983,1285.4237)" id="g3015"><path d="M 1408,544 V 64 Q 1408,38 1389,19 1370,0 1344,0 H
+960 V 384 H 704 V 0 H 320 q -26,0 -45,19 -19,19 -19,45 v 480 q 0,1 0.5,3 0.5,2 0.5,3 l 575,474 575,-474 q 1,-2 1,-6 z
+m 223,69 -62,-74 q -8,-9 -21,-11 h -3 q -13,0 -21,7 L 832,1112 140,535 q -12,-8 -24,-7 -13,2 -21,11 l -62,74 q -8,10
 -7,23.5 1,13.5 11,21.5 l 719,599 q 32,26 76,26 44,0 76,-26 l 244,-204 v 195 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,
 -9 9,-23 V 840 l 219,-182 q 10,-8 11,-21.5 1,-13.5 -7,-23.5 z" id="path3017" /></g></svg>';
             case 'sun':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
-style="fill:currentColor" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 
-0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 
-0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 
-1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
+style="fill:currentColor" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0
+0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11
+0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1
+1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5
 0 0 1-.707.707z" /></svg>';
             case 'moon':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
-style="fill:currentColor" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 
-4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 
-1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 
-1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
+style="fill:currentColor" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0
+4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0
+1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0
+1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61
 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" /></svg>';
             case 'sunmoon':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" 
-style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" 
-viewBox="0 0 32 32"><line x1="16" y1="3" x2="16" y2="29"/><path d="M16,23c-3.87,0-7-3.13-7-7s3.13-7,7-7"/><line 
-x1="6.81" y1="6.81" x2="8.93" y2="8.93"/><line x1="3" y1="16" x2="6" y2="16"/><line x1="6.81" y1="25.19" x2="8.93" 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg"
+style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+viewBox="0 0 32 32"><line x1="16" y1="3" x2="16" y2="29"/><path d="M16,23c-3.87,0-7-3.13-7-7s3.13-7,7-7"/><line
+x1="6.81" y1="6.81" x2="8.93" y2="8.93"/><line x1="3" y1="16" x2="6" y2="16"/><line x1="6.81" y1="25.19" x2="8.93"
 y2="23.07"/><path d="M16,12.55C17.2,10.43,19.48,9,22.09,9c0.16,0,0.31,0.01,0.47,0.02c-1.67,0.88-2.8,2.63-2.8,4.64c0,2.9,
 2.35,5.25,5.25,5.25c1.6,0,3.03-0.72,3.99-1.85C28.48,20.43,25.59,23,22.09,23c-2.61,0-4.89-1.43-6.09-3.55"/></svg>';
             case 'hamburger':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" 
-style="fill:currentColor"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 
-76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 
-16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+style="fill:currentColor"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0
+76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16
+16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16
 16v40c0 8.837 7.163 16 16 16z"/></svg>';
             case 'down-arrow':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" 
-aria-hidden="true" style="fill:currentColor"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+aria-hidden="true" style="fill:currentColor"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9
 1.917-1.916z"/></svg>';
             case 'language':
-                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" width="16" 
-height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 
-8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1 
-2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 
-0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 
-1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 
-1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 
+                return '<svg class="mikio-iicon' . $class . '" xmlns="http://www.w3.org/2000/svg" width="16"
+height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
+8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1
+2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0
+0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768
+1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93
+1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651
 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/>
 </svg>';
         }//end switch
 
         return '';
-    }
-
-    /**
-     * Finalize theme
-     *
-     * @return void
-     */
-    public function finalize()
-    {
     }
 
     /**
@@ -2428,21 +2458,69 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
      *
      * @return  int        the dw version date converted to integer
      */
-    public function dwVersionNumber(): int
+    public function getDokuWikiVersion(): int
     {
         if (function_exists('getVersionData') === true) {
             $version_data = getVersionData();
             if (is_array($version_data) === true && array_key_exists('date', $version_data) === true) {
                 $version_items = explode(' ', $version_data['date']);
                 if (count($version_items) >= 1) {
-                    return intval(preg_replace('/[^0-9]+/', '', strtolower($version_items[0])));
+                    return (int)preg_replace('/\D+/', '', strtolower($version_items[0]));
                 }
             }
         }
 
         return 0;
     }
+
+    /**
+     * Call a method and parse the HTML output
+     *
+     * @param callable $method The method to call and capture output
+     * @param callable $parser The parser method which is passed a DOMDocument to manipulate
+     * @return  string           The raw parsed HTML
+     */
+    protected function parseHTML(callable $method, callable $parser): string
+    {
+        if(!is_callable($method) || !is_callable($parser)) {
+            return '';
+        }
+
+        ob_start();
+        $method();
+        $content = ob_get_clean();
+        if($content !== '') {
+            $domDocument = new DOMDocument();
+            $domContent = $domDocument->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES'));
+            if (false === $domContent) {
+                return $content;
+            }
+
+            $parser($domDocument);
+            return $domDocument->saveHTML();
+        }
+
+        return $content;
+    }
+
+
+    /**
+     * Get an icon as a DOM element
+     *
+     * @param DOMDocument $domDocument The DOMDocument to import the icon into
+     * @param string $type The icon type
+     * @param string $class The icon class
+     * @return DOMNode The icon as a DOM element
+     */
+    protected function iconAsDomElement(DOMDocument $domDocument, string $type, string $class = ''): DOMNode
+    {
+        $svgDoc = new DOMDocument();
+        $svgDoc->loadXML($this->mikioInlineIcon($type, $class));
+        $svgElement = $svgDoc->documentElement;
+        return $domDocument->importNode($svgElement, true);
+    }
 }
 
 global $TEMPLATE;
-$TEMPLATE = Template::getInstance();
+$TEMPLATE = mikio::getInstance();
+// 2494

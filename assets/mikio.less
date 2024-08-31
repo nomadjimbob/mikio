@@ -598,6 +598,25 @@ body {
         }
     }
 
+    .mikio-nav-item {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+
+        #dw__search {
+            flex: 1;
+            justify-content: flex-end;
+
+            label, div {
+                white-space: nowrap;
+            }
+
+            .no {
+                flex: 0 1 @ini_navbar_search_max_width;
+            }
+        }
+    }
+
     .mikio-search {
         margin: 0 .5rem;
     }
@@ -1207,9 +1226,14 @@ body {
 .mikio .mikio-footer .mikio-search,
 .mikio .mikio-search {
     display: flex;
+    gap: 0.5rem;
+
+    div {
+        display: flex;
+    }
 
     input {
-        width: 1%;
+        width: 100%;
         flex: 1 1 auto;
         border-radius: .25rem 0 0 .25rem;
     }
@@ -1549,12 +1573,14 @@ body {
 }
 
 .typeahead.mikio-dropdown {
+    flex-direction: column;
+
     a.mikio-dropdown-item {
         display: inline;
     }
 
     .mikio-dropdown-header {
-        margin-bottom: 0em;
+        margin-bottom: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         // color: #999999;
@@ -2251,27 +2277,9 @@ pre {
         }
     }
 
-    // .namespaces, #media__tree {
-    //     h2 {
-    //         .mikio-tab-active();
-    //         font-size: 1rem;
-    //         display: inline-block;
-    //         border-radius: .5rem .5rem 0 0;
-    //         border-width: 1px;
-    //         border-style: solid;
-    //         line-height: 1.4rem;
-    //         position: relative;
-    //         z-index: 2;
-    //     }
-
     .panelHeader {
         .mikio-tab-panel();
     }
-
-
-
-    //     }
-    // }
 
     .filelist {
         width: 50%;
@@ -2308,6 +2316,10 @@ pre {
 
         ul {
             margin: 1rem 0 -1px 0;
+
+            &.tabs {
+                margin-top: 0;
+            }
 
             &.thumbs {
                 margin: 0;
@@ -2442,6 +2454,10 @@ pre {
     }
 
     .file {
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+
         .panelHeader {
             .mikio-tab-panel();
 
@@ -2454,6 +2470,14 @@ pre {
         ul {
             &.tabs {
                 .mikio-tabs();
+                margin-top: 0;
+            }
+
+            &.actions {
+                li {
+                    margin-left: 0.25rem;
+                    margin-right: 0.25rem;
+                }
             }
         }
 
@@ -2809,6 +2833,26 @@ pre {
     }
 }
 
+.mikio {
+    div.insitu-footnote {
+        padding: @ini_footnote_popup_vertical_padding @ini_footnote_popup_horizontal_padding;
+        border: 1px solid @ini_footnote_popup_border_color;
+        border-radius: 0.25em;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        font-size: @ini_footnote_popup_font_size;
+        color: @ini_footnote_popup_text_color;
+        background-color: @ini_footnote_popup_background_color
+    }
+
+    .dokuwiki div.footnotes {
+        font-size: @ini_footnote_popup_font_size;
+
+        div.fn sup a.fn_bot {
+            font-weight: normal;
+        }
+    }
+}
+
 /* Plugin Patches */
 /* FastWiki Plugin Patch - .mikio .content_partial */
 .mikio .content_partial {
@@ -3097,12 +3141,10 @@ pre {
         #dw__pagetools,
         .mikio-search {
             display: none !important;
-            ;
         }
 
         .mikio-navbar {
             box-shadow: none !important;
-            ;
         }
 
         .mikio-hero {

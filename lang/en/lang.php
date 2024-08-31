@@ -80,11 +80,11 @@ $lang['__line_height__']    = 'The base font line height';
 $lang['__site_width__']     = 'Width of the body content';
 
 $lang['__font_size__']              = 'The base font size';
-$lang['__font_family__']            = 'The base font family (fonts containing spaces must be in quotes. Multiple fonts 
+$lang['__font_family__']            = 'The base font family (fonts containing spaces must be in quotes. Multiple fonts
 can be seperated with commas)';
 $lang['__admin_background_color__'] = 'Background color of admin pages';
 
-$lang['__code_font_family__']       = 'The font family for code blocks (fonts containing spaces must be in quotes. 
+$lang['__code_font_family__']       = 'The font family for code blocks (fonts containing spaces must be in quotes.
 Multiple fonts can be seperated with commas)';
 $lang['__code_font_size__']         = 'The font size for code blocks';
 $lang['__code_text_color__']        = 'The font color for code blocks';
@@ -109,14 +109,14 @@ $lang['__button_default_text_color__']              = 'The font color for the de
 $lang['__button_default_background_color__']        = 'The background color for the default button';
 $lang['__button_default_border_color__']            = 'The border color for the default button';
 $lang['__button_default_text_hover_color__']        = 'The font color for the default button when cursor hovers over';
-$lang['__button_default_background_hover_color__']  = 'The background color for the default button when cursor hovers 
+$lang['__button_default_background_hover_color__']  = 'The background color for the default button when cursor hovers
 over';
 $lang['__button_default_border_hover_color__']      = 'The border color for the default button when cursor hovers over';
 $lang['__button_search_text_color__']               = 'The font color for the search button';
 $lang['__button_search_background_color__']         = 'The background color for the search button';
 $lang['__button_search_border_color__']             = 'The border color for the search button';
 $lang['__button_search_text_hover_color__']         = 'The font color for the search button when cursor hovers over';
-$lang['__button_search_background_hover_color__']   = 'The background color for the search button when cursor hovers 
+$lang['__button_search_background_hover_color__']   = 'The background color for the search button when cursor hovers
 over';
 $lang['__button_search_border_hover_color__']       = 'The border color for the search button when cursor hovers over';
 
@@ -127,17 +127,18 @@ $lang['__navbar_background_color__']    = 'The background color for the menu';
 $lang['__navbar_border_color__']        = 'The border color for the menu';
 $lang['__navbar_brand_text_color__']    = 'The font color for the site title';
 $lang['__navbar_brand_tagline_color__'] = 'The font color for the site tagline';
-$lang['__navbar_content_justify__']     = 'The content justification of the site menu (can be flex-start, flex-end, 
+$lang['__navbar_content_justify__']     = 'The content justification of the site menu (can be flex-start, flex-end,
 center, space-between or space-around)';
 $lang['__navbar_link_color__']          = 'The font color for the navbar links';
 $lang['__navbar_link_hover_color__']    = 'The font color for the navbar links when cursor hovers over';
+$lang['__navbar_search_max_width__']    = 'The maximum width of the search bar';
 
 $lang['__subnavbar_text_color__']       = 'The font color for sub menu text';
 $lang['__subnavbar_link_color__']       = 'The font color for sub menu links';
 $lang['__subnavbar_link_hover_color__'] = 'The font color when the cursor hovers over sub menu links';
 $lang['__subnavbar_background_color__'] = 'The background color for the sub menu';
 $lang['__subnavbar_border_color__']     = 'The border color for the sub menu';
-$lang['__subnavbar_content_justify__']  = 'The content justification of the sub menu (can be flex-start, flex-end, 
+$lang['__subnavbar_content_justify__']  = 'The content justification of the sub menu (can be flex-start, flex-end,
 center, space-between or space-around)';
 
 $lang['__tag_background_color__']   = 'The background color of tags';
@@ -210,6 +211,13 @@ $lang['__tab_border_hover_color__']         = 'The border color of a tab when cu
 $lang['__tab_active_color__']               = 'The font color of an active tab';
 $lang['__tab_active_background_color__']    = 'The background color of an active tab';
 $lang['__tab_active_border_color__']        = 'The border color of an active tab';
+
+$lang['__footnote_popup_font_size__']           = 'The font size of the footnote popup';
+$lang['__footnote_popup_text_color__']          = 'The font color of the footnote popup';
+$lang['__footnote_popup_border_color__']        = 'The border color of the footnote popup';
+$lang['__footnote_popup_background_color__']    = 'The background color of the footnote popup';
+$lang['__footnote_popup_horizontal_padding__']  = 'The horizontal padding of the footnote popup';
+$lang['__footnote_popup_vertical_padding__']    = 'The vertical padding of the footnote popup';
 
 /* Plugin */
 $lang['__plugin_background_color__']        = 'The background color used on Mikio Plugin elements';
@@ -318,7 +326,7 @@ $lang['__plugin_steps_step_background_complete_color__']    = 'Steps background 
 
 $lang['__plugin_tabgroup_tab_text_active_color__']          = 'Tabgroup active tab font color';
 $lang['__plugin_tabgroup_tab_background_active_color__']    = 'Tabgroup active tab background color';
-$lang['__plugin_tabgroup_tab_border_hover_color__']         = 'Tabgroup inactive tab border color when cursor hovers 
+$lang['__plugin_tabgroup_tab_border_hover_color__']         = 'Tabgroup inactive tab border color when cursor hovers
 over';
 
 $lang['__plugin_tooltip_text_color__']          = 'Tooltip font color';

@@ -77,7 +77,7 @@ $conf['sidebarLeftRow3']        = 'content';
 $conf['sidebarLeftRow4']        = 'none';
 $conf['sidebarMobileDefaultCollapse']    = 1;
 $conf['sidebarShowRight']       = 1;
-$conf['sidebarAlwaysShowright'] = 0;
+$conf['sidebarAlwaysShowRight'] = 0;
 
 $conf['tocFull']                = 0;
 
@@ -101,7 +101,7 @@ $conf['licenseImageOnly']       = 0;
 $conf['includePageUseACL']      = 1;
 $conf['includePagePropagate']   = 1;
 
-$meta['stickyTopHeader']        = 0;
-$meta['stickyNavbar']           = 0;
-$meta['stickyHeader']           = 0;
-$meta['stickyLeftSidebar']      = 0;
+$conf['stickyTopHeader']        = 0;
+$conf['stickyNavbar']           = 0;
+$conf['stickyHeader']           = 0;
+$conf['stickyLeftSidebar']      = 0;
