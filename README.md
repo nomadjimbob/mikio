@@ -266,6 +266,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Added support to set the maximum width of the navbar search box [#73](https://github.com/nomadjimbob/mikio/issues/73). Requested by macin.
    -    Added styling support for footnotes [#87](https://github.com/nomadjimbob/mikio/issues/87). Thanks aloade.
    -    Fixed missing configuration data.
    -    Added navbar support for versionswicher plugin [#79](https://github.com/nomadjimbob/mikio/issues/79). Requested by macin.

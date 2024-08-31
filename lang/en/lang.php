@@ -131,6 +131,7 @@ $lang['__navbar_content_justify__']     = 'The content justification of the site
 center, space-between or space-around)';
 $lang['__navbar_link_color__']          = 'The font color for the navbar links';
 $lang['__navbar_link_hover_color__']    = 'The font color for the navbar links when cursor hovers over';
+$lang['__navbar_search_max_width__']    = 'The maximum width of the search bar';
 
 $lang['__subnavbar_text_color__']       = 'The font color for sub menu text';
 $lang['__subnavbar_link_color__']       = 'The font color for sub menu links';
