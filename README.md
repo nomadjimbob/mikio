@@ -266,6 +266,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Fixed table alignments not being applied [#86](https://github.com/nomadjimbob/mikio/issues/86). Thanks aloade.
    -    Fixed empty menus being shown when all items have been disabled [#88](https://github.com/nomadjimbob/mikio/issues/88). Thanks aloade.
    -    Fixed styling issues in the Media Manager [#85](https://github.com/nomadjimbob/mikio/issues/85). Thanks aloade.
    -    Fixed issue with languages other than english not being supported correctly [#81](https://github.com/nomadjimbob/mikio/issues/81). Requested by Little-Data.
