@@ -99,7 +99,7 @@ class mikio
      *
      * @noinspection PhpUnusedPrivateMethodInspection
      */
-    private function __wakeup() {}
+    public function __wakeup() {}
 
 
     /**
