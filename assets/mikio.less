@@ -2277,27 +2277,9 @@ pre {
         }
     }
 
-    // .namespaces, #media__tree {
-    //     h2 {
-    //         .mikio-tab-active();
-    //         font-size: 1rem;
-    //         display: inline-block;
-    //         border-radius: .5rem .5rem 0 0;
-    //         border-width: 1px;
-    //         border-style: solid;
-    //         line-height: 1.4rem;
-    //         position: relative;
-    //         z-index: 2;
-    //     }
-
     .panelHeader {
         .mikio-tab-panel();
     }
-
-
-
-    //     }
-    // }
 
     .filelist {
         width: 50%;
@@ -2334,6 +2316,10 @@ pre {
 
         ul {
             margin: 1rem 0 -1px 0;
+
+            &.tabs {
+                margin-top: 0;
+            }
 
             &.thumbs {
                 margin: 0;
@@ -2468,6 +2454,10 @@ pre {
     }
 
     .file {
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+
         .panelHeader {
             .mikio-tab-panel();
 
@@ -2480,6 +2470,14 @@ pre {
         ul {
             &.tabs {
                 .mikio-tabs();
+                margin-top: 0;
+            }
+
+            &.actions {
+                li {
+                    margin-left: 0.25rem;
+                    margin-right: 0.25rem;
+                }
             }
         }
 
