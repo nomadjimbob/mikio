@@ -119,6 +119,7 @@ $lang['__navbar_brand_tagline_color__'] = '网站标语的字体颜色';
 $lang['__navbar_content_justify__']     = '网站菜单内容的排布（可以是 flex-start、flex-end、center、space-bween 或 space-around、space-between、space-around）';
 $lang['__navbar_link_color__']          = '导航栏链接的字体颜色';
 $lang['__navbar_link_hover_color__']    = '光标悬停在导航栏链接上时的字体颜色';
+$lang['__navbar_search_max_width__'] = '搜索栏最大宽度';
 
 $lang['__subnavbar_text_color__']       = '子菜单文本的字体颜色';
 $lang['__subnavbar_link_color__']       = '子菜单链接的字体颜色';
