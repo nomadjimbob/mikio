@@ -137,7 +137,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 -   `includePagePropagate` : search parent namespaces when including pages
 
 ## Right Sidebar
-The right sidebar can be applied by creating a normal wiki page called "rightsidebar". Go to http://your-wiki.com/doku.php?id=rightsidebar, click "Create this page", edit the page, save, and you're done. That's it, your saved changes will appear in your right sidebar. 
+The right sidebar can be applied by creating a normal wiki page called "rightsidebar". Go to http://your-wiki.com/doku.php?id=rightsidebar, click "Create this page", edit the page, save, and you're done. That's it, your saved changes will appear in your right sidebar.
 
 ## Include Pages
 
@@ -266,6 +266,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT-RELEASE_**
 
+   -    Fixed missing configuration data.
    -    Added navbar support for versionswicher plugin [#79](https://github.com/nomadjimbob/mikio/issues/79). Requested by macin.
    -    Fixed input backgrounds not rendering colours correctly in some circumstances on the configuration page.
    -    Fixed styling on input fields in darkmode. Style.ini now supports separate input options [#82](https://github.com/nomadjimbob/mikio/issues/82). Thanks  BioSehnsucht.
@@ -277,7 +278,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 - **_2024-06-05_**
 
    -    Fix tag text colouring not applying correctly.
-   -    Allow hiding tags in hero if using `<tags>` element in the MikioPlugin [#70](https://github.com/nomadjimbob/mikio/issues/70). Requested by garanovich. 
+   -    Allow hiding tags in hero if using `<tags>` element in the MikioPlugin [#70](https://github.com/nomadjimbob/mikio/issues/70). Requested by garanovich.
 
 - **_2024-05-03_**
    -    Fixed incorrect style file names. Thanks Wolfram.
@@ -288,7 +289,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 - **_2024-02-09_**
     -   Added support for DokuWiki Kaos
     -   Updated to support PHP 8.2
-    -   Added access key support to page elements [#64](https://github.com/nomadjimbob/mikio/issues/64). Thanks rebeka-catalina. 
+    -   Added access key support to page elements [#64](https://github.com/nomadjimbob/mikio/issues/64). Thanks rebeka-catalina.
 
 - **_2023-12-12_**
 
