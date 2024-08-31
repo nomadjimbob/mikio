@@ -626,41 +626,47 @@ class mikio
 
         switch ($this->getConf('navbarDWMenuCombine')) {
             case $value_dropdown:
-                $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button"
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
-                ($showIcons === true ? $this->mikioInlineIcon('file') : '') .
-                ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
-                '</span>') . '</a>';
+                if (count($pageToolsMenu) > 0 ) {
+                    $html .= '<li id="dokuwiki__pagetools" class="mikio-nav-dropdown">';
+                    $html .= '<a id="mikio_dropdown_pagetools" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                        ($showIcons === true ? $this->mikioInlineIcon('file') : '') .
+                        ($showText === true ? $lang['page_tools'] : '<span class="mikio-small-only">' . $lang['page_tools'] .
+                            '</span>') . '</a>';
 
-                $html .= '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
+                    $html .= '<div class="mikio-dropdown closed">' . implode('', $pageToolsMenu);
 
-                $html .= '</div>';
-                $html .= '</li>';
+                    $html .= '</div>';
+                    $html .= '</li>';
+                }
 
-                $html .= '<li id="dokuwiki__sitetools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button"
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
-                    ($showIcons === true ? $this->mikioInlineIcon('gear') : '') .
-                    ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
-                    $lang['site_tools'] . '</span>') . '</a>';
+                if (count($siteToolsMenu) > 0 ) {
+                    $html .= '<li id="dokuwiki__sitetools" class="mikio-nav-dropdown">';
+                    $html .= '<a id="mikio_dropdown_sitetools" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                        ($showIcons === true ? $this->mikioInlineIcon('gear') : '') .
+                        ($showText === true ? $lang['site_tools'] : '<span class="mikio-small-only">' .
+                        $lang['site_tools'] . '</span>') . '</a>';
 
-                $html .= '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
+                    $html .= '<div class="mikio-dropdown closed">' . implode('', $siteToolsMenu);
 
-                $html .= '</div>';
-                $html .= '</li>';
+                    $html .= '</div>';
+                    $html .= '</li>';
+                }
 
-                $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
-                $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button"
-data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
-                    ($showIcons === true ? $this->mikioInlineIcon('user') : '') .
-                    ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
-                    $lang['user_tools'] . '</span>') . '</a>';
+                if (count($userToolsMenu) > 0 ) {
+                    $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
+                    $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+                        ($showIcons === true ? $this->mikioInlineIcon('user') : '') .
+                        ($showText === true ? $lang['user_tools'] : '<span class="mikio-small-only">' .
+                            $lang['user_tools'] . '</span>') . '</a>';
 
-                $html .= '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
+                    $html .= '<div class="mikio-dropdown closed">' . implode('', $userToolsMenu);
 
-                $html .= '</div>';
-                $html .= '</li>';
+                    $html .= '</div>';
+                    $html .= '</li>';
+                }
 
                 break;
 
@@ -672,21 +678,27 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     tpl_getLang('tools-menu') . '</span>') . '</a>';
                 $html .= '<div class="mikio-dropdown closed">';
 
-                $html .= '<h6 class="mikio-dropdown-header">' . $lang['page_tools'] . '</h6>';
-                foreach ($pageToolsMenu as $item) {
-                    $html .= $item;
+                if (count($pageToolsMenu) > 0) {
+                    $html .= '<h6 class="mikio-dropdown-header">' . $lang['page_tools'] . '</h6>';
+                    foreach ($pageToolsMenu as $item) {
+                        $html .= $item;
+                    }
                 }
 
-                $html .= '<div class="mikio-dropdown-divider"></div>';
-                $html .= '<h6 class="mikio-dropdown-header">' . $lang['site_tools'] . '</h6>';
-                foreach ($siteToolsMenu as $item) {
-                    $html .= $item;
+                if (count($siteToolsMenu) > 0) {
+                    $html .= '<div class="mikio-dropdown-divider"></div>';
+                    $html .= '<h6 class="mikio-dropdown-header">' . $lang['site_tools'] . '</h6>';
+                    foreach ($siteToolsMenu as $item) {
+                        $html .= $item;
+                    }
                 }
 
-                $html .= '<div class="mikio-dropdown-divider"></div>';
-                $html .= '<h6 class="mikio-dropdown-header">' . $lang['user_tools'] . '</h6>';
-                foreach ($userToolsMenu as $item) {
-                    $html .= $item;
+                if (count($userToolsMenu) > 0) {
+                    $html .= '<div class="mikio-dropdown-divider"></div>';
+                    $html .= '<h6 class="mikio-dropdown-header">' . $lang['user_tools'] . '</h6>';
+                    foreach ($userToolsMenu as $item) {
+                        $html .= $item;
+                    }
                 }
 
                 $html .= '</div>';
