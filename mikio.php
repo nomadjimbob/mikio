@@ -1103,8 +1103,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $classes[] = $item->getType();
             $attr = $item->getLinkAttributes();
 
-            if (empty($attr['class']) === false) {
-                $classes = array_merge($classes, explode(' ', $attr['class']));
+            if (!empty($attr['class'])) {
+                $classes += explode(' ', $attr['class']);
             }
 
             $classes = array_unique($classes);
@@ -1325,6 +1325,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
+            !is_null($ACT) && !is_null($showPageTools) &&
             strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
                 ($this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0))
         ) {
@@ -2283,6 +2284,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         $html = p_get_first_heading($page);
+        if(empty($html) === true) {
+            $html = $conf['title'];
+        }
         $html = strip_tags($html);
         $html = preg_replace('/\s+/', ' ', $html);
         $html .= ' [' . strip_tags($conf['title']) . ']';
