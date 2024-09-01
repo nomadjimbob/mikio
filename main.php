@@ -38,7 +38,7 @@ ob_start();
         tpl_includeFile('meta.html');
     ?>
 </head>
-<body class="mikio dokuwiki<?php echo $TEMPLATE->getConf('autoLightDark') === true ? ' mikio-auto-darklight' : '' ?>">
+<body class="mikio <?php echo $TEMPLATE->getConf('autoLightDark') === true ? ' mikio-auto-darklight' : '' ?>">
 <div id="dokuwiki__site">
     <?php
     echo '<div id="dokuwiki__top" class="site ' . tpl_classes() . (($showSidebar === true) ? ' showSidebar' : '') .

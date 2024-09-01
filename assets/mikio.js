@@ -786,7 +786,7 @@ var mikio = {
     }
 };
 
-if (document.readyState != 'loading') {
+if (document.readyState !== 'loading') {
     mikio.ready();
 } else {
     document.addEventListener('DOMContentLoaded', function () { mikio.ready() });

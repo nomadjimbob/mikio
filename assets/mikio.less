@@ -324,6 +324,13 @@
     }
 }
 
+.mikio.dokuwiki {
+    .ui-dialog-content, .ui-widget-content {
+        fieldset {
+            margin: 0;
+        }
+    }
+}
 
 /* Containers */
 html {
@@ -1501,10 +1508,40 @@ body {
     display: flex;
 
     .mikio-nav-item,
-    .mikio-nav-dropdown {
+    .mikio-nav-dropdown,
+    > button {
         display: inline-block;
         padding: .5rem .2rem;
         margin: 0 .5rem;
+    }
+
+    > button {
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        &.plugin__do_usertasks {
+            position: relative;
+            border-bottom: 0 !important;
+
+            svg {
+                margin-top: 0.4rem;
+                width: 1.3rem;
+                height: 1.3rem;
+            }
+
+            .num {
+                position: absolute;
+                top: 0.3rem;
+                right: -0.4rem;
+                padding: .1rem .25rem;
+                font-size: 80%;
+                border-radius: 50%;
+                background-color: var(--navbar-link-color);
+                color: var(--navbar-background-color);
+            }
+        }
     }
 
     .mikio-nav-link {}
@@ -2935,6 +2972,11 @@ pre {
 
 /* Approve */
 .mikio #plugin__approve {
+    font-size: 80%;
+}
+
+/* Do */
+.plugin__do_usertasks_list {
     font-size: 80%;
 }
 

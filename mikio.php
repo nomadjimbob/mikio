@@ -654,6 +654,12 @@ class mikio
                     $html .= '</li>';
                 }
 
+                /** @var helper_plugin_do $do */
+                $do = plugin_load('helper', 'do');
+                if ($do) {
+                    $html .= $do->tpl_getUserTasksIconHTML();
+                }
+
                 if (count($userToolsMenu) > 0 ) {
                     $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
                     $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button"
@@ -693,6 +699,12 @@ class mikio
                     }
                 }
 
+                /** @var helper_plugin_do $do */
+                $do = plugin_load('helper', 'do');
+                if ($do) {
+                    $html .= $do->tpl_getUserTasksIconHTML();
+                }
+
                 if (count($userToolsMenu) > 0) {
                     $html .= '<div class="mikio-dropdown-divider"></div>';
                     $html .= '<h6 class="mikio-dropdown-header">' . $lang['user_tools'] . '</h6>';
@@ -712,6 +724,12 @@ class mikio
 
                 foreach ($pageToolsMenu as $item) {
                     $html .= '<li class="mikio-nav-item">' . $item . '</li>';
+                }
+
+                /** @var helper_plugin_do $do */
+                $do = plugin_load('helper', 'do');
+                if ($do) {
+                    $html .= $do->tpl_getUserTasksIconHTML();
                 }
 
                 foreach ($userToolsMenu as $item) {
