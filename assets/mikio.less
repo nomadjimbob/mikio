@@ -985,6 +985,10 @@ body {
     max-width: 100%;
     background-color: var(--content-background);
     padding: .5rem 2rem;
+
+    .mikio-article-content {
+        position: relative;
+    }
 }
 
 .mikio.dokuwiki div.preview {
@@ -1326,6 +1330,8 @@ body {
 }
 
 .mikio .mikio-toc {
+    position: relative;
+    z-index: 2;
     float: right;
     padding-left: 1rem;
     padding-bottom: 1rem;
@@ -2925,6 +2931,11 @@ pre {
             }
         }
     }
+}
+
+/* Approve */
+.mikio #plugin__approve {
+    font-size: 80%;
 }
 
 /* Mobile */
