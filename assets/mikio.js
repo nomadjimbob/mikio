@@ -7,7 +7,7 @@
  */
 "use strict";
 
-var mikio = {
+const mikio = {
     queueResize: false,
     mikioCSS: false,
     stickyItems: [],
@@ -16,44 +16,12 @@ var mikio = {
     darkMode: 'light',
 
     ready: function () {
-        var self = this;
-
-        this.initDarkMode();
-        this.addToggleClick('mikio-sidebar-toggle', 'mikio-sidebar-collapse');
-        this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
-        this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
-        this.indexmenuPatch();
-        this.typeahead();
-
-        var updateStickyItems = function () {
-            window.removeEventListener('scroll', updateStickyScroll);
-
-            var stickyElements = document.getElementsByClassName('mikio-sticky');
-            self.stickyItems = [];
-            if (stickyElements && stickyElements.length > 0) {
-                var stickyOffset = stickyElements[0].offsetTop;
-                var stickyHeightCount = stickyOffset;
-
-                [].forEach.call(stickyElements, (item) => {
-                    var top = stickyOffset;
-                    if (item.offsetTop - stickyHeightCount > stickyHeightCount) {
-                        top = stickyHeightCount;
-                    }
-
-                    self.stickyItems.push({ element: item, offsetYTop: top, debugItemTop: item.offsetTop, debugOffset: stickyOffset, debugHeight: stickyHeightCount });
-                    stickyHeightCount += item.offsetHeight;
-                });
-
-                window.addEventListener('scroll', updateStickyScroll);
-                updateStickyScroll();
-            }
-        };
-
-        var updateStickyScroll = function () {
+        const updateStickyScroll = function () {
             self.stickyItems.forEach((item) => {
-                if (window.pageYOffset > item.offsetYTop) {
-                    if (item.element.style.position != 'fixed') {
-                        var site = document.getElementById('dokuwiki__site');
+                // noinspection JSDeprecatedSymbols
+                if ((window.scrollY || window.pageYOffset) > item.offsetYTop) {
+                    if (item.element.style.position !== 'fixed') {
+                        let site = document.getElementById('dokuwiki__site');
                         site.style.paddingTop = ((parseInt(site.style.paddingTop) || 0) + item.element.offsetHeight) + 'px';
 
                         item.element.style.position = 'fixed';
@@ -64,8 +32,8 @@ var mikio = {
                         self.stickyIndex--;
                     }
                 } else {
-                    if (item.element.style.position == 'fixed') {
-                        var site = document.getElementById('dokuwiki__site');
+                    if (item.element.style.position === 'fixed') {
+                        let site = document.getElementById('dokuwiki__site');
                         site.style.paddingTop = ((parseInt(site.style.paddingTop) || 0) - item.element.offsetHeight) + 'px';
                         self.stickyOffset -= item.element.offsetHeight;
                         self.stickyIndex++;
@@ -77,14 +45,54 @@ var mikio = {
                 }
             });
         };
+        const self = this;
+
+        this.initDarkMode();
+        this.addToggleClick('mikio-sidebar-toggle', 'mikio-sidebar-collapse');
+        this.addToggleClick('mikio-navbar-toggle', 'mikio-navbar-collapse');
+        this.addDropdownClick('mikio-nav-dropdown', 'mikio-dropdown');
+        this.indexmenuPatch();
+        this.typeahead();
+
+        const updateStickyItems = function () {
+            window.removeEventListener('scroll', updateStickyScroll);
+
+            const stickyElements = document.getElementsByClassName('mikio-sticky');
+            self.stickyItems = [];
+            if (stickyElements && stickyElements.length > 0) {
+                const stickyOffset = stickyElements[0].offsetTop;
+                let stickyHeightCount = stickyOffset;
+
+                [].forEach.call(stickyElements, (item) => {
+                    let top = stickyOffset;
+                    if (item.offsetTop - stickyHeightCount > stickyHeightCount) {
+                        top = stickyHeightCount;
+                    }
+
+                    self.stickyItems.push({
+                        element: item,
+                        offsetYTop: top,
+                        debugItemTop: item.offsetTop,
+                        debugOffset: stickyOffset,
+                        debugHeight: stickyHeightCount
+                    });
+                    stickyHeightCount += item.offsetHeight;
+                });
+
+                window.addEventListener('scroll', updateStickyScroll);
+                updateStickyScroll();
+            }
+        };
+
 
         updateStickyItems();
 
         window.onresize = function () {
             if (!this.queueResize) {
                 this.queueResize = true;
+                const self = this;
                 window.setTimeout(function () {
-                    this.queueResize = false;
+                    self.queueResize = false;
                     Array.from(document.getElementsByClassName('mikio-dropdown')).forEach(function (elem) {
                         if (!elem.classList.contains('closed')) {
                             elem.classList.add('closed');
@@ -105,7 +113,7 @@ var mikio = {
 
         // Mikio-Dropdown - Close when clicked outside dropdown
         Array.from(document.getElementsByTagName('body')).forEach(function (elem) {
-            elem.addEventListener('click', function (event) {
+            elem.addEventListener('click', function () {
                 Array.from(document.getElementsByClassName('mikio-dropdown')).forEach(function (elem) {
                     if (!elem.classList.contains('closed')) {
                         elem.classList.add('closed');
@@ -126,15 +134,15 @@ var mikio = {
 
         // Input File - Cleanup
         Array.from(document.querySelectorAll('input[type=file]')).forEach(function (elem) {
-            var style = window.getComputedStyle(elem);
+            const style = window.getComputedStyle(elem);
 
-            if (style.display != 'none') {
-                var parentElem = elem.parentElement;
-                var fileRect = elem.getBoundingClientRect();
-                var parentRect = parentElem.getBoundingClientRect();
-                var spanElem = document.createElement('span');
+            if (style.display !== 'none') {
+                const parentElem = elem.parentElement;
+                const fileRect = elem.getBoundingClientRect();
+                const parentRect = parentElem.getBoundingClientRect();
+                const spanElem = document.createElement('span');
 
-                elem.style.opacity = 0;
+                elem.style.opacity = '0';
                 parentElem.style.position = 'relative';
                 spanElem.innerHTML = 'Choose file...';
                 spanElem.classList.add('mikio-input-file');
@@ -143,7 +151,7 @@ var mikio = {
                 mikio.insertAfter(spanElem, elem);
 
                 spanElem.addEventListener('click', function (event) {
-                    if (event.target.parentElement.tagName.toLowerCase() != 'label') {
+                    if (event.target.parentElement.tagName.toLowerCase() !== 'label') {
                         let sibling = mikio.getPrevSibling(event.target, 'input');
                         if (typeof sibling !== 'undefined') {
                             sibling.click();
@@ -164,19 +172,19 @@ var mikio = {
 
         // Input - Span (Placeholder) clear when typing
         Array.from(document.querySelectorAll('.mikio.dokuwiki .mode_login fieldset label.block input.edit, .mikio.dokuwiki .mode_denied fieldset label.block input.edit')).forEach(function (elem) {
-            if (elem.value.length != 0) {
-                var sibling = mikio.getPrevSibling(elem, 'span');
+            if (elem.value.length !== 0) {
+                const sibling = mikio.getPrevSibling(elem, 'span');
                 if (sibling) {
                     sibling.style.display = 'none';
                 }
             }
 
             elem.addEventListener('keydown', function (event) {
-                var sibling = mikio.getPrevSibling(event.target, 'span');
+                const sibling = mikio.getPrevSibling(event.target, 'span');
 
                 setTimeout(function () {
                     if (sibling) {
-                        if (event.target.value != '') {
+                        if (event.target.value !== '') {
                             sibling.style.display = 'none';
                         } else {
                             sibling.style.display = 'block';
@@ -191,15 +199,15 @@ var mikio = {
             elem.addEventListener('click', function (event) {
                 event.preventDefault();
 
-                var href = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
+                let href = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
 
-                var params = window.location.search;
+                let params = window.location.search;
                 if (params !== '') {
-                    params = params.substr(1).split('&');
+                    params = params.substring(1).split('&');
                     if (params.length > 1) {
                         href += '?';
                         params.forEach(function (p) {
-                            if (p.substring(0, 3) == 'id=') {
+                            if (p.substring(0, 3) === 'id=') {
                                 href += p;
                             }
                         });
@@ -215,15 +223,15 @@ var mikio = {
             elem.addEventListener('click', function (event) {
                 event.preventDefault();
 
-                var href = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
+                let href = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
 
-                var params = window.location.search;
-                if (params != '') {
-                    params = params.substr(1).split('&');
+                let params = window.location.search;
+                if (params !== '') {
+                    params = params.substring(1).split('&');
                     if (params.length > 1) {
                         href += '?';
                         params.forEach(function (p) {
-                            if (p.substring(0, 5) != 'page=') {
+                            if (p.substring(0, 5) !== 'page=') {
                                 href += p + '&';
                             }
                         });
@@ -241,49 +249,49 @@ var mikio = {
             }
         });
 
-        // Media Manager - ui-resizable is always auto
-        var mediaChangedObserver = new MutationObserver(function (mutationsList) {
-            for (let mutation of mutationsList) {
-                if (mutation.type === 'childList') {
-                    if (mutation.addedNodes) {
-                        mutation.addedNodes.forEach(function (node) {
-                            if (node.nodeName == 'LI') {
+        let target = document.getElementById('mediamanager__page');
+        if (target) {
+            // Media Manager - ui-resizable is always auto
+            const mediaChangedObserver = new MutationObserver(function (mutationsList) {
+                for (let mutation of mutationsList) {
+                    if (mutation.type === 'childList') {
+                        if (mutation.addedNodes) {
+                            mutation.addedNodes.forEach(function (node) {
+                                if (node.nodeName === 'LI') {
 
-                            }
-                        });
+                                }
+                            });
+                        }
+                    }
+
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style' && mutation.target && mutation.target.style.height) {
+                        mutation.target.style.height = '';
                     }
                 }
+            });
 
-                if (mutation.type === 'attributes' && mutation.attributeName == 'style' && mutation.target && mutation.target.style.height) {
-                    mutation.target.style.height = '';
-                }
-            }
-        });
-
-        var target = document.getElementById('mediamanager__page');
-        if (target) {
-            mediaChangedObserver.observe(target, { attributes: true, childList: true, subtree: true });
+            mediaChangedObserver.observe(target, {attributes: true, childList: true, subtree: true});
         }
 
         // Media Manager - file click
         Array.from(document.querySelectorAll('#mediamanager__page .filelist')).forEach(function (elem) {
             elem.addEventListener('click', function (event) {
-                var liElem = event.target.closest('li');
+                const liElem = event.target.closest('li');
                 if (liElem && event.target.closest('ul.thumbs')) {
-                    var aElem = liElem.querySelector('dd.name a');
+                    const aElem = liElem.querySelector('dd.name a');
                     if (aElem) aElem.click();
                 }
             });
         });
 
         // Popup Media Manager - clean file info
-        var mediaPopupFileInfoClean = function (elem) {
-            var file = { resolution: '', date: '', time: '', size: '' };
+        const mediaPopupFileInfoClean = function (elem) {
+            // var file = { resolution: '', date: '', time: '', size: '' };
 
-            var infoElem = elem.querySelector('span.info');
+            const infoElem = elem.querySelector('span.info');
             if (infoElem) {
-                var infoText = infoElem.innerText.replace(/(<[^>]*>|[\(\)])/g, '');
-                var detail = infoText.split(' ');
+                const infoText = infoElem.innerText.replace(/(<[^>]*>|[()])/g, '');
+                const detail = infoText.split(' ');
                 while (detail.length < 4) {
                     detail.unshift('');
                 }
@@ -297,55 +305,56 @@ var mikio = {
             });
         }
 
-        var mediaPopupObserver = new MutationObserver(function (mutationsList) {
-            for (let mutation of mutationsList) {
-                if (mutation.type === 'childList') {
-                    if (mutation.addedNodes) {
-                        mutation.addedNodes.forEach(function (node) {
-                            if (node.nodeName == 'DIV') {
-                                mediaPopupFileInfoClean(node);
-                            }
-                        });
-                    }
-                }
-            }
-        });
-
-        var target = document.getElementById('media__content');
+        target = document.getElementById('media__content');
         if (target) {
             Array.from(target.querySelectorAll('div.odd, div.even')).forEach(function (elem) {
                 mediaPopupFileInfoClean(elem);
             });
 
-            mediaPopupObserver.observe(target, { attributes: false, childList: true });
-        }
-
-        if (typeof mikioFooterRun === "function") mikioFooterRun();
-
-        var mediaChangedObserver = new MutationObserver(function (mutationsList) {
-            for (let mutation of mutationsList) {
-                if (mutation.type === 'attributes' && mutation.attributeName == 'href') {
-                    if (self.mikioCSS != false) {
-                        var elem = self.mikioCSS;
-                        var prev = elem.href;
-
-                        setTimeout(function () {
-                            var url = new URL(prev);
-                            var params = url.searchParams;
-                            params.set('seed', new Date().getTime());
-                            url.search = params.toString();
-                            elem.href = url.toString();
-                        }, 500);
+            const mediaPopupObserver = new MutationObserver(function (mutationsList) {
+                for (let mutation of mutationsList) {
+                    if (mutation.type === 'childList') {
+                        if (mutation.addedNodes) {
+                            mutation.addedNodes.forEach(function (node) {
+                                if (node.nodeName === 'DIV') {
+                                    mediaPopupFileInfoClean(node);
+                                }
+                            });
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        var linkElements = document.getElementsByTagName('link');
+            mediaPopupObserver.observe(target, {attributes: false, childList: true});
+        }
+
+        // noinspection JSUnresolvedReference
+        if (window.mikioFooterRun && typeof window.mikioFooterRun === "function") window.mikioFooterRun();
+
+        const linkElements = document.getElementsByTagName('link');
         for (let element of linkElements) {
-            if (element.rel == 'stylesheet' && element.href) {
+            if (element.rel === 'stylesheet' && element.href) {
                 if (element.href.includes('/lib/exe/css.php')) {
-                    mediaChangedObserver.observe(element, { attributes: true, childList: true, subtree: true });
+                    const mediaChangedObserver = new MutationObserver(function (mutationsList) {
+                        for (let mutation of mutationsList) {
+                            if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
+                                if (self.mikioCSS !== false) {
+                                    let elem = self.mikioCSS;
+                                    let prev = elem.href;
+
+                                    setTimeout(function () {
+                                        const url = new URL(prev);
+                                        const params = url.searchParams;
+                                        params.set('seed', new Date().getTime().toString());
+                                        url.search = params.toString();
+                                        elem.href = url.toString();
+                                    }, 500);
+                                }
+                            }
+                        }
+                    });
+
+                    mediaChangedObserver.observe(element, {attributes: true, childList: true, subtree: true});
                 } else if (element.href.includes('/lib/tpl/mikio/css.php')) {
                     this.mikioCSS = element;
                 }
@@ -369,8 +378,7 @@ var mikio = {
                 const id = input.getAttribute('for');
                 let colorSelectorInput = document.querySelector(`div.mikio-color-picker input[id="${id}"]`);
                 if (colorSelectorInput) {
-                    let s = this.colorToHex(input.value);
-                    colorSelectorInput.value = s;
+                    colorSelectorInput.value = this.colorToHex(input.value);
                 }
             });
         });
@@ -378,13 +386,13 @@ var mikio = {
 
     initDarkMode: function () {
         const showLightDark = document.querySelector('.mikio-darklight-button') != null;
-        if (showLightDark == true) {
+        if (showLightDark === true) {
             let setting = this.getCookie('lightDarkToggle');
-            if (setting == 'dark' || setting == 'light' || setting == 'auto') {
+            if (setting === 'dark' || setting === 'light' || setting === 'auto') {
                 this.darkMode = setting;
             }
 
-            if (document.querySelector('.mikio-auto-darklight') == null && setting == 'auto') {
+            if (document.querySelector('.mikio-auto-darklight') == null && setting === 'auto') {
                 this.darkMode = 'light';
             }
         } else {
@@ -393,10 +401,10 @@ var mikio = {
             }
         }
 
-        var self = this;
+        const self = this;
 
         if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
                 self.updateDarkMode();
             });
         }
@@ -407,15 +415,15 @@ var mikio = {
 
             const autoAllowed = (document.querySelector('.mikio-iicon.mikio-darklight-auto') != null);
 
-            if (self.darkMode == 'light') {
+            if (self.darkMode === 'light') {
                 self.darkMode = 'dark';
-            } else if (self.darkMode == 'dark') {
-                if (autoAllowed == true) {
+            } else if (self.darkMode === 'dark') {
+                if (autoAllowed === true) {
                     self.darkMode = 'auto';
                 } else {
                     self.darkMode = 'light';
                 }
-            } else if (self.darkMode == 'auto') {
+            } else if (self.darkMode === 'auto') {
                 self.darkMode = 'light';
             } else {
                 self.darkMode = 'dark';
@@ -431,8 +439,8 @@ var mikio = {
         const html = document.querySelector('html');
         let themeMode = this.darkMode;
 
-        if (this.darkMode == 'auto') {
-            html.dataset.themeAuto = true;
+        if (this.darkMode === 'auto') {
+            html.dataset.themeAuto = 'true';
 
             themeMode = 'light';
             if (window.matchMedia) {
@@ -468,7 +476,7 @@ var mikio = {
             event.preventDefault();
             event.stopPropagation();
 
-            var dropdown = this.querySelector('.' + elemCollapse);
+            const dropdown = this.querySelector('.' + elemCollapse);
             if (dropdown) {
                 mikio.toggleDropdown(dropdown);
             }
@@ -482,7 +490,7 @@ var mikio = {
     },
 
     getNextSibling: function (elem, selector) {
-        var sibling = elem.nextElementSibling;
+        let sibling = elem.nextElementSibling;
 
         while (sibling) {
             if (sibling.matches(selector)) return sibling;
@@ -491,7 +499,7 @@ var mikio = {
     },
 
     getPrevSibling: function (elem, selector) {
-        var sibling = elem.previousElementSibling;
+        let sibling = elem.previousElementSibling;
 
         while (sibling) {
             if (sibling.matches(selector)) return sibling;
@@ -503,13 +511,13 @@ var mikio = {
         if (objToggle.classList.contains('closed')) {
             objToggle.classList.remove('closed');
             objToggle.classList.add('open');
-            var height = objCollapse.offsetHeight;
+            const height = objCollapse.offsetHeight;
             objCollapse.style.overflow = 'hidden';
-            objCollapse.style.height = 0;
-            objCollapse.style.paddingTop = 0;
-            objCollapse.style.paddingBottom = 0;
-            objCollapse.style.marginTop = 0;
-            objCollapse.style.marginBottom = 0;
+            objCollapse.style.height = '0';
+            objCollapse.style.paddingTop = '0';
+            objCollapse.style.paddingBottom = '0';
+            objCollapse.style.marginTop = '0';
+            objCollapse.style.marginBottom = '0';
             objCollapse.offsetHeight;
             objCollapse.style.boxSizing = 'border-box';
             objCollapse.style.transitionProperty = "height, margin, padding";
@@ -533,11 +541,11 @@ var mikio = {
             objCollapse.style.height = objCollapse.offsetHeight + 'px';
             objCollapse.offsetHeight;
             objCollapse.style.overflow = 'hidden';
-            objCollapse.style.height = 0;
-            objCollapse.style.paddingTop = 0;
-            objCollapse.style.paddingBottom = 0;
-            objCollapse.style.marginTop = 0;
-            objCollapse.style.marginBottom = 0;
+            objCollapse.style.height = '0';
+            objCollapse.style.paddingTop = '0';
+            objCollapse.style.paddingBottom = '0';
+            objCollapse.style.marginTop = '0';
+            objCollapse.style.marginBottom = '0';
             window.setTimeout(function () {
                 objToggle.classList.add('closed');
                 objToggle.classList.remove('open');
@@ -563,7 +571,7 @@ var mikio = {
         }
 
         Array.from(document.getElementsByClassName('mikio-dropdown')).forEach(function (elem) {
-            if (!elem.classList.contains('closed') && elem != objToggle) {
+            if (!elem.classList.contains('closed') && elem !== objToggle) {
                 elem.classList.add('closed');
             }
         });
@@ -576,7 +584,7 @@ var mikio = {
     },
 
     setHeroImage: function (str) {
-        var heroImages = document.getElementsByClassName('mikio-hero-image');
+        const heroImages = document.getElementsByClassName('mikio-hero-image');
 
         if (heroImages.length > 0) {
             Array.from(document.getElementsByClassName('mikio-hero-image')).forEach(function (elem) {
@@ -591,8 +599,8 @@ var mikio = {
     },
 
     setHeroColor: function (str) {
-        var colors = str.trim().replace(/ +(?= )/g, '').split(/(?!\(.*)\s(?![^(]*?\))/g);
-        if (colors.length > 0 && colors[0] != '') {
+        const colors = str.trim().replace(/ +(?= )/g, '').split(/(?!\(.*)\s(?![^(]*?\))/g);
+        if (colors.length > 0 && colors[0] !== '') {
             Array.from(document.getElementsByClassName('mikio-hero')).forEach(function (elem) {
                 elem.style.backgroundColor = colors[0];
             });
@@ -632,7 +640,7 @@ var mikio = {
     },
 
     hidePart: function (part) {
-        var selectorArray = {
+        const selectorArray = {
             topheader: '.mikio-page-topheader',
             header: '.mikio-page-header',
             contentheader: '.mikio-page-contentheader',
@@ -659,7 +667,7 @@ var mikio = {
             Array.from(document.querySelectorAll('a.navSel')).forEach(function (elem) {
                 let prev = mikio.getPrevSibling(elem, 'img');
                 if (prev) {
-                    prev.style.opacity = 1;
+                    prev.style.opacity = '1';
                 }
             });
         }, 50);
@@ -670,7 +678,7 @@ var mikio = {
             if ([...event.target.classList].some(className => indexmenuClasses.indexOf(className) !== -1)) {
                 let prev = mikio.getPrevSibling(event.target, 'img');
                 if (prev) {
-                    prev.style.opacity = 1;
+                    prev.style.opacity = '1';
                 }
             }
         });
@@ -688,7 +696,6 @@ var mikio = {
 
     // Add typeahead support for quick seach. Taken from bootstrap3 theme.
     typeahead: function () {
-
         jQuery(".search_typeahead").typeahead({
 
             source: function (query, process) {
@@ -700,11 +707,11 @@ var mikio = {
                     },
                     function (data) {
 
-                        var results = [];
+                        const results = [];
 
                         jQuery(data).find('a').each(function () {
 
-                            var page = jQuery(this);
+                            const page = jQuery(this);
 
                             results.push({
                                 name: page.text(),
@@ -744,10 +751,10 @@ var mikio = {
         let ca = decodedCookie.split(';');
         for (let i = 0; i < ca.length; i++) {
             let c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
@@ -780,9 +787,7 @@ var mikio = {
         let data = ctx.getImageData(0, 0, 1, 1).data;
 
         // Convert the RGB values to HEX
-        let hex = '#' + ((1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2]).toString(16).slice(1).toUpperCase();
-
-        return hex;
+        return '#' + ((1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2]).toString(16).slice(1).toUpperCase();
     }
 };
 
