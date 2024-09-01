@@ -264,7 +264,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
-- **_NEXT-RELEASE_**
+- **_2024-09-01 RC-1_**
 
    -    Fixed table alignments not being applied [#86](https://github.com/nomadjimbob/mikio/issues/86). Thanks aloade.
    -    Fixed empty menus being shown when all items have been disabled [#88](https://github.com/nomadjimbob/mikio/issues/88). Thanks aloade.

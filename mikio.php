@@ -88,25 +88,9 @@ class mikio
     }
 
     /**
-     * Prevent cloning of the instance
-     *
-     * @noinspection PhpUnusedPrivateMethodInspection
-     */
-    private function __clone() {}
-
-    /**
-     * Prevent unserialization of the instance
-     *
-     * @noinspection PhpUnusedPrivateMethodInspection
-     */
-    public function __wakeup() {}
-
-
-    /**
      * Register the themes hooks into Dokuwiki
      *
      * @return void
-     * @noinspection PhpUnusedPrivateMethodInspection
      */
     private function registerHooks(): void
     {
