@@ -324,7 +324,7 @@
     }
 }
 
-.mikio.dokuwiki {
+.mikio .dokuwiki {
     .ui-dialog-content, .ui-widget-content {
         fieldset {
             margin: 0;
@@ -998,7 +998,7 @@ body {
     }
 }
 
-.mikio.dokuwiki div.preview {
+.mikio .dokuwiki div.preview {
     background-color: var(--content-background);
     padding: 1rem 2rem;
 }
@@ -1455,7 +1455,7 @@ body {
 }
 
 .mikio .mode_show table,
-.mikio.dokuwiki .mode_showtag table.ul,
+.mikio .dokuwiki .mode_showtag table.ul,
 .mikio .mode_admin table {
     width: 100%;
     border-collapse: collapse;
@@ -1516,6 +1516,8 @@ body {
     }
 
     > button {
+        border-width: 0;
+
         svg {
             width: 1.2rem;
             height: 1.2rem;
@@ -1721,7 +1723,7 @@ body {
     word-break: break-word;
 }
 
-.mikio.dokuwiki div.section_highlight {
+.mikio .dokuwiki div.section_highlight {
     background-color: var(--section-edit-highlight);
     border-width: 0;
     margin: 0 -1rem;
@@ -1803,12 +1805,12 @@ pre {
     &.dokuwiki fieldset,
     &.dokuwiki .secedit,
     #config__manager tr,
-    .mode_revisions,
-    .mode_edit,
-    .mode_draft,
-    .mode_preview,
-    .mode_showtag,
-    .mode_admin {
+    .mode_revisions .mikio-page,
+    .mode_edit .mikio-page,
+    .mode_draft .mikio-page,
+    .mode_preview .mikio-page,
+    .mode_showtag .mikio-page,
+    .mode_admin .mikio-page {
         .mikio-controls();
     }
 
@@ -1826,13 +1828,13 @@ pre {
     }
 }
 
-.mikio.dokuwiki .secedit {
+.mikio .dokuwiki .secedit {
     float: none;
     margin-top: 0;
     text-align: right;
 }
 
-.mikio.dokuwiki fieldset {
+.mikio .dokuwiki fieldset {
     margin: 2rem auto;
     border: 0;
     width: auto;
@@ -1862,8 +1864,8 @@ pre {
     // }
 }
 
-.mikio.dokuwiki .mode_login,
-.mikio.dokuwiki .mode_denied {
+.mikio .dokuwiki .mode_login,
+.mikio .dokuwiki .mode_denied {
     .mikio-dialog();
 }
 
@@ -1896,7 +1898,7 @@ pre {
         color: #999999;
     }
 
-    p {
+    .mikio-page p {
         button+button {
             margin-left: .5rem;
         }
@@ -2062,7 +2064,7 @@ pre {
     font-weight: inherit;
 }
 
-.mikio.dokuwiki .secedit {
+.mikio .dokuwiki .secedit {
     button {
         .mikio-button-small();
     }
@@ -2682,7 +2684,7 @@ pre {
     }
 }
 
-.mikio.dokuwiki .mode_search .mikio-article {
+.mikio .dokuwiki .mode_search .mikio-article {
     .search-results-form {
         fieldset.search-form {
             display: grid;
@@ -2857,7 +2859,7 @@ pre {
     }
 }
 
-.mikio.dokuwiki ul.tabs {
+.mikio .dokuwiki ul.tabs {
     .mikio-tabs();
 }
 
@@ -3163,7 +3165,7 @@ pre {
         grid-row: 2 / span 1;
     }
 
-    .mikio.dokuwiki div.ui-admin #admin__version {
+    .mikio .dokuwiki div.ui-admin #admin__version {
         padding-right: 1rem;
     }
 
@@ -3425,7 +3427,7 @@ pre {
     }
 }
 
-.mikio.dokuwiki {
+.mikio .dokuwiki {
     #mikio__translate .mikio-dropdown {
         min-width: auto;
     }
