@@ -36,6 +36,7 @@
     --display-theme-auto: inline-block !important;
 }
 
+//noinspection ALL
 :root[data-theme="theme-light"] {
     --text: @ini_text;
     --link: @ini_link;
@@ -1455,10 +1456,7 @@ body {
 
     td,
     th {
-        padding-left: @ini_table_horizontal_padding;
-        padding-right: @ini_table_horizontal_padding;
-        padding-top: @ini_table_vertical_padding;
-        padding-bottom: @ini_table_vertical_padding;
+        padding: @ini_table_vertical_padding @ini_table_horizontal_padding;
         text-align: left;
         border-left: 1px solid var(--table-col-border-color);
         border-right: 1px solid var(--table-col-border-color);
@@ -1511,7 +1509,7 @@ body {
 
     .mikio-nav-dropdown>a {
         display: inline-block;
-        padding: .2rem 1.2rem .2rem 0rem;
+        padding: .2rem 1.2rem .2rem 0;
         position: relative;
 
         &::after {
@@ -2710,7 +2708,7 @@ pre {
                         list-style-type: none;
 
                         li {
-                            margin: 0rem;
+                            margin: 0;
                             white-space: nowrap;
                         }
 
