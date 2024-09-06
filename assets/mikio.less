@@ -1509,10 +1509,11 @@ body {
 
     .mikio-nav-item,
     .mikio-nav-dropdown,
-    > button {
+    > button, > span {
         display: inline-block;
         padding: .5rem .2rem;
         margin: 0 .5rem;
+        font-size: 1rem;
     }
 
     > button {
@@ -1522,7 +1523,9 @@ body {
             width: 1.2rem;
             height: 1.2rem;
         }
+    }
 
+    > button, > span {
         &.plugin__do_usertasks {
             position: relative;
             border-bottom: 0 !important;
@@ -1535,10 +1538,11 @@ body {
 
             .num {
                 position: absolute;
+                line-height: normal;
                 top: 0.3rem;
                 right: -0.4rem;
                 padding: .1rem .25rem;
-                font-size: 80%;
+                font-size: 70%;
                 border-radius: 50%;
                 background-color: var(--navbar-link-color);
                 color: var(--navbar-background-color);
@@ -2979,6 +2983,7 @@ pre {
 /* Do */
 .plugin__do_usertasks_list {
     font-size: 80%;
+    z-index: 20;
 }
 
 /* Mobile */
