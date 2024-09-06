@@ -146,6 +146,10 @@
     --display-theme-light: inline-block;
     --display-theme-dark: none;
     --display-theme-auto: none;
+
+    .mikio-dark-only {
+        display: none;
+    }
 }
 
 :root[data-theme="theme-dark"] {
@@ -257,6 +261,16 @@
     --display-theme-light: none;
     --display-theme-dark: inline-block;
     --display-theme-auto: none;
+
+    .mikio-light-only {
+        display: none;
+    }
+}
+
+:root[data-theme=""] {
+    .mikio-dark-only {
+        display: none;
+    }
 }
 
 .mikio-sticky {

@@ -862,14 +862,15 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             // Brand image
             if ($this->getConf('navbarUseTitleIcon') === true) {
                 $logo = $this->getMediaFile('logo', false);
-                if (empty($logo) === false) {
+                $logoDark = $this->getMediaFile('logo-dark', false);
+                if (empty($logo) === false || empty($logoDark) === false) {
                     $width = $this->getConf('navbarTitleIconWidth');
                     $height = $this->getConf('navbarTitleIconHeight');
                     $styles = '';
 
-                    if (strlen($width) > 0 || strlen($height) > 0) {
+                    if ($width !== '' || $height !== '') {
                         if (ctype_digit($width) === true) {
-                            $styles .= 'max-width:' . intval($width) . 'px;';
+                            $styles .= 'max-width:' . (int)$width . 'px;';
                         } elseif (preg_match('/^\d+(px|rem|em|%)$/', $width) === 1) {
                             $styles .= 'max-width:' . $width . ';';
                         } elseif (strcasecmp($width, 'none') === 0) {
@@ -877,19 +878,25 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                         }
 
                         if (ctype_digit($height) === true) {
-                            $styles .= 'max-height:' . intval($height) . 'px;';
+                            $styles .= 'max-height:' . (int)$height . 'px;';
                         } elseif (preg_match('/^\d+(px|rem|em|%)$/', $height) === 1) {
                             $styles .= 'max-height:' . $height . ';';
                         } elseif (strcasecmp($height, 'none') === 0) {
                             $styles .= 'max-height:none;';
                         }
 
-                        if (strlen($styles) > 0) {
+                        if ($styles !== '') {
                             $styles = ' style="' . $styles . '"';
                         }
                     }//end if
 
-                    $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image"' . $styles . '>';
+                    if(empty($logo) === false) {
+                        $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image' . (empty($logoDark) === false ? ' mikio-light-only' : '') . '"' . $styles . '>';
+                    }
+
+                    if (empty($logoDark) === false) {
+                        $html .= '<img src="' . $logoDark . '" class="mikio-navbar-brand-image' . (empty($logo) === false ? ' mikio-dark-only' : '') . '"' . $styles . '>';
+                    }
                 }//end if
             }//end if
 

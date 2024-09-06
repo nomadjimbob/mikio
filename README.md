@@ -250,6 +250,8 @@ if(html.dataset.theme == 'theme-dark') {
 }
 ```
 
+To set a Dark Mode icon in the navigation bar, upload an image named `icon-dark.png` using the media manager in the root namespace or save the image inside the images directory of the template.
+
 ## Mikio Plugin
 
 The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also available to add bootstrap 4 style + more elements to DokuWiki pages.
