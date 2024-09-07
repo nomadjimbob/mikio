@@ -29,6 +29,7 @@ $lang['config_license']     = '许可';
 $lang['config_acl']         = '权限';
 $lang['config_sticky']      = '粘性部件';
 
+
 /* Setting Values */
 $lang['value_never']        = '从不';
 $lang['value_admin']        = '管理员';
@@ -58,6 +59,10 @@ $lang['value_page_editors'] = '页面编辑者';
 $lang['value_badge']        = '徽章';
 $lang['value_button']       = '按钮';
 
+
+
+
+
 /* Style.ini */
 $lang['__link__']       = '链接文字颜色';
 $lang['__link_hover__'] = '光标悬停在链接上时文字颜色';
@@ -75,10 +80,12 @@ $lang['__line_height__']    = '基本字体行高';
 $lang['__site_width__']     = '正文内容宽度';
 
 $lang['__font_size__']              = '基本字号';
-$lang['__font_family__']            = '基本字体集（包含空格的字体必须使用引号。多个字体可以用逗号隔开）';
+$lang['__font_family__']            = '基本字体集（包含空格的字体必须使用引号。
+多个字体可以用逗号隔开）';
 $lang['__admin_background_color__'] = '管理页面背景颜色';
 
-$lang['__code_font_family__']       = '代码块字体集（包含空格的字体必须加引号。可使用逗号分隔多种字体）';
+$lang['__code_font_family__']       = '代码块字体集（包含空格的字体必须加引号。
+可使用逗号分隔多种字体）';
 $lang['__code_font_size__']         = '代码块字体大小';
 $lang['__code_text_color__']        = '代码块字体颜色';
 $lang['__code_background_color__']  = '代码块背景颜色';
@@ -95,18 +102,22 @@ $lang['__button_border_color__']                    = '按钮边框颜色';
 $lang['__button_text_hover_color__']                = '光标悬停时按钮字体颜色';
 $lang['__button_background_hover_color__']          = '光标悬停时按钮的背景颜色';
 $lang['__button_border_hover_color__']              = '光标悬停时按钮的边框颜色';
+$lang['__input_text_color__']                       = '输入字段的文本颜色';
 $lang['__input_border_color__']                     = '控件的边框颜色';
+$lang['__input_background_color__']                 = '输入字段的背景颜色';
 $lang['__button_default_text_color__']              = '默认按钮的字体颜色';
 $lang['__button_default_background_color__']        = '默认按钮的背景颜色';
 $lang['__button_default_border_color__']            = '默认按钮的边框颜色';
 $lang['__button_default_text_hover_color__']        = '光标悬停在默认按钮上时的字体颜色';
-$lang['__button_default_background_hover_color__']  = '光标悬停时默认按钮的背景颜色';
+$lang['__button_default_background_hover_color__']  = '光标悬停时默认
+按钮的背景颜色';
 $lang['__button_default_border_hover_color__']      = '光标悬停时默认按钮的边框颜色';
 $lang['__button_search_text_color__']               = '搜索按钮的字体颜色';
 $lang['__button_search_background_color__']         = '搜索按钮的背景颜色';
 $lang['__button_search_border_color__']             = '搜索按钮的边框颜色';
 $lang['__button_search_text_hover_color__']         = '光标悬停在搜索按钮上时的字体颜色';
-$lang['__button_search_background_hover_color__']   = '光标悬停在搜索按钮上时搜索按钮的背景颜色';
+$lang['__button_search_background_hover_color__']   = '光标悬停在搜索按钮上时
+搜索按钮的背景颜色';
 $lang['__button_search_border_hover_color__']       = '光标悬停在搜索按钮上时的边框颜色';
 
 $lang['__topheader_background_color__'] = '标题顶部的背景颜色';
@@ -116,16 +127,19 @@ $lang['__navbar_background_color__']    = '菜单的背景颜色';
 $lang['__navbar_border_color__']        = '菜单的边框颜色';
 $lang['__navbar_brand_text_color__']    = '网站标题的字体颜色';
 $lang['__navbar_brand_tagline_color__'] = '网站标语的字体颜色';
-$lang['__navbar_content_justify__']     = '网站菜单内容的排布（可以是 flex-start、flex-end、center、space-bween 或 space-around、space-between、space-around）';
+$lang['__navbar_content_justify__']     = '网站菜单内容的排布（可以是 flex-start、flex-end、center、space-bween 
+或 space-around、space-between、space-around）';
 $lang['__navbar_link_color__']          = '导航栏链接的字体颜色';
 $lang['__navbar_link_hover_color__']    = '光标悬停在导航栏链接上时的字体颜色';
+$lang['__navbar_search_max_width__']    = '搜索栏的最大宽度';
 
 $lang['__subnavbar_text_color__']       = '子菜单文本的字体颜色';
 $lang['__subnavbar_link_color__']       = '子菜单链接的字体颜色';
 $lang['__subnavbar_link_hover_color__'] = '光标悬停在子菜单链接上时的字体颜色';
 $lang['__subnavbar_background_color__'] = '子菜单的背景颜色';
 $lang['__subnavbar_border_color__']     = '子菜单的边框颜色';
-$lang['__subnavbar_content_justify__']  = '子菜单内容的排布（可以是 flex-start、flex-end、center、space-bween 或 space-around、space-between、space-around）';
+$lang['__subnavbar_content_justify__']  = '子菜单内容的排布（可以是 flex-start、flex-end、center、space-bween 
+或 space-around、space-between、space-around）';
 
 $lang['__tag_background_color__']   = '标签的背景颜色';
 $lang['__tag_text_color__']         = '标签的字体颜色';
@@ -197,6 +211,13 @@ $lang['__tab_border_hover_color__']         = '光标悬停时标签页的边框
 $lang['__tab_active_color__']               = '活动选项卡的字体颜色';
 $lang['__tab_active_background_color__']    = '活动选项卡的背景颜色';
 $lang['__tab_active_border_color__']        = '活动选项卡的边框颜色';
+
+$lang['__footnote_popup_font_size__']           = '脚注弹出窗口的字体大小';
+$lang['__footnote_popup_text_color__']          = '脚注弹出窗口的字体颜色';
+$lang['__footnote_popup_border_color__']        = '脚注弹出窗口的边框颜色';
+$lang['__footnote_popup_background_color__']    = '脚注弹出窗口的背景颜色';
+$lang['__footnote_popup_horizontal_padding__']  = '脚注弹出窗口的水平填充';
+$lang['__footnote_popup_vertical_padding__']    = '脚注弹出窗口的垂直填充';
 
 /* Plugin */
 $lang['__plugin_background_color__']        = 'Mikio 插件元素的背景颜色';
@@ -305,7 +326,8 @@ $lang['__plugin_steps_step_background_complete_color__']    = '已完成步骤�
 
 $lang['__plugin_tabgroup_tab_text_active_color__']          = '选项卡组活动选项卡字体颜色';
 $lang['__plugin_tabgroup_tab_background_active_color__']    = '选项卡组活动选项卡背景颜色';
-$lang['__plugin_tabgroup_tab_border_hover_color__']         = '光标悬停时选项卡组非活动选项卡边框颜色';
+$lang['__plugin_tabgroup_tab_border_hover_color__']         = '光标悬停时选项卡组
+非活动选项卡边框颜色';
 
 $lang['__plugin_tooltip_text_color__']          = '工具提示字体颜色';
 $lang['__plugin_tooltip_background_color__']    = '工具提示背景颜色';
