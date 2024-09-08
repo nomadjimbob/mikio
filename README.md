@@ -250,7 +250,7 @@ if(html.dataset.theme == 'theme-dark') {
 }
 ```
 
-To set a Dark Mode icon in the navigation bar, upload an image named `icon-dark.png` using the media manager in the root namespace or save the image inside the images directory of the template.
+To set a Dark Mode icon in the navigation bar, upload an image named `logo-dark.png` using the media manager in the root namespace or save the image inside the images directory of the template.
 
 ## Mikio Plugin
 
