@@ -268,6 +268,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_2024-09-01 RC-1_**
 
+   -    `navbarTitleIconHeight` and `navbarTitleIconWidth` will now override any automatic navbar logo height and width which fixes non-square SVGs [#98](https://github.com/nomadjimbob/mikio/issues/98). Thanks macin.
+   -    Added support for Dark Mode logos in the navbar [#98](https://github.com/nomadjimbob/mikio/issues/98). Requested by macin.
    -    Fixed table alignments not being applied [#86](https://github.com/nomadjimbob/mikio/issues/86). Thanks aloade.
    -    Fixed empty menus being shown when all items have been disabled [#88](https://github.com/nomadjimbob/mikio/issues/88). Thanks aloade.
    -    Fixed styling issues in the Media Manager [#85](https://github.com/nomadjimbob/mikio/issues/85). Thanks aloade.

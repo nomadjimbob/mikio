@@ -870,23 +870,23 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                     if ($width !== '' || $height !== '') {
                         if (ctype_digit($width) === true) {
-                            $styles .= 'max-width:' . (int)$width . 'px;';
+                            $styles .= 'width:' . (int)$width . 'px;';
                         } elseif (preg_match('/^\d+(px|rem|em|%)$/', $width) === 1) {
-                            $styles .= 'max-width:' . $width . ';';
+                            $styles .= 'width:' . $width . ';';
                         } elseif (strcasecmp($width, 'none') === 0) {
-                            $styles .= 'max-width:none;';
+                            $styles .= 'width:none;';
                         }
 
                         if (ctype_digit($height) === true) {
-                            $styles .= 'max-height:' . (int)$height . 'px;';
+                            $styles .= 'height:' . (int)$height . 'px;';
                         } elseif (preg_match('/^\d+(px|rem|em|%)$/', $height) === 1) {
-                            $styles .= 'max-height:' . $height . ';';
+                            $styles .= 'height:' . $height . ';';
                         } elseif (strcasecmp($height, 'none') === 0) {
-                            $styles .= 'max-height:none;';
+                            $styles .= 'height:none;';
                         }
 
                         if ($styles !== '') {
-                            $styles = ' style="' . $styles . '"';
+                            $styles = ' style="' . $styles . 'max-width:none;max-height:none;"';
                         }
                     }//end if
 
