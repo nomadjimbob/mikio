@@ -37,7 +37,7 @@
 
 -   2022-03-05
 
-    -   Breadcrumbs and You Are Here have now been seperated instead of combined. This removed the options `breadcrumbHome` and `breadcrumbShowLast` for the breadcrumbs as it only applies to the you are here bar. **Breadcrumbs and You Are Here options may have reset**
+    -   Breadcrumbs and You Are Here have now been seperated instead of combined. This removed the options `breadcrumbHome` and `breadcrumbShowLast` for the breadcrumbs as it only applies to the 'you are here' bar. **Breadcrumbs and You Are Here options may have reset**
 
 -   2020-09-27
     -   Sidebars now collapse by default on mobile. This can be overridden with the `sidebarMobileDefaultCollapse` option
@@ -49,14 +49,14 @@
 
 ## Configuration
 
-The configuration can be change with the [Configuration Manager Plugin](https://www.dokuwiki.org/plugin:config)
+The configuration can be changed with the [Configuration Manager Plugin](https://www.dokuwiki.org/plugin:config)
 
 -   `iconTag` : icon tag to use to engage the icon engine. Default to `icon`
 -   `customTheme` : the mikio theme to use, located in the `mikio/themes` directory
 -   `showNotifications` : where to show site notifications for admin staff
 -   `useLESS` : use the LESS compilier or direct CSS for the mikio stylesheet. Requires the ctype PHP extension installed
 -   `brandURLGuest` : change the brand URL for guests. Leave blank to use the default
--   `brandURLUser` : change the brand URL for logged in users. Leave blank to use the default
+-   `brandURLUser` : change the brand URL for logged-in users. Leave blank to use the default
 
 -   `navbarUseTitleIcon` : show the site logo in the navbar
 -   `navbarUseTitleText` : show the site title in the navbar
@@ -83,7 +83,7 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 -   `navbarItemShowLogin` : show the Login menu item
 -   `navbarItemShowLogout` : show the Logout menu item
 
--   `searchButton` : show the search button as a icon or text
+-   `searchButton` : show the search button as an icon or text
 -   `searchUseTypeahead` : use [Typeahead](https://github.com/bassjobsen/Bootstrap-3-Typeahead) page suggestions in search bar
 
 -   `heroTitle` : show the hero block on pages
@@ -100,12 +100,12 @@ The configuration can be change with the [Configuration Manager Plugin](https://
 -   `breadcrumbSepText` : text to set the breadcrumb seperator. Requires `breadcrumbSep` to be enabled
 
 -   `youarehereHideHome` : hide you are here in the root namespace
--   `youareherePosition` : where to display the you are here, either under the navbar, in the hero element or above the page content
--   `youareherePrefix` : enable changing the you are here prefix
--   `youareherePrefixText` : text to set the you are here prefix. Requires `you are herePrefix` to be enabled
--   `youarehereSep` : enable changing the you are here seperator
--   `youarehereSepText` : text to set the you are here seperator. Requires `you are hereSep` to be enabled
--   `youarehereHome` : change the you are here home item to none, page title of root page, 'home' or an icon/image. The 'home' text is pulled from the `home` language value
+-   `youareherePosition` : where to display the 'you are here', either under the navbar, in the hero element or above the page content
+-   `youareherePrefix` : enable changing the 'you are here' prefix
+-   `youareherePrefixText` : text to set the 'you are here' prefix. Requires `you are herePrefix` to be enabled
+-   `youarehereSep` : enable changing the 'you are here' seperator
+-   `youarehereSepText` : text to set the 'you are here' seperator. Requires `you are hereSep` to be enabled
+-   `youarehereHome` : change the 'you are here' home item to none, page title of root page, 'home' or an icon/image. The 'home' text is pulled from the `home` language value
 -   `youarehereShowLast` : only show an amount of you are here from the last. Will also show the home item in the list if enabled. Set this to `0` to show all items
 
 -   `sidebarShowLeft` : show the left sidebar if content is found
@@ -177,7 +177,7 @@ Namespaces can also apply the above hero settings in child pages by including th
 
 ## Hiding Elements
 
-Mikio now supports hiding elements using the `~~hide-parts (parts)~~` macro. Each element within the hide-parts macro is required to be seperated by spaces. Currently the following parts are supported:
+Mikio now supports hiding elements using the `~~hide-parts (parts)~~` macro. Each element within the hide-parts macro is required to be seperated by spaces. Currently, the following parts are supported:
 
 -   `topheader` : content above the navbar
 -   `navbar` : the main navigation bar
@@ -200,7 +200,7 @@ To hide the topheader, navbar and hero, you would use the macro `~~hide-parts to
 -   If the icon tag conflicts with another plugin, you can change the tag from `icon` to a user set value in the settings
 -   By default, Mikio enables FontAwesome 4 by also includes FontAwesome 5, Elusive 2 and Bootstrap Icons which can be enabled by uncommenting their inclusions in `/icons/icons.php`
 
-Users can also add their own icon sets into the template. Supported icon sets can either be webfonts or indivial files (such as a SVG library). Instructions can be found in the `/icons/icons.php` file.
+Users can also add their own icon sets into the template. Supported icon sets can either be webfonts or indivial files (such as an SVG library). Instructions can be found in the `/icons/icons.php` file.
 
 ## Customizing Page Footer Info Text
 
@@ -211,15 +211,15 @@ You can use the follow placeholders to insert page attributes:
 -   `{file}` - The file name of the page
 -   `{date}` - The last modification date of the page
 -   `{user}` - The user whom last edited the page
--   `{locked}` - The user whom has the page currently locked
+-   `{locked}` - The user who has the page currently locked
 
 You can also use Dokuwiki language settings by wrapping the string ID with the percentage symbol. For example use to the language string set against `lastmod`, use `%lastmod%`. In a default install under english, `%lastmod%` will be replaced with `Last modified:`.
 
-There is also support for simple optional text. By wrapping text in square brackets and at the beginning of the square bracket, inserting the placeholder name followed by an equals sign, if the placeholder exists, then the contents of the square brackets will be parsed. There is also support for `LOGGEDIN` to check if there is a logged in user.
+There is also support for simple optional text. By wrapping text in square brackets and at the beginning of the square bracket, inserting the placeholder name followed by an equals sign, if the placeholder exists, then the contents of the square brackets will be parsed. There is also support for `LOGGEDIN` to check if there is a logged-in user.
 
 For example the string `Hello[LOGGEDIN= by {user}]` would output as `Hello` if the vistor is a guest (not logged in) or `Hello by james` if the visitor has logged into the site.
 
-Optionals can also be stacked, for example `Hello[LOGGEDIN=[USER= by {user}]]`. the `by {user}` would only be present if there is a logged in user AND the page has a user editor set.
+Optionals can also be stacked, for example `Hello[LOGGEDIN=[USER= by {user}]]`. the `by {user}` would only be present if there is a logged-in user AND the page has a user editor set.
 
 Of course, you can leave the setting blank to hide the page info altogether.
 
@@ -250,6 +250,8 @@ if(html.dataset.theme == 'theme-dark') {
 }
 ```
 
+To set a Dark Mode icon in the navigation bar, upload an image named `logo-dark.png` using the media manager in the root namespace or save the image inside the images directory of the template.
+
 ## Mikio Plugin
 
 The [Mikio Plugin](https://github.com/nomadjimbob/mikioplugin/) is also available to add bootstrap 4 style + more elements to DokuWiki pages.
@@ -264,8 +266,11 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
-- **_NEXT-RELEASE_**
+- **_2024-09-01 RC-1_**
 
+   -    `navbarTitleIconHeight` and `navbarTitleIconWidth` will now override any automatic navbar logo height and width which fixes non-square SVGs [#98](https://github.com/nomadjimbob/mikio/issues/98). Thanks macin.
+   -    Added support for Dark Mode logos in the navbar [#98](https://github.com/nomadjimbob/mikio/issues/98). Requested by macin.
+   -    Fixed table alignments not being applied [#86](https://github.com/nomadjimbob/mikio/issues/86). Thanks aloade.
    -    Fixed empty menus being shown when all items have been disabled [#88](https://github.com/nomadjimbob/mikio/issues/88). Thanks aloade.
    -    Fixed styling issues in the Media Manager [#85](https://github.com/nomadjimbob/mikio/issues/85). Thanks aloade.
    -    Fixed issue with languages other than english not being supported correctly [#81](https://github.com/nomadjimbob/mikio/issues/81). Requested by Little-Data.
@@ -286,7 +291,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
    -    Allow hiding tags in hero if using `<tags>` element in the MikioPlugin [#70](https://github.com/nomadjimbob/mikio/issues/70). Requested by garanovich.
 
 - **_2024-05-03_**
-   -    Fixed incorrect style file names. Thanks Wolfram.
+   -    Fixed incorrect style file names. Thanks, Wolfram.
    -    Table cell padding now adjustable through the style config page. Thanks Hakker.
    -    Added ability to style row border color through the style config page. Thanks Elanndelh.
    -    Added option to make the left sidebar sticky. Requested by Wolfram.
@@ -321,7 +326,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 -   **_2023-10-20_**
 
-    -   Fixed LESS engine not being discovered when DokuWiki is hosted in a sub directory. Thanks Jan.
+    -   Fixed LESS engine not being discovered when DokuWiki is hosted in a subdirectory. Thanks, Jan.
 
 -   **_2023-10-16_**
 
@@ -329,7 +334,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 -   **_2023-10-14_**
 
-    -   Fixed bug where external page tools where not showing in the tool bar. Thanks Jan.
+    -   Fixed bug where external page tools where not showing in the toolbar. Thanks, Jan.
 
 -   **_2023-06-05_**
 
@@ -340,7 +345,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
     -   Fixed notifications appearing in weird places at times.
     -   Setting `tpl»mikio»showNotifications` to an empty string is the same as setting it to `always`.
-    -   Fixed languages not shown in dropdown correctly with the translate plugin when `plugin»translation»dropdown` is turned on.
+    -   Fixed languages not shown in dropdown correctly with the 'translate' plugin when `plugin»translation»dropdown` is turned on.
     -   Fixed some css issues on small screens.
 
 -   **_2023-05-18_**
@@ -428,7 +433,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
     -   Site width is now available under Template Style Settings [#22](https://github.com/nomadjimbob/mikio/issues/22)
     -   TOC is now sticky when set to full height [#21](https://github.com/nomadjimbob/mikio/issues/21)
     -   Added support to the theme being linked by a symbolic link [#20](https://github.com/nomadjimbob/mikio/issues/20)
-    -   Mikio will now fallback to using CSS when there is the LESS engine is not detected [#20](https://github.com/nomadjimbob/mikio/issues/20)
+    -   Mikio will now fall back to using CSS when there is the LESS engine is not detected [#20](https://github.com/nomadjimbob/mikio/issues/20)
 
 -   **_2021-03-10_**
 
@@ -471,7 +476,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 -   **_2020-09-10_**
 
-    -   Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the a page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
+    -   Floating page tools is now a UL element with classes applied from getType and getLinkAttributes. Fixes popup dialogs initiated from the page menu [#7](https://github.com/nomadjimbob/mikio/issues/7)
     -   Template.info.txt now shows correct release dates [#8](https://github.com/nomadjimbob/mikio/issues/8)
     -   Fixed rightsidebar php warnings
     -   Code/Pre blocks no longer have padding applied on the admin pages

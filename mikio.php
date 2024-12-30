@@ -88,25 +88,9 @@ class mikio
     }
 
     /**
-     * Prevent cloning of the instance
-     *
-     * @noinspection PhpUnusedPrivateMethodInspection
-     */
-    private function __clone() {}
-
-    /**
-     * Prevent unserialization of the instance
-     *
-     * @noinspection PhpUnusedPrivateMethodInspection
-     */
-    public function __wakeup() {}
-
-
-    /**
      * Register the themes hooks into Dokuwiki
      *
      * @return void
-     * @noinspection PhpUnusedPrivateMethodInspection
      */
     private function registerHooks(): void
     {
@@ -654,6 +638,12 @@ class mikio
                     $html .= '</li>';
                 }
 
+                /** @var helper_plugin_do $do */
+                $do = plugin_load('helper', 'do');
+                if ($do) {
+                    $html .= $do->tpl_getUserTasksIconHTML();
+                }
+
                 if (count($userToolsMenu) > 0 ) {
                     $html .= '<li id="dokuwiki__usertools" class="mikio-nav-dropdown">';
                     $html .= '<a id="mikio_dropdown_usertools" class="nav-link dropdown-toggle" href="#" role="button"
@@ -693,6 +683,12 @@ class mikio
                     }
                 }
 
+                /** @var helper_plugin_do $do */
+                $do = plugin_load('helper', 'do');
+                if ($do) {
+                    $html .= $do->tpl_getUserTasksIconHTML();
+                }
+
                 if (count($userToolsMenu) > 0) {
                     $html .= '<div class="mikio-dropdown-divider"></div>';
                     $html .= '<h6 class="mikio-dropdown-header">' . $lang['user_tools'] . '</h6>';
@@ -712,6 +708,12 @@ class mikio
 
                 foreach ($pageToolsMenu as $item) {
                     $html .= '<li class="mikio-nav-item">' . $item . '</li>';
+                }
+
+                /** @var helper_plugin_do $do */
+                $do = plugin_load('helper', 'do');
+                if ($do) {
+                    $html .= $do->tpl_getUserTasksIconHTML();
                 }
 
                 foreach ($userToolsMenu as $item) {
@@ -860,34 +862,41 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             // Brand image
             if ($this->getConf('navbarUseTitleIcon') === true) {
                 $logo = $this->getMediaFile('logo', false);
-                if (empty($logo) === false) {
+                $logoDark = $this->getMediaFile('logo-dark', false);
+                if (empty($logo) === false || empty($logoDark) === false) {
                     $width = $this->getConf('navbarTitleIconWidth');
                     $height = $this->getConf('navbarTitleIconHeight');
                     $styles = '';
 
-                    if (strlen($width) > 0 || strlen($height) > 0) {
+                    if ($width !== '' || $height !== '') {
                         if (ctype_digit($width) === true) {
-                            $styles .= 'max-width:' . intval($width) . 'px;';
+                            $styles .= 'width:' . (int)$width . 'px;';
                         } elseif (preg_match('/^\d+(px|rem|em|%)$/', $width) === 1) {
-                            $styles .= 'max-width:' . $width . ';';
+                            $styles .= 'width:' . $width . ';';
                         } elseif (strcasecmp($width, 'none') === 0) {
-                            $styles .= 'max-width:none;';
+                            $styles .= 'width:none;';
                         }
 
                         if (ctype_digit($height) === true) {
-                            $styles .= 'max-height:' . intval($height) . 'px;';
+                            $styles .= 'height:' . (int)$height . 'px;';
                         } elseif (preg_match('/^\d+(px|rem|em|%)$/', $height) === 1) {
-                            $styles .= 'max-height:' . $height . ';';
+                            $styles .= 'height:' . $height . ';';
                         } elseif (strcasecmp($height, 'none') === 0) {
-                            $styles .= 'max-height:none;';
+                            $styles .= 'height:none;';
                         }
 
-                        if (strlen($styles) > 0) {
-                            $styles = ' style="' . $styles . '"';
+                        if ($styles !== '') {
+                            $styles = ' style="' . $styles . 'max-width:none;max-height:none;"';
                         }
                     }//end if
 
-                    $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image"' . $styles . '>';
+                    if(empty($logo) === false) {
+                        $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image' . (empty($logoDark) === false ? ' mikio-light-only' : '') . '"' . $styles . '>';
+                    }
+
+                    if (empty($logoDark) === false) {
+                        $html .= '<img src="' . $logoDark . '" class="mikio-navbar-brand-image' . (empty($logo) === false ? ' mikio-dark-only' : '') . '"' . $styles . '>';
+                    }
                 }//end if
             }//end if
 
@@ -1103,8 +1112,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $classes[] = $item->getType();
             $attr = $item->getLinkAttributes();
 
-            if (empty($attr['class']) === false) {
-                $classes = array_merge($classes, explode(' ', $attr['class']));
+            if (!empty($attr['class'])) {
+                $classes += explode(' ', $attr['class']);
             }
 
             $classes = array_unique($classes);
@@ -1325,6 +1334,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
+            !is_null($ACT) && !is_null($showPageTools) &&
             strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
                 ($this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0))
         ) {
@@ -2283,6 +2293,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         $html = p_get_first_heading($page);
+        if(empty($html) === true) {
+            $html = $conf['title'];
+        }
         $html = strip_tags($html);
         $html = preg_replace('/\s+/', ' ', $html);
         $html .= ' [' . strip_tags($conf['title']) . ']';

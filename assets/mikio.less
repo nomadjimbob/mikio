@@ -36,6 +36,7 @@
     --display-theme-auto: inline-block !important;
 }
 
+//noinspection ALL
 :root[data-theme="theme-light"] {
     --text: @ini_text;
     --link: @ini_link;
@@ -145,6 +146,10 @@
     --display-theme-light: inline-block;
     --display-theme-dark: none;
     --display-theme-auto: none;
+
+    .mikio-dark-only {
+        display: none;
+    }
 }
 
 :root[data-theme="theme-dark"] {
@@ -256,6 +261,16 @@
     --display-theme-light: none;
     --display-theme-dark: inline-block;
     --display-theme-auto: none;
+
+    .mikio-light-only {
+        display: none;
+    }
+}
+
+:root[data-theme=""] {
+    .mikio-dark-only {
+        display: none;
+    }
 }
 
 .mikio-sticky {
@@ -323,6 +338,13 @@
     }
 }
 
+.mikio .dokuwiki {
+    .ui-dialog-content, .ui-widget-content {
+        fieldset {
+            margin: 0;
+        }
+    }
+}
 
 /* Containers */
 html {
@@ -761,6 +783,7 @@ body {
     &.mikio-sidebar-left {
         border-left-width: 0;
         border-right: 1px solid var(--sidebar-border-color);
+        z-index: 1001;
     }
 
     &.mikio-sidebar-right {
@@ -984,9 +1007,13 @@ body {
     max-width: 100%;
     background-color: var(--content-background);
     padding: .5rem 2rem;
+
+    .mikio-article-content {
+        position: relative;
+    }
 }
 
-.mikio.dokuwiki div.preview {
+.mikio .dokuwiki div.preview {
     background-color: var(--content-background);
     padding: 1rem 2rem;
 }
@@ -1325,6 +1352,8 @@ body {
 }
 
 .mikio .mikio-toc {
+    position: relative;
+    z-index: 2;
     float: right;
     padding-left: 1rem;
     padding-bottom: 1rem;
@@ -1441,7 +1470,7 @@ body {
 }
 
 .mikio .mode_show table,
-.mikio.dokuwiki .mode_showtag table.ul,
+.mikio .dokuwiki .mode_showtag table.ul,
 .mikio .mode_admin table {
     width: 100%;
     border-collapse: collapse;
@@ -1455,13 +1484,18 @@ body {
 
     td,
     th {
-        padding-left: @ini_table_horizontal_padding;
-        padding-right: @ini_table_horizontal_padding;
-        padding-top: @ini_table_vertical_padding;
-        padding-bottom: @ini_table_vertical_padding;
+        padding: @ini_table_vertical_padding @ini_table_horizontal_padding;
         text-align: left;
         border-left: 1px solid var(--table-col-border-color);
         border-right: 1px solid var(--table-col-border-color);
+
+        &.centeralign {
+            text-align: center;
+        }
+
+        &.rightalign {
+            text-align: right;
+        }
     }
 
     thead tr {
@@ -1489,10 +1523,46 @@ body {
     display: flex;
 
     .mikio-nav-item,
-    .mikio-nav-dropdown {
+    .mikio-nav-dropdown,
+    > button, > span {
         display: inline-block;
         padding: .5rem .2rem;
         margin: 0 .5rem;
+        font-size: 1rem;
+    }
+
+    > button {
+        border-width: 0;
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
+
+    > button, > span {
+        &.plugin__do_usertasks {
+            position: relative;
+            border-bottom: 0 !important;
+
+            svg {
+                margin-top: 0.4rem;
+                width: 1.3rem;
+                height: 1.3rem;
+            }
+
+            .num {
+                position: absolute;
+                line-height: normal;
+                top: 0.3rem;
+                right: -0.4rem;
+                padding: .1rem .25rem;
+                font-size: 70%;
+                border-radius: 50%;
+                background-color: var(--navbar-link-color);
+                color: var(--navbar-background-color);
+            }
+        }
     }
 
     .mikio-nav-link {}
@@ -1503,7 +1573,7 @@ body {
 
     .mikio-nav-dropdown>a {
         display: inline-block;
-        padding: .2rem 1.2rem .2rem 0rem;
+        padding: .2rem 1.2rem .2rem 0;
         position: relative;
 
         &::after {
@@ -1603,7 +1673,6 @@ body {
         float: none;
         display: inline-block;
         font-size: 1rem;
-        display: inline-block;
         line-height: 1.4rem;
         position: relative;
         z-index: 2;
@@ -1673,7 +1742,7 @@ body {
     word-break: break-word;
 }
 
-.mikio.dokuwiki div.section_highlight {
+.mikio .dokuwiki div.section_highlight {
     background-color: var(--section-edit-highlight);
     border-width: 0;
     margin: 0 -1rem;
@@ -1755,12 +1824,12 @@ pre {
     &.dokuwiki fieldset,
     &.dokuwiki .secedit,
     #config__manager tr,
-    .mode_revisions,
-    .mode_edit,
-    .mode_draft,
-    .mode_preview,
-    .mode_showtag,
-    .mode_admin {
+    .mode_revisions .mikio-page,
+    .mode_edit .mikio-page,
+    .mode_draft .mikio-page,
+    .mode_preview .mikio-page,
+    .mode_showtag .mikio-page,
+    .mode_admin .mikio-page {
         .mikio-controls();
     }
 
@@ -1778,13 +1847,13 @@ pre {
     }
 }
 
-.mikio.dokuwiki .secedit {
+.mikio .dokuwiki .secedit {
     float: none;
     margin-top: 0;
     text-align: right;
 }
 
-.mikio.dokuwiki fieldset {
+.mikio .dokuwiki fieldset {
     margin: 2rem auto;
     border: 0;
     width: auto;
@@ -1814,8 +1883,8 @@ pre {
     // }
 }
 
-.mikio.dokuwiki .mode_login,
-.mikio.dokuwiki .mode_denied {
+.mikio .dokuwiki .mode_login,
+.mikio .dokuwiki .mode_denied {
     .mikio-dialog();
 }
 
@@ -1848,13 +1917,19 @@ pre {
         color: #999999;
     }
 
-    p {
+    .mikio-page p {
         button+button {
             margin-left: .5rem;
         }
     }
 
     div.ui-admin {
+        display: flex;
+        flex-direction: column;
+
+        #admin__version {
+            font-size: 80%;
+        }
 
         ul.admin_tasks,
         ul.admin_plugins {
@@ -2008,7 +2083,7 @@ pre {
     font-weight: inherit;
 }
 
-.mikio.dokuwiki .secedit {
+.mikio .dokuwiki .secedit {
     button {
         .mikio-button-small();
     }
@@ -2628,7 +2703,7 @@ pre {
     }
 }
 
-.mikio.dokuwiki .mode_search .mikio-article {
+.mikio .dokuwiki .mode_search .mikio-article {
     .search-results-form {
         fieldset.search-form {
             display: grid;
@@ -2696,7 +2771,7 @@ pre {
                         list-style-type: none;
 
                         li {
-                            margin: 0rem;
+                            margin: 0;
                             white-space: nowrap;
                         }
 
@@ -2803,7 +2878,7 @@ pre {
     }
 }
 
-.mikio.dokuwiki ul.tabs {
+.mikio .dokuwiki ul.tabs {
     .mikio-tabs();
 }
 
@@ -2913,6 +2988,17 @@ pre {
             }
         }
     }
+}
+
+/* Approve */
+.mikio #plugin__approve {
+    font-size: 80%;
+}
+
+/* Do */
+.plugin__do_usertasks_list {
+    font-size: 80%;
+    z-index: 20;
 }
 
 /* Mobile */
@@ -3099,7 +3185,7 @@ pre {
         grid-row: 2 / span 1;
     }
 
-    .mikio.dokuwiki div.ui-admin #admin__version {
+    .mikio .dokuwiki div.ui-admin #admin__version {
         padding-right: 1rem;
     }
 
@@ -3361,7 +3447,7 @@ pre {
     }
 }
 
-.mikio.dokuwiki {
+.mikio .dokuwiki {
     #mikio__translate .mikio-dropdown {
         min-width: auto;
     }

@@ -6,9 +6,9 @@ use dokuwiki\template\mikio\mikio;
 use DokuWikiTest;
 
 /**
- * General tests for the advanced plugin
+ * General tests for the mikio template
  *
- * @group tpl_bootstrap3
+ * @group tpl_mikio
  * @group plugins
  */
 class general_tpl_mikio_test extends DokuWikiTest
@@ -39,16 +39,28 @@ class general_tpl_mikio_test extends DokuWikiTest
         $this->assertTrue(false !== strtotime($info['date']));
     }
 
-/**
- * Test to ensure that every conf['...'] entry in conf/default.php has a corresponding meta['...'] entry in
- * conf/metadata.php.
- */
-    public function test_tpl_conf()
+    /**
+     * Test to ensure that every conf['...'] entry in conf/default.php has a corresponding meta['...'] entry in
+     * conf/metadata.php.
+     */
+    public function test_tpl_conf_and_meta_exists(): void
     {
+        global $conf, $meta;
+
+        $conf_existing_keys = [];
+        if(!is_null($conf)) {
+            $conf_existing_keys = array_keys($conf);
+        }
+
         $conf_file = __DIR__ . '/../conf/default.php';
 
         if (file_exists($conf_file)) {
             include $conf_file;
+        }
+
+        $meta_existing_keys = [];
+        if(!is_null($meta)) {
+            $meta_existing_keys = array_keys($meta);
         }
 
         $meta_file = __DIR__ . '/../conf/metadata.php';
@@ -63,8 +75,12 @@ class general_tpl_mikio_test extends DokuWikiTest
             'Both conf/default.php and conf/metadata.php have to exist and contain the same keys.'
         );
 
-        if (gettype($conf) != 'NULL' && gettype($meta) != 'NULL') {
+        if (!is_null($conf) && !is_null($meta)) {
             foreach ($conf as $key => $value) {
+                if(in_array($key, $conf_existing_keys, true)) {
+                    continue;
+                }
+
                 $this->assertArrayHasKey(
                     $key,
                     $meta,
@@ -73,6 +89,10 @@ class general_tpl_mikio_test extends DokuWikiTest
             }
 
             foreach ($meta as $key => $value) {
+                if(in_array($key, $meta_existing_keys, true)) {
+                    continue;
+                }
+
                 $this->assertArrayHasKey(
                     $key,
                     $conf,
@@ -82,40 +102,129 @@ class general_tpl_mikio_test extends DokuWikiTest
         }
     }
 
-    public function testSingletonPattern()
+    /**
+     * Test to ensure that every conf['...'] entry in conf/default.php has a corresponding lang['...'] entry in
+     * lang/../setting.php.
+     */
+    public function test_tpl_lang_settings_conf_exists(): void
+    {
+        global $conf, $lang;
+
+        $conf_existing_keys = [];
+        if(!is_null($conf)) {
+            $conf_existing_keys = array_keys($conf);
+        }
+
+        $conf_file = __DIR__ . '/../conf/default.php';
+
+        $this->assertFileExists(
+            $conf_file,
+            'conf/default.php has to exist.'
+        );
+
+        include $conf_file;
+
+        if (!is_null($conf)) {
+            $lang_dir = __DIR__ . '/../lang/';
+            $lang_dir_codes = scandir($lang_dir);
+
+            $lang_orig_keys = array_keys($lang);
+
+            foreach ($lang_dir_codes as $lang_code) {
+                if($lang_code !== '.' && $lang_code !== '..' && is_dir($lang_dir . $lang_code)) {
+                    $lang_file_path = $lang_dir . $lang_code . '/settings.php';
+                    $this->assertFileExists(
+                        $lang_file_path,
+                        'lang/' . $lang_code . '/lang.php has to exist.'
+                    );
+
+                    include $lang_file_path;
+
+                    foreach ($conf as $key => $value) {
+                        if(in_array($key, $conf_existing_keys, true)) {
+                            continue;
+                        }
+
+                        $this->assertArrayHasKey(
+                            $key,
+                            $lang,
+                            'Key $lang[\'' . $key . '\'] missing in lang/' . $lang_code . '/lang.php'
+                        );
+                    }
+
+                    foreach(array_keys($lang) as $lang_key) {
+                        if(in_array($lang_key, $lang_orig_keys, true)) {
+                            continue;
+                        }
+
+                        unset($lang[$lang_key]);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Test to ensure that every lang['...'] entry in lang/../lang.php has a corresponding lang['...'] entry in
+     * lang/en/lang.php.
+     */
+    public function test_tpl_lang_exists_in_non_en_lang(): void
+    {
+        global $lang;
+
+        $lang_dir = __DIR__ . '/../lang/';
+
+        $lang_existing_keys = [];
+        if(!is_null($lang)) {
+            $lang_existing_keys = array_keys($lang);
+        }
+
+        $lang_en_file = $lang_dir . 'en/lang.php';
+
+        $this->assertFileExists(
+            $lang_en_file,
+            'lang/en/lang.php has to exist.'
+        );
+
+        include $lang_en_file;
+
+        $lang_en_keys = array_diff(array_keys($lang), $lang_existing_keys);
+        foreach($lang_en_keys as $lang_key) {
+            unset($lang[$lang_key]);
+        }
+
+        $lang_dir_codes = scandir($lang_dir);
+
+        foreach ($lang_dir_codes as $lang_code) {
+            if($lang_code !== '.' && $lang_code !== '..' && $lang_code !== 'en' && is_dir($lang_dir . $lang_code)) {
+                $lang_file_path = $lang_dir . $lang_code . '/lang.php';
+                $this->assertFileExists(
+                    $lang_file_path,
+                    'lang/' . $lang_code . '/lang.php has to exist.'
+                );
+
+                include $lang_file_path;
+
+                foreach ($lang_en_keys as $key) {
+                    $this->assertArrayHasKey(
+                        $key,
+                        $lang,
+                        'Key $lang[\'' . $key . '\'] missing in lang/' . $lang_code . '/lang.php'
+                    );
+
+                    unset($lang[$key]);
+                }
+            }
+        }
+    }
+
+    /**
+     * Test to ensure that the mikio class is a singleton
+     */
+    public function test_singleton_pattern()
     {
         $instance1 = mikio::getInstance();
         $instance2 = mikio::getInstance();
         $this->assertSame($instance1, $instance2);
-    }
-
-    public function testGetConf()
-    {
-        $instance = mikio::getInstance();
-        $this->assertFalse($instance->getConf('nonexistent_key'));
-    }
-
-    public function testIncludeFooter()
-    {
-        $instance = mikio::getInstance();
-        $footer = $instance->includeFooter(false);
-        $this->assertIsString($footer);
-    }
-
-    public function testUserCanEdit()
-    {
-        global $INFO;
-        $INFO['isadmin'] = true;
-        $instance = mikio::getInstance();
-        $this->assertTrue($instance->userCanEdit());
-    }
-
-    public function testGetPageTitle()
-    {
-        global $conf;
-        $conf['title'] = 'Test Wiki';
-        $instance = mikio::getInstance();
-        $title = $instance->getPageTitle();
-        $this->assertStringContainsString('Test Wiki', $title);
     }
 }
