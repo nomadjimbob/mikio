@@ -302,9 +302,9 @@ class mikio
             ],
             ['keys' => ['sidebarLeftRow1', 'sidebarLeftRow2', 'sidebarLeftRow3', 'sidebarLeftRow4'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_none'), tpl_getLang('value_logged in user'), tpl_getLang('value_search'), tpl_getLang('value_content'), tpl_getLang('value_tags')],
+                'values' => [tpl_getLang('value_none'), tpl_getLang('value_logged_in_user'), tpl_getLang('value_search'), tpl_getLang('value_content'), tpl_getLang('value_tags')],
                 'default' => [
-                    'sidebarLeftRow1' => tpl_getLang('value_logged in user'),
+                    'sidebarLeftRow1' => tpl_getLang('value_logged_in_user'),
                     'sidebarLeftRow2' => tpl_getLang('value_search'),
                     'sidebarLeftRow3' => tpl_getLang('value_content')
                 ]
