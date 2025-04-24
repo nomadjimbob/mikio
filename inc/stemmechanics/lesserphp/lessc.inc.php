@@ -1,7 +1,7 @@
 <?php
 
 /**
- * lessphp v0.7.0
+ * lessphp v0.7.1
  * http://leafo.net/lessphp
  *
  * LESS CSS compiler, adapted from http://lesscss.org
@@ -40,7 +40,7 @@
  * handling things like indentation.
  */
 class lessc {
-    static public $VERSION = "v0.7.0";
+    static public $VERSION = "v0.7.1";
 
     static public $TRUE = array("keyword", "true");
     static public $FALSE = array("keyword", "false");
@@ -71,6 +71,11 @@ class lessc {
     protected $sourceLoc = null;
 
     static protected $nextImportId = 0; // uniquely identify imports
+
+    protected $parser;
+    protected $env;
+    protected $scope;
+    protected $formatter;
 
     // attempts to find the path of an import url, returns null for css files
     protected function findImport($url) {
@@ -1377,7 +1382,7 @@ class lessc {
                     $name = $name . ": ";
                 }
 
-                $this->throwError("${name}expecting $expectedArgs arguments, got $numValues");
+                $this->throwError("{$name}expecting $expectedArgs arguments, got $numValues");
             }
 
             return $values;
@@ -1393,7 +1398,7 @@ class lessc {
                 $name = $name . ": ";
             }
 
-            $this->throwError("${name}expecting at least $expectedMinArgs arguments, got $numValues");
+            $this->throwError("{$name}expecting at least $expectedMinArgs arguments, got $numValues");
         }
 
         return $values;
@@ -1738,7 +1743,7 @@ class lessc {
         }
 
         // type based operators
-        $fname = "op_${ltype}_${rtype}";
+        $fname = "op_{$ltype}_{$rtype}";
         if (is_callable(array($this, $fname))) {
             $out = $this->$fname($op, $left, $right);
             if (!is_null($out)) return $out;
@@ -2550,6 +2555,18 @@ class lessc_parser {
 
     // caches preg escaped literals
     static protected $literalCache = array();
+
+    protected $eatWhiteDefault;
+    protected $lessc;
+    protected $sourceName;
+    public $writeComments;
+    public $count;
+    protected $line;
+    protected $env;
+    public $buffer;
+    protected $seenComments;
+    protected $inExp;
+
 
     public function __construct($lessc, $sourceName = null) {
         $this->eatWhiteDefault = true;
@@ -4017,6 +4034,7 @@ class lessc_formatter_lessjs extends lessc_formatter_classic {
     public $breakSelectors = true;
     public $assignSeparator = ": ";
     public $selectorSeparator = ",";
+    public $indentLevel;
 }
 
 
