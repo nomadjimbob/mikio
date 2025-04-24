@@ -267,6 +267,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 ## Releases
 
 - **_NEXT_**
+   -    Fixed media manager description list not being readable in dark mode [#96](https://github.com/nomadjimbob/mikio/issues/96). Thanks macin.
+   -    Improved language support in the configuration options [#94](https://github.com/nomadjimbob/mikio/issues/94). Thanks Little-Data.
    -    Added support to default to dark theme in the template options [#95](https://github.com/nomadjimbob/mikio/issues/95). Requested by jeffka11.
    -    Fix dynamic variable creation depreciation warnings in the lessc engine 
    -    Will now detect if `mbstring` is missing from your PHP installation is not use these helper methods [#102](https://github.com/nomadjimbob/mikio/issues/102). Thanks Naomitor.

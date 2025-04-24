@@ -143,6 +143,9 @@
     --tab-active-color: @ini_tab_active_color;
     --tab-active-background-color: @ini_tab_active_background_color;
     --tab-active-border-color: @ini_tab_active_border_color;
+    --description-list-term-background_color: @ini_description_list_term_background_color;
+    --description-list-details-background-color: @ini_description_list_details_background_color;
+
     --display-theme-light: inline-block;
     --display-theme-dark: none;
     --display-theme-auto: none;
@@ -258,6 +261,8 @@
     --tab-active-color: @ini_darkmode_tab_active_color;
     --tab-active-background-color: @ini_darkmode_tab_active_background_color;
     --tab-active-border-color: @ini_darkmode_tab_active_border_color;
+    --description-list-term-background-color: @ini_darkmode_description_list_term_background_color;
+    --description-list-details-background-color: @ini_darkmode_description_list_details_background_color;
     --display-theme-light: none;
     --display-theme-dark: inline-block;
     --display-theme-auto: none;
@@ -2566,12 +2571,12 @@ pre {
 
             dt {
                 padding: .25rem .5rem;
-                background-color: #f0f0f0;
+                background-color: var(--description-list-term-background-color);
             }
 
             dd {
                 padding: .25rem .5rem;
-                background-color: #f8f8f8;
+                background-color: var(--description-list-details-background-color);
             }
         }
 
