@@ -10,7 +10,7 @@
 
 $meta['iconTag']                = ['string'];
 $meta['customTheme']            = ['string'];
-$meta['showNotifications']      = ['multichoice', '__choices' => ['never', 'admin', 'always']];
+$meta['showNotifications']      = ['multichoice', '_choices' => ['never', 'admin', 'always']];
 $meta['useLESS']                = ['onoff'];
 $meta['brandURLGuest']          = ['string'];
 $meta['brandURLUser']           = ['string'];

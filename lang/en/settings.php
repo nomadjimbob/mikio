@@ -116,3 +116,160 @@ $lang['stickyTopHeader']        = 'Make the top header part sticky';
 $lang['stickyNavbar']           = 'Make the navbar sticky';
 $lang['stickyHeader']           = 'Make the header part sticky';
 $lang['stickyLeftSidebar']      = 'Make the left sidebar sticky';
+
+$lang['showNotifications_o_never']      = 'never';
+$lang['showNotifications_o_admin']      = 'admin';
+$lang['showNotifications_o_always']      = 'always';
+
+$lang['navbarDWMenuType_o_icons'] = 'icons';
+$lang['navbarDWMenuType_o_text'] = 'text';
+$lang['navbarDWMenuType_o_both'] = 'both';
+
+$lang['navbarDWMenuCombine_o_separate'] = 'separate';
+$lang['navbarDWMenuCombine_o_dropdown'] = 'dropdown';
+$lang['navbarDWMenuCombine_o_combine'] = 'combine';
+
+$lang['navbarPosLeft_o_none'] = 'none';
+$lang['navbarPosLeft_o_custom'] = 'custom';
+$lang['navbarPosLeft_o_search'] = 'search';
+$lang['navbarPosLeft_o_dokuwiki'] = 'dokuwiki';
+
+$lang['navbarPosMiddle_o_none'] = 'none';
+$lang['navbarPosMiddle_o_custom'] = 'custom';
+$lang['navbarPosMiddle_o_search'] = 'search';
+$lang['navbarPosMiddle_o_dokuwiki'] = 'dokuwiki';
+
+$lang['navbarPosRight_o_none'] = 'none';
+$lang['navbarPosRight_o_custom'] = 'custom';
+$lang['navbarPosRight_o_search'] = 'search';
+$lang['navbarPosRight_o_dokuwiki'] = 'dokuwiki';
+
+$lang['navbarItemShowCreate_o_always'] = 'always';
+$lang['navbarItemShowCreate_o_logged in'] = 'logged in';
+$lang['navbarItemShowCreate_o_logged out'] = 'logged out';
+$lang['navbarItemShowCreate_o_never'] = 'never';
+
+$lang['navbarItemShowShow_o_always'] = 'always';
+$lang['navbarItemShowShow_o_logged in'] = 'logged in';
+$lang['navbarItemShowShow_o_logged out'] = 'logged out';
+$lang['navbarItemShowShow_o_never'] = 'never';
+
+$lang['navbarItemShowRevs_o_always'] = 'always';
+$lang['navbarItemShowRevs_o_logged in'] = 'logged in';
+$lang['navbarItemShowRevs_o_logged out'] = 'logged out';
+$lang['navbarItemShowRevs_o_never'] = 'never';
+
+$lang['navbarItemShowBacklink_o_always'] = 'always';
+$lang['navbarItemShowBacklink_o_logged in'] = 'logged in';
+$lang['navbarItemShowBacklink_o_logged out'] = 'logged out';
+$lang['navbarItemShowBacklink_o_never'] = 'never';
+
+$lang['navbarItemShowRecent_o_always'] = 'always';
+$lang['navbarItemShowRecent_o_logged in'] = 'logged in';
+$lang['navbarItemShowRecent_o_logged out'] = 'logged out';
+$lang['navbarItemShowRecent_o_never'] = 'never';
+
+$lang['navbarItemShowMedia_o_always'] = 'always';
+$lang['navbarItemShowMedia_o_logged in'] = 'logged in';
+$lang['navbarItemShowMedia_o_logged out'] = 'logged out';
+$lang['navbarItemShowMedia_o_never'] = 'never';
+
+$lang['navbarItemShowIndex_o_always'] = 'always';
+$lang['navbarItemShowIndex_o_logged in'] = 'logged in';
+$lang['navbarItemShowIndex_o_logged out'] = 'logged out';
+$lang['navbarItemShowIndex_o_never'] = 'never';
+
+$lang['navbarItemShowProfile_o_always'] = 'always';
+$lang['navbarItemShowProfile_o_logged in'] = 'logged in';
+$lang['navbarItemShowProfile_o_logged out'] = 'logged out';
+$lang['navbarItemShowProfile_o_never'] = 'never';
+
+$lang['navbarItemShowAdmin_o_always'] = 'always';
+$lang['navbarItemShowAdmin_o_logged in'] = 'logged in';
+$lang['navbarItemShowAdmin_o_logged out'] = 'logged out';
+$lang['navbarItemShowAdmin_o_never'] = 'never';
+
+$lang['navbarItemShowLogin_o_always'] = 'always';
+$lang['navbarItemShowLogin_o_never'] = 'never';
+
+$lang['navbarItemShowLogout_o_always'] = 'always';
+$lang['navbarItemShowLogout_o_never'] = 'never';
+
+$lang['searchButton_o_icon'] = 'icon';
+$lang['searchButton_o_text'] = 'text';
+
+$lang['breadcrumbPosition_o_none'] = 'none';
+$lang['breadcrumbPosition_o_top'] = 'top';
+$lang['breadcrumbPosition_o_hero'] = 'hero';
+$lang['breadcrumbPosition_o_page'] = 'page';
+
+$lang['youareherePosition_o_none'] = 'none';
+$lang['youareherePosition_o_top'] = 'top';
+$lang['youareherePosition_o_hero'] = 'hero';
+$lang['youareherePosition_o_page'] = 'page';
+
+$lang['youarehereHome_o_none'] = 'none';
+$lang['youarehereHome_o_page title'] = 'page title';
+$lang['youarehereHome_o_home'] = 'home';
+$lang['youarehereHome_o_icon'] = 'icon';
+
+$lang['sidebarLeftRow1_o_none'] = 'none';
+$lang['sidebarLeftRow1_o_logged in user'] = 'logged in user';
+$lang['sidebarLeftRow1_o_search'] = 'search';
+$lang['sidebarLeftRow1_o_content'] = 'content';
+$lang['sidebarLeftRow1_o_tags'] = 'tags';
+
+$lang['sidebarLeftRow2_o_none'] = 'none';
+$lang['sidebarLeftRow2_o_logged in user'] = 'logged in user';
+$lang['sidebarLeftRow2_o_search'] = 'search';
+$lang['sidebarLeftRow2_o_content'] = 'content';
+$lang['sidebarLeftRow2_o_tags'] = 'tags';
+
+$lang['sidebarLeftRow3_o_none'] = 'none';
+$lang['sidebarLeftRow3_o_logged in user'] = 'logged in user';
+$lang['sidebarLeftRow3_o_search'] = 'search';
+$lang['sidebarLeftRow3_o_content'] = 'content';
+$lang['sidebarLeftRow3_o_tags'] = 'tags';
+
+$lang['sidebarLeftRow4_o_none'] = 'none';
+$lang['sidebarLeftRow4_o_logged in user'] = 'logged in user';
+$lang['sidebarLeftRow4_o_search'] = 'search';
+$lang['sidebarLeftRow4_o_content'] = 'content';
+$lang['sidebarLeftRow4_o_tags'] = 'tags';
+
+$lang['pageToolsFloating_o_none'] = 'none';
+$lang['pageToolsFloating_o_page editors'] = 'page editors';
+$lang['pageToolsFloating_o_always'] = 'always';
+
+$lang['pageToolsFooter_o_none'] = 'none';
+$lang['pageToolsFooter_o_page editors'] = 'page editors';
+$lang['pageToolsFooter_o_always'] = 'always';
+
+$lang['pageToolsShowCreate_o_always'] = 'always';
+$lang['pageToolsShowCreate_o_logged in'] = 'logged in';
+$lang['pageToolsShowCreate_o_logged out'] = 'logged out';
+$lang['pageToolsShowCreate_o_never'] = 'never';
+
+$lang['pageToolsShowEdit_o_always'] = 'always';
+$lang['pageToolsShowEdit_o_logged in'] = 'logged in';
+$lang['pageToolsShowEdit_o_logged out'] = 'logged out';
+$lang['pageToolsShowEdit_o_never'] = 'never';
+
+$lang['pageToolsShowRevs_o_always'] = 'always';
+$lang['pageToolsShowRevs_o_logged in'] = 'logged in';
+$lang['pageToolsShowRevs_o_logged out'] = 'logged out';
+$lang['pageToolsShowRevs_o_never'] = 'never';
+
+$lang['pageToolsShowBacklink_o_always'] = 'always';
+$lang['pageToolsShowBacklink_o_logged in'] = 'logged in';
+$lang['pageToolsShowBacklink_o_logged out'] = 'logged out';
+$lang['pageToolsShowBacklink_o_never'] = 'never';
+
+$lang['pageToolsShowTop_o_always'] = 'always';
+$lang['pageToolsShowTop_o_logged in'] = 'logged in';
+$lang['pageToolsShowTop_o_logged out'] = 'logged out';
+$lang['pageToolsShowTop_o_never'] = 'never';
+
+$lang['licenseType_o_none'] = 'none';
+$lang['licenseType_o_badge'] = 'badge';
+$lang['licenseType_o_button'] = 'button';

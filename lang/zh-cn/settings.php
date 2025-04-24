@@ -106,3 +106,160 @@ $lang['stickyTopHeader']        = '使顶部标题部分具有粘性';
 $lang['stickyNavbar']           = '使导航栏具有粘性';
 $lang['stickyHeader']           = '使标题部分具有粘性';
 $lang['stickyLeftSidebar']      = '使左侧边栏具有粘性';
+
+$lang['showNotifications_o_never']      = '从不';
+$lang['showNotifications_o_admin']      = '管理员';
+$lang['showNotifications_o_always']      = '总是';
+
+$lang['navbarDWMenuType_o_icons'] = '图标';
+$lang['navbarDWMenuType_o_text'] = '文本';
+$lang['navbarDWMenuType_o_both'] = '两个都要';
+
+$lang['navbarDWMenuCombine_o_separate'] = '分离式';
+$lang['navbarDWMenuCombine_o_dropdown'] = '下拉式';
+$lang['navbarDWMenuCombine_o_combine'] = '组合';
+
+$lang['navbarPosLeft_o_none'] = '无';
+$lang['navbarPosLeft_o_custom'] = '自定义';
+$lang['navbarPosLeft_o_search'] = '搜索';
+$lang['navbarPosLeft_o_dokuwiki'] = 'dokuwiki';
+
+$lang['navbarPosMiddle_o_none'] = '无';
+$lang['navbarPosMiddle_o_custom'] = '自定义';
+$lang['navbarPosMiddle_o_search'] = '搜索';
+$lang['navbarPosMiddle_o_dokuwiki'] = 'dokuwiki';
+
+$lang['navbarPosRight_o_none'] = '无';
+$lang['navbarPosRight_o_custom'] = '自定义';
+$lang['navbarPosRight_o_search'] = '搜索';
+$lang['navbarPosRight_o_dokuwiki'] = 'dokuwiki';
+
+$lang['navbarItemShowCreate_o_always'] = '总是';
+$lang['navbarItemShowCreate_o_logged in'] = '已登录';
+$lang['navbarItemShowCreate_o_logged out'] = '已退出登录';
+$lang['navbarItemShowCreate_o_never'] = '从不';
+
+$lang['navbarItemShowShow_o_always'] = '总是';
+$lang['navbarItemShowShow_o_logged in'] = '已登录';
+$lang['navbarItemShowShow_o_logged out'] = '已退出登录';
+$lang['navbarItemShowShow_o_never'] = '从不';
+
+$lang['navbarItemShowRevs_o_always'] = '总是';
+$lang['navbarItemShowRevs_o_logged in'] = '已登录';
+$lang['navbarItemShowRevs_o_logged out'] = '已退出登录';
+$lang['navbarItemShowRevs_o_never'] = '从不';
+
+$lang['navbarItemShowBacklink_o_always'] = '总是';
+$lang['navbarItemShowBacklink_o_logged in'] = '已登录';
+$lang['navbarItemShowBacklink_o_logged out'] = '已退出登录';
+$lang['navbarItemShowBacklink_o_never'] = '从不';
+
+$lang['navbarItemShowRecent_o_always'] = '总是';
+$lang['navbarItemShowRecent_o_logged in'] = '已登录';
+$lang['navbarItemShowRecent_o_logged out'] = '已退出登录';
+$lang['navbarItemShowRecent_o_never'] = '从不';
+
+$lang['navbarItemShowMedia_o_always'] = '总是';
+$lang['navbarItemShowMedia_o_logged in'] = '已登录';
+$lang['navbarItemShowMedia_o_logged out'] = '已退出登录';
+$lang['navbarItemShowMedia_o_never'] = '从不';
+
+$lang['navbarItemShowIndex_o_always'] = '总是';
+$lang['navbarItemShowIndex_o_logged in'] = '已登录';
+$lang['navbarItemShowIndex_o_logged out'] = '已退出登录';
+$lang['navbarItemShowIndex_o_never'] = '从不';
+
+$lang['navbarItemShowProfile_o_always'] = '总是';
+$lang['navbarItemShowProfile_o_logged in'] = '已登录';
+$lang['navbarItemShowProfile_o_logged out'] = '已退出登录';
+$lang['navbarItemShowProfile_o_never'] = '从不';
+
+$lang['navbarItemShowAdmin_o_always'] = '总是';
+$lang['navbarItemShowAdmin_o_logged in'] = '已登录';
+$lang['navbarItemShowAdmin_o_logged out'] = '已退出登录';
+$lang['navbarItemShowAdmin_o_never'] = '从不';
+
+$lang['navbarItemShowLogin_o_always'] = '总是';
+$lang['navbarItemShowLogin_o_never'] = '从不';
+
+$lang['navbarItemShowLogout_o_always'] = '总是';
+$lang['navbarItemShowLogout_o_never'] = '从不';
+
+$lang['searchButton_o_icon'] = '图标';
+$lang['searchButton_o_text'] = '文本';
+
+$lang['breadcrumbPosition_o_none'] = '无';
+$lang['breadcrumbPosition_o_top'] = '顶部';
+$lang['breadcrumbPosition_o_hero'] = '顶部大标题';
+$lang['breadcrumbPosition_o_page'] = '页面';
+
+$lang['youareherePosition_o_none'] = '无';
+$lang['youareherePosition_o_top'] = '顶部';
+$lang['youareherePosition_o_hero'] = '顶部大标题';
+$lang['youareherePosition_o_page'] = '页面';
+
+$lang['youarehereHome_o_none'] = '无';
+$lang['youarehereHome_o_page title'] = '页面标题';
+$lang['youarehereHome_o_home'] = '首页';
+$lang['youarehereHome_o_icon'] = '图标';
+
+$lang['sidebarLeftRow1_o_none'] = '无';
+$lang['sidebarLeftRow1_o_logged in user'] = '登录的用户';
+$lang['sidebarLeftRow1_o_search'] = '搜索';
+$lang['sidebarLeftRow1_o_content'] = '内容';
+$lang['sidebarLeftRow1_o_tags'] = '标签';
+
+$lang['sidebarLeftRow2_o_none'] = '无';
+$lang['sidebarLeftRow2_o_logged in user'] = '登录的用户';
+$lang['sidebarLeftRow2_o_search'] = '搜索';
+$lang['sidebarLeftRow2_o_content'] = '内容';
+$lang['sidebarLeftRow2_o_tags'] = '标签';
+
+$lang['sidebarLeftRow3_o_none'] = '无';
+$lang['sidebarLeftRow3_o_logged in user'] = '登录的用户';
+$lang['sidebarLeftRow3_o_search'] = '搜索';
+$lang['sidebarLeftRow3_o_content'] = '内容';
+$lang['sidebarLeftRow3_o_tags'] = '标签';
+
+$lang['sidebarLeftRow4_o_none'] = '无';
+$lang['sidebarLeftRow4_o_logged in user'] = '登录的用户';
+$lang['sidebarLeftRow4_o_search'] = '搜索';
+$lang['sidebarLeftRow4_o_content'] = '内容';
+$lang['sidebarLeftRow4_o_tags'] = '标签';
+
+$lang['pageToolsFloating_o_none'] = '无';
+$lang['pageToolsFloating_o_page editors'] = '页面编辑者';
+$lang['pageToolsFloating_o_always'] = '总是';
+
+$lang['pageToolsFooter_o_none'] = '无';
+$lang['pageToolsFooter_o_page editors'] = '页面编辑者';
+$lang['pageToolsFooter_o_always'] = '总是';
+
+$lang['pageToolsShowCreate_o_always'] = '总是';
+$lang['pageToolsShowCreate_o_logged in'] = '已登录';
+$lang['pageToolsShowCreate_o_logged out'] = '已退出登录';
+$lang['pageToolsShowCreate_o_never'] = '从不';
+
+$lang['pageToolsShowEdit_o_always'] = '总是';
+$lang['pageToolsShowEdit_o_logged in'] = '已登录';
+$lang['pageToolsShowEdit_o_logged out'] = '已退出登录';
+$lang['pageToolsShowEdit_o_never'] = '从不';
+
+$lang['pageToolsShowRevs_o_always'] = '总是';
+$lang['pageToolsShowRevs_o_logged in'] = '已登录';
+$lang['pageToolsShowRevs_o_logged out'] = '已退出登录';
+$lang['pageToolsShowRevs_o_never'] = '从不';
+
+$lang['pageToolsShowBacklink_o_always'] = '总是';
+$lang['pageToolsShowBacklink_o_logged in'] = '已登录';
+$lang['pageToolsShowBacklink_o_logged out'] = '已退出登录';
+$lang['pageToolsShowBacklink_o_never'] = '从不';
+
+$lang['pageToolsShowTop_o_always'] = '总是';
+$lang['pageToolsShowTop_o_logged in'] = '已登录';
+$lang['pageToolsShowTop_o_logged out'] = '已退出登录';
+$lang['pageToolsShowTop_o_never'] = '从不';
+
+$lang['licenseType_o_none'] = '无';
+$lang['licenseType_o_badge'] = '徽章';
+$lang['licenseType_o_button'] = '按钮';
