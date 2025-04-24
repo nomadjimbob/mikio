@@ -13,7 +13,7 @@ const mikio = {
     stickyItems: [],
     stickyOffset: 0,
     stickyIndex: 2010,
-    darkMode: 'light',
+    darkMode: '',
 
     ready: function () {
         const updateStickyScroll = function () {
@@ -449,6 +449,16 @@ const mikio = {
             }
         } else {
             delete html.dataset.themeAuto;
+        }
+
+        console.log(this.darkMode);
+
+        if(themeMode === '') {
+            if(document.querySelector('body').classList.contains('mikio-default-dark')) {
+                themeMode = 'dark';
+            } else {
+                themeMode = 'light';
+            }
         }
 
         html.dataset.theme = `theme-${themeMode}`;

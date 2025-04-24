@@ -16,6 +16,7 @@ $conf['brandURLGuest']          = '';
 $conf['brandURLUser']           = '';
 $conf['showLightDark']          = 0;
 $conf['autoLightDark']          = 0;
+$conf['defaultDark']            = 0;
 
 $conf['navbarUseTitleIcon']     = 1;
 $conf['navbarTitleIconHeight']  = '';

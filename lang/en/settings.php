@@ -19,6 +19,7 @@ $lang['brandURLGuest']          = 'Change the Brand Logo URL for guests. Leave b
 $lang['brandURLUser']           = 'Change the Brand Logo URL for logged in users. Leave blank for default home URL';
 $lang['showLightDark']          = 'Show the light/dark toggle in the navbar';
 $lang['autoLightDark']          = 'Change light/dark theme based on the system preference';
+$lang['defaultDark']            = 'Default to the dark theme for the user';
 
 $lang['navbarUseTitleIcon']     = 'Show the wiki image in the menubar title. Will search for an image named logo 
 (png/jpg/gif/svg) in the root or :wiki: namespace or the template/subtheme images directory';

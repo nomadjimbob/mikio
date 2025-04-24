@@ -267,6 +267,8 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 ## Releases
 
 - **_NEXT_**
+   -    Added support to default to dark theme in the template options [#95](https://github.com/nomadjimbob/mikio/issues/95). Requested by jeffka11.
+   -    Fix dynamic variable creation depreciation warnings in the lessc engine 
    -    Will now detect if `mbstring` is missing from your PHP installation is not use these helper methods [#102](https://github.com/nomadjimbob/mikio/issues/102). Thanks Naomitor.
    -    Fixed overflow bug with large number of trace items on small displays [#104](https://github.com/nomadjimbob/mikio/issues/104). Thanks looowizz.
 

@@ -16,6 +16,7 @@ $lang['brandURLGuest']          = '为访客更改徽标 URL。留空使用默�
 $lang['brandURLUser']           = '为登录用户更改徽标 URL。留空使用默认主页 URL';
 $lang['showLightDark']          = '在导航栏显示明暗切换按钮';
 $lang['autoLightDark']          = '根据系统主题更改明暗主题';
+$lang['defaultDark']            = '默认为用户使用深色主题'; // added by nomadjimbob using translate.google.com
 
 $lang['navbarUseTitleIcon']     = '在菜单栏标题中显示维基图片。将在根目录或 :wiki: 命名空间或模板/子主题图片目录中搜索名为logo的图片（png/jpg/gif/svg）。';
 $lang['navbarTitleIconHeight']  = '直接设置标题图标高度。支持 像素px（默认）、相对单位rem 和 相对长度单位em';

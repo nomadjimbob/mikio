@@ -352,6 +352,7 @@ class mikio
             ['keys' => ['searchUseTypeahead'],              'type' => 'bool'],
             ['keys' => ['showLightDark'],                   'type' => 'bool'],
             ['keys' => ['autoLightDark'],                   'type' => 'bool'],
+            ['keys' => ['defaultDark'],                       'type' => 'bool'],
             ['keys' => ['youarehereShowLast'],              'type' => 'int'],
 
             ['keys' => ['iconTag'],                         'type' => 'string'],

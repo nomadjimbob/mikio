@@ -16,6 +16,7 @@ $meta['brandURLGuest']          = ['string'];
 $meta['brandURLUser']           = ['string'];
 $meta['showLightDark']          = ['onoff'];
 $meta['autoLightDark']          = ['onoff'];
+$meta['defaultDark']            = ['onoff'];
 
 $meta['navbarUseTitleIcon']     = ['onoff'];
 $meta['navbarTitleIconHeight']  = ['string'];
