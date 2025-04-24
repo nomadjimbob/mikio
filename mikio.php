@@ -2504,7 +2504,12 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
         $content = ob_get_clean();
         if($content !== '') {
             $domDocument = new DOMDocument();
-            $domContent = $domDocument->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES'));
+
+            if(function_exists('mb_convert_encoding')) {
+                $content = mb_convert_encoding($content, 'HTML-ENTITIES');
+            }
+
+            $domContent = $domDocument->loadHTML($content);
             if (false === $domContent) {
                 return $content;
             }

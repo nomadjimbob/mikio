@@ -267,6 +267,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 ## Releases
 
 - **_NEXT_**
+   -    Will now detect if `mbstring` is missing from your PHP installation is not use these helper methods [#102](https://github.com/nomadjimbob/mikio/issues/102). Thanks Naomitor.
    -    Fixed overflow bug with large number of trace items on small displays [#104](https://github.com/nomadjimbob/mikio/issues/104). Thanks looowizz.
 
 - **_2025-04-24_**
