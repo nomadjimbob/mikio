@@ -266,6 +266,9 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+- **_NEXT_**
+   -    Fixed overflow bug with large number of trace items on small displays [#104](https://github.com/nomadjimbob/mikio/issues/104). Thanks looowizz.
+
 - **_2025-04-24_**
    -    Fix typo preventing logged_in_user from showing [#105](https://github.com/nomadjimbob/mikio/pull/105). Thanks ChaosKid42.
    -    Added support for the Chinese language [#91](https://github.com/nomadjimbob/mikio/pull/91). Thanks Little-data.
