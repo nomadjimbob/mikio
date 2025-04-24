@@ -266,8 +266,9 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
-- **_2024-09-01 RC-1_**
-
+- **_2025-04-24_**
+   -    Fix typo preventing logged_in_user from showing [#105](https://github.com/nomadjimbob/mikio/pull/105). Thanks ChaosKid42.
+   -    Added support for the Chinese language [#91](https://github.com/nomadjimbob/mikio/pull/91). Thanks Little-data.
    -    `navbarTitleIconHeight` and `navbarTitleIconWidth` will now override any automatic navbar logo height and width which fixes non-square SVGs [#98](https://github.com/nomadjimbob/mikio/issues/98). Thanks macin.
    -    Added support for Dark Mode logos in the navbar [#98](https://github.com/nomadjimbob/mikio/issues/98). Requested by macin.
    -    Fixed table alignments not being applied [#86](https://github.com/nomadjimbob/mikio/issues/86). Thanks aloade.
