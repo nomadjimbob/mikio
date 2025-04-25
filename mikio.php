@@ -264,19 +264,19 @@ class mikio
         $data = [
             ['keys' => ['navbarDWMenuType'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_both'), tpl_getLang('value_icons'), tpl_getLang('value_text')]
+                'values' => ['both', 'icons', 'text']
             ],
             ['keys' => ['navbarDWMenuCombine'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_combine'), tpl_getLang('value_separate'), tpl_getLang('value_dropdown')]
+                'values' => ['combine', 'separate', 'dropdown']
             ],
             ['keys' => ['navbarPosLeft', 'navbarPosMiddle', 'navbarPosRight'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_none'), tpl_getLang('value_custom'), tpl_getLang('value_search'), tpl_getLang('value_dokuwiki')],
+                'values' => ['none', 'custom', 'search', 'dokuwiki'],
                 'default' => [
-                    'navbarPosLeft' => tpl_getLang('value_none'),
-                    'navbarPosMiddle' => tpl_getLang('value_search'),
-                    'navbarPosRight' => tpl_getLang('value_dokuwiki')
+                    'navbarPosLeft' => 'none',
+                    'navbarPosMiddle' => 'search',
+                    'navbarPosRight' => 'dokuwiki'
                 ]
             ],
             ['keys' => ['navbarItemShowCreate', 'navbarItemShowShow', 'navbarItemShowRevs', 'navbarItemShowBacklink',
@@ -284,46 +284,46 @@ class mikio
                 'navbarItemShowAdmin'
             ],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_always'), tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), tpl_getLang('value_never')]
+                'values' => ['always', tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), 'never']
             ],
             ['keys' => ['navbarItemShowLogin', 'navbarItemShowLogout'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_always'), tpl_getLang('value_never')]
+                'values' => ['always', 'never']
             ],
             ['keys' => ['searchButton'],                    'type' => 'choice',
-                'values' => [tpl_getLang('value_icon'), tpl_getLang('value_text')]
+                'values' => ['icon', 'text']
             ],
             ['keys' => ['breadcrumbPosition', 'youareherePosition'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_top'), tpl_getLang('value_hero'), tpl_getLang('value_page'), tpl_getLang('value_none')]
+                'values' => ['top', 'hero', 'page', 'none']
             ],
             ['keys' => ['youarehereHome'],                  'type' => 'choice',
-                'values' => [tpl_getLang('value_page_title'), tpl_getLang('value_home'), tpl_getLang('value_icon'), tpl_getLang('value_none')]
+                'values' => [tpl_getLang('value_page_title'), 'home', 'icon', 'none']
             ],
             ['keys' => ['sidebarLeftRow1', 'sidebarLeftRow2', 'sidebarLeftRow3', 'sidebarLeftRow4'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_none'), tpl_getLang('value_logged_in_user'), tpl_getLang('value_search'), tpl_getLang('value_content'), tpl_getLang('value_tags')],
+                'values' => ['none', tpl_getLang('value_logged_in_user'), 'search', 'content', 'tags'],
                 'default' => [
                     'sidebarLeftRow1' => tpl_getLang('value_logged_in_user'),
-                    'sidebarLeftRow2' => tpl_getLang('value_search'),
-                    'sidebarLeftRow3' => tpl_getLang('value_content')
+                    'sidebarLeftRow2' => 'search',
+                    'sidebarLeftRow3' => 'content'
                 ]
             ],
             ['keys' => ['pageToolsFloating', 'pageToolsFooter'],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_always'), tpl_getLang('value_none'), tpl_getLang('value_page_editors')]
+                'values' => ['always', 'none', tpl_getLang('value_page_editors')]
             ],
             ['keys' => ['pageToolsShowCreate', 'pageToolsShowEdit', 'pageToolsShowRevs', 'pageToolsShowBacklink',
                 'pageToolsShowTop'
             ],
                 'type' => 'choice',
-                'values' => [tpl_getLang('value_always'), tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), tpl_getLang('value_never')]
+                'values' => ['always', tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), 'never']
             ],
             ['keys' => ['showNotifications'],               'type' => 'choice',
-                'values' => [tpl_getLang('value_admin'), tpl_getLang('value_always'), tpl_getLang('value_none'), '', tpl_getLang('value_never')]
+                'values' => ['admin', 'always', 'none', '', 'never']
             ],
             ['keys' => ['licenseType'],                     'type' => 'choice',
-                'values' => [tpl_getLang('value_badge'), tpl_getLang('value_button'), tpl_getLang('value_none')]
+                'values' => ['badge', 'button', 'none']
             ],
             ['keys' => ['navbarUseTitleIcon'],              'type' => 'bool'],
             ['keys' => ['navbarUseTitleText'],              'type' => 'bool'],
@@ -525,9 +525,9 @@ class mikio
         $siteToolsMenu = [];
         $userToolsMenu = [];
 
-        $showIcons  = ($this->getConf('navbarDWMenuType') != tpl_getLang('value_text'));
-        $showText   = ($this->getConf('navbarDWMenuType') != tpl_getLang('value_icons'));
-        $isDropDown = ($this->getConf('navbarDWMenuCombine') != tpl_getLang('value_separate'));
+        $showIcons  = ($this->getConf('navbarDWMenuType') != 'text');
+        $showText   = ($this->getConf('navbarDWMenuType') != 'icons');
+        $isDropDown = ($this->getConf('navbarDWMenuCombine') != 'separate');
 
         $items = (new PageMenu())->getItems();
         foreach ($items as $item) {
@@ -536,7 +536,7 @@ class mikio
 
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
                 if (
-                    $showItem !== false && (strcasecmp($showItem, tpl_getLang('value_always')) === 0 ||
+                    $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                     (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
                     (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
                 ) {
@@ -563,7 +563,7 @@ class mikio
 
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
-                $showItem !== false && (strcasecmp($showItem, tpl_getLang('value_always')) === 0 ||
+                $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                 (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
                 (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
             ) {
@@ -605,9 +605,9 @@ class mikio
             }
         }//end foreach
 
-        $value_dropdown = tpl_getLang('value_dropdown');
-        $value_combine = tpl_getLang('value_combine');
-//        $value_separate = tpl_getLang('value_separate');
+        $value_dropdown = 'dropdown';
+        $value_combine = 'combine';
+//        $value_separate = 'separate';
 
         switch ($this->getConf('navbarDWMenuCombine')) {
             case $value_dropdown:
@@ -917,13 +917,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         // Menus
         $html .= '<div class="mikio-navbar-collapse">';
 
-        $menus = [$this->getConf('navbarPosLeft', tpl_getLang('value_none')), $this->getConf('navbarPosMiddle', tpl_getLang('value_none')),
-            $this->getConf('navbarPosRight', tpl_getLang('value_none'))
+        $menus = [$this->getConf('navbarPosLeft', 'none'), $this->getConf('navbarPosMiddle', 'none'),
+            $this->getConf('navbarPosRight', 'none')
         ];
 
-        $value_custom = tpl_getLang('value_custom');
-        $value_search = tpl_getLang('value_search');
-        $value_dokuwiki = tpl_getLang('value_dokuwiki');
+        $value_custom = 'custom';
+        $value_search = 'search';
+        $value_dokuwiki = 'dokuwiki';
 
         foreach ($menus as $menuType) {
             switch ($menuType) {
@@ -1017,10 +1017,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4')
                 ];
 
-                $value_search = tpl_getLang('value_search');
+                $value_search = 'search';
                 $value_logged_in_user = tpl_getLang('value_logged_in_user');
-                $value_content = tpl_getLang('value_content');
-                $value_tags = tpl_getLang('value_tags');
+                $value_content = 'content';
+                $value_tags = 'tags';
 
                 foreach ($rows as $row) {
                     switch ($row) {
@@ -1120,7 +1120,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $classes = array_unique($classes);
             $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
-            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), tpl_getLang('value_always'));
+            $showItem = $this->getConf('pageToolsShow' . ucfirst($item->getType()), 'always');
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                 (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
@@ -1173,7 +1173,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 }
             }
 
-            if (strcasecmp($this->getConf('searchButton'), tpl_getLang('value_icon')) === 0) {
+            if (strcasecmp($this->getConf('searchButton'), 'icon') === 0) {
                 $buttons = $dom->getElementsByTagName('button');
                 foreach($buttons as $button) {
                     if($button->getAttribute('type') === 'submit') {
@@ -1336,13 +1336,13 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         $showPageTools = $this->getConf('pageToolsFooter');
         if (
             !is_null($ACT) && !is_null($showPageTools) &&
-            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, tpl_getLang('value_always')) === 0 ||
+            strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, 'always') === 0 ||
                 ($this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0))
         ) {
             $html .= $this->includePageTools(false);
         }
 
-        $meta['licenseType']            = ['multichoice', '_choices' => [tpl_getLang('value_none'), tpl_getLang('value_badge'), tpl_getLang('value_button')]];
+        $meta['licenseType']            = ['multichoice', '_choices' => ['none', 'badge', 'button']];
         /** @noinspection PhpArrayWriteIsNotUsedInspection */
         $meta['licenseImageOnly']       = ['onoff'];
 
@@ -1552,9 +1552,9 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 }
             }
 
-            $value_none = tpl_getLang('value_none');
-            $value_home = tpl_getLang('value_home');
-            $value_icon = tpl_getLang('value_icon');
+            $value_none = 'none';
+            $value_home = 'home';
+            $value_icon = 'icon';
 
             switch ($this->getConf('youarehereHome')) {
                 case $value_none:
@@ -1619,10 +1619,10 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $html .= '<div class="mikio-hero">';
             $html .= '<div class="mikio-container">';
             $html .= '<div class="mikio-hero-text">';
-            if (strcasecmp($this->getConf('youareherePosition'), tpl_getLang('value_hero')) === 0) {
+            if (strcasecmp($this->getConf('youareherePosition'), 'hero') === 0) {
                 $html .= $this->includeYouAreHere(false);
             }
-            if (strcasecmp($this->getConf('breadcrumbPosition'), tpl_getLang('value_hero')) === 0) {
+            if (strcasecmp($this->getConf('breadcrumbPosition'), 'hero') === 0) {
                 $html .= $this->includeBreadcrumbs(false);
             }
 
@@ -1865,101 +1865,101 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
 
             $style_headers = [
-                ['title' => 'Base', 'starts_with' => '__text_'],
-                ['title' => 'Code', 'starts_with' => '__code_'],
-                ['title' => 'Controls', 'starts_with' => '__control_'],
-                ['title' => 'Header', 'starts_with' => '__topheader_'],
-                ['title' => 'Navbar', 'starts_with' => '__navbar_'],
-                ['title' => 'Sub Navbar', 'starts_with' => '__subnavbar_'],
-                ['title' => 'Tags', 'starts_with' => '__tag_background_color_'],
-                ['title' => 'Breadcrumbs', 'starts_with' => '__breadcrumb_'],
-                ['title' => 'Hero', 'starts_with' => '__hero_'],
-                ['title' => 'Sidebar', 'starts_with' => '__sidebar_'],
-                ['title' => 'Content', 'starts_with' => '__content_'],
-                ['title' => 'TOC', 'starts_with' => '__toc_'],
-                ['title' => 'Page Tools', 'starts_with' => '__pagetools_'],
-                ['title' => 'Footer', 'starts_with' => '__footer_'],
-                ['title' => 'Table', 'starts_with' => '__table_'],
-                ['title' => 'Dropdown', 'starts_with' => '__dropdown_'],
-                ['title' => 'Section Edit', 'starts_with' => '__section_edit_'],
-                ['title' => 'Tree', 'starts_with' => '__tree_'],
-                ['title' => 'Tabs', 'starts_with' => '__tab_'],
-                ['title' => 'Mikio Plugin', 'starts_with' => '__plugin_', 'heading' => 'h2',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_base'), 'starts_with' => '__text_'],
+                ['title' => tpl_getLang('style_header_code'), 'starts_with' => '__code_'],
+                ['title' => tpl_getLang('style_header_controls'), 'starts_with' => '__control_'],
+                ['title' => tpl_getLang('style_header_header'), 'starts_with' => '__topheader_'],
+                ['title' => tpl_getLang('style_header_navbar'), 'starts_with' => '__navbar_'],
+                ['title' => tpl_getLang('style_header_sub_navbar'), 'starts_with' => '__subnavbar_'],
+                ['title' => tpl_getLang('style_header_tags'), 'starts_with' => '__tag_background_color_'],
+                ['title' => tpl_getLang('style_header_breadcrumbs'), 'starts_with' => '__breadcrumb_'],
+                ['title' => tpl_getLang('style_header_hero'), 'starts_with' => '__hero_'],
+                ['title' => tpl_getLang('style_header_sidebar'), 'starts_with' => '__sidebar_'],
+                ['title' => tpl_getLang('style_header_content'), 'starts_with' => '__content_'],
+                ['title' => tpl_getLang('style_header_toc'), 'starts_with' => '__toc_'],
+                ['title' => tpl_getLang('style_header_page_tools'), 'starts_with' => '__pagetools_'],
+                ['title' => tpl_getLang('style_header_footer'), 'starts_with' => '__footer_'],
+                ['title' => tpl_getLang('style_header_table'), 'starts_with' => '__table_'],
+                ['title' => tpl_getLang('style_header_dropdown'), 'starts_with' => '__dropdown_'],
+                ['title' => tpl_getLang('style_header_section_edit'), 'starts_with' => '__section_edit_'],
+                ['title' => tpl_getLang('style_header_tree'), 'starts_with' => '__tree_'],
+                ['title' => tpl_getLang('style_header_tabs'), 'starts_with' => '__tab_'],
+                ['title' => tpl_getLang('style_header_mikio_plugin'), 'starts_with' => '__plugin_', 'heading' => 'h2',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Primary Colours', 'starts_with' => '__plugin_primary_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Secondary Colours', 'starts_with' => '__plugin_secondary_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_primary_colours'), 'starts_with' => '__plugin_primary_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_secondary_colours'), 'starts_with' => '__plugin_secondary_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Success Colours', 'starts_with' => '__plugin_success_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Danger Colours', 'starts_with' => '__plugin_danger_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Warning Colours', 'starts_with' => '__plugin_warning_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Info Colours', 'starts_with' => '__plugin_info_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Light Colours', 'starts_with' => '__plugin_light_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Dark Colours', 'starts_with' => '__plugin_dark_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Link Colours', 'starts_with' => '__plugin_link_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Carousel', 'starts_with' => '__plugin_carousel_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Steps', 'starts_with' => '__plugin_steps_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Tabgroup', 'starts_with' => '__plugin_tabgroup_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Tooltip', 'starts_with' => '__plugin_tooltip_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Dark Mode', 'starts_with' => '__darkmode_', 'heading' => 'h2'],
-                ['title' => 'Base', 'starts_with' => '__darkmode_text_'],
-                ['title' => 'Code', 'starts_with' => '__darkmode_code_'],
-                ['title' => 'Controls', 'starts_with' => '__darkmode_control_'],
-                ['title' => 'Header', 'starts_with' => '__darkmode_topheader_'],
-                ['title' => 'Navbar', 'starts_with' => '__darkmode_navbar_'],
-                ['title' => 'Sub Navbar', 'starts_with' => '__darkmode_subnavbar_'],
-                ['title' => 'Tags', 'starts_with' => '__darkmode_tag_background_color_'],
-                ['title' => 'Breadcrumbs', 'starts_with' => '__darkmode_breadcrumb_'],
-                ['title' => 'Hero', 'starts_with' => '__darkmode_hero_'],
-                ['title' => 'Sidebar', 'starts_with' => '__darkmode_sidebar_'],
-                ['title' => 'Content', 'starts_with' => '__darkmode_content_'],
-                ['title' => 'TOC', 'starts_with' => '__darkmode_toc_'],
-                ['title' => 'Page Tools', 'starts_with' => '__darkmode_pagetools_'],
-                ['title' => 'Footer', 'starts_with' => '__darkmode_footer_'],
-                ['title' => 'Table', 'starts_with' => '__darkmode_table_'],
-                ['title' => 'Dropdown', 'starts_with' => '__darkmode_dropdown_'],
-                ['title' => 'Section Edit', 'starts_with' => '__darkmode_section_edit_'],
-                ['title' => 'Tree', 'starts_with' => '__darkmode_tree_'],
-                ['title' => 'Tabs', 'starts_with' => '__darkmode_tab_'],
-                ['title' => 'Mikio Plugin (Dark mode)', 'starts_with' => '__plugin_darkmode_', 'heading' => 'h2',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_success_colours'), 'starts_with' => '__plugin_success_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_danger_colours'), 'starts_with' => '__plugin_danger_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_warning_colours'), 'starts_with' => '__plugin_warning_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_info_colours'), 'starts_with' => '__plugin_info_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_light_colours'), 'starts_with' => '__plugin_light_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_dark_colours'), 'starts_with' => '__plugin_dark_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_link_colours'), 'starts_with' => '__plugin_link_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_carousel'), 'starts_with' => '__plugin_carousel_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_steps'), 'starts_with' => '__plugin_steps_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_tabgroup'), 'starts_with' => '__plugin_tabgroup_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_tooltip'), 'starts_with' => '__plugin_tooltip_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_dark_mode'), 'starts_with' => '__darkmode_', 'heading' => 'h2'],
+                ['title' => tpl_getLang('style_header_dark_mode_base'), 'starts_with' => '__darkmode_text_'],
+                ['title' => tpl_getLang('style_header_dark_mode_code'), 'starts_with' => '__darkmode_code_'],
+                ['title' => tpl_getLang('style_header_dark_mode_controls'), 'starts_with' => '__darkmode_control_'],
+                ['title' => tpl_getLang('style_header_dark_mode_header'), 'starts_with' => '__darkmode_topheader_'],
+                ['title' => tpl_getLang('style_header_dark_mode_navbar'), 'starts_with' => '__darkmode_navbar_'],
+                ['title' => tpl_getLang('style_header_dark_mode_sub_navbar'), 'starts_with' => '__darkmode_subnavbar_'],
+                ['title' => tpl_getLang('style_header_dark_mode_tags'), 'starts_with' => '__darkmode_tag_background_color_'],
+                ['title' => tpl_getLang('style_header_dark_mode_breadcrumbs'), 'starts_with' => '__darkmode_breadcrumb_'],
+                ['title' => tpl_getLang('style_header_dark_mode_hero'), 'starts_with' => '__darkmode_hero_'],
+                ['title' => tpl_getLang('style_header_dark_mode_sidebar'), 'starts_with' => '__darkmode_sidebar_'],
+                ['title' => tpl_getLang('style_header_dark_mode_content'), 'starts_with' => '__darkmode_content_'],
+                ['title' => tpl_getLang('style_header_dark_mode_toc'), 'starts_with' => '__darkmode_toc_'],
+                ['title' => tpl_getLang('style_header_dark_mode_page_tools'), 'starts_with' => '__darkmode_pagetools_'],
+                ['title' => tpl_getLang('style_header_dark_mode_footer'), 'starts_with' => '__darkmode_footer_'],
+                ['title' => tpl_getLang('style_header_dark_mode_table'), 'starts_with' => '__darkmode_table_'],
+                ['title' => tpl_getLang('style_header_dark_mode_dropdown'), 'starts_with' => '__darkmode_dropdown_'],
+                ['title' => tpl_getLang('style_header_dark_mode_section_edit'), 'starts_with' => '__darkmode_section_edit_'],
+                ['title' => tpl_getLang('style_header_dark_mode_tree'), 'starts_with' => '__darkmode_tree_'],
+                ['title' => tpl_getLang('style_header_dark_mode_tabs'), 'starts_with' => '__darkmode_tab_'],
+                ['title' => tpl_getLang('style_header_mikio_plugin_dark_mode'), 'starts_with' => '__plugin_darkmode_', 'heading' => 'h2',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Primary Colours', 'starts_with' => '__plugin_darkmode_primary_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_primary_colours'), 'starts_with' => '__plugin_darkmode_primary_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Secondary Colours', 'starts_with' => '__plugin_darkmode_secondary_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_secondary_colours'), 'starts_with' => '__plugin_darkmode_secondary_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Success Colours', 'starts_with' => '__plugin_darkmode_success_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_success_colours'), 'starts_with' => '__plugin_darkmode_success_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Danger Colours', 'starts_with' => '__plugin_darkmode_danger_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_danger_colours'), 'starts_with' => '__plugin_darkmode_danger_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Warning Colours', 'starts_with' => '__plugin_darkmode_warning_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_warning_colours'), 'starts_with' => '__plugin_darkmode_warning_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Info Colours', 'starts_with' => '__plugin_darkmode_info_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_info_colours'), 'starts_with' => '__plugin_darkmode_info_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Light Colours', 'starts_with' => '__plugin_darkmode_light_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_light_colours'), 'starts_with' => '__plugin_darkmode_light_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Dark Colours', 'starts_with' => '__plugin_darkmode_dark_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_dark_colours'), 'starts_with' => '__plugin_darkmode_dark_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Link Colours', 'starts_with' => '__plugin_darkmode_link_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_link_colours'), 'starts_with' => '__plugin_darkmode_link_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Carousel', 'starts_with' => '__plugin_darkmode_carousel_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_carousel'), 'starts_with' => '__plugin_darkmode_carousel_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Steps', 'starts_with' => '__plugin_darkmode_steps_', 'hidden' => $mikioPluginMissing],
-                ['title' => 'Tabgroup', 'starts_with' => '__plugin_darkmode_tabgroup_',
-                    'hidden' => $mikioPluginMissing
+                ['title' => tpl_getLang('style_header_dark_mode_steps'), 'starts_with' => '__plugin_darkmode_steps_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_dark_mode_tabgroup'), 'starts_with' => '__plugin_darkmode_tabgroup_',
+                 'hidden' => $mikioPluginMissing
                 ],
-                ['title' => 'Tooltip', 'starts_with' => '__plugin_darkmode_tooltip_', 'hidden' => $mikioPluginMissing],
+                ['title' => tpl_getLang('style_header_dark_mode_tooltip'), 'starts_with' => '__plugin_darkmode_tooltip_', 'hidden' => $mikioPluginMissing],
             ];
 
             foreach ($style_headers as $header) {
@@ -2430,8 +2430,8 @@ height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11
         $show = $this->getConf('showNotifications');
         if (
             strlen($show) === 0 ||
-            strcasecmp($show, tpl_getLang('value_always')) === 0 ||
-            (strcasecmp($show, tpl_getLang('value_admin')) === 0 && strcasecmp($ACT, 'admin') === 0)
+            strcasecmp($show, 'always') === 0 ||
+            (strcasecmp($show, 'admin') === 0 && strcasecmp($ACT, 'admin') === 0)
         ) {
             html_msgarea();
 
