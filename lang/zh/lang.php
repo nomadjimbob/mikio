@@ -255,6 +255,8 @@ $lang['__footnote_popup_border_color__']        = '脚注弹出窗口的边框�
 $lang['__footnote_popup_background_color__']    = '脚注弹出窗口的背景颜色';
 $lang['__footnote_popup_horizontal_padding__']  = '脚注弹出窗口的水平填充';
 $lang['__footnote_popup_vertical_padding__']    = '脚注弹出窗口的垂直填充';
+$lang['__description_list_term_background_color__']    = '列表表格标题颜色';
+$lang['__description_list_details_background_color__']    = '列表表格内容颜色';
 
 /* Plugin */
 $lang['__plugin_background_color__']        = 'Mikio 插件元素的背景颜色';
@@ -373,6 +375,8 @@ $lang['__plugin_tooltip_border_color__']        = '工具提示边框颜色';
 /* Add darkmode language */
 $lang['__darkmode_text__']          = '深色模式主文字颜色';
 $lang['__darkmode_background__']    = '深色模式主背景色';
+$lang['__darkmode_description_list_term_background_color__']    = '深色模式列表表格标题颜色';
+$lang['__darkmode_description_list_details_background_color__']    = '深色模式描述列表表格内容颜色';
 
 foreach ($lang as $key => $val) {
     if (strpos($key, '_darkmode_') === false) {
