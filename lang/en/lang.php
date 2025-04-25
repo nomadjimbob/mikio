@@ -30,37 +30,74 @@ $lang['config_acl']         = 'Permissions';
 $lang['config_sticky']      = 'Sticky Parts';
 
 
-/* Setting Values */
-$lang['value_never']        = 'never';
-$lang['value_admin']        = 'admin';
-$lang['value_always']       = 'always';
-$lang['value_icons']        = 'icons';
-$lang['value_text']         = 'text';
-$lang['value_both']         = 'both';
-$lang['value_separate']     = 'separate';
-$lang['value_dropdown']     = 'dropdown';
-$lang['value_combine']      = 'combine';
-$lang['value_none']         = 'none';
-$lang['value_custom']       = 'custom';
-$lang['value_search']       = 'search';
-$lang['value_dokuwiki']     = 'dokuwiki';
-$lang['value_logged_in']    = 'logged in';
-$lang['value_logged_out']   = 'logged out';
-$lang['value_icon']         = 'icon';
-$lang['value_top']          = 'top';
-$lang['value_hero']         = 'hero';
-$lang['value_page']         = 'page';
-$lang['value_page_title']   = 'page title';
-$lang['value_home']         = 'home';
-$lang['value_logged_in_user'] = 'logged in user';
-$lang['value_content']      = 'content';
-$lang['value_tags']         = 'tags';
-$lang['value_page_editors'] = 'page editors';
-$lang['value_badge']        = 'badge';
-$lang['value_button']       = 'button';
-
-
-
+/* Style Headers */
+$lang['style_header_base'] = 'Base';
+$lang['style_header_code'] = 'Code';
+$lang['style_header_controls'] = 'Controls';
+$lang['style_header_header'] = 'Header';
+$lang['style_header_navbar'] = 'Navbar';
+$lang['style_header_sub_navbar'] = 'Sub Navbar';
+$lang['style_header_tags'] = 'Tags';
+$lang['style_header_breadcrumbs'] = 'Breadcrumbs';
+$lang['style_header_hero'] = 'Hero';
+$lang['style_header_sidebar'] = 'Sidebar';
+$lang['style_header_content'] = 'Content';
+$lang['style_header_toc'] = 'TOC';
+$lang['style_header_page_tools'] = 'Page Tools';
+$lang['style_header_footer'] = 'Footer';
+$lang['style_header_table'] = 'Table';
+$lang['style_header_dropdown'] = 'Dropdown';
+$lang['style_header_section_edit'] = 'Section Edit';
+$lang['style_header_tree'] = 'Tree';
+$lang['style_header_tabs'] = 'Tabs';
+$lang['style_header_mikio_plugin'] = 'Mikio Plugin';
+$lang['style_header_primary_colours'] = 'Primary Colours';
+$lang['style_header_secondary_colours'] = 'Secondary Colours';
+$lang['style_header_success_colours'] = 'Success Colours';
+$lang['style_header_danger_colours'] = 'Danger Colours';
+$lang['style_header_warning_colours'] = 'Warning Colours';
+$lang['style_header_info_colours'] = 'Info Colours';
+$lang['style_header_light_colours'] = 'Light Colours';
+$lang['style_header_dark_colours'] = 'Dark Colours';
+$lang['style_header_link_colours'] = 'Link Colours';
+$lang['style_header_carousel'] = 'Carousel';
+$lang['style_header_steps'] = 'Steps';
+$lang['style_header_tabgroup'] = 'Tabgroup';
+$lang['style_header_tooltip'] = 'Tooltip';
+$lang['style_header_dark_mode'] = 'Dark Mode';
+$lang['style_header_dark_mode_base'] = 'Base';
+$lang['style_header_dark_mode_code'] = 'Code';
+$lang['style_header_dark_mode_controls'] = 'Controls';
+$lang['style_header_dark_mode_header'] = 'Header';
+$lang['style_header_dark_mode_navbar'] = 'Navbar';
+$lang['style_header_dark_mode_sub_navbar'] = 'Sub Navbar';
+$lang['style_header_dark_mode_tags'] = 'Tags';
+$lang['style_header_dark_mode_breadcrumbs'] = 'Breadcrumbs';
+$lang['style_header_dark_mode_hero'] = 'Hero';
+$lang['style_header_dark_mode_sidebar'] = 'Sidebar';
+$lang['style_header_dark_mode_content'] = 'Content';
+$lang['style_header_dark_mode_toc'] = 'TOC';
+$lang['style_header_dark_mode_page_tools'] = 'Page Tools';
+$lang['style_header_dark_mode_footer'] = 'Footer';
+$lang['style_header_dark_mode_table'] = 'Table';
+$lang['style_header_dark_mode_dropdown'] = 'Dropdown';
+$lang['style_header_dark_mode_section_edit'] = 'Section Edit';
+$lang['style_header_dark_mode_tree'] = 'Tree';
+$lang['style_header_dark_mode_tabs'] = 'Tabs';
+$lang['style_header_mikio_plugin_dark_mode'] = 'Mikio Plugin (Dark mode)';
+$lang['style_header_dark_mode_primary_colours'] = 'Primary Colours';
+$lang['style_header_dark_mode_secondary_colours'] = 'Secondary Colours';
+$lang['style_header_dark_mode_success_colours'] = 'Success Colours';
+$lang['style_header_dark_mode_danger_colours'] = 'Danger Colours';
+$lang['style_header_dark_mode_warning_colours'] = 'Warning Colours';
+$lang['style_header_dark_mode_info_colours'] = 'Info Colours';
+$lang['style_header_dark_mode_light_colours'] = 'Light Colours';
+$lang['style_header_dark_mode_dark_colours'] = 'Dark Colours';
+$lang['style_header_dark_mode_link_colours'] = 'Link Colours';
+$lang['style_header_dark_mode_carousel'] = 'Carousel';
+$lang['style_header_dark_mode_steps'] = 'Steps';
+$lang['style_header_dark_mode_tabgroup'] = 'Tabgroup';
+$lang['style_header_dark_mode_tooltip'] = 'Tooltip';
 
 
 /* Style.ini */

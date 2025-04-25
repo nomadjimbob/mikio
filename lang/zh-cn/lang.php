@@ -29,38 +29,74 @@ $lang['config_license']     = '许可';
 $lang['config_acl']         = '权限';
 $lang['config_sticky']      = '粘性部件';
 
-
-/* Setting Values */
-$lang['value_never']        = '从不';
-$lang['value_admin']        = '管理员';
-$lang['value_always']       = '总是';
-$lang['value_icons']        = '图标';
-$lang['value_text']         = '文本';
-$lang['value_both']         = '两个都要';
-$lang['value_separate']     = '分离式';
-$lang['value_dropdown']     = '下拉式';
-$lang['value_combine']      = '组合';
-$lang['value_none']         = '无';
-$lang['value_custom']       = '自定义';
-$lang['value_search']       = '搜索';
-$lang['value_dokuwiki']     = 'dokuwiki';
-$lang['value_logged_in']    = '已登录';
-$lang['value_logged_out']   = '已退出登录';
-$lang['value_icon']         = '图标';
-$lang['value_top']          = '顶部';
-$lang['value_hero']         = '顶部大标题';
-$lang['value_page']         = '页面';
-$lang['value_page_title']   = '页面标题';
-$lang['value_home']         = '首页';
-$lang['value_logged_in_user'] = '登录的用户';
-$lang['value_content']      = '内容';
-$lang['value_tags']         = '标签';
-$lang['value_page_editors'] = '页面编辑者';
-$lang['value_badge']        = '徽章';
-$lang['value_button']       = '按钮';
-
-
-
+/* Style Headers */
+$lang['style_header_base'] = '基础';
+$lang['style_header_code'] = '代码';
+$lang['style_header_controls'] = '控件';
+$lang['style_header_header'] = '页眉';
+$lang['style_header_navbar'] = '导航栏';
+$lang['style_header_sub_navbar'] = '子导航栏';
+$lang['style_header_tags'] = '标签';
+$lang['style_header_breadcrumbs'] = '面包屑';
+$lang['style_header_hero'] = '横幅';
+$lang['style_header_sidebar'] = '侧边栏';
+$lang['style_header_content'] = '内容';
+$lang['style_header_toc'] = '目录';
+$lang['style_header_page_tools'] = '页面工具';
+$lang['style_header_footer'] = '页脚';
+$lang['style_header_table'] = '表格';
+$lang['style_header_dropdown'] = '下拉菜单';
+$lang['style_header_section_edit'] = '段落编辑';
+$lang['style_header_tree'] = '树形结构';
+$lang['style_header_tabs'] = '标签页';
+$lang['style_header_mikio_plugin'] = 'Mikio 插件';
+$lang['style_header_primary_colours'] = '主色';
+$lang['style_header_secondary_colours'] = '辅助色';
+$lang['style_header_success_colours'] = '成功色';
+$lang['style_header_danger_colours'] = '危险色';
+$lang['style_header_warning_colours'] = '警告色';
+$lang['style_header_info_colours'] = '信息色';
+$lang['style_header_light_colours'] = '浅色';
+$lang['style_header_dark_colours'] = '深色';
+$lang['style_header_link_colours'] = '链接色';
+$lang['style_header_carousel'] = '轮播图';
+$lang['style_header_steps'] = '步骤';
+$lang['style_header_tabgroup'] = '标签组';
+$lang['style_header_tooltip'] = '提示框';
+$lang['style_header_dark_mode'] = '深色模式';
+$lang['style_header_dark_mode_base'] = '基础';
+$lang['style_header_dark_mode_code'] = '代码';
+$lang['style_header_dark_mode_controls'] = '控件';
+$lang['style_header_dark_mode_header'] = '页眉';
+$lang['style_header_dark_mode_navbar'] = '导航栏';
+$lang['style_header_dark_mode_sub_navbar'] = '子导航栏';
+$lang['style_header_dark_mode_tags'] = '标签';
+$lang['style_header_dark_mode_breadcrumbs'] = '面包屑';
+$lang['style_header_dark_mode_hero'] = '横幅';
+$lang['style_header_dark_mode_sidebar'] = '侧边栏';
+$lang['style_header_dark_mode_content'] = '内容';
+$lang['style_header_dark_mode_toc'] = '目录';
+$lang['style_header_dark_mode_page_tools'] = '页面工具';
+$lang['style_header_dark_mode_footer'] = '页脚';
+$lang['style_header_dark_mode_table'] = '表格';
+$lang['style_header_dark_mode_dropdown'] = '下拉菜单';
+$lang['style_header_dark_mode_section_edit'] = '段落编辑';
+$lang['style_header_dark_mode_tree'] = '树形结构';
+$lang['style_header_dark_mode_tabs'] = '标签页';
+$lang['style_header_mikio_plugin_dark_mode'] = 'Mikio 插件（深色模式）';
+$lang['style_header_dark_mode_primary_colours'] = '主色';
+$lang['style_header_dark_mode_secondary_colours'] = '辅助色';
+$lang['style_header_dark_mode_success_colours'] = '成功色';
+$lang['style_header_dark_mode_danger_colours'] = '危险色';
+$lang['style_header_dark_mode_warning_colours'] = '警告色';
+$lang['style_header_dark_mode_info_colours'] = '信息色';
+$lang['style_header_dark_mode_light_colours'] = '浅色';
+$lang['style_header_dark_mode_dark_colours'] = '深色';
+$lang['style_header_dark_mode_link_colours'] = '链接色';
+$lang['style_header_dark_mode_carousel'] = '轮播图';
+$lang['style_header_dark_mode_steps'] = '步骤';
+$lang['style_header_dark_mode_tabgroup'] = '标签组';
+$lang['style_header_dark_mode_tooltip'] = '提示框';
 
 
 /* Style.ini */
@@ -127,8 +163,9 @@ $lang['__navbar_background_color__']    = '菜单的背景颜色';
 $lang['__navbar_border_color__']        = '菜单的边框颜色';
 $lang['__navbar_brand_text_color__']    = '网站标题的字体颜色';
 $lang['__navbar_brand_tagline_color__'] = '网站标语的字体颜色';
-$lang['__navbar_content_justify__']     = '网站菜单内容的排布（可以是 flex-start、flex-end、center、space-bween 
-或 space-around、space-between、space-around）';
+$lang['__navbar_content_justify__']     = '网站菜单内容的排布（可以是 flex-start、flex-end、center、space-between 
+或 space-around）';
+
 $lang['__navbar_link_color__']          = '导航栏链接的字体颜色';
 $lang['__navbar_link_hover_color__']    = '光标悬停在导航栏链接上时的字体颜色';
 $lang['__navbar_search_max_width__']    = '搜索栏的最大宽度';
