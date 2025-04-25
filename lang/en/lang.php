@@ -255,6 +255,8 @@ $lang['__footnote_popup_border_color__']        = 'The border color of the footn
 $lang['__footnote_popup_background_color__']    = 'The background color of the footnote popup';
 $lang['__footnote_popup_horizontal_padding__']  = 'The horizontal padding of the footnote popup';
 $lang['__footnote_popup_vertical_padding__']    = 'The vertical padding of the footnote popup';
+$lang['__description_list_term_background_color__']    = 'list table header color'; // added by Little-Data
+$lang['__description_list_details_background_color__']    = 'list table content color'; // added by Little-Data
 
 /* Plugin */
 $lang['__plugin_background_color__']        = 'The background color used on Mikio Plugin elements';
@@ -373,6 +375,8 @@ $lang['__plugin_tooltip_border_color__']        = 'Tooltip border color';
 /* Add darkmode language */
 $lang['__darkmode_text__']          = 'Main text color';
 $lang['__darkmode_background__']    = 'Main background color';
+$lang['__darkmode_description_list_term_background_color__']    = 'Dark mode list table header color'; // added by Little-Data
+$lang['__darkmode_description_list_details_background_color__']    = 'Dark mode list table content color'; // added by Little-Data
 
 foreach ($lang as $key => $val) {
     if (strpos($key, '_darkmode_') === false) {
