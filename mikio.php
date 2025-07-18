@@ -1569,11 +1569,14 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     break;
             }
         } else {
-            $html .= '&#8810; ';
+            $title_back = tpl_getlang('back');
+            $title_view_page = tpl_getlang('view-page');
+
+            $html .= '&#8810; ';            
             if (isset($_GET['page']) === true) {
-                $html .= '<a href="' . wl($ID, ['do' => $ACT]) . '">Back</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
+                $html .= '<a href="' . wl($ID, ['do' => $ACT]) . '">' . $title_back . '</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;';
             }
-            $html .= '<a href="' . wl($ID) . '">View Page</a>';
+            $html .= '<a href="' . wl($ID) . '">' . $title_view_page . '</a>';
         }//end if
 
         $html .= '</div>';
