@@ -12,6 +12,8 @@
 $lang['sidebar-title']  = 'Sidebar';
 $lang['tools-menu']     = 'Tools';
 $lang['home']           = 'Home';
+$lang['back']           = 'Back';
+$lang['view-page']      = 'View Page';
 
 
 /* Config */
