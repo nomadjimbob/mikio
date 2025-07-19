@@ -284,7 +284,7 @@ class mikio
                 'navbarItemShowAdmin'
             ],
                 'type' => 'choice',
-                'values' => ['always', tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), 'never']
+                'values' => ['always', 'logged in', 'logged out', 'never']
             ],
             ['keys' => ['navbarItemShowLogin', 'navbarItemShowLogout'],
                 'type' => 'choice',
@@ -317,7 +317,7 @@ class mikio
                 'pageToolsShowTop'
             ],
                 'type' => 'choice',
-                'values' => ['always', tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), 'never']
+                'values' => ['always', 'logged in', 'logged out', 'never']
             ],
             ['keys' => ['showNotifications'],               'type' => 'choice',
                 'values' => ['admin', 'always', 'none', '', 'never']
@@ -537,8 +537,8 @@ class mikio
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
                 if (
                     $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                    (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
-                    (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
+                    (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                    (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
                 ) {
                     $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
@@ -564,8 +564,8 @@ class mikio
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') . ' ' .
                     $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -588,8 +588,8 @@ class mikio
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown === true ? ' mikio-dropdown-item' : '') . ' ' .
                 $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
