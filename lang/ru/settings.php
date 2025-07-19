@@ -9,140 +9,131 @@
  * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 
-$lang['iconTag']                = 'Tag to use to for icon tags. The default is \'icon\' but this can be changed if 
-it conflicts with any plugins. Set to blank to disable icon tags';
-$lang['customTheme']            = 'Use a Mikio subtheme installed into the themes directory. Leave blank for the 
-detault styling';
-$lang['showNotifications']      = 'Where to show site notifications';
-$lang['useLESS']                = 'Use the LESS compiler for the mikio stylesheet or direct CSS. Requires PHP ctype 
-extensions installed';
-$lang['brandURLGuest']          = 'Change the Brand Logo URL for guests. Leave blank for default home URL';
-$lang['brandURLUser']           = 'Change the Brand Logo URL for logged in users. Leave blank for default home URL';
-$lang['showLightDark']          = 'Show the light/dark toggle in the navbar';
-$lang['autoLightDark']          = 'Change light/dark theme based on the system preference';
-$lang['defaultDark']            = 'Default to the dark theme for the user';
+$lang['iconTag']                = 'Тег для использования с тегами значков. По умолчанию это \'icon\', но он может быть изменен, если конфликтует с любыми другими плагинами. Оставьте пустым, чтобы отключить теги значков';
+$lang['customTheme']            = 'Использовать подтему Mikio, установленную в каталоге тем. 
+Оставьте пустым для оформления по умолчанию';
+$lang['showNotifications']      = 'Где показывать уведомления сайта';
+$lang['useLESS']                = 'Использовать компилятор LESS для таблиц стилей mikio или прямой CSS. Требует установки расширения PHP \'ctype\'';
+$lang['brandURLGuest']          = 'Изменить URL логотипа Вики для гостей. Оставьте пустым для URL по умолчанию';
+$lang['brandURLUser']           = 'CИзменить URL логотипа Вики для авторизованных пользователей. Оставьте пустым для URL по умолчанию';
+$lang['showLightDark']          = 'Показать переключатель темы \'Светлая/Темная\' в меню';
+$lang['autoLightDark']          = 'Менять тему \'Светлая/Темная\' на основе системных предпочтений';
+$lang['defaultDark']            = 'По умолчанию устанавливать Темную тему для пользователя';
 
-$lang['navbarUseTitleIcon']     = 'Show the wiki image in the menubar title. Will search for an image named logo 
-(png/jpg/gif/svg) in the root or :wiki: namespace or the template/subtheme images directory';
-$lang['navbarTitleIconHeight']  = 'Directly set the title icon height. Supports px (default), rem and em units';
-$lang['navbarTitleIconWidth']   = 'Directly set the title icon width. Supports px (default), rem and em units';
-$lang['navbarUseTitleText']     = 'Show the wiki name in the menubar title. Will also hide the tagline if disabled';
-$lang['navbarUseTaglineText']   = 'Show the wiki tag line in the menubar title';
-$lang['navbarCustomMenuText']   = 'Allows custom menus in the menubar. The format is url|title seperated by semicolons';
+$lang['navbarUseTitleIcon']     = 'Показать логотип Вики в заголовке меню. Будет искать изображение с названием \'logo\' (и расширениями - png/jpg/gif/svg) в корне или в пространстве имен :wiki: или в каталоге изображений шаблона/подтемы';
+$lang['navbarTitleIconHeight']  = 'Принудительно установить высоту логотипа Вики. Поддерживает \'px\' (по умолчанию), \'rem\' и \'em\' единицы измерения';
+$lang['navbarTitleIconWidth']   = 'Принудительно установить ширину логотипа Вики. Поддерживает \'px\' (по умолчанию), \'rem\' и \'em\' единицы измерения';
+$lang['navbarUseTitleText']     = 'Показать название Вики в заголовке меню. Также скрывает слоган, если данная опция отключена';
+$lang['navbarUseTaglineText']   = 'Показать слоган Вики в заголовке меню';
+$lang['navbarCustomMenuText']   = 'Разрешить пользовательские меню в Главном меню. Формат - url|title - разделенные точкой с запятой';
 
-$lang['navbarDWMenuType']       = 'Show Dokuwiki menus as icons, text or both';
-$lang['navbarDWMenuCombine']    = 'Show Dokuwiki menus as seperate items, a category dropdown or combined in a 
-single menu';
+$lang['navbarDWMenuType']       = 'Показывать меню Dokuwiki как значки, текст или все вместе';
+$lang['navbarDWMenuCombine']    = 'Показывать меню Dokuwiki как отдельные элементы, выпадающий список по категориям или пункты, объединенные в единое меню';
 
-$lang['navbarPosLeft']          = 'Menu to show on the left of the navbar';
-$lang['navbarPosMiddle']        = 'Menu to show in the middle of the navbar';
-$lang['navbarPosRight']         = 'Menu to show on the right of the navbar';
-$lang['navbarShowSub']          = 'Show the sub navbar. This menu displays data from the submenu page searching from 
-the current namespace to the root. Recommended to use lists for menu items';
+$lang['navbarPosLeft']          = 'Меню для показа в левой части Главного меню';
+$lang['navbarPosMiddle']        = 'Меню для показа в середине Главного меню';
+$lang['navbarPosRight']         = 'Меню для показа в правой части Главного меню';
+$lang['navbarShowSub']          = 'Показать подменю. Это меню отображает данные со страницы подменю, выполняя поиск submenu от текущего пространства имен и выше до корня. Рекомендуется использовать списки для пунктов меню';
 
-$lang['navbarItemShowCreate']   = 'Show the Create Page menu item';
-$lang['navbarItemShowShow']     = 'Show the Show Page menu item';
-$lang['navbarItemShowRevs']     = 'Show the Revisions menu item';
-$lang['navbarItemShowBacklink'] = 'Show the Backlinks menu item';
-$lang['navbarItemShowRecent']   = 'Show the Recent Changes menu item';
-$lang['navbarItemShowMedia']    = 'Show the Media Manager menu item';
-$lang['navbarItemShowIndex']    = 'Show the Sitemap menu item';
-$lang['navbarItemShowProfile']  = 'Show the Update Profile menu item';
-$lang['navbarItemShowAdmin']    = 'Show the Admin menu item';
-$lang['navbarItemShowLogin']    = 'Show the Login menu item';
-$lang['navbarItemShowLogout']   = 'Show the Logout menu item';
+$lang['navbarItemShowCreate']   = 'Показать пункт меню Создать страницу';
+$lang['navbarItemShowShow']     = 'Показать пункт меню Показать страницу';
+$lang['navbarItemShowRevs']     = 'Показать пункт меню История страницы';
+$lang['navbarItemShowBacklink'] = 'Показать пункт меню Ссылки сюда';
+$lang['navbarItemShowRecent']   = 'Показать пункт меню Недавние изменения';
+$lang['navbarItemShowMedia']    = 'Показать пункт меню Управление медиафайлами';
+$lang['navbarItemShowIndex']    = 'Показать пункт меню Все страницы';
+$lang['navbarItemShowProfile']  = 'Показать пункт меню Профиль';
+$lang['navbarItemShowAdmin']    = 'Показать пункт меню Управление';
+$lang['navbarItemShowLogin']    = 'Показать пункт меню Войти';
+$lang['navbarItemShowLogout']   = 'Показать пункт меню Выйти';
 
-$lang['searchButton']           = 'Search button type';
-$lang['searchUseTypeahead']     = 'Use Typeahead page suggestions in search bar';
+$lang['searchButton']           = 'Тип кнопки поиска';
+$lang['searchUseTypeahead']     = 'Использовать подсказки страниц по мере набора текста в панели поиска';
 
-$lang['heroTitle']              = 'Show pages in the hero title style';
-$lang['heroImagePropagation']   = 'Search for hero images in the parent namespace if no hero image is found';
+$lang['heroTitle']              = 'Показать страницы в стиле Hero (Первый экран приветствия)';
+$lang['heroImagePropagation']   = 'Искать изображения для блока Hero в родительских пространствах имен, если изображение для Hero не найдено в текущем';
 
-$lang['tagsConsolidate']        = 'Consolidate page tags to hero, content header or sidebar';
-$lang['tagsShowHero']           = 'Show tags in the page hero';
+$lang['tagsConsolidate']        = 'Консолидировать теги страниц в блоке Hero, заголовке контента или в сайдбаре';
+$lang['tagsShowHero']           = 'Показывать теги в блоке Hero';
 
-$lang['breadcrumbHideHome']     = 'Hide breadcrumb block on home page';
-$lang['breadcrumbPosition']     = 'Position of the breadcrumb bar on the page';
-$lang['breadcrumbPrefix']       = 'Change the breadcrumb prefix text';
-$lang['breadcrumbPrefixText']   = 'Replacement breadcrumb prefix text. Use can use an image by uploading 
-breadcrumb-prefix.png to the template\'s images directory';
-$lang['breadcrumbSep']          = 'Change the breadcrumb seperator text';
-$lang['breadcrumbSepText']      = 'Replacement breadcrumb seperator text. Use can use an image by uploading 
-breadcrumb-sep.png to the template\'s images directory';
+$lang['breadcrumbHideHome']     = 'Скрыть панель хлебных крошек на домашней странице';
+$lang['breadcrumbPosition']     = 'Положение панели хлебных крошек на странице';
+$lang['breadcrumbPrefix']       = 'Изменить текст префикса хлебных крошек';
+$lang['breadcrumbPrefixText']   = 'Замена текста префикса хлебных крошек. Вы можете использовать изображение, загрузив файл breadcrumb-prefix.png в каталог изображений шаблона';
+$lang['breadcrumbSep']          = 'Изменить текст разделителя хлебных крошек';
+$lang['breadcrumbSepText']      = 'Замена текста разделителя хлебных крошек. Вы можете использовать изображение, загрузив файл breadcrumb-sep.png в каталог изображений шаблона';
 
-$lang['youarehereHideHome']     = 'Hide you are here on home page';
-$lang['youareherePosition']     = 'Position of the you are here bar on the page';
-$lang['youareherePrefix']       = 'Change the you are here prefix text';
-$lang['youareherePrefixText']   = 'Replacement you are here prefix text. Use can use an image by uploading 
-youarehere-prefix.png to the template\'s images directory';
-$lang['youarehereSep']          = 'Change the you are here seperator text';
-$lang['youarehereSepText']      = 'Replacement you are here seperator text. Use can use an image by uploading 
-youarehere-sep.png to the template\'s images directory';
-$lang['youarehereHome']         = 'Change the text or icon used for the Home page in the breadcrumb bar';
-$lang['youarehereShowLast']     = 'Only show the last amount of breadcrumbs. Set to 0 to show all';
+$lang['youarehereHideHome']     = 'Скрыть панель \'Вы здесь\', на главной странице';
+$lang['youareherePosition']     = 'Позиция панели \'Вы здесь\' на странице';
+$lang['youareherePrefix']       = 'Изменить текст префикса панели \'Вы здесь\'';
+$lang['youareherePrefixText']   = 'Замена текста префикса панели \'Вы здесь\'. Вы можете использовать изображение, загрузив файл youarehere-prefix.png в каталог изображений шаблона';
+$lang['youarehereSep']          = 'Изменить текст разделителя панели \'Вы здесь\'';
+$lang['youarehereSepText']      = 'Замена текста разделителя панели \'Вы здесь\'. Вы можете использовать изображение, загрузив файл youarehere-sep.png в каталог изображений шаблона';
+$lang['youarehereHome']         = 'Изменить текст или значок используемый для Домашней страницы в панели \'Вы здесь\'';
+$lang['youarehereShowLast']     = 'Показать только N последних хлебных крошек. Установите 0, чтобы показать все';
 
-$lang['sidebarShowLeft']        = 'Show the left sidebar';
-$lang['sidebarAlwaysShowLeft']  = 'Always show the left sidebar, even when there is no content';
-$lang['sidebarLeftRow1']        = 'Content to show in the first row on the left sidebar';
-$lang['sidebarLeftRow2']        = 'Content to show in the second row on the left sidebar';
-$lang['sidebarLeftRow3']        = 'Content to show in the third row on the left sidebar';
-$lang['sidebarLeftRow4']        = 'Content to show in the forth row on the left sidebar';
-$lang['sidebarMobileDefaultCollapse']    = 'Hide the sidebars by default when in mobile view';
-$lang['sidebarShowRight']       = 'Show the right sidebar';
-$lang['sidebarAlwaysShowRight'] = 'Always show the right sidebar, even when there is no content';
+$lang['sidebarShowLeft']        = 'Показать левый сайдбар';
+$lang['sidebarAlwaysShowLeft']  = 'Всегда показывать левый сайдбар, даже когда нет контента';
+$lang['sidebarLeftRow1']        = 'Контент для отображения на первой строке левого сайдбара';
+$lang['sidebarLeftRow2']        = 'Контент для отображения на второй строке левого сайдбара';
+$lang['sidebarLeftRow3']        = 'Контент для отображения на третьей строке левого сайдбара';
+$lang['sidebarLeftRow4']        = 'Контент для отображения на четвертой строке левого сайдбара';
+$lang['sidebarMobileDefaultCollapse']    = 'По умолчанию скрыть боковые панели при мобильном просмотре';
+$lang['sidebarShowRight']       = 'Показать правый сайдбар';
+$lang['sidebarAlwaysShowRight'] = 'Всегда показывать правый сайдбар, даже когда нет контента';
 
-$lang['tocFull']                = 'Show the TOC as a full height element';
+$lang['tocFull']                = 'Показать Оглавление как элемент с полной высотой';
 
-$lang['pageToolsFloating']      = 'When to show the floating page toolbar';
-$lang['pageToolsFooter']        = 'When to show the footer page toolbar';
+$lang['pageToolsFloating']      = 'Когда показывать плавающую панель инструментов страницы';
+$lang['pageToolsFooter']        = 'Когда показывать в подвале панель инструментов страницы';
 
-$lang['pageToolsShowCreate']    = 'Show the Create Page item';
-$lang['pageToolsShowEdit']      = 'Show the Edit Page item';
-$lang['pageToolsShowRevs']      = 'Show the Revisions item';
-$lang['pageToolsShowBacklink']  = 'Show the Backlinks item';
-$lang['pageToolsShowTop']       = 'Show the Back to Top item';
+$lang['pageToolsShowCreate']    = 'Показать пункт Создать страницу';
+$lang['pageToolsShowEdit']      = 'Показать пункт Править страницу';
+$lang['pageToolsShowRevs']      = 'Показать пункт История страницы';
+$lang['pageToolsShowBacklink']  = 'Показать пункт Ссылки сюда';
+$lang['pageToolsShowTop']       = 'Показать пункт Наверх';
 
-$lang['footerPageInfoText']     = 'Customize the page info in the footer';
-$lang['footerCustomMenuText']   = 'Allows custom menus in the footer. The format is url|title seperated by ;';
-$lang['footerSearch']           = 'Show the search bar in the footer';
-$lang['footerInPage']           = 'Show the wiki footer in the article. Bottom footer remains on page';
+$lang['footerPageInfoText']     = 'Настроить информацию о странице в подвале';
+$lang['footerCustomMenuText']   = 'Разрешить пользовательские меню в подвале. Формат - url|title, разделенные ;';
+$lang['footerSearch']           = 'Показать панель поиска в подвале';
+$lang['footerInPage']           = 'Показать нижний колонтитул Вики в статье. При этом общий подвал остается на странице';
 
-$lang['licenseType']            = 'Show the footer license as none, badges or buttons';
-$lang['licenseImageOnly']       = 'Show the footer license as images only';
+$lang['licenseType']            = 'Показать лицензию в подвале: нет, значки или кнопки';
+$lang['licenseImageOnly']       = 'Показать лицензию в подвале только как изображение';
 
-$lang['includePageUseACL']      = 'Respect ACL when including pages';
-$lang['includePagePropagate']   = 'Search higher namespaces when including pages';
+$lang['includePageUseACL']      = 'Учитывать права из ACL при вложении (include) страниц';
+$lang['includePagePropagate']   = 'Поиск в родительских пространствах имен при вложении (include) страниц';
 
-$lang['stickyTopHeader']        = 'Make the top header part sticky';
-$lang['stickyNavbar']           = 'Make the navbar sticky';
-$lang['stickyHeader']           = 'Make the header part sticky';
-$lang['stickyLeftSidebar']      = 'Make the left sidebar sticky';
+$lang['stickyTopHeader']        = 'Закрепить блок верхнего заголовка (Top Header)';
+$lang['stickyNavbar']           = 'Закрепить Главное меню (Navbar)';
+$lang['stickyHeader']           = 'Закрепить блок заголовка (Header)';
+$lang['stickyLeftSidebar']      = 'Закрепить левый сайдбар';
 
 $lang['showNotifications_o_never']      = 'никогда';
-$lang['showNotifications_o_admin']      = 'admin';
+$lang['showNotifications_o_admin']      = 'администратору';
 $lang['showNotifications_o_always']      = 'всегда';
 
-$lang['navbarDWMenuType_o_icons'] = 'icons';
-$lang['navbarDWMenuType_o_text'] = 'text';
-$lang['navbarDWMenuType_o_both'] = 'both';
+$lang['navbarDWMenuType_o_icons'] = 'значки';
+$lang['navbarDWMenuType_o_text'] = 'текст';
+$lang['navbarDWMenuType_o_both'] = 'все вместе';
 
-$lang['navbarDWMenuCombine_o_separate'] = 'separate';
-$lang['navbarDWMenuCombine_o_dropdown'] = 'dropdown';
-$lang['navbarDWMenuCombine_o_combine'] = 'combine';
+$lang['navbarDWMenuCombine_o_separate'] = 'раздельно';
+$lang['navbarDWMenuCombine_o_dropdown'] = 'выпадающий список';
+$lang['navbarDWMenuCombine_o_combine'] = 'объединить';
 
-$lang['navbarPosLeft_o_none'] = 'none';
-$lang['navbarPosLeft_o_custom'] = 'custom';
-$lang['navbarPosLeft_o_search'] = 'search';
+$lang['navbarPosLeft_o_none'] = 'нет';
+$lang['navbarPosLeft_o_custom'] = 'пользовательский';
+$lang['navbarPosLeft_o_search'] = 'поиск';
 $lang['navbarPosLeft_o_dokuwiki'] = 'dokuwiki';
 
-$lang['navbarPosMiddle_o_none'] = 'none';
-$lang['navbarPosMiddle_o_custom'] = 'custom';
-$lang['navbarPosMiddle_o_search'] = 'search';
+$lang['navbarPosMiddle_o_none'] = 'нет';
+$lang['navbarPosMiddle_o_custom'] = 'пользовательский';
+$lang['navbarPosMiddle_o_search'] = 'поиск';
 $lang['navbarPosMiddle_o_dokuwiki'] = 'dokuwiki';
 
-$lang['navbarPosRight_o_none'] = 'none';
-$lang['navbarPosRight_o_custom'] = 'custom';
-$lang['navbarPosRight_o_search'] = 'search';
+$lang['navbarPosRight_o_none'] = 'нет';
+$lang['navbarPosRight_o_custom'] = 'пользовательский';
+$lang['navbarPosRight_o_search'] = 'поиск';
 $lang['navbarPosRight_o_dokuwiki'] = 'dokuwiki';
 
 $lang['navbarItemShowCreate_o_always'] = 'всегда';
@@ -196,34 +187,34 @@ $lang['navbarItemShowLogin_o_never'] = 'никогда';
 $lang['navbarItemShowLogout_o_always'] = 'всегда';
 $lang['navbarItemShowLogout_o_never'] = 'никогда';
 
-$lang['searchButton_o_icon'] = 'icon';
-$lang['searchButton_o_text'] = 'text';
+$lang['searchButton_o_icon'] = 'значок';
+$lang['searchButton_o_text'] = 'текст';
 
-$lang['breadcrumbPosition_o_none'] = 'none';
-$lang['breadcrumbPosition_o_top'] = 'top';
+$lang['breadcrumbPosition_o_none'] = 'нет';
+$lang['breadcrumbPosition_o_top'] = 'верх';
 $lang['breadcrumbPosition_o_hero'] = 'hero';
-$lang['breadcrumbPosition_o_page'] = 'page';
+$lang['breadcrumbPosition_o_page'] = 'страница';
 
-$lang['youareherePosition_o_none'] = 'none';
-$lang['youareherePosition_o_top'] = 'top';
+$lang['youareherePosition_o_none'] = 'нет';
+$lang['youareherePosition_o_top'] = 'верх';
 $lang['youareherePosition_o_hero'] = 'hero';
-$lang['youareherePosition_o_page'] = 'page';
+$lang['youareherePosition_o_page'] = 'страница';
 
-$lang['youarehereHome_o_none'] = 'none';
-$lang['youarehereHome_o_page title'] = 'page title';
-$lang['youarehereHome_o_home'] = 'home';
-$lang['youarehereHome_o_icon'] = 'icon';
+$lang['youarehereHome_o_none'] = 'ничего';
+$lang['youarehereHome_o_page title'] = 'заголовок страницы';
+$lang['youarehereHome_o_home'] = 'домой';
+$lang['youarehereHome_o_icon'] = 'значок';
 
-$lang['sidebarLeftRow1_o_none'] = 'none';
+$lang['sidebarLeftRow1_o_none'] = 'ничего';
 $lang['sidebarLeftRow1_o_logged in user'] = 'авторизованный пользователь';
-$lang['sidebarLeftRow1_o_search'] = 'search';
-$lang['sidebarLeftRow1_o_content'] = 'content';
-$lang['sidebarLeftRow1_o_tags'] = 'метки';
+$lang['sidebarLeftRow1_o_search'] = 'поиск';
+$lang['sidebarLeftRow1_o_content'] = 'контент';
+$lang['sidebarLeftRow1_o_tags'] = 'теги';
 
-$lang['sidebarLeftRow2_o_none'] = 'none';
+$lang['sidebarLeftRow2_o_none'] = 'ничего';
 $lang['sidebarLeftRow2_o_logged in user'] = 'авторизованный пользователь';
-$lang['sidebarLeftRow2_o_search'] = 'search';
-$lang['sidebarLeftRow2_o_content'] = 'content';
+$lang['sidebarLeftRow2_o_search'] = 'поиск';
+$lang['sidebarLeftRow2_o_content'] = 'контент';
 $lang['sidebarLeftRow2_o_tags'] = 'метки';
 
 $lang['sidebarLeftRow3_o_none'] = 'ничего';
