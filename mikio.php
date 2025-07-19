@@ -284,7 +284,7 @@ class mikio
                 'navbarItemShowAdmin'
             ],
                 'type' => 'choice',
-                'values' => ['always', tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), 'never']
+                'values' => ['always', 'logged in', 'logged out', 'never']
             ],
             ['keys' => ['navbarItemShowLogin', 'navbarItemShowLogout'],
                 'type' => 'choice',
@@ -298,26 +298,26 @@ class mikio
                 'values' => ['top', 'hero', 'page', 'none']
             ],
             ['keys' => ['youarehereHome'],                  'type' => 'choice',
-                'values' => [tpl_getLang('value_page_title'), 'home', 'icon', 'none']
+                'values' => ['page title', 'home', 'icon', 'none']
             ],
             ['keys' => ['sidebarLeftRow1', 'sidebarLeftRow2', 'sidebarLeftRow3', 'sidebarLeftRow4'],
                 'type' => 'choice',
-                'values' => ['none', tpl_getLang('value_logged_in_user'), 'search', 'content', 'tags'],
+                'values' => ['none', 'logged in user', 'search', 'content', 'tags'],
                 'default' => [
-                    'sidebarLeftRow1' => tpl_getLang('value_logged_in_user'),
+                    'sidebarLeftRow1' => 'logged in user',
                     'sidebarLeftRow2' => 'search',
                     'sidebarLeftRow3' => 'content'
                 ]
             ],
             ['keys' => ['pageToolsFloating', 'pageToolsFooter'],
                 'type' => 'choice',
-                'values' => ['always', 'none', tpl_getLang('value_page_editors')]
+                'values' => ['always', 'none', 'page editors']
             ],
             ['keys' => ['pageToolsShowCreate', 'pageToolsShowEdit', 'pageToolsShowRevs', 'pageToolsShowBacklink',
                 'pageToolsShowTop'
             ],
                 'type' => 'choice',
-                'values' => ['always', tpl_getLang('value_logged_in'), tpl_getLang('value_logged_out'), 'never']
+                'values' => ['always', 'logged in', 'logged out', 'never']
             ],
             ['keys' => ['showNotifications'],               'type' => 'choice',
                 'values' => ['admin', 'always', 'none', '', 'never']
@@ -537,8 +537,8 @@ class mikio
                 $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
                 if (
                     $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                    (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
-                    (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
+                    (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                    (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
                 ) {
                     $title = isset($attr['title']) && $attr['title'] !== 0 ? $attr['title'] : $item->getTitle();
 
@@ -564,8 +564,8 @@ class mikio
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link ' . ($isDropDown === true ? 'mikio-dropdown-item' : '') . ' ' .
                     $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -588,8 +588,8 @@ class mikio
             $showItem = $this->getConf('navbarItemShow' . ucfirst($item->getType()));
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_in')) === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, tpl_getLang('value_logged_out')) === 0 && $loggedIn === false))
+                (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $itemHtml .= '<a class="mikio-nav-link' . ($isDropDown === true ? ' mikio-dropdown-item' : '') . ' ' .
                 $item->getType() . '" href="' . $item->getLink() . '" title="' . $item->getTitle() . '">';
@@ -1018,7 +1018,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 ];
 
                 $value_search = 'search';
-                $value_logged_in_user = tpl_getLang('value_logged_in_user');
+                $value_logged_in_user = 'logged in user';
                 $value_content = 'content';
                 $value_tags = 'tags';
 
@@ -1124,7 +1124,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             if (
                 $showItem !== false && (strcasecmp($showItem, 'always') === 0 ||
                 (strcasecmp($showItem, 'logged in') === 0 && $loggedIn === true) ||
-                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === true))
+                (strcasecmp($showItem, 'logged out') === 0 && $loggedIn === false))
             ) {
                 $html .= '<li class="' . implode(' ', $classes) . '">';
                 $html .= '<a href="' . $item->getLink() . '" class="' . $item->getType() . '" title="' .
@@ -1337,7 +1337,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         if (
             !is_null($ACT) && !is_null($showPageTools) &&
             strcasecmp($ACT, 'show') === 0 && (strcasecmp($showPageTools, 'always') === 0 ||
-                ($this->userCanEdit() === true && strcasecmp($showPageTools, tpl_getLang('value_page_editors')) === 0))
+                ($this->userCanEdit() === true && strcasecmp($showPageTools, 'page editors') === 0))
         ) {
             $html .= $this->includePageTools(false);
         }
