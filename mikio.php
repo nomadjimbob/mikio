@@ -1524,7 +1524,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
                 if ((isset($page) === true && $page === $part . $parts[$i]) === false) {
                     $page = $part . $parts[$i];
-                    if ($page !== $conf['start']) {
+                    if ($parts[$i] !== $conf['start']) {
                         $html .= '<li class="sep">' . $sep . '</li>';
                         $html .= '<li>' . tpl_pagelink($page, null, true) . '</li>';
                     }
