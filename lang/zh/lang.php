@@ -12,6 +12,8 @@
 $lang['sidebar-title']  = '侧边栏';
 $lang['tools-menu']     = '工具菜单';
 $lang['home']           = '首页';
+$lang['back']           = '后退';
+$lang['view-page']      = '查看页面';
 
 
 /* Config */
