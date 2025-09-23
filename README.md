@@ -269,7 +269,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 - **_2025-09-24_**
    -    Fixed security vulnerability, parsing less error discloses the physical path. Reported by B Mercer.
    -    Fixed page tools visibility [#110](https://github.com/nomadjimbob/mikio/pull/110), [#112](https://github.com/nomadjimbob/mikio/pull/112). Thanks a2belugin, box789.
-   -    Added Russian translation [#109](https://github.com/nomadjimbob/mikio/pull/111). Thanks box789. 
+   -    Added Russian translation [#111](https://github.com/nomadjimbob/mikio/pull/111). Thanks box789. 
    -    Added ability to translate Back and View Page strings in the breadcrumb [#109](https://github.com/nomadjimbob/mikio/pull/109). Thanks box789.
    -    Fixed media manager description list not being readable in dark mode [#96](https://github.com/nomadjimbob/mikio/issues/96). Thanks macin.
    -    Improved language support in the configuration options [#94](https://github.com/nomadjimbob/mikio/issues/94). Thanks Little-Data.
