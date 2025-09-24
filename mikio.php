@@ -1749,6 +1749,11 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         global $ACT, $MIKIO_ICONS;
 
+        // disable icon engine if mikioplugin is loaded
+        if (plugin_load('action', 'mikioplugin') !== null) {
+            return $str;
+        }
+
         $iconTag = $this->getConf('iconTag', 'icon');
         if (empty($iconTag) === true) {
             return $str;

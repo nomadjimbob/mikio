@@ -270,6 +270,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 ## Releases
 
 - **_NEXT_**
+   -   Fixed bug where icon engine would conflict with the mikioplugin [#42](https://github.com/nomadjimbob/mikioplugin/issues/42). Thanks nhratos.
    -   Fixed showing duplicates in "You Are Here" block for a category start page [#117](https://github.com/nomadjimbob/mikio/pull/117). Thanks box789.
    -   Fixed incorrect parsing of the search template [#114](https://github.com/nomadjimbob/mikio/issues/114). Thanks reissmann.
    -   Fixed parsing issue with special HTML characters with the hero and window title [#113](https://github.com/nomadjimbob/mikio/issues/113). Thanks nicola-myo and fiwswe.

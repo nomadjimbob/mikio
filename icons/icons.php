@@ -54,6 +54,11 @@ global $MIKIO_ICONS;
     path to the icons folder (defined by the dir key)
 */
 
+/* Avoid conflicts with the Mikio Syntax Plugin */
+if (plugin_load('action', 'mikioplugin') !== null) {
+    return;
+}
+
 /* Font Awesome 4 */
 $MIKIO_ICONS[] = ['name' => 'fa', 'css' => 'fontawesome/css/all.min.css', 'insert' => '<i class="fa fa-$1"></i>'];
 
