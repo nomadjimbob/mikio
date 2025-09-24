@@ -972,37 +972,39 @@ body {
     flex: 1;
 }
 
-.mikio .mikio-content .mikio-article {
-    margin: 0 auto;
+@media (min-width: 768px) {
+    .mikio .mikio-content .mikio-article {
+        margin: 0 auto;
 
-    ul,
-    ul.idx {
-        // padding-left: 1rem;
-    }
-
-    &.toc-full {
-        display: flex;
-
-        .mikio-toc {
-            margin-top: 1rem;
-            order: 2;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 1rem;
-            align-self: flex-start;
-            overflow: scroll;
-            max-height: 95vh;
-
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
+        ul,
+        ul.idx {
+            // padding-left: 1rem;
         }
 
-        .mikio-article-content {
-            flex: 1;
+        &.toc-full {
+            display: flex;
+
+            .mikio-toc {
+                margin-top: 1rem;
+                order: 2;
+                position: sticky;
+                position: -webkit-sticky;
+                top: 1rem;
+                align-self: flex-start;
+                overflow: scroll;
+                max-height: 95vh;
+
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            .mikio-article-content {
+                flex: 1;
+            }
         }
     }
 }
@@ -1293,7 +1295,7 @@ body {
     .mikio-sticky();
     top: 0;
     align-self: flex-start;
-    padding: 3rem .5rem 0 .5rem;
+    padding: 3rem .5rem 0 0;
 
     ul {
         list-style: none;
@@ -3167,9 +3169,12 @@ pre {
     }
 
     /* TOC */
+
     .mikio .mikio-content .mikio-article {
-        &.toc-full {
-            display: block;
+        @media (min-width: 768px) {
+            &.toc-full {
+                display: block;
+            }
         }
 
         .mikio-toc {
