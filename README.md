@@ -268,6 +268,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 - **_NEXT_**
    -   Fixed incorrect parsing of the search template [#114](https://github.com/nomadjimbob/mikio/issues/114). Thanks reissmann.
+   -   Fixed parsing issue with special HTML characters with the hero and widnow title [#113](https://github.com/nomadjimbob/mikio/issues/113). Thanks nicola-myo and fiwswe.
 
 - **_2025-09-24_**
    -    Fixed security vulnerability, parsing less error discloses the physical path. Reported by B Mercer.

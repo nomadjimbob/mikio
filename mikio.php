@@ -1610,7 +1610,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
     {
         global $ID;
 
-        $title = p_get_first_heading($ID);
+        $title = hsc(p_get_first_heading($ID));
         if (strlen($title) <= 0) {
             $title = tpl_pagetitle(null, true);
         }
@@ -2306,7 +2306,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $page = $ID;
         }
 
-        $html = p_get_first_heading($page);
+        $html = hsc(p_get_first_heading($page));
+
         if(empty($html) === true) {
             $html = $conf['title'];
         }
