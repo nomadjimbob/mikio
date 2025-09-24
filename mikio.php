@@ -1185,6 +1185,16 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }
         });
 
+        // Extract only the <form> element
+        $dom = new DOMDocument();
+        @$dom->loadHTML($html);
+        $forms = $dom->getElementsByTagName('form');
+        if ($forms->length > 0) {
+            $html = $dom->saveHTML($forms->item(0));
+        } else {
+            $html = '';
+        }
+
         if ($print === true) {
             echo $html;
         }

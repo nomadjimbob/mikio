@@ -266,6 +266,9 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
 
 ## Releases
 
+- **_NEXT_**
+   -   Fixed incorrect parsing of the search template [#114](https://github.com/nomadjimbob/mikio/issues/114). Thanks reissmann.
+
 - **_2025-09-24_**
    -    Fixed security vulnerability, parsing less error discloses the physical path. Reported by B Mercer.
    -    Fixed page tools visibility [#110](https://github.com/nomadjimbob/mikio/pull/110), [#112](https://github.com/nomadjimbob/mikio/pull/112). Thanks a2belugin, box789.
