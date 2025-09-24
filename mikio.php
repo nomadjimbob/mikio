@@ -2010,7 +2010,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             }, $content);
         }//end if
 
-        if (strcasecmp($ACT, 'admin') === 0 && isset($_GET['page']) === false) {
+        // Fix the splitting of options in the admin page
+        if (strcasecmp($ACT, 'admin') === 0 && (isset($_GET['page']) === false && isset($_GET['do']) === true)) {
             $content = preg_replace('/(<ul.*?>.*?)<\/ul>.*?<ul.*?>(.*?<\/ul>)/s', '$1$2', $content);
         }
 

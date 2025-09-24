@@ -2036,6 +2036,15 @@ pre {
 
     #acl__detail div#acl__user {
         border-color: var(--toc-border-color);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+        white-space: nowrap;
+    }
+
+    #acl__detail div#acl__info {
+        font-size: 80%;
     }
 
     #acl__tree {
@@ -2052,15 +2061,29 @@ pre {
         }
     }
 
-    #acl_manager table tr {
-        &:nth-child(odd) {
-            background-color: var(--table-odd-row-background-color);
-            color: var(--table-odd-row-text-color);
+    #acl_manager {
+        table tr {
+            &:nth-child(odd) {
+                background-color: var(--table-odd-row-background-color);
+                color: var(--table-odd-row-text-color);
+            }
+
+            &:nth-child(even) {
+                background-color: var(--table-even-row-background-color);
+                color: var(--table-even-row-text-color);
+            }
+
+            label + label {
+                margin-left: 0.5rem;
+            }
         }
 
-        &:nth-child(even) {
-            background-color: var(--table-even-row-background-color);
-            color: var(--table-even-row-text-color);
+        fieldset {
+            border: 1px solid var(--toc-border-color);
+
+            label + label, label + button {
+                margin-left: 0.5rem;
+            }
         }
     }
 }
