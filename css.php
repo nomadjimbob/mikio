@@ -1,110 +1,147 @@
 <?php /** @noinspection DuplicatedCode */
 /**
- * Mikio CSS/LESS Engine
- *
+ * Mikio CSS/LESS Engine (hardened)
  * @link    http://dokuwiki.org/template:mikio
- * @author  James Collins <james.collins@outlook.com.au>
- * @license GPLv2 (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @license GPLv2
+ * @author  James Collins
  */
 
-require(dirname(__FILE__) . '/inc/polyfill-ctype.php');
+require(__DIR__ . '/inc/polyfill-ctype.php');
 
-if(!class_exists('lessc')) {
-    require(dirname(__FILE__) . '/inc/stemmechanics/lesserphp/lessc.inc.php');
+if (!class_exists('lessc')) {
+    require(__DIR__ . '/inc/stemmechanics/lesserphp/lessc.inc.php');
 }
 
-if(!function_exists('getallheaders')) {
-    function getallheaders() {
-        $headers = [];
-        foreach($_SERVER as $name => $value) {
-            if(substr($name, 0, 5) == 'HTTP_') {
-                $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
-            }
-        }
-        return $headers;
-    }
-}
-
-if(!function_exists('platformSlashes')) {
-    function platformSlashes($path) {
-        return str_replace('/', DIRECTORY_SEPARATOR, $path);
-    }
-}
-
-try {
-    if(isset($_GET['css'])) {
-        $baseDir = platformSlashes(dirname(__FILE__) . '/');
-        $cssFile = platformSlashes(realpath($baseDir . $_GET['css']));
-
-        if(strpos($cssFile, $baseDir) === 0 && file_exists($cssFile)) {
-            $rawVars = Array();
-            $file = 'style.ini';
-            if(file_exists($file)) {
-                $rawVars = arrayDeepMerge($rawVars, parse_ini_file($file, TRUE));
-            }
-
-            $file = platformSlashes('../../../conf/tpl/mikio/style.ini');
-            if(file_exists($file)) {
-                $rawVars = arrayDeepMerge($rawVars, parse_ini_file($file, TRUE));
-            }
-
-            $file = ($_SERVER['DOCUMENT_ROOT'] . '/conf/tpl/mikio/style.ini');
-            if(file_exists($file)) {
-                $rawVars = arrayDeepMerge($rawVars, parse_ini_file($file, TRUE));
-            }
-
-            $css = file_get_contents($cssFile);
-
-            header('Content-Type: text/css; charset=utf-8');
-
-            $less = new lessc();
-            $less->setPreserveComments(false);
-
-            $vars = Array();
-            if(isset($rawVars['replacements'])) {
-                foreach($rawVars['replacements'] as $key=>$val) {
-                    if(substr($key, 0, 2) == '__' && substr($key, -2) == '__') {
-                        $vars['ini_' . substr($key, 2, -2)] = $val;
-                    }
-                }
-            }
-
-            if(count($vars) > 0) {
-                $less->setVariables($vars);
-            }
-
-            $css = $less->compile($css);
-            echo $css;
-        } else {
-            header('HTTP/1.1 404 Not Found');
-            echo "The requested file could not be found";
-        }
-    } else {
-        header('HTTP/1.1 404 Not Found');
-        echo "The requested file could not be found";
-    }
-}
-catch(Exception $e) {
-    header('Content-Type: text/css; charset=utf-8');
-    $cssFile = file_get_contents(dirname(__FILE__) . '/assets/mikio.css');
-    $exceptionComment = "\n\n/** An exception occurred in the Mikio Less engine:\n\n " . $e->getMessage() . "\n\n*/";
-
-    // Find the position of the first comment in the CSS file
-    $pos = strpos($cssFile, '*/');
-
-    // Insert the exception comment after the first comment
-    $modifiedCSSFile = substr_replace($cssFile, $exceptionComment, $pos + 2, 0);
-
-    echo $modifiedCSSFile;
+function logInvalidRequest($reason, $input) {
+    error_log("[mikio css.php] $reason | input: $input | IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
 }
 
 function arrayDeepMerge($arr1, $arr2) {
-    foreach ($arr2 as $key => $value){
-        if(array_key_exists($key, $arr1)) {
-            $arr1[$key] = array_merge($arr1[$key], $value);
+    foreach ($arr2 as $key => $value) {
+        if (isset($arr1[$key]) && is_array($arr1[$key]) && is_array($value)) {
+            $arr1[$key] = arrayDeepMerge($arr1[$key], $value);
         } else {
             $arr1[$key] = $value;
         }
     }
     return $arr1;
+}
+
+try {
+    if (!isset($_GET['css'])) {
+        http_response_code(404);
+        echo "The requested file could not be found";
+        exit;
+    }
+
+    $themeRoot = realpath(__DIR__ . '/');
+    if ($themeRoot === false) {
+        throw new RuntimeException('Theme root resolution failed');
+    }
+
+    // Only allow CSS/LESS inside these theme subdirectories
+    $allowedDirs = [
+        realpath($themeRoot . '/assets'),
+        realpath($themeRoot . '/styles'),
+        realpath($themeRoot . '/css'),
+    ];
+    $allowedExtensions = ['css', 'less'];
+
+    $css = '';
+    $failed = false;
+
+    // Support a comma-separated list like your plugin fix
+    $cssFileList = explode(',', $_GET['css']);
+
+    foreach ($cssFileList as $rawInput) {
+        // Strip query/hash and basic traversal chars
+        $clean = explode('?', $rawInput, 2)[0];
+        $clean = trim(str_replace(['..', '\\'], '', $clean));
+
+        if ($clean === '') {
+            $failed = true;
+            logInvalidRequest('Empty or invalid path', $rawInput);
+            continue;
+        }
+
+        $resolved = realpath($themeRoot . '/' . ltrim($clean, '/'));
+        if (!$resolved || !is_file($resolved)) {
+            $failed = true;
+            logInvalidRequest('Invalid file path', $rawInput);
+            continue;
+        }
+
+        $ext = strtolower(pathinfo($resolved, PATHINFO_EXTENSION));
+        if (!in_array($ext, $allowedExtensions, true)) {
+            $failed = true;
+            logInvalidRequest('Disallowed extension', $rawInput);
+            continue;
+        }
+
+        // Enforce allowed directories
+        $inside = false;
+        foreach ($allowedDirs as $dir) {
+            if ($dir && strpos($resolved, $dir) === 0) {
+                $inside = true;
+                break;
+            }
+        }
+        if (!$inside) {
+            $failed = true;
+            logInvalidRequest('File outside allowed directories', $rawInput);
+            continue;
+        }
+
+        $css .= file_get_contents($resolved);
+    }
+
+    if ($failed) {
+        http_response_code(404);
+        echo "The requested file could not be found";
+        exit;
+    }
+
+    // Load style.ini replacements from trusted locations
+    $rawVars = [];
+    $iniCandidates = [
+        $themeRoot . '/style.ini',
+        dirname($themeRoot, 3) . '/conf/tpl/mikio/style.ini' ?: null,
+        (isset($_SERVER['DOCUMENT_ROOT']) ? ($_SERVER['DOCUMENT_ROOT'] . '/conf/tpl/mikio/style.ini') : null),
+    ];
+
+    foreach ($iniCandidates as $ini) {
+        if ($ini && is_file($ini)) {
+            $parsed = @parse_ini_file($ini, true);
+            if (is_array($parsed)) {
+                $rawVars = arrayDeepMerge($rawVars, $parsed);
+            }
+        }
+    }
+
+    header('Content-Type: text/css; charset=utf-8');
+
+    $less = new lessc();
+    $less->setPreserveComments(false);
+
+    // Map __FOO__ => ini_FOO variables just like before
+    $vars = [];
+    if (isset($rawVars['replacements']) && is_array($rawVars['replacements'])) {
+        foreach ($rawVars['replacements'] as $k => $v) {
+            if (strpos($k, '__') === 0 && substr($k, -2) === '__') {
+                $vars['ini_' . substr($k, 2, -2)] = $v;
+            }
+        }
+    }
+    if ($vars) {
+        $less->setVariables($vars);
+    }
+
+    echo $less->compile($css);
+
+} catch (Throwable $e) {
+    // Log server-side; no path/stack to client
+    error_log('[mikio css.php] Exception: ' . $e->getMessage());
+    http_response_code(500);
+    header('Content-Type: text/css; charset=utf-8');
+    echo "/* An error occurred while processing the CSS. */";
 }
