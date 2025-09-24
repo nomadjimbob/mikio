@@ -86,8 +86,10 @@ ob_start();
 
             $TEMPLATE->showMessages();
 
-            echo '<article class="mikio-article' . ($TEMPLATE->getConf('tocFull') === true ? ' toc-full' : '') . '">';
-                $TEMPLATE->includeTOC();
+            echo '<article class="mikio-article' . ($TEMPLATE->getConf('tocFull') === true && $TEMPLATE->hideTOC() === false ? ' toc-full' : '') . '">';
+                if($TEMPLATE->hideTOC() === false) {
+                    $TEMPLATE->includeTOC();
+                }
     if ($ACT === 'show') {
         $TEMPLATE->includePage('contentheader', true, true, 'mikio-page-contentheader');
     }

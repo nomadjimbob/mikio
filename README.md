@@ -139,6 +139,9 @@ The configuration can be changed with the [Configuration Manager Plugin](https:/
 ## Right Sidebar
 The right sidebar can be applied by creating a normal wiki page called "rightsidebar". Go to http://your-wiki.com/doku.php?id=rightsidebar, click "Create this page", edit the page, save, and you're done. That's it, your saved changes will appear in your right sidebar.
 
+## TOC (Table of Contents)
+If you include the tag `<toc>` in your sidebar, the typical TOC will be hidden and instead included in the sidebar.
+
 ## Include Pages
 
 The following pages can be either html files in the root of the template or a page in the namespace. Namespace pages take priority.
@@ -271,6 +274,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
    -   Fixed parsing issue with special HTML characters with the hero and widnow title [#113](https://github.com/nomadjimbob/mikio/issues/113). Thanks nicola-myo and fiwswe.
    -   Fixed display error when updating ACLs in the admin panel [#103](https://github.com/nomadjimbob/mikio/issues/103). Thanks VNRARA.
    -   Fixed tables not visible in the ProseMirror editor [#115](https://github.com/nomadjimbob/mikio/issues/115). Thanks dutran123.
+   -   Added support for the <TOC> tag in the sidebar to override the normal TOC location [#106](https://github.com/nomadjimbob/mikio/issues/106). Requested by tgrosinger.
 
 - **_2025-09-24_**
    -    Fixed security vulnerability, parsing less error discloses the physical path. Reported by B Mercer.

@@ -61,6 +61,7 @@ class mikio
      */
     static private $formattedConfigValues = [];
 
+    public bool $hideTOC = false;
 
     /**
      * Class constructor
@@ -1012,6 +1013,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 $html .= '<div class="mikio-sidebar-header">' . $content . '</div>';
             }
 
+
             if (empty($prefix) === true) {
                 $rows = [$this->getConf('sidebarLeftRow1'), $this->getConf('sidebarLeftRow2'),
                     $this->getConf('sidebarLeftRow3'), $this->getConf('sidebarLeftRow4')
@@ -1078,6 +1080,19 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                 ($this->getConf('sidebarMobileDefaultCollapse') === true ? ' closed' : '') . '" href="#">' .
                 tpl_getLang('sidebar-title') . ' <span class="icon"></span></a><div class="' . implode(' ', $collapseClasses) . '">' .
                 $html . '</div></aside>';
+        }
+
+        $TOCString = '&lt;toc&gt;';
+        $TOCPos = strpos($html, $TOCString);
+        if($TOCPos === false) {
+            $TOCString = '<toc>';
+            $TOCPos = strpos($html, $TOCString);
+        }
+
+        if($TOCPos !== false) {
+            $this->hideTOC = true;
+            $toc = $this->includeTOC(false, true, false);
+            $html = substr_replace($html, $toc, $TOCPos, strlen($TOCString));
         }
 
         if ($parse === true) {
@@ -1672,28 +1687,38 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         return $html;
     }
 
+    public function hideTOC(): bool
+    {
+        return $this->hideTOC;
+    }
 
     /**
      * Print or return out TOC
      *
      * @param   boolean $print Print TOC.
      * @param   boolean $parse Parse icons.
+     * @param   boolean $floating Add floating elements.
      * @return  string         contents of TOC
      */
-    public function includeTOC(bool $print = true, bool $parse = true): string
+    public function includeTOC(bool $print = true, bool $parse = true, bool $floating = true): string
     {
         $html = '';
 
         $tocHtml = tpl_toc(true);
 
         if (empty($tocHtml) === false) {
-            $tocHtml = preg_replace(
-                '/(<h3.+?toggle.+?>)(.+?)<\/h3>/',
-                '$1' .
-                $this->mikioInlineIcon('hamburger', 'hamburger') . '$2' .
-                $this->mikioInlineIcon('down-arrow', 'down-arrow') . '</h3>',
-                $tocHtml
-            );
+            if ($floating !== false) {
+                $tocHtml = preg_replace(
+                    '/(<h3.+?toggle.+?>)(.+?)<\/h3>/',
+                    '$1' .
+                    $this->mikioInlineIcon('hamburger', 'hamburger') . '$2' .
+                    $this->mikioInlineIcon('down-arrow', 'down-arrow') . '</h3>',
+                    $tocHtml
+                );
+            } else {
+                // remove h3
+                $tocHtml = preg_replace('/<h3.*>.*<\/h3>/', '', $tocHtml);
+            }
             $tocHtml = preg_replace('/<li.*><div.*><a.*><\/a><\/div><\/li>\s*/', '', $tocHtml);
             $tocHtml = preg_replace('/<ul.*>\s*<\/ul>\s*/', '', $tocHtml);
 
