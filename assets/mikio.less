@@ -3443,6 +3443,30 @@ pre {
     }
 }
 
+/* Prosemirror */
+#prosemirror__editor {
+    .ProseMirror {
+        background-color: var(--input-background-color);
+    }
+
+    table {
+        width: 100%;
+        border: 1px solid var(--input-border-color);
+        border-collapse: collapse;
+        background-color: var(--input-background-color);
+        empty-cells: show;
+
+        tr, td {
+            border: 1px solid var(--input-border-color);
+            background-color: var(--input-background-color);
+        }
+
+        td {
+            padding: 0.3rem 0.5rem;
+        }
+    }
+}
+
 /* dark-light mode button */
 .mikio {
     .mikio-darklight {
