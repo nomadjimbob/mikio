@@ -54,6 +54,8 @@ const mikio = {
         this.indexmenuPatch();
         this.typeahead();
 
+        this.doPluginPatch();
+
         const updateStickyItems = function () {
             window.removeEventListener('scroll', updateStickyScroll);
 
@@ -798,6 +800,24 @@ const mikio = {
 
         // Convert the RGB values to HEX
         return '#' + ((1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2]).toString(16).slice(1).toUpperCase();
+    },
+
+    doPluginPatch: function() {
+        if(document.getElementsByClassName('plugin__do_usertasks').length === 0) return;
+
+        this.addEventListenerByClassName('mikio-nav-dropdown', 'click', function(event) {
+            if (jQuery('.plugin__do_usertasks_list').length) {
+                jQuery('.plugin__do_usertasks_list').hide();
+            }
+        });
+
+        this.addEventListenerByClassName('plugin__do_usertasks', 'click', function(event) {
+            Array.from(document.getElementsByClassName('mikio-dropdown')).forEach(function (elem) {
+                if (!elem.classList.contains('closed')) {
+                    elem.classList.add('closed');
+                }
+            });
+        });
     }
 };
 

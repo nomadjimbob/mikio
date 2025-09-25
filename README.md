@@ -278,6 +278,7 @@ If the plugin is installed, the **Template Styles Settings** page will be expand
    -   Fixed tables not visible in the ProseMirror editor [#115](https://github.com/nomadjimbob/mikio/issues/115). Thanks dutran123.
    -   Added support for the <TOC> tag in the sidebar to override the normal TOC location [#106](https://github.com/nomadjimbob/mikio/issues/106). Requested by tgrosinger.
    -   Fixed responsive TOC issue when set to full height on mobile [#100](https://github.com/nomadjimbob/mikio/issues/100). Reported by ZhongXiYi.
+   -   Added support for the DO plugin [#76](https://github.com/nomadjimbob/mikio/issues/76). Requested by macin.
 
 - **_2025-09-24_**
    -    Fixed security vulnerability, parsing less error discloses the physical path. Reported by B Mercer.

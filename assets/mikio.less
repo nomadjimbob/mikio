@@ -3044,10 +3044,29 @@ pre {
 }
 
 /* Do */
-.plugin__do_usertasks_list {
+.mikio .plugin__do_usertasks_list {
     font-size: 80%;
-    z-index: 20;
+    z-index: 10000;
+    border: 1px solid var(--dropdown-border-color);
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+:root[data-theme="theme-dark"] .mikio {
+    .plugin__do_usertasks svg path {
+        fill: var(--navbar-link-color);
+    }
+
+    .plugin__do_usertasks_list {
+        background-color: var(--table-odd-row-background-color);
+
+        a {
+            color: var(--link);
+        }
+    }
+}
+
+
 
 /* Mobile */
 @media (max-width: 768px) {
