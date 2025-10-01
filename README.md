@@ -91,6 +91,10 @@ The `main` branch may include features still under test.
 
 ---
 
+## 📄 Third Party Libraries
+
+This template uses a [[https://github.com/nomadjimbob/simple_html_dom|modified version]] of [[https://sourceforge.net/projects/simplehtmldom/|simple_html_dom]]
+
 ## 📄 License
 
 Released under the GPLv2.  
