@@ -24,6 +24,7 @@ $conf['navbarTitleIconWidth']   = '';
 $conf['navbarUseTitleText']     = 1;
 $conf['navbarUseTaglineText']   = 1;
 $conf['navbarCustomMenuText']   = '';
+$meta['navbarCustomTitleFormat'] = '$page [$wiki]';
 
 $conf['navbarDWMenuType']       = 'icons';
 $conf['navbarDWMenuCombine']    = 'dropdown';

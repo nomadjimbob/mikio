@@ -359,6 +359,7 @@ class mikio
             ['keys' => ['iconTag'],                         'type' => 'string'],
             ['keys' => ['customTheme'],                     'type' => 'string'],
             ['keys' => ['navbarCustomMenuText'],            'type' => 'string'],
+            ['keys' => ['navbarCustomTitleFormat'],         'type' => 'string'],
             ['keys' => ['breadcrumbPrefixText'],            'type' => 'string'],
             ['keys' => ['breadcrumbSepText'],               'type' => 'string'],
             ['keys' => ['youareherePrefixText'],            'type' => 'string'],
@@ -2331,14 +2332,26 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             $page = $ID;
         }
 
-        $html = hsc(p_get_first_heading($page));
+        // Get the page title format string, or fall back to the default
+        $titleFormat = strip_tags($conf['navbarCustomTitleFormat']);
+        $titleFormat = empty($titleFormat) ? '$page [$wiki]' : $titleFormat;
+        
+        // Get the wiki title
+        $wikiTitle = $conf['title'];
+        $wikiTitle = strip_tags($wikiTitle);
 
-        if(empty($html) === true) {
-            $html = $conf['title'];
-        }
-        $html = strip_tags($html);
+        // Get page title, falling back to the wiki title
+        $pageTitle = hsc(p_get_first_heading($page));
+        $pageTitle = strip_tags($pageTitle);
+        $pageTitle = empty($pageTitle) ? $wikiTitle : $pageTitle;
+
+        // sub in the page title and wiki title
+        $html = $titleFormat;
+        $html = preg_replace('/(\$page)/', $pageTitle , $html);
+        $html = preg_replace('/(\$wiki)/', $wikiTitle, $html);
+        // tidy up output
         $html = preg_replace('/\s+/', ' ', $html);
-        $html .= ' [' . strip_tags($conf['title']) . ']';
+        $html = strip_tags($html);
         return trim($html);
     }
 

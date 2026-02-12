@@ -24,6 +24,7 @@ $meta['navbarTitleIconWidth']   = ['string'];
 $meta['navbarUseTitleText']     = ['onoff'];
 $meta['navbarUseTaglineText']   = ['onoff'];
 $meta['navbarCustomMenuText']   = ['string'];
+$meta['navbarCustomTitleFormat'] = ['string'];
 
 $meta['navbarDWMenuType']       = ['multichoice', '_choices' => ['icons', 'text', 'both']];
 $meta['navbarDWMenuCombine']    = ['multichoice', '_choices' => ['separate', 'dropdown', 'combine']];
