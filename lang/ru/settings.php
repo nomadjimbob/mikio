@@ -26,7 +26,7 @@ $lang['navbarTitleIconWidth']   = 'Принудительно установит
 $lang['navbarUseTitleText']     = 'Показать название Вики в заголовке меню. Также скрывает слоган, если данная опция отключена';
 $lang['navbarUseTaglineText']   = 'Показать слоган Вики в заголовке меню';
 $lang['navbarCustomMenuText']   = 'Разрешить пользовательские меню в Главном меню. Формат - url|title - разделенные точкой с запятой';
-$lang['navbarCustomTitleFormat'] = 'TODO: RUSSIAN';
+$lang['navbarCustomTitleFormat'] = 'Настройте заголовок страницы, используя строку форматирования. Переменные: $page и $wiki. Например: "$page [$wiki]"'; // added by coryalder using translate.google.com
 
 $lang['navbarDWMenuType']       = 'Показывать меню Dokuwiki как значки, текст или все вместе';
 $lang['navbarDWMenuCombine']    = 'Показывать меню Dokuwiki как отдельные элементы, выпадающий список по категориям или пункты, объединенные в единое меню';
