@@ -28,7 +28,7 @@ $lang['navbarTitleIconWidth']   = 'Directly set the title icon width. Supports p
 $lang['navbarUseTitleText']     = 'Show the wiki name in the menubar title. Will also hide the tagline if disabled';
 $lang['navbarUseTaglineText']   = 'Show the wiki tag line in the menubar title';
 $lang['navbarCustomMenuText']   = 'Allows custom menus in the menubar. The format is url|title seperated by semicolons';
-$lang['navbarCustomTitleFormat'] = 'Customize the page title using a format string. Variables are $page and $wiki. e.g. "$page [$wiki]"'
+$lang['navbarCustomTitleFormat'] = 'Customize the page title using a format string. Variables are $page and $wiki. e.g. "$page [$wiki]"';
 
 $lang['navbarDWMenuType']       = 'Show Dokuwiki menus as icons, text or both';
 $lang['navbarDWMenuCombine']    = 'Show Dokuwiki menus as seperate items, a category dropdown or combined in a 
