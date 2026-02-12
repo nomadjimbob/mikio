@@ -24,6 +24,7 @@ $lang['navbarTitleIconWidth']   = '直接设置标题图标宽度。支持 像�
 $lang['navbarUseTitleText']     = '在菜单栏标题中显示维基名称。如果禁用，还会隐藏标语';
 $lang['navbarUseTaglineText']   = '在菜单栏标题中显示维基标签行';
 $lang['navbarCustomMenuText']   = '允许在菜单栏中自定义菜单。格式为：url|标题，以英文分号隔开';
+$lang['navbarCustomTitleFormat'] = 'TODO: chinese'
 
 $lang['navbarDWMenuType']       = '以图标、文本或两种形式显示 Dokuwiki 菜单';
 $lang['navbarDWMenuCombine']    = '将 Dokuwiki 菜单显示为独立项目、类别下拉菜单或合并为单一菜单';
