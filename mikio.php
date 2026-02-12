@@ -2333,7 +2333,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         }
 
         // Get the page title format string, or fall back to the default
-        $titleFormat = strip_tags($conf['navbarCustomTitleFormat']);
+        $titleFormat = strip_tags($this->getConf('navbarCustomTitleFormat'));
         $titleFormat = empty($titleFormat) ? '$page [$wiki]' : $titleFormat;
         
         // Get the wiki title
