@@ -893,7 +893,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     }//end if
 
                     if(empty($logo) === false) {
-                        $html .= '<img src="' . $logo . '" alt="'. $conf['title'] .' logo" class="mikio-navbar-brand-image' . (empty($logoDark) === false ? ' mikio-light-only' : '') . '"' . $styles . '>';
+                        $html .= '<img src="' . $logo . '" alt="'. strip_tags($conf['title']) .' logo" class="mikio-navbar-brand-image' . (empty($logoDark) === false ? ' mikio-light-only' : '') . '"' . $styles . '>';
                     }
 
                     if (empty($logoDark) === false) {
