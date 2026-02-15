@@ -1,3 +1,6 @@
+- **_NEXT_**
+    -  Added alt attribute to the logo in the top bar, for accessibility [#122](https://github.com/nomadjimbob/mikio/pull/122). Thanks coryalder.
+
 - **_2025-10-01_**
     -   Fixed bug where icon engine would conflict with the mikioplugin [#42](https://github.com/nomadjimbob/mikioplugin/issues/42). Thanks nhratos.
     -   Fixed showing duplicates in "You Are Here" block for a category start page [#117](https://github.com/nomadjimbob/mikio/pull/117). Thanks box789.
