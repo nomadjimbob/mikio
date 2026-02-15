@@ -2241,7 +2241,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         if (@file_exists($wiki_file) === false) {
             return true;
         }
-
         if ($INFO['isadmin'] === true || $INFO['ismanager'] === true) {
             return true;
         }
@@ -2249,7 +2248,6 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         if ($INFO['meta']['user'] === false) {
             return true;
         }
-
         if ($INFO['client'] === $INFO['meta']['user']) {
             return true;
         }
