@@ -2242,7 +2242,15 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
             return true;
         }
 
-        if ($INFO['editable'] === true) {
+        if ($INFO['isadmin'] === true || $INFO['ismanager'] === true) {
+            return true;
+        }
+        // $meta_file = metaFN($ID, '.meta');
+        if ($INFO['meta']['user'] === false) {
+            return true;
+        }
+
+        if ($INFO['client'] === $INFO['meta']['user']) {
             return true;
         }
 
