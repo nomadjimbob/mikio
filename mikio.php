@@ -2340,7 +2340,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         // Get the page title format string, or fall back to the default
         $titleFormat = strip_tags($this->getConf('navbarCustomTitleFormat'));
-        $titleFormat = empty($titleFormat) ? '$page [$wiki]' : $titleFormat;
+        $titleFormat = empty($titleFormat) ? '%page% [%wiki%]' : $titleFormat;
         
         // Get the wiki title
         $wikiTitle = $conf['title'];
@@ -2353,8 +2353,8 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 
         // sub in the page title and wiki title
         $html = $titleFormat;
-        $html = preg_replace('/(\$page)/', $pageTitle , $html);
-        $html = preg_replace('/(\$wiki)/', $wikiTitle, $html);
+        $html = preg_replace('/(\%page\%)/', $pageTitle , $html);
+        $html = preg_replace('/(\%wiki\%)/', $wikiTitle, $html);
         // tidy up output
         $html = preg_replace('/\s+/', ' ', $html);
         $html = strip_tags($html);
