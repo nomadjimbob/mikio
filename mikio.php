@@ -893,11 +893,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
                     }//end if
 
                     if(empty($logo) === false) {
-<<<<<<< HEAD
                         $html .= '<img src="' . $logo . '" alt="'. strip_tags($conf['title']) .' logo" class="mikio-navbar-brand-image' . (empty($logoDark) === false ? ' mikio-light-only' : '') . '"' . $styles . '>';
-=======
-                        $html .= '<img src="' . $logo . '" class="mikio-navbar-brand-image' . (empty($logoDark) === false ? ' mikio-light-only' : '') . '"' . $styles . '>';
->>>>>>> 828d0c8 (remove alt tag from logo)
                     }
 
                     if (empty($logoDark) === false) {
@@ -2245,17 +2241,11 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
         if (@file_exists($wiki_file) === false) {
             return true;
         }
-        if ($INFO['isadmin'] === true || $INFO['ismanager'] === true) {
-            return true;
-        }
-        // $meta_file = metaFN($ID, '.meta');
-        if ($INFO['meta']['user'] === false) {
-            return true;
-        }
-        if ($INFO['client'] === $INFO['meta']['user']) {
-            return true;
-        }
 
+        if($INFO['editable'] === true) {
+            return true;
+        }
+        
         return false;
     }
 
