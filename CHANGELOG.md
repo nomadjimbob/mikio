@@ -1,5 +1,7 @@
-- **_NEXT_**
+- **_2026-02-17_**
     -  Added alt attribute to the logo in the top bar, for accessibility [#122](https://github.com/nomadjimbob/mikio/pull/122). Thanks coryalder.
+    -  Improved checks around showing the editor toolbar for users [#121](https://github.com/nomadjimbob/mikio/pull/121). Thanks coryalder.
+    -  Added the ability to change the title format [#119](https://github.com/nomadjimbob/mikio/pull/119). Thanks coryalder.
 
 - **_2025-10-01_**
     -   Fixed bug where icon engine would conflict with the mikioplugin [#42](https://github.com/nomadjimbob/mikioplugin/issues/42). Thanks nhratos.
