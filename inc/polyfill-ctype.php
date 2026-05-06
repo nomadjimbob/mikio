@@ -68,7 +68,7 @@ if(!function_exists('ctype_upper')) {
 }
 
 if(!function_exists('ctype_xdigit')) {
-    function ctype_upper($var) {
+    function ctype_xdigit($var) {
         return preg_match('/^[0-9A-Fa-f]+$/', $var);
     }
 }
