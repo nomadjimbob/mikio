@@ -1,3 +1,7 @@
+- **_2026-08-14_**
+    -  Template info had incorrect date causing incorrect update notifications [#125](https://github.com/nomadjimbob/mikio/issues/125). Thanks mstuyts.
+    -  Fixed function name for ctyle_xdigit [#124](https://github.com/nomadjimbob/mikio/pull/124). Thanks jorge-leon. 
+
 - **_2026-02-17_**
     -  Added alt attribute to the logo in the top bar, for accessibility [#122](https://github.com/nomadjimbob/mikio/pull/122). Thanks coryalder.
     -  Improved checks around showing the editor toolbar for users [#121](https://github.com/nomadjimbob/mikio/pull/121). Thanks coryalder.
